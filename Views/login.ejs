@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="loginstyle.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Left Section: Login Form -->
+        <div class="login-section">
+            <!-- Logos -->
+            <div>
+                <img src="C:\tth\Public\university_logo.png" alt="University Logo" style="width: 80px;">
+                <img src="C:\tth\Public\smartzone_logo.png" alt="SmartZone Logo" style="width: 80px;">
+            </div>
+            <!-- Login Form Title -->
+            <h1>Login</h1>
+
+            <!-- Form Fields -->
+            <form action="/login" method="POST">
+                <label for="email">Email*</label>
+                <input type="email" id="email" name="email" placeholder="Enter email here." required>
+                
+                <br><br>
+                
+                <label for="password">Password*</label>
+                <input type="password" id="password" name="password" placeholder="Minimum 8 characters." required>
+                
+                <br><br>
+
+                <!-- Remember me checkbox -->
+                <input type="checkbox" id="remember" name="remember">
+                <label for="remember">Remember me</label>
+                
+                <br><br>
+
+                <!-- Login Button -->
+                <button type="submit">LOGIN</button>
+                
+                <br><br>
+
+                <!-- Sign up link -->
+                <p>Don’t have an account? <a href="/signup">Sign Up here.</a></p>
+            </form>
+        </div>
+
+        <!-- Right Section: PMS Logo -->
+        <div class="logo-section">
+            <img src="C:\tth\Public\PMS_logo.webp" alt="PMS Logo">
+        </div>
+    </div>
+</body>
+</html>
