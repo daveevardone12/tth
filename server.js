@@ -17,6 +17,10 @@ app.get("/signup", async (req, res) => {
   res.render("signup");
 });
 
+app.get("/dashboard", async (req, res) => {
+  res.render("dashboard");
+});
+
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server started at ${PORT}`);
