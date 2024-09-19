@@ -1,0 +1,82 @@
+*{
+  margin: 0;
+}
+
+body{
+  background-color: #e9e0cd;
+}
+
+main{
+  display: flex;
+  width: 70vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+main > div:first-child{
+  overflow: hidden;
+  width: 50%;
+  background-color: black;
+  padding: 4px;
+}
+main > div:first-child > img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+main > div:last-child{
+  display: grid;
+  place-items: center;
+  padding:40px 60px;
+  background-color: #f2efe9;
+  width: 50%;
+}
+main > div:last-child > div{
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+main > div:last-child > div > header{
+  display: flex;
+  gap: 12px;
+  justify-content: end;
+}
+main > div:last-child > div > header > img{
+  width: 80px;
+  object-fit: cover;
+}
+
+main > div:last-child > div > form{
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.input_w8_label{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.input_w8_label > input{
+  outline: none;
+  border-radius: 10px;
+  border: 1px solid gray;
+  padding: 10px 20px;
+}
+
+.row{
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.button-section > button{
+  border-radius: 10px;
+  background-color: #27ae60;
+  border: 1px solid black;
+  padding: 10px 30px;
+}

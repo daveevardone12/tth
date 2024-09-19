@@ -14,7 +14,7 @@ app.get("/", async (req, res) => {
 });
 
 app.get("/signup", async (req, res) => {
-  res.render("signup");
+  res.render("signup1");
 });
 
 app.get("/dashboard", async (req, res) => {
