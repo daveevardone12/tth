@@ -28,7 +28,9 @@ router.post("/login/submit", async (req, res, next) => {
 
     if (userCheck.rows.length === 0) {
       // If the user doesn't exist
-      return res.status(400).json({ error: "Invalid email or password" });
+      // return res.status(400).json({ error: "Invalid email or password" });
+      req.flash("error", "Invalid email or password");
+      return res.redirect("/login");
     }
 
     const user = userCheck.rows[0];
@@ -37,7 +39,9 @@ router.post("/login/submit", async (req, res, next) => {
 
     if (!validPassword) {
       // If password is incorrect
-      return res.status(400).json({ error: "Invalid email or password" });
+      // return res.status(400).json({ error: "Invalid email or password" });
+      req.flash("error", "Invalid email or password");
+      return res.redirect("/login");
     }
 
     // If login is successful, set up session or JWT
