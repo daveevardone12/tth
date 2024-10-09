@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | Property Management System</title>
-    <link rel="stylesheet" href="../public/css/loginstyle.css">
+    <link rel="stylesheet" href="../css/loginstyle.css">
+    <link rel="stylesheet" href="../css/general.css">
 </head>
 <body>
     <div class="container">
@@ -12,14 +13,25 @@
         <div class="login-section">
             <!-- Logos -->
             <div>
-                <img src="../public/images/university_logo.png" alt="University Logo" style="width: 80px;">
-                <img src="../public/images/smartzone_logo.png" alt="SmartZone Logo" style="width: 110px;">
+                <img src="../images/university_logo.png" alt="University Logo" style="width: 80px;">
+                <img src="../images/smartzone_logo.png" alt="SmartZone Logo" style="width: 110px;">
             </div>
             <!-- Login Form Title -->
             <h1>Login</h1>
 
+            <div class="success">
+                <% if (messages.success) { %>
+                    <%= messages.success %> 
+                <% } %>
+            </div>
+            <div class="error">
+                <% if (messages.error) { %>
+                    <%= messages.error %> 
+                <% } %>
+            </div>
+
             <!-- Form Fields -->
-            <form action="/login" method="POST">
+            <form action="/login/submit" method="POST">
                 <label for="email">Email*</label>
                 <input type="email" id="email" name="email" placeholder="Enter email here." required>
                 
