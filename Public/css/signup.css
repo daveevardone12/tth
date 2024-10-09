@@ -26,7 +26,6 @@ main{
 main > div:first-child{
   overflow: hidden;
   width: 50%;
-  background-color: black;
   padding: 4px;
 }
 main > div:first-child > img{
