@@ -12,19 +12,14 @@
   "description": "",
   "dependencies": {
     "bcrypt": "^5.1.1",
-<<<<<<< HEAD
     "body-parser": "^1.20.3",
     "ejs": "^3.1.10",
     "express": "^4.21.0",
-=======
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "ejs": "^3.1.10",
-    "express": "^4.19.2",
     "express-flash": "^0.0.2",
     "express-session": "^1.18.0",
     "joi": "^17.13.3",
->>>>>>> 3fb69c79f7bbae44076eb87e0a34ca19b6f3d4c1
     "nodemon": "^3.1.4",
     "passport": "^0.7.0",
     "pg": "^8.13.0"
