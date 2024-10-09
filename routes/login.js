@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-// const passport = require("passport");
 const Joi = require("joi");
 const bcrypt = require("bcrypt");
 const tthPool = require("../models/tthDB");
@@ -28,28 +27,24 @@ router.post("/login/submit", async (req, res, next) => {
 
     if (userCheck.rows.length === 0) {
       // If the user doesn't exist
-      // return res.status(400).json({ error: "Invalid email or password" });
       req.flash("error", "Invalid email or password");
       return res.redirect("/login");
     }
 
     const user = userCheck.rows[0];
 
+    // Compare the hashed password with the user's password
     const validPassword = await bcrypt.compare(value.password, user.password);
 
     if (!validPassword) {
       // If password is incorrect
-      // return res.status(400).json({ error: "Invalid email or password" });
       req.flash("error", "Invalid email or password");
       return res.redirect("/login");
     }
 
-    // If login is successful, set up session or JWT
-    // Set the user ID in session
-    // req.session.userId = user.id; 
-
+    // If login is successful, redirect to the dashboard
     req.flash("success", "Login successful");
-    res.redirect("/login");
+    return res.redirect("/dashboard"); // Change this to your actual dashboard route
 
   } catch (err) {
     console.error("Error: ", err);

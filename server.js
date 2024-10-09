@@ -16,6 +16,7 @@ const tthPool = require("./models/tthDB");
 //-------ROUTES--------//
 const signupRoutes = require("./routes/signup");
 const loginRoutes = require("./routes/login");
+const dashboardRoutes = require("./routes/dashboard");
 
 
 //-------CONNECTING TO DATABASE-------//
@@ -67,9 +68,9 @@ app.use("/", loginRoutes);
 //   res.render("signup1");
 // });
 
-// app.get("/dashboard", async (req, res) => {
-//   res.render("dashboard");
-// });
+app.get("/dashboard", async (req, res) => {
+  res.render("dashboard");
+ });
 
 // const PORT = 3000;
 // app.listen(PORT, () => {
