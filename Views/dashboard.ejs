@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,104 +8,70 @@
     <link rel="stylesheet" href="../css/dashboardstyle.css">
     <link rel="stylesheet" href="../css/general.css">
 </head>
+
 <body>
     <div class="container">
         <!-- Sidebar -->
-        <div class="sidebar">
-            <div class="logo-section">
-                <div class="imageSection">
-                    <div>
-                        <img src="../images/university_logo.png" alt="University Logo">
-                    </div>
-                    <div>
-                        <img src="../images/PMS_logo.webp" alt="PMS Logo">
-                    </div>
+        <%- include("./includes/sidebar.ejs") %>
+
+            <!-- Main content -->
+            <div class="main-content">
+                <h1>Dashboard</h1>
+
+                <!-- Cards -->
+                <div class="cards-container">
+                    <div class="card purple">Machineries<br><span>28</span></div>
+                    <div class="card red">Office Equipment<br><span>57</span></div>
+                    <div class="card green">Agricultural and Forestry Equipment<br><span>46</span></div>
+                    <div class="card purple">Medical Equipment<br><span>76</span></div>
+                    <div class="card red">Printing Equipment<br><span>30</span></div>
+                    <div class="card green">Technical and Scientific Equipment<br><span>69</span></div>
+                    <div class="card purple">Other Machinery and Equipment<br><span>28</span></div>
+                    <div class="card red">Motor Vehicles<br><span>41</span></div>
+                    <div class="card green">Furniture and Fixtures<br><span>135</span></div>
+                    <div class="card purple">Books<br><span>5325</span></div>
+                    <div class="card red">Software<br><span>28</span></div>
+                    <div class="card green">ICT Equipment<br><span>53</span></div>
                 </div>
-                <div class="line">
-                    <div class="dot"></div>
-                    <div class="line1"></div>
-                    <div class="dot"></div>
-                </div>
-                <h5 class="title">EASTERN SAMAR STATE UNIVERSITY</h5>
-                <div class="basta">
-                    <p>EXCELLENCE</p>
-                    <div class="dot"></div>
-                    <p>ACCOUNTABILITY</p>
-                    <div class="dot"></div>
-                    <p>SERVICE</p>
-                </div>
+
+                <!-- Table -->
+                <h2>Smart Center</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Qty.</th>
+                            <th>Name of Item</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Asset</th>
+                            <th>Category</th>
+                            <th>RFID Code</th>
+                            <th>Serial No.</th>
+                            <th>UACS Code</th>
+                            <th>Property No.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Repeatable rows -->
+                        <tr>
+                            <td>1</td>
+                            <td>5</td>
+                            <td>Lenovo (Asus)</td>
+                            <td>10/01/2024</td>
+                            <td>05:20:23PM</td>
+                            <td>Smart Center</td>
+                            <td>Electronics</td>
+                            <td>1219321892188SFGHF</td>
+                            <td>1001010000100</td>
+                            <td>1060501000</td>
+                            <td>123338458853889</td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
             </div>
-
-            <nav class="nav-menu">
-                <ul>
-                    <li><a href="#">Dashboard</a></li>
-                    <li><a href="/add-item" >Add Item</a></li>
-                    <li><a href="#">Inventory</a></li>
-                    <li><a href="#">Return Item</a></li>
-                    <li><a href="#">Property Transfer</a></li>
-                    <li><a href="#">Notification</a></li>
-                    <li><a href="#">User Account</a></li>
-                </ul>
-            </nav>
-        </div>
-
-        <!-- Main content -->
-        <div class="main-content">
-            <h1>Dashboard</h1>
-
-            <!-- Cards -->
-            <div class="cards-container">
-                <div class="card purple">Machineries<br><span>28</span></div>
-                <div class="card red">Office Equipment<br><span>57</span></div>
-                <div class="card green">Agricultural and Forestry Equipment<br><span>46</span></div>
-                <div class="card purple">Medical Equipment<br><span>76</span></div>
-                <div class="card red">Printing Equipment<br><span>30</span></div>
-                <div class="card green">Technical and Scientific Equipment<br><span>69</span></div>
-                <div class="card purple">Other Machinery and Equipment<br><span>28</span></div>
-                <div class="card red">Motor Vehicles<br><span>41</span></div>
-                <div class="card green">Furniture and Fixtures<br><span>135</span></div>
-                <div class="card purple">Books<br><span>5325</span></div>
-                <div class="card red">Software<br><span>28</span></div>
-                <div class="card green">ICT Equipment<br><span>53</span></div>
-            </div>
-
-            <!-- Table -->
-            <h2>Smart Center</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Qty.</th>
-                        <th>Name of Item</th>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th>Asset</th>
-                        <th>Category</th>
-                        <th>RFID Code</th>
-                        <th>Serial No.</th>
-                        <th>UACS Code</th>
-                        <th>Property No.</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Repeatable rows -->
-                    <tr>
-                        <td>1</td>
-                        <td>5</td>
-                        <td>Lenovo (Asus)</td>
-                        <td>10/01/2024</td>
-                        <td>05:20:23PM</td>
-                        <td>Smart Center</td>
-                        <td>Electronics</td>
-                        <td>1219321892188SFGHF</td>
-                        <td>1001010000100</td>
-                        <td>1060501000</td>
-                        <td>123338458853889</td>
-                    </tr>
-                    <!-- Add more rows as needed -->
-                </tbody>
-            </table>
-        </div>
     </div>
 </body>
+
 </html>
