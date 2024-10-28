@@ -1,3 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+}
+
 .sidebar {
     width: 300px;
     background-color: #0A5D03;
@@ -5,4 +19,156 @@
     height: 100vh;
     padding: 20px;
     position: fixed;
+}
+
+.nav-menu {
+    margin-top: 20px;
+}
+
+.nav-menu ul {
+    list-style-type: none;
+}
+
+.nav-menu ul li {
+    padding: 15px 0;
+}
+
+.nav-menu ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+}
+
+.main-content {
+    margin-left: 370px;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+h2{
+    margin-top: 30px;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 75px;
+    row-gap: 15px;
+}
+
+.card {
+    width: 180px;
+    height: 100px;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.purple {
+    width: 241.528px;
+    height: 129.39px;
+    flex-shrink: 0;
+    border-radius: 12.939px;
+    background-color: #AC95FF;
+}
+
+.red {
+    width: 241.528px;
+    height: 129.39px;
+    flex-shrink: 0;
+    border-radius: 12.939px;
+    background-color: #F96A6A;
+}
+
+.green {
+    width: 241.528px;
+    height: 129.39px;
+    flex-shrink: 0;
+    border-radius: 12.939px;
+    background-color: #B3C04E;
+}
+
+.card span {
+    display: block;
+    font-size: 28px;
+    margin-top: 10px;
+}
+
+table {
+    width: 100%;
+    margin-top: 30px;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+thead {
+    background-color: #f2f2f2;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+.sidebar .imageSection{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.sidebar .imageSection > div{
+    width: 80px;
+    border-radius: 50%;
+    background-color: white;
+    display: grid;
+    place-items: center;
+}
+.sidebar .imageSection > div > img{
+    width: 100%;
+    object-fit:cover;
+    border-radius: 50%;
+}
+.sidebar .dot{
+    width: 5px;
+    height: 5px;
+    background-color: yellow;
+    border-radius: 50%;
+}
+.sidebar .line{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+}
+.sidebar .line1{
+    flex: 1;
+    height: 1px;
+    background-color: yellow;
+}
+.sidebar .basta{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font-size: 10px;
+}
+.logo-section{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-bottom: 1px solid black;
+    padding-bottom: 24px;
 }
