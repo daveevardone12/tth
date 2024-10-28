@@ -8,8 +8,6 @@ require("dotenv").config();
 const session = require("express-session");
 const flash = require("express-flash");
 
-
-
 //-------DATABASES IMPORTING-------//
 const tthPool = require("./models/tthDB");
 
@@ -18,13 +16,11 @@ const signupRoutes = require("./routes/signup");
 const loginRoutes = require("./routes/login");
 const dashboardRoutes = require("./routes/dashboard");
 
-
 //-------CONNECTING TO DATABASE-------//
 tthPool
   .connect()
   .then(() => console.log("Connected to TTH database"))
   .catch((err) => console.error("Error connecting to TTH database:", err));
-
 
 //-------INITIALIZING VIEW ENGINE AND PATH------//
 app.set("view engine", "ejs");
@@ -42,7 +38,6 @@ app.use(
   })
 );
 
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(flash());
@@ -54,28 +49,11 @@ app.use((req, res, next) => {
   next();
 });
 
-
 //------INITIALIZE ROUTES------//
 app.use("/", signupRoutes);
 app.use("/", loginRoutes);
 
-
-// app.get("/", async (req, res) => {
-//   res.render("login");
-// });
-
-// app.get("/signup", async (req, res) => {
-//   res.render("signup1");
-// });
-
-app.get("/dashboard", async (req, res) => {
-  res.render("dashboard");
- });
-
-// const PORT = 3000;
-// app.listen(PORT, () => {
-//   console.log(`Server started at ${PORT}`);
-// });
+// Existing routes
 app.get("/", (req, res) => {
   res.render("login");
 });
@@ -88,6 +66,16 @@ app.get("/signup", (req, res) => {
   res.render("signup1");
 });
 
+app.get("/dashboard", async (req, res) => {
+  res.render("dashboard");
+});
+
+// New route for Add Item page
+app.get("/add-item", (req, res) => {
+  res.render("add-item"); // Render the add-item.ejs view
+});
+
+// Start server
 app.listen(process.env.PORT, () => {
   console.log(`Server is up and running on port ${process.env.PORT}`);
 });
