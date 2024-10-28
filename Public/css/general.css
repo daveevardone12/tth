@@ -1,6 +1,104 @@
-.success{
+.success {
   color: rgb(9, 163, 9);
 }
-.error{
+
+.error {
   color: rgb(255, 14, 14);
+}
+
+.sidebar {
+  width: 300px;
+  background-color: #0A5D03;
+  color: white;
+  height: 100vh;
+  padding: 20px 0;
+  position: fixed;
+}
+
+
+.sidebar .nav-menu ul {
+  list-style-type: none;
+}
+
+.sidebar .nav-menu ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+}
+
+.sidebar .imageSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.sidebar .imageSection>div {
+  width: 80px;
+  border-radius: 50%;
+  background-color: white;
+  display: grid;
+  place-items: center;
+}
+
+.sidebar .imageSection>div>img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.sidebar .dot {
+  width: 5px;
+  height: 5px;
+  background-color: yellow;
+  border-radius: 50%;
+}
+
+.sidebar .line {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+}
+
+.sidebar .line1 {
+  flex: 1;
+  height: 1px;
+  background-color: yellow;
+}
+
+.sidebar .basta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 10px;
+}
+
+.logo-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-bottom: 1px solid black;
+  padding: 0 20px 24px 20px;
+}
+
+
+/* Navigation links */
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar nav a {
+  padding: 20px;
+  text-decoration: none;
+  color: #fff;
+  display: block;
+  transition: background 0.3s;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+  background-color: #008000;
 }
