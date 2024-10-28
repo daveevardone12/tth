@@ -13,95 +13,12 @@ body {
     background-color: #f9f5ee;
 }
 
-/* Sidebar Styling */
-.sidebar {
-    width: 300px;
-    background-color: #0A5D03;
-    color: white;
-    height: 100vh;
-    padding: 20px;
-    position: fixed;
-}
-
-.logo-section {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    border-bottom: 1px solid black;
-    padding-bottom: 24px;
-    align-items: center;
-    text-align: center;
-}
-
-.imageSection img {
-    width: 80px;
-    height: auto;
-    margin-bottom: 10px;
-}
-
-.line {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    margin: 10px 0;
-}
-
-.line .dot {
-    width: 8px;
-    height: 8px;
-    background-color: white;
-    border-radius: 50%;
-}
-
-.line .line1 {
-    width: 50px;
-    height: 2px;
-    background-color: white;
-}
-
-.title {
-    font-size: 14px;
-    margin-top: 10px;
-}
-
-.basta {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    font-size: 12px;
-}
-
-.basta p {
-    margin: 0;
-}
-
-/* Navigation links */
-nav {
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-}
-
-nav a {
-    padding: 15px;
-    text-decoration: none;
-    color: #fff;
-    display: block;
-    transition: background 0.3s;
-}
-
-nav a:hover,
-nav a.active {
-    background-color: #008000;
-}
-
 /* Main content styling */
 .main-content {
     flex: 1;
     padding: 30px;
-    margin-left: 320px; /* Ensures main content starts after sidebar */
+    margin-left: 320px;
+    /* Ensures main content starts after sidebar */
 }
 
 h1 {

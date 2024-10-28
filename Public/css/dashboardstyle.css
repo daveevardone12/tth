@@ -12,33 +12,6 @@ body {
     display: flex;
 }
 
-.sidebar {
-    width: 300px;
-    background-color: #0A5D03;
-    color: white;
-    height: 100vh;
-    padding: 20px;
-    position: fixed;
-}
-
-.nav-menu {
-    margin-top: 20px;
-}
-
-.nav-menu ul {
-    list-style-type: none;
-}
-
-.nav-menu ul li {
-    padding: 15px 0;
-}
-
-.nav-menu ul li a {
-    text-decoration: none;
-    color: white;
-    font-size: 16px;
-}
-
 .main-content {
     margin-left: 370px;
     padding: 20px;
@@ -49,7 +22,7 @@ h1 {
     margin-bottom: 20px;
 }
 
-h2{
+h2 {
     margin-top: 30px;
 }
 
@@ -107,11 +80,14 @@ table {
     border-collapse: collapse;
 }
 
-table, th, td {
+table,
+th,
+td {
     border: 1px solid #ddd;
 }
 
-th, td {
+th,
+td {
     padding: 10px;
     text-align: left;
 }
@@ -122,53 +98,4 @@ thead {
 
 tbody tr:nth-child(even) {
     background-color: #f9f9f9;
-}
-.sidebar .imageSection{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-}
-.sidebar .imageSection > div{
-    width: 80px;
-    border-radius: 50%;
-    background-color: white;
-    display: grid;
-    place-items: center;
-}
-.sidebar .imageSection > div > img{
-    width: 100%;
-    object-fit:cover;
-    border-radius: 50%;
-}
-.sidebar .dot{
-    width: 5px;
-    height: 5px;
-    background-color: yellow;
-    border-radius: 50%;
-}
-.sidebar .line{
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
-    align-items: center;
-}
-.sidebar .line1{
-    flex: 1;
-    height: 1px;
-    background-color: yellow;
-}
-.sidebar .basta{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    font-size: 10px;
-}
-.logo-section{
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    border-bottom: 1px solid black;
-    padding-bottom: 24px;
 }

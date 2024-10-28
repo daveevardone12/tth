@@ -1,54 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/add-item.css">
+    <link rel="stylesheet" href="../css/general.css">
+
     <title>Add Item</title>
 </head>
+
 <body>
     <%- include("./includes/sidebar.ejs") %>
-    <div class="main-content">
-        <h1>Add Item</h1>
-        <form class="item-form">
-            <div class="form-section">
-                <label>Name of Item*</label>
-                <input type="text" placeholder="Ex. Portable Controlled Learning">
-            </div>
-            <div class="form-section">
-                <label>Accountable*</label>
-                <input type="text" placeholder="Ex. Carlos A. Salas">
-            </div>
-            <div class="form-section">
-                <label>Unit*</label>
-                <input type="text" placeholder="Ex. Set">
-            </div>
-            <div class="form-section">
-                <label>Unit Cost/Value*</label>
-                <input type="text" placeholder="Ex. 1,860,000.00">
-            </div>
-            <div class="form-section">
-                <label>Date Acquired*</label>
-                <input type="text" placeholder="Ex. 3/18/2019">
-            </div>
-            <div class="form-section">
-                <label>Location*</label>
-                <select>
-                    <option>Select Location</option>
-                </select>
-            </div>
-            <div class="form-section">
-                <label>Category*</label>
-                <select>
-                    <option>Select Category</option>
-                </select>
-            </div>
-            <!-- Additional form fields if needed -->
-            <div class="button-group">
-                <button type="button" class="save-btn">Save</button>
-                <button type="button" class="cancel-btn">Cancel</button>
-            </div>
-        </form>
-    </div>
+        <div class="main-content">
+            <h1>Add Item</h1>
+            <form class="item-form">
+                <div class="form-section">
+                    <label>Name of Item*</label>
+                    <input type="text" placeholder="Ex. Portable Controlled Learning">
+                </div>
+                <div class="form-section">
+                    <label>Accountable*</label>
+                    <input type="text" placeholder="Ex. Carlos A. Salas">
+                </div>
+                <div class="form-section">
+                    <label>Unit*</label>
+                    <input type="text" placeholder="Ex. Set">
+                </div>
+                <div class="form-section">
+                    <label>Unit Cost/Value*</label>
+                    <input type="text" placeholder="Ex. 1,860,000.00">
+                </div>
+                <div class="form-section">
+                    <label>Date Acquired*</label>
+                    <input type="text" placeholder="Ex. 3/18/2019">
+                </div>
+                <div class="form-section">
+                    <label>Location*</label>
+                    <select>
+                        <option>Select Location</option>
+                    </select>
+                </div>
+                <div class="form-section">
+                    <label>Category*</label>
+                    <select>
+                        <option>Select Category</option>
+                    </select>
+                </div>
+                <!-- Additional form fields if needed -->
+                <div class="button-group">
+                    <button type="button" class="save-btn">Save</button>
+                    <button type="button" class="cancel-btn">Cancel</button>
+                </div>
+            </form>
+        </div>
 </body>
+
 </html>
