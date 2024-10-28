@@ -5,6 +5,7 @@ const bcrypt = require("bcrypt");
 const tthPool = require("../models/tthDB");
 
 const userSchema = Joi.object({
+  role: Joi.string().required(),
   email: Joi.string().required(),
   password: Joi.string().required()
 });
