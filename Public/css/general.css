@@ -50,7 +50,7 @@
 .sidebar .dot {
   width: 5px;
   height: 5px;
-  background-color: yellow;
+  background-color: wheat;
   border-radius: 50%;
 }
 
@@ -59,6 +59,10 @@
   flex-direction: row;
   gap: 5px;
   align-items: center;
+}
+
+.sidebar .title{
+  color: #FFDF00 ;
 }
 
 .sidebar .line1 {
@@ -73,6 +77,31 @@
   justify-content: center;
   gap: 4px;
   font-size: 10px;
+  color: #FFDF00 ;
+  
+}
+
+/* Smaller text for dropdown items */
+.sidebar #dropdown {
+  font-size: 10px ; /* Smaller, but readable text size */
+  padding-left: 20px;
+}
+
+.sidebar #dropdown li {
+  margin: 9px;
+}
+
+.sidebar #dropdown li a {
+  color: white; /* Inherits color from sidebar */
+  font-size: 13px;
+  text-decoration: none;
+  display: block;
+  padding-left: -50px;
+  transition: color 0.3s;
+}
+
+.sidebar #dropdown li a:hover {
+  color: #ffcc00; /* Change color on hover for better visibility */
 }
 
 .logo-section {

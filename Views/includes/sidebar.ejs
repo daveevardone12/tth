@@ -25,8 +25,14 @@
 
     <nav class="nav-menu">
         <ul>
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="/add-item">Add Item</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li>
+                <a href="#" id="addItemLink">Add Item</a>
+                <ul id="dropdown" style="display: none;">
+                    <li><a href="/par">Property Acknowledgement Receipt</a></li>
+                    <li><a href="/ics">Inventory Custodian Slip</a></li>
+                </ul>
+            </li>
             <li><a href="#">Inventory</a></li>
             <li><a href="#">Return Item</a></li>
             <li><a href="#">Property Transfer</a></li>
@@ -35,3 +41,17 @@
         </ul>
     </nav>
 </div>
+
+<script>
+    document.getElementById("addItemLink").addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent the default link behavior
+        const dropdown = document.getElementById("dropdown");
+        
+        // Toggle the display of the dropdown
+        if (dropdown.style.display === "none" || dropdown.style.display === "") {
+            dropdown.style.display = "block"; // Show the dropdown
+        } else {
+            dropdown.style.display = "none"; // Hide the dropdown
+        }
+    });
+</script>
