@@ -6,6 +6,7 @@
 
 body {
     font-family: Arial, sans-serif;
+    overflow-x: hidden;
 }
 
 .container {
@@ -23,14 +24,40 @@ h1 {
 }
 
 h2 {
-    margin-top: 30px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
 }
 
+h3{
+    display: flex;
+    justify-content: center;
+}
+
+hr{
+    width: 1150px;
+    height: 1;
+}
+
+hr{
+    background: rgba(0, 0, 0, 0.30);
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.50);
+}
+
+i{
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+    margin-top: 100px;
+}
+
+
 .cards-container {
+    margin-top: 60px;
     display: flex;
     flex-wrap: wrap;
-    column-gap: 75px;
-    row-gap: 15px;
+    column-gap: 40px;
+    row-gap: 10px;
 }
 
 .card {
