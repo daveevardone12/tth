@@ -74,6 +74,13 @@ app.get("/dashboard", async (req, res) => {
 app.get("/add-item", (req, res) => {
   res.render("add-item"); // Render the add-item.ejs view
 });
+app.get("/par", (req, res) => {
+  res.render("par"); // Render the add-item.ejs view
+});
+
+app.get("/ics", (req, res) => {
+  res.render("ics"); // Render the add-item.ejs view
+});
 
 // Start server
 app.listen(process.env.PORT, () => {

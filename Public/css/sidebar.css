@@ -12,6 +12,20 @@ body {
     display: flex;
 }
 
+#dropdown {
+    font-size: 1px; /* Smaller text size */
+    padding-left: 15px; /* Optional: Adds some padding to the left */
+}
+
+#dropdown li a {
+    color: #8b8383; /* Adjust color as needed */
+    text-decoration: none;
+}
+
+#dropdown li a:hover {
+    color: #81c580; /* Optional: Change color on hover */
+}
+
 .sidebar {
     width: 300px;
     background-color: #0A5D03;
