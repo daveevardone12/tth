@@ -1,6 +1,7 @@
-*{
+* {
     margin: 0;
-    }
+}
+
 /* General styling */
 body {
     font-family: Arial, sans-serif;
@@ -26,6 +27,8 @@ body {
 
 /* Main content styling */
 .main-content {
+    margin-left: 370px;
+    /* Align content next to sidebar */
     margin-left: 450px; /* Align content next to sidebar */
     padding: 20px;
     max-width: 900px;
@@ -55,7 +58,8 @@ label {
     font-size: 14px;
 }
 
-input, textarea {
+input,
+textarea {
     padding: 8px;
     font-size: 14px;
     border: 1px solid #ddd;
@@ -95,9 +99,12 @@ button:hover {
     body * {
         visibility: hidden;
     }
-    #par-preview, #par-preview * {
+
+    #par-preview,
+    #par-preview * {
         visibility: visible;
     }
+
     #par-preview {
         position: absolute;
         top: 0;

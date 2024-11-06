@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,29 +8,32 @@
     <link rel="stylesheet" href="../css/general.css">
     <link rel="stylesheet" href="../css/parstyle.css">
 </head>
-<body>
-    <div class="sidebar">
-        <%- include("./includes/sidebar.ejs") %>
-    </div>
 
-    <div class="main-content">
-        <h2>Fill Out PAR Form</h2>
-        <!-- PAR Form -->
-        <form id="parForm">
-            <!-- Form fields -->
-            <label>Fund Cluster: <input type="text" name="fundCluster" id="fundCluster"></label>
-            <label>PAR No.: <input type="text" name="parNo" id="parNo"></label>
-            <label>Quantity: <input type="text" name="quantity" id="quantity"></label>
-            <label>Description: <input type="text" name="description" id="description"></label>
-            <label>Property No.: <input type="text" name="propertyNo" id="propertyNo"></label>
-            <label>Date Acquired: <input type="date" name="dateAcquired" id="dateAcquired"></label>
-            <label>Unit Value: <input type="text" name="unitValue" id="unitValue"></label>
-            <label>Total Amount: <input type="text" name="totalAmount" id="totalAmount"></label>
-            <label>Remarks: <textarea name="remarks" id="remarks"></textarea></label>
-            <label>Status: <input type="text" name="status" id="status"></label>
-            <label>Date: <input type="date" name="statusDate" id="statusDate"></label>
-            <label>Instructor / COE Position: <input type="text" name="instructorOffice" id="instructorOffice"></label>
-            <label>Administrative Officer Position: <input type="text" name="adminOfficerOffice" id="adminOfficerOffice"></label>
+<body>
+
+    <%- include("./includes/sidebar.ejs") %>
+
+
+        <div class="main-content">
+            <h2>Fill Out PAR Form</h2>
+            <!-- PAR Form -->
+            <form id="parForm">
+                <!-- Form fields -->
+                <label>Fund Cluster: <input type="text" name="fundCluster" id="fundCluster"></label>
+                <label>PAR No.: <input type="text" name="parNo" id="parNo"></label>
+                <label>Quantity: <input type="text" name="quantity" id="quantity"></label>
+                <label>Description: <input type="text" name="description" id="description"></label>
+                <label>Property No.: <input type="text" name="propertyNo" id="propertyNo"></label>
+                <label>Date Acquired: <input type="date" name="dateAcquired" id="dateAcquired"></label>
+                <label>Unit Value: <input type="text" name="unitValue" id="unitValue"></label>
+                <label>Total Amount: <input type="text" name="totalAmount" id="totalAmount"></label>
+                <label>Remarks: <textarea name="remarks" id="remarks"></textarea></label>
+                <label>Status: <input type="text" name="status" id="status"></label>
+                <label>Date: <input type="date" name="statusDate" id="statusDate"></label>
+                <label>Instructor / COE Position: <input type="text" name="instructorOffice"
+                        id="instructorOffice"></label>
+                <label>Administrative Officer Position: <input type="text" name="adminOfficerOffice"
+                        id="adminOfficerOffice"></label>
 
             <!-- Buttons -->
             <div class="form-buttons">
@@ -38,53 +42,54 @@
             </div>
         </form>
 
-        <!-- PAR Preview -->
-        <div id="par-preview" style="display:none;">
-            <h2>Property Acknowledgement Receipt (PAR)</h2>
-            <table>
-                <tr>
-                    <td colspan="2">Entity Name: EASTERN SAMAR STATE UNIVERSITY</td>
-                    <td>Fund Cluster: <span id="previewFundCluster"></span></td>
-                    <td>PAR No.: <span id="previewParNo"></span></td>
-                </tr>
-                <!-- Additional rows follow -->
-            </table>
-            <button onclick="window.print()">Print</button>
+            <!-- PAR Preview -->
+            <div id="par-preview" style="display:none;">
+                <h2>Property Acknowledgement Receipt (PAR)</h2>
+                <table>
+                    <tr>
+                        <td colspan="2">Entity Name: EASTERN SAMAR STATE UNIVERSITY</td>
+                        <td>Fund Cluster: <span id="previewFundCluster"></span></td>
+                        <td>PAR No.: <span id="previewParNo"></span></td>
+                    </tr>
+                    <!-- Additional rows follow -->
+                </table>
+                <button onclick="window.print()">Print</button>
+            </div>
         </div>
-    </div>
 
-    <script>
-        function fillPreview() {
-            // Transfer form data to preview
-            document.getElementById('previewFundCluster').textContent = document.getElementById('fundCluster').value;
-            document.getElementById('previewParNo').textContent = document.getElementById('parNo').value;
-            document.getElementById('previewQuantity').textContent = document.getElementById('quantity').value;
-            document.getElementById('previewDescription').textContent = document.getElementById('description').value;
-            document.getElementById('previewPropertyNo').textContent = document.getElementById('propertyNo').value;
-            document.getElementById('previewDateAcquired').textContent = document.getElementById('dateAcquired').value;
-            document.getElementById('previewUnitValue').textContent = document.getElementById('unitValue').value;
-            document.getElementById('previewTotalAmount').textContent = document.getElementById('totalAmount').value;
-            document.getElementById('previewRemarks').textContent = document.getElementById('remarks').value;
-            document.getElementById('previewStatus').textContent = document.getElementById('status').value;
-            document.getElementById('previewStatusDate').textContent = document.getElementById('statusDate').value;
-            document.getElementById('previewInstructorOffice').textContent = document.getElementById('instructorOffice').value;
-            document.getElementById('previewAdminOfficerOffice').textContent = document.getElementById('adminOfficerOffice').value;
+        <script>
+            function fillPreview() {
+                // Transfer form data to preview
+                document.getElementById('previewFundCluster').textContent = document.getElementById('fundCluster').value;
+                document.getElementById('previewParNo').textContent = document.getElementById('parNo').value;
+                document.getElementById('previewQuantity').textContent = document.getElementById('quantity').value;
+                document.getElementById('previewDescription').textContent = document.getElementById('description').value;
+                document.getElementById('previewPropertyNo').textContent = document.getElementById('propertyNo').value;
+                document.getElementById('previewDateAcquired').textContent = document.getElementById('dateAcquired').value;
+                document.getElementById('previewUnitValue').textContent = document.getElementById('unitValue').value;
+                document.getElementById('previewTotalAmount').textContent = document.getElementById('totalAmount').value;
+                document.getElementById('previewRemarks').textContent = document.getElementById('remarks').value;
+                document.getElementById('previewStatus').textContent = document.getElementById('status').value;
+                document.getElementById('previewStatusDate').textContent = document.getElementById('statusDate').value;
+                document.getElementById('previewInstructorOffice').textContent = document.getElementById('instructorOffice').value;
+                document.getElementById('previewAdminOfficerOffice').textContent = document.getElementById('adminOfficerOffice').value;
 
-            // Show the preview
-            document.getElementById('par-preview').style.display = 'block';
-        }
-
-        function saveForm() {
-            alert("Save functionality is not yet implemented.");
-            // Implement save logic here (e.g., send data to server)
-        }
-
-        function cancelForm() {
-            if (confirm("Are you sure you want to cancel? All data will be cleared.")) {
-                document.getElementById('parForm').reset();
-                document.getElementById('par-preview').style.display = 'none';
+                // Show the preview
+                document.getElementById('par-preview').style.display = 'block';
             }
-        }
-    </script>
+
+            function saveForm() {
+                alert("Save functionality is not yet implemented.");
+                // Implement save logic here (e.g., send data to server)
+            }
+
+            function cancelForm() {
+                if (confirm("Are you sure you want to cancel? All data will be cleared.")) {
+                    document.getElementById('parForm').reset();
+                    document.getElementById('par-preview').style.display = 'none';
+                }
+            }
+        </script>
 </body>
+
 </html>
