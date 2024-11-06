@@ -11,10 +11,24 @@ body {
     padding: 0;
 }
 
+/* Sidebar styling */
+.sidebar {
+    width: 300px;
+    background-color: #0A5D03;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
 
 /* Main content styling */
 .main-content {
     /* Align content next to sidebar */
+    margin-left: 450px; /* Align content next to sidebar */
     padding: 20px;
     max-width: 900px;
     background-color: #ffffff;
