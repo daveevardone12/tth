@@ -12,7 +12,7 @@ body {
 
 /* Sidebar styling */
 .sidebar {
-    width: 250px;
+    width: 300px;
     background-color: #0A5D03;
     color: #fff;
     position: fixed;
@@ -26,7 +26,7 @@ body {
 
 /* Main content styling */
 .main-content {
-    margin-left: 270px; /* Align content next to sidebar */
+    margin-left: 450px; /* Align content next to sidebar */
     padding: 20px;
     max-width: 900px;
     background-color: #ffffff;
