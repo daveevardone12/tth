@@ -28,9 +28,7 @@ body {
 /* Main content styling */
 .main-content {
     /* Align content next to sidebar */
-    margin-left: 450px; /* Align content next to sidebar */
     padding: 20px;
-    max-width: 900px;
     background-color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
