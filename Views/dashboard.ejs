@@ -7,6 +7,7 @@
     <title>Dashboard | Property Management System</title>
     <link rel="stylesheet" href="../css/dashboardstyle.css">
     <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/dashboard.css"> <!-- Link to the new CSS file -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
@@ -15,36 +16,36 @@
         <!-- Sidebar -->
         <%- include("./includes/sidebar") %>
 
-            <!-- Main content -->
-            <div class="main-content">
-                  <div class="header">
-                        <h1>Dashboard</h1>
-                        <hr>
-                  </div> 
+        <!-- Main content -->
+        <div class="main-content">
+            <div class="fix">
+                <h1>Dashboard</h1>
+                <hr>
+            </div>
 
-                <!-- Cards -->
-                <div class="cards-container">
-                    <div class="card purple">Machineries<br><span>28</span></div>
-                    <div class="card red">Office Equipment<br><span>57</span></div>
-                    <div class="card green">Agricultural and Forestry Equipment<br><span>46</span></div>
-                    <div class="card purple">Medical Equipment<br><span>76</span></div>
-                    <div class="card red">Printing Equipment<br><span>30</span></div>
-                    <div class="card green">Technical and Scientific Equipment<br><span>69</span></div>
-                    <div class="card purple">Other Machinery and Equipment<br><span>28</span></div>
-                    <div class="card red">Motor Vehicles<br><span>41</span></div>
-                    <div class="card green">Furniture and Fixtures<br><span>135</span></div>
-                    <div class="card purple">Books<br><span>5325</span></div>
-                    <div class="card red">Software<br><span>28</span></div>
-                    <div class="card green">ICT Equipment<br><span>53</span></div>
-                </div>
+            <!-- Cards -->
+            <div class="cards-container">
+                <div class="card purple">Machineries<br><span>28</span></div>
+                <div class="card red">Office Equipment<br><span>57</span></div>
+                <div class="card green">Agricultural and Forestry Equipment<br><span>46</span></div>
+                <div class="card purple">Medical Equipment<br><span>76</span></div>
+                <div class="card red">Printing Equipment<br><span>30</span></div>
+                <div class="card green">Technical and Scientific Equipment<br><span>69</span></div>
+                <div class="card purple">Other Machinery and Equipment<br><span>28</span></div>
+                <div class="card red">Motor Vehicles<br><span>41</span></div>
+                <div class="card green">Furniture and Fixtures<br><span>135</span></div>
+                <div class="card purple">Books<br><span>5325</span></div>
+                <div class="card red">Software<br><span>28</span></div>
+                <div class="card green">ICT Equipment<br><span>53</span></div>
+            </div>
 
-                <!-- Table -->
-                <div class="table-container">
-                    <i class="fa-solid fa-maximize"></i>
-                    <h2>REPORT ON THE PHYSICAL COUNT OF PROPERTY, PLANT AND EQUIPMENT</h2>
-                    <h3>Tech. & Scientific Equipment (1 06 05 140 00)</h3>
-                    <table>
-                     <thead>
+            <!-- Table -->
+            <div class="table-container">
+                <i class="fa-solid fa-maximize" id="maximize-icon"></i>
+                <h2>REPORT ON THE PHYSICAL COUNT OF PROPERTY, PLANT AND EQUIPMENT</h2>
+                <h3>Tech. & Scientific Equipment (1 06 05 140 00)</h3>
+                <table id="data-table">
+                    <thead>
                         <tr>
                             <th>No.</th>
                             <th>Qty.</th>
@@ -58,27 +59,34 @@
                             <th>UACS Code</th>
                             <th>Property No.</th>
                         </tr>
-                     </thead>
-                        <tbody>
+                    </thead>
+                    <tbody>
                         <!-- Repeatable rows -->
-                            <tr>
-                                <td> </td>
-                                <td> </td>
-                                <td> </td>
-                                <td> </td>
-                                <td> </td>
-                                <td> </td>
-                                <td> </td>
-                                <td> </td>
-                                <td> </td>
-                                <td> </td>
-                                <td> </td>
-                             </tr>
+                        <tr>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                        </tr>
                         <!-- Add more rows as needed -->
-                        </tbody>
-                    </table>
-                </div>
+                    </tbody>
+                </table>
             </div>
+
+            <script>
+                document.getElementById("maximize-icon").addEventListener("click", function () {
+                    const tableContainer = document.querySelector(".table-container");
+                    tableContainer.classList.toggle("maximized");
+                });
+            </script>
+        </div>
     </div>
 </body>
 
