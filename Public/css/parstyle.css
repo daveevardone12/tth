@@ -1,3 +1,107 @@
 *{
     margin: 0;
     }
+/* General styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #0A5D03;
+    margin: 0;
+    padding: 0;
+}
+
+/* Sidebar styling */
+.sidebar {
+    width: 250px;
+    background-color: #0A5D03;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+/* Main content styling */
+.main-content {
+    margin-left: 270px; /* Align content next to sidebar */
+    padding: 20px;
+    max-width: 900px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Header */
+h2 {
+    text-align: center;
+    color: #4a4a8d;
+    margin-bottom: 20px;
+}
+
+/* Form styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Form labels and inputs */
+label {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+}
+
+input, textarea {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Button container */
+.form-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Button styling */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #0A5D03;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #B3C04E;
+}
+
+#par-preview {
+    margin-top: 20px;
+}
+
+/* Print-specific styles */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #par-preview, #par-preview * {
+        visibility: visible;
+    }
+    #par-preview {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+}

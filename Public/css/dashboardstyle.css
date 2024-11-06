@@ -1,3 +1,4 @@
+/* General reset */
 * {
     margin: 0;
     padding: 0;
@@ -9,76 +10,80 @@ body {
     overflow-x: hidden;
 }
 
+/* Flex container for sidebar and content */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar styling */
+.sidebar {
+    width: 370px;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    position: fixed;
+    height: 100%;
+    overflow-y: auto;
+}
+
+/* Main content area */
+.main-content {
+    margin-left: 370px; /* Leaves space for the sidebar */
+    padding: 20px;
+    width: calc(100% - 370px); /* Takes the remaining space */
+    overflow: auto; /* Enables scrolling for the content */
+    transition: all 0.3s ease;
+}
+
+/* Table container */
 .table-container {
     position: relative;
     transition: all 0.3s ease;
 }
 
+/* When table is maximized */
 .table-container.maximized {
-    position: fixed;
+    position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 999;
+    left: 370px; /* Leaves space for the sidebar */
+    right: 0;
+    bottom: 0;
     background-color: white;
     overflow: auto;
+    z-index: 999;
+    padding: 20px;
 }
 
-.table-container.maximized table {
+/* Table styling */
+.table-container table {
     width: 100%;
     border-collapse: collapse;
 }
 
-.table-container.maximized th,
-.table-container.maximized td {
+.table-container th, 
+.table-container td {
     padding: 15px;
     border: 1px solid #ddd;
 }
 
-.table-container.maximized thead {
+.table-container thead {
     background-color: #f2f2f2;
 }
 
-.table-container.maximized tbody tr:nth-child(even) {
+.table-container tbody tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-.main-content {
-    margin-left: 370px;
-    padding: 20px;
-}
-
-h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
-}
-
-h2 {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-}
-
-h3 {
-    display: flex;
-    justify-content: center;
-}
-
-hr {
-    width: 1150px;
-    height: 1;
-    background: rgba(0, 0, 0, 0.30);
-    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.50);
-}
-
-i {
+/* Maximize icon */
+i#maximize-icon {
     width: 26px;
     height: 26px;
-    flex-shrink: 0;
-    margin-top: 100px;
+    cursor: pointer;
+    margin-top: 20px;
 }
 
+/* Other styles */
 .cards-container {
     margin-top: 100px;
     display: flex;
@@ -99,26 +104,14 @@ i {
 }
 
 .purple {
-    width: 241.528px;
-    height: 129.39px;
-    flex-shrink: 0;
-    border-radius: 12.939px;
     background-color: #AC95FF;
 }
 
 .red {
-    width: 241.528px;
-    height: 129.39px;
-    flex-shrink: 0;
-    border-radius: 12.939px;
     background-color: #F96A6A;
 }
 
 .green {
-    width: 241.528px;
-    height: 129.39px;
-    flex-shrink: 0;
-    border-radius: 12.939px;
     background-color: #B3C04E;
 }
 
