@@ -1,110 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory Custodian Slip | Property Management System</title>
     <link rel="stylesheet" href="../css/general.css">
-    <link rel="stylesheet" href="../css/icsstyle.css"> 
+    <link rel="stylesheet" href="../css/icsstyle.css">
 </head>
+
 <body>
-    
-        <!-- Sidebar -->
-        <%- include("./includes/sidebar.ejs") %> <!-- Adjusted path if necessary -->
-        
+
+    <!-- Sidebar -->
+    <%- include("./includes/sidebar.ejs") %> <!-- Adjusted path if necessary -->
+
         <div class="form-containers">
             <h1>Inventory Custodian Slip Form</h1>
-        <form>
-            <h2>Item Details</h2>
-            <div class="form-grid">
-                <div class="form-group">
-                    <label for="itemName">Name of Item *</label>
-                    <input type="text" id="itemName" placeholder="Ex. Portable Controlled Learning System">
+            <form>
+                <h2>Item Details</h2>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="itemName">Name of Item *</label>
+                        <input type="text" id="itemName" placeholder="Ex. Portable Controlled Learning System">
+                    </div>
+                    <div class="form-group">
+                        <label for="accountable">Accountable *</label>
+                        <input type="text" id="accountable" placeholder="Ex. Carlos A. Santos">
+                    </div>
+                    <div class="form-group">
+                        <label for="unit">Unit *</label>
+                        <input type="text" id="unit" placeholder="Ex. Set">
+                    </div>
+                    <div class="form-group">
+                        <label for="cost">Unit Cost/Value *</label>
+                        <input type="text" id="cost" placeholder="Ex. 30,000.00">
+                    </div>
+                    <div class="form-group">
+                        <label for="dateAcquired">Date Acquired *</label>
+                        <input type="text" id="dateAcquired" placeholder="Ex. 3/18/2019">
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location *</label>
+                        <select id="location">
+                            <option>Select Location</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category *</label>
+                        <select id="category">
+                            <option>Select Category</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="uacs">UACS Code *</label>
+                        <select id="uacs">
+                            <option>Select</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="inventoryNo">Inventory Item No.</label>
+                        <input type="text" id="inventoryNo">
+                    </div>
+                    <div class="form-group">
+                        <label for="burs">BURS #</label>
+                        <input type="text" id="burs" placeholder="Ex. 210101-2018-11-1156 11/6/2018">
+                    </div>
+                    <div class="form-group">
+                        <label for="life">Estimated Useful Life *</label>
+                        <input type="text" id="life" placeholder="N/A">
+                    </div>
+                    <div class="form-group">
+                        <label for="po">PO # *</label>
+                        <input type="text" id="po" placeholder="Ex. GOODYS-2018-05-A 11/05/18">
+                    </div>
+                    <div class="form-group">
+                        <label for="code">Code *</label>
+                        <input type="text" id="code" placeholder="Ex. 1060054000">
+                    </div>
+                    <div class="form-group">
+                        <label for="iar">IAR *</label>
+                        <input type="text" id="iar" placeholder="Ex. 2019-ICO-093 3/15/2019">
+                    </div>
+                    <div class="form-group">
+                        <label for="supplier">Supplier *</label>
+                        <input type="text" id="supplier" placeholder="Ex. HYTEC POWER INC.">
+                    </div>
+                    <div class="form-group">
+                        <label for="serial">Serial No.</label>
+                        <input type="text" id="serial" placeholder="Ex. 488320">
+                    </div>
+                    <div class="form-group">
+                        <label for="propertyNo">Property No.</label>
+                        <input type="text" id="propertyNo" placeholder="Ex. 1023498887848971H">
+                    </div>
+                    <div class="form-group">
+                        <label for="rfid">RFID Code</label>
+                        <input type="text" id="rfid" placeholder="Ex. 21378623485843826HGS">
+                    </div>
+                    <div class="form-group description">
+                        <label for="description">Description</label>
+                        <textarea id="description"
+                            placeholder="Ex. Portable PLC Controlled Learning System&#10;Brand: Amatrol&#10;Model: 890-757-73-DCU XXXXXXXXX"></textarea>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="accountable">Accountable *</label>
-                    <input type="text" id="accountable" placeholder="Ex. Carlos A. Santos">
+                <div class="button-container">
+                    <button type="submit" class="save-button">Save</button>
+                    <button type="button" class="cancel-button">Cancel</button>
                 </div>
-                <div class="form-group">
-                    <label for="unit">Unit *</label>
-                    <input type="text" id="unit" placeholder="Ex. Set">
-                </div>
-                <div class="form-group">
-                    <label for="cost">Unit Cost/Value *</label>
-                    <input type="text" id="cost" placeholder="Ex. 30,000.00">
-                </div>
-                <div class="form-group">
-                    <label for="dateAcquired">Date Acquired *</label>
-                    <input type="text" id="dateAcquired" placeholder="Ex. 3/18/2019">
-                </div>
-                <div class="form-group">
-                    <label for="location">Location *</label>
-                    <select id="location">
-                        <option>Select Location</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="category">Category *</label>
-                    <select id="category">
-                        <option>Select Category</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="uacs">UACS Code *</label>
-                    <select id="uacs">
-                        <option>Select</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="inventoryNo">Inventory Item No.</label>
-                    <input type="text" id="inventoryNo">
-                </div>
-                <div class="form-group">
-                    <label for="burs">BURS #</label>
-                    <input type="text" id="burs" placeholder="Ex. 210101-2018-11-1156 11/6/2018">
-                </div>
-                <div class="form-group">
-                    <label for="life">Estimated Useful Life *</label>
-                    <input type="text" id="life" placeholder="N/A">
-                </div>
-                <div class="form-group">
-                    <label for="po">PO # *</label>
-                    <input type="text" id="po" placeholder="Ex. GOODYS-2018-05-A 11/05/18">
-                </div>
-                <div class="form-group">
-                    <label for="code">Code *</label>
-                    <input type="text" id="code" placeholder="Ex. 1060054000">
-                </div>
-                <div class="form-group">
-                    <label for="iar">IAR *</label>
-                    <input type="text" id="iar" placeholder="Ex. 2019-ICO-093 3/15/2019">
-                </div>
-                <div class="form-group">
-                    <label for="supplier">Supplier *</label>
-                    <input type="text" id="supplier" placeholder="Ex. HYTEC POWER INC.">
-                </div>
-                <div class="form-group">
-                    <label for="serial">Serial No.</label>
-                    <input type="text" id="serial" placeholder="Ex. 488320">
-                </div>
-                <div class="form-group">
-                    <label for="propertyNo">Property No.</label>
-                    <input type="text" id="propertyNo" placeholder="Ex. 1023498887848971H">
-                </div>
-                <div class="form-group">
-                    <label for="rfid">RFID Code</label>
-                    <input type="text" id="rfid" placeholder="Ex. 21378623485843826HGS">
-                </div>
-                <div class="form-group description">
-                    <label for="description">Description</label>
-                    <textarea id="description" placeholder="Ex. Portable PLC Controlled Learning System&#10;Brand: Amatrol&#10;Model: 890-757-73-DCU XXXXXXXXX"></textarea>
-                </div>
-            </div>
-            <div class="button-container">
-                <button type="submit" class="save-button">Save</button>
-                <button type="button" class="cancel-button">Cancel</button>
-            </div>
-        </form>
-    </div>
+            </form>
+        </div>
 </body>
+
 </html>
