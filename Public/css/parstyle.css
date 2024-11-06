@@ -1,6 +1,7 @@
-*{
+* {
     margin: 0;
-    }
+}
+
 /* General styling */
 body {
     font-family: Arial, sans-serif;
@@ -10,23 +11,14 @@ body {
     padding: 0;
 }
 
-/* Sidebar styling */
-.sidebar {
-    width: 250px;
-    background-color: #0A5D03;
-    color: #fff;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    padding: 20px;
-    box-sizing: border-box;
-    overflow-y: auto;
+.sidebar .nav-menu ul {
+    padding-left: 0;
 }
 
 /* Main content styling */
 .main-content {
-    margin-left: 270px; /* Align content next to sidebar */
+    margin-left: 370px;
+    /* Align content next to sidebar */
     padding: 20px;
     max-width: 900px;
     background-color: #ffffff;
@@ -55,7 +47,8 @@ label {
     font-size: 14px;
 }
 
-input, textarea {
+input,
+textarea {
     padding: 8px;
     font-size: 14px;
     border: 1px solid #ddd;
@@ -95,9 +88,12 @@ button:hover {
     body * {
         visibility: hidden;
     }
-    #par-preview, #par-preview * {
+
+    #par-preview,
+    #par-preview * {
         visibility: visible;
     }
+
     #par-preview {
         position: absolute;
         top: 0;
