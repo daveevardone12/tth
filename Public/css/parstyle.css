@@ -27,7 +27,6 @@ body {
 
 /* Main content styling */
 .main-content {
-    margin-left: 370px;
     /* Align content next to sidebar */
     margin-left: 450px; /* Align content next to sidebar */
     padding: 20px;

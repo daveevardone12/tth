@@ -143,7 +143,7 @@
 }
 
 .main-content {
-  margin-left: 370px;
+  margin-left: 320px;
   /* Leaves space for the sidebar */
   padding: 20px;
   width: calc(100% - 370px);
@@ -151,4 +151,5 @@
   overflow: auto;
   /* Enables scrolling for the content */
   transition: all 0.3s ease;
+  width: -webkit-fill-available;
 }

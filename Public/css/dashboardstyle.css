@@ -29,7 +29,6 @@ body {
 
 /* Main content area */
 .main-content {
-    margin-left: 370px;
     /* Leaves space for the sidebar */
     padding: 20px;
     width: calc(100% - 370px);
