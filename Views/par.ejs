@@ -14,33 +14,103 @@
     <%- include("./includes/sidebar.ejs") %>
 
 
-        <div class="main-content">
-            <h2>Fill Out PAR Form</h2>
-            <!-- PAR Form -->
-            <form id="parForm">
-                <!-- Form fields -->
-                <label>Fund Cluster: <input type="text" name="fundCluster" id="fundCluster"></label>
-                <label>PAR No.: <input type="text" name="parNo" id="parNo"></label>
-                <label>Quantity: <input type="text" name="quantity" id="quantity"></label>
-                <label>Description: <input type="text" name="description" id="description"></label>
-                <label>Property No.: <input type="text" name="propertyNo" id="propertyNo"></label>
-                <label>Date Acquired: <input type="date" name="dateAcquired" id="dateAcquired"></label>
-                <label>Unit Value: <input type="text" name="unitValue" id="unitValue"></label>
-                <label>Total Amount: <input type="text" name="totalAmount" id="totalAmount"></label>
-                <label>Remarks: <textarea name="remarks" id="remarks"></textarea></label>
-                <label>Status: <input type="text" name="status" id="status"></label>
-                <label>Date: <input type="date" name="statusDate" id="statusDate"></label>
-                <label>Instructor / COE Position: <input type="text" name="instructorOffice"
-                        id="instructorOffice"></label>
-                <label>Administrative Officer Position: <input type="text" name="adminOfficerOffice"
-                        id="adminOfficerOffice"></label>
-
-            <!-- Buttons -->
-            <div class="form-buttons">
-                <button type="button" onclick="saveForm()">Save</button>
-                <button type="button" onclick="cancelForm()">Cancel</button>
-            </div>
-        </form>
+    <div class="main-content">
+        <div class="form-containers">
+            <h1>Property Acknowledgement Receipt</h1>
+            <form>
+                <h2>Item Details</h2>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="itemName">Name of Item *</label>
+                        <input type="text" id="itemName" placeholder="Ex. Portable Controlled Learning System">
+                    </div>
+                    <div class="form-group">
+                        <label for="accountable">Accountable *</label>
+                        <input type="text" id="accountable" placeholder="Ex. Carlos A. Santos">
+                    </div>
+                    <div class="form-group">
+                        <label for="unit">Unit *</label>
+                        <input type="text" id="unit" placeholder="Ex. Set">
+                    </div>
+                    <div class="form-group">
+                        <label for="cost">Unit Cost/Value *</label>
+                        <input type="text" id="cost" placeholder="Ex. 30,000.00">
+                    </div>
+                    <div class="form-group">
+                        <label for="dateAcquired">Date Acquired *</label>
+                        <input type="text" id="dateAcquired" placeholder="Ex. 3/18/2019">
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location *</label>
+                        <select id="location">
+                            <option>Select Location</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category *</label>
+                        <select id="category">
+                            <option>Select Category</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="uacs">UACS Code *</label>
+                        <select id="uacs">
+                            <option>Select</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="inventoryNo">Inventory Item No.</label>
+                        <input type="text" id="inventoryNo">
+                    </div>
+                    <div class="form-group">
+                        <label for="burs">BURS #</label>
+                        <input type="text" id="burs" placeholder="Ex. 210101-2018-11-1156 11/6/2018">
+                    </div>
+                    <div class="form-group">
+                        <label for="life">Estimated Useful Life *</label>
+                        <input type="text" id="life" placeholder="N/A">
+                    </div>
+                    <div class="form-group">
+                        <label for="po">PO # *</label>
+                        <input type="text" id="po" placeholder="Ex. GOODYS-2018-05-A 11/05/18">
+                    </div>
+                    <div class="form-group">
+                        <label for="code">Code *</label>
+                        <input type="text" id="code" placeholder="Ex. 1060054000">
+                    </div>
+                    <div class="form-group">
+                        <label for="iar">IAR *</label>
+                        <input type="text" id="iar" placeholder="Ex. 2019-ICO-093 3/15/2019">
+                    </div>
+                    <div class="form-group">
+                        <label for="supplier">Supplier *</label>
+                        <input type="text" id="supplier" placeholder="Ex. HYTEC POWER INC.">
+                    </div>
+                    <div class="form-group">
+                        <label for="serial">Serial No.</label>
+                        <input type="text" id="serial" placeholder="Ex. 488320">
+                    </div>
+                    <div class="form-group">
+                        <label for="propertyNo">Property No.</label>
+                        <input type="text" id="propertyNo" placeholder="Ex. 1023498887848971H">
+                    </div>
+                    <div class="form-group">
+                        <label for="rfid">RFID Code</label>
+                        <input type="text" id="rfid" placeholder="Ex. 21378623485843826HGS">
+                    </div>
+                    <div class="form-group description">
+                        <label for="description">Description</label>
+                        <textarea id="description"
+                            placeholder="Ex. Portable PLC Controlled Learning System&#10;Brand: Amatrol&#10;Model: 890-757-73-DCU XXXXXXXXX"></textarea>
+                    </div>
+                </div>
+                <div class="button-container">
+                    <button type="submit" class="save-button">Save</button>
+                    <button type="button" class="cancel-button">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
             <!-- PAR Preview -->
             <div id="par-preview" style="display:none;">

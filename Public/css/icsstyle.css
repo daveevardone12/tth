@@ -4,7 +4,6 @@
 
 body {
     font-family: Arial, sans-serif;
-
     justify-content: right;
     align-items: center;
     height: 100vh;
@@ -12,14 +11,20 @@ body {
     overflow: hidden;
 
 }
-
-
-
+.main-content {
+    padding: 0;
+    overflow: hidden;
+    margin-left: 305px;
+    margin-right: 5px;
+    
+   
+}
 .form-containers {
     background-color: #fff;
-    border-radius: 8px;
+    border-radius: 10px;
+    width: -webkit-fill-available;
     
-
+    
 }
 
 h1 {
@@ -32,7 +37,7 @@ h1 {
     border-bottom: 1px solid #ccc;
     padding-bottom: 10px;
     margin-bottom: 20px;
-    margin-top: 100px;
+    
 }
 
 h2 {
