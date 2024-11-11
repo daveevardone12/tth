@@ -53,6 +53,7 @@ app.use((req, res, next) => {
 app.use("/", signupRoutes);
 app.use("/", loginRoutes);
 
+
 // Existing routes
 app.get("/", (req, res) => {
   res.render("login");
@@ -80,6 +81,10 @@ app.get("/par", (req, res) => {
 
 app.get("/ics", (req, res) => {
   res.render("ics"); // Render the add-item.ejs view
+});
+
+app.get("/ptr", (req, res) => {
+  res.render("ptr"); // Render the ptr.ejs view
 });
 
 // Start server
