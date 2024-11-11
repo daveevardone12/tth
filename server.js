@@ -74,15 +74,35 @@ app.get("/dashboard", async (req, res) => {
 app.get("/add-item", (req, res) => {
   res.render("add-item"); // Render the add-item.ejs view
 });
+
 app.get("/par", (req, res) => {
-  res.render("par"); // Render the add-item.ejs view
+  res.render("par"); // Render the par.ejs view
 });
 
 app.get("/ics", (req, res) => {
-  res.render("ics"); // Render the add-item.ejs view
+  res.render("ics"); // Render the ics.ejs view
 });
 
-// Start server
-app.listen(process.env.PORT, () => {
-  console.log(`Server is up and running on port ${process.env.PORT}`);
+app.get("/user", (req, res) => {
+  res.render("user"); // Render the ics.ejs view
 });
+
+// Start server with error handling for port in use
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, (err) => {
+  if (err) {
+    console.error(`Failed to start server on port ${PORT}:`, err);
+  } else {
+    console.log(`Server is up and running on port ${PORT}`);
+  }
+}).on("error", (err) => {
+  if (err.code === "EADDRINUSE") {
+    console.error(`Port ${PORT} is already in use. Try using a different port.`);
+  } else {
+    console.error("Server error:", err);
+  }
+});
+
+
+
+

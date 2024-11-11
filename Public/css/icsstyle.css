@@ -8,6 +8,7 @@ body {
     align-items: center;
     height: 100vh;
     margin-right: 0;
+    overflow: hidden;
 
 }
 .main-content {
@@ -126,3 +127,4 @@ button {
     background-color: #ccc;
     color: #333;
 }
+

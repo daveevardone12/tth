@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Property Management System</title>
+    <link rel="stylesheet" href="../css/dashboardstyle.css">
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/userstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <%- include("./includes/sidebar") %>
+
+        <!-- Profile Container -->
+    <div class="profile-wrapper">
+        <div class="profile-container">
+            <h1>User Profile</h1>
+            <div class="profile-content">
+                <div class="user-info">
+                    <h2>User Information</h2>
+                    <label for="first-name">First Name:</label>
+                    <input type="text" id="first-name" value="John Lloyd" disabled>
+
+                    <label for="last-name">Last Name:</label>
+                    <input type="text" id="last-name" value="Tabuac" disabled>
+
+                    <label for="contact-no">Contact No.:</label>
+                    <input type="text" id="contact-no" value="09491573184" disabled>
+
+                    <button id="edit-btn" class="edit-btn">Edit Profile</button>
+                </div>
+                
+                <div class="email-password">
+                    <h2>Email & Password</h2>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" value="tabuac.johnlloyd00@gmail.com" disabled>
+
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" value="*******" disabled>
+
+                    <button id="change-email-btn" class="action-btn">Change Email</button>
+                    <button id="change-password-btn" class="action-btn">Change Password</button>
+                    <button class="logout-btn">Log Out</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Background overlay -->
+    <div id="overlay" class="overlay"></div>
+
+    <!-- The Pop-up Modal for Edit Profile -->
+    <div id="editProfileModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Edit Profile</h2>
+            <form action="#">
+                <label for="fname">First name</label>
+                <input type="text" id="fname" name="firstname" placeholder="Your first name..">
+
+                <label for="lname">Last name</label>
+                <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+                <label for="contact">Contact No.</label>
+                <input type="text" id="contact" name="contact" placeholder="Your contact number..">
+
+                <input type="submit" value="Save">
+            </form>
+        </div>
+    </div>
+
+    <!-- The Pop-up Modal for Change Email -->
+    <div id="changeEmailModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Change Email</h2>
+            <form action="#">
+                <label for="new-email">New Email</label>
+                <input type="email" id="new-email" name="newemail" placeholder="Your new email..">
+
+                <label for="confirm-email">Confirm Email</label>
+                <input type="email" id="confirm-email" name="confirmemail" placeholder="Confirm your email..">
+
+                <input type="submit" value="Save">
+            </form>
+        </div>
+    </div>
+
+    <!-- The Pop-up Modal for Change Password -->
+    <div id="changePasswordModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Change Password</h2>
+            <form action="#">
+                <label for="current-password">Current Password</label>
+                <input type="password" id="current-password" name="currentpassword" placeholder="Your current password..">
+
+                <label for="new-password">New Password</label>
+                <input type="password" id="new-password" name="newpassword" placeholder="Your new password..">
+
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirmpassword" placeholder="Confirm your new password..">
+
+                <input type="submit" value="Save">
+            </form>
+        </div>
+    </div>
+
+    <script>// Wait until the document is fully loaded
+        document.addEventListener("DOMContentLoaded", function() {
+          // Get the modals and overlay
+          const editProfileModal = document.getElementById("editProfileModal");
+          const changeEmailModal = document.getElementById("changeEmailModal");
+          const changePasswordModal = document.getElementById("changePasswordModal");
+          const overlay = document.getElementById("overlay");
+        
+          // Get the buttons to trigger the modals
+          const editBtn = document.getElementById("edit-btn");
+          const changeEmailBtn = document.getElementById("change-email-btn");
+          const changePasswordBtn = document.getElementById("change-password-btn");
+        
+          // Get all close buttons
+          const closeBtns = document.querySelectorAll(".close");
+        
+          // Function to open a modal
+          function openModal(modal) {
+              modal.classList.add("active");
+              overlay.classList.add("active");
+          }
+        
+          // Function to close all modals and the overlay
+          function closeAllModals() {
+              editProfileModal.classList.remove("active");
+              changeEmailModal.classList.remove("active");
+              changePasswordModal.classList.remove("active");
+              overlay.classList.remove("active");
+          }
+        
+          // Event listeners for opening modals
+          editBtn.onclick = function() {
+              openModal(editProfileModal);
+          };
+        
+          changeEmailBtn.onclick = function() {
+              openModal(changeEmailModal);
+          };
+        
+          changePasswordBtn.onclick = function() {
+              openModal(changePasswordModal);
+          };
+        
+          // Add event listeners to each close button
+          closeBtns.forEach(function(closeBtn) {
+              closeBtn.onclick = function() {
+                  closeAllModals();
+              };
+          });
+        
+          // Close the modals if the overlay is clicked
+          overlay.onclick = closeAllModals;
+        
+          // Optional: close all modals when the Escape key is pressed
+          window.addEventListener("keydown", function(event) {
+            if (event.key === "Escape") {
+                closeAllModals();
+            }
+        });
+        
+         
+        });
+        </script>
+</body>
+</html>
