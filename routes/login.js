@@ -43,9 +43,27 @@ router.post("/login/submit", async (req, res, next) => {
       return res.redirect("/login");
     }
 
-    // If login is successful, redirect to the dashboard
-    req.flash("success", "Login successful");
-    return res.redirect("/dashboard"); // Change this to your actual dashboard route
+    // Check if the role matches
+    if (user.role !== value.role) {
+      req.flash("error", "Invalid role for the user");
+      return res.redirect("/login");
+    }
+
+    // If login is successful, set up the session
+    req.session.user = {
+      id: user.id,
+      email: user.email,
+      role: user.role,
+    };
+
+    // Redirect based on the role
+    if (user.role === "admin") {
+      req.flash("success", "Admin login successful");
+      return res.redirect("/dashboard");
+    } else if (user.role === "employee") {
+      req.flash("success", "Employee login successful");
+      return res.redirect("/employee-dashboard");
+    }
 
   } catch (err) {
     console.error("Error: ", err);

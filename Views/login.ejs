@@ -34,7 +34,7 @@
             <form action="/login/submit" method="POST">
                 <!-- User Role Dropdown -->
                 <label for="role">Login as:</label>
-                <select id="role" name="role" required>
+                <select id="role" name="role" class="form-select" style="width: 100%; padding: 10px; font-size: 1em; color: #333; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
                     <option value="employee">Employee</option>
                     <option value="admin">Admin</option>
                 </select>
@@ -48,12 +48,6 @@
                 
                 <label for="password">Password*</label>
                 <input type="password" id="password" name="password" placeholder="Minimum 8 characters." required>
-                
-                <br><br>
-
-                <!-- Remember me checkbox -->
-                <input type="checkbox" id="remember" name="remember">
-                <label for="remember">Remember me</label>
                 
                 <br><br>
 

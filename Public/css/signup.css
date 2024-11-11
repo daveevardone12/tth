@@ -1,87 +1,130 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body{
+body {
   font-family: 'Arial', sans-serif;
   background-color: #f7f5ed;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin: 0;
 }
 
-main{
-  display: flex;
+main {
   width: 70vw;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  max-width: 800px;
+  background-color: #f2efe9;
+  display: flex;
+  padding: 40px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
 }
 
-main > div:first-child{
-  overflow: hidden;
-  width: 50%;
-  padding: 4px;
-}
-main > div:first-child > img{
-  height: 100%;
+main > div {
   width: 100%;
+}
+
+main > div:first-child {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+main > div:first-child > img {
+  width: 80px;
+  height: auto;
   object-fit: cover;
   object-position: center;
+  margin-right: 10px;
 }
 
-main > div:last-child{
-  display: grid;
-  place-items: center;
-  padding:40px 60px;
-  background-color: #f2efe9;
-  width: 50%;
+main > div:last-child {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  width: 100%;
 }
-main > div:last-child > div{
+
+h1 {
+  margin-bottom: 5px;
+}
+
+main > div:last-child > div {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  width: 100%;
 }
-main > div:last-child > div > header{
+
+main > div:last-child > div > header {
   display: flex;
+  justify-content: center;
   gap: 12px;
-  justify-content: end;
 }
-main > div:last-child > div > header > img{
+
+main > div:last-child > div > header > img {
   width: 80px;
   object-fit: cover;
 }
 
-main > div:last-child > div > form{
+main > div:last-child > div > form {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  width: 100%;
 }
 
-.input_w8_label{
+.input_w8_label {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  width: 100%;
 }
-.input_w8_label > input{
+
+.input_w8_label > input {
+  width: 100%;
   outline: none;
-  border-radius: 10px;
+  border-radius: 8px;
   border: 1px solid gray;
   padding: 10px 20px;
+  box-sizing: border-box;
 }
 
-.row{
+.row {
   display: flex;
-  justify-content: space-between;
-  gap: 24px;
+  gap: 24px; /* Adjust the gap between the fields */
+  width: 100%;
+  justify-content: space-between; /* Ensure both fields align next to each other */
 }
 
-.button-section > button{
+.row .input_w8_label {
+  flex: 1; /* Distribute space evenly between fields */
+}
+
+.row .input_w8_label select {
+  width: 100%; /* Ensure the select box fills the available space */
+}
+
+.input_w8_label > input, .input_w8_label > select {
+  width: 100%; /* Make sure both input and select fill the available width */
+  outline: none;
+  border-radius: 8px;
+  border: 1px solid gray;
+  padding: 10px 20px;
+  box-sizing: border-box;
+}
+
+.button-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.button-section > button {
   width: 100%;
   padding: 12px;
   background-color: #006400;
@@ -90,4 +133,12 @@ main > div:last-child > div > form{
   border-radius: 5px;
   font-size: 1.2em;
   cursor: pointer;
+}
+
+/* New CSS for login prompt below the signup button */
+.login-prompt {
+  text-align: center;
+  font-size: 0.9em;
+  color: #333;
+  margin-top: 10px;
 }
