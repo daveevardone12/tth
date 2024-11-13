@@ -15,6 +15,7 @@ const tthPool = require("./models/tthDB");
 const signupRoutes = require("./routes/signup");
 const loginRoutes = require("./routes/login");
 const dashboardRoutes = require("./routes/dashboard");
+const userRoutes = require("./routes/user"); // Import user routes
 
 //-------CONNECTING TO DATABASE-------//
 tthPool
@@ -42,6 +43,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(flash());
 
+// Middleware to check if user is logged in
+function checkSession(req, res, next) {
+  if (!req.session.userId) {
+    return res.redirect("/login");
+  }
+  next();
+}
+
 app.use((req, res, next) => {
   res.header("Cache-Control", "private, no-cache, no-store, must-revalidate");
   res.header("Expires", "-1");
@@ -52,6 +61,7 @@ app.use((req, res, next) => {
 //------INITIALIZE ROUTES------//
 app.use("/", signupRoutes);
 app.use("/", loginRoutes);
+app.use("/", userRoutes); // Use user routes for profile management
 
 // Existing routes
 app.get("/", (req, res) => {
@@ -66,25 +76,25 @@ app.get("/signup", (req, res) => {
   res.render("signup1");
 });
 
-app.get("/dashboard", async (req, res) => {
+app.get("/dashboard", checkSession, async (req, res) => {
   res.render("dashboard");
 });
 
 // New route for Add Item page
-app.get("/add-item", (req, res) => {
-  res.render("add-item"); // Render the add-item.ejs view
+app.get("/add-item", checkSession, (req, res) => {
+  res.render("add-item");
 });
 
-app.get("/par", (req, res) => {
-  res.render("par"); // Render the par.ejs view
+app.get("/par", checkSession, (req, res) => {
+  res.render("par");
 });
 
-app.get("/ics", (req, res) => {
-  res.render("ics"); // Render the ics.ejs view
+app.get("/ics", checkSession, (req, res) => {
+  res.render("ics");
 });
 
-app.get("/user", (req, res) => {
-  res.render("user"); // Render the ics.ejs view
+app.get("/user", checkSession, (req, res) => {
+  res.render("user");
 });
 
 // Start server with error handling for port in use
@@ -102,7 +112,3 @@ app.listen(PORT, (err) => {
     console.error("Server error:", err);
   }
 });
-
-
-
-

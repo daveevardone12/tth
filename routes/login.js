@@ -56,11 +56,16 @@ router.post("/login/submit", async (req, res, next) => {
       role: user.role,
     };
 
+    // Debugging: Check if the session is correctly set
+    console.log("Session User: ", req.session.user);
+
     // Redirect based on the role
     if (user.role === "admin") {
+      console.log("Redirecting to admin dashboard");  // Debugging line
       req.flash("success", "Admin login successful");
       return res.redirect("/dashboard");
     } else if (user.role === "employee") {
+      console.log("Redirecting to employee dashboard");  // Debugging line
       req.flash("success", "Employee login successful");
       return res.redirect("/employee-dashboard");
     }
