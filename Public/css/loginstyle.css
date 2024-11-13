@@ -54,7 +54,7 @@ body {
 
 .form-select:focus {
     border-color: #006400; /* Match with button color */
-    box-shadow: 0 0 5px rgba(0, 100, 0, 0.2);
+    
 }
 
 /* Form group spacing */
@@ -116,6 +116,10 @@ body {
 
 .login-section button:hover {
     background-color: #004d00;
+}
+
+img .logo{
+    display: flex;
 }
 
 .login-section p {
