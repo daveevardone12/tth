@@ -8,7 +8,6 @@ body {
     align-items: center;
     height: 100vh;
     margin-right: 0;
-    overflow: hidden;
 
 }
 .main-content {
@@ -16,14 +15,13 @@ body {
     overflow: hidden;
     margin-left: 305px;
     margin-right: 5px;
-    
-   
 }
 .form-containers {
     background-color: #fff;
     border-radius: 10px;
     width: -webkit-fill-available;
-    
+    margin-top: 50px;
+    margin-left: 15px;
     
 }
 
@@ -49,6 +47,7 @@ h2 {
     color: #000;
     border-bottom: 1px solid #ccc;
     padding-bottom: 10px;
+    margin-top: 10px;
     margin-bottom: 15px;
     margin-left: 30px;
 }
@@ -56,7 +55,7 @@ h2 {
 .form-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    column-gap: 80px;
+    column-gap: 40px;
 
 }
 
@@ -82,11 +81,11 @@ h2 {
 .form-group input[type="text"],
 .form-group select,
 .form-group textarea {
-    width: 100%;
+    width: 95%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 
 .form-group input[type="text"],
@@ -119,7 +118,7 @@ button {
 }
 
 .save-button {
-    background-color: #4CAF50;
+    background-color: #0A5D03;
     color: white;
 }
 
@@ -127,4 +126,3 @@ button {
     background-color: #ccc;
     color: #333;
 }
-

@@ -8,7 +8,6 @@ body {
     align-items: center;
     height: 100vh;
     margin-right: 0;
-    background-color: #f4f4f9;
     color: #0A5D03;
     margin: 0;
     padding: 0;
@@ -23,7 +22,10 @@ body {
 
 .form-containers {
     background-color: #fff;
-    border-radius: 8px;
+    border-radius: 10px;
+    width: -webkit-fill-available;
+    margin-top: 50px;
+    margin-left: 15px;
 }
 
 h1 {
@@ -81,7 +83,7 @@ h2 {
 .form-group input[type="text"],
 .form-group select,
 .form-group textarea {
-    width: 100%;
+    width: 95%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
