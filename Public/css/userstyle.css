@@ -27,6 +27,7 @@ h1 {
 
 h2 {
     color: #0A5D03;
+    font-family: Poppins;
 }
 
 label {
@@ -106,12 +107,12 @@ input[type="text"], input[type="email"], input[type="password"] {
     margin-bottom: 20px;
 }
 .logout-btn{
-    background-color: red;
+    background-color: #0A5D03;
 }
 
 /* General body styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: Poppins;
   }
   
   /* Modal (hidden by default, sliding in from the right) */
