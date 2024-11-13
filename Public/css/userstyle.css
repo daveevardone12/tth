@@ -26,8 +26,7 @@ h1 {
 }
 
 h2 {
-    color: #4CAF50;
-    margin-bottom: 10px;
+    color: #0A5D03;
 }
 
 label {
@@ -71,9 +70,9 @@ input[type="text"], input[type="email"], input[type="password"] {
     margin-top: 1px;
     margin-left: 300px;
     padding: 20px;
-    background-color: #fff; /* Optional: background color */
+    
     border-radius: 8px; /* Optional: rounded corners */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+    
 }
 
 .profile-content input {
