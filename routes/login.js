@@ -45,7 +45,7 @@ router.post("/login/submit", async (req, res, next) => {
 
     // Set session data
     req.session.user = {
-      id: user.id,
+      id: user.user_id,
       email: user.email,
       role: user.role
     };
@@ -59,4 +59,3 @@ router.post("/login/submit", async (req, res, next) => {
 });
 
 module.exports = router;
-  

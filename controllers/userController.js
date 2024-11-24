@@ -5,7 +5,7 @@ const tthPool = require("../models/tthDB"); // Assuming tthDB is a connection po
 exports.getUserProfile = async (req, res) => {
   try {
     const userId = req.session.userId; // Assuming you store the user ID in the session
-    const result = await tthPool.query("SELECT * FROM users WHERE id = $1", [userId]);
+    const result = await tthPool.query("SELECT * FROM users WHERE user_id = $1", [userId]);
     const user = result.rows[0];
     res.render("user", { user });
   } catch (error) {
@@ -20,7 +20,7 @@ exports.editUserProfile = async (req, res) => {
   const userId = req.session.userId;
   try {
     await tthPool.query(
-      "UPDATE users SET first_name = $1, last_name = $2, contact_no = $3 WHERE id = $4",
+      "UPDATE users SET first_name = $1, last_name = $2, phone = $3 WHERE user_id = $4",
       [firstName, lastName, contactNo, userId]
     );
     res.redirect("/user");
@@ -35,7 +35,7 @@ exports.changeEmail = async (req, res) => {
   const { newEmail } = req.body;
   const userId = req.session.userId;
   try {
-    await tthPool.query("UPDATE users SET email = $1 WHERE id = $2", [newEmail, userId]);
+    await tthPool.query("UPDATE users SET email = $1 WHERE user_id = $2", [newEmail, userId]);
     res.redirect("/user");
   } catch (error) {
     console.error("Error changing email:", error);

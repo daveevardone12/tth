@@ -4,15 +4,14 @@ const tthPool = require('../models/tthDB');
 
 // Route to render user profile page
 router.get('/user', (req, res) => {
-    const userId = req.session.user;
-    console.log(userId);
+    const userId = req.session.user.id;
     if (!userId) {
         console.log("No userId in session. Redirecting to login.");
         return res.redirect('/login');  // Redirect if no user is logged in
     }
 
     // Fetch user data from the database
-    tthPool.query('SELECT first_name, last_name, email, contact_number FROM users WHERE id = $1', [userId], (err, result) => {
+    tthPool.query('SELECT first_name, last_name, email, phone FROM users WHERE user_id = $1', [userId], (err, result) => {
         if (err) {
             console.error("Error fetching user data:", err);
             return res.status(500).send("Internal Server Error");
