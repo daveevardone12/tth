@@ -26,6 +26,10 @@ body {
     color: #81c580; /* Optional: Change color on hover */
 }
 
+.fa-solid .fa-arrow-down-up-across-line{
+    margin-right: 10px;
+  }
+
 .sidebar {
     width: 300px;
     background-color: #0A5D03;

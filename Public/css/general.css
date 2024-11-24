@@ -41,6 +41,18 @@
   gap: 20px;
 }
 
+.fa-regular.fa-user {
+  margin-right: 8px;
+}
+
+.fa-regular.fa-bell{
+  margin-right: 8px;
+}
+
+.fa-solid .fa-arrow-down-up-across-line{
+  margin-right: 10px;
+}
+
 .sidebar .imageSection>div {
   width: 80px;
   border-radius: 50%;
