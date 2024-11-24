@@ -63,6 +63,7 @@ app.use("/", signupRoutes);
 app.use("/", loginRoutes);
 app.use("/", userRoutes); // Use user routes for profile management
 
+
 // Existing routes
 app.get("/", (req, res) => {
   res.render("login");
@@ -112,6 +113,7 @@ app.get("/logout", (req, res) => {
     res.redirect("/login");
   });
 });
+
 
 // Start server with error handling for port in use
 const PORT = process.env.PORT || 3000;
