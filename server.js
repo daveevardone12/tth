@@ -103,6 +103,9 @@ app.get("/ptr", checkSession, (req, res) => {
   res.render("ptr");
 });
 
+app.get("/Inventory", checkSession, (req, res) => {
+  res.render("Inventory");
+});
 
 // Logout route to clear session
 app.get("/logout", (req, res) => {
