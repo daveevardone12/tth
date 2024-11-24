@@ -59,14 +59,15 @@ app.use((req, res, next) => {
 });
 
 //------INITIALIZE ROUTES------//
-app.use("/", signupRoutes);
-app.use("/", loginRoutes);
-app.use("/", userRoutes); // Use user routes for profile management
+app.use("/signup", signupRoutes);
+app.use("/login", loginRoutes);
+app.use("/user", userRoutes); // Use user routes for profile management
+app.use("/dashboard", dashboardRoutes);
 
 
 // Existing routes
-app.get("/user", (req, res) => {
-  res.render("user");
+app.get("/", (req, res) => {
+  res.render("login");
 });
 
 app.get("/login", (req, res) => {
