@@ -87,6 +87,14 @@ app.get("/user", (req, res) => {
   res.render("user"); // Render the ics.ejs view
 });
 
+app.get("/ptr", (req, res) => {
+  res.render("ptr"); // Render the ics.ejs view
+});
+
+app.get("/Inventory", (req, res) => {
+  res.render("Inventory"); // Render the ics.ejs view
+});
+
 // Start server with error handling for port in use
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, (err) => {

@@ -27,35 +27,55 @@
                             <input type="text" id="accountable" placeholder="Ex. Carlos A. Santos">
                         </div>
                         <div class="form-group">
-                            <label for="unit">Unit *</label>
-                            <input type="text" id="unit" placeholder="Ex. Set">
-                        </div>
-                        <div class="form-group">
                             <label for="cost">Unit Cost/Value *</label>
                             <input type="text" id="cost" placeholder="Ex. 30,000.00">
                         </div>
                         <div class="form-group">
                             <label for="dateAcquired">Date Acquired *</label>
-                            <input type="text" id="dateAcquired" placeholder="Ex. 3/18/2019">
+                            <input type="date" id="dateAcquired" placeholder="Ex. 3/18/2019">
                         </div>
+
                         <div class="form-group">
                             <label for="location">Location *</label>
-                            <select id="location">
-                                <option>Select Location</option>
+                            <select id="location" onchange="handleSelection(this)">
+                                <option value="" disabled selected>Select Location</option>
+                                <option>College of Engineering</option>
+                                <option>Smart Center</option>
+                                <option value="none" style="color: #333; font-size: 13px;">Cancel Selection</option>
                             </select>
                         </div>
+                        
                         <div class="form-group">
-                            <label for="category">Category *</label>
-                            <select id="category">
-                                <option>Select Category</option>
+                            <label for="location">Category *</label>
+                            <select id="category" onchange="handleSelection(this)">
+                                <option value="" disabled selected>Select Category</option>
+                                <option>Furnitures</option>
+                                <option>Appliances</option>
+                                <option>Electronics</option>
+                                <option value="none" style="color: #333; font-size: 13px;">Cancel Selection</option>
                             </select>
                         </div>
+
                         <div class="form-group">
-                            <label for="uacs">UACS Code *</label>
-                            <select id="uacs">
-                                <option>Select</option>
+                            <label for="location">UACS Code *</label>
+                            <select id="location" onchange="handleSelection(this)">
+                                <option value="" disabled selected>Select UACS</option>
+                                <option>Machinery #1060501000</option>
+                                <option value="">Office Equipment #1060502000</option>
+                                <option value="">Agricultural and Forestry Equipment #1060503000</option>
+                                <option value="">Medical Equipment #1060511000</option>
+                                <option value="">Printing Equipment #1060512000</option>
+                                <option value="">Technical and Scientific Equipment #1060514000</option>
+                                <option value="">Other Machinery and Equipment #1060599000</option>
+                                <option value="">Motor Vehicles #1060601000</option>
+                                <option value="">Motor Vehicles #1060601000</option>
+                                <option value="">Books #1060702000</option>
+                                <option value="">Software #1080102000</option>
+                                <option value="">Information and Communication Technology Equipment #1060501000</option>
+                                <option value="none" style="color: #333; font-size: 13px;">Cancel Selection</option>
                             </select>
                         </div>
+                        
                         <div class="form-group">
                             <label for="inventoryNo">Inventory Item No.</label>
                             <input type="text" id="inventoryNo">
@@ -109,6 +129,18 @@
                 </form>
             </div>
         </div>
+
+
+
+
+        <script>
+            function handleSelection(selectElement) {
+                if (selectElement.value === "none") {
+                    selectElement.value = ""; // Reset the selection
+                }
+            }
+        </script>
+
 
 </body>
 
