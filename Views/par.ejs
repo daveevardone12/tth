@@ -14,53 +14,54 @@
     <%- include("./includes/sidebar.ejs") %>
 
 
-    <div class="main-content">
-        <div class="form-containers">
-            <h1>Property Acknowledgement Receipt</h1>
-            <form>
-                <h2>Item Details</h2>
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label for="itemName">Name of Item *</label>
-                        <input type="text" id="itemName" placeholder="Ex. Portable Controlled Learning System">
-                    </div>
-                    <div class="form-group">
-                        <label for="accountable">Accountable *</label>
-                        <input type="text" id="accountable" placeholder="Ex. Carlos A. Santos">
-                    </div>
-                    <div class="form-group">
-                        <label for="cost">Unit Cost/Value *</label>
-                        <input type="text" id="cost" placeholder="Ex. 30,000.00">
-                    </div>
-                    <div class="form-group">
-                        <label for="dateAcquired">Date Acquired *</label>
-                        <input type="date" id="dateAcquired" placeholder="Ex. 3/18/2019">
-                    </div>
+        <div class="main-content">
+            <div class="form-containers">
+                <h1>Property Acknowledgement Receipt</h1>
+                <form method="POST" action="/par/save">
+                    <h2>Item Details</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="itemName">Name of Item *</label>
+                            <input type="text" id="itemName" name="itemName"
+                                placeholder="Ex. Portable Controlled Learning System">
+                        </div>
+                        <div class="form-group">
+                            <label for="accountable">Accountable *</label>
+                            <input type="text" id="accountable" name="accountable" placeholder="Ex. Carlos A. Santos">
+                        </div>
+                        <div class="form-group">
+                            <label for="cost">Unit Cost/Value *</label>
+                            <input type="text" id="cost" name="cost" placeholder="Ex. 30,000.00">
+                        </div>
+                        <div class="form-group">
+                            <label for="dateAcquired">Date Acquired *</label>
+                            <input type="date" id="dateAcquired" name="dateAcquired" placeholder="Ex. 3/18/2019">
+                        </div>
 
-                    <div class="form-group">
-                        <label for="location">Location *</label>
-                        <select id="location" onchange="handleSelection(this)">
-                            <option value="" disabled selected>Select Location</option>
-                            <option>College of Engineering</option>
-                            <option>Smart Center</option>
-                            <option value="none" style="color: #333; font-size: 13px;">Cancel Selection</option>
-                        </select>
-                    </div>
+                        <div class="form-group">
+                            <label for="location">Location *</label>
+                            <select id="location" name="location" onchange="handleSelection(this)">
+                                <option value="" disabled selected>Select Location</option>
+                                <option>College of Engineering</option>
+                                <option>Smart Center</option>
+                                <option value="none" style="color: #333; font-size: 13px;">Cancel Selection</option>
+                            </select>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="location">Category *</label>
-                        <select id="category" onchange="handleSelection(this)">
-                            <option value="" disabled selected>Select Category</option>
-                            <option>Furnitures</option>
-                            <option>Appliances</option>
-                            <option>Electronics</option>
-                            <option value="none" style="color: #333; font-size: 13px;">Cancel Selection</option>
-                        </select>
-                    </div>
+                        <div class="form-group">
+                            <label for="location">Category *</label>
+                            <select id="category" name="category" onchange="handleSelection(this)">
+                                <option value="" disabled selected>Select Category</option>
+                                <option>Furnitures</option>
+                                <option>Appliances</option>
+                                <option>Electronics</option>
+                                <option value="none" style="color: #333; font-size: 13px;">Cancel Selection</option>
+                            </select>
+                        </div>
 
-                     <div class="form-group">
+                        <div class="form-group">
                             <label for="location">UACS Code *</label>
-                            <select id="location" onchange="handleSelection(this)">
+                            <select id="location" name="UACScode" onchange="handleSelection(this)">
                                 <option value="" disabled selected>Select UACS</option>
                                 <option>Machinery #1060501000</option>
                                 <option value="">Office Equipment #1060502000</option>
@@ -78,73 +79,74 @@
                             </select>
                         </div>
 
-                    <div class="form-group">
-                        <label for="inventoryNo">Inventory Item No.</label>
-                        <input type="text" id="inventoryNo">
+                        <div class="form-group">
+                            <label for="inventoryNo">Inventory Item No.</label>
+                            <input type="text" name="inventoryNo" id="inventoryNo">
+                        </div>
+                        <div class="form-group">
+                            <label for="burs">BURS #</label>
+                            <input type="text" id="burs" name="burs" placeholder="Ex. 210101-2018-11-1156 11/6/2018">
+                        </div>
+                        <div class="form-group">
+                            <label for="life">Estimated Useful Life *</label>
+                            <input type="text" id="life" name="estimatedLife" placeholder="N/A">
+                        </div>
+                        <div class="form-group">
+                            <label for="po">PO # *</label>
+                            <input type="text" id="po" name="POnumber" placeholder="Ex. GOODYS-2018-05-A 11/05/18">
+                        </div>
+                        <div class="form-group">
+                            <label for="code">Code *</label>
+                            <input type="text" id="code" name="code" placeholder="Ex. 1060054000">
+                        </div>
+                        <div class="form-group">
+                            <label for="iar">IAR *</label>
+                            <input type="text" id="iar" name="IAR" placeholder="Ex. 2019-ICO-093 3/15/2019">
+                        </div>
+                        <div class="form-group">
+                            <label for="supplier">Supplier *</label>
+                            <input type="text" id="supplier" name="supplier" placeholder="Ex. HYTEC POWER INC.">
+                        </div>
+                        <div class="form-group">
+                            <label for="serial">Serial No.</label>
+                            <input type="text" id="serial" name="serialNumber" placeholder="Ex. 488320">
+                        </div>
+                        <div class="form-group">
+                            <label for="propertyNo">Property No.</label>
+                            <input type="text" id="propertyNo" name="propertyNumber"
+                                placeholder="Ex. 1023498887848971H">
+                        </div>
+                        <div class="form-group">
+                            <label for="rfid">RFID Code</label>
+                            <input type="text" id="rfid" name="RFIDcode" placeholder="Ex. 21378623485843826HGS">
+                        </div>
+                        <div class="form-group description">
+                            <label for="description">Description</label>
+                            <textarea id="description" name="description"
+                                placeholder="Ex. Portable PLC Controlled Learning System&#10;Brand: Amatrol&#10;Model: 890-757-73-DCU XXXXXXXXX"></textarea>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="burs">BURS #</label>
-                        <input type="text" id="burs" placeholder="Ex. 210101-2018-11-1156 11/6/2018">
+                    <div class="button-container">
+                        <button type="submit" class="save-button">Save</button>
+                        <button type="button" class="cancel-button">Cancel</button>
                     </div>
-                    <div class="form-group">
-                        <label for="life">Estimated Useful Life *</label>
-                        <input type="text" id="life" placeholder="N/A">
-                    </div>
-                    <div class="form-group">
-                        <label for="po">PO # *</label>
-                        <input type="text" id="po" placeholder="Ex. GOODYS-2018-05-A 11/05/18">
-                    </div>
-                    <div class="form-group">
-                        <label for="code">Code *</label>
-                        <input type="text" id="code" placeholder="Ex. 1060054000">
-                    </div>
-                    <div class="form-group">
-                        <label for="iar">IAR *</label>
-                        <input type="text" id="iar" placeholder="Ex. 2019-ICO-093 3/15/2019">
-                    </div>
-                    <div class="form-group">
-                        <label for="supplier">Supplier *</label>
-                        <input type="text" id="supplier" placeholder="Ex. HYTEC POWER INC.">
-                    </div>
-                    <div class="form-group">
-                        <label for="serial">Serial No.</label>
-                        <input type="text" id="serial" placeholder="Ex. 488320">
-                    </div>
-                    <div class="form-group">
-                        <label for="propertyNo">Property No.</label>
-                        <input type="text" id="propertyNo" placeholder="Ex. 1023498887848971H">
-                    </div>
-                    <div class="form-group">
-                        <label for="rfid">RFID Code</label>
-                        <input type="text" id="rfid" placeholder="Ex. 21378623485843826HGS">
-                    </div>
-                    <div class="form-group description">
-                        <label for="description">Description</label>
-                        <textarea id="description"
-                            placeholder="Ex. Portable PLC Controlled Learning System&#10;Brand: Amatrol&#10;Model: 890-757-73-DCU XXXXXXXXX"></textarea>
-                    </div>
-                </div>
-                <div class="button-container">
-                    <button type="submit" class="save-button">Save</button>
-                    <button type="button" class="cancel-button">Cancel</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-            <!-- PAR Preview -->
-            <div id="par-preview" style="display:none;">
-                <h2>Property Acknowledgement Receipt (PAR)</h2>
-                <table>
-                    <tr>
-                        <td colspan="2">Entity Name: EASTERN SAMAR STATE UNIVERSITY</td>
-                        <td>Fund Cluster: <span id="previewFundCluster"></span></td>
-                        <td>PAR No.: <span id="previewParNo"></span></td>
-                    </tr>
-                    <!-- Additional rows follow -->
-                </table>
-                <button onclick="window.print()">Print</button>
+                </form>
             </div>
+        </div>
+
+        <!-- PAR Preview -->
+        <div id="par-preview" style="display:none;">
+            <h2>Property Acknowledgement Receipt (PAR)</h2>
+            <table>
+                <tr>
+                    <td colspan="2">Entity Name: EASTERN SAMAR STATE UNIVERSITY</td>
+                    <td>Fund Cluster: <span id="previewFundCluster"></span></td>
+                    <td>PAR No.: <span id="previewParNo"></span></td>
+                </tr>
+                <!-- Additional rows follow -->
+            </table>
+            <button onclick="window.print()">Print</button>
+        </div>
         </div>
 
         <script>
@@ -182,13 +184,13 @@
         </script>
 
 
-<script>
-    function handleSelection(selectElement) {
-        if (selectElement.value === "none") {
-            selectElement.value = ""; // Reset the selection
-        }
-    }
-</script>
+        <script>
+            function handleSelection(selectElement) {
+                if (selectElement.value === "none") {
+                    selectElement.value = ""; // Reset the selection
+                }
+            }
+        </script>
 
 </body>
 
