@@ -15,6 +15,7 @@ const tthPool = require("./models/tthDB");
 const signupRoutes = require("./routes/signup");
 const loginRoutes = require("./routes/login");
 const dashboardRoutes = require("./routes/dashboard");
+const userRoutes = require("./routes/user"); // Import user routes
 
 //-------CONNECTING TO DATABASE-------//
 tthPool
@@ -42,6 +43,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(flash());
 
+// Middleware to check if user is logged in
+function checkSession(req, res, next) {
+  if (!req.session.user) {
+    return res.redirect("/login");
+  }
+  next();
+}
+
 app.use((req, res, next) => {
   res.header("Cache-Control", "private, no-cache, no-store, must-revalidate");
   res.header("Expires", "-1");
@@ -52,6 +61,7 @@ app.use((req, res, next) => {
 //------INITIALIZE ROUTES------//
 app.use("/", signupRoutes);
 app.use("/", loginRoutes);
+app.use("/", userRoutes); // Use user routes for profile management
 
 
 // Existing routes
@@ -67,27 +77,56 @@ app.get("/signup", (req, res) => {
   res.render("signup1");
 });
 
-app.get("/dashboard", async (req, res) => {
-  res.render("dashboard");
+// Route to handle the dashboard with session data
+app.get("/dashboard", checkSession, (req, res) => {
+  console.log(req.session);  // Debugging to check session data
+  if (req.session.user) {
+    return res.render("dashboard", { user: req.session.user });
+  } else {
+    return res.redirect("/login");
+  }
 });
 
 // New route for Add Item page
-app.get("/add-item", (req, res) => {
-  res.render("add-item"); // Render the add-item.ejs view
-});
-app.get("/par", (req, res) => {
-  res.render("par"); // Render the add-item.ejs view
+app.get("/add-item", checkSession, (req, res) => {
+  res.render("add-item");
 });
 
-app.get("/ics", (req, res) => {
-  res.render("ics"); // Render the add-item.ejs view
+app.get("/par", checkSession, (req, res) => {
+  res.render("par");
 });
 
-app.get("/ptr", (req, res) => {
-  res.render("ptr"); // Render the ptr.ejs view
+app.get("/ics", checkSession, (req, res) => {
+  res.render("ics");
 });
 
-// Start server
-app.listen(process.env.PORT, () => {
-  console.log(`Server is up and running on port ${process.env.PORT}`);
+app.get("/user", checkSession, (req, res) => {
+  res.render("user");
+});
+
+// Logout route to clear session
+app.get("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      return res.status(500).send("Failed to log out");
+    }
+    res.redirect("/login");
+  });
+});
+
+
+// Start server with error handling for port in use
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, (err) => {
+  if (err) {
+    console.error(`Failed to start server on port ${PORT}:`, err);
+  } else {
+    console.log(`Server is up and running on port ${PORT}`);
+  }
+}).on("error", (err) => {
+  if (err.code === "EADDRINUSE") {
+    console.error(`Port ${PORT} is already in use. Try using a different port.`);
+  } else {
+    console.error("Server error:", err);
+  }
 });

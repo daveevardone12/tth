@@ -17,12 +17,49 @@ body {
 
 .container {
     display: flex;
-    width: 80%;
+    width: 25%;
     max-width: 1200px;
     background-color: #fef9f2;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Professional styling for form labels */
+.form-label {
+    display: block;
+    font-size: 1em;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Dropdown styling */
+.form-select {
+    width: 100% !important;
+    padding: 10px !important;
+    font-size: 1em !important;
+    color: #333 !important;
+    background-color: #fff !important;
+    border: 1px solid #ccc !important;
+    border-radius: 5px !important;
+    outline: none !important;
+    margin-bottom: 15px;
+}
+
+/* Hover and focus states */
+.form-select:hover {
+    border-color: #888;
+}
+
+.form-select:focus {
+    border-color: #006400; /* Match with button color */
+    
+}
+
+/* Form group spacing */
+.form-group {
+    margin-bottom: 20px;
 }
 
 /* Left section (login form) */
@@ -81,6 +118,10 @@ body {
     background-color: #004d00;
 }
 
+img .logo{
+    display: flex;
+}
+
 .login-section p {
     margin-top: 20px;
     font-size: 0.9em;
@@ -97,21 +138,7 @@ body {
 }
 
 /* Right section (PMS logo) */
-.logo-section {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f0f0f0;
-}
 
-
-/* mali an imo pag target kanina naka target pa an img dre an mismo nga container */
-.logo-section{
-    border: 2px solid #000;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), url(../images/university_logo.png) lightgray 50% / cover no-repeat;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-}
 
 /* Style adjustments for mobile responsiveness */
 @media screen and (max-width: 768px) {
