@@ -65,8 +65,8 @@ app.use("/", userRoutes); // Use user routes for profile management
 
 
 // Existing routes
-app.get("/", (req, res) => {
-  res.render("login");
+app.get("/user", (req, res) => {
+  res.render("user");
 });
 
 app.get("/login", (req, res) => {
@@ -108,6 +108,9 @@ app.get("/ptr", checkSession, (req, res) => {
   res.render("ptr");
 });
 
+app.get("/Inventory", checkSession, (req, res) => {
+  res.render("Inventory");
+});
 
 // Logout route to clear session
 app.get("/logout", (req, res) => {
