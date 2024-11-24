@@ -100,21 +100,25 @@ app.get("/ics", checkSession, (req, res) => {
   res.render("ics");
 });
 
-app.get("/ics", (req, res) => {
-  res.render("ics"); // Render the ics.ejs view
+app.get("/user", checkSession, (req, res) => {
+  res.render("user");
 });
 
-app.get("/user", (req, res) => {
-  res.render("user"); // Render the ics.ejs view
+app.get("/ptr", checkSession, (req, res) => {
+  res.render("ptr");
 });
 
-app.get("/ptr", (req, res) => {
-  res.render("ptr"); // Render the ics.ejs view
+
+// Logout route to clear session
+app.get("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      return res.status(500).send("Failed to log out");
+    }
+    res.redirect("/login");
+  });
 });
 
-app.get("/Inventory", (req, res) => {
-  res.render("Inventory"); // Render the ics.ejs view
-});
 
 // Start server with error handling for port in use
 const PORT = process.env.PORT || 3000;
