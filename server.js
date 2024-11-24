@@ -104,6 +104,11 @@ app.get("/user", checkSession, (req, res) => {
   res.render("user");
 });
 
+app.get("/ptr", checkSession, (req, res) => {
+  res.render("ptr");
+});
+
+
 // Logout route to clear session
 app.get("/logout", (req, res) => {
   req.session.destroy((err) => {
