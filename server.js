@@ -16,6 +16,7 @@ const signupRoutes = require("./routes/signup");
 const loginRoutes = require("./routes/login");
 const dashboardRoutes = require("./routes/dashboard");
 const userRoutes = require("./routes/user"); // Import user routes
+const parRoutes = require("./routes/par"); // Import user routes
 
 //-------CONNECTING TO DATABASE-------//
 tthPool
@@ -62,6 +63,7 @@ app.use((req, res, next) => {
 app.use("/", signupRoutes);
 app.use("/", loginRoutes);
 app.use("/", userRoutes); // Use user routes for profile management
+app.use("/par", parRoutes); // Use user routes for profile management
 
 
 // Existing routes
@@ -92,17 +94,10 @@ app.get("/add-item", checkSession, (req, res) => {
   res.render("add-item");
 });
 
-app.get("/par", checkSession, (req, res) => {
-  res.render("par");
-});
-
 app.get("/ics", checkSession, (req, res) => {
   res.render("ics");
 });
 
-app.get("/user", checkSession, (req, res) => {
-  res.render("user");
-});
 
 app.get("/ptr", checkSession, (req, res) => {
   res.render("ptr");

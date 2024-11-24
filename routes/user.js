@@ -4,7 +4,8 @@ const tthPool = require('../models/tthDB');
 
 // Route to render user profile page
 router.get('/user', (req, res) => {
-    const userId = req.session.userId;  // Assuming userId is stored in session
+    const userId = req.session.user;
+    console.log(userId);
     if (!userId) {
         console.log("No userId in session. Redirecting to login.");
         return res.redirect('/login');  // Redirect if no user is logged in
@@ -54,15 +55,5 @@ router.post('/user/update', (req, res) => {
     );
 });
 
-// Logout route to destroy session and redirect to login
-router.get('/logout', (req, res) => {
-    req.session.destroy((err) => {
-        if (err) {
-            console.error("Error during logout:", err);
-            return res.status(500).send("Failed to log out");
-        }
-        res.redirect('/login');  // Redirect to login page after logout
-    });
-});
 
 module.exports = router;
