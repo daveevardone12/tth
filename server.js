@@ -61,6 +61,7 @@ app.use((req, res, next) => {
 
 //------INITIALIZE ROUTES------//
 app.use("/", signupRoutes);
+app.use("/", dashboardRoutes);
 app.use("/", loginRoutes);
 app.use("/", userRoutes); // Use user routes for profile management
 app.use("/par", parRoutes); // Use user routes for profile management
@@ -115,6 +116,10 @@ app.get("/logout", (req, res) => {
     }
     res.redirect("/login");
   });
+});
+
+app.get("/dashboard", checkSession, (req, res) => {
+  res.render("dashboard");
 });
 
 
