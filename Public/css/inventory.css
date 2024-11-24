@@ -1,0 +1,337 @@
+/* General styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+    background-color: #f8f9fa;
+}
+
+.container {
+    display: flex; /* Ensures sidebar and main content are side by side */
+    width: 100%;
+    min-height: 100vh; /* Makes the layout stretch to the full height of the viewport */
+}
+
+.main-container {
+    margin-left: 300px;/* Match this to the sidebar width */
+    padding: 20px;
+    width: calc(100% - 250px); /* Make sure the main container fills the rest of the width */
+    overflow-x: auto; /* Add horizontal scrolling if needed for the table */
+    background-color: #fff;
+    border-left: 1px solid #ddd;
+}
+
+/* Header styles */
+h2 {
+    text-align: center;
+    font-size: 22px;
+    margin: 10px 0;
+    
+}
+
+h3 {
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Table wrapper */
+.table-wrapper {
+    margin-top: 20px;
+    overflow-x: auto; /* Ensures table is scrollable horizontally */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+
+}
+
+thead {
+    background-color: #f4f4f4;
+}
+
+thead th {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid ;
+}
+
+tbody td {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        width: 200px; /* Adjust sidebar for smaller screens */
+    }
+
+    .main-container {
+        margin-left: 200px; /* Match to sidebar width */
+        width: calc(100% - 200px); /* Adjust width for main content */
+    }
+
+    table {
+        font-size: 12px; /* Adjust table font size for smaller screens */
+    }
+}
+
+/* Three-dots menu container */
+.menu-container {
+    position: relative;
+    display: inline-block;
+}
+
+.menu-icon {
+    cursor: pointer;
+    font-size: 18px;
+    color: #333;
+    padding: 5px;
+}
+
+/* Dropdown menu styles */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    z-index: 10;
+    overflow: hidden;
+    min-width: 120px;
+}
+
+.dropdown-menu button {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    text-align: left;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: #000;
+    box-shadow: #333;
+}
+
+.dropdown-menu button a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.dropdown-menu button:hover {
+    background-color: #5140f0;
+}
+
+.dropdown-menu button :hover {
+    background-color: #40f05d;
+}
+
+/* Show dropdown when menu-container is active */
+.menu-container.active .dropdown-menu {
+    display: block;
+}
+
+
+  
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .controls {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .action-button {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 8px 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: 4px;
+  }
+  
+  .icon {
+    font-size: 14px;
+  }
+  
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+  }
+  
+  .overlay-content {
+    background-color: white;
+    width: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 20px;
+  }
+  
+  .overlay-content::-webkit-scrollbar {
+    display: none; /* Hide scrollbar */
+  }
+  
+  .overlay ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .overlay ul li {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .overlay ul li:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .filter-group {
+    margin-bottom: 15px;
+  }
+  
+  .filter-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .filter-group input,
+  .filter-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  
+  
+  .overlay-buttons {
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    gap: 10px; /* Space between buttons */
+    margin-top: 15px;
+  }
+  
+  .close-btn,
+  .reset-btn,
+  .apply-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .close-btn {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .close-btn:hover {
+    background-color: #d32f2f;
+  }
+  
+  .reset-btn {
+    background-color: #6c757d;
+    color: white;
+  }
+  
+  .reset-btn:hover {
+    background-color: #5a6268;
+  }
+  
+  .apply-btn {
+    background-color: #0087fd;
+    color: rgb(255, 255, 255);
+  }
+  
+  .apply-btn:hover {
+    background-color: #95d1ff;
+  }
+
+  .sort-by-container {
+    width: 250px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sort-by-header {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.sort-by-section {
+    margin-bottom: 15px;
+}
+
+.sort-by-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+label {
+    display: block;
+    margin: 5px 0;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+input[type="radio"] {
+    margin-right: 8px;
+}
+
+.sort-by-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+

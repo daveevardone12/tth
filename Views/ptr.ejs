@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Property Transfer Report | Property Management System</title>
+    <title>Property Transfer Receipt | Property Management System</title>
     <link rel="stylesheet" href="../css/PTRstyle.css">
     <link rel="stylesheet" href="../css/general.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -18,36 +18,37 @@
         <!-- Main content -->
         <div class="main-content">
             <div class="fix">
-                <h1>Property Transfer Report</h1>
-                <hr>
+                <h1>Property Transfer Receipt</h1>
+                <h2>Item Details</h2>
             </div>
 
             <div class="form-container">
                 <form>
+                   
                     <div class="form-group">
                         <div class="half-width">
                             <label>Property Name*</label>
-                            <input type="text" required>
+                            <input type="text" required placeholder="Enter your text here...">
                         </div>
                         <div class="half-width">
                             <label>Fund Cluster</label>
-                            <input type="text">
+                            <input type="text" placeholder="Enter your text here...">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="half-width">
                             <label>From Accountable Officer/Agency/Fund Cluster*</label>
-                            <input type="text" required>
+                            <input type="text" required placeholder="Enter your text here...">
                         </div>
                         <div class="half-width">
                             <label>To Accountable Officer/Agency/Fund Cluster*</label>
-                            <input type="text" required>
+                            <input type="text" required placeholder="Enter your text here...">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="half-width">
                             <label>PTR No.</label>
-                            <input type="text">
+                            <input type="text" placeholder="xxxxxxxxx">
                         </div>
                         <div class="half-width">
                             <label>Date</label>
@@ -55,15 +56,16 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label>Transfer Type: (check only one)*</label>
-                        <div class="transfer-type">
-                            <label><input type="checkbox"> Donation</label>
-                            <label><input type="checkbox"> Relocate</label>
-                            <label><input type="checkbox"> Reassignment</label>
-                            <label><input type="checkbox"> Others (Specify)</label>
-                            <input type="text" placeholder="Specify here...">
+                    <div class="form-group2">
+                        
+                        <label for="transfer-type" class="trans">Transfer Type: (check only one)</label>
+                        <div class="checkbox-group">
+                            <label><input type="radio" name="transferType" value="Donation"> Donation</label>
+                            <label><input type="radio" name="transferType" value="Relocate"> Relocate</label>
+                            <label><input type="radio" name="transferType" value="Reassignment"> Reassignment</label>
+                            <label><input type="radio" name="transferType" value="Others"> Others(Specify)</label>
                         </div>
+                        <input type="text" class="specify-box" placeholder="Specify here..."> 
                     </div>
 
                     <div class="form-group">
@@ -73,15 +75,15 @@
                         </div>
                         <div class="third-width">
                             <label>Property No.*</label>
-                            <input type="text" required>
+                            <input type="text" required placeholder="xxxxxxxxx">
                         </div>
                         <div class="third-width">
                             <label>Quantity*</label>
-                            <input type="number" required>
+                            <input type="number" required placeholder="xxxxxxxxx">
                         </div>
                         <div class="third-width">
                             <label>Amount*</label>
-                            <input type="number" required>
+                            <input type="number" required placeholder="xxxxxxxxx">
                         </div>
                         <div class="third-width">
                             <label>Condition of PPE*</label>
@@ -92,11 +94,11 @@
                     <div class="form-group">
                         <div class="desc1">
                             <label>Description</label>
-                            <textarea></textarea>
+                            <textarea placeholder="Enter your text here..."></textarea>
                         </div>
                         <div class="desc2">
                             <label>Reason for Transfer</label>
-                            <textarea></textarea>
+                            <textarea placeholder="Enter your text here..."></textarea>
                         </div>
                     </div>
 
