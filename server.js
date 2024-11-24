@@ -45,7 +45,7 @@ app.use(flash());
 
 // Middleware to check if user is logged in
 function checkSession(req, res, next) {
-  if (!req.session.userId) {
+  if (!req.session.user) {
     return res.redirect("/login");
   }
   next();
@@ -76,8 +76,14 @@ app.get("/signup", (req, res) => {
   res.render("signup1");
 });
 
-app.get("/dashboard", checkSession, async (req, res) => {
-  res.render("dashboard");
+// Route to handle the dashboard with session data
+app.get("/dashboard", checkSession, (req, res) => {
+  console.log(req.session);  // Debugging to check session data
+  if (req.session.user) {
+    return res.render("dashboard", { user: req.session.user });
+  } else {
+    return res.redirect("/login");
+  }
 });
 
 // New route for Add Item page
@@ -95,6 +101,16 @@ app.get("/ics", checkSession, (req, res) => {
 
 app.get("/user", checkSession, (req, res) => {
   res.render("user");
+});
+
+// Logout route to clear session
+app.get("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      return res.status(500).send("Failed to log out");
+    }
+    res.redirect("/login");
+  });
 });
 
 // Start server with error handling for port in use
