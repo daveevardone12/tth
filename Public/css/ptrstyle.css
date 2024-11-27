@@ -42,6 +42,7 @@ h2 {
 
 /* Main content area */
 .main-content {
+    background-color: #f7f5ed;
     margin-left: 370px; /* Leaves space for the sidebar */
     padding: 20px;
     width: calc(100% - 370px); /* Takes the remaining space */
