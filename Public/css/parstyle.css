@@ -11,9 +11,11 @@ body {
     color: #0A5D03;
     margin: 0;
     padding: 0;
+    background-color: #f7f5ed;
 }
 
 .main-content {
+    background-color: #f7f5ed;
     padding: 0;
     margin-left: 305px;
     margin-right: 5px;
@@ -21,7 +23,7 @@ body {
 }
 
 .form-containers {
-    background-color: #fff;
+    background-color: #f7f5ed;
     border-radius: 10px;
     width: -webkit-fill-available;
     margin-top: 50px;

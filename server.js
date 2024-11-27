@@ -61,6 +61,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
+// Middleware to prevent cache on page
 app.use((req, res, next) => {
   res.header("Cache-Control", "private, no-cache, no-store, must-revalidate");
   res.header("Expires", "-1");

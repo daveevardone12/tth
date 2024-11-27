@@ -14,16 +14,6 @@ body {
     margin: 0;
 }
 
-.sidebar {
-    width: 370px;
-    background-color: #333;
-    color: white;
-    padding: 20px;
-    position: fixed;
-    height: 100%;
-    overflow-y: auto;
-}
-
 h1 {
     font-size: 30px;
     font-family: Poppins;
@@ -52,6 +42,7 @@ h2 {
 
 /* Main content area */
 .main-content {
+    background-color: #f7f5ed;
     margin-left: 370px; /* Leaves space for the sidebar */
     padding: 20px;
     width: calc(100% - 370px); /* Takes the remaining space */
