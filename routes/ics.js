@@ -1,17 +1,19 @@
 const express = require('express');
 const router = express.Router();
-const tthPool = require("../models/tthDB");
+const tthPool = require('../models/tthDB');
+const { ensureAuthenticated } = require("../middleware/middleware");
 
-router.get("/", (req, res) => {
+// Get route to render the ICS page, with session user check
+router.get("/", ensureAuthenticated, (req, res) => {
     const userId = req.session.user?.id;
     if (!userId) {
         console.log("No ID in session. Redirecting to login.");
         return res.redirect('/login');
     }
-
     res.render("ics");
 });
 
+// Post route to save data to the database
 router.post('/save', async (req, res) => {
     const data = req.body;
     console.log(data);
