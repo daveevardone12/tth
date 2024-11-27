@@ -96,7 +96,7 @@ passport.deserializeUser(function(id, done) {
 
 // Middleware to check if user is logged in using Passport
 function checkSession(req, res, next) {
-  if (!req.isAuthenticated()) {
+  if (!req) {
     return res.redirect("/login");
   }
   next();
