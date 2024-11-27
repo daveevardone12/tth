@@ -12,135 +12,129 @@
 <body>
 
     <%- include("./includes/sidebar.ejs") %>
-        <div class="main-content">
-            <div class="form-containers">
-                <h1>Inventory Custodian Slip Form</h1>
-                <form method="POST" action="/ics/save">
-                    <h2>Item Details</h2>
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="itemName">Name of Item *</label>
-                            <input type="text" id="itemName" placeholder="Ex. Portable Controlled Learning System">
-                        </div>
-                        <div class="form-group">
-                            <label for="accountable">Accountable *</label>
-                            <input type="text" id="accountable" placeholder="Ex. Carlos A. Santos">
-                        </div>
-                        <div class="form-group">
-                            <label for="cost">Unit Cost/Value *</label>
-                            <input type="number" id="cost" placeholder="Ex. 30,000.00">
-                        </div>
-                        <div class="form-group">
-                            <label for="dateAcquired">Date Acquired *</label>
-                            <input type="date" id="dateAcquired" placeholder="Ex. 3/18/2019">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="location">Location *</label>
-                            <select id="location" onchange="handleSelection(this)">
-                                <option value="" disabled selected>Select Location</option>
-                                <option>College of Engineering</option>
-                                <option>Smart Center</option>
-                                <option value="none" style="color: #333; font-size: 13px;">Cancel Selection</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="location">Category *</label>
-                            <select id="category" onchange="handleSelection(this)">
-                                <option value="" disabled selected>Select Category</option>
-                                <option>Furnitures</option>
-                                <option>Appliances</option>
-                                <option>Electronics</option>
-                                <option value="none" style="color: #333; font-size: 13px;">Cancel Selection</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="location">UACS Code *</label>
-                            <select id="location" onchange="handleSelection(this)">
-                                <option value="" disabled selected>Select UACS</option>
-                                <option>Machinery #1060501000</option>
-                                <option value="">Office Equipment #1060502000</option>
-                                <option value="">Agricultural and Forestry Equipment #1060503000</option>
-                                <option value="">Medical Equipment #1060511000</option>
-                                <option value="">Printing Equipment #1060512000</option>
-                                <option value="">Technical and Scientific Equipment #1060514000</option>
-                                <option value="">Other Machinery and Equipment #1060599000</option>
-                                <option value="">Motor Vehicles #1060601000</option>
-                                <option value="">Motor Vehicles #1060601000</option>
-                                <option value="">Books #1060702000</option>
-                                <option value="">Software #1080102000</option>
-                                <option value="">Information and Communication Technology Equipment #1060501000</option>
-                                <option value="none" style="color: #333; font-size: 13px;">Cancel Selection</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="inventoryNo">Inventory Item No.</label>
-                            <input type="number" id="inventoryNo">
-                        </div>
-                        <div class="form-group">
-                            <label for="burs">BURS #</label>
-                            <input type="number" id="burs" placeholder="Ex. 210101-2018-11-1156 11/6/2018">
-                        </div>
-                        <div class="form-group">
-                            <label for="life">Estimated Useful Life *</label>
-                            <input type="text, number" id="life" placeholder="N/A">
-                        </div>
-                        <div class="form-group">
-                            <label for="po">PO # *</label>
-                            <input type="text, number" id="po" placeholder="Ex. GOODYS-2018-05-A 11/05/18">
-                        </div>
-                        <div class="form-group">
-                            <label for="code">Code *</label>
-                            <input type="number" id="code" placeholder="Ex. 1060054000">
-                        </div>
-                        <div class="form-group">
-                            <label for="iar">IAR *</label>
-                            <input type="number" id="iar" placeholder="Ex. 2019-ICO-093 3/15/2019">
-                        </div>
-                        <div class="form-group">
-                            <label for="supplier">Supplier *</label>
-                            <input type="text" id="supplier" placeholder="Ex. HYTEC POWER INC.">
-                        </div>
-                        <div class="form-group">
-                            <label for="serial">Serial No.</label>
-                            <input type="number" id="serial" placeholder="Ex. 488320">
-                        </div>
-                        <div class="form-group">
-                            <label for="propertyNo">Property No.</label>
-                            <input type="nnumber" id="propertyNo" placeholder="Ex. 1023498887848971H">
-                        </div>
-                        <div class="form-group">
-                            <label for="rfid">RFID Code</label>
-                            <input type="text, number" id="rfid" placeholder="Ex. 21378623485843826HGS">
-                        </div>
-                        <div class="form-group description">
-                            <label for="description">Description</label>
-                            <textarea id="description"
-                                placeholder="Ex. Portable PLC Controlled Learning System&#10;Brand: Amatrol&#10;Model: 890-757-73-DCU XXXXXXXXX"></textarea>
-                        </div>
+    <div class="main-content">
+        <div class="form-containers">
+            <h1>Inventory Custodian Slip Form</h1>
+            <form method="POST" action="/ics/save">
+                <h2>Item Details</h2>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="itemName">Name of Item *</label>
+                        <input type="text" id="itemName" name="itemName" placeholder="Ex. Portable Controlled Learning System">
                     </div>
-                    <div class="button-container">
-                        <button type="submit" class="save-button">Save</button>
-                        <button type="button" class="cancel-button">Cancel</button>
+                    <div class="form-group">
+                        <label for="accountable">Accountable *</label>
+                        <input type="text" id="accountable" name="accountable" placeholder="Ex. Carlos A. Santos">
                     </div>
-                </form>
-            </div>
+                    <div class="form-group">
+                        <label for="cost">Unit Cost/Value *</label>
+                        <input type="number" id="cost" name="cost" placeholder="Ex. 30,000.00">
+                    </div>
+                    <div class="form-group">
+                        <label for="dateAcquired">Date Acquired *</label>
+                        <input type="date" id="dateAcquired" name="dateAcquired">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location">Location *</label>
+                        <select id="location" name="location" onchange="handleSelection(this)">
+                            <option value="" disabled selected>Select Location</option>
+                            <option value="College of Engineering">College of Engineering</option>
+                            <option value="Smart Center">Smart Center</option>
+                            <option value="none" style="color: #333; font-size: 13px;">Cancel Selection</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">Category *</label>
+                        <select id="category" name="category" onchange="handleSelection(this)">
+                            <option value="" disabled selected>Select Category</option>
+                            <option value="Furnitures">Furnitures</option>
+                            <option value="Appliances">Appliances</option>
+                            <option value="Electronics">Electronics</option>
+                            <option value="none" style="color: #333; font-size: 13px;">Cancel Selection</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="uacs">UACS Code *</label>
+                        <select id="uacs" name="uacs" onchange="handleSelection(this)">
+                            <option value="" disabled selected>Select UACS</option>
+                            <option value="1060501000">Machinery #1060501000</option>
+                            <option value="1060502000">Office Equipment #1060502000</option>
+                            <option value="1060503000">Agricultural and Forestry Equipment #1060503000</option>
+                            <option value="1060511000">Medical Equipment #1060511000</option>
+                            <option value="1060512000">Printing Equipment #1060512000</option>
+                            <option value="1060514000">Technical and Scientific Equipment #1060514000</option>
+                            <option value="1060599000">Other Machinery and Equipment #1060599000</option>
+                            <option value="1060601000">Motor Vehicles #1060601000</option>
+                            <option value="1060702000">Books #1060702000</option>
+                            <option value="1080102000">Software #1080102000</option>
+                            <option value="none" style="color: #333; font-size: 13px;">Cancel Selection</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inventoryNo">Inventory Item No.</label>
+                        <input type="number" id="inventoryNo" name="inventoryNo">
+                    </div>
+                    <div class="form-group">
+                        <label for="burs">BURS #</label>
+                        <input type="number" id="burs" name="burs" placeholder="Ex. 210101-2018-11-1156 11/6/2018">
+                    </div>
+                    <div class="form-group">
+                        <label for="life">Estimated Useful Life *</label>
+                        <input type="text" id="life" name="life" placeholder="N/A">
+                    </div>
+                    <div class="form-group">
+                        <label for="po">PO # *</label>
+                        <input type="text" id="po" name="po" placeholder="Ex. GOODYS-2018-05-A 11/05/18">
+                    </div>
+                    <div class="form-group">
+                        <label for="code">Code *</label>
+                        <input type="number" id="code" name="code" placeholder="Ex. 1060054000">
+                    </div>
+                    <div class="form-group">
+                        <label for="iar">IAR *</label>
+                        <input type="number" id="iar" name="iar" placeholder="Ex. 2019-ICO-093 3/15/2019">
+                    </div>
+                    <div class="form-group">
+                        <label for="supplier">Supplier *</label>
+                        <input type="text" id="supplier" name="supplier" placeholder="Ex. HYTEC POWER INC.">
+                    </div>
+                    <div class="form-group">
+                        <label for="serial">Serial No.</label>
+                        <input type="number" id="serial" name="serial" placeholder="Ex. 488320">
+                    </div>
+                    <div class="form-group">
+                        <label for="propertyNo">Property No.</label>
+                        <input type="text" id="propertyNo" name="propertyNo" placeholder="Ex. 1023498887848971H">
+                    </div>
+                    <div class="form-group">
+                        <label for="rfid">RFID Code</label>
+                        <input type="text" id="rfid" name="rfid" placeholder="Ex. 21378623485843826HGS">
+                    </div>
+                    <div class="form-group description">
+                        <label for="description">Description</label>
+                        <textarea id="description" name="description"
+                            placeholder="Ex. Portable PLC Controlled Learning System&#10;Brand: Amatrol&#10;Model: 890-757-73-DCU XXXXXXXXX"></textarea>
+                    </div>
+                </div>
+                <div class="button-container">
+                    <button type="submit" class="save-button">Save</button>
+                    <button type="button" class="cancel-button" onclick="window.location.href='/'">Cancel</button>
+                </div>
+            </form>
         </div>
+    </div>
 
-
-
-
-        <script>
-            function handleSelection(selectElement) {
-                if (selectElement.value === "none") {
-                    selectElement.value = ""; // Reset the selection
-                }
+    <script>
+        function handleSelection(selectElement) {
+            if (selectElement.value === "none") {
+                selectElement.value = ""; // Reset the selection
             }
-        </script>
-
+        }
+    </script>
 
 </body>
 

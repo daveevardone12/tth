@@ -81,7 +81,7 @@ h3 {
     left: 370px; /* Leaves space for the sidebar */
     right: 0;
     bottom: 0;
-    background-color: white;
+    background-color: #f7f5ed;
     overflow: auto;
     z-index: 999;
     padding: 20px;

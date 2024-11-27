@@ -15,8 +15,9 @@ const tthPool = require("./models/tthDB");
 const signupRoutes = require("./routes/signup");
 const loginRoutes = require("./routes/login");
 const dashboardRoutes = require("./routes/dashboard");
-const userRoutes = require("./routes/user"); // Import user routes
-const parRoutes = require("./routes/par"); // Import user routes for profile management
+const userRoutes = require("./routes/user");
+const parRoutes = require("./routes/par");
+const icsRoutes = require("./routes/ics"); // Import ICS routes
 
 //-------CONNECTING TO DATABASE-------//
 tthPool
@@ -49,49 +50,57 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //------ PASSPORT AUTHENTICATION STRATEGY ------//
-const LocalStrategy = require('passport-local').Strategy;
+const LocalStrategy = require("passport-local").Strategy;
 
-passport.use(new LocalStrategy(
-  function(username, password, done) {
-    console.log("Attempting login for username:", username);  // Debugging log
+passport.use(
+  new LocalStrategy(function (username, password, done) {
+    console.log("Attempting login for username:", username);
 
-    tthPool.query('SELECT * FROM users WHERE username = $1', [username], (err, result) => {
-      if (err) {
-        console.log("Database error:", err);
-        return done(err);
+    tthPool.query(
+      "SELECT * FROM users WHERE username = $1",
+      [username],
+      (err, result) => {
+        if (err) {
+          console.log("Database error:", err);
+          return done(err);
+        }
+
+        const user = result.rows[0];
+        if (!user) {
+          console.log("User not found");
+          return done(null, false, { message: "Incorrect username" });
+        }
+
+        console.log("Retrieved user:", user);
+
+        if (user.password !== password) {
+          console.log("Incorrect password");
+          return done(null, false, { message: "Incorrect password" });
+        }
+
+        console.log("User authenticated:", user);
+        return done(null, user);
       }
+    );
+  })
+);
 
-      const user = result.rows[0];
-      if (!user) {
-        console.log("User not found");
-        return done(null, false, { message: 'Incorrect username' });
-      }
-
-      console.log('Retrieved user:', user);  // Debugging log
-
-      if (user.password !== password) {
-        console.log("Incorrect password");
-        return done(null, false, { message: 'Incorrect password' });
-      }
-
-      console.log("User authenticated:", user);
-      return done(null, user);
-    });
-  }
-));
-
-passport.serializeUser(function(user, done) {
+passport.serializeUser(function (user, done) {
   done(null, user.id);
 });
 
-passport.deserializeUser(function(id, done) {
-  tthPool.query('SELECT * FROM users WHERE id = $1', [id], (err, result) => {
-    if (err) {
-      console.log("Error deserializing user:", err);
-      return done(err);
+passport.deserializeUser(function (id, done) {
+  tthPool.query(
+    "SELECT * FROM users WHERE id = $1",
+    [id],
+    (err, result) => {
+      if (err) {
+        console.log("Error deserializing user:", err);
+        return done(err);
+      }
+      done(null, result.rows[0]);
     }
-    done(null, result.rows[0]);
-  });
+  );
 });
 
 // Middleware to check if user is logged in using Passport
@@ -114,8 +123,9 @@ app.use((req, res, next) => {
 app.use("/", signupRoutes);
 app.use("/", dashboardRoutes);
 app.use("/", loginRoutes);
-app.use("/", userRoutes); // Use user routes for profile management
-app.use("/par", parRoutes); // Use user routes for profile management
+app.use("/", userRoutes);
+app.use("/par", parRoutes);
+app.use("/ics", icsRoutes); // Mount ICS routes
 
 // Existing routes
 app.get("/", (req, res) => {
@@ -131,19 +141,23 @@ app.get("/signup", (req, res) => {
 });
 
 // Route for handling login with Passport authentication
-app.post('/login', passport.authenticate('local', {
-  successRedirect: '/dashboard',  // Redirect to dashboard on successful login
-  failureRedirect: '/login',      // Redirect back to login if authentication fails
-  failureFlash: true              // Enable flash messages for failed login
-}), (req, res) => {
-  // Log session info after successful login
-  console.log('Login successful, session data:', req.session);
-  res.redirect('/dashboard');
-});
+app.post(
+  "/login",
+  passport.authenticate("local", {
+    successRedirect: "/dashboard", // Redirect to dashboard on successful login
+    failureRedirect: "/login", // Redirect back to login if authentication fails
+    failureFlash: true, // Enable flash messages for failed login
+  }),
+  (req, res) => {
+    // Log session info after successful login
+    console.log("Login successful, session data:", req.session);
+    res.redirect("/dashboard");
+  }
+);
 
 // Route to handle the dashboard with session data
 app.get("/dashboard", checkSession, (req, res) => {
-  console.log('Session data on dashboard:', req.session);  // Log session data
+  console.log("Session data on dashboard:", req.session); // Log session data
   if (req.session.user) {
     return res.render("dashboard", { user: req.session.user });
   } else {
@@ -180,16 +194,18 @@ app.get("/logout", (req, res) => {
 
 // Start server with error handling for port in use
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, (err) => {
-  if (err) {
-    console.error(`Failed to start server on port ${PORT}:`, err);
-  } else {
-    console.log(`Server is up and running on port ${PORT}`);
-  }
-}).on("error", (err) => {
-  if (err.code === "EADDRINUSE") {
-    console.error(`Port ${PORT} is already in use. Try using a different port.`);
-  } else {
-    console.error("Server error:", err);
-  }
-});
+app
+  .listen(PORT, (err) => {
+    if (err) {
+      console.error(`Failed to start server on port ${PORT}:`, err);
+    } else {
+      console.log(`Server is up and running on port ${PORT}`);
+    }
+  })
+  .on("error", (err) => {
+    if (err.code === "EADDRINUSE") {
+      console.error(`Port ${PORT} is already in use. Try using a different port.`);
+    } else {
+      console.error("Server error:", err);
+    }
+  });
