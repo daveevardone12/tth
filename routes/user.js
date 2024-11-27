@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const tthPool = require('../models/tthDB');
+const { ensureAuthenticated } = require("../middleware/middleware");
 
 // Route to render user profile page
-router.get('/user', (req, res) => {
+router.get('/user', ensureAuthenticated, (req, res) => {
     const userId = req.session.user.id;
     if (!userId) {
         console.log("No userId in session. Redirecting to login.");
