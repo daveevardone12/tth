@@ -5,11 +5,7 @@ const { ensureAuthenticated } = require("../middleware/middleware");
 
 // Get route to render the ICS page, with session user check
 router.get("/", ensureAuthenticated, (req, res) => {
-    const userId = req.session.user?.id;
-    if (!userId) {
-        console.log("No ID in session. Redirecting to login.");
-        return res.redirect('/login');
-    }
+    
     res.render("ics");
 });
 
