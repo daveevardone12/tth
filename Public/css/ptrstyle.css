@@ -6,12 +6,10 @@
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     min-height: 100vh;
-    background-color: #ffffff;
+    background-color: #F9F6EE;
     margin: 0;
+    padding: 0;
 }
 
 h1 {
@@ -42,7 +40,7 @@ h2 {
 
 /* Main content area */
 .main-content {
-    background-color: #f7f5ed;
+    background-color: #fff;
     margin-left: 370px; /* Leaves space for the sidebar */
     padding: 20px;
     width: calc(100% - 370px); /* Takes the remaining space */

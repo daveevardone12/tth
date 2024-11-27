@@ -84,6 +84,8 @@ h2 {
 
 .form-group input[type="text"],
 .form-group input[type="date"],
+.form-group input[type="number"],
+.form-group input[type="text or number"],
 .form-group select,
 .form-group textarea {
     width: 95%;
@@ -91,10 +93,13 @@ h2 {
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 0.9rem;
+    
 }
 
 .form-group input[type="text"],
 .form-group input[type="date"],
+.form-group input[type="number"],
+.form-group input[type="text or number"],
 .form-group select {
     margin-bottom: 15px;
 }

@@ -45,7 +45,7 @@ router.post("/signup/submit", async (req, res) => {
       VALUES ($1, $2, $3, $4, $5, $6)`,
       [value.firstname, value.lastname, value.email, value.phone, hashedPassword, value.role]
     );
-    
+     
     // Flash success message and redirect to login page
     req.flash("success", "Account created successfully. Please log in.");
     res.redirect("/login");  // Redirect to login after successful signup
