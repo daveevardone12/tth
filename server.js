@@ -16,6 +16,7 @@ const signupRoutes = require("./routes/signup");
 const loginRoutes = require("./routes/login");
 const dashboardRoutes = require("./routes/dashboard");
 const userRoutes = require("./routes/user"); // Import user routes
+const parRoutes = require("./routes/par"); // Import user routes
 
 //-------CONNECTING TO DATABASE-------//
 tthPool
@@ -58,10 +59,13 @@ app.use((req, res, next) => {
   next();
 });
 
+
 //------INITIALIZE ROUTES------//
 app.use("/", signupRoutes);
+app.use("/", dashboardRoutes);
 app.use("/", loginRoutes);
 app.use("/", userRoutes); // Use user routes for profile management
+app.use("/par", parRoutes); // Use user routes for profile management
 
 
 // Existing routes
@@ -92,29 +96,33 @@ app.get("/add-item", checkSession, (req, res) => {
   res.render("add-item");
 });
 
-app.get("/par", checkSession, (req, res) => {
-  res.render("par");
-});
-
 app.get("/ics", checkSession, (req, res) => {
   res.render("ics");
 });
 
-app.get("/ics", (req, res) => {
-  res.render("ics"); // Render the ics.ejs view
+
+app.get("/ptr", checkSession, (req, res) => {
+  res.render("ptr");
 });
 
-app.get("/user", (req, res) => {
-  res.render("user"); // Render the ics.ejs view
+app.get("/Inventory", checkSession, (req, res) => {
+  res.render("Inventory");
 });
 
-app.get("/ptr", (req, res) => {
-  res.render("ptr"); // Render the ics.ejs view
+// Logout route to clear session
+app.get("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      return res.status(500).send("Failed to log out");
+    }
+    res.redirect("/login");
+  });
 });
 
-app.get("/Inventory", (req, res) => {
-  res.render("Inventory"); // Render the ics.ejs view
+app.get("/dashboard", checkSession, (req, res) => {
+  res.render("dashboard");
 });
+
 
 // Start server with error handling for port in use
 const PORT = process.env.PORT || 3000;
