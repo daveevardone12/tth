@@ -2,6 +2,11 @@ const express = require("express");
 const router = express.Router();
 const Joi = require("joi");
 const bcrypt = require("bcrypt");
+const { checkNotAuthenticated } = require("../middleware/middleware");
+
+router.get("/signup", checkNotAuthenticated, (req, res) => {
+  res.render("signup1");
+});
 
 const userSchema = Joi.object({
   firstname: Joi.string().required(),
@@ -25,7 +30,7 @@ router.post("/signup/submit", async (req, res) => {
 
   // Hash the password
   const hashedPassword = await bcrypt.hash(value.password, 10);
-  
+
   try {
     // Check if email already exists
     const emailCheck = await tthPool.query(
@@ -45,7 +50,7 @@ router.post("/signup/submit", async (req, res) => {
       VALUES ($1, $2, $3, $4, $5, $6)`,
       [value.firstname, value.lastname, value.email, value.phone, hashedPassword, value.role]
     );
-     
+
     // Flash success message and redirect to login page
     req.flash("success", "Account created successfully. Please log in.");
     res.redirect("/login");  // Redirect to login after successful signup

@@ -4,7 +4,7 @@ const tthPool = require('../models/tthDB');
 const { ensureAuthenticated } = require("../middleware/middleware");
 
 router.get("/", ensureAuthenticated, (req, res) => {
-  res.render("ptr");
+  res.render("inventory");
 });
 
 module.exports = router;
