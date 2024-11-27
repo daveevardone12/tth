@@ -15,7 +15,7 @@ router.get("/", isAuthenticated, async (req, res) => {
     try {
         // Example: Fetch data for the dashboard (replace with your actual queries)
         const results = await tthPool.query(`SELECT * FROM your_table_name`);
-        
+
         // Render the dashboard view with the fetched data
         res.render("dashboard", { data: results.rows });
     } catch (err) {
