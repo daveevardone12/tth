@@ -8,16 +8,18 @@ body {
     align-items: center;
     height: 100vh;
     margin-right: 0;
+    background-color: #f7f5ed;
 
 }
 .main-content {
+    background-color: #f7f5ed;
     padding: 0;
     overflow: hidden;
     margin-left: 305px;
     margin-right: 5px;
 }
 .form-containers {
-    background-color: #fff;
+    background-color: #f7f5ed;
     border-radius: 10px;
     width: -webkit-fill-available;
     margin-top: 50px;
@@ -53,6 +55,7 @@ h2 {
 }
 
 .form-grid {
+    background-color: #f7f5ed;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     column-gap: 40px;
@@ -60,6 +63,7 @@ h2 {
 }
 
 .form-group label {
+    background-color: #f7f5ed;
     color: #3F3F3F;
     font-family: Poppins;
     font-size: 15px;
@@ -70,6 +74,7 @@ h2 {
 }
 
 .form-group label {
+    background-color: #f7f5ed;
     color: #000;
     font-family: Poppins;
     font-size: 15px;
