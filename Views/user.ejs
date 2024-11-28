@@ -46,11 +46,22 @@
 
                             <button id="change-email-btn" class="action-btn">Change Email</button>
                             <button id="change-password-btn" class="action-btn">Change Password</button>
-                            <button class="logout-btn">Log Out</button>
+                            <button class="logout-btn" onclick="confirmLogout()">Log Out</button>
+
+<script>
+function confirmLogout() {
+    const userConfirmed = confirm("Are you sure you want to log out?");
+    if (userConfirmed) {
+        // Redirect to the backend logout route to clear the session
+        window.location.href = "/logout";  // This will trigger the logout route on the backend
+    }
+}
+</script>
                         </div>
                     </div>
                 </div>
             </div>
+            
 
             <!-- Background overlay -->
             <div id="overlay" class="overlay"></div>
