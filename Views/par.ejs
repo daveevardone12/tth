@@ -52,56 +52,120 @@
 
                                         <div class="form-group">
                                             <label for="location">Location *</label>
-                                            <select id="location" name="location" onchange="handleSelection(this)"
-                                                required>
-                                                <option value="" disabled selected>Select Location</option>
-                                                <option>College of Engineering</option>
-                                                <option>Smart Center</option>
-                                                <option value="none" style="color: #333; font-size: 13px;">Cancel
-                                                    Selection
-                                                </option>
-                                            </select>
+                                            <div class="custom-dropdown">
+                                                <div class="custom-dropdown-trigger" id="location-dropdown-trigger">
+                                                    Select Location
+                                                </div>
+                                                <div class="custom-dropdown-options" id="location-dropdown-options">
+                                                    <div class="custom-dropdown-option">College of Engineering</div>
+                                                    <div class="custom-dropdown-option">Smart Center</div>
+                                                    <div class="custom-dropdown-option">Library</div>
+                                                    <div class="custom-dropdown-option" data-cancel="true">Cancel Selection</div>
+                                                </div>
+                                            </div>
                                         </div>
-
+                                        
                                         <div class="form-group">
-                                            <label for="location">Category *</label>
-                                            <select id="category" name="category" onchange="handleSelection(this)"
-                                                required>
-                                                <option value="" disabled selected>Select Category</option>
-                                                <option>Furnitures</option>
-                                                <option>Appliances</option>
-                                                <option>Electronics</option>
-                                                <option value="none" style="color: #333; font-size: 13px;">Cancel
-                                                    Selection
-                                                </option>
-                                            </select>
+                                            <label for="category">Category *</label>
+                                            <div class="custom-dropdown">
+                                                <div class="custom-dropdown-trigger" id="category-dropdown-trigger">
+                                                    Select Category
+                                                </div>
+                                                <div class="custom-dropdown-options" id="category-dropdown-options">
+                                                    <div class="custom-dropdown-option">Furnitures</div>
+                                                    <div class="custom-dropdown-option">Appliances</div>
+                                                    <div class="custom-dropdown-option">Electronics</div>
+                                                    <div class="custom-dropdown-option" data-cancel="true">Cancel Selection</div>
+                                                </div>
+                                            </div>
                                         </div>
-
+                                        
                                         <div class="form-group">
-                                            <label for="location">UACS Code *</label>
-                                            <select id="location" name="UACScode" onchange="handleSelection(this)"
-                                                required>
-                                                <option value="" disabled selected>Select UACS</option>
-                                                <option>Machinery #1060501000</option>
-                                                <option>Office Equipment #1060502000</option>
-                                                <option>Agricultural and Forestry Equipment #1060503000
-                                                </option>
-                                                <option>Medical Equipment #1060511000</option>
-                                                <option>Printing Equipment #1060512000</option>
-                                                <option>Technical and Scientific Equipment #1060514000</option>
-                                                <option>Other Machinery and Equipment #1060599000</option>
-                                                <option>Motor Vehicles #1060601000</option>
-                                                <option>Motor Vehicles #1060601000</option>
-                                                <option>Books #1060702000</option>
-                                                <option>Software #1080102000</option>
-                                                <option>Information and Communication Technology Equipment
-                                                    #1060501000
-                                                </option>
-                                                <option value="none" style="color: #333; font-size: 13px;">Cancel
-                                                    Selection
-                                                </option>
-                                            </select>
+                                            <label for="uacs">UACS Code *</label>
+                                            <div class="custom-dropdown">
+                                                <div class="custom-dropdown-trigger" id="uacs-dropdown-trigger">
+                                                    Select UACS
+                                                </div>
+                                                <div class="custom-dropdown-options" id="uacs-dropdown-options">
+                                                    <div class="custom-dropdown-option">Machinery #1060501000</div>
+                                                    <div class="custom-dropdown-option">Office Equipment #1060502000</div>
+                                                    <div class="custom-dropdown-option">Agricultural Equipment #1060503000</div>
+                                                    <div class="custom-dropdown-option">Medical Equipment   #1060511000</div>
+                                                    <div class="custom-dropdown-option">Printing Equipment   #1060512000</div>
+                                                    <div class="custom-dropdown-option">Technical and Scientific Equipment   #1060514000</div>
+                                                    <div class="custom-dropdown-option">Other Machinery and Equipment  #10605990000</div>
+                                                    <div class="custom-dropdown-option">Motor Vehicles   #1060601000</div>
+                                                    <div class="custom-dropdown-option">Furniture and Fixtures    #1060701000</div>
+                                                    <div class="custom-dropdown-option">Books   #1060702000</div>
+                                                    <div class="custom-dropdown-option">Software   #1080102000</div>
+                                                    <div class="custom-dropdown-option">Information and Communication Technology Equipment   #1060501000</div>
+                                                    <div class="custom-dropdown-option" data-cancel="true" id="cancel">Cancel Selection</div>
+                                                </div>
+                                            </div>
                                         </div>
+                                        <script>
+                                        document.addEventListener("DOMContentLoaded", function () {
+                                            // Handle dropdown functionality for Location
+                                            const locationTrigger = document.getElementById("location-dropdown-trigger");
+                                            const locationOptions = document.getElementById("location-dropdown-options");
+                                        
+                                            locationTrigger.addEventListener("click", function () {
+                                                locationOptions.style.display = locationOptions.style.display === "block" ? "none" : "block";
+                                            });
+                                        
+                                            locationOptions.addEventListener("click", function (event) {
+                                                const clickedOption = event.target;
+                                                if (clickedOption.classList.contains("custom-dropdown-option")) {
+                                                    const isCancel = clickedOption.getAttribute("data-cancel") === "true";
+                                                    locationTrigger.textContent = isCancel ? "Select Location" : clickedOption.textContent;
+                                                    locationOptions.style.display = "none";
+                                                }
+                                            });
+                                        
+                                            // Handle dropdown functionality for Category
+                                            const categoryTrigger = document.getElementById("category-dropdown-trigger");
+                                            const categoryOptions = document.getElementById("category-dropdown-options");
+                                        
+                                            categoryTrigger.addEventListener("click", function () {
+                                                categoryOptions.style.display = categoryOptions.style.display === "block" ? "none" : "block";
+                                            });
+                                        
+                                            categoryOptions.addEventListener("click", function (event) {
+                                                const clickedOption = event.target;
+                                                if (clickedOption.classList.contains("custom-dropdown-option")) {
+                                                    const isCancel = clickedOption.getAttribute("data-cancel") === "true";
+                                                    categoryTrigger.textContent = isCancel ? "Select Category" : clickedOption.textContent;
+                                                    categoryOptions.style.display = "none";
+                                                }
+                                            });
+                                        
+                                            // Handle dropdown functionality for UACS
+                                            const uacsTrigger = document.getElementById("uacs-dropdown-trigger");
+                                            const uacsOptions = document.getElementById("uacs-dropdown-options");
+                                        
+                                            uacsTrigger.addEventListener("click", function () {
+                                                uacsOptions.style.display = uacsOptions.style.display === "block" ? "none" : "block";
+                                            });
+                                        
+                                            uacsOptions.addEventListener("click", function (event) {
+                                                const clickedOption = event.target;
+                                                if (clickedOption.classList.contains("custom-dropdown-option")) {
+                                                    const isCancel = clickedOption.getAttribute("data-cancel") === "true";
+                                                    uacsTrigger.textContent = isCancel ? "Select UACS" : clickedOption.textContent;
+                                                    uacsOptions.style.display = "none";
+                                                }
+                                            });
+                                        
+                                            // Close dropdown if clicked outside
+                                            window.addEventListener("click", function (event) {
+                                                if (!event.target.closest('.custom-dropdown')) {
+                                                    locationOptions.style.display = "none";
+                                                    categoryOptions.style.display = "none";
+                                                    uacsOptions.style.display = "none";
+                                                }
+                                            });
+                                        });
+                                    </script>
 
                                         <div class="form-group">
                                             <label for="inventoryNo">Inventory Item No.</label>
@@ -114,12 +178,12 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="life">Estimated Useful Life *</label>
-                                            <input type="text, number" id="life" name="estimatedLife" placeholder="N/A"
+                                            <input type="text or number" id="life" name="estimatedLife" placeholder="N/A"
                                                 required>
                                         </div>
                                         <div class="form-group">
                                             <label for="po">PO # *</label>
-                                            <input type="text, number" id="po" name="POnumber"
+                                            <input type="text or number" id="po" name="POnumber"
                                                 placeholder="Ex. GOODYS-2018-05-A 11/05/18" required>
                                         </div>
                                         <div class="form-group">
@@ -147,10 +211,6 @@
                                             <input type="number" id="propertyNo" name="propertyNumber"
                                                 placeholder="Ex. 1023498887848971H" required>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="rfid">RFID Code</label>
-                                            <input type="number" id="rfid" name="RFIDcode"
-                                                placeholder="Ex. 21378623485843826HGS" required>
                                         </div>
                                         <div class="form-group description">
                                             <label for="description">Description</label>

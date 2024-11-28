@@ -34,7 +34,17 @@
                 </ul>
             </li>
             <li><a href="/Inventory"><img src="/Public/images/material-symbols--inventory.svg" alt="" class="inve">Inventory</a></li>
-            <li><a href="#"><img src="/Public/images/hugeicons--delivery-return-02.svg" alt="" class="return">Return Item</a></li>
+
+            <li>
+                <a href="#" id="prslink">
+                    <img src="/Public/images/hugeicons--delivery-return-02.svg" alt="" class="return"> Return Item
+                </a>
+                <ul id="dropdowns" style="display: none;">
+                    <li><a href="#">Property Return Slip</a></li>
+                    <li><a href="#">Maintenance Recommendation Evaluation Report Form</a></li>
+                    <li><a href="#">Waste Material Report Form</a></li>
+                </ul>
+            </li>
             <li><a href="/ptr"><img src="/Public/images/bxs--user-account.svg" alt="" class="ptr">Property Transfer Receipt</a></li>
             <li><a href="#"><img src="/Public/images/mingcute--notification-line.svg" alt="" class="notif">Notification</a></li>
             <li><a href="/user"><img src="/Public/images/cuida--dashboard-outline.svg" alt="" class="use">User Account</a></li>
@@ -55,4 +65,18 @@
             dropdown.style.display = "none"; // Hide the dropdown
         }
     });
+
+    document.getElementById("prslink").addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent the default link behavior
+        const dropdown = document.getElementById("dropdowns");
+        
+        // Toggle the display of the dropdown
+        if (dropdown.style.display === "none" || dropdown.style.display === "") {
+            dropdown.style.display = "block"; // Show the dropdown
+        } else {
+            dropdown.style.display = "none"; // Hide the dropdown
+        }
+    });
+    
 </script>
+

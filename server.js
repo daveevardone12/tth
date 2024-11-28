@@ -69,6 +69,7 @@ app.use((req, res, next) => {
   next();
 });
 
+
 //------INITIALIZE ROUTES------//
 app.use("/", signupRoutes);
 app.use("/", loginRoutes);

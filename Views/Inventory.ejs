@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | Property Management System</title>
-    <link rel="stylesheet" href="../css/dashboardstyle.css">
+    
     <link rel="stylesheet" href="../css/general.css">
     <link rel="stylesheet" href="../css/inventory.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -14,14 +14,17 @@
 </head>
 <body>
     <%- include("./includes/sidebar") %>
-    <div class="container">
-        
 
+    
+      
+   
+    <div class="container">
         <div class="main-container">
         <h2>REPORT ON THE PHYSICAL COUNT OF PROPERTY, PLANT AND EQUIPMENT</h2>
         <h3>Tech. & Scientific Equipment (1 06 05 140 00)</h3>
         
         <div class="table-wrapper">
+           
             <table>
                 <thead>
                     <tr>
@@ -38,16 +41,23 @@
                         <th>Received By</th>
                         <th>Location</th>
                         <th>Date Acquired</th>
+                        <th></th>
                     </tr>
                 </thead>
-
+                
                 <div class="controls">
+                   <div class="filter-content">
                     <button id="sort-by-btn" class="action-button">
-                      Sort by <i class="icon">▼</i>
+                      Sort by <img src="/Public/images/clarity--sort-by-line.svg" alt="" class="srt">
                     </button>
                     <button id="filter-btn" class="action-button">
-                      Filter <i class="icon">⚙️</i>
+                      Filter <img src="/Public/images/mdi--filter.svg" alt="" class="filt">
                     </button>
+                </div>
+                    <div class="search-wrapper">
+                        <input type="text" class="search-bar" id="searchBar" placeholder="Search...">
+                        <div class="search-icon" id="searchIcon"><img src="/Public/images/iconamoon--search-bold.svg" alt="" class="srch"></div>
+                      </div>
                   </div>
                   
                   <!-- Sort By Overlay -->
@@ -123,10 +133,8 @@
         <label>Property No.</label>
         <input type="text" id="filter-property-no" placeholder="Ex. 15-08-247" />
       </div>
-      <div>
       <button class="reset-btn" id="reset-filter">Reset</button>
       <button class="close-btn" id="close-filter">Close</button>
-    </div>
     </div>
   </div>
   
@@ -160,8 +168,9 @@
                         </td>
                     </tr>
                     <!-- Repeat rows as needed -->
-                </tbody>
+                
 
+                
                 <tr>
                     <td>2</td>
                     <td>Transmission</td>
@@ -189,8 +198,66 @@
                     </td>
                 </tr>
                 <!-- Repeat rows as needed -->
-            </tbody>
+            
                 
+            
+                <tr>
+                    <td>3</td>
+                    <td>Transmission</td>
+                    <td>Electronic Power Transmission System</td>
+                    <td>15-08-247</td>
+                    <td>set</td>
+                    <td>308948.00</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>123</td>
+                    <td>Carlota Salas</td>
+                    <td>CET</td>
+                    <td>6/12/20</td>
+                    <td>
+                        <!-- Three-dots menu -->
+                        <div class="menu-container">
+                            <i class="fas fa-ellipsis-v menu-icon"></i>
+                            <div class="dropdown-menu">
+                                <button onclick="handleAction('Update')">Update</button>
+                                <button onclick="handleAction('Print')">Print</button>
+                                <button onclick="handleAction('Dispose')">Dispose</button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <!-- Repeat rows as needed -->
+
+                <tr>
+                    <td>4</td>
+                    <td>Transmission</td>
+                    <td>Electronic Power Transmission System</td>
+                    <td>15-08-247</td>
+                    <td>set</td>
+                    <td>308948.00</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>123</td>
+                    <td>Carlota Salas</td>
+                    <td>CET</td>
+                    <td>6/12/20</td>
+                    <td>
+                        <!-- Three-dots menu -->
+                        <div class="menu-container">
+                            <i class="fas fa-ellipsis-v menu-icon"></i>
+                            <div class="dropdown-menu">
+                                <button onclick="handleAction('Update')">Update</button>
+                                <button onclick="handleAction('Print')">Print</button>
+                                <button onclick="handleAction('Dispose')">Dispose</button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <!-- Repeat rows as needed -->
+            </tbody>
+            
             </table>
 
             
@@ -455,6 +522,18 @@
     // Example: Attach openSortOverlay to a button (replace '#open-sort-by-btn' with your button ID)
     document.getElementById("open-sort-by-btn").addEventListener("click", openSortOverlay);
   });
+  </script>
+
+<script>
+    const searchIcon = document.getElementById('searchIcon');
+    const searchBar = document.getElementById('searchBar');
+  
+    searchIcon.addEventListener('click', () => {
+      searchBar.classList.toggle('open');
+      if (searchBar.classList.contains('open')) {
+        searchBar.focus();
+      }
+    });
   </script>
 
 </body>
