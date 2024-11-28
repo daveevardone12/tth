@@ -1,3 +1,10 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
 /* General styles */
 body {
     margin: 0;
@@ -18,7 +25,7 @@ body {
     padding: 20px;
     width: calc(100% - 250px); /* Make sure the main container fills the rest of the width */
     overflow-x: auto; /* Add horizontal scrolling if needed for the table */
-    background-color: #fff;
+    background-color: #f7f5ed;
     border-left: 1px solid #ddd;
 }
 
@@ -83,6 +90,7 @@ table thead tr {
   line-height: normal;
   letter-spacing: 1.4px;
   
+  
 }
 
 table tbody tr {
@@ -91,7 +99,7 @@ table tbody tr {
 
 thead th {
     text-align: center;
-    padding: 10px 15px;
+    padding: 10px 7px;
     color: #fff;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 13px;
@@ -210,7 +218,7 @@ body {
     margin-bottom: 10px;
     justify-content: space-between;
     align-items: center;
-    width: 125%;
+    width: 100%;
   }
 
   .filter-content  {

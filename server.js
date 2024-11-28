@@ -97,6 +97,11 @@ app.get("/logout", (req, res, next) => {
   });
 });
 
+app.get('/dashboard', ensureAuthenticated, (req, res) => {
+  const currentDateTime = new Date(); // Get the current date and time
+  res.render('dashboard', { currentDateTime }); // Pass the date and time to the template
+});
+
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send("Something broke!");
