@@ -18,7 +18,7 @@ body {
     padding: 20px;
     width: calc(100% - 250px); /* Make sure the main container fills the rest of the width */
     overflow-x: auto; /* Add horizontal scrolling if needed for the table */
-    background-color: #fff;
+    background-color: #f7f5ed;
     border-left: 1px solid #ddd;
 }
 

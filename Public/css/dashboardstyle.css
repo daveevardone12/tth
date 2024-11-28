@@ -66,6 +66,10 @@ h3 {
     letter-spacing: 2px;
 }
 
+.right-allign {
+    display: flex;
+    justify-content: right;
+  }
 /* Table container */
 .table-container {
     /* margin-top: 50px; */
