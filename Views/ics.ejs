@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ICS Form | Property Management System</title>
+    <title>PAR Form | Property Management System</title>
     <link rel="stylesheet" href="../css/general.css">
-    <link rel="stylesheet" href="../css/icsstyle.css">
+    <link rel="stylesheet" href="../css/parstyle.css">
 </head>
 
 <body>
@@ -25,7 +25,7 @@
                     <% } %>
                         <div class="main-content">
                             <div class="form-containers">
-                                <h1>Inventory Custodian Slip</h1>
+                                <h1>Property Acknowledgement Receipt</h1>
                                 <form method="POST" action="/par/save">
                                     <h2>Item Details</h2>
                                     <div class="form-grid">
@@ -56,13 +56,14 @@
                                                 <div class="custom-dropdown-trigger" id="location-dropdown-trigger">
                                                     Select Location
                                                 </div>
-                                                <div class="custom-dropdown-options" id="location-dropdown-options">
-                                                    <div class="custom-dropdown-option">College of Engineering</div>
-                                                    <div class="custom-dropdown-option">Smart Center</div>
-                                                    <div class="custom-dropdown-option">Library</div>
+                                                <div class="custom-dropdown-options" id="location">
+                                                    <div class="custom-dropdown-option" data-value="College of Engineering">College of Engineering</div>
+                                                    <div class="custom-dropdown-option" data-value="Smart Center">Smart Center</div>
+                                                    <div class="custom-dropdown-option" data-value="Library">Library</div>
                                                     <div class="custom-dropdown-option" data-cancel="true">Cancel Selection</div>
                                                 </div>
                                             </div>
+                                            <input type="hidden" name="location" id="location-value" value="Default Location">
                                         </div>
                                         
                                         <div class="form-group">
@@ -71,13 +72,14 @@
                                                 <div class="custom-dropdown-trigger" id="category-dropdown-trigger">
                                                     Select Category
                                                 </div>
-                                                <div class="custom-dropdown-options" id="category-dropdown-options">
-                                                    <div class="custom-dropdown-option">Furnitures</div>
-                                                    <div class="custom-dropdown-option">Appliances</div>
-                                                    <div class="custom-dropdown-option">Electronics</div>
+                                                <div class="custom-dropdown-options" id="category">
+                                                    <div class="custom-dropdown-option" data-value="Furnitures">Furnitures</div>
+                                                    <div class="custom-dropdown-option" data-value="Appliances">Appliances</div>
+                                                    <div class="custom-dropdown-option" data-value="Electronics">Electronics</div>
                                                     <div class="custom-dropdown-option" data-cancel="true">Cancel Selection</div>
                                                 </div>
                                             </div>
+                                            <input type="hidden" name="category" id="category-value" value="Default Category">
                                         </div>
                                         
                                         <div class="form-group">
@@ -86,86 +88,69 @@
                                                 <div class="custom-dropdown-trigger" id="uacs-dropdown-trigger">
                                                     Select UACS
                                                 </div>
-                                                <div class="custom-dropdown-options" id="uacs-dropdown-options">
-                                                    <div class="custom-dropdown-option">Machinery #1060501000</div>
-                                                    <div class="custom-dropdown-option">Office Equipment #1060502000</div>
-                                                    <div class="custom-dropdown-option">Agricultural Equipment #1060503000</div>
-                                                    <div class="custom-dropdown-option">Medical Equipment   #1060511000</div>
-                                                    <div class="custom-dropdown-option">Printing Equipment   #1060512000</div>
-                                                    <div class="custom-dropdown-option">Technical and Scientific Equipment   #1060514000</div>
-                                                    <div class="custom-dropdown-option">Other Machinery and Equipment  #10605990000</div>
-                                                    <div class="custom-dropdown-option">Motor Vehicles   #1060601000</div>
-                                                    <div class="custom-dropdown-option">Furniture and Fixtures    #1060701000</div>
-                                                    <div class="custom-dropdown-option">Books   #1060702000</div>
-                                                    <div class="custom-dropdown-option">Software   #1080102000</div>
-                                                    <div class="custom-dropdown-option">Information and Communication Technology Equipment   #1060501000</div>
-                                                    <div class="custom-dropdown-option" data-cancel="true" id="cancel">Cancel Selection</div>
+                                                <div class="custom-dropdown-options" id="uacs">
+                                                    <div class="custom-dropdown-option" data-value="Machinery #1060501000">Machinery #1060501000</div>
+                                                    <div class="custom-dropdown-option" data-value="Office Equipment #1060502000">Office Equipment #1060502000</div>
+                                                    <div class="custom-dropdown-option" data-value="Agricultural Equipment #1060503000">Agricultural Equipment #1060503000</div>
+                                                    <div class="custom-dropdown-option" data-value="Medical Equipment #1060511000">Medical Equipment #1060511000</div>
+                                                    <div class="custom-dropdown-option" data-value="Printing Equipment #1060512000">Printing Equipment #1060512000</div>
+                                                    <div class="custom-dropdown-option" data-value="Technical and Scientific Equipment #1060514000">Technical and Scientific Equipment #1060514000</div>
+                                                    <div class="custom-dropdown-option" data-value="Other Machinery and Equipment #10605990000">Other Machinery and Equipment #10605990000</div>
+                                                    <div class="custom-dropdown-option" data-value="Motor Vehicles #1060601000">Motor Vehicles #1060601000</div>
+                                                    <div class="custom-dropdown-option" data-value="Furniture and Fixtures #1060701000">Furniture and Fixtures #1060701000</div>
+                                                    <div class="custom-dropdown-option" data-value="Books #1060702000">Books #1060702000</div>
+                                                    <div class="custom-dropdown-option" data-value="Software #1080102000">Software #1080102000</div>
+                                                    <div class="custom-dropdown-option" data-value="Information and Communication Technology Equipment #1060501000">
+                                                        Information and Communication Technology Equipment #1060501000
+                                                    </div>
+                                                    <div class="custom-dropdown-option" data-cancel="true">Cancel Selection</div>
                                                 </div>
                                             </div>
+                                            <input type="hidden" name="uacs" id="uacs-value" value="Default UACS">
                                         </div>
+                                        
                                         <script>
                                         document.addEventListener("DOMContentLoaded", function () {
-                                            // Handle dropdown functionality for Location
-                                            const locationTrigger = document.getElementById("location-dropdown-trigger");
-                                            const locationOptions = document.getElementById("location-dropdown-options");
+                                            function setupDropdown(triggerId, optionsId, hiddenInputId, defaultText) {
+                                                const trigger = document.getElementById(triggerId);
+                                                const options = document.getElementById(optionsId);
+                                                const hiddenInput = document.getElementById(hiddenInputId);
                                         
-                                            locationTrigger.addEventListener("click", function () {
-                                                locationOptions.style.display = locationOptions.style.display === "block" ? "none" : "block";
-                                            });
+                                                trigger.addEventListener("click", function () {
+                                                    options.style.display = options.style.display === "block" ? "none" : "block";
+                                                });
                                         
-                                            locationOptions.addEventListener("click", function (event) {
-                                                const clickedOption = event.target;
-                                                if (clickedOption.classList.contains("custom-dropdown-option")) {
-                                                    const isCancel = clickedOption.getAttribute("data-cancel") === "true";
-                                                    locationTrigger.textContent = isCancel ? "Select Location" : clickedOption.textContent;
-                                                    locationOptions.style.display = "none";
-                                                }
-                                            });
+                                                options.addEventListener("click", function (event) {
+                                                    const clickedOption = event.target;
+                                                    if (clickedOption.classList.contains("custom-dropdown-option")) {
+                                                        const isCancel = clickedOption.getAttribute("data-cancel") === "true";
+                                                        if (isCancel) {
+                                                            trigger.textContent = defaultText;
+                                                            hiddenInput.value = defaultText; // Reset hidden input to default
+                                                        } else {
+                                                            trigger.textContent = clickedOption.textContent;
+                                                            hiddenInput.value = clickedOption.getAttribute("data-value"); // Update hidden input with selected value
+                                                        }
+                                                        options.style.display = "none";
+                                                    }
+                                                });
+                                            }
                                         
-                                            // Handle dropdown functionality for Category
-                                            const categoryTrigger = document.getElementById("category-dropdown-trigger");
-                                            const categoryOptions = document.getElementById("category-dropdown-options");
+                                            setupDropdown("location-dropdown-trigger", "location", "location-value", "Default Location");
+                                            setupDropdown("category-dropdown-trigger", "category", "category-value", "Default Category");
+                                            setupDropdown("uacs-dropdown-trigger", "uacs", "uacs-value", "Default UACS");
                                         
-                                            categoryTrigger.addEventListener("click", function () {
-                                                categoryOptions.style.display = categoryOptions.style.display === "block" ? "none" : "block";
-                                            });
-                                        
-                                            categoryOptions.addEventListener("click", function (event) {
-                                                const clickedOption = event.target;
-                                                if (clickedOption.classList.contains("custom-dropdown-option")) {
-                                                    const isCancel = clickedOption.getAttribute("data-cancel") === "true";
-                                                    categoryTrigger.textContent = isCancel ? "Select Category" : clickedOption.textContent;
-                                                    categoryOptions.style.display = "none";
-                                                }
-                                            });
-                                        
-                                            // Handle dropdown functionality for UACS
-                                            const uacsTrigger = document.getElementById("uacs-dropdown-trigger");
-                                            const uacsOptions = document.getElementById("uacs-dropdown-options");
-                                        
-                                            uacsTrigger.addEventListener("click", function () {
-                                                uacsOptions.style.display = uacsOptions.style.display === "block" ? "none" : "block";
-                                            });
-                                        
-                                            uacsOptions.addEventListener("click", function (event) {
-                                                const clickedOption = event.target;
-                                                if (clickedOption.classList.contains("custom-dropdown-option")) {
-                                                    const isCancel = clickedOption.getAttribute("data-cancel") === "true";
-                                                    uacsTrigger.textContent = isCancel ? "Select UACS" : clickedOption.textContent;
-                                                    uacsOptions.style.display = "none";
-                                                }
-                                            });
-                                        
-                                            // Close dropdown if clicked outside
+                                            // Close dropdowns when clicking outside
                                             window.addEventListener("click", function (event) {
-                                                if (!event.target.closest('.custom-dropdown')) {
-                                                    locationOptions.style.display = "none";
-                                                    categoryOptions.style.display = "none";
-                                                    uacsOptions.style.display = "none";
+                                                if (!event.target.closest(".custom-dropdown")) {
+                                                    document.querySelectorAll(".custom-dropdown-options").forEach(function (dropdown) {
+                                                        dropdown.style.display = "none";
+                                                    });
                                                 }
                                             });
                                         });
-                                    </script>
+                                        </script>
+                                        
 
                                         <div class="form-group">
                                             <label for="inventoryNo">Inventory Item No.</label>
@@ -219,9 +204,58 @@
                                         </div>
                                     </div>
                                     <div class="button-container">
-                                        <button type="submit" class="save-button">Save</button>
+                                        <button type="submit" class="save-button" onclick="openPopup()">Save</button>
+                                        
+                                        <!-- Popup for success message -->
+                                        <div class="popup" id="popup">
+                                            <img src="../Public/images/check.png">
+                                            <h2>Added Successfully! </h2>
+                                            <p>You have successfully saved the data!</p>
+                                            <button type="button" onclick="closePopup()">Ok</button>
+                                        </div>
+                                        
                                         <button type="button" class="cancel-button">Cancel</button>
                                     </div>
+                                    
+                                    <script>
+                                        let popup = document.getElementById("popup");
+                                    
+                                        // Function to open popup
+                                        function openPopup() {
+                                            popup.classList.add("open-popup");
+                                        }
+                                    
+                                        // Function to close popup
+                                        function closePopup() {
+                                            popup.classList.remove("open-popup");
+                                        }
+                                    
+                                        // Check URL for success parameter and open popup automatically
+                                        const urlParams = new URLSearchParams(window.location.search);
+                                        const success = urlParams.get("success");
+                                    
+                                        if (success === "true") {
+                                            openPopup(); // Open popup when data is successfully saved
+                                        }
+                                    </script>
+                                    
+                                    <style>
+                                        /* Styles for the popup */
+                                        .popup {
+                                            display: none;
+                                            /* Additional styling for the popup */
+                                        }
+                                    
+                                        .popup.open-popup {
+                                            display: block;
+                                            /* Additional styling for when the popup is visible */
+                                        }
+                                    </style>
+                                    
+
+
+
+
                                 </form>
                             </div>
                         </div>
