@@ -1,13 +1,15 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const tthPool = require('../models/tthDB');
+const tthPool = require("../models/tthDB");
 const { ensureAuthenticated } = require("../middleware/middleware");
 
 router.get("/", ensureAuthenticated, (req, res) => {
-  res.render("par");
+  // Check for success query parameter and pass it to the template
+  const success = req.query.success === "true";
+  res.render("par", { success });
 });
 
-router.post('/save', async (req, res) => {
+router.post("/save", async (req, res) => {
   const data = req.body;
   console.log(data);
   try {
@@ -21,7 +23,7 @@ router.post('/save', async (req, res) => {
         data.dateAcquired,
         data.location,
         data.category,
-        data.UACScode,
+        data.uacs,
         data.inventoryNo,
         data.burs,
         data.estimatedLife,
@@ -32,11 +34,12 @@ router.post('/save', async (req, res) => {
         data.serialNumber,
         data.propertyNumber,
         data.RFIDcode,
-        data.description
+        data.description,
       ]
     );
-    req.flash("success", "Save Successfully");
-    return res.redirect("/par");
+
+    // Redirect with success parameter
+    return res.redirect("/par?success=true");
   } catch (error) {
     console.error("Error: ", error);
     req.flash("error", "An error occurred while processing the request.");
