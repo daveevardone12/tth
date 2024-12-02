@@ -8,8 +8,11 @@ const session = require("express-session");
 const flash = require("express-flash");
 const compression = require("compression");
 const initializePassport = require("./passportConfig");
-const bodyParser = require('body-parser');
-const { checkNotAuthenticated, ensureAuthenticated } = require("./middleware/middleware");
+const bodyParser = require("body-parser");
+const {
+  checkNotAuthenticated,
+  ensureAuthenticated,
+} = require("./middleware/middleware");
 
 //-------DATABASES IMPORTING-------//
 const tthPool = require("./models/tthDB");
@@ -24,6 +27,7 @@ const ptrRoutes = require("./routes/ptr");
 const icsRoutes = require("./routes/ics");
 const inventoryRoutes = require("./routes/inventory");
 const addItemRoutes = require("./routes/add-item");
+const notifRoutes = require("./routes/notif");
 
 //-------CONNECTING TO DATABASE-------//
 tthPool
@@ -40,23 +44,26 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/node_modules", express.static(path.join(__dirname, "node_modules")));
 
 app.use(compression());
-app.use(session({
-  secret: process.env.SECRET,
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: false },
-}));
+app.use(
+  session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false },
+  })
+);
 
-
-app.use(bodyParser.json({ limit: '10mb' }));
-app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
+app.use(bodyParser.json({ limit: "10mb" }));
+app.use(bodyParser.urlencoded({ limit: "10mb", extended: true }));
 app.use(express.json());
-app.use(cors({
-  origin: ['http://localhost:3000'],
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
@@ -69,7 +76,6 @@ app.use((req, res, next) => {
   next();
 });
 
-
 //------INITIALIZE ROUTES------//
 app.use("/", signupRoutes);
 app.use("/", loginRoutes);
@@ -80,7 +86,7 @@ app.use("/par", parRoutes);
 app.use("/ptr", ptrRoutes);
 app.use("/Inventory", inventoryRoutes);
 app.use("/add-item", addItemRoutes);
-
+app.use("/notif", notifRoutes);
 
 // Logout route to clear session
 app.get("/logout", (req, res, next) => {
@@ -97,16 +103,15 @@ app.get("/logout", (req, res, next) => {
   });
 });
 
-app.get('/dashboard', ensureAuthenticated, (req, res) => {
+app.get("/dashboard", ensureAuthenticated, (req, res) => {
   const currentDateTime = new Date(); // Get the current date and time
-  res.render('dashboard', { currentDateTime }); // Pass the date and time to the template
+  res.render("dashboard", { currentDateTime }); // Pass the date and time to the template
 });
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send("Something broke!");
 });
-
 
 // Start server with error handling for port in use
 app.listen(process.env.PORT, () => {

@@ -1,3 +1,7 @@
+* {
+  margin: 0;
+}
+
 .success {
   color: rgb(9, 163, 9);
 }

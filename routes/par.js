@@ -4,7 +4,6 @@ const tthPool = require("../models/tthDB");
 const { ensureAuthenticated } = require("../middleware/middleware");
 
 router.get("/", ensureAuthenticated, (req, res) => {
-  // Check for success query parameter and pass it to the template
   const success = req.query.success === "true";
   res.render("par", { success });
 });
@@ -38,7 +37,6 @@ router.post("/save", async (req, res) => {
       ]
     );
 
-    // Redirect with success parameter
     return res.redirect("/par?success=true");
   } catch (error) {
     console.error("Error: ", error);
