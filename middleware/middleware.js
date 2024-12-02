@@ -28,7 +28,6 @@ function ensureAuthenticated(req, res, next) {
     res.redirect("/login");
   }
 }
-
 function checkNotAuthenticated(req, res, next) {
   console.log("isAuthenticated: ", req.isAuthenticated());
   if (req.isAuthenticated()) {

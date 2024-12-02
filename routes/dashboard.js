@@ -8,11 +8,17 @@ const { ensureAuthenticated } = require("../middleware/middleware");
 router.get("/dashboard", ensureAuthenticated, async (req, res) => {
     console.log("dashboard!");
     try {
-        // Example: Fetch data for the dashboard (replace with your actual queries)
+        // Fetch data for the dashboard (replace with your actual queries)
         const results = await tthPool.query(`SELECT * FROM users`);
 
-        // Render the dashboard view with the fetched data
-        res.render("dashboard", { data: results.rows });
+        // Get the current date and time
+        const currentDateTime = new Date();
+
+        // Render the dashboard view with the fetched data and the current date/time
+        res.render("dashboard", { 
+            data: results.rows, 
+            currentDateTime 
+        });
     } catch (err) {
         console.error("Error fetching data for dashboard:", err);
         res.status(500).send("Internal Server Error");

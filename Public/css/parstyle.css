@@ -1,107 +1,312 @@
 * {
-    margin: 0;
+  margin: 0;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    justify-content: right;
-    align-items: center;
-    height: 100vh;
-    margin-right: 0;
-    color: #0A5D03;
-    margin: 0;
-    padding: 0;
-    background-color: #f7f5ed;
+  font-family: Arial, sans-serif;
+  justify-content: right;
+  align-items: center;
+  height: 100vh;
+  margin-right: 0;
+  color: #0a5d03;
+  margin: 0;
+  padding: 0;
+  background-color: #f7f5ed;
 }
 
 .main-content {
-    background-color: #f7f5ed;
-    padding: 0;
-    margin-left: 305px;
-    margin-right: 5px;
-    overflow: hidden;
+  background-color: #f7f5ed;
+  padding: 0;
+  margin-left: 305px;
+  margin-right: 5px;
+  overflow: hidden;
 }
 
 .form-containers {
-    background-color: #f7f5ed;
-    border-radius: 10px;
-    width: -webkit-fill-available;
-    margin-top: 50px;
-    margin-left: 15px;
+  background-color: #f7f5ed;
+  border-radius: 10px;
+  width: -webkit-fill-available;
+  margin-top: 50px;
+  margin-left: 15px;
 }
 
 h1 {
-    font-size: 30px;
-    font-family: Poppins;
-    font-weight: 600;
-    font-style: normal;
-    line-height: normal;
-    color: #000;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-    
+  font-size: 30px;
+  font-family: Poppins;
+  font-weight: 600;
+  font-style: normal;
+  line-height: normal;
+  color: #000;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 h2 {
-    font-size: 20px;
-    font-family: Poppins;
-    font-weight: 500;
-    font-style: normal;
-    line-height: normal;
-    color: #000;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    margin-bottom: 15px;
-    margin-left: 30px;
+  font-size: 20px;
+  font-family: Poppins;
+  font-weight: 500;
+  font-style: normal;
+  line-height: normal;
+  color: #000;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  margin-bottom: 15px;
+  margin-left: 30px;
+}
+
+.popup {
+  width: 400px;
+  background: #fff;
+  border-radius: 6px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.1);
+  text-align: center;
+  padding: 0 30px 30px;
+  color: #333;
+  visibility: hidden;
+  opacity: 0; /* Added for smoother transition */
+  transition: transform 0.5s, top 0.5s, opacity 0.5s; /* Added opacity transition */
+}
+
+.open-popup {
+  visibility: visible;
+  opacity: 1; /* Ensure full opacity when visible */
+  top: 50%;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.popup img {
+  width: 100px;
+  margin-top: -50px;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.popup h2 {
+  font-size: 38px;
+  font-weight: 500;
+  margin: 30px 0 10px;
+}
+
+.popup button {
+  width: 100%;
+  margin-top: 50px;
+  padding: 10px 0;
+  background: #0a5d03;
+  color: #fff;
+  border: 0;
+  outline: none;
+  font-size: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
 }
 
 .form-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 40px;
-
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 40px;
 }
 
 .form-group label {
-    color: #2b2a2a;
-    font-family: Poppins;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
+  color: #2b2a2a;
+  font-family: Poppins;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
 .form-group label {
-    color: #000;
-    font-family: Poppins;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
+  color: #000;
+  font-family: Poppins;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
 .form-group select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 0.9rem;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
 }
 
+/* Custom dropdown container */
+.custom-dropdown {
+  position: relative;
+  font-family: Arial, sans-serif;
+}
+
+/* The trigger element that shows the selected option */
+.custom-dropdown-trigger {
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  text-align: left;
+  font-size: 14px;
+}
+
+/* Custom dropdown container */
+.custom-dropdown {
+  position: relative;
+  width: 250px;
+  font-family: Arial, sans-serif;
+}
+
+/* The trigger element that shows the selected option */
+.custom-dropdown-trigger {
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  text-align: left;
+  font-size: 14px;
+}
+
+/*for UACS*/
+/* Dropdown options container */
+.custom-dropdown-options {
+  display: none; /* Initially hidden */
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  max-height: 200px; /* Max height for scroll */
+  overflow-y: auto; /* Enable vertical scrolling */
+  border-radius: 5px; /* Smooth corners */
+}
+
+/* Individual option styling */
+.custom-dropdown-option {
+  padding: 10px;
+  cursor: pointer;
+  color: #333; /* Default text color */
+  transition: all 0.3s ease; /* Smooth hover transition */
+}
+
+/* Green background and white text on hover */
+.custom-dropdown-option:hover {
+  color: #fff; /* White text */
+  background-color: #0a5d03; /* Green background */
+}
+
+/* Dropdown trigger styling */
+.custom-dropdown-trigger {
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  border-radius: 5px; /* Smooth corners */
+  transition: border-color 0.3s ease; /* Smooth border transition */
+}
+
+/* Trigger hover effect */
+.custom-dropdown-trigger:hover {
+  border-color: #0a5d03; /* Green border when hovering */
+}
+
+/* Optional: Active state styling for trigger */
+.custom-dropdown-trigger.active {
+  background-color: #e8f5e9; /* Light green background */
+  border-color: #0a5d03; /* Green border */
+}
+
+/*end for UACS*/
+
+/*category and location*/
+/* styles.css */
+
+/* Common hover effect for labels */
+label:hover {
+  color: green;
+}
+
+/* Dropdown options container for category, location, and UACS */
+.custom-dropdown-options,
+#category-dropdown-options,
+#location-dropdown-options {
+  display: none; /* Initially hidden for custom dropdowns */
+  position: absolute;
+  width: 23em;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  max-height: 200px; /* Max height for scroll */
+  overflow-y: auto; /* Enable vertical scrolling */
+  border-radius: 5px; /* Smooth corners */
+}
+
+/* Individual option styling for custom dropdowns */
+.custom-dropdown-option,
+#category-dropdown-options .custom-dropdown-option,
+#location-dropdown-options .custom-dropdown-option {
+  padding: 10px;
+  cursor: pointer;
+  color: #333; /* Default text color */
+  transition: all 0.3s ease; /* Smooth hover transition */
+}
+
+/* Green background and white text on hover for custom dropdown options */
+.custom-dropdown-option:hover,
+#category-dropdown-options .custom-dropdown-option:hover,
+#location-dropdown-options .custom-dropdown-option:hover {
+  color: #fff; /* White text */
+  background-color: #0a5d03; /* Green background */
+}
+
+/* Dropdown trigger styling for custom dropdowns */
+.custom-dropdown-trigger,
+#category,
+#location {
+  padding: 10px;
+  background-color: #f9f6ee;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  border-radius: 5px; /* Smooth corners */
+  transition: border-color 0.3s ease; /* Smooth border transition */
+  width: 25em;
+}
+
+/* Trigger hover effect for custom dropdowns */
+.custom-dropdown-trigger:hover,
+#category:hover,
+#location:hover {
+  border-color: #0a5d03; /* Green border when hovering */
+}
+
+/* Optional: Active state styling for trigger */
+.custom-dropdown-trigger.active {
+  background-color: #e8f5e9; /* Light green background */
+  border-color: #0a5d03; /* Green border */
+}
+/*end*/
 
 .form-group input[type="text"],
 .form-group input[type="date"],
 .form-group input[type="number"],
 .form-group input[type="text or number"],
 .form-group textarea {
-    width: 95%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    
+  width: 95%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  background-color: #f9f6ee;
 }
 
 .form-group input[type="text"],
@@ -109,65 +314,65 @@ h2 {
 .form-group input[type="number"],
 .form-group input[type="text or number"],
 .form-group select {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .description {
-    grid-column: span 3;
+  grid-column: span 3;
 }
 
 textarea {
-    resize: vertical;
-    height: 80px;
+  resize: vertical;
+  height: 80px;
 }
 
 .button-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
 }
 
 button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .save-button {
-    background-color: #0A5D03;
-    color: white;
+  background-color: #0a5d03;
+  color: white;
 }
 
 .cancel-button {
-    background-color: #ccc;
-    color: #333;
+  background-color: #ccc;
+  color: #333;
 }
 button:hover {
-    background-color: #B3C04E;
+  background-color: #b3c04e;
 }
 
 #par-preview {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 /* Print-specific styles */
 @media print {
-    body * {
-        visibility: hidden;
-    }
+  body * {
+    visibility: hidden;
+  }
 
-    #par-preview,
-    #par-preview * {
-        visibility: visible;
-    }
+  #par-preview,
+  #par-preview * {
+    visibility: visible;
+  }
 
-    #par-preview {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-    }
+  #par-preview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
 }

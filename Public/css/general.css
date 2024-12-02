@@ -1,3 +1,7 @@
+* {
+  margin: 0;
+}
+
 .success {
   color: rgb(9, 163, 9);
 }
@@ -8,7 +12,7 @@
 
 .sidebar {
   width: 300px;
-  background-color: #0A5D03;
+  background-color: #0a5d03;
   color: white;
   height: 100vh;
   padding: 20px 0;
@@ -31,7 +35,6 @@
   text-decoration: none;
   color: white;
   font-size: 16px;
-  
 }
 
 .sidebar .imageSection {
@@ -45,15 +48,15 @@
   margin-right: 8px;
 }
 
-.fa-regular.fa-bell{
+.fa-regular.fa-bell {
   margin-right: 8px;
 }
 
-.fa-solid .fa-arrow-down-up-across-line{
+.fa-solid .fa-arrow-down-up-across-line {
   margin-right: 10px;
 }
 
-.sidebar .imageSection>div {
+.sidebar .imageSection > div {
   width: 80px;
   border-radius: 50%;
   background-color: white;
@@ -61,7 +64,7 @@
   place-items: center;
 }
 
-.sidebar .imageSection>div>img {
+.sidebar .imageSection > div > img {
   width: 100%;
   object-fit: cover;
   border-radius: 50%;
@@ -82,7 +85,7 @@
 }
 
 .sidebar .title {
-  color: #FFDF00;
+  color: #ffdf00;
 }
 
 .sidebar .line1 {
@@ -97,8 +100,12 @@
   justify-content: center;
   gap: 4px;
   font-size: 10px;
-  color: #FFDF00;
+  color: #ffdf00;
+}
 
+/* Optional: Add styles for the parent item */
+li {
+  position: relative;
 }
 
 /* Smaller text for dropdown items */
@@ -127,6 +134,38 @@
   /* Change color on hover for better visibility */
 }
 
+/*other dropdwown*/
+/* Optional: Add styles for the parent item */
+li {
+  position: relative;
+}
+
+/* Smaller text for dropdown items */
+.sidebar #dropdowns {
+  font-size: 10px;
+  /* Smaller, but readable text size */
+  padding-left: 20px;
+}
+
+.sidebar #dropdowns li {
+  margin: 9px;
+}
+
+.sidebar #dropdowns li a {
+  color: white;
+  /* Inherits color from sidebar */
+  font-size: 13px;
+  text-decoration: none;
+  display: block;
+  padding-left: -50px;
+  transition: color 0.3s;
+}
+
+.sidebar #dropdowns li a:hover {
+  color: #ffcc00;
+  /* Change color on hover for better visibility */
+}
+
 .logo-section {
   display: flex;
   flex-direction: column;
@@ -134,7 +173,6 @@
   border-bottom: 1px solid black;
   padding: 0 20px 24px 20px;
 }
-
 
 /* Navigation links */
 .sidebar nav {

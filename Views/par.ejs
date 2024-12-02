@@ -52,56 +52,105 @@
 
                                         <div class="form-group">
                                             <label for="location">Location *</label>
-                                            <select id="location" name="location" onchange="handleSelection(this)"
-                                                required>
-                                                <option value="" disabled selected>Select Location</option>
-                                                <option>College of Engineering</option>
-                                                <option>Smart Center</option>
-                                                <option value="none" style="color: #333; font-size: 13px;">Cancel
-                                                    Selection
-                                                </option>
-                                            </select>
+                                            <div class="custom-dropdown">
+                                                <div class="custom-dropdown-trigger" id="location-dropdown-trigger">
+                                                    Select Location
+                                                </div>
+                                                <div class="custom-dropdown-options" id="location">
+                                                    <div class="custom-dropdown-option" data-value="College of Engineering">College of Engineering</div>
+                                                    <div class="custom-dropdown-option" data-value="Smart Center">Smart Center</div>
+                                                    <div class="custom-dropdown-option" data-value="Library">Library</div>
+                                                    <div class="custom-dropdown-option" data-cancel="true">Cancel Selection</div>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="location" id="location-value" value="Default Location">
                                         </div>
-
+                                        
                                         <div class="form-group">
-                                            <label for="location">Category *</label>
-                                            <select id="category" name="category" onchange="handleSelection(this)"
-                                                required>
-                                                <option value="" disabled selected>Select Category</option>
-                                                <option>Furnitures</option>
-                                                <option>Appliances</option>
-                                                <option>Electronics</option>
-                                                <option value="none" style="color: #333; font-size: 13px;">Cancel
-                                                    Selection
-                                                </option>
-                                            </select>
+                                            <label for="category">Category *</label>
+                                            <div class="custom-dropdown">
+                                                <div class="custom-dropdown-trigger" id="category-dropdown-trigger">
+                                                    Select Category
+                                                </div>
+                                                <div class="custom-dropdown-options" id="category">
+                                                    <div class="custom-dropdown-option" data-value="Furnitures">Furnitures</div>
+                                                    <div class="custom-dropdown-option" data-value="Appliances">Appliances</div>
+                                                    <div class="custom-dropdown-option" data-value="Electronics">Electronics</div>
+                                                    <div class="custom-dropdown-option" data-cancel="true">Cancel Selection</div>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="category" id="category-value" value="Default Category">
                                         </div>
-
+                                        
                                         <div class="form-group">
-                                            <label for="location">UACS Code *</label>
-                                            <select id="location" name="UACScode" onchange="handleSelection(this)"
-                                                required>
-                                                <option value="" disabled selected>Select UACS</option>
-                                                <option>Machinery #1060501000</option>
-                                                <option>Office Equipment #1060502000</option>
-                                                <option>Agricultural and Forestry Equipment #1060503000
-                                                </option>
-                                                <option>Medical Equipment #1060511000</option>
-                                                <option>Printing Equipment #1060512000</option>
-                                                <option>Technical and Scientific Equipment #1060514000</option>
-                                                <option>Other Machinery and Equipment #1060599000</option>
-                                                <option>Motor Vehicles #1060601000</option>
-                                                <option>Motor Vehicles #1060601000</option>
-                                                <option>Books #1060702000</option>
-                                                <option>Software #1080102000</option>
-                                                <option>Information and Communication Technology Equipment
-                                                    #1060501000
-                                                </option>
-                                                <option value="none" style="color: #333; font-size: 13px;">Cancel
-                                                    Selection
-                                                </option>
-                                            </select>
+                                            <label for="uacs">UACS Code *</label>
+                                            <div class="custom-dropdown">
+                                                <div class="custom-dropdown-trigger" id="uacs-dropdown-trigger">
+                                                    Select UACS
+                                                </div>
+                                                <div class="custom-dropdown-options" id="uacs">
+                                                    <div class="custom-dropdown-option" data-value="Machinery #1060501000">Machinery #1060501000</div>
+                                                    <div class="custom-dropdown-option" data-value="Office Equipment #1060502000">Office Equipment #1060502000</div>
+                                                    <div class="custom-dropdown-option" data-value="Agricultural Equipment #1060503000">Agricultural Equipment #1060503000</div>
+                                                    <div class="custom-dropdown-option" data-value="Medical Equipment #1060511000">Medical Equipment #1060511000</div>
+                                                    <div class="custom-dropdown-option" data-value="Printing Equipment #1060512000">Printing Equipment #1060512000</div>
+                                                    <div class="custom-dropdown-option" data-value="Technical and Scientific Equipment #1060514000">Technical and Scientific Equipment #1060514000</div>
+                                                    <div class="custom-dropdown-option" data-value="Other Machinery and Equipment #10605990000">Other Machinery and Equipment #10605990000</div>
+                                                    <div class="custom-dropdown-option" data-value="Motor Vehicles #1060601000">Motor Vehicles #1060601000</div>
+                                                    <div class="custom-dropdown-option" data-value="Furniture and Fixtures #1060701000">Furniture and Fixtures #1060701000</div>
+                                                    <div class="custom-dropdown-option" data-value="Books #1060702000">Books #1060702000</div>
+                                                    <div class="custom-dropdown-option" data-value="Software #1080102000">Software #1080102000</div>
+                                                    <div class="custom-dropdown-option" data-value="Information and Communication Technology Equipment #1060501000">
+                                                        Information and Communication Technology Equipment #1060501000
+                                                    </div>
+                                                    <div class="custom-dropdown-option" data-cancel="true">Cancel Selection</div>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="uacs" id="uacs-value" value="Default UACS">
                                         </div>
+                                        
+                                        <script>
+                                        document.addEventListener("DOMContentLoaded", function () {
+                                            function setupDropdown(triggerId, optionsId, hiddenInputId, defaultText) {
+                                                const trigger = document.getElementById(triggerId);
+                                                const options = document.getElementById(optionsId);
+                                                const hiddenInput = document.getElementById(hiddenInputId);
+                                        
+                                                trigger.addEventListener("click", function () {
+                                                    options.style.display = options.style.display === "block" ? "none" : "block";
+                                                });
+                                        
+                                                options.addEventListener("click", function (event) {
+                                                    const clickedOption = event.target;
+                                                    if (clickedOption.classList.contains("custom-dropdown-option")) {
+                                                        const isCancel = clickedOption.getAttribute("data-cancel") === "true";
+                                                        if (isCancel) {
+                                                            trigger.textContent = defaultText;
+                                                            hiddenInput.value = defaultText; // Reset hidden input to default
+                                                        } else {
+                                                            trigger.textContent = clickedOption.textContent;
+                                                            hiddenInput.value = clickedOption.getAttribute("data-value"); // Update hidden input with selected value
+                                                        }
+                                                        options.style.display = "none";
+                                                    }
+                                                });
+                                            }
+                                        
+                                            setupDropdown("location-dropdown-trigger", "location", "location-value", "Default Location");
+                                            setupDropdown("category-dropdown-trigger", "category", "category-value", "Default Category");
+                                            setupDropdown("uacs-dropdown-trigger", "uacs", "uacs-value", "Default UACS");
+                                        
+                                            // Close dropdowns when clicking outside
+                                            window.addEventListener("click", function (event) {
+                                                if (!event.target.closest(".custom-dropdown")) {
+                                                    document.querySelectorAll(".custom-dropdown-options").forEach(function (dropdown) {
+                                                        dropdown.style.display = "none";
+                                                    });
+                                                }
+                                            });
+                                        });
+                                        </script>
+                                        
 
                                         <div class="form-group">
                                             <label for="inventoryNo">Inventory Item No.</label>
@@ -155,9 +204,58 @@
                                         </div>
                                     </div>
                                     <div class="button-container">
-                                        <button type="submit" class="save-button">Save</button>
+                                        <button type="submit" class="save-button" onclick="openPopup()">Save</button>
+                                        
+                                        <!-- Popup for success message -->
+                                        <div class="popup" id="popup">
+                                            <img src="../images/check.png" alt="Check Logo">
+                                            <h2>Added Successfully! </h2>
+                                            <p>You have successfully saved the data!</p>
+                                            <button type="button" onclick="closePopup()">Ok</button>
+                                        </div>
+                                        
                                         <button type="button" class="cancel-button">Cancel</button>
                                     </div>
+                                    
+                                    <script>
+                                        let popup = document.getElementById("popup");
+                                    
+                                        // Function to open popup
+                                        function openPopup() {
+                                            popup.classList.add("open-popup");
+                                        }
+                                    
+                                        // Function to close popup
+                                        function closePopup() {
+                                            popup.classList.remove("open-popup");
+                                        }
+                                    
+                                        // Check URL for success parameter and open popup automatically
+                                        const urlParams = new URLSearchParams(window.location.search);
+                                        const success = urlParams.get("success");
+                                    
+                                        if (success === "true") {
+                                            openPopup(); // Open popup when data is successfully saved
+                                        }
+                                    </script>
+                                    
+                                    <style>
+                                        /* Styles for the popup */
+                                        .popup {
+                                            display: none;
+                                            /* Additional styling for the popup */
+                                        }
+                                    
+                                        .popup.open-popup {
+                                            display: block;
+                                            /* Additional styling for when the popup is visible */
+                                        }
+                                    </style>
+                                    
+
+
+
+
                                 </form>
                             </div>
                         </div>
