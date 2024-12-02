@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Return Slip Form | Property Management System</title>
+    <link rel="stylesheet" href="../css/prs.css">
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+       <%- include("./includes/sidebar") %>
+
+        <!-- Main content -->
+        <div class="main-content">
+            <div class="fix">
+                <h1>Property Return Slip Form</h1>
+                <h2>Item Details</Details></h2>
+            </div>
+
+            <div class="form-container">
+                <form>
+
+                    <div class="form-group">
+                        <div class="half-width">
+                            <label>Name of Office*</label>
+                            <input type="text" id="office" placeholder="Ex. Smart Center" required>
+                        </div>
+                        <div class="half-width">
+                            <label>Quantity*</label>
+                            <input type="number" id="quantity" placeholder="Ex. 100" required>
+                        </div>
+                        <div class="half-width">
+                            <label>Unit*</label>
+                            <input type="text" id="unit" placeholder="Ex. Unit" required>
+                        </div>
+                        <div class="half-width">
+                            <label>Purpose*</label>
+                            <select id="purpose" required>
+                                <option value="" disabled selected>Purpose *</option>
+                                <option>Disposal</option>
+                                <option>Repair</option>
+                                <option>Return to stock to stock</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group1">
+                        <div class="half-width">
+                            <label>Property No. (if any)</label>
+                            <input type="text" id="propertyNumber" placeholder="Ex. 15-04-011">
+                        </div>
+                        <div class="half-width">
+                            <label>Date Acquired*</label>
+                            <input type="date" id="dateAcquired" required>
+                        </div>
+                        <div class="half-width">
+                            <label>Name of End User*</label>
+                            <input type="text" id="endUser" placeholder="Ex. John Lloyd Tabuac" required>
+                        </div>
+                        <div class="half-width">
+                            <label>Unit Value*</label>
+                            <input type="number" id="unitValue" placeholder="Ex. 1000" required>
+                        </div>
+                        <div class="half-width">
+                            <label>Total Value*</label>
+                            <input type="number" id="totalValue" placeholder="Ex. 100,000" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group2">
+                        <div class="full-width">
+                            <label>Purpose of Returning the Items</label>
+                            <textarea id="purpose" placeholder="Ex. Destroyed"></textarea>
+                        </div>
+                        <div class="half-width">
+                            <label>Description</label>
+                            <select id="description">
+                                <option value="" disabled selected>Search Serial ID...</option>
+                                <option>SN: 20230715-001-123</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <button type="print">Print</button>
+                        <button type="button" class="btn-secondary">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

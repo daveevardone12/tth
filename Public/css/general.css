@@ -10,6 +10,12 @@
   color: rgb(255, 14, 14);
 }
 
+input,
+select,
+textarea {
+  border: 1px solid #000 !important;
+}
+
 .sidebar {
   width: 300px;
   background-color: #0a5d03;
