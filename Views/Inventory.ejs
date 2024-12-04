@@ -138,17 +138,17 @@
 
             </table>
 
-            <nav aria-label="Page navigation" id="paginationNav">
-                <% if (currentPage> 1) { %>
-                    <a href="?page=<%= currentPage - 1 %>&limit=<%= limit %>" aria-label="Previous Page">Previous</a>
-                    <% } %>
-                        <% if (currentPage < totalPages) { %>
-                            <a href="?page=<%= currentPage + 1 %>&limit=<%= limit %>" aria-label="Next Page">Next</a>
-                            <% } %>
-            </nav>
         </div>
-
-        </div>
+        
+        <nav aria-label="Page navigation" id="paginationNav">
+            <% if (currentPage> 1) { %>
+                <a href="?page=<%= currentPage - 1 %>&limit=<%= limit %>" aria-label="Previous Page">Previous</a>
+                <% } %>
+                    <% if (currentPage < totalPages) { %>
+                        <a href="?page=<%= currentPage + 1 %>&limit=<%= limit %>" aria-label="Next Page">Next</a>
+                        <% } %>
+        </nav>
+    </div>
         </div>
         </div>
         <script src="../js/dashboard-inventory-api.js"></script>
