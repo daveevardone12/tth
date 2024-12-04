@@ -11,13 +11,19 @@ document.addEventListener("DOMContentLoaded", function () {
     function updateInventoryTable(data) {
         const tableBody = document.getElementById("inventoryTableBody");
         let rows = '';
-
+        
+        
         if (data.getInventoryList.length > 0) {
             data.getInventoryList.forEach(invent => {
+                const formattedDate = new Date(invent.date_acquired).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                  });
                 rows += `
                     <tr>
                     <td>${invent.id}</td>
-                    <td></td>
+                    <td>${invent.item_name}</td>
                     <td>${invent.description}</td>
                     <td>${invent.property_no}</td>
                     <td></td>
@@ -28,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <td>1</td>
                     <td>${invent.accountable}</td>
                     <td>${invent.location}</td>
-                    <td>${invent.date_acquired}</td>
+                    <td>${formattedDate}</td>
                     <td>
                         <!-- Three-dots menu -->
                         <div class="menu-container">
@@ -149,9 +155,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     }
 
-    // Example: Attach openSortOverlay to a button (replace '#open-sort-by-btn' with your button ID)
-    document.getElementById("open-sort-by-btn").addEventListener("click", openSortOverlay);
-
     // Function to handle pagination clicks
     function handlePagination(event) {
         event.preventDefault();
@@ -170,6 +173,8 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(data => {
                 updateInventoryTable(data);
                 updatePaginationControls(data.currentPage, data.totalPages, data.limit);
+                console.log("updatePaginationControls:", updatePaginationControls(data.currentPage, data.totalPages, data.limit));
+                console.log("updateInbentoryTable:", updateInventoryTable(data));
             })
             .catch(error => {
                 console.error('Error during pagination:', error);
