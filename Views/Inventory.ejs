@@ -15,125 +15,285 @@
 
 <body>
     <%- include("./includes/sidebar") %>
+   
+    <div class="container">
+        <div class="main-container">
+        <h2>REPORT ON THE PHYSICAL COUNT OF PROPERTY, PLANT AND EQUIPMENT</h2>
+        <h3>Tech. & Scientific Equipment (1 06 05 140 00)</h3>
+        
+        <div class="table-wrapper">
+           
+            <table>
+                <thead class="t-head">
+                    <tr>
+                        <th>ID No.</th>
+                        <th>Article</th>
+                        <th>Description</th>
+                        <th>Property Number</th>
+                        <th>Unit</th>
+                        <th>Value Unit</th>
+                        <th>Qty.per P Card</th>
+                        <th>Qty.per P Count</th>  
 
-
-
-
-        <div class="container">
-            <div class="main-container">
-                <h2>REPORT ON THE PHYSICAL COUNT OF PROPERTY, PLANT AND EQUIPMENT</h2>
-                <h3>Tech. & Scientific Equipment (1 06 05 140 00)</h3>
-
-                <div class="table-wrapper">
-                    <div id="loadingSpinner" style="display:none;">Loading...</div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ID No.</th>
-                                <th>Article</th>
-                                <th>Description</th>
-                                <th>Property Number</th>
-                                <th>Unit</th>
-                                <th>Value Unit</th>
-                                <th>Qty per PE Card</th>
-                                <th>Qty per Count</th>
-                                <th>Shortage/Overage Qty</th>
-                                <th>Remarks</th>
-                                <th>Received By</th>
-                                <th>Location</th>
-                                <th>Date Acquired</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-
-                        <div class="controls">
-                            <div class="filter-content">
-                                <button id="sort-by-btn" class="action-button">
-                                    Sort by <img src="/Public/images/clarity--sort-by-line.svg" alt="" class="srt">
-                                </button>
-                                <button id="filter-btn" class="action-button">
-                                    Filter <img src="/Public/images/mdi--filter.svg" alt="" class="filt">
-                                </button>
-                            </div>
-                            <div class="search-wrapper">
-                                <input type="text" class="search-bar" id="searchBar" placeholder="Search...">
-                                <div class="search-icon" id="searchIcon"><img
-                                        src="/Public/images/iconamoon--search-bold.svg" alt="" class="srch"></div>
-                            </div>
-                        </div>
-
-                        <!-- Sort By Overlay -->
-                        <div id="sort-by-overlay" class="overlay hidden">
-                            <div class="sort-by-container">
-                                <div class="sort-by-header">Sort by</div>
-                                <div class="sort-by-section">
-                                    <div class="sort-by-title">Date</div>
-                                    <label>
-                                        <input type="radio" name="date" value="ascending" />
-                                        Ascending
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="date" value="descending" />
-                                        Descending
-                                    </label>
-                                </div>
-                                <div class="sort-by-section">
-                                    <div class="sort-by-title">Name of Item</div>
-                                    <label>
-                                        <input type="radio" name="name" value="a-z" />
-                                        A - Z
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="name" value="z-a" />
-                                        Z - A
-                                    </label>
-                                </div>
-                                <button class="close-btn" id="close-sort-by">Close</button>
-                                <button class="reset-btn" id="reset-sort-by">Reset</button>
-                                <button class="apply-btn" id="apply-sort-by">Apply</button>
-                            </div>
-                        </div>
-                </div>
-
-                <!-- Filter Overlay -->
-                <div id="filter-overlay" class="overlay hidden">
-                    <div class="overlay-content">
-                        <h4>Filter</h4>
-                        <div class="filter-group">
-                            <label>Date range</label>
+                        <th colspan="2">
                             <div>
-                                <label>From</label>
-                                <input type="date" id="filter-from" placeholder="From" />
-                                <label>TO</label>
-                                <input type="date" id="filter-to" placeholder="To" />
+                              Shortage/Overage
+                              <div style="display: flex; margin-top: 5px;">
+                                <div style="flex: 1; margin-top: 7px; ">Qty</div>
+                                <div style="flex: 1; margin-top: 7px;">Value</div>
+                              </div>
+                            </div>
+                          </th>
+
+                          <th colspan="2">
+                            <div>
+                              Remarks
+                              <div style="display: flex; margin-top: 5px; gap: 10px; ">
+                                <div style="flex: 1; margin-top: 3px; font-size: 10px;">Receipted by:</div>
+                                <div style="flex: 1; margin-top: 7px;">Location</div>
+                              </div>
+                            </div>
+                          </th>
+                        <th>Date Acquired</th>
+                        <th></th>
+                    </tr>
+                    
+                </thead>
+                
+                <div class="controls">
+                   <div class="filter-content">
+                    <button id="sort-by-btn" class="action-button">
+                      Sort by <img src="/Public/images/clarity--sort-by-line.svg" alt="" class="srt">
+                    </button>
+                    <button id="filter-btn" class="action-button">
+                      Filter <img src="/Public/images/mdi--filter.svg" alt="" class="filt">
+                    </button>
+                </div>
+                    <div class="search-wrapper">
+                        <input type="text" class="search-bar" id="searchBar" placeholder="Search...">
+                        <div class="search-icon" id="searchIcon"><img src="/Public/images/iconamoon--search-bold.svg" alt="" class="srch"></div>
+                      </div>
+                  </div>
+                  
+                  <!-- Sort By Overlay -->
+                  <div id="sort-by-overlay" class="overlay hidden">
+                    <div class="sort-by-container">
+                        <div class="sort-by-header">Sort by</div>
+                        <div class="sort-by-section">
+                            <div class="sort-by-title">Date</div>
+                            <label>
+                                <input type="radio" name="date" value="ascending" />
+                                Ascending
+                            </label>
+                            <label>
+                                <input type="radio" name="date" value="descending" />
+                                Descending
+                            </label>
+                        </div>
+                        <div class="sort-by-section">
+                            <div class="sort-by-title">ID No.</div>
+                            <label>
+                                <input type="radio" name="id" value="1-100" />
+                                1 - 100
+                            </label>
+                            <label>
+                                <input type="radio" name="id" value="100-1" />
+                                100 - 1
+                            </label>
+                        </div>
+                        <div class="sort-by-section">
+                            <div class="sort-by-title">Name of Item</div>
+                            <label>
+                                <input type="radio" name="name" value="a-z" />
+                                A - Z
+                            </label>
+                            <label>
+                                <input type="radio" name="name" value="z-a" />
+                                Z - A
+                            </label>
+                        </div>
+
+                    <div class="sorty">
+                        <button class="apply-btn" id="apply-sort-by">Apply</button>
+                        <button class="reset-btn" id="reset-sort-by">Reset</button>
+                        <button class="close-btn" id="close-sort-by">Close</button>
+                    </div>
+
+                    </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Filter Overlay -->
+<div id="filter-overlay" class="overlay hidden">
+    <div class="overlay-content">
+      <h4>Filter</h4>
+      <div class="filter-group">
+        <label>Date range</label>
+        <div>
+            <label>From</label>
+          <input type="date" id="filter-from" placeholder="From" />
+          <label>TO</label>
+          <input type="date" id="filter-to" placeholder="To" />
+        </div>
+      </div>
+      <div class="filter-group">
+        <label>Name of item</label>
+        <select id="filter-item">
+          <option value="">Ex. Electronic Power Transmission System</option>
+          <option value="Another Item">Another Item</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>Accountable</label>
+        <select id="filter-accountable">
+          <option value="">Ex. Carlota Salas</option>
+          <option value="Another Accountable">Another Accountable</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>Property No.</label>
+        <input type="text" id="filter-property-no" placeholder="Ex. 15-08-247" />
+      </div>
+      <button class="reset-btn" id="reset-filter">Reset</button>
+      <button class="close-btn" id="close-filter">Close</button>
+    </div>
+  </div>
+  
+ </div>       
+
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Transmission</td>
+                        <td>Electronic Power Transmission System</td>
+                        <td>15-08-247</td>
+                        <td>set</td>
+                        <td>308948.00</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>123</td>
+                        <td>Carlota Salas</td>
+                        <td>CET</td>
+                        <td>6/12/20</td>
+                        <td>
+                            <!-- Three-dots menu -->
+                            <div class="menu-container">
+                                <i class="fas fa-ellipsis-v menu-icon"></i>
+                                <div class="dropdown-menu">
+                                    <button onclick="handleAction('Update')">Update</button>
+                                    <button onclick="handleAction('Print')">Print</button>
+                                    <button onclick="handleAction('Dispose')"><a href="/ptr">Dispose</a></button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+
+                    <script>
+                        function handleAction (id){
+                            var IDD = id
+
+                            if(IDD == "Print"){
+                                // alert('');
+                                window.print();
+                            }
+
+                            if (IDD == "Update"){
+                                alert('update');
+                            }
+
+                        }
+                    </script>
+                    <!-- Repeat rows as needed -->
+                
+
+                
+                <tr>
+                    <td>2</td>
+                    <td>Transmission</td>
+                    <td>Electronic Power Transmission System</td>
+                    <td>15-08-247</td>
+                    <td>set</td>
+                    <td>308948.00</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>123</td>
+                    <td>Carlota Salas</td>
+                    <td>CET</td>
+                    <td>6/12/20</td>
+                    <td>
+                        <!-- Three-dots menu -->
+                        <div class="menu-container">
+                            <i class="fas fa-ellipsis-v menu-icon"></i>
+                            <div class="dropdown-menu">
+                                <button onclick="handleAction('Update')">Update</button>
+                                <button onclick="handleAction('Print')">Print</button>
+                                <button onclick="handleAction('Dispose')">Dispose</button>
                             </div>
                         </div>
-                        <div class="filter-group">
-                            <label>Name of item</label>
-                            <select id="filter-item">
-                                <option value="">Ex. Electronic Power Transmission System</option>
-                                <option value="Another Item">Another Item</option>
-                            </select>
+                    </td>
+                </tr>
+                <!-- Repeat rows as needed -->
+            
+                
+            
+                <tr>
+                    <td>3</td>
+                    <td>Transmission</td>
+                    <td>Electronic Power Transmission System</td>
+                    <td>15-08-247</td>
+                    <td>set</td>
+                    <td>308948.00</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>123</td>
+                    <td>Carlota Salas</td>
+                    <td>CET</td>
+                    <td>6/12/20</td>
+                    <td>
+                        <!-- Three-dots menu -->
+                        <div class="menu-container">
+                            <i class="fas fa-ellipsis-v menu-icon"></i>
+                            <div class="dropdown-menu">
+                                <button onclick="handleAction('Update')">Update</button>
+                                <button onclick="handleAction('Print')">Print</button>
+                                <button onclick="handleAction('Dispose')">Dispose</button>
+                            </div>
                         </div>
-                        <div class="filter-group">
-                            <label>Accountable</label>
-                            <select id="filter-accountable">
-                                <option value="">Ex. Carlota Salas</option>
-                                <option value="Another Accountable">Another Accountable</option>
-                            </select>
-                        </div>
-                        <div class="filter-group">
-                            <label>Property No.</label>
-                            <input type="text" id="filter-property-no" placeholder="Ex. 15-08-247" />
-                        </div>
-                        <button class="reset-btn" id="reset-filter">Reset</button>
-                        <button class="close-btn" id="close-filter">Close</button>
-                    </div>
-                </div>
+                    </td>
+                </tr>
+                <!-- Repeat rows as needed -->
 
-            </div>
-
-            <tbody id="inventoryTableBody">
+                <tr>
+                    <td>4</td>
+                    <td>Transmission</td>
+                    <td>Electronic Power Transmission System</td>
+                    <td>15-08-247</td>
+                    <td>set</td>
+                    <td>308948.00</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>123</td>
+                    <td>Carlota Salas</td>
+                    <td>CET</td>
+                    <td>6/12/20</td>
+                    <td>
+                        <!-- Three-dots menu -->
+                        <div class="menu-container">
+                            <i class="fas fa-ellipsis-v menu-icon"></i>
+                            <div class="dropdown-menu">
+                                <button onclick="handleAction('Update')">Update</button>
+                                <button onclick="handleAction('Print')">Print</button>
+                                <button onclick="handleAction('Dispose')">Dispose</button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <!-- Repeat rows as needed -->
             </tbody>
 
             </table>
@@ -341,5 +501,6 @@
         </script>
 
 </body>
+<%- include("./includes/print-ics") %>
 
 </html>
