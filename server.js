@@ -28,8 +28,6 @@ const icsRoutes = require("./routes/ics");
 const inventoryRoutes = require("./routes/inventory");
 const addItemRoutes = require("./routes/add-item");
 const notifRoutes = require("./routes/notif");
-const prsRoutes = require("./Routes/prs");
-const mrerRoutes = require("./Routes/mrer");
 
 //-------CONNECTING TO DATABASE-------//
 tthPool
@@ -89,8 +87,6 @@ app.use("/ptr", ptrRoutes);
 app.use("/Inventory", inventoryRoutes);
 app.use("/add-item", addItemRoutes);
 app.use("/notif", notifRoutes);
-app.use("/prs", prsRoutes);
-app.use("/mrer", mrerRoutes);
 
 // Logout route to clear session
 app.get("/logout", (req, res, next) => {
