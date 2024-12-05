@@ -27,7 +27,7 @@
         <ul>
             <li><a href="/dashboard"><img src="/Public/images/cuida--dashboard-outline.svg" alt="" class="dash">Dashboard</a></li>
             <li>
-                <a href="#" id="addItemLink" onclick="toggleDropdown(event)"><img src="/Public/images/material-symbols--add-ad.svg" alt="" class="add">Add Item </a>
+                <a href="#" id="addItemLink"><img src="/Public/images/material-symbols--add-ad.svg" alt="" class="add">Add Item </a>
                 <ul id="dropdown" style="display: none;" class="dropdown-men">
                     <li><a href="/par">Property Acknowledgement Receipt</a></li>
                     <li><a href="/ics">Inventory Custodian Slip</a></li>
@@ -79,13 +79,3 @@
     });
     
 </script>
-
-<script>
-    function toggleDropdown(event) {
-    event.preventDefault();
-    const parentLi = event.target.closest('li'); // Get the parent <li> of the clicked element
-    parentLi.classList.toggle('active'); // Add/remove the 'active' class
-}
-
-</script>
-
