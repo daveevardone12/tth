@@ -15,8 +15,12 @@ body {
     margin: 0;
 }
 
+.login-section > .logo{
+    margin: auto;
+}
+
 .container {
-    display: flex;
+    /* display: flex; */
     width: 25%;
     max-width: 1200px;
     background-color: #fef9f2;
