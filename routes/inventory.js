@@ -1,16 +1,18 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const tthPool = require('../models/tthDB');
+const tthPool = require("../models/tthDB");
 const { ensureAuthenticated } = require("../middleware/middleware");
 
 router.get("/", ensureAuthenticated, async (req, res) => {
-
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 10;
   const isAjax = req.query.ajax === "true";
 
   try {
-    const { getInventoryList, totalPages } = await fetchInventoryList(page, limit);
+    const { getInventoryList, totalPages } = await fetchInventoryList(
+      page,
+      limit
+    );
 
     if (isAjax) {
       return res.json({
@@ -44,7 +46,8 @@ router.get("/search", ensureAuthenticated, async (req, res) => {
 
     if (!query) {
       searchResult = await tthPool.query(
-        `SELECT * FROM property_acknowledgement_receipt ORDER BY date_acquired LIMIT $1 OFFSET $2`, [limit, offset]
+        `SELECT * FROM property_acknowledgement_receipt ORDER BY date_acquired LIMIT $1 OFFSET $2`,
+        [limit, offset]
       );
     } else {
       searchResult = await tthPool.query(
@@ -56,8 +59,8 @@ router.get("/search", ensureAuthenticated, async (req, res) => {
       );
     }
 
-    const data = searchResult.rows.map(row => ({
-      ...row
+    const data = searchResult.rows.map((row) => ({
+      ...row,
     }));
 
     res.json({ getInventoryList: data });
@@ -79,7 +82,7 @@ router.get("/sort", ensureAuthenticated, async (req, res) => {
       // Default sorting by date_acquired if no parameters are provided
       searchResult = await tthPool.query(
         `SELECT * FROM property_acknowledgement_receipt 
-         ORDER BY date_acquired ASC
+         ORDER BY id ASC
          LIMIT $1 OFFSET $2`,
         [limit, offset]
       );
@@ -94,7 +97,8 @@ router.get("/sort", ensureAuthenticated, async (req, res) => {
         orderBy.push(`item_name ${docName === "a-z" ? "ASC" : "DESC"}`);
       }
 
-      const orderByClause = orderBy.length > 0 ? `ORDER BY ${orderBy.join(", ")}` : "";
+      const orderByClause =
+        orderBy.length > 0 ? `ORDER BY ${orderBy.join(", ")}` : "";
 
       searchResult = await tthPool.query(
         `SELECT * FROM property_acknowledgement_receipt 
@@ -105,14 +109,13 @@ router.get("/sort", ensureAuthenticated, async (req, res) => {
     }
 
     // Map and return data
-    const data = searchResult.rows.map(row => ({ ...row }));
+    const data = searchResult.rows.map((row) => ({ ...row }));
     res.json({ getInventoryList: data });
   } catch (err) {
     console.error("Error: ", err);
     res.status(500).send("An error occurred during the search.");
   }
 });
-
 
 async function fetchInventoryList(page, limit) {
   const offset = (page - 1) * limit;
@@ -121,7 +124,7 @@ async function fetchInventoryList(page, limit) {
     const query = `
       SELECT *, COUNT(*) OVER() AS total_count
       FROM property_acknowledgement_receipt
-      ORDER BY date_acquired
+      ORDER BY id
       LIMIT $1 OFFSET $2
     `;
 
@@ -130,8 +133,8 @@ async function fetchInventoryList(page, limit) {
     const totalItems = rows.length > 0 ? rows[0].total_count : 10;
     const totalPages = Math.ceil(totalItems / limit);
 
-    const data = rows.map(row => ({
-      ...row
+    const data = rows.map((row) => ({
+      ...row,
     }));
 
     return { getInventoryList: data, totalPages };

@@ -10,13 +10,20 @@
   color: rgb(255, 14, 14);
 }
 
+input,
+select,
+textarea {
+  border: 1px solid #000 !important;
+}
+
 .sidebar {
   width: 300px;
   background-color: #0a5d03;
   color: white;
   height: 100vh;
-  padding: 20px 0;
+  padding: 0 0 20px 0;
   position: fixed;
+  overflow: auto;
 }
 
 .sidebar .nav-menu ul {
@@ -172,6 +179,11 @@ li {
   gap: 12px;
   border-bottom: 1px solid black;
   padding: 0 20px 24px 20px;
+  background-color: #0a5d03;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding-top: 20px;
 }
 
 
@@ -269,14 +281,14 @@ li {
   content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M12 4a4 4 0 0 1 4 4a4 4 0 0 1-4 4a4 4 0 0 1-4-4a4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2a2 2 0 0 0 2 2a2 2 0 0 0 2-2a2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1'/%3E%3C/svg%3E");
 }
 
-#paginationNav a{
+#paginationNav a {
   color: #fff;
   background-color: #008000;
   padding: 8px 40px;
   text-decoration: none;
   border-radius: 5px;
 }
-#paginationNav{
+#paginationNav {
   margin-top: 24px;
   display: flex;
   gap: 12px;
