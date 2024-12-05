@@ -36,8 +36,8 @@ router.post("/save", async (req, res) => {
         data.description,
       ]
     );
-
-    return res.redirect("/par?success=true");
+    req.flash('success', 'success');
+    return res.redirect("/par");
   } catch (error) {
     console.error("Error: ", error);
     req.flash("error", "An error occurred while processing the request.");
