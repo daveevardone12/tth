@@ -121,3 +121,9 @@ app.use((err, req, res, next) => {
 app.listen(process.env.PORT, () => {
   console.log(`Server is up and running on port ${process.env.PORT}`);
 });
+
+
+
+app.get('/print-inv', (req, res) => {
+  res.render("printttt");
+});

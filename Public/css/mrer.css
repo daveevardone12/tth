@@ -228,7 +228,7 @@ input[type="checkbox"] {
 }
 
 button {
-  background-color: #3cb371;
+  background-color: #0a5d03;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -242,7 +242,7 @@ button:hover {
 }
 
 .btn-secondary {
-  background-color: #1e90ff;
+  background-color: #0a5d03;
 }
 
 .btn-secondary:hover {
