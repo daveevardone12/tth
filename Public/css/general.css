@@ -49,6 +49,7 @@ textarea {
   align-items: center;
   justify-content: center;
   gap: 20px;
+  padding-top: 20px;
 }
 
 .fa-regular.fa-user {
@@ -171,19 +172,6 @@ li {
 .sidebar #dropdowns li a:hover {
   color: #ffcc00;
   /* Change color on hover for better visibility */
-}
-
-.logo-section {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  border-bottom: 1px solid black;
-  padding: 0 20px 24px 20px;
-  background-color: #0a5d03;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  padding-top: 20px;
 }
 
 /* Navigation links */

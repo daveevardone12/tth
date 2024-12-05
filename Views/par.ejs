@@ -12,11 +12,13 @@
 <body>
 
     <%- include("./includes/sidebar.ejs") %>
-
-        <% if (messages.success) { %>
-            <script>
-                alert("<%= messages.success %>");
-            </script>
+    <% if (messages.success) { %>
+            <div class="popup" id="popup" style="display: block;">
+                <img src="../images/check.png" alt="Check Logo">
+                <h2>Added Successfully! </h2>
+                <p>You have successfully saved the data!</p>
+                <button type="button" onclick="closePopup()">Ok</button>
+            </div>
             <% } %>
                 <% if (messages.error) { %>
                     <script>
@@ -40,9 +42,10 @@
                                                 placeholder="Ex. Carlos A. Santos" required>
                                         </div>
                                         <div class="form-group">
+                                            <p id="errorMessage" style="color: red; display: none;">Value cannot be less than 50000.</p>
                                             <label for="cost">Unit Cost/Value *</label>
-                                            <input type="number" id="cost" name="cost" placeholder="Ex. 30,000.00"
-                                                required>
+                                            <input type="number" id="cost" name="cost" placeholder="must be greater than 49999"
+                                                required min="49000" oninput="validateInput()" >
                                         </div>
                                         <div class="form-group">
                                             <label for="dateAcquired">Date Acquired *</label>
@@ -207,36 +210,31 @@
                                         <button type="submit" class="save-button" onclick="openPopup()">Save</button>
                                         
                                         <!-- Popup for success message -->
-                                        <div class="popup" id="popup">
-                                            <img src="../images/check.png" alt="Check Logo">
-                                            <h2>Added Successfully! </h2>
-                                            <p>You have successfully saved the data!</p>
-                                            <button type="button" onclick="closePopup()">Ok</button>
-                                        </div>
+                                         
                                         
                                         <button type="button" class="cancel-button">Cancel</button>
                                     </div>
                                     
                                     <script>
-                                        let popup = document.getElementById("popup");
+                                        // let popup = document.getElementById("popup");
                                     
-                                        // Function to open popup
-                                        function openPopup() {
-                                            popup.classList.add("open-popup");
-                                        }
+                                        // // Function to open popup
+                                        // function openPopup() {
+                                        //     popup.classList.add("open-popup");
+                                        // }
                                     
                                         // Function to close popup
                                         function closePopup() {
-                                            popup.classList.remove("open-popup");
+                                            document.getElementById("popup").style.display = "none";
                                         }
                                     
-                                        // Check URL for success parameter and open popup automatically
-                                        const urlParams = new URLSearchParams(window.location.search);
-                                        const success = urlParams.get("success");
+                                        // // Check URL for success parameter and open popup automatically
+                                        // const urlParams = new URLSearchParams(window.location.search);
+                                        // const success = urlParams.get("success");
                                     
-                                        if (success === "true") {
-                                            openPopup(); // Open popup when data is successfully saved
-                                        }
+                                        // if (success === "true") {
+                                        //     openPopup(); // Open popup when data is successfully saved
+                                        // }
                                     </script>
                                     
                                     <style>
@@ -274,6 +272,20 @@
                             <button onclick="window.print()">Print</button>
                         </div>
                         </div>
+
+                        <script>
+                            function validateInput() {
+                                console.log("input")
+                                const input = document.getElementById("cost");
+                                const errorMessage = document.getElementById("errorMessage");
+                                if (parseInt(input.value) < 49000) {
+                                // input.value = 0; // Automatically adjust to max value
+                                errorMessage.style.display = "block";
+                                } else {
+                                errorMessage.style.display = "none";
+                                }
+                            }
+                        </script>
 
                         <script>
                             function fillPreview() {
