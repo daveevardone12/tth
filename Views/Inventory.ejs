@@ -14,9 +14,6 @@
 </head>
 <body>
     <%- include("./includes/sidebar") %>
-
-    
-      
    
     <div class="container">
         <div class="main-container">
@@ -26,7 +23,7 @@
         <div class="table-wrapper">
            
             <table>
-                <thead>
+                <thead class="t-head">
                     <tr>
                         <th>ID No.</th>
                         <th>Article</th>
@@ -34,12 +31,28 @@
                         <th>Property Number</th>
                         <th>Unit</th>
                         <th>Value Unit</th>
-                        <th>Qty per PE Card</th>
-                        <th>Qty per Count</th>
-                        <th>Shortage/Overage Qty</th>
-                        <th>Remarks</th>
-                        <th>Received By</th>
-                        <th>Location</th>
+                        <th>Qty.per P Card</th>
+                        <th>Qty.per P Count</th>  
+
+                        <th colspan="2">
+                            <div>
+                              Shortage/Overage
+                              <div style="display: flex; margin-top: 5px;">
+                                <div style="flex: 1; margin-top: 7px; ">Qty</div>
+                                <div style="flex: 1; margin-top: 7px;">Value</div>
+                              </div>
+                            </div>
+                          </th>
+
+                          <th colspan="2">
+                            <div>
+                              Remarks
+                              <div style="display: flex; margin-top: 5px; gap: 10px; ">
+                                <div style="flex: 1; margin-top: 3px; font-size: 10px;">Receipted by:</div>
+                                <div style="flex: 1; margin-top: 7px;">Location</div>
+                              </div>
+                            </div>
+                          </th>
                         <th>Date Acquired</th>
                         <th></th>
                     </tr>
@@ -98,9 +111,13 @@
                                 Z - A
                             </label>
                         </div>
+
+                    <div class="sorty">
+                        <button class="apply-btn" id="apply-sort-by">Apply</button>
+                        <button class="reset-btn" id="reset-sort-by">Reset</button>
                         <button class="close-btn" id="close-sort-by">Close</button>
-                      <button class="reset-btn" id="reset-sort-by">Reset</button>
-                      <button class="apply-btn" id="apply-sort-by">Apply</button>
+                    </div>
+
                     </div>
                     </div>
                   </div>
@@ -170,6 +187,23 @@
                             </div>
                         </td>
                     </tr>
+
+
+                    <script>
+                        function handleAction (id){
+                            var IDD = id
+
+                            if(IDD == "Print"){
+                                // alert('');
+                                window.print();
+                            }
+
+                            if (IDD == "Update"){
+                                alert('update');
+                            }
+
+                        }
+                    </script>
                     <!-- Repeat rows as needed -->
                 
 
@@ -540,5 +574,6 @@
   </script>
 
 </body>
+<%- include("./includes/print-ics") %>
 
 </html>

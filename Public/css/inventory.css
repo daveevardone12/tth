@@ -68,17 +68,17 @@ table {
     border-collapse: collapse;
     font-size: 14px;
     overflow-x: hidden;
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
     border-radius: 10px;
 
 }
 
 
-thead {
+.t-head {
     background-color: #f4f4f4;
 }
 
-table thead tr {
+table .t-head tr {
   background-color: #0A5D03;
   color: #fff;
   text-align: center;
@@ -89,15 +89,14 @@ table thead tr {
   font-weight: 600;
   line-height: normal;
   letter-spacing: 1.4px;
-  
-  
 }
+
 
 table tbody tr {
   border-bottom: 1px solid #ddd;
 }
 
-thead th {
+.t-head th {
     text-align: center;
     padding: 10px 7px;
     color: #fff;
@@ -108,6 +107,7 @@ thead th {
     line-height: normal;
     letter-spacing: 1.3px;
 }
+
 
 tbody td {
     padding: 10px 15px;
@@ -377,7 +377,6 @@ body {
   }
 
   .sort-by-container {
-    width: 250px;
     background-color: white;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -418,6 +417,12 @@ input[type="radio"] {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.sorty {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
 }
 
 /*search icon*/
@@ -462,3 +467,16 @@ input[type="radio"] {
   background-color: #45a049;
 }
 
+
+
+/* print csss !!!!!!!! */
+
+@media print { 
+ .container, .sidebar {
+  display: none;
+ }
+
+ #printIcs {
+  display: block !important;
+ }
+}
