@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             <i class="fas fa-ellipsis-v menu-icon"></i>
                             <div class="dropdown-menu">
                                 <button onclick="handleAction('Update')">Update</button>
-                                <button onclick="handleAction('Print')">Print</button>
+                                <button onclick="printDocument('Print')">Print</button>
                                 <button onclick="handleAction('Dispose')"><a href="/ptr">Dispose</a></button>
                             </div>
                         </div>
@@ -225,3 +225,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // Initial setup
   attachPaginationListeners();
 });
+
+function printDocument() {
+  // Trigger the browser's print dialog
+  window.print();
+}

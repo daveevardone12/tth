@@ -61,6 +61,7 @@ h3 {
 .table-wrapper {
     margin-top: 20px;
     overflow-x: auto; /* Ensures table is scrollable horizontally */
+    overflow: visible;
 }
 
 table {
