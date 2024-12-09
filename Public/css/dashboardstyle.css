@@ -33,8 +33,11 @@ body {
   margin-left: 370px; /* Leaves space for the sidebar */
   padding: 20px;
   width: calc(100% - 370px); /* Takes the remaining space */
-  overflow: auto; /* Enables scrolling for the content */
+  overflow: none; /* Enables scrolling for the content */
   transition: all 0.3s ease;
+}
+.main-content::-webkit-scrollbar {
+  display: none;
 }
 
 hr {
@@ -89,6 +92,10 @@ h3 {
   overflow: auto;
   z-index: 999;
   padding: 20px;
+}
+
+.table-container.maximized::-webkit-scrollbar {
+  display: none;
 }
 
 /* Table styling */
