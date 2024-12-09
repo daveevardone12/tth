@@ -28,6 +28,9 @@ router.post("/signup/submit", async (req, res) => {
     return res.redirect("/signup");
   }
 
+  const passwordLenght = value.password.length;
+  console.log("passwordLenght:", passwordLenght);
+
   const hashedPassword = await bcrypt.hash(value.password, 10);
 
   try {
@@ -44,9 +47,9 @@ router.post("/signup/submit", async (req, res) => {
 
     // Insert new user into the database
     await tthPool.query(
-      `INSERT INTO users (first_name, last_name, email, phone, password, role)
-      VALUES ($1, $2, $3, $4, $5, $6)`,
-      [value.firstname, value.lastname, value.email, value.phone, hashedPassword, value.role]
+      `INSERT INTO users (first_name, last_name, email, phone, password, role, password_length)
+      VALUES ($1, $2, $3, $4, $5, $6, $7)`,
+      [value.firstname, value.lastname, value.email, value.phone, hashedPassword, value.role, passwordLenght]
     );
 
     // Send confirmation email using Nodemailer
@@ -62,7 +65,7 @@ router.post("/signup/submit", async (req, res) => {
       from: 'your-email@gmail.com',
       to: value.email,
       subject: 'Account Signup Confirmation',
-      text: `Hello ${value.firstname},\n\nYour account has been successfully created in our system. Welcome!\n\nRegards,\nThe Team`
+      text: `Hello ${value.first_name},\n\nYour email has been changed. Welcome!\n\nRegards,\nThe Team`
     };
 
     // Send the email and handle the response properly
