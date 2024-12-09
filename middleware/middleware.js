@@ -6,12 +6,14 @@ function setUserData(req, res, next) {
     res.locals.email = req.user.email;
     res.locals.phone = req.user.phone;
     res.locals.role = req.user.role;
+    res.locals.role = req.user.password_length;
   } else {
     res.locals.user_id = null;
     res.locals.first_name = null;
     res.locals.last_name = null;
     res.locals.email = null;
     res.locals.phone = null;
+    res.locals.role = null;
     res.locals.role = null;
   }
   next();
