@@ -25,13 +25,13 @@
                         <div class="user-info">
                             <h2>User Information</h2>
                             <label for="first-name">First Name:</label>
-                            <input type="text" id="first-name" value="John Lloyd" disabled>
+                            <input type="text" id="first-name" value="<%= data.first_name %>" disabled>
 
                             <label for="last-name">Last Name:</label>
-                            <input type="text" id="last-name" value="Tabuac" disabled>
+                            <input type="text" id="last-name" value="<%= data.last_name %>" disabled>
 
                             <label for="contact-no">Contact No.:</label>
-                            <input type="text" id="contact-no" value="09491573184" disabled>
+                            <input type="text" id="contact-no" value="<%= data.phone %>" disabled>
 
                             <button id="edit-btn" class="edit-btn">Edit Profile</button>
                         </div>
@@ -39,10 +39,10 @@
                         <div class="email-password">
                             <h2>Email & Password</h2>
                             <label for="email">Email:</label>
-                            <input type="email" id="email" value="tabuac.johnlloyd00@gmail.com" disabled>
+                            <input type="email" id="email" value="<%= data.email %>" disabled>
 
                             <label for="password">Password:</label>
-                            <input type="password" id="password" value="*******" disabled>
+                            <input type="password" id="password" value="<%= data.password.length %>" disabled>
 
                             <button id="change-email-btn" class="action-btn">Change Email</button>
                             <button id="change-password-btn" class="action-btn">Change Password</button>

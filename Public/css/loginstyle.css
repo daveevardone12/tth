@@ -1,171 +1,171 @@
 /* Reset default margins and padding */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f7f5ed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+  font-family: "Arial", sans-serif;
+  background-color: #f7f5ed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
 }
 
-.login-section > .logo{
-    margin: auto;
+.login-section > .logo {
+  margin: auto;
 }
 
 .container {
-    /* display: flex; */
-    width: 25%;
-    max-width: 1200px;
-    background-color: #fef9f2;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  /* display: flex; */
+  width: 25%;
+  max-width: 1200px;
+  background-color: #fef9f2;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Professional styling for form labels */
 .form-label {
-    display: block;
-    font-size: 1em;
-    font-weight: 500;
-    color: #333;
-    margin-bottom: 5px;
+  display: block;
+  font-size: 1em;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 5px;
 }
 
 /* Dropdown styling */
 .form-select {
-    width: 100% !important;
-    padding: 10px !important;
-    font-size: 1em !important;
-    color: #333 !important;
-    background-color: #fff !important;
-    border: 1px solid #ccc !important;
-    border-radius: 5px !important;
-    outline: none !important;
-    margin-bottom: 15px;
+  width: 100% !important;
+  padding: 10px !important;
+  font-size: 1em !important;
+  color: #333 !important;
+  background-color: #fff !important;
+  border: 1px solid #ccc !important;
+  border-radius: 5px !important;
+  outline: none !important;
+  margin-bottom: 15px;
 }
 
 /* Hover and focus states */
 .form-select:hover {
-    border-color: #888;
+  border-color: #888;
 }
 
 .form-select:focus {
-    border-color: #006400; /* Match with button color */
-    
+  border-color: #006400; /* Match with button color */
 }
 
 /* Form group spacing */
 .form-group {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 /* Left section (login form) */
 .login-section {
-    flex: 1;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .login-section img {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .login-section h1 {
-    font-size: 2.2em;
-    margin-bottom: 30px;
-    font-weight: bold;
-    color: #333;
+  font-size: 2.2em;
+  margin-bottom: 30px;
+  font-weight: bold;
+  color: #333;
 }
 
 .login-section label {
-    font-size: 1em;
-    color: #333;
+  font-size: 1em;
+  color: #333;
 }
 
 .login-section input[type="email"],
 .login-section input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 20px;
-    font-size: 1em;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .login-section input[type="checkbox"] {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .login-section button {
-    width: 100%;
-    padding: 12px;
-    background-color: #006400;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.2em;
-    cursor: pointer;
+  width: 100%;
+  padding: 12px;
+  background-color: #006400;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2em;
+  cursor: pointer;
 }
 
 .login-section button:hover {
-    background-color: #004d00;
+  background-color: #004d00;
 }
 
-img .logo{
-    display: flex;
+img .logo {
+  display: flex;
 }
 
 .login-section p {
-    margin-top: 20px;
-    font-size: 0.9em;
-    color: #333;
+  margin-top: 20px;
+  font-size: 0.9em;
+  color: #333;
+  display: flex;
+  justify-content: center;
 }
 
 .login-section p a {
-    color: #007bff;
-    text-decoration: none;
+  color: #007bff;
+  text-decoration: none;
 }
 
 .login-section p a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 /* Right section (PMS logo) */
 
-
 /* Style adjustments for mobile responsiveness */
 @media screen and (max-width: 768px) {
-    .container {
-        flex-direction: column;
-    }
+  .container {
+    flex-direction: column;
+  }
 
-    .login-section,
-    .logo-section {
-        width: 100%;
-        max-width: 100%;
-        padding: 20px;
-    }
+  .login-section,
+  .logo-section {
+    width: 100%;
+    max-width: 100%;
+    padding: 20px;
+  }
 
-    .login-section h1 {
-        text-align: center;
-    }
+  .login-section h1 {
+    text-align: center;
+  }
 
-    .logo-section {
-        padding: 20px;
-    }
+  .logo-section {
+    padding: 20px;
+  }
 
-    .logo-section img {
-        width: 60%;
-    }
+  .logo-section img {
+    width: 60%;
+  }
 }
