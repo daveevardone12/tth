@@ -42,7 +42,7 @@
                             <input type="email" id="email" value="<%= data.email %>" disabled>
 
                             <label for="password">Password:</label>
-                            <input type="password" id="password" value="<%= data.password.length %>" disabled>
+                            <input type="password" id="password" value="<%= password%>" disabled>
 
                             <button id="change-email-btn" class="action-btn">Change Email</button>
                             <button id="change-password-btn" class="action-btn">Change Password</button>
@@ -87,18 +87,18 @@ function confirmLogout() {
             </div>
 
             <!-- The Pop-up Modal for Change Email -->
-            <div id="changeEmailModal" class="modal">
+            <div  id="changeEmailModal" class="modal">
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <h2>Change Email</h2>
-                    <form action="#">
+                    <form action="/user/changeEmail" method="post">
                         <label for="new-email">New Email</label>
                         <input type="email" id="new-email" name="newemail" placeholder="Your new email..">
 
                         <label for="confirm-email">Confirm Email</label>
                         <input type="email" id="confirm-email" name="confirmemail" placeholder="Confirm your email..">
 
-                        <input type="submit" value="Save">
+                        <input type="submit" value="Save" >
                     </form>
                 </div>
             </div>
