@@ -21,12 +21,17 @@ body {
 
 .container {
   /* display: flex; */
-  width: 25%;
+  /* width: 25%; */
   max-width: 1200px;
   background-color: #fef9f2;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.essu {
+  width: 100%;
+  background-color: #f7f5ed;
 }
 
 /* Professional styling for form labels */
@@ -133,6 +138,16 @@ img .logo {
   justify-content: center;
 }
 
+.login {
+  display: flex;
+  width: 60%;
+  gap: 24px;
+}
+.login > div:last-child {
+  display: grid;
+  place-items: center;
+}
+
 .login-section p a {
   color: #007bff;
   text-decoration: none;
@@ -168,4 +183,8 @@ img .logo {
   .logo-section img {
     width: 60%;
   }
+}
+
+.login > div {
+  flex: 1;
 }

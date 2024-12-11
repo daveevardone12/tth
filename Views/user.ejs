@@ -71,18 +71,19 @@ function confirmLogout() {
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <h2>Edit Profile</h2>
-                    <form action="#">
+                    <form action="/user/changeProfile" method="POST">
                         <label for="fname">First name</label>
-                        <input type="text" id="fname" name="firstname" placeholder="Your first name..">
-
+                        <input type="text" id="fname" name="newfirstname" placeholder="Your first name.." required>
+                    
                         <label for="lname">Last name</label>
-                        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-
+                        <input type="text" id="lname" name="newlastname" placeholder="Your last name.." required>
+                    
                         <label for="contact">Contact No.</label>
-                        <input type="text" id="contact" name="contact" placeholder="Your contact number..">
-
+                        <input type="text" id="contact" name="newcontact" placeholder="Your contact number.." required>
+                    
                         <input type="submit" value="Save">
                     </form>
+                    
                 </div>
             </div>
 
@@ -108,7 +109,7 @@ function confirmLogout() {
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <h2>Change Password</h2>
-                    <form action="#">
+                    <form action="">
                         <label for="current-password">Current Password</label>
                         <input type="password" id="current-password" name="currentpassword"
                             placeholder="Your current password..">

@@ -3,10 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentSearchQuery = "";
   const loadingSpinner = document.getElementById("loadingSpinner");
   const overlay = document.getElementById("sort-by-overlay");
-  const closeButton = document.getElementById("close-sort-by");
-  const resetButton = document.getElementById("reset-sort-by");
-  const applyButton = document.getElementById("apply-sort-by");
-  const sortInputs = overlay.querySelectorAll("input[type='radio']");
 
   function updateInventoryTable(data) {
     const tableBody = document.getElementById("inventoryTableBody");
@@ -23,32 +19,21 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         );
         rows += `
-                    <tr>
-                    <td>${invent.item_name}</td>
-                    <td>${invent.description}</td>
-                    <td>${invent.property_no}</td>
-                    <td></td>
-                    <td>${invent.unit_cost}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>1</td>
-                    <td>${invent.accountable}</td>
-                    <td>${invent.location}</td>
-                    <td>${formattedDate}</td>
-                    <td>
-                        <!-- Three-dots menu -->
-                        <div class="menu-container">
-                            <i class="fas fa-ellipsis-v menu-icon"></i>
-                            <div class="dropdown-menu">
-                                <button onclick="handleAction('Update')">Update</button>
-                                <button onclick="printDocument('Print')">Print</button>
-                                <button onclick="handleAction('Dispose')"><a href="/ptr">Dispose</a></button>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                    `;
+                      <tr>
+                      <td>${invent.item_name}</td>
+                      <td>${invent.description}</td>
+                      <td>${invent.property_no}</td>
+                      <td></td>
+                      <td>${invent.unit_cost}</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>1</td>
+                      <td>${invent.accountable}</td>
+                      <td>${invent.location}</td>
+                      <td>${formattedDate}</td>
+                      
+                      `;
       });
     } else {
       rows = '<tr><td colspan="13">No list of Document</td></tr>';
@@ -56,12 +41,39 @@ document.addEventListener("DOMContentLoaded", function () {
     tableBody.innerHTML = rows; // Batch DOM update
   }
 
+  function ambotnahingangalimotakhitdida(data) {
+    document.getElementById("officeEquipment").innerText =
+      data.totalItemsOffice;
+    document.getElementById("ICTEquipment").innerText =
+      data.totalItemsICTEquipment;
+    document.getElementById("AgriEquipment").innerText =
+      data.totalItemsAgriEquipment;
+    document.getElementById("MedEquipment").innerText =
+      data.totalItemsMedEquipment;
+    document.getElementById("PrintEquipment").innerText =
+      data.totalItemsPrintEquipment;
+    document.getElementById("TSEquipment").innerText =
+      data.totalItemsTSEquipment;
+    document.getElementById("OMEquipment").innerText =
+      data.totalItemsOMEquipment;
+    document.getElementById("MotorVehicles").innerText =
+      data.totalMotorVehicles;
+    document.getElementById("FurnitureEquipment").innerText =
+      data.totalFurnitureEquipment;
+    document.getElementById("Books").innerText = data.totalBooks;
+    document.getElementById("Software").innerText = data.totalSoftware;
+    document.getElementById("MachineryEquipment").innerText =
+      data.totalMachineryEquipment;
+  }
+
   function fetchInventoryUpdates() {
     if (!isSearching) {
-      fetch("/Inventory?ajax=true")
+      fetch("/dashboard?ajax=true")
         .then((response) => response.json())
         .then((data) => {
           updateInventoryTable(data);
+          ambotnahingangalimotakhitdida(data);
+          console.log(data);
         })
         .catch((error) => {
           console.error("Error fetching inventory updates:", error);
@@ -108,56 +120,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }, 300)
   ); // 300 ms delay for debounce
-
-  // Open overlay function
-  function openSortOverlay() {
-    overlay.classList.remove("hidden");
-  }
-
-  // Close overlay function
-  closeButton.addEventListener("click", () => {
-    overlay.classList.add("hidden");
-  });
-
-  // Reset button functionality
-  resetButton.addEventListener("click", () => {
-    sortInputs.forEach((input) => (input.checked = false));
-  });
-
-  // Apply button functionality
-  applyButton.addEventListener("click", () => {
-    const selectedSortOptions = {};
-
-    // Collect selected sort options
-    sortInputs.forEach((input) => {
-      if (input.checked) {
-        selectedSortOptions[input.name] = input.value;
-      }
-    });
-
-    // Example: Trigger a sorting function with the selected options
-    applySorting(selectedSortOptions);
-
-    // Close the overlay
-    overlay.classList.add("hidden");
-  });
-
-  // Sorting function (example logic)
-  function applySorting(options) {
-    // Assume `data` is the array of items to be sorted
-    console.log("sorted: ", options);
-    fetch(`/Inventory/sort?date=${options.date}&docName=${options.name}`)
-      .then((response) => response.json())
-      .then((data) => {
-        updateInventoryTable(data);
-      })
-      .catch((error) => {
-        console.error("Error during search:", error);
-      })
-      .finally(() => {
-        loadingSpinner.style.display = "none";
-      });
-  }
 
   // Function to handle pagination clicks
   function handlePagination(event) {
@@ -225,8 +187,3 @@ document.addEventListener("DOMContentLoaded", function () {
   // Initial setup
   attachPaginationListeners();
 });
-
-function printDocument() {
-  // Trigger the browser's print dialog
-  window.print();
-}
