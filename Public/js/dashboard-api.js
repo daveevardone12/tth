@@ -32,18 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
                       <td>${invent.accountable}</td>
                       <td>${invent.location}</td>
                       <td>${formattedDate}</td>
-                      <td>
-                          <!-- Three-dots menu -->
-                          <div class="menu-container">
-                              <i class="fas fa-ellipsis-v menu-icon"></i>
-                              <div class="dropdown-menu">
-                                  <button onclick="handleAction('Update')">Update</button>
-                                  <button onclick="handleAction('Print')">Print</button>
-                                  <button onclick="handleAction('Dispose')"><a href="/ptr">Dispose</a></button>
-                              </div>
-                          </div>
-                      </td>
-                  </tr>
+                      
                       `;
       });
     } else {
