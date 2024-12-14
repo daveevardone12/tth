@@ -20,18 +20,17 @@ body {
 }
 
 .container {
-  /* display: flex; */
-  /* width: 25%; */
   max-width: 1200px;
-  background-color: #fef9f2;
-  border-radius: 8px;
+  background-image: url("../images/br.png"); /* Corrected */
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
   overflow: hidden;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
 .essu {
-  width: 100%;
-  background-color: #f7f5ed;
+  width: 50%;
+  text-align: right; /* Aligns text inside to the right */
 }
 
 /* Professional styling for form labels */
@@ -62,7 +61,7 @@ body {
 }
 
 .form-select:focus {
-  border-color: #006400; /* Match with button color */
+  border-color: #095c02; /* Match with button color */
 }
 
 /* Form group spacing */
@@ -85,15 +84,17 @@ body {
 }
 
 .login-section h1 {
+  text-align: center;
+  width: 100%;
   font-size: 2.2em;
   margin-bottom: 30px;
   font-weight: bold;
-  color: #333;
+  color: white;
 }
 
 .login-section label {
   font-size: 1em;
-  color: #333;
+  color: white;
 }
 
 .login-section input[type="email"],
@@ -114,7 +115,7 @@ body {
 .login-section button {
   width: 100%;
   padding: 12px;
-  background-color: #006400;
+  background-color: #095c02;
   color: white;
   border: none;
   border-radius: 5px;
@@ -133,7 +134,7 @@ img .logo {
 .login-section p {
   margin-top: 20px;
   font-size: 0.9em;
-  color: #333;
+  color: white;
   display: flex;
   justify-content: center;
 }
@@ -141,11 +142,14 @@ img .logo {
 .login {
   display: flex;
   width: 60%;
-  gap: 24px;
 }
 .login > div:last-child {
-  display: grid;
+  display: flex;
+  flex-direction: row;
+  background-image: url("../images/br.png");
   place-items: center;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 .login-section p a {
