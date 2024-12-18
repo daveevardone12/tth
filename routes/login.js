@@ -5,8 +5,8 @@ const bcrypt = require("bcrypt");
 const tthPool = require("../models/tthDB");
 const { checkNotAuthenticated } = require("../middleware/middleware");
 const passport = require("passport");
-const crypto = require("crypto"); // For generating unique tokens
-const nodemailer = require("nodemailer"); // For sending email
+const crypto = require("crypto");
+const nodemailer = require("nodemailer");
 
 const userSchema = Joi.object({
   role: Joi.string().required(),
@@ -14,6 +14,7 @@ const userSchema = Joi.object({
   password: Joi.string().required(),
 });
 
+// Login Routes
 router.get("/", checkNotAuthenticated, (req, res) => {
   res.render("login");
 });
@@ -50,7 +51,6 @@ router.post("/login/submit", async (req, res, next) => {
         return next(err);
       }
 
-      // Log user role and proceed accordingly
       console.log("Authenticated user role:", user.role);
       switch (user.role) {
         case "admin":
@@ -65,7 +65,7 @@ router.post("/login/submit", async (req, res, next) => {
   })(req, res, next);
 });
 
-// Forget Password Route
+// Forgot Password Routes
 router.get("/forgot-password", checkNotAuthenticated, (req, res) => {
   res.render("forgot-password");
 });
@@ -73,7 +73,6 @@ router.get("/forgot-password", checkNotAuthenticated, (req, res) => {
 router.post("/forgot-password", async (req, res) => {
   const { email } = req.body;
 
-  // Check if user exists
   const userQuery = `SELECT * FROM users WHERE email = $1`;
   const userResult = await tthPool.query(userQuery, [email]);
 
@@ -82,31 +81,30 @@ router.post("/forgot-password", async (req, res) => {
     return res.redirect("/forgot-password");
   }
 
-  // Generate a reset token and expiry
   const resetToken = crypto.randomBytes(20).toString("hex");
-  const resetTokenExpiry = new Date(Date.now() + 3600000).toISOString(); // PostgreSQL-compatible timestamp
+  const resetTokenExpiry = new Date(Date.now() + 3600000).toISOString();
 
-  // Save the reset token and expiry to the user's record
   const updateQuery = `
-  UPDATE users SET reset_token = $1, reset_token_expiry = $2 WHERE email = $3
-`;
+    UPDATE users SET reset_token = $1, reset_token_expiry = $2 WHERE email = $3
+  `;
   await tthPool.query(updateQuery, [resetToken, resetTokenExpiry, email]);
 
-  // Send the reset link via email
   const transporter = nodemailer.createTransport({
-    service: "gmail", // Replace with your email provider
+    service: "gmail",
     auth: {
-      user: "davemarlon74@gmail.com", // Replace with your email
-      pass: "xiwi bebe vbxc giny", // Replace with your email password
+      user: "davemarlon74@gmail.com",
+      pass: "xiwi bebe vbxc giny",
     },
   });
 
   const resetUrl = `http://${req.headers.host}/reset-password/${resetToken}`;
+  console.log("Reset URL:", resetUrl);
+
   const mailOptions = {
     to: email,
     from: "davemarlon74@gmail.com",
     subject: "Password Reset",
-    text: `You are receiving this because you (or someone else) requested to reset your password. Click the following link to reset your password:\n\n${resetUrl}\n\nIf you did not request this, please ignore this email.`,
+    text: `You requested a password reset. Click the link below to reset your password:\n\n${resetUrl}\n\nIf you did not request this, ignore this email.`,
   };
 
   try {
@@ -120,10 +118,9 @@ router.post("/forgot-password", async (req, res) => {
   }
 });
 
-// Reset Password Route
+// Reset Password Routes
 router.get("/reset-password/:token", (req, res) => {
   const { token } = req.params;
-
   res.render("reset-password", { token });
 });
 
@@ -131,18 +128,19 @@ router.post("/reset-password/:token", async (req, res) => {
   const { token } = req.params;
   const { password } = req.body;
 
-  // Validate the token and expiry
   const tokenQuery = `
     SELECT * FROM users WHERE reset_token = $1 AND reset_token_expiry > $2
   `;
-  const tokenResult = await tthPool.query(tokenQuery, [token, Date.now()]);
+  const tokenResult = await tthPool.query(tokenQuery, [
+    token,
+    new Date(Date.now()).toISOString(),
+  ]);
 
   if (tokenResult.rowCount === 0) {
     req.flash("error", "Invalid or expired token.");
     return res.redirect("/forgot-password");
   }
 
-  // Update the password
   const hashedPassword = await bcrypt.hash(password, 10);
   const updatePasswordQuery = `
     UPDATE users SET password = $1, reset_token = NULL, reset_token_expiry = NULL WHERE reset_token = $2

@@ -123,6 +123,7 @@
               outline: none;
             "
           >
+            <option value="" disabled selected>Select role</option>
             <option value="employee">Employee</option>
             <option value="admin">Admin</option>
           </select>
@@ -149,7 +150,11 @@
             required
           />
 
-          <a href="/forgot-password">Forget Your Password?</a>
+          <a
+            href="/forgot-password"
+            style="color: white; align-self: flex-end; margin-top: -3px"
+            >Forgot Your Password?</a
+          >
           <button type="submit">LOGIN</button>
         </form>
       </div>
@@ -166,7 +171,8 @@
               id="login"
               style="background-color: transparent; color: white"
             >
-              Already have an account ? Sign In
+              Already have an account? <br />
+              Sign In
             </button>
           </div>
           <div class="toggle-panel toggle-right">

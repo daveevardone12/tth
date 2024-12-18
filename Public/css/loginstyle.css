@@ -47,7 +47,7 @@ body {
 
 .container button {
   background-color: #c3bbbb;
-  color: #095c02;
+  color: white;
   font-size: 12px;
   padding: 10px 45px;
   border: 1px solid transparent;
@@ -55,7 +55,7 @@ body {
   font-weight: 600;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  margin-top: 10px;
+  margin-top: 20px;
   cursor: pointer;
 }
 
@@ -199,9 +199,9 @@ body {
   background-size: 100%; /* Make the background fit horizontally */
   color: #095c02;
   position: relative;
-  left: -100%;
-  max-width: 768px;
-  width: 200%; /* Set width to 200% to extend the element */
+  left: -110%;
+  /* max-width: 768px; */
+  width: 210%; /* Set width to 200% to extend the element */
   transform: translateX(1);
   transition: all 0.6s ease-in-out;
 }
