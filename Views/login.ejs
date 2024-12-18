@@ -1,69 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login | Property Management System</title>
-    <link rel="stylesheet" href="../css/loginstyle.css">
-    <link rel="stylesheet" href="../css/general.css">
-</head>
-<body>
-
-    
-    <div class="container">
+    <link rel="stylesheet" href="../css/loginstyle.css" />
+    <link rel="stylesheet" href="../css/general.css" />
+  </head>
+  <body>
+    <div class="login">
+      <div class="container">
         <!-- Left Section: Login Form -->
         <div class="login-section">
-            <!-- Logos -->
-            <div class="logo">
-                <img src="../images/university_logo.png" alt="University Logo" style="width: 80px;">
-                <img src="../images/smartzone_logo.png" alt="SmartZone Logo" style="width: 110px;">
-            </div>
-            <!-- Login Form Title -->
-            <h1>Login</h1>
+          <!-- Logos -->
+          <div class="logo">
+            <img
+              src="../images/university_logo.png"
+              alt="University Logo"
+              style="width: 80px"
+            />
+            <img
+              src="../images/smartzone_logo.png"
+              alt="SmartZone Logo"
+              style="width: 110px"
+            />
+          </div>
+          <!-- Login Form Title -->
+          <h1>Login</h1>
 
-            <div class="success">
-                <% if (messages.success) { %>
-                    <%= messages.success %> 
-                <% } %>
-            </div>
-            <div class="error">
-                <% if (messages.error) { %>
-                    <%= messages.error %> 
-                <% } %>
-            </div>
+          <div class="success">
+            <% if (messages.success) { %> <%= messages.success %> <% } %>
+          </div>
+          <div class="error">
+            <% if (messages.error) { %> <%= messages.error %> <% } %>
+          </div>
 
-            <!-- Form Fields -->
-            <form action="/login/submit" method="POST">
-                <!-- User Role Dropdown -->
-                <label for="role" style="margin-bottom: 100px;">Login as:</label>
-                <select id="role" name="role" class="form-select" style="width: 100%; padding: 10px; font-size: 1em; color: #333; background-color: #fff; border: 1px solid #ccc; border-radius: 5px; margin-top: 8px;">
-                    <option value="employee">Employee</option>
-                    <option value="admin">Admin</option>
-                </select>
+          <!-- Form Fields -->
+          <form action="/login/submit" method="POST">
+            <!-- User Role Dropdown -->
+            <label for="role" style="margin-bottom: 100px">Login as:</label>
+            <select
+              id="role"
+              name="role"
+              class="form-select"
+              style="
+                width: 100%;
+                padding: 10px;
+                font-size: 1em;
+                color: #333;
+                background-color: #fff;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                margin-top: 8px;
+              "
+            >
+              <option value="employee">Employee</option>
+              <option value="admin">Admin</option>
+            </select>
 
-                <label for="email">Email*</label>
-                <input type="email" userId="email" name="email" placeholder="Enter email here." required>
-                
-                <label for="password">Password*</label>
-                <input type="password" userId="password" name="password" placeholder="Minimum 8 characters." required>
-                
-                <br><br>
+            <label for="email">Email*</label>
+            <input
+              type="email"
+              userId="email"
+              name="email"
+              placeholder="Enter email here."
+              required
+            />
 
-                <!-- Login Button -->
-                <button type="submit">LOGIN</button>
-                
-                <br><br>
+            <label for="password">Password*</label>
+            <input
+              type="password"
+              userId="password"
+              name="password"
+              placeholder="Minimum 8 characters."
+              required
+            />
 
-                <!-- Sign up link -->
-                <p>Don’t have an account? <a href="/signup">Sign Up here.</a></p>
-            </form>
+            <br /><br />
+
+            <!-- Login Button -->
+            <button type="submit">LOGIN</button>
+
+            <br /><br />
+
+            <!-- Sign up link -->
+            <p>Don’t have an account? <a href="/signup">Sign Up here.</a></p>
+          </form>
         </div>
-
-        <!-- Right Section: PMS Logo -->
-        <div class="logo-section">
-            <!-- gin tanggal ko an img kasi an im code dit ka ha css mag butang hin image -->
-        </div>
+      </div>
+      <div>
+        <img src="../images/ESSU_Logo_New.png" alt="" class="essu" />
+      </div>
+      <!-- Right Section: PMS Logo -->
     </div>
-
-</body>
+  </body>
 </html>
