@@ -14,7 +14,7 @@ body {
 .container {
   display: flex;
   height: 100vh;
-  background-color: #f7f5ed;
+  background-color: white;
 }
 
 /* Sidebar styling */

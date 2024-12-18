@@ -49,40 +49,50 @@ router.post("/signup/submit", async (req, res) => {
     await tthPool.query(
       `INSERT INTO users (first_name, last_name, email, phone, password, role, password_length)
       VALUES ($1, $2, $3, $4, $5, $6, $7)`,
-      [value.firstname, value.lastname, value.email, value.phone, hashedPassword, value.role, passwordLenght]
+      [
+        value.firstname,
+        value.lastname,
+        value.email,
+        value.phone,
+        hashedPassword,
+        value.role,
+        passwordLenght,
+      ]
     );
 
     // Send confirmation email using Nodemailer
     const transporter = nodemailer.createTransport({
-      service: 'gmail', // Use Gmail (or another email service)
+      service: "gmail", // Use Gmail (or another email service)
       auth: {
-        user: 'davemarlon74@gmail.com', // Replace with your Gmail address
-        pass: 'kchd wqti vvmb fzkn'  // Use the generated app password (see below)
-      }
+        user: "davemarlon74@gmail.com", // Replace with your Gmail address
+        pass: "xiwi bebe vbxc giny", // Use the generated app password (see below)
+      },
     });
 
     const mailOptions = {
-      from: 'your-email@gmail.com',
+      from: "your-email@gmail.com",
       to: value.email,
-      subject: 'Account Signup Confirmation',
-      text: `Hello ${value.first_name},\n\nYour email has been changed. Welcome!\n\nRegards,\nThe Team`
+      subject: "Account Signup Confirmation",
+      text: `Hello ${value.first_name},\n\nYour email has been changed. Welcome!\n\nRegards,\nThe Team`,
     };
 
     // Send the email and handle the response properly
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
-        console.error('Error sending email: ', error);
-        req.flash("error", "Error sending confirmation email. Please try again.");
-        return res.redirect("/signup");  // Ensure to return here to avoid further responses
+        console.error("Error sending email: ", error);
+        req.flash(
+          "error",
+          "Error sending confirmation email. Please try again."
+        );
+        return res.redirect("/signup"); // Ensure to return here to avoid further responses
       } else {
-        console.log('Email sent: ' + info.response);
+        console.log("Email sent: " + info.response);
       }
     });
 
     // Flash success message and redirect to login page after email is sent
     req.flash("success", "Account created successfully. Please log in.");
-    return res.redirect("/login");  // Ensure the response is sent only once
-
+    return res.redirect("/login"); // Ensure the response is sent only once
   } catch (err) {
     console.error("Error: ", err);
     req.flash("error", "Internal Server Error. Please try again.");
