@@ -18,7 +18,7 @@ textarea {
 
 .sidebar {
   width: 300px;
-  background-color: #0a5d03;
+  background-color: #095c02;
   color: white;
   height: 100vh;
   padding: 0 0 20px 0;
@@ -64,10 +64,18 @@ textarea {
   margin-right: 10px;
 }
 
-.sidebar .imageSection > div {
-  width: 80px;
+.sidebar .imageSection > div:first-child {
+  width: 70px;
   border-radius: 50%;
   background-color: white;
+  display: grid;
+  place-items: center;
+}
+
+.sidebar .imageSection > div:last-child {
+  width: 95px;
+  border-radius: 50%;
+  /* background-color: white; */
   display: grid;
   place-items: center;
 }
@@ -179,11 +187,11 @@ li {
   flex-direction: column;
   gap: 12px;
   padding: 0 20px 24px 20px;
+  background-color: #095c02;
   position: sticky;
   top: 0;
   z-index: 100;
-  padding-top: 20px;
-  border-bottom: 1px solid black;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.15);
 }
 
 /* Navigation links */
@@ -282,7 +290,7 @@ li {
 
 #paginationNav a {
   color: #fff;
-  background-color: #008000;
+  background-color: #095c02;
   padding: 8px 40px;
   text-decoration: none;
   border-radius: 5px;

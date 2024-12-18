@@ -4,94 +4,200 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login | Property Management System</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
     <link rel="stylesheet" href="../css/loginstyle.css" />
     <link rel="stylesheet" href="../css/general.css" />
   </head>
+
   <body>
-    <div class="login">
-      <div class="container">
-        <!-- Left Section: Login Form -->
-        <div class="login-section">
-          <!-- Logos -->
-          <div class="logo">
+    <div class="container" id="container">
+      <!-- Sign-Up Section -->
+      <div class="success">
+        <% if (messages && messages.success) { %> <%= messages.success %> <% }
+        %>
+      </div>
+      <div class="error">
+        <% if (messages && messages.error) { %> <%= messages.error %> <% } %>
+      </div>
+      <div class="form-container sign-up">
+        <form action="/signup/submit" method="POST">
+          <h1 style="color: white; padding-bottom: 40px">Create Account</h1>
+          <span style="color: white; padding-bottom: 10px"
+            >Register with your personal details to access the system</span
+          >
+          <input
+            type="text"
+            name="firstname"
+            placeholder="First Name"
+            required
+          />
+          <input type="text" name="lastname" placeholder="Last Name" required />
+          <input type="email" name="email" placeholder="Email" required />
+          <input type="text" name="phone" placeholder="Phone no." required />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+          />
+
+          <label for="role"></label>
+          <select
+            name="role"
+            id="role"
+            style="
+              background-color: #eee;
+              border: none;
+              margin: 8px 0;
+              padding: 10px 15px;
+              font-size: 13px;
+              border-radius: 8px;
+              width: 100%;
+              outline: none;
+            "
+            required
+          >
+            <option value="" disabled selected>Select role</option>
+            <option value="admin">Admin</option>
+            <option value="employee">Employee</option>
+          </select>
+
+          <button type="submit">Sign Up</button>
+        </form>
+      </div>
+
+      <!-- Sign-In Section -->
+      <div class="form-container sign-in">
+        <form action="/login/submit" method="POST">
+          <div
+            class="logo"
+            style="display: flex; align-items: center; justify-content: center"
+          >
             <img
-              src="../images/university_logo.png"
-              alt="University Logo"
-              style="width: 80px"
+              src="../images/pms.png"
+              alt="PMS Logo"
+              style="width: 110px; display: flex; justify-content: center"
             />
-            <img
-              src="../images/smartzone_logo.png"
-              alt="SmartZone Logo"
-              style="width: 110px"
-            />
+            <p style="margin: 0; color: #fffcc0; font-size: small">
+              Property Management System
+            </p>
           </div>
-          <!-- Login Form Title -->
-          <h1>Login</h1>
+          <h1 style="color: white; margin-bottom: 5px">Sign In</h1>
 
           <div class="success">
-            <% if (messages.success) { %> <%= messages.success %> <% } %>
+            <% if (messages && messages.success) { %> <%= messages.success %> <%
+            } %>
           </div>
           <div class="error">
-            <% if (messages.error) { %> <%= messages.error %> <% } %>
+            <% if (messages && messages.error) { %> <%= messages.error %> <% }
+            %>
           </div>
 
-          <!-- Form Fields -->
-          <form action="/login/submit" method="POST">
-            <!-- User Role Dropdown -->
-            <label for="role" style="margin-bottom: 100px">Login as:</label>
-            <select
-              id="role"
-              name="role"
-              class="form-select"
-              style="
-                width: 100%;
-                padding: 10px;
-                font-size: 1em;
-                color: #333;
-                background-color: #fff;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-                margin-top: 8px;
-              "
+          <label
+            for="role"
+            style="
+              display: flex;
+              justify-content: right;
+              align-self: flex-start;
+              color: white;
+              margin-top: 3px;
+              margin-bottom: 2px;
+            "
+            >Login as:</label
+          >
+          <select
+            id="role"
+            name="role"
+            class="form-select"
+            style="
+              background-color: #eee;
+              border: none;
+              margin: 8px 0;
+              padding: 10px 15px;
+              font-size: 13px;
+              border-radius: 8px;
+              width: 100%;
+              outline: none;
+            "
+          >
+            <option value="employee">Employee</option>
+            <option value="admin">Admin</option>
+          </select>
+
+          <label
+            for="email"
+            style="align-self: flex-start; color: white; margin-top: 3px"
+            >Email*</label
+          >
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter email here."
+            required
+          />
+
+          <label for="password" style="color: white; align-self: flex-start"
+            >Password*</label
+          >
+          <input
+            type="password"
+            name="password"
+            placeholder="Minimum 8 characters."
+            required
+          />
+
+          <a href="/forgot-password">Forget Your Password?</a>
+          <button type="submit">LOGIN</button>
+        </form>
+      </div>
+
+      <div class="toggle-container">
+        <div class="toggle">
+          <div class="toggle-panel toggle-left">
+            <img
+              src="../images/ESSU_Logo_New.png"
+              style="height: 250px; width: 250px"
+            />
+            <button
+              class="hidden"
+              id="login"
+              style="background-color: transparent; color: white"
             >
-              <option value="employee">Employee</option>
-              <option value="admin">Admin</option>
-            </select>
-
-            <label for="email">Email*</label>
-            <input
-              type="email"
-              userId="email"
-              name="email"
-              placeholder="Enter email here."
-              required
+              Already have an account ? Sign In
+            </button>
+          </div>
+          <div class="toggle-panel toggle-right">
+            <img
+              src="../images/ESSU_Logo_New.png"
+              style="height: 250px; width: 250px"
             />
-
-            <label for="password">Password*</label>
-            <input
-              type="password"
-              userId="password"
-              name="password"
-              placeholder="Minimum 8 characters."
-              required
-            />
-
-            <br /><br />
-
-            <!-- Login Button -->
-            <button type="submit">LOGIN</button>
-
-            <br /><br />
-
-            <!-- Sign up link -->
-            <p>Don’t have an account? <a href="/signup">Sign Up here.</a></p>
-          </form>
+            <button
+              class="hidden"
+              id="register"
+              style="background-color: transparent; color: white"
+            >
+              Don't have an account ? <br />Sign Up
+            </button>
+          </div>
         </div>
       </div>
-      <div>
-        <img src="../images/ESSU_Logo_New.png" alt="" class="essu" />
-      </div>
-      <!-- Right Section: PMS Logo -->
     </div>
+
+    <script>
+      const container = document.getElementById("container");
+      const registerBtn = document.getElementById("register");
+      const loginBtn = document.getElementById("login");
+
+      registerBtn.addEventListener("click", () => {
+        container.classList.add("active");
+      });
+
+      loginBtn.addEventListener("click", () => {
+        container.classList.remove("active");
+      });
+    </script>
   </body>
 </html>
