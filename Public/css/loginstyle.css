@@ -56,7 +56,7 @@ body {
   letter-spacing: 0.5px;
   text-transform: uppercase;
   margin-top: 20px;
-  cursor: pointer;
+  cursor: grab;
 }
 
 .container button.hidden {

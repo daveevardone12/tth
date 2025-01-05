@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const tthPool = require("../models/tthDB");
+const passport = require("passport");
 const { ensureAuthenticated } = require("../middleware/middleware");
 
 router.get("/", ensureAuthenticated, async (req, res) => {
