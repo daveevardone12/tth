@@ -8,8 +8,15 @@
 }
 
 h1 {
-    color: #333;
-    margin-bottom: 20px;
+  font-size: 30px;
+  font-family: Poppins;
+  font-weight: 600;
+  font-style: normal;
+  line-height: normal;
+  color: #000;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .profile-content {
@@ -69,11 +76,10 @@ input[type="text"], input[type="email"], input[type="password"] {
     height: 725px;
     margin: 20px auto; /* Centering the profile container */
     margin-top: 1px;
-    margin-left: 300px;
+    margin-left: 325px;
     padding: 20px;
-    
     border-radius: 8px; /* Optional: rounded corners */
-    
+
 }
 
 .profile-content input {

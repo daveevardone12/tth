@@ -27,7 +27,7 @@
         <ul>
             <li><a href="/dashboard"><img src="/Public/images/cuida--dashboard-outline.svg" alt="" class="dash">Dashboard</a></li>
             <li>
-                <a href="#" id="addItemLink"><img src="/Public/images/material-symbols--add-ad.svg" alt="" class="add">Add Item </a>
+                <a href="#addItemLink" id="addItemLink"><img src="/Public/images/material-symbols--add-ad.svg" alt="" class="add">Add Item <img src="/Public/images/fe--arrow-down.svg" alt="" class="arrow_down"></a>
                 <ul id="dropdown" style="display: none;" class="dropdown-men">
                     <li><a href="/par">Property Acknowledgement Receipt</a></li>
                     <li><a href="/ics">Inventory Custodian Slip</a></li>
@@ -37,7 +37,8 @@
 
             <li>
                 <a href="#" id="prslink">
-                    <img src="/Public/images/hugeicons--delivery-return-02.svg" alt="" class="return"> Return Item
+                    <img src="/Public/images/hugeicons--delivery-return-02.svg" alt="" class="return"> Return Item 
+                    <img src="/Public/images/fe--arrow-down.svg" alt="" class="arrow_down_return">
                 </a>
                 <ul id="dropdowns" style="display: none;">
                     <li><a href="/prs">Property Return Slip</a></li>
@@ -54,28 +55,37 @@
 </div>
 
 <script>
+    // Add Item link functionality
     document.getElementById("addItemLink").addEventListener("click", function(event) {
         event.preventDefault(); // Prevent the default link behavior
         const dropdown = document.getElementById("dropdown");
-        
+        const arrow = document.querySelector(".arrow_down");
+
         // Toggle the display of the dropdown
         if (dropdown.style.display === "none" || dropdown.style.display === "") {
             dropdown.style.display = "block"; // Show the dropdown
         } else {
             dropdown.style.display = "none"; // Hide the dropdown
         }
+
+        // Toggle the rotation of the arrow
+        arrow.classList.toggle("rotate");
     });
 
+    // Return Item link functionality
     document.getElementById("prslink").addEventListener("click", function(event) {
         event.preventDefault(); // Prevent the default link behavior
         const dropdown = document.getElementById("dropdowns");
-        
+        const arrowReturn = document.querySelector(".arrow_down_return");
+
         // Toggle the display of the dropdown
         if (dropdown.style.display === "none" || dropdown.style.display === "") {
             dropdown.style.display = "block"; // Show the dropdown
         } else {
             dropdown.style.display = "none"; // Hide the dropdown
         }
+
+        // Toggle the rotation of the return arrow
+        arrowReturn.classList.toggle("rotate");
     });
-    
 </script>

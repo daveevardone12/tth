@@ -7,7 +7,10 @@
 
 body {
   font-family: Arial, sans-serif;
-  overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Webkit browsers (Chrome, Safari, etc.) */
 }
 
 /* Flex container for sidebar and content */
@@ -146,35 +149,59 @@ i#maximize-icon {
   column-gap: 40px;
   row-gap: 40px;
   justify-content: center;
+
 }
 
 .card {
   width: 241.528px;
   height: 129.39px;
   padding: 15px;
-  border-radius: 10px;
+  border-radius: 20px;
   text-align: center;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
+  background-color: white;
+  color: black;
+  font-size: 15px;
+  font-weight: 500;
+  border-top: #0a5d03 7px solid;
+  border-left: 7px solid #0a5d03;
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
 }
 
-.purple {
+.card:hover {
+  width: 250.528px;
+  height: 140.39px;
+  padding: 15px;
+  border-radius: 20px;
+  text-align: center;
+  background-color: white;
+  color: black;
+  font-size: 15px;
+  font-weight: 500;
+  border-top: #0a5d03 7px solid;
+  border-left: 7px solid #0a5d03;
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s ease;
+}
+
+ /* .purple:hover {
   background-color: #ac95ff;
 }
 
-.red {
+.red:hover {
   background-color: #f96a6a;
 }
 
-.green {
+.green:hover {
   background-color: #b3c04e;
-}
+}  */
 
 .card span {
   display: block;
-  font-size: 28px;
-  margin-top: 10px;
+  font-size: 40px;
+  margin-bottom: 10px;
+  margin-top: -11px;
 }
 
 table {

@@ -13,6 +13,10 @@ body {
   background-color: white;
 }
 
+body::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Webkit browsers (Chrome, Safari, etc.) */
+}
+
 .container {
   display: flex; /* Ensures sidebar and main content are side by side */
   width: 100%;
@@ -28,6 +32,18 @@ body {
   overflow-x: auto; /* Add horizontal scrolling if needed for the table */
   background-color: white;
   border-left: 1px solid #ddd;
+}
+
+.logo-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 20px 24px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding-top: 20px;
+  border-bottom: 1px solid black;
 }
 
 /* Header styles */

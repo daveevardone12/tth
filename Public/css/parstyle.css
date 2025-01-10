@@ -14,9 +14,13 @@ body {
   background-color: #f7f5ed;
 }
 
+body::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Webkit browsers (Chrome, Safari, etc.) */
+}
+
 .main-content {
   background-color: #f7f5ed;
-  padding: 0;
+  padding: 20px;
   margin-left: 305px;
   margin-right: 5px;
   overflow: hidden;
@@ -26,7 +30,7 @@ body {
   background-color: #f7f5ed;
   border-radius: 10px;
   width: -webkit-fill-available;
-  margin-top: 50px;
+  /* margin-top: 50px; */
   margin-left: 15px;
 }
 
