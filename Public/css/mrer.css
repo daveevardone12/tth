@@ -9,8 +9,12 @@ body {
   height: 100vh;
 }
 
+body::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Webkit browsers (Chrome, Safari, etc.) */
+}
+
 .main-content {
-  padding: 0;
+  padding: 20;
   margin-left: 305px;
   margin-right: 5px;
   overflow: hidden;
@@ -18,10 +22,10 @@ body {
 
 .form-container {
   background-color: #f9f6ee;
-  margin-top: 50px;
+  /* margin-top: 50px; */
   border-radius: 8px;
   padding: 20px 30px;
-  margin-left: 15px;
+  /* margin-left: 15px; */
 }
 
 .form-group0 {
@@ -75,15 +79,20 @@ h1 {
   border-bottom: 1px solid #ccc;
   padding-bottom: 10px;
   margin-bottom: 20px;
-  margin-left: 40px;
 }
 
 h2 {
-  font-size: 25px;
+  font-size: 20px;
   font-family: Poppins;
+  font-weight: 500;
   font-style: normal;
+  line-height: normal;
   color: #000;
-  margin-left: 40px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  margin-bottom: 15px;
+  margin-left: 30px;
 }
 
 label {
@@ -243,7 +252,9 @@ button:hover {
 
 .btn-secondary {
   background-color: #0a5d03;
+  color: white;
 }
+
 
 .btn-secondary:hover {
   background-color: #0066cc;
