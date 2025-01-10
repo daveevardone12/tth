@@ -10,7 +10,7 @@ body {
   padding: 0;
   font-family: Arial, sans-serif;
   box-sizing: border-box;
-  background-color: #f8f9fa;
+  background-color: white;
 }
 
 body::-webkit-scrollbar {
@@ -30,7 +30,7 @@ body::-webkit-scrollbar {
     100% - 250px
   ); /* Make sure the main container fills the rest of the width */
   overflow-x: auto; /* Add horizontal scrolling if needed for the table */
-  background-color: #f7f5ed;
+  background-color: white;
   border-left: 1px solid #ddd;
 }
 
@@ -92,7 +92,7 @@ table {
 }
 
 table .t-head tr {
-  background-color: #0a5d03;
+  background-color: #095c02;
   color: #fff;
   text-align: center;
   text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
@@ -454,7 +454,7 @@ input[type="radio"] {
 .search-icon {
   width: 40px;
   height: 40px;
-  background-color: #4caf50;
+  background-color: #095c02;
   color: white;
   display: flex;
   align-items: center;

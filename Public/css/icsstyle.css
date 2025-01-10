@@ -8,14 +8,14 @@ body {
   align-items: center;
   height: 100vh;
   margin-right: 0;
-  color: #0a5d03;
+  color: #095c02;
   margin: 0;
   padding: 0;
-  background-color: #f7f5ed;
+  background-color: white;
 }
 
 .main-content {
-  background-color: #f7f5ed;
+  background-color: white;
   padding: 0;
   margin-left: 305px;
   margin-right: 5px;
@@ -96,7 +96,7 @@ h2 {
   width: 100%;
   margin-top: 50px;
   padding: 10px 0;
-  background: #6fd649;
+  background: #095c02;
   color: #fff;
   border: 0;
   outline: none;
@@ -199,7 +199,7 @@ h2 {
 /* Green background and white text on hover */
 .custom-dropdown-option:hover {
   color: #fff; /* White text */
-  background-color: #0a5d03; /* Green background */
+  background-color: #095c02; /* Green background */
 }
 
 /* Dropdown trigger styling */
@@ -214,13 +214,13 @@ h2 {
 
 /* Trigger hover effect */
 .custom-dropdown-trigger:hover {
-  border-color: #0a5d03; /* Green border when hovering */
+  border-color: #095c02; /* Green border when hovering */
 }
 
 /* Optional: Active state styling for trigger */
 .custom-dropdown-trigger.active {
   background-color: #e8f5e9; /* Light green background */
-  border-color: #0a5d03; /* Green border */
+  border-color: #095c02; /* Green border */
 }
 
 /*end for UACS*/
@@ -266,7 +266,7 @@ label:hover {
 #category-dropdown-options .custom-dropdown-option:hover,
 #location-dropdown-options .custom-dropdown-option:hover {
   color: #fff; /* White text */
-  background-color: #0a5d03; /* Green background */
+  background-color: #095c02; /* Green background */
 }
 
 /* Dropdown trigger styling for custom dropdowns */
@@ -286,13 +286,13 @@ label:hover {
 .custom-dropdown-trigger:hover,
 #category:hover,
 #location:hover {
-  border-color: #0a5d03; /* Green border when hovering */
+  border-color: #095c02; /* Green border when hovering */
 }
 
 /* Optional: Active state styling for trigger */
 .custom-dropdown-trigger.active {
   background-color: #e8f5e9; /* Light green background */
-  border-color: #0a5d03; /* Green border */
+  border-color: #095c02; /* Green border */
 }
 /*end*/
 
@@ -342,7 +342,7 @@ button {
 }
 
 .save-button {
-  background-color: #0a5d03;
+  background-color: #095c02;
   color: white;
 }
 
