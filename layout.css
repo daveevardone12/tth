@@ -1,0 +1,87 @@
+main {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #000;
+  margin: 24px;
+}
+
+main>div {
+  flex: 1;
+}
+
+main>div:first-child {
+  display: grid;
+  place-items: center;
+}
+
+main>div:nth-child(2) {
+  display: flex;
+}
+
+main>div:nth-child(2)>div {
+  flex: 1;
+}
+
+main>div:nth-child(3) {
+  border: 1px solid #000;
+}
+
+main>div:nth-child(4) {
+  display: flex;
+  flex-direction: column;
+}
+
+main>div:nth-child(4)>div:nth-child(2) {
+  flex: 1;
+  background-color: bisque;
+  display: flex;
+}
+
+main>div:nth-child(4)>div:nth-child(2)>div {
+  flex: 1;
+}
+
+main>div:nth-child(4)>div:nth-child(2)>div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+}
+
+main>div:nth-child(4)>div:nth-child(2)>div:nth-child(2)>div:last-child {
+  flex: 1;
+}
+
+main>div:last-child {
+  display: flex;
+}
+
+main>div:last-child>div {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+main>div:last-child>div>div {
+  display: flex;
+  flex-direction: column;
+}
+
+main>div:last-child>div>div:last-child {
+  flex: 1;
+  background-color: blue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table>thead th {
+  border: 1px solid #000;
+}
+
+table>tbody td {
+  border: 1px solid #000;
+}
