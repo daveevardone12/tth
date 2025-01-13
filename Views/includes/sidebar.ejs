@@ -2,10 +2,10 @@
     <div class="logo-section">
         <div class="imageSection">
             <div>
-                <img src="../images/university_logo.png" alt="University Logo">
+                <img src="../images/ESSU_Logo_New.png" alt="University Logo">
             </div>
-            <div>
-                <img src="../images/PMS_logo.webp" alt="PMS Logo">
+            <div class="pms">
+                <img src="../images/pms.png" alt="PMS Logo" class="pms">
             </div>
         </div>
         <div class="line">
@@ -25,33 +25,67 @@
 
     <nav class="nav-menu">
         <ul>
-            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/dashboard"><img src="/Public/images/cuida--dashboard-outline.svg" alt="" class="dash">Dashboard</a></li>
             <li>
-                <a href="#" id="addItemLink">Add Item</a>
-                <ul id="dropdown" style="display: none;">
+                <a href="#addItemLink" id="addItemLink"><img src="/Public/images/material-symbols--add-ad.svg" alt="" class="add">Add Item <img src="/Public/images/fe--arrow-down.svg" alt="" class="arrow_down"></a>
+                <ul id="dropdown" style="display: none;" class="dropdown-men">
                     <li><a href="/par">Property Acknowledgement Receipt</a></li>
                     <li><a href="/ics">Inventory Custodian Slip</a></li>
                 </ul>
             </li>
-            <li><a href="#">Inventory</a></li>
-            <li><a href="#">Return Item</a></li>
-            <li><a href="#">Property Transfer</a></li>
-            <li><a href="#">Notification</a></li>
-            <li><a href="#">User Account</a></li>
+            <li><a href="/Inventory"><img src="/Public/images/material-symbols--inventory.svg" alt="" class="inve">Inventory</a></li>
+
+            <li>
+                <a href="#" id="prslink">
+                    <img src="/Public/images/hugeicons--delivery-return-02.svg" alt="" class="return"> Return Item 
+                    <img src="/Public/images/fe--arrow-down.svg" alt="" class="arrow_down_return">
+                </a>
+                <ul id="dropdowns" style="display: none;">
+                    <li><a href="/prs">Property Return Slip</a></li>
+                    <li><a href="/mrer">Maintenance Recommendation Evaluation Report Form</a></li>
+                    <li><a href="#">Waste Material Report Form</a></li>
+                </ul>
+            </li>
+            <li><a href="/ptr"><img src="/Public/images/bxs--user-account.svg" alt="" class="ptr">Property Transfer Receipt</a></li>
+            <li><a href="/notif"><img src="/Public/images/mingcute--notification-line.svg" alt="" class="notif">Notification</a></li>
+            <li><a href="/user"><img src="/Public/images/cuida--dashboard-outline.svg" alt="" class="use">User Account</a></li>
         </ul>
     </nav>
 </div>
+</div>
 
 <script>
+    // Add Item link functionality
     document.getElementById("addItemLink").addEventListener("click", function(event) {
         event.preventDefault(); // Prevent the default link behavior
         const dropdown = document.getElementById("dropdown");
-        
+        const arrow = document.querySelector(".arrow_down");
+
         // Toggle the display of the dropdown
         if (dropdown.style.display === "none" || dropdown.style.display === "") {
             dropdown.style.display = "block"; // Show the dropdown
         } else {
             dropdown.style.display = "none"; // Hide the dropdown
         }
+
+        // Toggle the rotation of the arrow
+        arrow.classList.toggle("rotate");
+    });
+
+    // Return Item link functionality
+    document.getElementById("prslink").addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent the default link behavior
+        const dropdown = document.getElementById("dropdowns");
+        const arrowReturn = document.querySelector(".arrow_down_return");
+
+        // Toggle the display of the dropdown
+        if (dropdown.style.display === "none" || dropdown.style.display === "") {
+            dropdown.style.display = "block"; // Show the dropdown
+        } else {
+            dropdown.style.display = "none"; // Hide the dropdown
+        }
+
+        // Toggle the rotation of the return arrow
+        arrowReturn.classList.toggle("rotate");
     });
 </script>
