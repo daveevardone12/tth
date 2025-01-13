@@ -51,7 +51,11 @@ function checkUserType(userRole) {
   return function (req, res, next) {
     console.log("checkUserType - Is Authenticated:", req.isAuthenticated());
     console.log("User Role:", req.user?.role, "Expected Role:", userRole);
-    if (req.isAuthenticated() && req.user.role === userRole && req.user.user_id) {
+    if (
+      req.isAuthenticated() &&
+      req.user.role === userRole &&
+      req.user.user_id
+    ) {
       return next();
     }
     return res.redirect("/login");
