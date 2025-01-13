@@ -18,7 +18,7 @@ textarea {
 
 .sidebar {
   width: 300px;
-  background-color: #095c02;
+  background: linear-gradient(180deg, #095c02 81%, #459e3d 94%, #80e078 100%);
   color: white;
   height: 100vh;
   padding: 0 0 20px 0;
@@ -303,7 +303,7 @@ li {
 
 /* Arrow for Add Item */
 .arrow_down::after {
-  display: inline-block; 
+  display: inline-block;
   width: 1.5em;
   height: 1.5em;
   margin-left: 7em;
@@ -314,7 +314,7 @@ li {
 
 /* Arrow for Return Item */
 .arrow_down_return::after {
-  display: inline-block; 
+  display: inline-block;
   width: 1.5em;
   height: 1.5em;
   margin-left: 5.6em; /* Adjust for proper alignment */
@@ -334,14 +334,10 @@ li {
 
 /* Media query adjustments */
 @media (max-width: 768px) {
-  .arrow_down::after, .arrow_down_return::after {
+  .arrow_down::after,
+  .arrow_down_return::after {
     width: 1.2em;
     height: 1.2em;
     margin-left: 0.5em;
   }
 }
-
-
-
-
-
