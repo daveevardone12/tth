@@ -344,13 +344,13 @@ button {
 }
 
 .save-button {
-  background-color: #0a5d03;
+  background-color: #007bff;
   color: white;
 }
 
-.cancel-button {
-  background-color: #ccc;
-  color: #333;
+.print-button {
+  background-color: #28a745;
+  color: white;
 }
 button:hover {
   background-color: #b3c04e;
@@ -376,5 +376,18 @@ button:hover {
     top: 0;
     left: 0;
     width: 100%;
+  }
+}
+
+/* print csss !!!!!!!! */
+
+@media print {
+  .container,
+  .sidebar {
+    display: none;
+  }
+
+  #printPar {
+    display: block !important;
   }
 }
