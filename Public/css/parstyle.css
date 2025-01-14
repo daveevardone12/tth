@@ -19,7 +19,7 @@ body::-webkit-scrollbar {
 }
 
 .main-content {
-  background-color: #f7f5ed;
+  background-color: white;
   padding: 20px;
   margin-left: 305px;
   margin-right: 5px;
@@ -27,7 +27,7 @@ body::-webkit-scrollbar {
 }
 
 .form-containers {
-  background-color: #f7f5ed;
+  background-color: white;
   border-radius: 10px;
   width: -webkit-fill-available;
   /* margin-top: 50px; */
@@ -276,7 +276,7 @@ label:hover {
 #category,
 #location {
   padding: 10px;
-  background-color: #f9f6ee;
+  background-color: white;
   border: 1px solid #ccc;
   cursor: pointer;
   border-radius: 5px; /* Smooth corners */
@@ -308,7 +308,7 @@ label:hover {
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 0.9rem;
-  background-color: #f9f6ee;
+  background-color: white;
 }
 
 .form-group input[type="text"],
