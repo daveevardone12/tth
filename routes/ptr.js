@@ -7,7 +7,6 @@ router.get("/", ensureAuthenticated, (req, res) => {
   const success = req.query.success === "true";
   res.render("ptr", { success });
 });
-module.exports = router;
 
 router.post("/save", async (req, res) => {
   const data = req.body;

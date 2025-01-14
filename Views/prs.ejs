@@ -23,24 +23,24 @@
             </div>
 
             <div class="form-container">
-                <form>
+                <form method="POST" action="/prs/save">
 
                     <div class="form-group">
                         <div class="half-width">
                             <label>Name of Office*</label>
-                            <input type="text" id="office" placeholder="Ex. Smart Center" required>
+                            <input type="text" id="office" name="office" placeholder="Ex. Smart Center" required>
                         </div>
                         <div class="half-width">
                             <label>Quantity*</label>
-                            <input type="number" id="quantity" placeholder="Ex. 100" required>
+                            <input type="number" id="quantity" name="quantity" placeholder="Ex. 100" required>
                         </div>
                         <div class="half-width">
                             <label>Unit*</label>
-                            <input type="text" id="unit" placeholder="Ex. Unit" required>
+                            <input type="text" id="unit" name="unit" placeholder="Ex. Unit" required>
                         </div>
                         <div class="half-width">
                             <label>Purpose*</label>
-                            <select id="purpose" required>
+                            <select id="purpose" name="purpose" required>
                                 <option value="" disabled selected>Purpose *</option>
                                 <option>Disposal</option>
                                 <option>Repair</option>
@@ -52,34 +52,34 @@
                     <div class="form-group1">
                         <div class="half-width">
                             <label>Property No. (if any)</label>
-                            <input type="text" id="propertyNumber" placeholder="Ex. 15-04-011">
+                            <input type="text" id="propertyNumber" name="propertyNumber" placeholder="Ex. 15-04-011">
                         </div>
                         <div class="half-width">
                             <label>Date Acquired*</label>
-                            <input type="date" id="dateAcquired" required>
+                            <input type="date" id="dateAcquired" name="dateAcquired" required>
                         </div>
                         <div class="half-width">
                             <label>Name of End User*</label>
-                            <input type="text" id="endUser" placeholder="Ex. John Lloyd Tabuac" required>
+                            <input type="text" id="endUser" name="endUser" placeholder="Ex. John Lloyd Tabuac" required>
                         </div>
                         <div class="half-width">
                             <label>Unit Value*</label>
-                            <input type="number" id="unitValue" placeholder="Ex. 1000" required>
+                            <input type="number" id="unitValue" name="unitValue" placeholder="Ex. 1000" required>
                         </div>
                         <div class="half-width">
                             <label>Total Value*</label>
-                            <input type="number" id="totalValue" placeholder="Ex. 100,000" required>
+                            <input type="number" id="totalValue" name="totalValue" placeholder="Ex. 100,000" required>
                         </div>
                     </div>
 
                     <div class="form-group2">
                         <div class="full-width">
                             <label>Purpose of Returning the Items</label>
-                            <textarea id="purpose" placeholder="Ex. Destroyed"></textarea>
+                            <textarea id="purpose" name="purposeOfReturningItems" placeholder="Ex. Destroyed"></textarea>
                         </div>
                         <div class="half-width">
                             <label>Description</label>
-                            <select id="description">
+                            <select id="description" name="description">
                                 <option value="" disabled selected>Search Serial ID...</option>
                                 <option>SN: 20230715-001-123</option>
                             </select>
@@ -87,8 +87,8 @@
                     </div>
 
                     <div class="button-container">
-                        <button type="print">Print</button>
-                        <button type="button" class="btn-secondary">Save</button>
+                        <button type="submit">Save</button>
+                        <button type="button" class="btn-secondary">Print</button>
                     </div>
                 </form>
             </div>
