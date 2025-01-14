@@ -1,7 +1,7 @@
 /* Global Styles */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f9f6ee;
+  background-color: white;
   margin: 0;
   padding: 0;
   justify-content: right;
@@ -21,7 +21,7 @@ body::-webkit-scrollbar {
 }
 
 .form-container {
-  background-color: #f9f6ee;
+  background-color: white;
   /* margin-top: 50px; */
   border-radius: 8px;
   padding: 20px 30px;
@@ -110,7 +110,7 @@ textarea {
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 14px;
-  background-color: #f9f6ee;
+  background-color: white;
 }
 
 .form-group0 {
@@ -254,7 +254,6 @@ button:hover {
   background-color: #0a5d03;
   color: white;
 }
-
 
 .btn-secondary:hover {
   background-color: #0066cc;
