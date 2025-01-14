@@ -7,7 +7,7 @@
 
 body {
   min-height: 100vh;
-  background-color: #f9f6ee;
+  background-color: white;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -41,7 +41,7 @@ h2 {
 
 /* Main content area */
 .main-content {
-  background-color: #f9f6ee;
+  background-color: white;
   margin-left: 370px; /* Leaves space for the sidebar */
   padding: 20px;
   width: calc(100% - 370px); /* Takes the remaining space */
@@ -51,7 +51,7 @@ h2 {
 
 .form-container {
   margin-top: 30px;
-  background-color: #f9f6ee;
+  background-color: white;
   font-family: Poppins;
   padding: 0;
   width: 100%;
@@ -88,7 +88,7 @@ h2 {
   padding: 8px;
   border: 2px solid #ccc;
   border-radius: 4px;
-  background-color: #f9f6ee;
+  background-color: white;
 }
 
 .form-group input[type="text"],
@@ -204,5 +204,5 @@ h2 {
   height: 50px;
   border-radius: 5px;
   color: #aaaaaa;
-  background-color: #f9f6ee;
+  background-color: white;
 }

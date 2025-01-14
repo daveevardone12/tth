@@ -79,6 +79,14 @@ app.use((req, res, next) => {
   next();
 });
 
+// =========================
+//      LANDING ROUTE
+// =========================
+app.get("/", (req, res) => {
+  // Render landing.ejs (make sure you have this file in /views)
+  res.render("landing");
+});
+
 //------INITIALIZE ROUTES------//
 app.use("/", signupRoutes);
 app.use("/", loginRoutes);
@@ -124,8 +132,6 @@ app.listen(process.env.PORT, () => {
   console.log(`Server is up and running on port ${process.env.PORT}`);
 });
 
-
-
-app.get('/print-inv', (req, res) => {
+app.get("/print-inv", (req, res) => {
   res.render("printttt");
 });
