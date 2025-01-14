@@ -30,6 +30,7 @@ const addItemRoutes = require("./routes/add-item");
 const notifRoutes = require("./routes/notif");
 const prsRoutes = require("./Routes/prs");
 const mrerRoutes = require("./Routes/mrer");
+const wmrfRoutes = require("./routes/wmrf");
 
 //-------CONNECTING TO DATABASE-------//
 tthPool
@@ -91,6 +92,7 @@ app.use("/add-item", addItemRoutes);
 app.use("/notif", notifRoutes);
 app.use("/prs", prsRoutes);
 app.use("/mrer", mrerRoutes);
+app.use("/wmrf", wmrfRoutes);
 
 // Logout route to clear session
 app.get("/logout", (req, res, next) => {

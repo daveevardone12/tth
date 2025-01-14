@@ -207,14 +207,21 @@
                                         </div>
                                     </div>
                                     <div class="button-container">
-                                        <button type="submit" class="save-button" onclick="openPopup()">Save</button>
                                         
                                         <!-- Popup for success message -->
                                          
                                         
-                                        <button type="button" class="cancel-button">Cancel</button>
+                                        <button type="button" class="print-button" onclick="printDocument('Print')">Print</button>
+                                        <button type="submit" class="save-button" onclick="openPopup()">Save</button>
+                                        
                                     </div>
-                                    
+                                   
+                                    <script>
+                                        function printDocument() {
+                                            window.print();
+                                        }
+                                    </script>
+
                                     <script>
                                         // let popup = document.getElementById("popup");
                                     
@@ -333,5 +340,5 @@
                      
 
 </body>
-
+<%- include("./includes/print-par") %>
 </html>
