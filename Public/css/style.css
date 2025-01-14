@@ -77,11 +77,13 @@ html {
 .welcome-text {
   color: white;
   margin-left: 10px; /* Moves "Welcome to the" part slightly to the right */
+  font-size: larger;
 }
 
 .website-text {
   color: #095c02;
   margin-left: 12px; /* Moves "website" slightly to the right */
+  font-size: larger;
 }
 
 .content p {
