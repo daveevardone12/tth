@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ICS Form | Inventory Custodian Slip</title>
     <link rel="stylesheet" href="../css/general.css">
-    <link rel="stylesheet" href="../css/parstyle.css">
+    <link rel="stylesheet" href="../css/icsstyle.css">
 </head>
 
 <body>
@@ -205,6 +205,7 @@
                                         </div>
                                     </div>
                                     <div class="button-container">
+                                        <button type="button" class="print-button" onclick="printDocument('Print')">Print</button>
                                         <button type="submit" class="save-button" onclick="openPopup()">Save</button>
                                         
                                         <!-- Popup for success message -->
@@ -215,9 +216,15 @@
                                             <button type="button" onclick="closePopup()">Ok</button>
                                         </div>
                                         
-                                        <button type="button" class="cancel-button">Cancel</button>
+                                        
                                     </div>
                                     
+                                    <script>
+                                        function printDocument() {
+                                            window.print();
+                                        }
+                                    </script>
+
                                     <script>
                                         let popup = document.getElementById("popup");
                                     
@@ -332,5 +339,5 @@
                         </script>
 
 </body>
-
+<%- include("./includes/print-ics") %>
 </html>

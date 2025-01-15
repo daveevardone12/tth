@@ -14,6 +14,7 @@ body {
   justify-content: center;
   flex-direction: column;
   height: 100vh;
+  background: url('../images/lala.png') no-repeat center center fixed;
 }
 
 .container {
@@ -56,7 +57,7 @@ body {
   letter-spacing: 0.5px;
   text-transform: uppercase;
   margin-top: 20px;
-  cursor: grab;
+  cursor: pointer;
 }
 
 .container button.hidden {

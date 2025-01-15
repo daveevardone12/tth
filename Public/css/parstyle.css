@@ -8,10 +8,10 @@ body {
   align-items: center;
   height: 100vh;
   margin-right: 0;
-  color: #0a5d03;
+  /* color: #0a5d03; */
   margin: 0;
   padding: 0;
-  background-color: #f7f5ed;
+  background-color: white;
 }
 
 body::-webkit-scrollbar {

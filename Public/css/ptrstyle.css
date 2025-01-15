@@ -149,13 +149,20 @@ h2 {
 }
 
 .button-container button {
-  background-color: #095c02;
+  background-color: #28a745;
   color: #fff;
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
   font-size: 1em;
   cursor: pointer;
+}
+
+
+
+.print-button {
+  background-color: #28a745;
+  color: white;
 }
 
 .button-container button:hover {
@@ -205,4 +212,19 @@ h2 {
   border-radius: 5px;
   color: #aaaaaa;
   background-color: white;
+}
+
+/* print ptr */
+
+@media print {
+  .container,
+  .sidebar {
+    size: A4;
+    margin: 0;
+    display: none;
+  }
+
+  #printPtr {
+    display: block !important; 
+  }
 }

@@ -19,7 +19,7 @@
       <!-- Main content -->
       <div class="main-content">
         <div class="fix">
-          <h1>Property Transfer Receipt</h1>
+          <h1>Property Transfer Report</h1>
           <h2>Item Details</h2>
         </div>
 
@@ -206,11 +206,20 @@
             </div>
 
             <div class="button-container">
+              <button type="button" class="print-button" onclick="printDocument('Print')">Print</button>
               <button type="submit">Transfer</button>
             </div>
+
+            <script>
+              function printDocument() {
+                window.print();
+              }
+            </script>
+
           </form>
         </div>
       </div>
     </div>
   </body>
+  <%- include("./includes/print-ptr") %>
 </html>
