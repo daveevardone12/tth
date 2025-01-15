@@ -18,7 +18,7 @@ textarea {
 
 .sidebar {
   width: 300px;
-  background: linear-gradient(180deg, #095c02 81%, #459e3d 94%, #80e078 100%);
+  background: #095c02;
   color: white;
   height: 100vh;
   padding: 0 0 20px 0;

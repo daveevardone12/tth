@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RFID Data</title>
+    <script>
+      // Automatically refresh the page every second
+      setInterval(() => {
+        location.reload();
+      }, 1000); // Refresh every 1000 milliseconds (1 second)
+    </script>
+  </head>
+  <body>
+    <form method="POST" action="/save/rfid-data">
+      <h1>RFID Scanned Data</h1>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>PC</th>
+            <th>EPC</th>
+            <th>RSSI</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% rfidData.forEach(data => { %>
+          <tr>
+            <td><%= data.pc %></td>
+            <td><%= data.epc %></td>
+            <td><%= data.rssi %></td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+      <button type="submit">Save</button>
+    </form>
+  </body>
+</html>
