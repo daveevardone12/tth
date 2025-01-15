@@ -360,25 +360,6 @@ button:hover {
   margin-top: 20px;
 }
 
-/* Print-specific styles */
-/* @media print {
-  body * {
-    visibility: hidden;
-  }
-
-  #par-preview,
-  #par-preview * {
-    visibility: visible;
-  }
-
-  #par-preview {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-  }
-} */
-
 /* print csss !!!!!!!! */
 
 @media print {
