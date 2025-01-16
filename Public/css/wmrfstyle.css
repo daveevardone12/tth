@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f9f6ee;
+  background-color: white;
   margin: 0;
   padding: 0;
   justify-content: right;
@@ -19,7 +19,7 @@ body::-webkit-scrollbar {
   overflow: hidden;
 }
 .form-container {
-  background-color: #f9f6ee;
+  background-color: white;
   border-radius: 8px;
   padding: 20px 30px;
   margin-left: 15px;
@@ -101,7 +101,7 @@ input[type="text"],
 input[type="number"],
 input[type="date"],
 select {
-  background-color: #f9f6ee;
+  background-color: white;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -280,11 +280,11 @@ button:hover {
 }
 
 .btn-primary {
-  background-color: #28a745;
+  background-color: #095c02;
 }
 
 .btn-secondary {
-  background-color: #007bff;
+  background-color: #095c02;
 }
 
 .btn-secondary:hover {
@@ -322,7 +322,7 @@ button:hover {
 
 .checkbox-group input[type="text"] {
   margin-left: 10px;
-  background-color: #f9f6ee;
+  background-color: white;
   padding: 5px;
   width: calc(30% - 10px);
   border: 1px solid #ccc;
@@ -359,7 +359,7 @@ button:hover {
 .form-box {
   display: flex;
   flex-direction: row;
-  background-color: #f9f6ee;
+  background-color: white;
   margin-top: 20px;
   gap: 10px;
 }
