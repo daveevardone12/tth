@@ -344,12 +344,12 @@ button {
 }
 
 .save-button {
-  background-color: #007bff;
+  background-color: #095c02;
   color: white;
 }
 
 .print-button {
-  background-color: #28a745;
+  background-color: #095c02;
   color: white;
 }
 button:hover {

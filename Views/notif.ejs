@@ -21,7 +21,6 @@
       <div class="main-content">
         <div class="fix">
           <h1>Notification</h1>
-          <h2>You have 2 notifications this month</h2>
         </div>
 
         <div class="table-container">
@@ -30,45 +29,12 @@
               <tr>
                 <th>Date</th>
                 <th>Name</th>
-                <th>Location</th>
+                <th>RFID tag</th>
                 <th>Status</th>
               </tr>
             </thead>
             <tbody>
-              <tr class="notification-item" data-id="1">
-                <td>
-                  <div class="date">
-                    <span>Sept 09, 2024</span>
-                    <small>8:30 pm</small>
-                  </div>
-                </td>
-                <td>
-                  <strong>Carlota Salas</strong>
-                  <small>Tech. & Scientific Equipment (1 06 05 140 00)</small>
-                </td>
-                <td>
-                  <strong>College of Engineering</strong>
-                  <small>Dept. of Computer Engineering</small>
-                </td>
-                <td><span class="status out">Out</span></td>
-              </tr>
-              <tr class="notification-item" data-id="2">
-                <td>
-                  <div class="date">
-                    <span>Sept 09, 2024</span>
-                    <small>8:30 pm</small>
-                  </div>
-                </td>
-                <td>
-                  <strong>John Doe</strong>
-                  <small>Technical Books (1 06 05 140 01)</small>
-                </td>
-                <td>
-                  <strong>Library</strong>
-                  <small>Main Campus</small>
-                </td>
-                <td><span class="status in">In</span></td>
-              </tr>
+              <!-- Dynamic content will be injected here -->
             </tbody>
           </table>
         </div>
@@ -110,8 +76,49 @@
         <div id="overlay" class="overlay"></div>
       </div>
     </div>
+    <script src="../js/notif.js"></script>
+
+    <script>
+      function refreshTable() {
+        fetch("/notif/notif")
+          .then((response) => response.text())
+          .then((data) => {
+            const tableBody = document.querySelector(".table-container tbody");
+            tableBody.innerHTML += data;
+          })
+          .catch((error) => console.error("Error refreshing table:", error));
+      }
+
+      // Parent element selector
+      const tableBody = document.querySelector(".table-container tbody");
+      const sidePanel = document.getElementById("side-panel");
+      const closePanelButton = document.getElementById("close-panel");
+      const overlay = document.getElementById("overlay");
+
+      // Event delegation for .notification-item clicks
+      tableBody.addEventListener("click", (event) => {
+        const target = event.target.closest(".notification-item");
+        if (target) {
+          console.log("Notification clicked:", target.dataset.id); // For debugging
+          // Display the panel
+          sidePanel.classList.add("visible");
+          sidePanel.classList.remove("hidden");
+          overlay.classList.add("visible");
+        }
+      });
+
+      // Close Side Panel
+      closePanelButton.addEventListener("click", () => {
+        // Hide the panel
+        sidePanel.classList.remove("visible");
+        sidePanel.classList.add("hidden");
+        overlay.classList.remove("visible");
+      });
+
+      // Refresh the table every second
+      setInterval(refreshTable, 1000);
+    </script>
 
     <!-- Linking JavaScript -->
-    <script src="../js/notif.js"></script>
   </body>
 </html>

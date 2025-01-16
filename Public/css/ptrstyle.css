@@ -44,9 +44,13 @@ h2 {
   background-color: white;
   margin-left: 370px; /* Leaves space for the sidebar */
   padding: 20px;
+  height: 100vh !important;
   width: calc(100% - 370px); /* Takes the remaining space */
-  overflow: auto; /* Enables scrolling for the content */
+  overflow: auto !important; /* Enables scrolling for the content */
   transition: all 0.3s ease;
+}
+.main-content::-webkit-scrollbar {
+  display: none;
 }
 
 .form-container {
@@ -158,8 +162,6 @@ h2 {
   cursor: pointer;
 }
 
-
-
 .print-button {
   background-color: #28a745;
   color: white;
@@ -225,6 +227,6 @@ h2 {
   }
 
   #printPtr {
-    display: block !important; 
+    display: block !important;
   }
 }
