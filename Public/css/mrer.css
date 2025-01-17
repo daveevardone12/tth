@@ -258,3 +258,17 @@ button:hover {
 .btn-secondary:hover {
   background-color: #0066cc;
 }
+
+@media print {
+  .container,
+  .main-content,
+  .sidebar {
+    display: none;
+  }
+
+  #printMrer {
+    display: block !important;
+  }
+
+
+}
