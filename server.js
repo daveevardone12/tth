@@ -8,7 +8,117 @@ const session = require("express-session");
 const flash = require("express-flash");
 const compression = require("compression");
 const initializePassport = require("./passportConfig");
+const { SerialPort } = require("serialport");
+const WebSocket = require("ws");
+const http = require("http");
+const server = http.createServer(app);
+const wss = new WebSocket.Server({ server });
 const bodyParser = require("body-parser");
+
+// let rfidData = []; // Store scanned data
+// const SCAN_INTERVAL = 10 * 60 * 1000; // 10 minutes in milliseconds
+// let lastProcessedTime = Date.now(); // Track last processed time
+
+// // RFID software connection
+// const SERIAL_PORT = "COM2";
+// const BAUD_RATE = 57600;
+
+// const serialPort = new SerialPort({
+//   path: SERIAL_PORT,
+//   baudRate: BAUD_RATE,
+//   dataBits: 8,
+//   parity: "none",
+//   stopBits: 1,
+//   flowControl: false,
+//   autoOpen: true,
+// });
+
+// serialPort.on("open", () => {
+//   console.log(`Serial port ${SERIAL_PORT} opened`);
+// });
+
+// serialPort.on("data", (data) => {
+//   const currentTime = Date.now();
+
+//   // Only process data if 10 minutes have passed
+//   // if (currentTime - lastProcessedTime >= SCAN_INTERVAL) {
+//   const parsed = parseRFIDHexData(data.toString("hex"));
+//   if (parsed) {
+//     console.log("Parsed Data:", parsed);
+
+//     // Add the parsed data to the global array
+//     rfidData.push(parsed);
+
+//     // Optional: Limit array size to avoid memory overflow
+//     if (rfidData.length > 100) {
+//       rfidData.shift(); // Remove the oldest entry
+//     }
+
+//     // Broadcast to WebSocket clients
+//     wss.clients.forEach((client) => {
+//       if (client.readyState === WebSocket.OPEN) {
+//         client.send(JSON.stringify(parsed)); // Send parsed data
+//       }
+//     });
+
+//     // Update the last processed time
+//     lastProcessedTime = currentTime;
+//   } else {
+//     console.log("Could not parse data.");
+//   }
+//   // } else {
+//   //   console.log("Ignoring scan; waiting for the next interval.");
+//   // }
+// });
+
+// serialPort.on("error", (err) => {
+//   console.error(`Serial port error: ${err.message}`);
+// });
+
+// wss.on("connection", (ws) => {
+//   console.log("WebSocket client connected");
+//   ws.send("Connected to WebSocket server");
+// });
+
+// function parseRFIDHexData(data) {
+//   try {
+//     const hexString = data.toString("hex"); // Convert buffer to hex string
+//     console.log(`Hex data: ${hexString}`);
+
+//     if (hexString.startsWith("ccffff")) {
+//       const pc = hexString.slice(14, 18); // Example: Protocol Control
+//       const epc = hexString.slice(18, 42); // Example: EPC (24 hex characters)
+//       const rssi = parseInt(hexString.slice(42, 46), 16); // Example: RSSI in hexadecimal
+//       return {
+//         pc: pc.toUpperCase(),
+//         epc: epc.toUpperCase(),
+//         rssi: `${rssi}dBm`,
+//       };
+//     } else {
+//       console.log("Invalid header or unsupported data format.");
+//       return null;
+//     }
+//   } catch (err) {
+//     console.error("Error parsing hex data:", err);
+//     return null;
+//   }
+// }
+
+// // Functions to control the buzzer
+// function enableBuzzer() {
+//   // Add the logic to enable the buzzer
+//   console.log("Buzzer enabled.");
+//   // Example: Send a command or signal to the buzzer
+//   serialPort.write("BUZZER_ON\n");
+// }
+
+// function disableBuzzer() {
+//   // Add the logic to disable the buzzer
+//   console.log("Buzzer disabled.");
+//   // Example: Send a command or signal to the buzzer
+//   serialPort.write("BUZZER_OFF\n");
+// }
+
 const {
   checkNotAuthenticated,
   ensureAuthenticated,
@@ -85,6 +195,15 @@ app.use((req, res, next) => {
 app.get("/", (req, res) => {
   // Render landing.ejs (make sure you have this file in /views)
   res.render("landing");
+});
+
+// app.get("/rfid-data", (req, res) => {
+//   res.render("rfid-data", { rfidData }); // Pass the data to the EJS page
+// });
+
+app.get("/clear-data", (req, res) => {
+  rfidData = []; // Clear the array
+  res.redirect("/rfid-data"); // Redirect to the data page
 });
 
 //------INITIALIZE ROUTES------//

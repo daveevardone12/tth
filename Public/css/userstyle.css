@@ -118,7 +118,7 @@ input[type="text"], input[type="email"], input[type="password"] {
 
 /* General body styles */
 body {
-    font-family: Poppins;
+    font-family: Arial, Helvetica, sans-serif;
   }
   
   /* Modal (hidden by default, sliding in from the right) */

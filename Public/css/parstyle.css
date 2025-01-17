@@ -8,10 +8,10 @@ body {
   align-items: center;
   height: 100vh;
   margin-right: 0;
-  color: #0a5d03;
+  /* color: #0a5d03; */
   margin: 0;
   padding: 0;
-  background-color: #f7f5ed;
+  background-color: white;
 }
 
 body::-webkit-scrollbar {
@@ -19,7 +19,7 @@ body::-webkit-scrollbar {
 }
 
 .main-content {
-  background-color: #f7f5ed;
+  background-color: white;
   padding: 20px;
   margin-left: 305px;
   margin-right: 5px;
@@ -27,7 +27,7 @@ body::-webkit-scrollbar {
 }
 
 .form-containers {
-  background-color: #f7f5ed;
+  background-color: white;
   border-radius: 10px;
   width: -webkit-fill-available;
   /* margin-top: 50px; */
@@ -276,7 +276,7 @@ label:hover {
 #category,
 #location {
   padding: 10px;
-  background-color: #f9f6ee;
+  background-color: white;
   border: 1px solid #ccc;
   cursor: pointer;
   border-radius: 5px; /* Smooth corners */
@@ -308,7 +308,7 @@ label:hover {
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 0.9rem;
-  background-color: #f9f6ee;
+  background-color: white;
 }
 
 .form-group input[type="text"],
@@ -344,12 +344,12 @@ button {
 }
 
 .save-button {
-  background-color: #007bff;
+  background-color: #095c02;
   color: white;
 }
 
 .print-button {
-  background-color: #28a745;
+  background-color: #095c02;
   color: white;
 }
 button:hover {
@@ -360,29 +360,10 @@ button:hover {
   margin-top: 20px;
 }
 
-/* Print-specific styles */
-@media print {
-  body * {
-    visibility: hidden;
-  }
-
-  #par-preview,
-  #par-preview * {
-    visibility: visible;
-  }
-
-  #par-preview {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-  }
-}
-
 /* print csss !!!!!!!! */
 
 @media print {
-  .container,
+  .main-content,
   .sidebar {
     display: none;
   }

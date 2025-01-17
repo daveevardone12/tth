@@ -8,25 +8,29 @@ body {
   align-items: center;
   height: 100vh;
   margin-right: 0;
-  color: #095c02;
+  /* color: #0a5d03; */
   margin: 0;
   padding: 0;
   background-color: white;
 }
 
+body::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Webkit browsers (Chrome, Safari, etc.) */
+}
+
 .main-content {
   background-color: white;
-  padding: 0;
+  padding: 20px;
   margin-left: 305px;
   margin-right: 5px;
   overflow: hidden;
 }
 
 .form-containers {
-  background-color: #f7f5ed;
+  background-color: white;
   border-radius: 10px;
   width: -webkit-fill-available;
-  margin-top: 50px;
+  /* margin-top: 50px; */
   margin-left: 15px;
 }
 
@@ -61,15 +65,13 @@ h2 {
   background: #fff;
   border-radius: 6px;
   position: absolute;
-  top: 0;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0.1);
+  transform: translate(-50%, -50%);
   text-align: center;
   padding: 0 30px 30px;
+  z-index: 10;
   color: #333;
-  visibility: hidden;
-  opacity: 0; /* Added for smoother transition */
-  transition: transform 0.5s, top 0.5s, opacity 0.5s; /* Added opacity transition */
 }
 
 .open-popup {
@@ -96,7 +98,7 @@ h2 {
   width: 100%;
   margin-top: 50px;
   padding: 10px 0;
-  background: #095c02;
+  background: #0a5d03;
   color: #fff;
   border: 0;
   outline: none;
@@ -199,7 +201,7 @@ h2 {
 /* Green background and white text on hover */
 .custom-dropdown-option:hover {
   color: #fff; /* White text */
-  background-color: #095c02; /* Green background */
+  background-color: #0a5d03; /* Green background */
 }
 
 /* Dropdown trigger styling */
@@ -214,13 +216,13 @@ h2 {
 
 /* Trigger hover effect */
 .custom-dropdown-trigger:hover {
-  border-color: #095c02; /* Green border when hovering */
+  border-color: #0a5d03; /* Green border when hovering */
 }
 
 /* Optional: Active state styling for trigger */
 .custom-dropdown-trigger.active {
   background-color: #e8f5e9; /* Light green background */
-  border-color: #095c02; /* Green border */
+  border-color: #0a5d03; /* Green border */
 }
 
 /*end for UACS*/
@@ -266,7 +268,7 @@ label:hover {
 #category-dropdown-options .custom-dropdown-option:hover,
 #location-dropdown-options .custom-dropdown-option:hover {
   color: #fff; /* White text */
-  background-color: #095c02; /* Green background */
+  background-color: #0a5d03; /* Green background */
 }
 
 /* Dropdown trigger styling for custom dropdowns */
@@ -274,7 +276,7 @@ label:hover {
 #category,
 #location {
   padding: 10px;
-  background-color: #f9f6ee;
+  background-color: white;
   border: 1px solid #ccc;
   cursor: pointer;
   border-radius: 5px; /* Smooth corners */
@@ -286,13 +288,13 @@ label:hover {
 .custom-dropdown-trigger:hover,
 #category:hover,
 #location:hover {
-  border-color: #095c02; /* Green border when hovering */
+  border-color: #0a5d03; /* Green border when hovering */
 }
 
 /* Optional: Active state styling for trigger */
 .custom-dropdown-trigger.active {
   background-color: #e8f5e9; /* Light green background */
-  border-color: #095c02; /* Green border */
+  border-color: #0a5d03; /* Green border */
 }
 /*end*/
 
@@ -306,7 +308,7 @@ label:hover {
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 0.9rem;
-  background-color: #f9f6ee;
+  background-color: white;
 }
 
 .form-group input[type="text"],
@@ -346,9 +348,9 @@ button {
   color: white;
 }
 
-.cancel-button {
-  background-color: #ccc;
-  color: #333;
+.print-button {
+  background-color: #095c02;
+  color: white;
 }
 button:hover {
   background-color: #b3c04e;
@@ -359,7 +361,7 @@ button:hover {
 }
 
 /* Print-specific styles */
-@media print {
+/* @media print {
   body * {
     visibility: hidden;
   }
@@ -374,5 +376,18 @@ button:hover {
     top: 0;
     left: 0;
     width: 100%;
+  }
+} */
+
+/* print csss !!!!!!!! */
+
+@media print {
+  .main-content,
+  .sidebar {
+    display: none;
+  }
+
+  #printIcs {
+    display: block !important;
   }
 }

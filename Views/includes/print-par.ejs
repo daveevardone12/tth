@@ -1,157 +1,225 @@
 
-<body>
-    <div class="form-container" id="printPar" style="display: none;">
-        <h1 class="titles">PROPERTY ACKNOWLEDGEMENT RECEIPT (PAR)</h1>
-        <div class="header">
-            <div>Entity Name: ______________________</div>
-            <div>Fund Cluster: ______________________</div>
-            <div>PAR No.: ______________________</div>
+<body class="bodies">
+    <div class="containerss" id="printPar" style="display: none;">
+        <div class="headerss">
+            Property Acknowledge Receipt (PAR)
         </div>
-
-        <table>
+        <div class="sub-header">
+            <div class="haha">
+                <strong>Entity Name:</strong>
+                <strong>Fund Cluster:</strong>
+            </div>
+            <div><strong>PAR No.: </strong></div>
+        </div>
+        <table class="tabol">
             <thead>
-                <tr>
-                    <th>Qty.</th>
-                    <th>Unit</th>
-                    <th>Description</th>
-                    <th>Property No.</th>
-                    <th>Date Acquired</th>
-                    <th>Unit Value</th>
-                    <th>Total Amount</th>
+                <tr class="t-ar">
+                    <th class="t-h">Qty.</th>
+                    <th class="t-h">Unit</th>
+                    <th class="t-h">Description</th>
+                    <th class="t-h">Property No.</th>
+                    <th class="t-h">Date Acquired</th>
+                    <th class="t-h">Unit Value</th>
+                    <th class="t-h">Total Amount</th>
                 </tr>
+              
             </thead>
-            <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+            <tbody class="tbady">
+                <tr class="t-ar">
+                    <td class="t-d"></td>
+                    <td class="t-d"></td>
+                    <td class="t-d"></td>
+                    <td class="t-d"></td>
+                    <td class="t-d"></td>
+                    <td class="t-d"></td>
                 </tr>
-                <!-- Add more rows as needed -->
+                <!-- Additional rows as needed -->
             </tbody>
         </table>
-
-        <div class="remarks">
-            <div>REMARKS: ____________________________</div>
-            <div>STATUS: <strong>NEW</strong></div>
+        <div class="remarks-section">
+            <div><strong>Remarks:</strong> New</div>
+            
         </div>
-
-        <div class="reminder">
-            <p>If the Item/s receipted is/are not utilized, beneficial to work, and already unnecessary, you are REQUIRED TO RETURN it to OSM.</p>
-            <p><strong>“BRINGING GOVERNMENT PROPERTIES TO PRIVATE HOMES AND FOR PERSONAL USE IS STRICTLY PROHIBITED. DUE CARE AND SAFEKEEPING SHOULD BE APPLIED TO THIS STATED PROPERTY.”</strong></p>
-        </div>
-
         <div class="footer">
-            <div class="received-by">
-                <p>Received by:</p>
-                <p>Signature Over Printed Name: ____________________________</p>
-                <p>Instructor/COE, Position / Office: ____________________________</p>
-                <p>Date: ____________________________</p>
+            <div class="Dating">
+                <p><strong>Data Acquired:</strong></p>
+                <p>Bug:</p>
+                <p>PO:</p>
+                <p>Code:</p>
+                <p>Description:</p>
+                <p>Label:</p>
+                <p>Supplier:</p>
+                <p>Location:</p>
             </div>
-            <div class="issued-by">
-                <p>Issued by:</p>
-                <p><strong>JEFFREY M. MENESES, M.A.M.</strong></p>
-                <p>Administrative Officer V</p>
-                <p>Date: ____________________________</p>
+            
+            <div class="reminder">
+                <p><strong>Reminder:</strong></p>
+                <p>If the item/s received is/are not utilized beneficial to work and already unserviceable, you are REQUIRED to RETURN it to OSPU.</p>
             </div>
+            <div class="reminders">
+                "Bringing government properties to private homes and for personal use is strictly prohibited. Due care and safekeeping should be applied to this stated property."
+            </div>
+        </div>
+        <div class="signature-section">
+            <div class="signature-box">
+                <div class="bax"><strong>Received by:</strong></div>
+                <span>Signature Over Printed Name of End User</span>
+                <span class="gaps"><u>____________________</u></span>
+                <span>Position / Office</span>
+                <span class="gaps"><u>____________________</u></span>
+                <span>Date</span>
+            </div>
+            <div class="signature-box">
+                <div class="sig">
+                <strong>Issued by:</strong>
+            </div>
+                <span><u>JEFFREY M. MENESER, M.A.M.</u></span>
+                <span>Signature Over Printed Name of Supply and/or Property Custodian</span>
+                <span class="gaps"><u>____________________</u></span>
+                <span>Position/Office</span>
+                <span class="gaps"><u>____________________</u></span>
+                <span>Date</span>
+            </div>
+        </div>
+        <div class="small-note">
+            Appendix 59
         </div>
     </div>
-</body>
+    </body>
 
 <style>
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
-}
 
-.form-container {
-    max-width: 900px;
-    margin: 20px auto;
-    padding: 20px;
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-}
 
-.titles {
-    text-align: center;
-    font-size: 20px;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-}
+.bodies {
+        font-family: Arial, sans-serif;
+    }
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
+    .containerss {
+        width: 210mm;
+        margin: 0 auto;
+        border: 1px solid #000;
+        padding: 10px;
+        box-sizing: border-box;
+    }
 
-.header div {
-    flex: 1;
-    margin-right: 10px;
-}
+    .headerss {
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
 
-.header div:last-child {
-    margin-right: 0;
-}
+    .sub-header {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
+    .sub-header .haha {
+        display: flex;
+        flex-direction: column;
+    }
 
-table th, table td {
-    border: 1px solid #000;
-    padding: 5px;
-    text-align: center;
-}
+    .tabol {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
 
-table th {
-    background: #f1f1f1;
-}
+    .tabol, .t-h, .t-d {
+        border: 1px solid black;
+    }
 
-.remarks {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
+    .t-h, .t-d {
+        padding: 5px;
+        text-align: center;
+    }
 
-.remarks div {
-    flex: 1;
-    margin-right: 10px;
-}
+    .remarks-section {
+        font-size: 12px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid black;
+        padding: 5px;
+    }
 
-.remarks div:last-child {
-    margin-right: 0;
-}
+    .footer {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+    }
 
-.reminder {
-    margin-bottom: 20px;
-    font-size: 12px;
-}
+    .footer .Dating {
+        border: 1px solid #000;
+        width: 250px;
+        padding-left: 1em;
+    }
 
-.reminder p {
-    margin: 5px 0;
-}
+    .footer .reminder {
+        border: 1px solid #000;
+        width: 250px;
+        padding: 1em;
+    }
 
-.footer {
-    display: flex;
-    justify-content: space-between;
-}
+    .footer .reminders {
+        border: 1px solid #000;
+        width: 250px;
+        font-size: medium;
+        font-weight: 550;
+        padding: 2em;
+    }
 
-.footer div {
-    flex: 1;
-    text-align: center;
-}
+    .footer div {
+        width: 48%;
+    }
 
-.footer div p {
-    margin: 5px 0;
-}
+    .signature-section {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        font-size: 12px;
+    }
 
+    .signature-box {
+        text-align: center;
+        width: 48%;
+        border: 1px solid #000;
+        height: 200px;
+        padding: 2em;
+    }
+    .signature-box  .bax{
+        text-align: start;
+        margin-bottom: 3em;
+    }
+
+    .signature-box  .sig{
+        text-align: start;
+        margin-bottom: 3em;
+    }
+
+    .signature-box span {
+        display: block;
+        margin-top: 15px;
+    }
+  
+    .reminder {
+        font-size: 12px;
+        text-align: justify;
+    }
+
+    .small-note {
+        font-size: 10px;
+        text-align: center;
+        margin-top: 5px;
+    }
+
+    .tbady .t-ar .t-d {
+        padding: 3em;
+    }
+
+  
 </style>

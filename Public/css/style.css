@@ -164,7 +164,7 @@ button:hover {
 .pms-logo {
   width: 500px; /* Adjust logo size */
   height: 500px;
-  margin-right: 100px;
+  margin-right: 190px;
   object-fit: contain;
   transition: transform 0.5s ease, opacity 0.5s ease; /* Smooth animation for scale */
   animation: logoPop 2s ease-out forwards; /* New fade and pop animation */

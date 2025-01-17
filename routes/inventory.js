@@ -6,7 +6,7 @@ const { ensureAuthenticated } = require("../middleware/middleware");
 
 router.get("/", ensureAuthenticated, async (req, res) => {
   const page = parseInt(req.query.page) || 1;
-  const limit = parseInt(req.query.limit) || 10;
+  const limit = parseInt(req.query.limit) || 12;
   const isAjax = req.query.ajax === "true";
 
   try {
@@ -38,7 +38,7 @@ router.get("/", ensureAuthenticated, async (req, res) => {
 
 router.get("/search", ensureAuthenticated, async (req, res) => {
   const page = parseInt(req.query.page) || 1;
-  const limit = parseInt(req.query.limit) || 10;
+  const limit = parseInt(req.query.limit) || 12;
   const offset = (page - 1) * limit;
   const { query } = req.query;
 
@@ -55,7 +55,7 @@ router.get("/search", ensureAuthenticated, async (req, res) => {
         `SELECT * FROM property_acknowledgement_receipt WHERE
          accountable ILIKE $1
          OR location ILIKE $1
-         LIMIT 10`,
+         LIMIT 12`,
         [`%${query}%`]
       );
     }
@@ -71,8 +71,8 @@ router.get("/search", ensureAuthenticated, async (req, res) => {
   }
 });
 router.get("/sort", ensureAuthenticated, async (req, res) => {
-  const page = parseInt(req.query.page, 10) || 1;
-  const limit = parseInt(req.query.limit, 10) || 10;
+  const page = parseInt(req.query.page, 12) || 1;
+  const limit = parseInt(req.query.limit, 12) || 12;
   const offset = (page - 1) * limit;
   const { date, docName } = req.query;
 
@@ -131,7 +131,7 @@ async function fetchInventoryList(page, limit) {
 
     const { rows } = await tthPool.query(query, [limit, offset]);
 
-    const totalItems = rows.length > 0 ? rows[0].total_count : 10;
+    const totalItems = rows.length > 0 ? rows[0].total_count : 12;
     const totalPages = Math.ceil(totalItems / limit);
 
     const data = rows.map((row) => ({
