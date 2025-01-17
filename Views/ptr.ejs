@@ -154,6 +154,10 @@
                   required
                   placeholder="xxxxxxxxx"
                 />
+                <div
+                  style="display: flex; flex-direction: column"
+                  id="results"
+                ></div>
               </div>
               <div class="third-width">
                 <label>Quantity*</label>
@@ -164,6 +168,13 @@
                   required
                   placeholder="xxxxxxxxx"
                 />
+              </div>
+              <div class="third-width">
+                <label>Document Type*</label>
+                <select name="documentType" id="documentType">
+                  <option value="par">PAR</option>
+                  <option value="ics">ICS</option>
+                </select>
               </div>
               <div class="third-width">
                 <label>Amount*</label>
@@ -206,7 +217,13 @@
             </div>
 
             <div class="button-container">
-              <button type="button" class="print-button" onclick="printDocument('Print')">Print</button>
+              <button
+                type="button"
+                class="print-button"
+                onclick="printDocument('Print')"
+              >
+                Print
+              </button>
               <button type="submit">Transfer</button>
             </div>
 
@@ -215,11 +232,11 @@
                 window.print();
               }
             </script>
-
           </form>
         </div>
       </div>
     </div>
   </body>
   <%- include("./includes/print-ptr") %>
+  <script src="../js/ptr-api.js"></script>
 </html>

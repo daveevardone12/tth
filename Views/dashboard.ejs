@@ -39,9 +39,8 @@
             <br /><span id="officeEquipment"></span> Office Equipment
           </div>
           <div class="card green">
-            <br /><span
-            id="AgriEquipment"
-          ></span> Agricultural and Forestry Equipment
+            <br /><span id="AgriEquipment"></span> Agricultural and Forestry
+            Equipment
           </div>
           <div class="card purple">
             <br /><span id="MedEquipment"></span> Medical Equipment
@@ -50,9 +49,8 @@
             <br /><span id="PrintEquipment"></span> Printing Equipment
           </div>
           <div class="card green">
-            <br /><span
-            id="TSEquipment"
-          ></span> Technical and Scientific Equipment
+            <br /><span id="TSEquipment"></span> Technical and Scientific
+            Equipment
           </div>
           <div class="card purple">
             <br /><span id="OMEquipment"></span> Other Machinery and Equipment
@@ -66,51 +64,10 @@
           <div class="card purple"><br /><span id="Books"></span> Books</div>
           <div class="card red"><br /><span id="Software"></span>Software</div>
           <div class="card green">
-            <br /><span id="MachineryEquipment"></span> Machinery<br /><span id="MachineryEquipment"></span>
+            <br /><span id="MachineryEquipment"></span> Machinery<br /><span
+              id="MachineryEquipment"
+            ></span>
           </div>
-        </div>
-
-        <!-- Table -->
-        <div class="table-container">
-          <i class="fa-solid fa-maximize" id="maximize-icon"></i>
-          <h2>REPORT ON THE PHYSICAL COUNT OF PROPERTY, PLANT AND EQUIPMENT</h2>
-          <h3>Tech. & Scientific Equipment (1 06 05 140 00)</h3>
-          <table id="data-table">
-            <thead>
-              <tr>
-                <th>Article</th>
-                <th>Description</th>
-                <th>Property Number</th>
-                <th>Unit</th>
-                <th>Value Unit</th>
-                <th>Qty per PE Card</th>
-                <th>Qty per Count</th>
-                <th>Shortage/Overage Qty</th>
-                <th>Remarks</th>
-                <th>Received By</th>
-                <th>Location</th>
-                <th>Date Acquired</th>
-              </tr>
-            </thead>
-            <tbody id="inventoryTableBody">
-              <!-- Repeatable rows -->
-            </tbody>
-          </table>
-          <nav aria-label="Page navigation" id="paginationNav">
-            <% if (currentPage> 1) { %>
-            <a
-              href="?page=<%= currentPage - 1 %>&limit=<%= limit %>"
-              aria-label="Previous Page"
-              >Previous</a
-            >
-            <% } %> <% if (currentPage < totalPages) { %>
-            <a
-              href="?page=<%= currentPage + 1 %>&limit=<%= limit %>"
-              aria-label="Next Page"
-              >Next</a
-            >
-            <% } %>
-          </nav>
         </div>
 
         <script src="../js/dashboard-api.js"></script>
