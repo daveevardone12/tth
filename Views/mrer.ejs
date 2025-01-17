@@ -119,14 +119,18 @@
 
                     <!-- Buttons -->
                     <div class="button-container">
-                        <button type="submit" class="btn-primary">Print</button>
+                        <button type="submit" class="btn-primary" onclick="printDocument('Print')">Print</button>
                         <button type="save" class="btn-secondary">Save</button>
                     </div>
-
+                    <script>
+                        function printDocument () {
+                            window.print();
+                        }
+                    </script>
                 </form>
             </div>
         </div>
     </div>
 </body>
-
+<%- include("./includes/print-mrer") %>
 </html>

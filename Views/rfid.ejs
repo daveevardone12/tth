@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RFID Registration</title>
+    <link rel="stylesheet" href="../css/rfidstyle.css">
+    <link rel="stylesheet" href="../css/general.css">
+ 
+</head>
+<body>
+    <%- include("./includes/sidebar") %>
+    <div class="box-container">
+        <div class="fix">
+            <h1>Waste Material Report Form</h1>
+            <h2>Item Details</h2>
+          </div>
+        <div class="search-add">
+            <div class="search-bar">
+                <input type="text" id="search" placeholder="Search...">
+            </div>
+            <button class="add-btn" onclick="openModal()">Add RFID</button>
+        </div>
+        <table class="rfid-table">
+            <thead>
+                <tr>
+                    <th>RFID TAG</th>
+                    <th>ITEM NAME</th>
+                    <th>SERIAL NUMBER</th>
+                    <th>STATUS</th>
+                    <th>ACTION</th>
+                </tr>
+            </thead>
+            <tbody id="rfid-table-body">
+                <tr>
+                    <td>1234</td>
+                    <td>Smart TV</td>
+                    <td>1234</td>
+                    <td>In</td>
+                    <td class="action-column">
+                        <button class="action-btn">Transmission</button>
+                        <span class="menu-btn" onclick="toggleMenu(event, 'menu-0')">⋮</span>
+                        <div class="dropdown-menu" id="menu-0">
+                            <button class="dropdown-item update" onclick="updateAction()">Update</button>
+                            <button class="dropdown-item delete" onclick="deleteAction()">Delete</button>
+                            <button class="dropdown-item assign" onclick="assignAction()">Assign</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    
+                    <td>5678</td>
+                    <td>Laptop</td>
+                    <td>5678</td>
+                    <td>Out</td>
+                    <td class="action-column">
+                        <button class="action-btn">Transmission</button>
+                        <span class="menu-btn" onclick="toggleMenu(event, 'menu-1')">⋮</span>
+                        <div class="dropdown-menu" id="menu-1">
+                            <button class="dropdown-item update" onclick="updateAction()">Update</button>
+                            <button class="dropdown-item delete" onclick="deleteAction()">Delete</button>
+                            <button class="dropdown-item assign" onclick="assignAction()">Assign</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal Container -->
+    <div class="modal" id="rfid-modal">
+        <div class="modal-content">
+            <header class="modal-header">
+                <h2>RFID Registration Form</h2>
+            </header>
+            <div class="modal-body">
+                <div class="form-row">
+                    <input type="text" id="field1" placeholder="Enter RFID Tag">
+                    <input type="text" id="field2" placeholder="Enter Item Name">
+                </div>
+                <div class="form-row">
+                    <input type="text" id="field3" placeholder="Enter Serial Number">
+                    <input type="text" id="field4" placeholder="Enter Status">
+                </div>
+            </div>
+            <footer class="modal-footer">
+                <button class="confirm-btn" onclick="confirmAction()">Confirm</button>
+                <button class="cancel-btn" onclick="closeModal()">Cancel</button>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // Toggle dropdown menu visibility
+function toggleMenu(event, menuId) {
+    event.stopPropagation(); // Prevent triggering document click event
+    const menu = document.getElementById(menuId);
+    const isVisible = menu.style.display === 'block';
+    document.querySelectorAll('.dropdown-menu').forEach((menu) => {
+        menu.style.display = 'none';
+    });
+    menu.style.display = isVisible ? 'none' : 'block';
+}
+
+// Close dropdown menu when clicking outside
+document.addEventListener('click', () => {
+    document.querySelectorAll('.dropdown-menu').forEach((menu) => {
+        menu.style.display = 'none';
+    });
+});
+
+// Modal functions
+function openModal() {
+    document.getElementById('rfid-modal').style.display = 'flex';
+}
+
+function closeModal() {
+    document.getElementById('rfid-modal').style.display = 'none';
+}
+
+function confirmAction() {
+    alert('Form confirmed!');
+    closeModal();
+}
+
+// Dropdown action functions
+function updateAction() {
+    alert('Update action triggered!');
+}
+
+function deleteAction() {
+    alert('Delete action triggered!');
+}
+
+function assignAction() {
+    alert('Assign action triggered!');
+}
+    </script>
+</body>
+</html>
