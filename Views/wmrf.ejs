@@ -28,6 +28,13 @@
           <form method="POST" action="/wmrf/save" enctype="multipart/form-data">
             <!-- Item Details -->
             <div class="form-group0">
+              <div class="third-width">
+                <label>Document Type*</label>
+                <select name="documentType" id="documentType">
+                  <option value="par">PAR</option>
+                  <option value="ics">ICS</option>
+                </select>
+              </div>
               <div class="half-width">
                 <label for="entityName">Entity Name *</label>
                 <input
@@ -123,7 +130,13 @@
                   placeholder="Ex. 15-04-011"
                   required
                 />
+                <div
+                            style="display: flex; flex-direction: column"
+                            id="results"
+                          ></div>
+                        </div>  
               </div>
+              
               <div class="half-width">
                 <label for="date">Date *</label>
                 <input
@@ -137,8 +150,8 @@
                 <label for="endUser">Name of End User *</label>
                 <input
                   type="text"
-                  id="end_user"
-                  name="end_user"
+                  id="endUser"
+                  name="endUser"
                   placeholder="Ex. John Lloyd Tabuac"
                   required
                 />
@@ -147,8 +160,8 @@
                 <label for="unitValue">Unit Value *</label>
                 <input
                   type="number"
-                  id="unit_value"
-                  name="unit_value"
+                  id="unitValue"
+                  name="unitValue"
                   placeholder="Ex. 1000"
                   required
                 />
@@ -404,4 +417,5 @@
       </div>
     </div>
   </body>
+  <script src="../js/wmrf-api.js"></script>
 </html>

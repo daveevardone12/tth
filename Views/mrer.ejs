@@ -37,6 +37,13 @@
 
                     <!-- Form Fields -->
                     <div class="form-group1">
+                        <div class="third-width">
+                            <label>Document Type*</label>
+                            <select name="documentType" id="documentType">
+                              <option value="par">PAR</option>
+                              <option value="ics">ICS</option>
+                            </select>
+                          </div>
                         <div class="half-width">
                             <label for="office">Name of Office *</label>
                             <input type="text" id="office" name="office" placeholder="Ex. Smart Center" required>
@@ -64,7 +71,11 @@
                     <div class="form-group2">
                         <div class="half-width">
                             <label for="propertyNumber">Property No. (if any)</label>
-                            <input type="number" id="property_number" name="property_number" placeholder="Ex. 15-04-011">
+                            <input type="number" id="property_no" name="property_no" placeholder="Ex. 15-04-011">
+                            <div
+                            style="display: flex; flex-direction: column"
+                            id="results"
+                          ></div>
                         </div>
                         <div class="half-width">
                             <label for="dateAcquired">Date Acquired *</label>
@@ -72,11 +83,11 @@
                         </div>
                         <div class="half-width">
                             <label for="endUser">Name of End User *</label>
-                            <input type="text" id="end_user" name="end_user" placeholder="Ex. John Lloyd Tabuac" required>
+                            <input type="text" id="endUser" name="endUser" placeholder="Ex. John Lloyd Tabuac" required>
                         </div>
                         <div class="half-width">
                             <label for="unitValue">Unit Value *</label>
-                            <input type="number" id="unit_value" name="unit_value" placeholder="Ex. 1000" required>
+                            <input type="number" id="unitValue" name="unitValue" placeholder="Ex. 1000" required>
                         </div>
                         <div class="half-width">
                             <label for="totalValue">Total Value *</label>
@@ -103,10 +114,7 @@
                         </div>
                         <div class="half-width">
                             <label for="description">Description:</label>
-                            <select id="description" name="description">
-                                <option value="" disabled selected>Search Serial ID...</option>
-                                <option>SN: 20230715-001-123</option>
-                            </select>
+                            <input type="text" id="description" name="description">
                         </div>
                     </div>
 
@@ -133,4 +141,5 @@
     </div>
 </body>
 <%- include("./includes/print-mrer") %>
+<script src="../js/mrer-api.js"></script>
 </html>
