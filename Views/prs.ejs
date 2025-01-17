@@ -87,13 +87,19 @@
                     </div>
 
                     <div class="button-container">
+                        <button type="button" class="btn-secondary" onclick="printDocument('Print')">Print</button>
                         <button type="submit">Save</button>
-                        <button type="button" class="btn-secondary">Print</button>
+                        
                     </div>
+                    <script>
+                        function printDocument(){
+                            window.print();
+                        }
+                    </script>
                 </form>
             </div>
         </div>
     </div>
 </body>
-
+<%- include("./includes/print-prs") %>
 </html>

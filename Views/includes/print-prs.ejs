@@ -1,0 +1,283 @@
+<body class="bobi">
+    <div class="look" id="printPrs" style="display: none;">
+        <h2 class="pain">PROPERTY RETURN SLIP (PRS)</h2>
+        <table class="header-table">
+            <tr>
+                <td><strong>Name of Office/Unit:</strong></td>
+                <td colspan="3"></td>
+            </tr>
+            <tr>
+                <td>Purpose <span class="underline"></span></td>
+                <td>Disposal <span class="underline"></span></td>
+                <td>Repair <span class="underline"></span></td>
+                <td>Returned to stock <span class="underline"></span></td>
+                <td>Others: <span class="underline long"></span></td>
+            </tr>
+        </table>
+
+        <table class="item-table">
+            <thead>
+                <tr>
+                    <th>Item No.</th>
+                    <th>QTY</th>
+                    <th>UNIT</th>
+                    <th>DESCRIPTION</th>
+                    <th>PROPERTY NO. / SERIAL NO.</th>
+                    <th>UNIT VALUE</th>
+                    <th>TOTAL VALUE</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                   
+                    
+            </tbody>
+        </table>
+
+        <p><strong>PURPOSE of Returning the Items:</strong> _______________________________________________________________________________________</p>
+        
+        <div class="certification">
+            <div><strong>CERTIFICATION</strong></div>
+        </div>
+        <div class="hereby">
+            <div class="hereby-section">
+                <p>I HEREBY CERTIFY that I have this ____ day of _________ RETURNED to:</p>
+                <p>_________________________________________________</p>
+                <div class="bold">
+                <p>Name and Designation</p>
+                </div>
+                <p style="margin-bottom: 0; margin-top: auto;">The Item/s described above</p>
+                
+            </div>
+            <div class="hereby-sections">
+                <p>I HEREBY CERTIFY that I have this ____ day of _________ RETURNED to:</p>
+                <p>_________________________________________________</p>
+                <div class="bold">
+                <p>Name and Designation</p>
+            </div>
+                <p style="margin-bottom: 0; margin-top: auto;">The Item/s described above</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="signature">
+              <p class="headers" style="margin-top: auto;">Certified by the technical members:</p>
+              <div class="block">
+                <div class="side-text left">Certified Correct: & Inspected</div>
+                <div class="main-c">
+                  <p class="name">KENNETH REY C. AFABLE</p>
+                  <p class="designation">ICTC Director<br>Incharge IT Facilities</p>
+                </div>
+              </div>
+              <div class="block">
+                <div class="side-text left">Certified Correct: & Inspected</div>
+                <div class="main-c">
+                  <p class="name">ELVIRA V. GONZALES</p>
+                  <p class="designation">Head, Library Services<br>Incharge, Books & Magazines</p>
+                </div>
+              </div>
+            </div>
+        
+            <div class="signature">
+              <p class="headers" style="margin-top: auto;">Certified by the technical members:</p>
+              <div class="block">
+                <div class="side-text right">Certified Correct: & Inspected</div>
+                <div class="main-c">
+                  <p class="name">ANTONIO SUDARIO</p>
+                  <p class="designation">Incharge Electrical</p>
+                </div>
+                
+              </div>
+              <div class="block">
+                <div class="side-text right">Certified Correct: & Inspected</div>
+                <div class="main-c">
+                  <p class="name">WILFREDO ABING</p>
+                  <p class="designation">Incharge, Motorpool</p>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+    </div>
+</body>
+
+<style>
+    .bobi {
+    font-family: Arial, sans-serif;
+}
+
+.look {
+    max-width: 800px;
+    margin: auto;
+    border: 2px solid black;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.pain {
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.header-table,
+.item-table {
+    width: calc(100% + 40px);
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 13px;
+    margin-left: -20px;
+}
+
+
+.item-table th,
+.item-table td {
+    border: 1.5px solid #000;
+    text-align: center;
+    padding: 8px;
+}
+
+
+
+
+.underline {
+    display: inline-block;
+    border-bottom: 1px solid #000;
+    width: 50px;
+    margin-left: 10px;
+}
+
+.underline.long {
+    width: 100px;
+}
+
+.certification {
+    text-align: center;
+    font-style: italic;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border: 2px solid black;
+    padding: 10px;
+    width: calc(100% + 20px);
+    margin-left: -20px;
+    border-right: none;
+    border-left: none;
+    letter-spacing: 5px;
+    font-weight: bold;
+}
+
+.hereby {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.hereby-section {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    padding: 20px 20px 0 20px;
+    margin-left: -15px;
+    font-weight: 550;
+}
+
+.hereby-sections {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    padding: 20px 20px 0 20px;
+    margin-right: -15px;
+    font-weight: 550;
+    margin-bottom: 0;
+}
+
+.hereby-section p {
+    font-size: small;
+}
+
+.hereby-sections p {
+    font-size: small;
+}
+.bold p {
+    border-top: 1px solid black;
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 5px;
+}
+
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .signature {
+    width: 45%;
+  }
+  
+  .headers {
+    font-weight: 600;
+    font-size: small;
+    margin-bottom: 20px;
+  }
+  
+  .block {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    position: relative;
+  }
+  
+  .side-text {
+    font-size: 14px;
+    font-weight: bold;
+    width: 35%;
+  }
+  
+  .side-text.left {
+    text-align: right;
+    padding-right: 10px;
+    font-weight: 500;
+  }
+  
+  .side-text.right {
+    text-align: left;
+    padding-left: 10px;
+    font-weight: 500;
+  }
+  
+  .main-c {
+    text-align: center;
+    width: 65%;
+  }
+  
+  .name {
+    font-weight: bold;
+    font-size: 15px;
+    margin: 10px 0;
+    text-transform: uppercase;
+    position: relative;
+  }
+  
+  .name::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: black;
+  }
+  
+  .designation {
+    font-size: 13px;
+    margin: 5px 0;
+    font-weight: 550;
+  }
+</style>

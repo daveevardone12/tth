@@ -141,6 +141,7 @@ const notifRoutes = require("./routes/notif");
 const prsRoutes = require("./Routes/prs");
 const mrerRoutes = require("./Routes/mrer");
 const wmrfRoutes = require("./routes/wmrf");
+const rfidRoutes = require("./routes/rfid");
 
 //-------CONNECTING TO DATABASE-------//
 tthPool
@@ -220,6 +221,7 @@ app.use("/notif", notifRoutes);
 app.use("/prs", prsRoutes);
 app.use("/mrer", mrerRoutes);
 app.use("/wmrf", wmrfRoutes);
+app.use("/rfid", rfidRoutes);
 
 // Logout route to clear session
 app.get("/logout", (req, res, next) => {
