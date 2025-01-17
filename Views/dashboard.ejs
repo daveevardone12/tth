@@ -11,6 +11,37 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      .container {
+        display: flex;
+      }
+
+      .main-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+      }
+
+      .cards-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .chart {
+        margin-top: 20px;
+        background-color: #f9f9f9;
+        padding: 10px;
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      canvas {
+        width: 100%;
+        height: 300px;
+      }
+    </style>
   </head>
 
   <body>
@@ -32,43 +63,62 @@
 
         <!-- Cards -->
         <div class="cards-container">
-          <div class="card purple">
+          <div class="card purple" data-category="ICT Equipment">
             <br /><span id="ICTEquipment"></span> ICT Equipment
           </div>
-          <div class="card red">
+          <div class="card red" data-category="Office Equipment">
             <br /><span id="officeEquipment"></span> Office Equipment
           </div>
-          <div class="card green">
+          <div
+            class="card green"
+            data-category="Agricultural and Forestry Equipment"
+          >
             <br /><span id="AgriEquipment"></span> Agricultural and Forestry
             Equipment
           </div>
-          <div class="card purple">
+          <div class="card purple" data-category="Medical Equipment">
             <br /><span id="MedEquipment"></span> Medical Equipment
           </div>
-          <div class="card red">
+          <div class="card red" data-category="Printing Equipment">
             <br /><span id="PrintEquipment"></span> Printing Equipment
           </div>
-          <div class="card green">
+          <div
+            class="card green"
+            data-category="Technical and Scientific Equipment"
+          >
             <br /><span id="TSEquipment"></span> Technical and Scientific
             Equipment
           </div>
-          <div class="card purple">
+          <div
+            class="card purple"
+            data-category="Other Machinery and Equipment"
+          >
             <br /><span id="OMEquipment"></span> Other Machinery and Equipment
           </div>
-          <div class="card red">
+          <div class="card red" data-category="Motor Vehicles">
             <br /><span id="MotorVehicles"></span> Motor Vehicles
           </div>
-          <div class="card green">
+          <div class="card green" data-category="Furniture and Fixtures">
             <br /><span id="FurnitureEquipment"></span> Furniture and Fixtures
           </div>
-          <div class="card purple"><br /><span id="Books"></span> Books</div>
-          <div class="card red"><br /><span id="Software"></span>Software</div>
-          <div class="card green">
+          <div class="card purple" data-category="Books">
+            <br /><span id="Books"></span> Books
+          </div>
+          <div class="card red" data-category="Software">
+            <br /><span id="Software"></span>Software
+          </div>
+          <div class="card green" data-category="Machinery">
             <br /><span id="MachineryEquipment"></span> Machinery<br /><span
               id="MachineryEquipment"
             ></span>
           </div>
+          <section class="chart">
+            <canvas id="myChart"></canvas>
+          </section>
         </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="/Public/js/script2.js"></script>
 
         <script src="../js/dashboard-api.js"></script>
 
@@ -82,6 +132,67 @@
 
           // Update the time every second (1000 milliseconds)
           setInterval(updateTime, 1000);
+
+          // Initialize the chart
+          const ctx = document.getElementById("myChart").getContext("2d");
+          let chart = new Chart(ctx, {
+            type: "bar",
+            data: {
+              labels: [], // Initialize with empty labels
+              datasets: [
+                {
+                  label: "Default Data",
+                  data: [], // Initialize with empty data
+                  backgroundColor: "rgba(75, 192, 192, 0.2)",
+                  borderColor: "rgba(75, 192, 192, 1)",
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+              plugins: {
+                legend: {
+                  position: "top",
+                },
+              },
+              scales: {
+                y: {
+                  beginAtZero: true,
+                },
+              },
+            },
+          });
+
+          // Fetch data and update the chart
+          async function fetchDataAndUpdateChart(category) {
+            try {
+              const response = await fetch(
+                `/dashboard/api/data?category=${encodeURIComponent(category)}`
+              );
+              const data = await response.json();
+
+              // Update chart with fetched UACS codes and values
+              updateChart(data.uacsCodes, data.values);
+            } catch (err) {
+              console.error("Error fetching data for chart:", err);
+            }
+          }
+
+          // Function to update the chart data
+          function updateChart(labels, data) {
+            chart.data.labels = labels; // Update labels with UACS codes
+            chart.data.datasets[0].data = data; // Update data values
+            chart.update();
+          }
+
+          // Add event listeners to cards
+          document.querySelectorAll(".card").forEach((card) => {
+            card.addEventListener("click", () => {
+              const category = card.getAttribute("data-category");
+              fetchDataAndUpdateChart(category);
+            });
+          });
 
           // Get the maximize icon and table container
           const maximizeIcon = document.getElementById("maximize-icon");

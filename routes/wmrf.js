@@ -4,6 +4,8 @@ const router = express.Router();
 const multer = require("multer");
 const tthPool = require("../models/tthDB");
 const { ensureAuthenticated } = require("../middleware/middleware");
+const tth = require("../models/tthDB");
+const { date } = require("joi");
 
 // Configure Multer to use memory storage
 const storage = multer.memoryStorage();
@@ -13,6 +15,43 @@ const upload = multer({ storage: storage });
 router.get("/", ensureAuthenticated, (req, res) => {
   const success = req.query.success === "true";
   res.render("wmrf", { success });
+});
+
+router.get("/office", async (req, res) => {
+  const { propertyNumber, document } = req.query;
+  if (!propertyNumber) {
+    return res.status(400).send("property number is requried");
+  }
+  console.log(req.query);
+  let docType;
+
+  if (document === "par") {
+    docType = "property_acknowledgement_receipt";
+  } else if (document === "ics") {
+    docType = "inventory_custodian_slip";
+  }
+
+  try {
+    const result = await tthPool.query(
+      `SELECT * FROM ${docType} WHERE property_no ILIKE $1`,
+      [`%${propertyNumber}%`]
+    );
+
+    console.log(result);
+
+    if (result.rows.length > 0) {
+      return res.json({ success: true, data: result.rows });
+      console.log(data);
+    } else {
+      return res.json({
+        success: false,
+        error: "No matching property no. found",
+      });
+    }
+  } catch (err) {
+    console.error("Error querying database:", err.stack, err.message);
+    return res.status(500).send("Internal Server Error");
+  }
 });
 
 // POST route to handle form submission

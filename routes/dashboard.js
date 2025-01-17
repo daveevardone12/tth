@@ -77,6 +77,116 @@ router.get("/dashboard", ensureAuthenticated, async (req, res) => {
   }
 });
 
+router.get("/dashboard/api/data", ensureAuthenticated, async (req, res) => {
+  const category = req.query.category;
+
+  try {
+    let query = "";
+    switch (category) {
+      case "ICT Equipment":
+        query = `
+          SELECT uacs_code, COUNT(*) as count
+          FROM property_acknowledgement_receipt
+          WHERE uacs_code ILIKE '%Information and Communication Technology Equipment%'
+          GROUP BY uacs_code`;
+        break;
+      case "Office Equipment":
+        query = `
+          SELECT uacs_code, COUNT(*) as count
+          FROM property_acknowledgement_receipt
+          WHERE uacs_code ILIKE '%Office Equipment%'
+          GROUP BY uacs_code`;
+        break;
+      case "Agricultural and Forestry Equipment":
+        query = `
+          SELECT uacs_code, COUNT(*) as count
+          FROM property_acknowledgement_receipt
+          WHERE uacs_code ILIKE '%Agricultural and Forestry Equipment%'
+          GROUP BY uacs_code`;
+        break;
+      case "Medical Equipment":
+        query = `
+          SELECT uacs_code, COUNT(*) as count
+          FROM property_acknowledgement_receipt
+          WHERE uacs_code ILIKE '%Medical Equipment%'
+          GROUP BY uacs_code`;
+        break;
+      case "Printing Equipment":
+        query = `
+          SELECT uacs_code, COUNT(*) as count
+          FROM property_acknowledgement_receipt
+          WHERE uacs_code ILIKE '%Printing Equipment%'
+          GROUP BY uacs_code`;
+        break;
+      case "Technical and Scientific Equipment":
+        query = `
+          SELECT uacs_code, COUNT(*) as count
+          FROM property_acknowledgement_receipt
+          WHERE uacs_code ILIKE '%Technical and Scientific Equipment%'
+          GROUP BY uacs_code`;
+        break;
+      case "Other Machinery and Equipment":
+        query = `
+          SELECT uacs_code, COUNT(*) as count
+          FROM property_acknowledgement_receipt
+          WHERE uacs_code ILIKE '%Other Machinery and Equipment%'
+          GROUP BY uacs_code`;
+        break;
+      case "Motor Vehicles":
+        query = `
+          SELECT uacs_code, COUNT(*) as count
+          FROM property_acknowledgement_receipt
+          WHERE uacs_code ILIKE '%Motor Vehicles%'
+          GROUP BY uacs_code`;
+        break;
+      case "Furniture and Fixtures":
+        query = `
+          SELECT uacs_code, COUNT(*) as count
+          FROM property_acknowledgement_receipt
+          WHERE uacs_code ILIKE '%Furniture and Fixtures%'
+          GROUP BY uacs_code`;
+        break;
+      case "Books":
+        query = `
+          SELECT uacs_code, COUNT(*) as count
+          FROM property_acknowledgement_receipt
+          WHERE uacs_code ILIKE '%Books%'
+          GROUP BY uacs_code`;
+        break;
+      case "Software":
+        query = `
+          SELECT uacs_code, COUNT(*) as count
+          FROM property_acknowledgement_receipt
+          WHERE uacs_code ILIKE '%Software%'
+          GROUP BY uacs_code`;
+        break;
+      case "Machinery":
+        query = `
+          SELECT uacs_code, COUNT(*) as count
+          FROM property_acknowledgement_receipt
+          WHERE uacs_code ILIKE '%Machinery%'
+          GROUP BY uacs_code`;
+        break;
+      default:
+        throw new Error("Invalid category");
+    }
+
+    const { rows } = await tthPool.query(query);
+
+    // Extract UACS codes and counts
+    const uacsCodes = rows.map((row) => row.uacs_code);
+    const values = rows.map((row) => row.count);
+
+    res.json({
+      uacsCodes,
+      values,
+    });
+  } catch (err) {
+    console.error("Error fetching data:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 // You can add more routes here related to the dashboard, like:
 router.get("/api/data", async (req, res) => {
   try {

@@ -26,6 +26,14 @@
                 <form method="POST" action="/prs/save">
 
                     <div class="form-group">
+
+                        <div class="third-width">
+                            <label>Document Type*</label>
+                            <select name="documentType" id="documentType">
+                              <option value="par">PAR</option>
+                              <option value="ics">ICS</option>
+                            </select>
+                          </div>
                         <div class="half-width">
                             <label>Name of Office*</label>
                             <input type="text" id="office" name="office" placeholder="Ex. Smart Center" required>
@@ -52,11 +60,15 @@
                     <div class="form-group1">
                         <div class="half-width">
                             <label>Property No. (if any)</label>
-                            <input type="text" id="propertyNumber" name="propertyNumber" placeholder="Ex. 15-04-011">
+                            <input type="text" id="property_no" name="property_no" placeholder="Ex. 15-04-011">
+                            <div
+                            style="display: flex; flex-direction: column"
+                            id="results"
+                          ></div>
                         </div>
                         <div class="half-width">
                             <label>Date Acquired*</label>
-                            <input type="date" id="dateAcquired" name="dateAcquired" required>
+                            <input type="date" id="date_acquired" name="date_acquired" required>
                         </div>
                         <div class="half-width">
                             <label>Name of End User*</label>
@@ -95,5 +107,5 @@
         </div>
     </div>
 </body>
-
+<script src="../js/prs-api.js"></script>
 </html>
