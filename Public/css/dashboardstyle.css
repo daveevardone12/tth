@@ -29,6 +29,7 @@ body::-webkit-scrollbar {
   position: fixed;
   height: 100%;
   overflow-y: auto;
+  
 }
 
 /* Main content area */
