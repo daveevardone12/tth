@@ -10,6 +10,9 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   </head>
 
   <body>
@@ -25,15 +28,81 @@
 
         <div class="form-container">
           <form method="POST" action="/ptr/save">
+
+            <div class="grid-container">
             <div class="form-group">
+              <div class="third-width">
+                <label>Document Type*</label>
+                <select name="documentType" id="documentType">
+                  <option value="par">PAR</option>
+                  <option value="ics">ICS</option>
+                </select>
+              </div>
+              <div class="third-width">
+                <label>Property No.*</label>
+                <input
+                  type="text"
+                  id="property_no"
+                  name="property_no"
+                  required
+                  placeholder="xxxxxxxxx"
+                />
+                <div class="hoverable"
+                  
+                  id="results"
+                ></div>
+              </div>
               <div class="half-width">
-                <label>Property Name*</label>
+                <label>Property Name.*</label>
                 <input
                   type="text"
                   required
                   placeholder="Enter your text here..."
                   id="property_name"
                   name="property_name"
+                />
+              </div>
+              <div class="half-width">
+                <label>From Accountable Officer/Agency/Fund Cluster*</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="Enter your text here..."
+                  id="from_accountable"
+                  name="from_accountable"
+                />
+              </div>
+              <div class="third-width">
+                <label>Date Acquired*</label>
+                <input
+                  type="date"
+                  id="date_acquired"
+                  name="date_acquired"
+                  required
+                />
+              </div>
+              <div class="third-width">
+                <label>Amount*</label>
+                <input
+                  type="number"
+                  id="amount"
+                  name="amount"
+                  required
+                  placeholder="xxxxxxxxx"
+                />
+              </div>
+              
+            </div>
+            <div class="form-group">
+              
+              <div class="half-width">
+                <label>To Accountable Officer/Agency/Fund Cluster*</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="Enter your text here..."
+                  id="to_accountable"
+                  name="to_accountable"
                 />
               </div>
               <div class="half-width">
@@ -45,30 +114,7 @@
                   placeholder="Enter your text here..."
                 />
               </div>
-            </div>
-            <div class="form-group">
-              <div class="half-width">
-                <label>From Accountable Officer/Agency/Fund Cluster*</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="Enter your text here..."
-                  id="from_accountable"
-                  name="from_accountable"
-                />
-              </div>
-              <div class="half-width">
-                <label>To Accountable Officer/Agency/Fund Cluster*</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="Enter your text here..."
-                  id="to_accountable"
-                  name="to_accountable"
-                />
-              </div>
-            </div>
-            <div class="form-group">
+
               <div class="half-width">
                 <label>PTR No.</label>
                 <input
@@ -78,11 +124,36 @@
                   placeholder="xxxxxxxxx"
                 />
               </div>
+              
+              
+              <div class="third-width">
+                <label>Quantity*</label>
+                <input
+                  type="number"
+                  id="quantity"
+                  name="quantity"
+                  required
+                  placeholder="xxxxxxxxx"
+                />
+              </div>
+              
+              
+              <div class="third-width">
+                <label>Condition of PPE*</label>
+                <input
+                  type="text"
+                  name="condition_ppe"
+                  id="condition_ppe"
+                  required
+                />
+              </div>
               <div class="half-width">
                 <label>Date</label>
                 <input type="date" id="ptr_date" name="ptr_date" />
               </div>
             </div>
+            
+          </div>
 
             <div class="form-group2">
               <label for="transfer-type" class="trans"
@@ -135,69 +206,9 @@
               />
             </div>
 
-            <div class="form-group">
-              <div class="third-width">
-                <label>Date Acquired*</label>
-                <input
-                  type="date"
-                  id="date_acquired"
-                  name="date_acquired"
-                  required
-                />
-              </div>
-              <div class="third-width">
-                <label>Property No.*</label>
-                <input
-                  type="text"
-                  id="property_no"
-                  name="property_no"
-                  required
-                  placeholder="xxxxxxxxx"
-                />
-                <div
-                  style="display: flex; flex-direction: column"
-                  id="results"
-                ></div>
-              </div>
-              <div class="third-width">
-                <label>Quantity*</label>
-                <input
-                  type="number"
-                  id="quantity"
-                  name="quantity"
-                  required
-                  placeholder="xxxxxxxxx"
-                />
-              </div>
-              <div class="third-width">
-                <label>Document Type*</label>
-                <select name="documentType" id="documentType">
-                  <option value="par">PAR</option>
-                  <option value="ics">ICS</option>
-                </select>
-              </div>
-              <div class="third-width">
-                <label>Amount*</label>
-                <input
-                  type="number"
-                  id="amount"
-                  name="amount"
-                  required
-                  placeholder="xxxxxxxxx"
-                />
-              </div>
-              <div class="third-width">
-                <label>Condition of PPE*</label>
-                <input
-                  type="text"
-                  name="condition_ppe"
-                  id="condition_ppe"
-                  required
-                />
-              </div>
-            </div>
+         
 
-            <div class="form-group">
+            <div class="form-group5">
               <div class="desc1">
                 <label>Description</label>
                 <textarea
@@ -232,6 +243,7 @@
                 window.print();
               }
             </script>
+           
           </form>
         </div>
       </div>
