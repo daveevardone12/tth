@@ -148,8 +148,6 @@ i#maximize-icon {
   flex-wrap: wrap;
   column-gap: 40px;
   row-gap: 40px;
-  justify-content: center;
-
 }
 
 .card {
@@ -185,7 +183,7 @@ i#maximize-icon {
   transition: all 0.4s ease;
 }
 
- /* .purple:hover {
+/* .purple:hover {
   background-color: #ac95ff;
 }
 

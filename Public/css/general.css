@@ -18,7 +18,7 @@ textarea {
 
 .sidebar {
   width: 300px;
-  background: #095c02;
+  background: #0a5d03;
   color: white;
   height: 100vh;
   padding: 0 0 20px 0;
@@ -187,7 +187,7 @@ li {
   flex-direction: column;
   gap: 12px;
   padding: 0 20px 24px 20px;
-  background-color: #095c02;
+  background-color: #0a5d03;
   position: sticky;
   top: 0;
   z-index: 100;
