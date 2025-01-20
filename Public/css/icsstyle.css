@@ -128,7 +128,7 @@ h2 {
   font-family: Poppins;
   font-size: 15px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   line-height: normal;
 }
 
@@ -281,7 +281,7 @@ label:hover {
   cursor: pointer;
   border-radius: 5px; /* Smooth corners */
   transition: border-color 0.3s ease; /* Smooth border transition */
-  width: 25em;
+  width: 28em;
 }
 
 /* Trigger hover effect for custom dropdowns */

@@ -42,16 +42,22 @@ h2 {
 /* Main content area */
 .main-content {
   background-color: white;
-  margin-left: 370px; /* Leaves space for the sidebar */
+  margin-left: 370px;
+  /* Leaves space for the sidebar */
   padding: 20px;
   height: 100vh !important;
-  width: calc(100% - 370px); /* Takes the remaining space */
-  overflow: auto !important; /* Enables scrolling for the content */
+  width: calc(100% - 370px);
+  /* Takes the remaining space */
+  overflow: auto !important;
+  /* Enables scrolling for the content */
   transition: all 0.3s ease;
 }
+
 .main-content::-webkit-scrollbar {
   display: none;
 }
+
+
 
 .form-container {
   margin-top: 30px;
@@ -70,11 +76,11 @@ h2 {
 }
 
 .form-group {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   gap: 10px;
-  margin-bottom: 15px;
+  /* margin-bottom: 15px; */
   margin-right: 80px;
+ 
 }
 
 .form-group label {
@@ -87,7 +93,7 @@ h2 {
 .form-group input[type="text"],
 .form-group input[type="date"],
 .form-group input[type="number"],
-.form-group textarea {
+.form-group select {
   width: 100%;
   padding: 8px;
   border: 2px solid #ccc;
@@ -97,7 +103,8 @@ h2 {
 
 .form-group input[type="text"],
 .form-group input[type="date"],
-.form-group input[type="number"] {
+.form-group input[type="number"],
+.form-group select {
   height: 36px;
 }
 
@@ -105,19 +112,18 @@ h2 {
   flex: 1;
 }
 
-.form-group .desc1 {
+.form-group5 .desc1 {
   width: 100px;
 }
 
-.form-group .desc2 {
+.form-group5 .desc2 {
   width: 150px;
-  margin-left: 402px;
 }
 
 .form-group .third-width {
   flex: 0 0 15%;
-  margin-left: 35px;
-  margin-top: 30px;
+  /* margin-left: 35px;  */
+  /* margin-top: 30px; */
 }
 
 .transfer-type {
@@ -137,14 +143,18 @@ h2 {
   margin-right: 5px;
 }
 
-.form-group textarea {
+.form-group5 textarea {
   resize: none;
-  height: 110px;
-  width: 500px;
+  height: 250px;
+  width: 600px;
+  padding: 8px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
 }
 
 .desc {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .button-container {
@@ -205,8 +215,8 @@ h2 {
 }
 
 .specify-box {
-  margin-top: 10px;
-  margin-left: 380px;
+  margin-top: -50px;
+  margin-left: 500px;
   border: 2px solid #cccccc;
   padding: 5px;
   width: 100%;
@@ -219,6 +229,7 @@ h2 {
 /* print ptr */
 
 @media print {
+
   .container,
   .sidebar {
     size: A4;
@@ -229,4 +240,29 @@ h2 {
   #printPtr {
     display: block !important;
   }
+}
+
+.hoverable {
+  display: none;
+  flex-direction: column;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  z-index: 10;
+  position: absolute;
+
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 10px;
+  align-items: baseline;
+}
+
+.form-group5 {
+  display: grid;
+  grid-template-columns: .9fr 1fr;
+  
 }
