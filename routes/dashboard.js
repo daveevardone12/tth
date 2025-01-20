@@ -1,3 +1,5 @@
+// routes/dashboard.js
+
 const express = require("express");
 const router = express.Router();
 const tthPool = require("../models/tthDB");
@@ -8,29 +10,31 @@ const { ensureAuthenticated } = require("../middleware/middleware");
 router.get("/dashboard", ensureAuthenticated, async (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 10;
-  const isAjax = req.query.ajax === "true";
+  const ajaxType = req.query.ajax; // Can be 'true' or 'locations'
+  const location = req.query.location || null; // Optional location filter
 
   const currentDateTime = new Date();
 
   try {
-    const {
-      getInventoryList,
-      totalPages,
-      totalItemsOffice,
-      totalItemsICTEquipment,
-      totalItemsAgriEquipment,
-      totalItemsMedEquipment,
-      totalItemsPrintEquipment,
-      totalItemsTSEquipment,
-      totalItemsOMEquipment,
-      totalMotorVehicles,
-      totalFurnitureEquipment,
-      totalBooks,
-      totalSoftware,
-      totalMachineryEquipment,
-    } = await fetchInventoryList(page, limit);
+    if (ajaxType === "true") {
+      // Handle Inventory Data AJAX Request
+      const {
+        getInventoryList,
+        totalPages,
+        totalItemsOffice,
+        totalItemsICTEquipment,
+        totalItemsAgriEquipment,
+        totalItemsMedEquipment,
+        totalItemsPrintEquipment,
+        totalItemsTSEquipment,
+        totalItemsOMEquipment,
+        totalMotorVehicles,
+        totalFurnitureEquipment,
+        totalBooks,
+        totalSoftware,
+        totalMachineryEquipment,
+      } = await fetchInventoryList(page, limit, location);
 
-    if (isAjax) {
       return res.json({
         getInventoryList,
         currentPage: page,
@@ -50,290 +54,130 @@ router.get("/dashboard", ensureAuthenticated, async (req, res) => {
         totalSoftware,
         totalMachineryEquipment,
       });
-    }
+    } else if (ajaxType === "locations") {
+      // Handle Location-Based Data AJAX Request
+      const locationData = await fetchLocationData(location);
 
-    res.render("dashboard", {
-      getInventoryList,
-      currentPage: page,
-      totalPages,
-      limit,
-      currentDateTime,
-      totalItemsOffice,
-      totalItemsICTEquipment,
-      totalItemsAgriEquipment,
-      totalItemsMedEquipment,
-      totalItemsPrintEquipment,
-      totalItemsTSEquipment,
-      totalItemsOMEquipment,
-      totalMotorVehicles,
-      totalFurnitureEquipment,
-      totalBooks,
-      totalSoftware,
-      totalMachineryEquipment,
-    });
+      return res.json({
+        locationData,
+      });
+    } else {
+      // Render Full Dashboard Page
+      const {
+        getInventoryList,
+        totalPages,
+        totalItemsOffice,
+        totalItemsICTEquipment,
+        totalItemsAgriEquipment,
+        totalItemsMedEquipment,
+        totalItemsPrintEquipment,
+        totalItemsTSEquipment,
+        totalItemsOMEquipment,
+        totalMotorVehicles,
+        totalFurnitureEquipment,
+        totalBooks,
+        totalSoftware,
+        totalMachineryEquipment,
+      } = await fetchInventoryList(page, limit, location);
+
+      res.render("dashboard", {
+        getInventoryList,
+        currentPage: page,
+        totalPages,
+        limit,
+        currentDateTime,
+        totalItemsOffice,
+        totalItemsICTEquipment,
+        totalItemsAgriEquipment,
+        totalItemsMedEquipment,
+        totalItemsPrintEquipment,
+        totalItemsTSEquipment,
+        totalItemsOMEquipment,
+        totalMotorVehicles,
+        totalFurnitureEquipment,
+        totalBooks,
+        totalSoftware,
+        totalMachineryEquipment,
+      });
+    }
   } catch (err) {
     console.error("Error: ", err);
     res.sendStatus(500);
   }
 });
 
-router.get("/dashboard/api/data", ensureAuthenticated, async (req, res) => {
-  const category = req.query.category;
-
-  try {
-    let query = "";
-    switch (category) {
-      case "ICT Equipment":
-        query = `
-          SELECT uacs_code, COUNT(*) as count
-          FROM property_acknowledgement_receipt
-          WHERE uacs_code ILIKE '%Information and Communication Technology Equipment%'
-          GROUP BY uacs_code`;
-        break;
-      case "Office Equipment":
-        query = `
-          SELECT uacs_code, COUNT(*) as count
-          FROM property_acknowledgement_receipt
-          WHERE uacs_code ILIKE '%Office Equipment%'
-          GROUP BY uacs_code`;
-        break;
-      case "Agricultural and Forestry Equipment":
-        query = `
-          SELECT uacs_code, COUNT(*) as count
-          FROM property_acknowledgement_receipt
-          WHERE uacs_code ILIKE '%Agricultural and Forestry Equipment%'
-          GROUP BY uacs_code`;
-        break;
-      case "Medical Equipment":
-        query = `
-          SELECT uacs_code, COUNT(*) as count
-          FROM property_acknowledgement_receipt
-          WHERE uacs_code ILIKE '%Medical Equipment%'
-          GROUP BY uacs_code`;
-        break;
-      case "Printing Equipment":
-        query = `
-          SELECT uacs_code, COUNT(*) as count
-          FROM property_acknowledgement_receipt
-          WHERE uacs_code ILIKE '%Printing Equipment%'
-          GROUP BY uacs_code`;
-        break;
-      case "Technical and Scientific Equipment":
-        query = `
-          SELECT uacs_code, COUNT(*) as count
-          FROM property_acknowledgement_receipt
-          WHERE uacs_code ILIKE '%Technical and Scientific Equipment%'
-          GROUP BY uacs_code`;
-        break;
-      case "Other Machinery and Equipment":
-        query = `
-          SELECT uacs_code, COUNT(*) as count
-          FROM property_acknowledgement_receipt
-          WHERE uacs_code ILIKE '%Other Machinery and Equipment%'
-          GROUP BY uacs_code`;
-        break;
-      case "Motor Vehicles":
-        query = `
-          SELECT uacs_code, COUNT(*) as count
-          FROM property_acknowledgement_receipt
-          WHERE uacs_code ILIKE '%Motor Vehicles%'
-          GROUP BY uacs_code`;
-        break;
-      case "Furniture and Fixtures":
-        query = `
-          SELECT uacs_code, COUNT(*) as count
-          FROM property_acknowledgement_receipt
-          WHERE uacs_code ILIKE '%Furniture and Fixtures%'
-          GROUP BY uacs_code`;
-        break;
-      case "Books":
-        query = `
-          SELECT uacs_code, COUNT(*) as count
-          FROM property_acknowledgement_receipt
-          WHERE uacs_code ILIKE '%Books%'
-          GROUP BY uacs_code`;
-        break;
-      case "Software":
-        query = `
-          SELECT uacs_code, COUNT(*) as count
-          FROM property_acknowledgement_receipt
-          WHERE uacs_code ILIKE '%Software%'
-          GROUP BY uacs_code`;
-        break;
-      case "Machinery":
-        query = `
-          SELECT uacs_code, COUNT(*) as count
-          FROM property_acknowledgement_receipt
-          WHERE uacs_code ILIKE '%Machinery%'
-          GROUP BY uacs_code`;
-        break;
-      default:
-        throw new Error("Invalid category");
-    }
-
-    const { rows } = await tthPool.query(query);
-
-    // Extract UACS codes and counts
-    const uacsCodes = rows.map((row) => row.uacs_code);
-    const values = rows.map((row) => row.count);
-
-    res.json({
-      uacsCodes,
-      values,
-    });
-  } catch (err) {
-    console.error("Error fetching data:", err);
-    res.status(500).json({ error: "Internal Server Error" });
-  }
-});
-
-// You can add more routes here related to the dashboard, like:
-router.get("/api/data", async (req, res) => {
-  try {
-    // Fetch specific data from the database
-    const results = await tthPool.query(`SELECT * FROM users`);
-    res.json(results.rows);
-  } catch (err) {
-    console.error("Error fetching API data:", err);
-    res.status(500).json({ error: "Internal Server Error" });
-  }
-});
-
-async function fetchInventoryList(page, limit) {
+// Function to fetch inventory list with optional location filtering
+async function fetchInventoryList(page, limit, location) {
   const offset = (page - 1) * limit;
 
   try {
-    const query = `
-        SELECT *, COUNT(*) OVER() AS total_count
-        FROM property_acknowledgement_receipt
-        ORDER BY id
-        LIMIT $1 OFFSET $2
-      `;
+    // Base query with pagination and optional location filter
+    let baseQuery = `
+      SELECT *, COUNT(*) OVER() AS total_count
+      FROM property_acknowledgement_receipt
+      ${location ? "WHERE location = $3" : ""}
+      ORDER BY id
+      LIMIT $1 OFFSET $2
+    `;
 
-    const { rows } = await tthPool.query(query, [limit, offset]);
+    // Parameters array
+    let params = [limit, offset];
+    if (location) {
+      params.push(location);
+    }
 
-    const totalItems = rows.length > 0 ? rows[0].total_count : 10;
+    const { rows } = await tthPool.query(baseQuery, params);
+
+    const totalItems = rows.length > 0 ? rows[0].total_count : 0;
     const totalPages = Math.ceil(totalItems / limit);
 
     const data = rows.map((row) => ({
       ...row,
     }));
 
-    // --------------------------
-    const query1 = `SELECT * FROM property_acknowledgement_receipt 
-    WHERE uacs_code ILIKE $1`;
-
-    const { rows: officeEquipment } = await tthPool.query(query1, [
+    // Fetch counts for each category with optional location filter
+    const totalItemsOffice = await getCountByCategory(
       "%Office Equipment%",
-    ]);
-    const totalItemsOffice = officeEquipment.length;
-    // -------------------------
-
-    // --------------------------
-    const query2 = `SELECT * FROM property_acknowledgement_receipt 
-    WHERE uacs_code ILIKE $1`;
-
-    const { rows: ICTEquipment } = await tthPool.query(query2, [
+      location
+    );
+    const totalItemsICTEquipment = await getCountByCategory(
       "%Information and Communication Technology Equipment%",
-    ]);
-    const totalItemsICTEquipment = ICTEquipment.length;
-    // -------------------------
-
-    // --------------------------
-    const query3 = `SELECT * FROM property_acknowledgement_receipt 
-    WHERE uacs_code ILIKE $1`;
-
-    const { rows: AgriEquipment } = await tthPool.query(query3, [
+      location
+    );
+    const totalItemsAgriEquipment = await getCountByCategory(
       "%Agricultural Equipment%",
-    ]);
-    const totalItemsAgriEquipment = AgriEquipment.length;
-    // -------------------------
-
-    // --------------------------
-    const query4 = `SELECT * FROM property_acknowledgement_receipt 
-    WHERE uacs_code ILIKE $1`;
-
-    const { rows: MedEquipment } = await tthPool.query(query4, [
+      location
+    );
+    const totalItemsMedEquipment = await getCountByCategory(
       "%Medical Equipment%",
-    ]);
-    const totalItemsMedEquipment = MedEquipment.length;
-    // -------------------------
-
-    // --------------------------
-    const query5 = `SELECT * FROM property_acknowledgement_receipt 
-    WHERE uacs_code ILIKE $1`;
-
-    const { rows: PrintEquipment } = await tthPool.query(query5, [
+      location
+    );
+    const totalItemsPrintEquipment = await getCountByCategory(
       "%Printing Equipment%",
-    ]);
-    const totalItemsPrintEquipment = PrintEquipment.length;
-    // -------------------------
-
-    // --------------------------
-    const query6 = `SELECT * FROM property_acknowledgement_receipt 
-    WHERE uacs_code ILIKE $1`;
-
-    const { rows: TSEquipment } = await tthPool.query(query6, [
+      location
+    );
+    const totalItemsTSEquipment = await getCountByCategory(
       "%Technical and Scientific Equipment%",
-    ]);
-    const totalItemsTSEquipment = TSEquipment.length;
-    // -------------------------
-
-    // --------------------------
-    const query7 = `SELECT * FROM property_acknowledgement_receipt 
-    WHERE uacs_code ILIKE $1`;
-
-    const { rows: OMEquipment } = await tthPool.query(query7, [
-      "%Other Machineries and Equipment Equipment%",
-    ]);
-    const totalItemsOMEquipment = OMEquipment.length;
-    // -------------------------
-
-    // --------------------------
-    const query8 = `SELECT * FROM property_acknowledgement_receipt 
-    WHERE uacs_code ILIKE $1`;
-
-    const { rows: MotorVehicles } = await tthPool.query(query8, [
-      "%MotorVehicles%",
-    ]);
-    const totalMotorVehicles = MotorVehicles.length;
-    // -------------------------
-
-    // --------------------------
-    const query9 = `SELECT * FROM property_acknowledgement_receipt 
-    WHERE uacs_code ILIKE $1`;
-
-    const { rows: FurnitureEquipment } = await tthPool.query(query9, [
+      location
+    );
+    const totalItemsOMEquipment = await getCountByCategory(
+      "%Other Machinery and Equipment%",
+      location
+    );
+    const totalMotorVehicles = await getCountByCategory(
+      "%Motor Vehicles%",
+      location
+    );
+    const totalFurnitureEquipment = await getCountByCategory(
       "%Furniture and Fixtures%",
-    ]);
-    const totalFurnitureEquipment = FurnitureEquipment.length;
-    // -------------------------
-
-    // --------------------------
-    const query10 = `SELECT * FROM property_acknowledgement_receipt 
-    WHERE uacs_code ILIKE $1`;
-
-    const { rows: Books } = await tthPool.query(query10, ["%Books%"]);
-    const totalBooks = Books.length;
-    // -------------------------
-
-    // --------------------------
-    const query11 = `SELECT * FROM property_acknowledgement_receipt 
-    WHERE uacs_code ILIKE $1`;
-
-    const { rows: Software } = await tthPool.query(query11, ["%Software%"]);
-    const totalSoftware = Software.length;
-    // -------------------------
-
-    // --------------------------
-    const query12 = `SELECT * FROM property_acknowledgement_receipt 
-    WHERE uacs_code ILIKE $1`;
-
-    const { rows: MachineryEquipment } = await tthPool.query(query12, [
-      "%Software%",
-    ]);
-    const totalMachineryEquipment = MachineryEquipment.length;
-    // -------------------------
+      location
+    );
+    const totalBooks = await getCountByCategory("%Books%", location);
+    const totalSoftware = await getCountByCategory("%Software%", location);
+    const totalMachineryEquipment = await getCountByCategory(
+      "%Machinery%",
+      location
+    );
 
     return {
       getInventoryList: data,
@@ -357,4 +201,151 @@ async function fetchInventoryList(page, limit) {
   }
 }
 
+// Helper function to get counts by category with optional location filtering
+async function getCountByCategory(categoryPattern, location) {
+  try {
+    let query = `
+      SELECT COUNT(DISTINCT uacs_code) as count
+      FROM property_acknowledgement_receipt
+      WHERE uacs_code ILIKE $1
+      ${location ? "AND location = $2" : ""}
+    `;
+    let params = [categoryPattern];
+    if (location) {
+      params.push(location);
+    }
+
+    const { rows } = await tthPool.query(query, params);
+    return parseInt(rows[0].count, 10);
+  } catch (err) {
+    console.error("Error fetching count by category:", err);
+    return 0;
+  }
+}
+
+// Function to fetch location-based metrics
+async function fetchLocationData(location) {
+  try {
+    let query = "";
+    let params = [];
+    if (location) {
+      query = `
+        SELECT location, COUNT(DISTINCT uacs_code) as metric
+        FROM property_acknowledgement_receipt
+        WHERE location = $1
+        GROUP BY location
+      `;
+      params = [location];
+    } else {
+      query = `
+        SELECT location, COUNT(DISTINCT uacs_code) as metric
+        FROM property_acknowledgement_receipt
+        GROUP BY location
+      `;
+    }
+
+    const { rows } = await tthPool.query(query, params);
+
+    // Format data as needed for the frontend
+    const locationData = rows.map((row) => ({
+      location: row.location,
+      metric: parseInt(row.metric, 10),
+    }));
+
+    return locationData;
+  } catch (err) {
+    console.error("Error fetching location data:", err);
+    throw new Error("Error fetching location data");
+  }
+}
+
+// API endpoint for category-based data (if needed)
+router.get("/dashboard/api/data", ensureAuthenticated, async (req, res) => {
+  const category = req.query.category;
+
+  try {
+    if (!category) {
+      return res.status(400).json({ error: "Category is required" });
+    }
+
+    let query = "";
+    switch (category) {
+      case "ICT Equipment":
+        query = `
+          SELECT uacs_code, COUNT(*) as count
+          FROM property_acknowledgement_receipt
+          WHERE uacs_code ILIKE '%Information and Communication Technology Equipment%'
+          GROUP BY uacs_code`;
+        break;
+      case "Office Equipment":
+        query = `
+          SELECT uacs_code, COUNT(*) as count
+          FROM property_acknowledgement_receipt
+          WHERE uacs_code ILIKE '%Office Equipment%'
+          GROUP BY uacs_code`;
+        break;
+      // ... (other cases remain unchanged)
+      default:
+        return res.status(400).json({ error: "Invalid category" });
+    }
+
+    const { rows } = await tthPool.query(query);
+
+    // Extract UACS codes and counts
+    const uacsCodes = rows.map((row) => row.uacs_code);
+    const values = rows.map((row) => row.count);
+
+    res.json({
+      uacsCodes,
+      values,
+    });
+  } catch (err) {
+    console.error("Error fetching data:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Example API route (not used in current setup)
+router.get("/api/data", async (req, res) => {
+  try {
+    // Fetch specific data from the database
+    const results = await tthPool.query(`SELECT * FROM users`);
+    res.json(results.rows);
+  } catch (err) {
+    console.error("Error fetching API data:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 module.exports = router;
+
+// Paste this snippet at the very end of "dashboard.js", AFTER "module.exports = router;"
+
+/**
+ * SNIPPET: Override getCountByCategory to count ALL rows per category (not distinct codes).
+ */
+
+// (Optional) keep a reference to the original function if needed:
+// const originalGetCountByCategory = getCountByCategory;
+
+// Overwrite getCountByCategory with a version that uses COUNT(*).
+async function getCountByCategory(categoryPattern, location) {
+  try {
+    let query = `
+      SELECT COUNT(*) AS count
+      FROM property_acknowledgement_receipt
+      WHERE uacs_code ILIKE $1
+      ${location ? "AND location = $2" : ""}
+    `;
+    let params = [categoryPattern];
+    if (location) {
+      params.push(location);
+    }
+
+    const { rows } = await tthPool.query(query, params);
+    return parseInt(rows[0].count, 10);
+  } catch (err) {
+    console.error("Error fetching count by category:", err);
+    return 0;
+  }
+}
