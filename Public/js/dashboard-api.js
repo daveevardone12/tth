@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const options = {
       title: "Inventory Items by Category",
-      chartArea: { width: "70%", height: "70%" }, // Adjust chart area within the container
+      chartArea: { width: "70%", height: "85%" }, // Adjust chart area within the container
       hAxis: {
         title: "Total Distinct UACS Codes",
         minValue: 0,
@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
         title: "Category",
       },
       colors: ["#4285F4"], // Example color
-      fontSize: 12,
+      fontSize: 8,
     };
 
     const chart = new google.visualization.BarChart(
@@ -268,8 +268,8 @@ document.addEventListener("DOMContentLoaded", function () {
         title: "Count", // Updated from 'Metric' to 'Count'
       },
       colors: ["#DB4437"], // Example color, customize as needed
-      fontSize: 12,
-      chartArea: { width: "70%", height: "70%" },
+      fontSize: 8,
+      chartArea: { width: "70%", height: "85%" },
     };
 
     const chart = new google.visualization.ColumnChart(
