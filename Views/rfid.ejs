@@ -33,6 +33,7 @@
               <th>DATE & TIME</th>
               <th>STATUS</th>
               <th>EMAIL</th>
+              <th>ACTION</th>
             </tr>
           </thead>
           <tbody id="rfid-table-body"></tbody>
@@ -77,7 +78,12 @@
           </div>
           <footer class="modal-footer">
             <button type="submit" class="confirms">Confirm</button>
-            <button onclick="closePopup()" type="button" class="cancels">
+            <button
+              onclick="closeModal()"
+              type="button"
+              class="cancels"
+              id="cancels"
+            >
               Cancel
             </button>
           </footer>
@@ -91,6 +97,41 @@
       }
 
       .popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .hidden1 {
+        display: none !important;
+      }
+      .hidden2 {
+        display: none !important;
+      }
+
+      .popup1 {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .popup2 {
+        display: none !important;
+      }
+
+      .popup2 {
         position: fixed;
         top: 0;
         left: 0;
@@ -145,7 +186,7 @@
         background-color: #ddd;
       }
     </style>
-
+    // Assign
     <div id="popup" class="popup hidden">
       <form method="POST" action="/rfid/save/rfid-update">
         <div class="popup-content">
@@ -169,6 +210,43 @@
         </div>
       </form>
     </div>
+    // Update
+    <div id="popup1" class="popup hidden1">
+      <form method="POST" action="/rfid/save/rfid-update_tag">
+        <div class="popup-content">
+          <h3>Update RFID Tag</h3>
+          <input
+            type="text"
+            id="new_rfid_tag"
+            name="new_rfid_tag"
+            placeholder="Enter RFID Tag"
+          />
+          <input type="hidden" name="currentTagId" id="currentTagId" />
+          <div class="hoverable" id="results"></div>
+          <button onclick="assignProperty()" type="submit" class="submits">
+            Submit
+          </button>
+          <button onclick="closePopup1()" type="button" class="cancels">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+    // Delete
+    <div id="popup2" class="popup hidden2">
+      <form action="/rfid/delete/rfid" method="post" class="popup-content">
+        <h3>Confirm Deletion</h3>
+        <p>Are you sure you want to delete this?</p>
+        <input type="hidden" name="tag_id" id="tag_id_delete" />
+        <div class="buttons">
+          <button type="submit" class="submits">Yes, Delete</button>
+          <button onclick="closePopup2()" type="button" class="cancels">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+
     <script src="../js/rfid_api.js"></script>
     <script>
       // JavaScript for Dropdown and Modal
@@ -188,6 +266,14 @@
 
       function closePopup() {
         document.getElementById("popup").classList.add("hidden");
+      }
+
+      function closePopup1() {
+        document.getElementById("popup1").classList.add("hidden1");
+      }
+
+      function closePopup2() {
+        document.getElementById("popup2").classList.add("hidden2");
       }
     </script>
   </body>

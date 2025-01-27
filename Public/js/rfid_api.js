@@ -71,11 +71,24 @@ document.addEventListener("DOMContentLoaded", function () {
               <td>${formattedTime}</td>
               <td>${rfid.status ? "In" : "Out"}</td>
               <td class="action-column">
-                <button class="action-btn">Transmission</button>
+              ${
+                rfid.email
+                  ? rfid.email
+                  : rfid.email1
+                  ? rfid.email1
+                  : "not assigned"
+              }
+
+              </td>
+              <td class="action-column">
                 <span class="menu-btn" data-menu-id="${menuId}">⋮</span>
                 <div class="dropdown-menu" id="${menuId}" name="menu">
-                  <button class="dropdown-item update">Update</button>
-                  <button class="dropdown-item delete">Delete</button>
+                  <button data-tagId="${
+                    rfid.tag_id
+                  }" class="dropdown-item update">Update</button>
+                  <button class="dropdown-item delete" data-tag-id="${
+                    rfid.tag_id
+                  }">Delete</button>
                   <button class="dropdown-item assign" data-tag-id="${
                     rfid.tag_id
                   }">Assign</button>
@@ -222,12 +235,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Similarly, handle other dropdown items if needed
     if (target.classList.contains("update")) {
-      updateAction();
+      const tagId = target.getAttribute("data-tagId");
+      updateAction(tagId);
       // Restart interval if needed
     }
 
     if (target.classList.contains("delete")) {
-      deleteAction();
+      const tagId = target.getAttribute("data-tag-id");
+      deleteAction(tagId);
       // Restart interval if needed
     }
 
@@ -265,15 +280,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Placeholder functions for actions
   function updateAction(tagId) {
-    // Implement your update logic here
-    alert("Update action triggered.");
-    // Optionally restart the interval
+    document.getElementById("new_rfid_tag").value = tagId;
+    document.getElementById("currentTagId").value = tagId;
+    document.getElementById("popup1").classList.remove("hidden1");
     startFetchInterval();
   }
 
   function deleteAction(tagId) {
+    console.log("debug", tagId);
+    document.getElementById("popup2").classList.remove("hidden2");
+    document.getElementById("tag_id_delete").value = tagId;
     // Implement your delete logic here
-    alert("Delete action triggered.");
+    // alert("Delete action triggered.");
     // Optionally restart the interval
     startFetchInterval();
   }

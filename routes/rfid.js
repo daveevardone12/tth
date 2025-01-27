@@ -58,6 +58,7 @@ router.post("/save/rfid", async (req, res) => {
   }
 });
 
+//assign
 router.post("/save/rfid-update", async (req, res) => {
   const data = req.body;
   console.log(data);
@@ -71,6 +72,39 @@ router.post("/save/rfid-update", async (req, res) => {
   } catch (error) {
     console.error("Error: ", error);
     req.flash("error", "An error occurred while processing the request.");
+    return res.redirect("/rfid");
+  }
+});
+
+//update
+router.post("/save/rfid-update_tag", async (req, res) => {
+  const data = req.body;
+  console.log(data);
+  try {
+    await tthPool.query("UPDATE rfid_tags SET tag_id = $1 WHERE tag_id = $2", [
+      data.new_rfid_tag,
+      data.currentTagId,
+    ]);
+    req.flash("success", "RFID tag updated successfully");
+    return res.redirect("/rfid");
+  } catch (error) {
+    console.error("Error: ", error);
+    req.flash("error", "An error occurred while updating the RFID tag.");
+    return res.redirect("/rfid");
+  }
+});
+
+// Delete RFID tag from the database
+router.post("/delete/rfid", async (req, res) => {
+  const { tag_id } = req.body; // Assuming the tag_id is sent in the request body
+  console.log(tag_id);
+  try {
+    await tthPool.query("DELETE FROM rfid_tags WHERE tag_id = $1", [tag_id]);
+    req.flash("success", "RFID tag deleted successfully");
+    return res.redirect("/rfid");
+  } catch (error) {
+    console.error("Error: ", error);
+    req.flash("error", "An error occurred while deleting the RFID tag.");
     return res.redirect("/rfid");
   }
 });
@@ -186,13 +220,24 @@ async function fetchRFIDList(page, limit) {
       };
     }
 
-    // Fetch RFID tags with pagination
+    // Fetch RFID tags with pagination and join with other tables
     const getRFIDList = await tthPool.query(
       `
-      SELECT tag_id, property_no, time, status, assigned_items
-      FROM rfid_tags
-      LIMIT $1 OFFSET $2;
-      `,
+        SELECT 
+          rt.tag_id, 
+          rt.property_no, 
+          rt.time, 
+          rt.status, 
+          rt.assigned_items,
+          par.email as email1,
+          ics.email as email
+        FROM rfid_tags rt
+        LEFT JOIN property_acknowledgement_receipt par
+          ON rt.property_no = par.property_no
+        LEFT JOIN inventory_custodian_slip ics
+          ON rt.property_no = ics.property_no
+        LIMIT $1 OFFSET $2;
+        `,
       [limit, offset]
     );
 
