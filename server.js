@@ -10,11 +10,22 @@ const compression = require("compression");
 const initializePassport = require("./passportConfig");
 const bodyParser = require("body-parser");
 const { SerialPort } = require("serialport");
+const axios = require("axios");
+const nodemailer = require("nodemailer");
 const WebSocket = require("ws");
 const http = require("http");
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 const moment = require("moment");
+const twilio = require("twilio");
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const client1 = twilio(accountSid, authToken);
+// Initialize Twilio Client
+const twilioClient = twilio(
+  process.env.TWILIO_ACCOUNT_SID,
+  process.env.TWILIO_AUTH_TOKEN
+);
 
 let rfidData = new Set(); // Using Set for O(1) lookups
 let counter = 0;
@@ -53,14 +64,12 @@ serialPort.on("data", async (data) => {
   // Process the incoming data
   const parsed = parseRFIDHexData(data.toString("hex"), currentTime);
   if (parsed) {
-    console.log("Parsed Data:", parsed);
-
     // Add the parsed.epc to the Set (automatically handles duplicates)
     if (!rfidData.has(parsed.epc)) {
       rfidData.add(parsed.epc);
-      console.log(`Added EPC to set: ${parsed.epc}`);
+      // console.log(`Added EPC to set: ${parsed.epc}`);
     } else {
-      console.log(`EPC already exists in set: ${parsed.epc}`);
+      // console.log(`EPC already exists in set: ${parsed.epc}`);
     }
 
     // Broadcast to WebSocket clients
@@ -81,7 +90,7 @@ serialPort.on("data", async (data) => {
   const parsed = parseRFIDHexData(data, currentTime);
 
   if (parsed) {
-    console.log("Parsed Data:", parsed);
+    // console.log("Parsed Data:", parsed);
 
     const client = await tthPool.connect();
     try {
@@ -161,8 +170,6 @@ serialPort.on("data", async (data) => {
 async function processRFIDData() {
   const client = await tthPool.connect();
   try {
-    console.log("Processing RFID data...");
-
     await client.query("BEGIN"); // Start transaction
 
     // Fetch all tag_ids and their current statuses
@@ -201,7 +208,6 @@ async function processRFIDData() {
 
     // Determine which tags need to be set to "In"
     for (const [epc, timestamp] of rfidData.entries()) {
-      console.log("In determined!!");
       const tagInfo = tagStatusMap.get(epc);
       if (tagInfo) {
         if (!tagInfo.status) {
@@ -216,8 +222,8 @@ async function processRFIDData() {
         // Optionally, handle new tags by inserting them into rfid_tags
         // Example:
         // await client.query(
-        //   `INSERT INTO rfid_tags (tag_id, assigned_item, status) VALUES ($1, $2, $3)`,
-        //   [epc, 'Assigned Item Name', true]
+        //   `INSERT INTO rfid_tags (tag_id, status) VALUES ($1, $2)`,
+        //   [epc, true]
         // );
         // logsToInsertIn.push({ tag_id: epc, status: true, timestamp });
       }
@@ -225,7 +231,6 @@ async function processRFIDData() {
 
     // Determine which tags need to be set to "Out"
     for (const tagId of tagsToSetOut) {
-      console.log("Out determined!!");
       const tagInfo = tagStatusMap.get(tagId);
       if (tagInfo.status) {
         // If currently "In", set to "Out"
@@ -240,7 +245,6 @@ async function processRFIDData() {
 
     // Batch Update Tags to "In"
     if (tagsToSetIn.length > 0) {
-      console.log("In batch update!!");
       const inQuery = `
         UPDATE rfid_tags 
         SET status = true, time = $2 
@@ -259,11 +263,11 @@ async function processRFIDData() {
             timestamp
         );
         await client.query(inQuery, [epcs, timestamp]);
-        console.log(
-          `Status updated to 'In' for tag_ids: ${epcs.join(
-            ", "
-          )} at ${timestamp}`
-        );
+        // console.log(
+        //   `Status updated to 'In' for tag_ids: ${epcs.join(
+        //     ", "
+        //   )} at ${timestamp}`
+        // );
       }
 
       // Insert Logs for "In" Status Changes
@@ -277,17 +281,16 @@ async function processRFIDData() {
           log.status,
           log.timestamp,
         ]);
-        console.log(
-          `Log inserted for tag_id: ${log.tag_id}, Status: In, Timestamp: ${log.timestamp}`
-        );
+        // console.log(
+        //   `Log inserted for tag_id: ${log.tag_id}, Status: In, Timestamp: ${log.timestamp}`
+        // );
       }
     } else {
-      console.log("No tags to update to 'In'.");
+      // console.log("No tags to update to 'In'.");
     }
 
     // Batch Update Tags to "Out"
     if (tagsToSetOutList.length > 0) {
-      console.log("Out batch update!!");
       const outQuery = `
         UPDATE rfid_tags 
         SET status = false, time = $2 
@@ -299,11 +302,11 @@ async function processRFIDData() {
         Array.from(tagsToSetOutList),
         outTimestamp,
       ]);
-      console.log(
-        `Status updated to 'Out' for tag_ids: ${Array.from(
-          tagsToSetOutList
-        ).join(", ")} at ${outTimestamp}`
-      );
+      // console.log(
+      //   `Status updated to 'Out' for tag_ids: ${Array.from(
+      //     tagsToSetOutList
+      //   ).join(", ")} at ${outTimestamp}`
+      // );
 
       // Insert Logs for "Out" Status Changes
       const insertLogsOutQuery = `
@@ -316,27 +319,193 @@ async function processRFIDData() {
           log.status,
           log.timestamp,
         ]);
-        console.log(
-          `Log inserted for tag_id: ${log.tag_id}, Status: Out, Timestamp: ${log.timestamp}`
+        const result = await client.query(
+          `SELECT property_no FROM rfid_tags WHERE tag_id = $1`,
+          [log.tag_id]
         );
-        // TODO: Implement email notification here
+
+        const rows = result.rows;
+
+        // Check if a result was found
+        if (rows.length === 0) {
+          throw new Error(`No property_number found for tag_id: ${log.tag_id}`);
+        }
+
+        const propertyNumber = rows[0].property_no;
+
+        // Check in property_acknowledgement_receipt
+        let result1 = await client.query(
+          `SELECT * FROM property_acknowledgement_receipt WHERE property_no = $1`,
+          [propertyNumber]
+        );
+
+        let rows1 = result1.rows;
+
+        // If not found in property_acknowledgement_receipt, check in inventory_custodian_slip
+        if (rows1.length === 0) {
+          const result2 = await client.query(
+            `SELECT * FROM inventory_custodian_slip WHERE property_no = $1`,
+            [propertyNumber]
+          );
+
+          const rows2 = result2.rows;
+
+          if (rows2.length === 0) {
+            console.log("Not found for both ambot");
+          }
+
+          // If found in inventory_custodian_slip, use the row from there
+          rows1 = rows2;
+        }
+
+        // store fetch data han ginawas na item
+        const row = rows1[0];
+        // format an time stamp
+        const formattedTimestamp = formatTimestamp(log.timestamp);
+
+        // send email han ginawas na item
+        if (row) {
+          (async () => {
+            try {
+              const emailData = {
+                to: row.email,
+                subject: "Tim Item ginawas",
+                text: `Good Day!, ${row.accountable}`,
+                html: `<p>Good Day! <strong>${row.accountable}</strong>, your item <strong>${row.item_name}</strong> has been marked as OUT at <strong>${formattedTimestamp}</strong>.</p>`,
+              };
+
+              const result = await sendEmail(emailData);
+              console.log("Email sent successfully:", result);
+            } catch (error) {
+              console.error("Failed to send email:", error);
+            }
+          })();
+          // trigger sending sms for each item nga ginawas
+          // insertLogsAndNotify(log.tag_id, log.timestamp, "+639700689814");
+        }
       }
     } else {
-      console.log("No tags to update to 'Out'.");
+      // console.log("No tags to update to 'Out'.");
     }
 
-    await client.query("COMMIT"); // Commit transaction
+    await client.query("COMMIT");
     console.log("Data processing completed. Resetting RFID data map.");
 
-    // Reset the RFID data map for the next interval
     rfidData.clear();
   } catch (error) {
-    await client.query("ROLLBACK"); // Rollback transaction on error
+    await client.query("ROLLBACK");
     console.error("Error processing RFID data:", error.message);
   } finally {
-    client.release(); // Release the client back to the pool
+    client.release();
   }
 }
+
+// function to send sms
+async function insertLogsAndNotify(tagId, timestamp, phoneNumber) {
+  const accountSid = process.env.TWILIO_ACCOUNT_SID;
+  const authToken = process.env.TWILIO_AUTH_TOKEN;
+  const client = new twilio(accountSid, authToken);
+  const client1 = await tthPool.connect();
+
+  try {
+    // Query for the property number
+    const result = await client1.query(
+      `SELECT property_no FROM rfid_tags WHERE tag_id = $1`,
+      [tagId]
+    );
+
+    const rows = result.rows;
+
+    // Check if a result was found
+    if (rows.length === 0) {
+      throw new Error(`No property_number found for tag_id: ${tagId}`);
+    }
+
+    const propertyNumber = rows[0].property_no;
+
+    // Check in property_acknowledgement_receipt
+    let result1 = await client1.query(
+      `SELECT * FROM property_acknowledgement_receipt WHERE property_no = $1`,
+      [propertyNumber]
+    );
+
+    let rows1 = result1.rows;
+
+    // If not found in property_acknowledgement_receipt, check in inventory_custodian_slip
+    if (rows1.length === 0) {
+      const result2 = await client1.query(
+        `SELECT * FROM inventory_custodian_slip WHERE property_no = $1`,
+        [propertyNumber]
+      );
+
+      const rows2 = result2.rows;
+
+      if (rows2.length === 0) {
+        throw new Error(
+          `property_no: ${propertyNumber} not found in both property_acknowledgement_receipt and inventory_custodian_slip.`
+        );
+      }
+
+      // If found in inventory_custodian_slip, use the row from there
+      rows1 = rows2;
+    }
+
+    const row = rows1[0];
+
+    const formattedTimestamp = formatTimestamp(timestamp);
+
+    // Send SMS
+    return client.messages
+      .create({
+        body: `Good Day! ${row.accountable}, your item ${row.item_name} has been marked as OUT at ${formattedTimestamp}.`,
+        from: process.env.TWILIO_PHONE_NUMBER,
+        to: process.env.ADMIN_PHONE_NUMBER,
+      })
+      .then((message) => {
+        console.log(message, "message sent");
+      })
+      .catch((err) => {
+        console.log(err, "message not sent");
+      });
+  } catch (error) {
+    console.error("Error in insertLogsAndNotify:", error.message);
+    throw error;
+  } finally {
+    client1.release();
+  }
+}
+
+// function to send an email
+const sendEmail = async ({ to, subject, text, html }) => {
+  try {
+    // Create a transporter object using SMTP
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "davemarlon74@gmail.com",
+        pass: "ecqo yjba ayhn nbvr",
+      },
+    });
+
+    // Set up the email options
+    const mailOptions = {
+      from: "davemarlon74@gmail.com", // Sender address
+      to, // Recipient address (dynamic)
+      subject, // Subject line (dynamic)
+      text, // Plain text body (dynamic)
+      html, // HTML body (optional, dynamic)
+    };
+
+    // Send the email
+    const info = await transporter.sendMail(mailOptions);
+
+    console.log("Email sent: %s", info.messageId);
+    return info;
+  } catch (error) {
+    console.error("Error sending email:", error);
+    throw error;
+  }
+};
 
 serialPort.on("error", (err) => {
   console.error(`Serial port error: ${err.message}`);
@@ -351,7 +520,6 @@ wss.on("connection", (ws) => {
 function parseRFIDHexData(data, currentTime) {
   try {
     const hexString = data.toString("hex"); // Convert buffer to hex string
-    console.log(`Hex data: ${hexString}`);
 
     if (hexString.startsWith("ccffff")) {
       const pc = hexString.slice(14, 18); // Example: Protocol Control
@@ -377,6 +545,14 @@ function parseRFIDHexData(data, currentTime) {
   }
 }
 
+function formatTimestamp(isoString) {
+  const date = new Date(isoString);
+  return new Intl.DateTimeFormat("en-US", {
+    dateStyle: "full", // e.g., January 25, 2025
+    timeStyle: "short", // e.g., 2:06 PM
+  }).format(date);
+}
+
 const {
   checkNotAuthenticated,
   ensureAuthenticated,
@@ -400,6 +576,7 @@ const prsRoutes = require("./Routes/prs");
 const mrerRoutes = require("./Routes/mrer");
 const wmrfRoutes = require("./routes/wmrf");
 const rfidRoutes = require("./Routes/rfid");
+const { timeStamp } = require("console");
 
 //-------CONNECTING TO DATABASE-------//
 tthPool
@@ -456,8 +633,73 @@ app.get("/", (req, res) => {
   res.render("landing");
 });
 
-// app.get("/rfid-data", (req, res) => {
-//   res.render("rfid-data", { rfidData }); // Pass the data to the EJS page
+// app.get("/register-phone", (req, res) => {
+//   res.render("registerCallerID"); // Render register.ejs
+// });
+
+// app.post("/register-caller-id", async (req, res) => {
+//   const { phoneNumber, friendlyName } = req.body;
+//   const accountSid = process.env.TWILIO_ACCOUNT_SID;
+//   const authToken = process.env.TWILIO_AUTH_TOKEN;
+
+//   try {
+//     const response = await axios.post(
+//       `https://api.twilio.com/2010-04-01/Accounts/${accountSid}/OutgoingCallerIds.json`,
+//       new URLSearchParams({
+//         PhoneNumber: phoneNumber, // Number to register
+//         FriendlyName: friendlyName || "My Caller ID", // Optional name
+//       }).toString(),
+//       {
+//         auth: {
+//           username: accountSid,
+//           password: authToken,
+//         },
+//         headers: {
+//           "Content-Type": "application/x-www-form-urlencoded", // Proper content type
+//         },
+//       }
+//     );
+
+//     // Log and send a success response
+//     console.log("Response from Twilio:", response.data);
+//     res.send(
+//       `<h2>Caller ID registered successfully!</h2>
+//        <p>Verification code sent to: ${phoneNumber}</p>
+//        <a href="/register-caller-id">Go Back</a>`
+//     );
+//   } catch (error) {
+//     // Log detailed error
+//     console.error(
+//       "Error Response from Twilio:",
+//       error.response?.data || error.message
+//     );
+//     res.status(400).send(
+//       `<h2>Error:</h2>
+//        <p>${error.response?.data?.message || error.message}</p>
+//        <a href="/register-caller-id">Go Back</a>`
+//     );
+//   }
+// });
+
+// app.post("/verify-caller-id", async (req, res) => {
+//   const { sid, verificationCode } = req.body; // SID of the Caller ID and verification code
+
+//   try {
+//     const response = await client1.outgoingCallerIds(sid).update({
+//       VerificationCode: verificationCode,
+//     });
+
+//     console.log("Verification successful:", response);
+
+//     res.send(
+//       `<h2>Caller ID verified successfully!</h2><a href="/">Go Back</a>`
+//     );
+//   } catch (error) {
+//     console.error("Error verifying Caller ID:", error.message);
+//     res
+//       .status(400)
+//       .send(`<h2>Error:</h2><p>${error.message}</p><a href="/">Try Again</a>`);
+//   }
 // });
 
 app.get("/clear-data", (req, res) => {
