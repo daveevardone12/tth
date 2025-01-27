@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ICS Form | Inventory Custodian Slip</title>
+    <title>PAR Form | Property Management System</title>
     <link rel="stylesheet" href="../css/general.css">
-    <link rel="stylesheet" href="../css/icsstyle.css">
+    <link rel="stylesheet" href="../css/parstyle.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -15,11 +15,13 @@
 <body>
 
     <%- include("./includes/sidebar.ejs") %>
-
-        <% if (messages.success) { %>
-            <script>
-                alert("<%= messages.success %>");
-            </script>
+    <% if (messages.success) { %>
+            <div class="popup" id="popup" style="display: block;">
+                <img src="../images/check.png" alt="Check Logo">
+                <h2>Added Successfully! </h2>
+                <p>You have successfully saved the data!</p>
+                <button type="button" onclick="closePopup()">Ok</button>
+            </div>
             <% } %>
                 <% if (messages.error) { %>
                     <script>
@@ -29,7 +31,7 @@
                         <div class="main-content">
                             <div class="form-containers">
                                 <h1>Inventory Custodian Slip</h1>
-                                <form method="POST" action="/par/save">
+                                <form method="POST" action="/ics/save" enctype="multipart/form-data">
                                     <h2>Item Details</h2>
                                     <div class="form-grid">
                                         <div class="form-group">
@@ -43,10 +45,14 @@
                                                 placeholder="Ex. Carlos A. Santos" required>
                                         </div>
                                         <div class="form-group">
-                                            <p id="errorMessage" style="color: red; display: none;">Value cannot be greater than 49999.</p>
+                                          <label for="accountable">Email *</label>
+                                          <input type="text" id="email" name="email" required>
+                                      </div>
+                                        <div class="form-group">
+                                            <p id="errorMessage" style="color: red; display: none;">Value cannot be less than 50000.</p>
                                             <label for="cost">Unit Cost/Value *</label>
-                                            <input type="number" id="cost" name="cost" placeholder="must be 49999 below"
-                                                required min="49999" oninput="validateInput()">
+                                            <input type="number" id="cost" name="cost" placeholder="must be greater than 49999"
+                                                required min="49000" oninput="validateInput()" >
                                         </div>
                                         <div class="form-group">
                                             <label for="dateAcquired">Date Acquired *</label>
@@ -57,103 +63,84 @@
                                         <div class="form-group">
                                             <label for="location">Location *</label>
                                             <div class="custom-dropdown">
-                                                <div class="custom-dropdown-trigger" id="location-dropdown-trigger">
-                                                    Select Location
-                                                </div>
-                                                <div class="custom-dropdown-options" id="location">
-                                                    <div class="custom-dropdown-option" data-value="College of Engineering">College of Engineering</div>
-                                                    <div class="custom-dropdown-option" data-value="Smart Center">Smart Center</div>
-                                                    <div class="custom-dropdown-option" data-value="Library">Library</div>
-                                                    <div class="custom-dropdown-option" data-cancel="true">Cancel Selection</div>
-                                                </div>
+                                        
+                                                <select name="location" id="location">
+                                                  <option value="" disabled selected>Default Location</option>
+                                                  <option value="College of Engineering">College of Engineering</option>
+                                                  <option value="Smart Center">Smart Center</option>
+                                                  <option value="Library">Library</option>
+                                                  <!-- "Cancel Selection" is optional; see script below if you want special behavior -->
+                                                  <option value="cancel">Cancel Selection</option>
+                                                </select>
                                             </div>
-                                            <input type="hidden" name="location" id="location-value" value="Default Location">
+                                            
                                         </div>
                                         
                                         <div class="form-group">
                                             <label for="category">Category *</label>
                                             <div class="custom-dropdown">
-                                                <div class="custom-dropdown-trigger" id="category-dropdown-trigger">
-                                                    Select Category
-                                                </div>
-                                                <div class="custom-dropdown-options" id="category">
-                                                    <div class="custom-dropdown-option" data-value="Furnitures">Furnitures</div>
-                                                    <div class="custom-dropdown-option" data-value="Appliances">Appliances</div>
-                                                    <div class="custom-dropdown-option" data-value="Electronics">Electronics</div>
-                                                    <div class="custom-dropdown-option" data-cancel="true">Cancel Selection</div>
-                                                </div>
+                                            
+                                                <select name="category" id="category">
+                                                <option value="" disabled selected>Default Category</option>
+                                                <option value="Furnituresz">Furnituresz</option>
+                                                <option value="Appliances">Appliances</option>
+                                                <option value="Electronics">Electronics</option>
+                                                <option value="cancel">Cancel Selection</option>
+                                                </select>
                                             </div>
-                                            <input type="hidden" name="category" id="category-value" value="Default Category">
+                                            
                                         </div>
                                         
                                         <div class="form-group">
-                                            <label for="uacs">UACS Code *</label>
-                                            <div class="custom-dropdown">
-                                                <div class="custom-dropdown-trigger" id="uacs-dropdown-trigger">
-                                                    Select UACS
-                                                </div>
-                                                <div class="custom-dropdown-options" id="uacs">
-                                                    <div class="custom-dropdown-option" data-value="Machinery #1060501000">Machinery #1060501000</div>
-                                                    <div class="custom-dropdown-option" data-value="Office Equipment #1060502000">Office Equipment #1060502000</div>
-                                                    <div class="custom-dropdown-option" data-value="Agricultural Equipment #1060503000">Agricultural Equipment #1060503000</div>
-                                                    <div class="custom-dropdown-option" data-value="Medical Equipment #1060511000">Medical Equipment #1060511000</div>
-                                                    <div class="custom-dropdown-option" data-value="Printing Equipment #1060512000">Printing Equipment #1060512000</div>
-                                                    <div class="custom-dropdown-option" data-value="Technical and Scientific Equipment #1060514000">Technical and Scientific Equipment #1060514000</div>
-                                                    <div class="custom-dropdown-option" data-value="Other Machinery and Equipment #10605990000">Other Machinery and Equipment #10605990000</div>
-                                                    <div class="custom-dropdown-option" data-value="Motor Vehicles #1060601000">Motor Vehicles #1060601000</div>
-                                                    <div class="custom-dropdown-option" data-value="Furniture and Fixtures #1060701000">Furniture and Fixtures #1060701000</div>
-                                                    <div class="custom-dropdown-option" data-value="Books #1060702000">Books #1060702000</div>
-                                                    <div class="custom-dropdown-option" data-value="Software #1080102000">Software #1080102000</div>
-                                                    <div class="custom-dropdown-option" data-value="Information and Communication Technology Equipment #1060501000">
-                                                        Information and Communication Technology Equipment #1060501000
-                                                    </div>
-                                                    <div class="custom-dropdown-option" data-cancel="true">Cancel Selection</div>
-                                                </div>
-                                            </div>
-                                            <input type="hidden" name="uacs" id="uacs-value" value="Default UACS">
-                                        </div>
+                                            <label for="uacs_code">UACS Code *</label>
+                                            <select id="uacs_code" name="uacs_code" required>
+                                              <!-- Placeholder -->
+                                              <option value="" disabled selected>Select UACS Code</option>
+                                          
+                                              <!-- Real Options -->
+                                              <option value="Machinery #1060501000">Machinery #1060501000</option>
+                                              <option value="Office Equipment #1060502000">Office Equipment #1060502000</option>
+                                              <option value="Agricultural Equipment #1060503000">Agricultural Equipment #1060503000</option>
+                                              <option value="Medical Equipment #1060511000">Medical Equipment #1060511000</option>
+                                              <option value="Printing Equipment #1060512000">Printing Equipment #1060512000</option>
+                                              <option value="Technical and Scientific Equipment #1060514000">
+                                                Technical and Scientific Equipment #1060514000
+                                              </option>
+                                              <option value="Other Machinery and Equipment #10605990000">
+                                                Other Machinery and Equipment #10605990000
+                                              </option>
+                                              <option value="Motor Vehicles #1060601000">Motor Vehicles #1060601000</option>
+                                              <option value="Furniture and Fixtures #1060701000">Furniture and Fixtures #1060701000</option>
+                                              <option value="Books #1060702000">Books #1060702000</option>
+                                              <option value="Software #1080102000">Software #1080102000</option>
+                                              <option value="Information and Communication Technology Equipment #1060501000">
+                                                Information and Communication Technology Equipment #1060501000
+                                              </option>
+                                          
+                                              <!-- Optional Cancel -->
+                                              <option value="cancel">Cancel Selection</option>
+                                            </select>
+                                          </div>
                                         
                                         <script>
-                                        document.addEventListener("DOMContentLoaded", function () {
-                                            function setupDropdown(triggerId, optionsId, hiddenInputId, defaultText) {
-                                                const trigger = document.getElementById(triggerId);
-                                                const options = document.getElementById(optionsId);
-                                                const hiddenInput = document.getElementById(hiddenInputId);
-                                        
-                                                trigger.addEventListener("click", function () {
-                                                    options.style.display = options.style.display === "block" ? "none" : "block";
+                                            document.addEventListener("DOMContentLoaded", function() {
+                                              // A helper function to reset a <select> when "cancel" is chosen
+                                              function handleCancelSelection(selectId) {
+                                                const selectElement = document.getElementById(selectId);
+                                                selectElement.addEventListener("change", function() {
+                                                  if (this.value === 'cancel') {
+                                                    // Reset to the first option, e.g., "Default Location", "Default Category", ...
+                                                    this.selectedIndex = 0;
+                                                  }
                                                 });
-                                        
-                                                options.addEventListener("click", function (event) {
-                                                    const clickedOption = event.target;
-                                                    if (clickedOption.classList.contains("custom-dropdown-option")) {
-                                                        const isCancel = clickedOption.getAttribute("data-cancel") === "true";
-                                                        if (isCancel) {
-                                                            trigger.textContent = defaultText;
-                                                            hiddenInput.value = defaultText; // Reset hidden input to default
-                                                        } else {
-                                                            trigger.textContent = clickedOption.textContent;
-                                                            hiddenInput.value = clickedOption.getAttribute("data-value"); // Update hidden input with selected value
-                                                        }
-                                                        options.style.display = "none";
-                                                    }
-                                                });
-                                            }
-                                        
-                                            setupDropdown("location-dropdown-trigger", "location", "location-value", "Default Location");
-                                            setupDropdown("category-dropdown-trigger", "category", "category-value", "Default Category");
-                                            setupDropdown("uacs-dropdown-trigger", "uacs", "uacs-value", "Default UACS");
-                                        
-                                            // Close dropdowns when clicking outside
-                                            window.addEventListener("click", function (event) {
-                                                if (!event.target.closest(".custom-dropdown")) {
-                                                    document.querySelectorAll(".custom-dropdown-options").forEach(function (dropdown) {
-                                                        dropdown.style.display = "none";
-                                                    });
-                                                }
+                                              }
+                                            
+                                              // Attach this behavior to each select
+                                              handleCancelSelection("location-select");
+                                              handleCancelSelection("category-select");
+                                              handleCancelSelection("uacs-select");
                                             });
-                                        });
-                                        </script>
+                                            </script>
                                         
 
                                         <div class="form-group">
@@ -207,21 +194,168 @@
                                                 placeholder="Ex. Portable PLC Controlled Learning System&#10;Brand: Amatrol&#10;Model: 890-757-73-DCU XXXXXXXXX"></textarea required>
                                         </div>
                                     </div>
+
+                                                                      <div
+                                                style="
+                                                  display: grid;
+                                                  grid-template-columns: 1fr 1fr;
+                                                  gap: 100px; /* space between the two boxes */
+                                                  margin-top: 50px;
+                                                  margin-left: 20px;
+                                                "
+                                              >
+                                                <!-- Box #1 -->
+                                                <div class="photo-upload-container" style="width: 200px">
+                                                  <!-- Hidden input for Photo #1 -->
+                                                  <input type="file" id="photo1" name="photo1" style="display: none" />
+
+                                                  <!-- Dashed box -->
+                                                  <div
+                                                    class="upload-box"
+                                                    id="uploadBox1"
+                                                    style="
+                                                      width: 500px;
+                                                      height: 300px;
+                                                      border: 2px dashed #ccc;
+                                                      border-radius: 8px;
+                                                      display: flex;
+                                                      align-items: center;
+                                                      justify-content: center;
+                                                      cursor: pointer;
+                                                      position: relative;
+                                                      overflow: hidden; /* so the image stays within the box */
+                                                    "
+                                                    onclick="document.getElementById('photo1').click()"
+                                                  >
+                                                    <!-- Initially visible icon/text -->
+                                                    <div class="upload-icon" style="font-size: 2em">+</div>
+                                                    <div class="upload-text">Attach Photo #1</div>
+
+                                                    <!-- The image preview (initially hidden) -->
+                                                    <img
+                                                      id="photoPreview1"
+                                                      alt="Preview 1"
+                                                      style="
+                                                        position: absolute;
+                                                        top: 0;
+                                                        left: 0;
+                                                        width: 100%;
+                                                        height: 100%;
+                                                        object-fit: cover; /* fill the box entirely */
+                                                        object-position: center; /* center the subject of the image */
+                                                        border-radius: 8px;
+                                                        display: none;
+                                                      "
+                                                    />
+                                                  </div>
+                                                </div>
+
+                                                <!-- Box #2 -->
+                                                <div class="photo-upload-container" style="width: 200px">
+                                                  <!-- Hidden input for Photo #2 -->
+                                                  <input type="file" id="photo2" name="photo2" style="display: none" />
+
+                                                  <!-- Dashed box -->
+                                                  <div
+                                                    class="upload-box"
+                                                    id="uploadBox2"
+                                                    style="
+                                                      width: 500px;
+                                                      height: 300px;
+                                                      border: 2px dashed #ccc;
+                                                      border-radius: 8px;
+                                                      display: flex;
+                                                      align-items: center;
+                                                      justify-content: center;
+                                                      cursor: pointer;
+                                                      position: relative;
+                                                      overflow: hidden;
+                                                    "
+                                                    onclick="document.getElementById('photo2').click()"
+                                                  >
+                                                    <!-- Initially visible icon/text -->
+                                                    <div class="upload-icon" style="font-size: 2em">+</div>
+                                                    <div class="upload-text">Attach Photo #2</div>
+
+                                                    <!-- The image preview (initially hidden) -->
+                                                    <img
+                                                      id="photoPreview2"
+                                                      alt="Preview 2"
+                                                      style="
+                                                        position: absolute;
+                                                        top: 0;
+                                                        left: 0;
+                                                        width: 100%;
+                                                        height: 100%;
+                                                        object-fit: cover;
+                                                        object-position: center;
+                                                        border-radius: 8px;
+                                                        display: none;
+                                                      "
+                                                    />
+                                                  </div>
+                                                </div>
+                                              </div>
+
+            <script>
+                // ----- Box #1 -----
+                const attachPhoto1 = document.getElementById("photo1");
+                const photoPreview1 = document.getElementById("photoPreview1");
+                const uploadBox1 = document.getElementById("uploadBox1");
+                const uploadIcon1 = uploadBox1.querySelector(".upload-icon");
+                const uploadText1 = uploadBox1.querySelector(".upload-text");
+  
+                attachPhoto1.addEventListener("change", () => {
+                  if (attachPhoto1.files && attachPhoto1.files[0]) {
+                    const file = attachPhoto1.files[0];
+                    const reader = new FileReader();
+  
+                    reader.onload = (e) => {
+                      photoPreview1.src = e.target.result;
+                      photoPreview1.style.display = "block";
+                      // Hide the plus icon and text
+                      uploadIcon1.style.display = "none";
+                      uploadText1.style.display = "none";
+                    };
+                    reader.readAsDataURL(file);
+                  }
+                });
+  
+                // ----- Box #2 -----
+                const attachPhoto2 = document.getElementById("photo2");
+                const photoPreview2 = document.getElementById("photoPreview2");
+                const uploadBox2 = document.getElementById("uploadBox2");
+                const uploadIcon2 = uploadBox2.querySelector(".upload-icon");
+                const uploadText2 = uploadBox2.querySelector(".upload-text");
+  
+                attachPhoto2.addEventListener("change", () => {
+                  if (attachPhoto2.files && attachPhoto2.files[0]) {
+                    const file = attachPhoto2.files[0];
+                    const reader = new FileReader();
+  
+                    reader.onload = (e) => {
+                      photoPreview2.src = e.target.result;
+                      photoPreview2.style.display = "block";
+                      // Hide the plus icon and text
+                      uploadIcon2.style.display = "none";
+                      uploadText2.style.display = "none";
+                    };
+                    reader.readAsDataURL(file);
+                  }
+                });
+              </script>
+
+
                                     <div class="button-container">
+                                        
+                                        <!-- Popup for success message -->
+                                         
+                                        
                                         <button type="button" class="print-button" onclick="printDocument('Print')">Print</button>
                                         <button type="submit" class="save-button" onclick="openPopup()">Save</button>
                                         
-                                        <!-- Popup for success message -->
-                                        <div class="popup" id="popup">
-                                            <img src="../Public/images/check.png">
-                                            <h2>Added Successfully! </h2>
-                                            <p>You have successfully saved the data!</p>
-                                            <button type="button" onclick="closePopup()">Ok</button>
-                                        </div>
-                                        
-                                        
                                     </div>
-                                    
+                                   
                                     <script>
                                         function printDocument() {
                                             window.print();
@@ -229,25 +363,25 @@
                                     </script>
 
                                     <script>
-                                        let popup = document.getElementById("popup");
+                                        // let popup = document.getElementById("popup");
                                     
-                                        // Function to open popup
-                                        function openPopup() {
-                                            popup.classList.add("open-popup");
-                                        }
+                                        // // Function to open popup
+                                        // function openPopup() {
+                                        //     popup.classList.add("open-popup");
+                                        // }
                                     
                                         // Function to close popup
                                         function closePopup() {
-                                            popup.classList.remove("open-popup");
+                                            document.getElementById("popup").style.display = "none";
                                         }
                                     
-                                        // Check URL for success parameter and open popup automatically
-                                        const urlParams = new URLSearchParams(window.location.search);
-                                        const success = urlParams.get("success");
+                                        // // Check URL for success parameter and open popup automatically
+                                        // const urlParams = new URLSearchParams(window.location.search);
+                                        // const success = urlParams.get("success");
                                     
-                                        if (success === "true") {
-                                            openPopup(); // Open popup when data is successfully saved
-                                        }
+                                        // if (success === "true") {
+                                        //     openPopup(); // Open popup when data is successfully saved
+                                        // }
                                     </script>
                                     
                                     <style>
@@ -285,12 +419,13 @@
                             <button onclick="window.print()">Print</button>
                         </div>
                         </div>
+
                         <script>
                             function validateInput() {
                                 console.log("input")
                                 const input = document.getElementById("cost");
                                 const errorMessage = document.getElementById("errorMessage");
-                                if (parseInt(input.value) > 49000) {
+                                if (parseInt(input.value) < 49000) {
                                 // input.value = 0; // Automatically adjust to max value
                                 errorMessage.style.display = "block";
                                 } else {
@@ -298,6 +433,7 @@
                                 }
                             }
                         </script>
+
                         <script>
                             function fillPreview() {
                                 // Transfer form data to preview
@@ -341,6 +477,8 @@
                             }
                         </script>
 
+                     
+
 </body>
-<%- include("./includes/print-ics") %>
+<%- include("./includes/print-par") %>
 </html>

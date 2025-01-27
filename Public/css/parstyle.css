@@ -21,7 +21,7 @@ body::-webkit-scrollbar {
 .main-content {
   background-color: white;
   padding: 20px;
-  margin-left: 305px;
+  margin-left: 280px;
   margin-right: 5px;
   overflow: hidden;
 }
@@ -281,7 +281,7 @@ label:hover {
   cursor: pointer;
   border-radius: 5px; /* Smooth corners */
   transition: border-color 0.3s ease; /* Smooth border transition */
-  width: 28em;
+  width: 370px;
 }
 
 /* Trigger hover effect for custom dropdowns */

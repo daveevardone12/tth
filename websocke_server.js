@@ -2,8 +2,8 @@ const SerialPort = require("serialport");
 const WebSocket = require("ws");
 
 // Replace with the correct COM port or device path (e.g., /dev/ttyUSB0)
-const SERIAL_PORT = "COM2";
-const BAUD_RATE = 57600; // Adjust based on the RFID reader's settings
+const SERIAL_PORT = "COM3";
+const BAUD_RATE = 9600; // Adjust based on the RFID reader's settings
 
 // Create SerialPort instance
 const serialPort = new SerialPort(SERIAL_PORT, { baudRate: BAUD_RATE });

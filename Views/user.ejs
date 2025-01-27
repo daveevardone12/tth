@@ -23,6 +23,7 @@
             <!-- Profile Container -->
             <div class="profile-wrapper">
                 <h1>User Profile</h1>
+                
                 <div class="profile-container">
                     <div class="profile-content">
                         <div class="user-info">
@@ -76,16 +77,34 @@ function confirmLogout() {
                     <h2>Edit Profile</h2>
                     <form action="/user/changeProfile" method="POST">
                         <label for="fname">First name</label>
-                        <input type="text" id="fname" name="newfirstname" placeholder="Your first name.." required>
-                    
+                        <input
+                          type="text"
+                          id="fname"
+                          name="newfirstname" <!-- Must match req.body.newfirstname -->
+                          placeholder="Your first name.."
+                          required
+                        />
+                      
                         <label for="lname">Last name</label>
-                        <input type="text" id="lname" name="newlastname" placeholder="Your last name.." required>
-                    
+                        <input
+                          type="text"
+                          id="lname"
+                          name="newlastname" <!-- Must match req.body.newlastname -->
+                          placeholder="Your last name.."
+                          required
+                        />
+                      
                         <label for="contact">Contact No.</label>
-                        <input type="text" id="contact" name="newcontact" placeholder="Your contact number.." required>
-                    
-                        <input type="submit" value="Save">
-                    </form>
+                        <input
+                          type="text"
+                          id="contact"
+                          name="newcontact" <!-- Must match req.body.newcontact -->
+                          placeholder="Your contact number.."
+                          required
+                        />
+                      
+                        <input type="submit" value="Save" />
+                      </form>
                     
                 </div>
             </div>

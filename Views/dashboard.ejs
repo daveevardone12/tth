@@ -32,21 +32,30 @@
       }
 
       .chart {
-        margin-top: 20px;
-        background-color: white;
+        width: 600px;
+        height: 350;
+        /* margin-top: 20px; */
+        background-color: rgb(255, 255, 255);
         padding: 10px;
         box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
         /* Center the chart within the container */
+        border-radius: 10px;
         display: flex;
         justify-content: center;
         align-items: center;
+        /* margin-left: -80px; */
+        gap: 40px;
       }
 
       /* Set fixed width and height for the charts */
-      #chart_div,
+      #chart_div {
+        width: 600px;
+        height: 250px;
+      }
+
       #location_chart_div {
-        width: 400px;
-        height: 400px;
+        width: 600px;
+        height: 300px;
       }
 
       .c-chart {
@@ -56,19 +65,22 @@
 
       /* Custom Dropdown Styles */
       .custom-dropdown {
+        margin-top: 15px;
         position: relative;
         display: inline-block;
         margin-bottom: 20px;
+        border: #095c02;
       }
 
       .custom-dropdown-button {
-        background-color: #4285f4;
-        color: white;
+        background-color: white;
+        color: black;
         padding: 10px 20px;
         font-size: 16px;
-        border: none;
+        border: 1px solid #095c02;
         cursor: pointer;
         border-radius: 4px;
+        margin-left: 80%;
       }
 
       .custom-dropdown-options {
@@ -76,10 +88,12 @@
         position: absolute;
         background-color: white;
         min-width: 200px;
+        border: 1px solid #095c02;
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         z-index: 1;
         border-radius: 4px;
         overflow: hidden;
+        margin-left: 80%;
       }
 
       .custom-dropdown-options .custom-dropdown-option {
@@ -92,13 +106,13 @@
       }
 
       .custom-dropdown-options .custom-dropdown-option[data-cancel="true"] {
-        background-color: #f44336;
-        color: white;
+        /* background-color: blue; */
+        color: black;
       }
 
       .custom-dropdown-options
         .custom-dropdown-option[data-cancel="true"]:hover {
-        background-color: #095c02;
+        background-color: white;
       }
 
       /* Spinner Animation */

@@ -8,116 +8,374 @@ const session = require("express-session");
 const flash = require("express-flash");
 const compression = require("compression");
 const initializePassport = require("./passportConfig");
+const bodyParser = require("body-parser");
 const { SerialPort } = require("serialport");
 const WebSocket = require("ws");
 const http = require("http");
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
-const bodyParser = require("body-parser");
+const moment = require("moment");
 
-// let rfidData = []; // Store scanned data
-// const SCAN_INTERVAL = 10 * 60 * 1000; // 10 minutes in milliseconds
-// let lastProcessedTime = Date.now(); // Track last processed time
+let rfidData = new Set(); // Using Set for O(1) lookups
+let counter = 0;
 
-// // RFID software connection
-// const SERIAL_PORT = "COM2";
-// const BAUD_RATE = 57600;
+// RFID Software Connection Parameters
+const SERIAL_PORT = "COM3";
+const BAUD_RATE = 9600;
 
-// const serialPort = new SerialPort({
-//   path: SERIAL_PORT,
-//   baudRate: BAUD_RATE,
-//   dataBits: 8,
-//   parity: "none",
-//   stopBits: 1,
-//   flowControl: false,
-//   autoOpen: true,
-// });
+// Initialize Serial Port
+const serialPort = new SerialPort({
+  path: SERIAL_PORT,
+  baudRate: BAUD_RATE,
+  dataBits: 8,
+  parity: "none",
+  stopBits: 1,
+  flowControl: false,
+  autoOpen: true,
+});
 
-// serialPort.on("open", () => {
-//   console.log(`Serial port ${SERIAL_PORT} opened`);
-// });
+// Independent Counter Logic
+setInterval(() => {
+  counter++;
+  console.log(`Counter: ${counter}`);
+}, 1000); // Increment the counter every 1 second
 
-// serialPort.on("data", (data) => {
-//   const currentTime = Date.now();
+// Process RFID Data Every 10 Seconds
+setInterval(() => {
+  console.log("10 seconds elapsed. Proceeding to process RFID data...");
+  processRFIDData();
+}, 10000); // Trigger processing every 10 seconds
 
-//   // Only process data if 10 minutes have passed
-//   // if (currentTime - lastProcessedTime >= SCAN_INTERVAL) {
-//   const parsed = parseRFIDHexData(data.toString("hex"));
-//   if (parsed) {
-//     console.log("Parsed Data:", parsed);
+// Handle Incoming RFID Data
+serialPort.on("data", async (data) => {
+  const currentTime = Date.now();
 
-//     // Add the parsed data to the global array
-//     rfidData.push(parsed);
+  // Process the incoming data
+  const parsed = parseRFIDHexData(data.toString("hex"), currentTime);
+  if (parsed) {
+    console.log("Parsed Data:", parsed);
 
-//     // Optional: Limit array size to avoid memory overflow
-//     if (rfidData.length > 100) {
-//       rfidData.shift(); // Remove the oldest entry
-//     }
+    // Add the parsed.epc to the Set (automatically handles duplicates)
+    if (!rfidData.has(parsed.epc)) {
+      rfidData.add(parsed.epc);
+      console.log(`Added EPC to set: ${parsed.epc}`);
+    } else {
+      console.log(`EPC already exists in set: ${parsed.epc}`);
+    }
 
-//     // Broadcast to WebSocket clients
-//     wss.clients.forEach((client) => {
-//       if (client.readyState === WebSocket.OPEN) {
-//         client.send(JSON.stringify(parsed)); // Send parsed data
-//       }
-//     });
+    // Broadcast to WebSocket clients
+    wss.clients.forEach((client) => {
+      if (client.readyState === WebSocket.OPEN) {
+        client.send(JSON.stringify(parsed)); // Send parsed data
+      }
+    });
+  } else {
+    console.log("Could not parse data.");
+  }
+});
 
-//     // Update the last processed time
-//     lastProcessedTime = currentTime;
-//   } else {
-//     console.log("Could not parse data.");
-//   }
-//   // } else {
-//   //   console.log("Ignoring scan; waiting for the next interval.");
-//   // }
-// });
+serialPort.on("data", async (data) => {
+  const currentTime = Date.now();
 
-// serialPort.on("error", (err) => {
-//   console.error(`Serial port error: ${err.message}`);
-// });
+  // Parse the incoming RFID data
+  const parsed = parseRFIDHexData(data, currentTime);
 
-// wss.on("connection", (ws) => {
-//   console.log("WebSocket client connected");
-//   ws.send("Connected to WebSocket server");
-// });
+  if (parsed) {
+    console.log("Parsed Data:", parsed);
 
-// function parseRFIDHexData(data) {
-//   try {
-//     const hexString = data.toString("hex"); // Convert buffer to hex string
-//     console.log(`Hex data: ${hexString}`);
+    const client = await tthPool.connect();
+    try {
+      // Start a database transaction
+      await client.query("BEGIN");
 
-//     if (hexString.startsWith("ccffff")) {
-//       const pc = hexString.slice(14, 18); // Example: Protocol Control
-//       const epc = hexString.slice(18, 42); // Example: EPC (24 hex characters)
-//       const rssi = parseInt(hexString.slice(42, 46), 16); // Example: RSSI in hexadecimal
-//       return {
-//         pc: pc.toUpperCase(),
-//         epc: epc.toUpperCase(),
-//         rssi: `${rssi}dBm`,
-//       };
-//     } else {
-//       console.log("Invalid header or unsupported data format.");
-//       return null;
-//     }
-//   } catch (err) {
-//     console.error("Error parsing hex data:", err);
-//     return null;
-//   }
-// }
+      // Check if the `tag_id` exists in `rfid_tags`
+      const tagResult = await client.query(
+        `SELECT tag_id, status FROM rfid_tags WHERE tag_id = $1`,
+        [parsed.epc]
+      );
 
-// // Functions to control the buzzer
-// function enableBuzzer() {
-//   // Add the logic to enable the buzzer
-//   console.log("Buzzer enabled.");
-//   // Example: Send a command or signal to the buzzer
-//   serialPort.write("BUZZER_ON\n");
-// }
+      if (tagResult.rowCount > 0) {
+        // If the tag exists, update its status and insert a log entry
+        const tagInfo = tagResult.rows[0];
 
-// function disableBuzzer() {
-//   // Add the logic to disable the buzzer
-//   console.log("Buzzer disabled.");
-//   // Example: Send a command or signal to the buzzer
-//   serialPort.write("BUZZER_OFF\n");
-// }
+        // Update status only if it has changed
+        if (!tagInfo.status) {
+          await client.query(
+            `
+            UPDATE rfid_tags 
+            SET status = true, time = $2 
+            WHERE tag_id = $1
+            `,
+            [parsed.epc, parsed.timestamp]
+          );
+
+          console.log(`Updated tag_id ${parsed.epc} to "In"`);
+        }
+
+        // Insert log entry for this scan
+        await client.query(
+          `
+          INSERT INTO rfid_logs (tag_id, status, time) 
+          VALUES ($1, $2, $3)
+          `,
+          [parsed.epc, true, parsed.timestamp]
+        );
+
+        console.log(`Log entry added for tag_id ${parsed.epc}`);
+      } else {
+        // If the tag does not exist in rfid_tags, insert a log with "Not Registered"
+        await client.query(
+          `
+          INSERT INTO rfid_logs (tag_id, status, time) 
+          VALUES ($1, $2, $3)
+          `,
+          [parsed.epc, false, parsed.timestamp]
+        );
+
+        console.log(`Tag ID ${parsed.epc} not registered. Log entry added.`);
+      }
+
+      // Commit the transaction
+      await client.query("COMMIT");
+    } catch (error) {
+      // Rollback the transaction on error
+      await client.query("ROLLBACK");
+      console.error("Error handling RFID data:", error.message);
+    } finally {
+      // Release the database client
+      client.release();
+    }
+
+    // Broadcast the parsed data to WebSocket clients
+    wss.clients.forEach((client) => {
+      if (client.readyState === WebSocket.OPEN) {
+        client.send(JSON.stringify(parsed)); // Send parsed data
+      }
+    });
+  } else {
+    console.log("Could not parse data.");
+  }
+});
+
+// Function to Process RFID Data
+async function processRFIDData() {
+  const client = await tthPool.connect();
+  try {
+    console.log("Processing RFID data...");
+
+    await client.query("BEGIN"); // Start transaction
+
+    // Fetch all tag_ids and their current statuses
+    const allTagsResult = await client.query(
+      `SELECT tag_id, status, time FROM rfid_tags`
+    );
+    const allTags = allTagsResult.rows;
+
+    // Create a Map for quick lookup
+    const tagStatusMap = new Map();
+    allTags.forEach((tag) => {
+      tagStatusMap.set(tag.tag_id, {
+        status: tag.status,
+        time: tag.time,
+      });
+    });
+
+    console.log("all tags:", allTags);
+
+    // Current "In" Tags from RFID Data
+    const currentInTags = new Set(rfidData.keys());
+
+    // All Tag IDs from Database
+    const allTagIds = new Set(tagStatusMap.keys());
+
+    // Determine Tags to Set "Out" (Present in DB but not in current RFID data)
+    const tagsToSetOut = new Set(
+      [...allTagIds].filter((tagId) => !currentInTags.has(tagId))
+    );
+
+    // Arrays to hold tags that need status updates
+    const tagsToSetIn = [];
+    const logsToInsertIn = [];
+    const tagsToSetOutList = [];
+    const logsToInsertOut = [];
+
+    // Determine which tags need to be set to "In"
+    for (const [epc, timestamp] of rfidData.entries()) {
+      console.log("In determined!!");
+      const tagInfo = tagStatusMap.get(epc);
+      if (tagInfo) {
+        if (!tagInfo.status) {
+          // If currently "Out", set to "In"
+          tagsToSetIn.push(epc);
+          logsToInsertIn.push({ tag_id: epc, status: true, timestamp });
+        }
+      } else {
+        console.log(
+          `No record found for tag_id: ${epc}. Consider adding it to rfid_tags.`
+        );
+        // Optionally, handle new tags by inserting them into rfid_tags
+        // Example:
+        // await client.query(
+        //   `INSERT INTO rfid_tags (tag_id, assigned_item, status) VALUES ($1, $2, $3)`,
+        //   [epc, 'Assigned Item Name', true]
+        // );
+        // logsToInsertIn.push({ tag_id: epc, status: true, timestamp });
+      }
+    }
+
+    // Determine which tags need to be set to "Out"
+    for (const tagId of tagsToSetOut) {
+      console.log("Out determined!!");
+      const tagInfo = tagStatusMap.get(tagId);
+      if (tagInfo.status) {
+        // If currently "In", set to "Out"
+        tagsToSetOutList.push(tagId);
+        logsToInsertOut.push({
+          tag_id: tagId,
+          status: false,
+          timestamp: new Date().toISOString(),
+        });
+      }
+    }
+
+    // Batch Update Tags to "In"
+    if (tagsToSetIn.length > 0) {
+      console.log("In batch update!!");
+      const inQuery = `
+        UPDATE rfid_tags 
+        SET status = true, time = $2 
+        WHERE tag_id = ANY($1::varchar[])
+      `;
+      const inTimestamps = tagsToSetIn.map(
+        (epc) => logsToInsertIn.find((log) => log.tag_id === epc).timestamp
+      );
+
+      // Assuming all updates share the same timestamp; otherwise, loop through individually
+      const uniqueTimestamps = new Set(inTimestamps);
+      for (const timestamp of uniqueTimestamps) {
+        const epcs = tagsToSetIn.filter(
+          (epc) =>
+            logsToInsertIn.find((log) => log.tag_id === epc).timestamp ===
+            timestamp
+        );
+        await client.query(inQuery, [epcs, timestamp]);
+        console.log(
+          `Status updated to 'In' for tag_ids: ${epcs.join(
+            ", "
+          )} at ${timestamp}`
+        );
+      }
+
+      // Insert Logs for "In" Status Changes
+      const insertLogsInQuery = `
+        INSERT INTO rfid_logs (tag_id, status, time) 
+        VALUES ($1, $2, $3)
+      `;
+      for (const log of logsToInsertIn) {
+        await client.query(insertLogsInQuery, [
+          log.tag_id,
+          log.status,
+          log.timestamp,
+        ]);
+        console.log(
+          `Log inserted for tag_id: ${log.tag_id}, Status: In, Timestamp: ${log.timestamp}`
+        );
+      }
+    } else {
+      console.log("No tags to update to 'In'.");
+    }
+
+    // Batch Update Tags to "Out"
+    if (tagsToSetOutList.length > 0) {
+      console.log("Out batch update!!");
+      const outQuery = `
+        UPDATE rfid_tags 
+        SET status = false, time = $2 
+        WHERE tag_id = ANY($1::varchar[])
+      `;
+      const outTimestamp = new Date().toISOString(); // Use current time for "Out" status
+
+      await client.query(outQuery, [
+        Array.from(tagsToSetOutList),
+        outTimestamp,
+      ]);
+      console.log(
+        `Status updated to 'Out' for tag_ids: ${Array.from(
+          tagsToSetOutList
+        ).join(", ")} at ${outTimestamp}`
+      );
+
+      // Insert Logs for "Out" Status Changes
+      const insertLogsOutQuery = `
+        INSERT INTO rfid_logs (tag_id, status, time) 
+        VALUES ($1, $2, $3)
+      `;
+      for (const log of logsToInsertOut) {
+        await client.query(insertLogsOutQuery, [
+          log.tag_id,
+          log.status,
+          log.timestamp,
+        ]);
+        console.log(
+          `Log inserted for tag_id: ${log.tag_id}, Status: Out, Timestamp: ${log.timestamp}`
+        );
+        // TODO: Implement email notification here
+      }
+    } else {
+      console.log("No tags to update to 'Out'.");
+    }
+
+    await client.query("COMMIT"); // Commit transaction
+    console.log("Data processing completed. Resetting RFID data map.");
+
+    // Reset the RFID data map for the next interval
+    rfidData.clear();
+  } catch (error) {
+    await client.query("ROLLBACK"); // Rollback transaction on error
+    console.error("Error processing RFID data:", error.message);
+  } finally {
+    client.release(); // Release the client back to the pool
+  }
+}
+
+serialPort.on("error", (err) => {
+  console.error(`Serial port error: ${err.message}`);
+});
+
+wss.on("connection", (ws) => {
+  console.log("WebSocket client connected");
+  ws.send("Connected to WebSocket server");
+});
+
+// Function to Parse RFID Hex Data
+function parseRFIDHexData(data, currentTime) {
+  try {
+    const hexString = data.toString("hex"); // Convert buffer to hex string
+    console.log(`Hex data: ${hexString}`);
+
+    if (hexString.startsWith("ccffff")) {
+      const pc = hexString.slice(14, 18); // Example: Protocol Control
+      const epc = hexString.slice(18, 42); // Example: EPC (24 hex characters)
+      const rssi = parseInt(hexString.slice(42, 46), 16); // Example: RSSI in hexadecimal
+
+      // Add the current timestamp
+      const timestamp = new Date(currentTime).toISOString();
+
+      return {
+        pc: pc.toUpperCase(),
+        epc: epc.toUpperCase(),
+        rssi: `${rssi}dBm`,
+        timestamp: timestamp, // Include the timestamp in the parsed data
+      };
+    } else {
+      console.log("Invalid header or unsupported data format.");
+      return null;
+    }
+  } catch (err) {
+    console.error("Error parsing hex data:", err);
+    return null;
+  }
+}
 
 const {
   checkNotAuthenticated,
@@ -137,11 +395,11 @@ const ptrRoutes = require("./routes/ptr");
 const icsRoutes = require("./routes/ics");
 const inventoryRoutes = require("./routes/inventory");
 const addItemRoutes = require("./routes/add-item");
-const notifRoutes = require("./routes/notif");
+const notifRoutes = require("./Routes/notif");
 const prsRoutes = require("./Routes/prs");
 const mrerRoutes = require("./Routes/mrer");
 const wmrfRoutes = require("./routes/wmrf");
-const rfidRoutes = require("./routes/rfid");
+const rfidRoutes = require("./Routes/rfid");
 
 //-------CONNECTING TO DATABASE-------//
 tthPool

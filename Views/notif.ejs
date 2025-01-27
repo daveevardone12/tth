@@ -10,34 +10,36 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
     <div class="container">
       <!-- Sidebar -->
       <%- include("./includes/sidebar") %>
-      
 
       <!-- Main Content -->
       <div class="main-content">
         <div class="fix">
-          <h1>Notification</h1>
+          <h1>Logs</h1>
         </div>
 
         <div class="table-container">
           <table>
             <thead>
               <tr>
-                <th>Date</th>
-                <th>Name</th>
+                <th>Date & Time</th>
+                <th>Item Name</th>
                 <th>RFID tag</th>
                 <th>Status</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="notfi-table-container">
               <!-- Dynamic content will be injected here -->
             </tbody>
           </table>
@@ -80,48 +82,8 @@
         <div id="overlay" class="overlay"></div>
       </div>
     </div>
+    <script src="../js/notfi_api.js"></script>
     <script src="../js/notif.js"></script>
-
-    <script>
-      function refreshTable() {
-        fetch("/notif/notif")
-          .then((response) => response.text())
-          .then((data) => {
-            const tableBody = document.querySelector(".table-container tbody");
-            tableBody.innerHTML += data;
-          })
-          .catch((error) => console.error("Error refreshing table:", error));
-      }
-
-      // Parent element selector
-      const tableBody = document.querySelector(".table-container tbody");
-      const sidePanel = document.getElementById("side-panel");
-      const closePanelButton = document.getElementById("close-panel");
-      const overlay = document.getElementById("overlay");
-
-      // Event delegation for .notification-item clicks
-      tableBody.addEventListener("click", (event) => {
-        const target = event.target.closest(".notification-item");
-        if (target) {
-          console.log("Notification clicked:", target.dataset.id); // For debugging
-          // Display the panel
-          sidePanel.classList.add("visible");
-          sidePanel.classList.remove("hidden");
-          overlay.classList.add("visible");
-        }
-      });
-
-      // Close Side Panel
-      closePanelButton.addEventListener("click", () => {
-        // Hide the panel
-        sidePanel.classList.remove("visible");
-        sidePanel.classList.add("hidden");
-        overlay.classList.remove("visible");
-      });
-
-      // Refresh the table every second
-      setInterval(refreshTable, 1000);
-    </script>
 
     <!-- Linking JavaScript -->
   </body>

@@ -1,131 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RFID Registration</title>
-    <link rel="stylesheet" href="../css/rfidstyle.css">
-    <link rel="stylesheet" href="../css/general.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../css/rfidstyle.css" />
+    <link rel="stylesheet" href="../css/general.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <%- include("./includes/sidebar") %>
     <div class="main-container">
-        <div class="fix">
-            <h1>RFID</h1>
-        </div>
-        <div class="search-add">
-            <div class="search-bar">
-                <input type="text" id="search" placeholder="Search...">
-            </div>
-            <button class="add-btn" onclick="openModal()">Add RFID</button>
-        </div>
-        <div class="table-wrapper">
-            <table class="rfid-table">
-                <thead>
-                    <tr>
-                        <th>RFID TAG</th>
-                        <th>ITEM NAME</th>
-                        <th>SERIAL NUMBER</th>
-                        <th>STATUS</th>
-                        <th>ACTION</th>
-                    </tr>
-                </thead>
-                <tbody id="rfid-table-body">
-                    <tr>
-                        <td>1234</td>
-                        <td>Smart TV</td>
-                        <td>1234</td>
-                        <td>In</td>
-                        <td class="action-column">
-                            <button class="action-btn">Transmission</button>
-                            <span class="menu-btn" onclick="toggleMenu(event, 'menu-0')">⋮</span>
-                            <div class="dropdown-menu" id="menu-0">
-                                <button class="dropdown-item update" onclick="updateAction()">Update</button>
-                                <button class="dropdown-item delete" onclick="deleteAction()">Delete</button>
-                                <button class="dropdown-item assign" onclick="assignAction()">Assign</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5678</td>
-                        <td>Laptop</td>
-                        <td>5678</td>
-                        <td>Out</td>
-                        <td class="action-column">
-                            <button class="action-btn">Transmission</button>
-                            <span class="menu-btn" onclick="toggleMenu(event, 'menu-1')">⋮</span>
-                            <div class="dropdown-menu" id="menu-1">
-                                <button class="dropdown-item update" onclick="updateAction()">Update</button>
-                                <button class="dropdown-item delete" onclick="deleteAction()">Delete</button>
-                                <button class="dropdown-item assign" onclick="assignAction()">Assign</button>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+      <div class="fix">
+        <h1>RFID</h1>
+      </div>
+      <div class="search-add">
+        <!-- <div class="search-bar">
+          <input type="text" id="search" placeholder="Search..." />
+        </div> -->
+        <button class="add-btn" onclick="openModal()">ADD RFID</button>
+      </div>
+      <div class="table-wrapper">
+        <table class="rfid-table">
+          <thead>
+            <tr>
+              <th>RFID TAG</th>
+              <th>ITEM NAME</th>
+              <th>PROPERTY NO.</th>
+              <th>DATE & TIME</th>
+              <th>STATUS</th>
+              <th>EMAIL</th>
+            </tr>
+          </thead>
+          <tbody id="rfid-table-body"></tbody>
+        </table>
+        <nav
+          aria-label="Page navigation"
+          id="paginationNav"
+          style="margin-top: 24px"
+        >
+          <% if (totalPages> 1) { %> <% if (currentPage> 1) { %>
+          <a
+            href="?page=<%= currentPage - 1 %>&limit=<%= limit %>"
+            aria-label="Previous Page"
+            >Previous</a
+          >
+          <% } %> <% if (currentPage < totalPages) { %>
+          <a
+            href="?page=<%= currentPage + 1 %>&limit=<%= limit %>"
+            aria-label="Next Page"
+            >Next</a
+          >
+          <% } %> <% } %>
+        </nav>
+      </div>
     </div>
 
-    <div class="modal" id="rfid-modal">
+    <form action="/rfid/save/rfid" method="POST">
+      <div class="modal" id="rfid-modal">
         <div class="modal-content">
-            <header class="modal-header">
-                <h2>RFID Registration Form</h2>
-            </header>
-            <div class="modal-body">
-                <div class="form-row">
-                    <input type="text" id="field1" placeholder="Enter RFID Tag">
-                    <input type="text" id="field2" placeholder="Enter Item Name">
-                </div>
-                <div class="form-row">
-                    <input type="text" id="field3" placeholder="Enter Serial Number">
-                    <input type="text" id="field4" placeholder="Enter Status">
-                </div>
+          <header class="modal-header">
+            <h2>RFID Registration Form</h2>
+          </header>
+          <div class="modal-body">
+            <div class="form-row">
+              <input
+                type="text"
+                id="rfid_tag1"
+                name="rfid_tag"
+                placeholder="Enter RFID Tag"
+              />
             </div>
-            <footer class="modal-footer">
-                <button class="confirm-btn" onclick="confirmAction()">Confirm</button>
-                <button class="cancel-btn" onclick="closeModal()">Cancel</button>
-            </footer>
+          </div>
+          <footer class="modal-footer">
+            <button type="submit" class="confirms">Confirm</button>
+            <button onclick="closePopup()" type="button" class="cancels">
+              Cancel
+            </button>
+          </footer>
         </div>
+      </div>
+    </form>
+
+    <style>
+      .hidden {
+        display: none !important;
+      }
+
+      .popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .popup-content {
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        width: 300px;
+        border: 3px solid #095c02;
+      }
+
+      .popup-content h3 {
+        margin-bottom: 15px;
+      }
+
+      .popup-content input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      .popup-content .submits {
+        background-color: #095c02;
+      }
+
+      .popup-content .cancels {
+        background-color: maroon;
+      }
+
+      .popup-content button {
+        padding: 10px 20px;
+        margin: 5px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        color: #ccc;
+        font-family: Poppins;
+      }
+
+      .popup-content button:hover {
+        background-color: #ddd;
+      }
+    </style>
+
+    <div id="popup" class="popup hidden">
+      <form method="POST" action="/rfid/save/rfid-update">
+        <div class="popup-content">
+          <h3>Enter Property Number</h3>
+          <input
+            type="text"
+            id="propertyNo"
+            name="property_no"
+            placeholder="Enter Property Number"
+          />
+          <div class="hoverable" id="results"></div>
+          <input type="text" id="itemName" name="item_name" />
+          <input type="hidden" id="tag_id_assign" name="tag_id" />
+
+          <button onclick="assignProperty()" type="submit" class="submits">
+            Submit
+          </button>
+          <button onclick="closePopup()" type="button" class="cancels">
+            Cancel
+          </button>
+        </div>
+      </form>
     </div>
-
+    <script src="../js/rfid_api.js"></script>
     <script>
-        // JavaScript for Dropdown and Modal
-        function toggleMenu(event, menuId) {
-            event.stopPropagation();
-            const menu = document.getElementById(menuId);
-            const isVisible = menu.style.display === 'block';
-            document.querySelectorAll('.dropdown-menu').forEach(menu => menu.style.display = 'none');
-            menu.style.display = isVisible ? 'none' : 'block';
-        }
+      // JavaScript for Dropdown and Modal
 
-        document.addEventListener('click', () => {
-            document.querySelectorAll('.dropdown-menu').forEach(menu => menu.style.display = 'none');
-        });
+      function openModal() {
+        document.getElementById("rfid-modal").style.display = "flex";
+      }
 
-        function openModal() {
-            document.getElementById('rfid-modal').style.display = 'flex';
-        }
+      function closeModal() {
+        document.getElementById("rfid-modal").style.display = "none";
+      }
 
-        function closeModal() {
-            document.getElementById('rfid-modal').style.display = 'none';
-        }
+      function confirmAction() {
+        alert("Form confirmed!");
+        closeModal();
+      }
 
-        function confirmAction() {
-            alert('Form confirmed!');
-            closeModal();
-        }
-
-        function updateAction() {
-            alert('Update action triggered!');
-        }
-
-        function deleteAction() {
-            alert('Delete action triggered!');
-        }
-
-        function assignAction() {
-            alert('Assign action triggered!');
-        }
+      function closePopup() {
+        document.getElementById("popup").classList.add("hidden");
+      }
     </script>
-</body>
+  </body>
 </html>

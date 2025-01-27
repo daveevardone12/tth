@@ -18,7 +18,8 @@ router.get("/user", ensureAuthenticated, (req, res) => {
   const userData = req.user;
   const passwordLength = userData.password_length;
   const buwaNaPassoword = "*".repeat(passwordLength);
-  res.render("user", { data: userData, password: buwaNaPassoword });
+  const role = userData.role;
+  res.render("user", { data: userData, password: buwaNaPassoword, role });
 });
 
 router.post("/user/changeEmail", async (req, res) => {
@@ -81,4 +82,5 @@ router.post("/user/changeEmail", async (req, res) => {
     return res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
 module.exports = router;
