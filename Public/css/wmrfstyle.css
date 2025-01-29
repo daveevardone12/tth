@@ -355,7 +355,7 @@ button:hover {
 .description-section {
   background: white;
   padding: 20px;
-  border: 2px solid black;
+  border: 1px solid black;
   border-radius: 8px;
   flex: 1;
 }
