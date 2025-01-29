@@ -139,7 +139,10 @@ textarea {
 .button-container {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  gap: 20px;
   margin-top: 50px;
 }
 
@@ -154,7 +157,7 @@ button {
 }
 
 button:hover {
-  background-color: #2a8d57;
+  background-color: #b3c04e;
 }
 
 .btn-secondary {
@@ -162,7 +165,7 @@ button:hover {
 }
 
 .btn-secondary:hover {
-  background-color: #0066cc;
+  background-color: #b3c04e;
 }
 
 @media print {
