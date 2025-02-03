@@ -81,27 +81,24 @@ function confirmLogout() {
                           type="text"
                           id="fname"
                           name="newfirstname" <!-- Must match req.body.newfirstname -->
-                          placeholder="Your first name.."
-                          required
-                        />
+                          
+                        
                       
                         <label for="lname">Last name</label>
                         <input
                           type="text"
                           id="lname"
                           name="newlastname" <!-- Must match req.body.newlastname -->
-                          placeholder="Your last name.."
-                          required
-                        />
+                          
+                        
                       
                         <label for="contact">Contact No.</label>
                         <input
                           type="text"
                           id="contact"
                           name="newcontact" <!-- Must match req.body.newcontact -->
-                          placeholder="Your contact number.."
-                          required
-                        />
+                          
+                       
                       
                         <input type="submit" value="Save" />
                       </form>
@@ -126,27 +123,43 @@ function confirmLogout() {
                 </div>
             </div>
 
-            <!-- The Pop-up Modal for Change Password -->
-            <div id="changePasswordModal" class="modal">
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <h2>Change Password</h2>
-                    <form action="">
-                        <label for="current-password">Current Password</label>
-                        <input type="password" id="current-password" name="currentpassword"
-                            placeholder="Your current password..">
-
-                        <label for="new-password">New Password</label>
-                        <input type="password" id="new-password" name="newpassword" placeholder="Your new password..">
-
-                        <label for="confirm-password">Confirm Password</label>
-                        <input type="password" id="confirm-password" name="confirmpassword"
-                            placeholder="Confirm your new password..">
-
-                        <input type="submit" value="Save">
-                    </form>
-                </div>
-            </div>
+           <!-- The Pop-up Modal for Change Password -->
+<div id="changePasswordModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Change Password</h2>
+      <form action="/user/changePassword" method="POST">
+        <label for="current-password">Current Password</label>
+        <input
+          type="password"
+          id="current-password"
+          name="currentpassword"
+          placeholder="Your current password.."
+          required
+        />
+  
+        <label for="new-password">New Password</label>
+        <input
+          type="password"
+          id="new-password"
+          name="newpassword"
+          placeholder="Your new password.."
+          required
+        />
+  
+        <label for="confirm-password">Confirm Password</label>
+        <input
+          type="password"
+          id="confirm-password"
+          name="confirmpassword"
+          placeholder="Confirm your new password.."
+          required
+        />
+  
+        <input type="submit" value="Save" />
+      </form>
+    </div>
+  </div>
 
             <script>// Wait until the document is fully loaded
                 document.addEventListener("DOMContentLoaded", function () {

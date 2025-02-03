@@ -371,7 +371,7 @@ async function processRFIDData() {
                 to: row.email,
                 subject: "Tim Item ginawas",
                 text: `Good Day!, ${row.accountable}`,
-                html: `<p>Good Day! <strong>${row.accountable}</strong>, your item <strong>${row.item_name}</strong> has been marked as OUT at <strong>${formattedTimestamp}</strong>.</p>`,
+                html: `<p>Good Day! <strong>${row.accountable}</strong>, your item <strong>${row.item_name}</strong> has been marked as OUT at <strong>${formattedTimestamp}</strong> in <strong>${row.location}</strong>.</p>`,
               };
 
               const result = await sendEmail(emailData);

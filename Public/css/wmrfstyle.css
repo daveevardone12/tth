@@ -95,12 +95,11 @@ h2 {
 }
 
 textarea {
-
- flex: 1;
- padding: 20px;
- font-size: large;
- margin-top: -17px;
- border-radius: 4px;
+  flex: 1;
+  padding: 20px;
+  font-size: large;
+  margin-top: -17px;
+  border-radius: 4px;
 }
 
 label {
@@ -113,7 +112,6 @@ label {
   border: 1px solid black;
   height: 15%;
   border-radius: 4px;
-
 }
 
 input[type="text"],
@@ -385,7 +383,6 @@ button:hover {
   gap: 10px;
 }
 
-
 .hoverable {
   display: none;
   flex-direction: column;
@@ -399,10 +396,23 @@ button:hover {
 
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr ;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 30px;
 }
 
 select {
   width: calc(100% + 10px);
+}
+
+/* print csss !!!!!!!! */
+
+@media print {
+  .main-content,
+  .sidebar {
+    display: none;
+  }
+
+  #printWmrf {
+    display: block !important;
+  }
 }
