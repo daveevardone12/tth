@@ -29,8 +29,12 @@
                     </script>
                     <% } %>
                         <div class="main-content">
-                            <div class="form-containers">
-                                <h1>Inventory Custodian Slip</h1>
+                          
+                          <div class="mas-header">
+                            <h1>Inventory Custodian Slip</h1>
+                          </div>
+                          
+                          <div class="form-containers">
                                 <form method="POST" action="/ics/save" enctype="multipart/form-data">
                                     <h2>Item Details</h2>
                                     <div class="form-grid">
@@ -351,16 +355,63 @@
                                         <!-- Popup for success message -->
                                          
                                         
-                                        <button type="button" class="print-button" onclick="printDocument('Print')">Print</button>
+                                        <button type="button" class="print-button" onclick="validateBeforePrint()">Print</button>
                                         <button type="submit" class="save-button" onclick="openPopup()">Save</button>
                                         
                                     </div>
                                    
+                                   
                                     <script>
-                                        function printDocument() {
-                                            window.print();
-                                        }
-                                    </script>
+                                      function validateBeforePrint() {
+                                          const photo1 = document.getElementById("photoPreview1").src;
+                                          const photo2 = document.getElementById("photoPreview2").src;
+                                  
+                                          if (!photo1.includes("data:image") && !photo2.includes("data:image")) {
+                                              alert("Please upload both photos before printing.");
+                                              return;
+                                          }
+                                          printDocument();
+                                      }
+                                  
+                                      function printDocument() {
+                                          // Ensure print sections are visible
+                                          document.getElementById("printIcs").style.display = "block";
+                                          document.getElementById("printPhotos").style.display = "block";
+                                  
+                                          let photoContainer = document.getElementById("photoContainer");
+                                          photoContainer.innerHTML = ""; // Clear previous images
+                                  
+                                          // Add images dynamically
+                                          let photo1Src = document.getElementById('photoPreview1').src;
+                                          let photo2Src = document.getElementById('photoPreview2').src;
+                                  
+                                          if (photo1Src) {
+                                              let img1 = document.createElement("img");
+                                              img1.src = photo1Src;
+                                              img1.style.width = "600px";
+                                              img1.style.height = "400px";
+                                              img1.style.marginBottom = "50px";
+                                              photoContainer.appendChild(img1);
+                                          }
+                                  
+                                          if (photo2Src) {
+                                              let img2 = document.createElement("img");
+                                              img2.src = photo2Src;
+                                              img2.style.width = "600px";
+                                              img2.style.height = "400px";
+                                              img2.style.marginBottom = "50px";
+                                              photoContainer.appendChild(img2);
+                                          }
+                                  
+                                          // Print
+                                          window.print();
+                                  
+                                          // Hide the image section after printing
+                                          setTimeout(() => {
+                                              document.getElementById("printPhotos").style.display = "none";
+                                          }, 1000);
+                                      }
+                                  </script>
 
                                     <script>
                                         // let popup = document.getElementById("popup");
