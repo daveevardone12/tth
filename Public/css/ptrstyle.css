@@ -20,8 +20,8 @@ h1 {
   font-style: normal;
   line-height: normal;
   color: #000;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 10px;
+  padding-top: 15px;
+  padding-left: 20px;
   margin-bottom: 20px;
 }
 
@@ -39,12 +39,16 @@ h2 {
   margin-left: 30px;
 }
 
+.fix {
+  margin-top: 8%;
+}
+
 /* Main content area */
 .main-content {
   background-color: white;
   margin-left: 370px;
   /* Leaves space for the sidebar */
-  padding: 20px;
+  padding: 0 20px !important;
   height: 100vh !important;
   width: calc(100% - 370px);
   /* Takes the remaining space */
@@ -262,4 +266,14 @@ h2 {
   display: grid;
   grid-template-columns: 0.9fr 1fr;
   margin-left: 3rem;
+}
+
+.mas-header {
+  position: fixed;
+  z-index: 1;
+  background-color: white;
+  width: calc(100% - 16%);
+  margin-left: -50px;
+  padding-right: 20px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
 }

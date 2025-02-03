@@ -15,22 +15,23 @@ body {
 }
 
 body::-webkit-scrollbar {
-  display: none; /* Hide scrollbar for Webkit browsers (Chrome, Safari, etc.) */
+  display: none;
+  /* Hide scrollbar for Webkit browsers (Chrome, Safari, etc.) */
 }
 
 .main-content {
   background-color: white;
-  padding: 20px;
+  padding: 0 20px;
   margin-left: 280px;
   margin-right: 5px;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .form-containers {
   background-color: white;
   border-radius: 10px;
   width: -webkit-fill-available;
-  /* margin-top: 50px; */
+  margin-top: 8%; 
   margin-left: 15px;
 }
 
@@ -41,9 +42,9 @@ h1 {
   font-style: normal;
   line-height: normal;
   color: #000;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 10px;
+  padding-top: 15px;
   margin-bottom: 20px;
+  padding-left: 20px;
 }
 
 h2 {
@@ -56,8 +57,7 @@ h2 {
   border-bottom: 1px solid #ccc;
   padding-bottom: 10px;
   padding-top: 10px;
-  margin-bottom: 15px;
-  margin-left: 30px;
+  margin-bottom: 15px;  
 }
 
 .popup {
@@ -76,7 +76,8 @@ h2 {
 
 .open-popup {
   visibility: visible;
-  opacity: 1; /* Ensure full opacity when visible */
+  opacity: 1;
+  /* Ensure full opacity when visible */
   top: 50%;
   transform: translate(-50%, -50%) scale(1);
 }
@@ -176,7 +177,8 @@ h2 {
 /*for UACS*/
 /* Dropdown options container */
 .custom-dropdown-options {
-  display: none; /* Initially hidden */
+  display: none;
+  /* Initially hidden */
   position: absolute;
   width: 100%;
   top: 100%;
@@ -185,23 +187,30 @@ h2 {
   border: 1px solid #ccc;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 10;
-  max-height: 200px; /* Max height for scroll */
-  overflow-y: auto; /* Enable vertical scrolling */
-  border-radius: 5px; /* Smooth corners */
+  max-height: 200px;
+  /* Max height for scroll */
+  overflow-y: auto;
+  /* Enable vertical scrolling */
+  border-radius: 5px;
+  /* Smooth corners */
 }
 
 /* Individual option styling */
 .custom-dropdown-option {
   padding: 10px;
   cursor: pointer;
-  color: #333; /* Default text color */
-  transition: all 0.3s ease; /* Smooth hover transition */
+  color: #333;
+  /* Default text color */
+  transition: all 0.3s ease;
+  /* Smooth hover transition */
 }
 
 /* Green background and white text on hover */
 .custom-dropdown-option:hover {
-  color: #fff; /* White text */
-  background-color: #0a5d03; /* Green background */
+  color: #fff;
+  /* White text */
+  background-color: #0a5d03;
+  /* Green background */
 }
 
 /* Dropdown trigger styling */
@@ -210,19 +219,24 @@ h2 {
   background-color: #f9f9f9;
   border: 1px solid #ccc;
   cursor: pointer;
-  border-radius: 5px; /* Smooth corners */
-  transition: border-color 0.3s ease; /* Smooth border transition */
+  border-radius: 5px;
+  /* Smooth corners */
+  transition: border-color 0.3s ease;
+  /* Smooth border transition */
 }
 
 /* Trigger hover effect */
 .custom-dropdown-trigger:hover {
-  border-color: #0a5d03; /* Green border when hovering */
+  border-color: #0a5d03;
+  /* Green border when hovering */
 }
 
 /* Optional: Active state styling for trigger */
 .custom-dropdown-trigger.active {
-  background-color: #e8f5e9; /* Light green background */
-  border-color: #0a5d03; /* Green border */
+  background-color: #e8f5e9;
+  /* Light green background */
+  border-color: #0a5d03;
+  /* Green border */
 }
 
 /*end for UACS*/
@@ -239,7 +253,8 @@ label:hover {
 .custom-dropdown-options,
 #category-dropdown-options,
 #location-dropdown-options {
-  display: none; /* Initially hidden for custom dropdowns */
+  display: none;
+  /* Initially hidden for custom dropdowns */
   position: absolute;
   width: 23em;
   top: 100%;
@@ -248,9 +263,12 @@ label:hover {
   border: 1px solid #ccc;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 10;
-  max-height: 200px; /* Max height for scroll */
-  overflow-y: auto; /* Enable vertical scrolling */
-  border-radius: 5px; /* Smooth corners */
+  max-height: 200px;
+  /* Max height for scroll */
+  overflow-y: auto;
+  /* Enable vertical scrolling */
+  border-radius: 5px;
+  /* Smooth corners */
 }
 
 /* Individual option styling for custom dropdowns */
@@ -259,16 +277,20 @@ label:hover {
 #location-dropdown-options .custom-dropdown-option {
   padding: 10px;
   cursor: pointer;
-  color: #333; /* Default text color */
-  transition: all 0.3s ease; /* Smooth hover transition */
+  color: #333;
+  /* Default text color */
+  transition: all 0.3s ease;
+  /* Smooth hover transition */
 }
 
 /* Green background and white text on hover for custom dropdown options */
 .custom-dropdown-option:hover,
 #category-dropdown-options .custom-dropdown-option:hover,
 #location-dropdown-options .custom-dropdown-option:hover {
-  color: #fff; /* White text */
-  background-color: #0a5d03; /* Green background */
+  color: #fff;
+  /* White text */
+  background-color: #0a5d03;
+  /* Green background */
 }
 
 /* Dropdown trigger styling for custom dropdowns */
@@ -279,8 +301,10 @@ label:hover {
   background-color: white;
   border: 1px solid #ccc;
   cursor: pointer;
-  border-radius: 5px; /* Smooth corners */
-  transition: border-color 0.3s ease; /* Smooth border transition */
+  border-radius: 5px;
+  /* Smooth corners */
+  transition: border-color 0.3s ease;
+  /* Smooth border transition */
   width: 370px;
 }
 
@@ -288,14 +312,18 @@ label:hover {
 .custom-dropdown-trigger:hover,
 #category:hover,
 #location:hover {
-  border-color: #0a5d03; /* Green border when hovering */
+  border-color: #0a5d03;
+  /* Green border when hovering */
 }
 
 /* Optional: Active state styling for trigger */
 .custom-dropdown-trigger.active {
-  background-color: #e8f5e9; /* Light green background */
-  border-color: #0a5d03; /* Green border */
+  background-color: #e8f5e9;
+  /* Light green background */
+  border-color: #0a5d03;
+  /* Green border */
 }
+
 /*end*/
 
 .form-group input[type="text"],
@@ -352,6 +380,7 @@ button {
   background-color: #095c02;
   color: white;
 }
+
 button:hover {
   background-color: #b3c04e;
 }
@@ -363,6 +392,7 @@ button:hover {
 /* print csss !!!!!!!! */
 
 @media print {
+
   .main-content,
   .sidebar {
     display: none;
@@ -372,3 +402,15 @@ button:hover {
     display: block !important;
   }
 }
+
+/* for header */
+.mas-header {
+  position: fixed;
+  z-index: 1;
+  background-color: white;
+  width: calc(100% - 16%);
+  margin-left: -50px;
+  padding-right: 20px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
