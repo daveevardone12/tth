@@ -22,7 +22,7 @@ body::-webkit-scrollbar {
 .main-content {
   background-color: white;
   padding: 0 20px;
-  margin-left: 280px;
+  margin-left: 260px;
   margin-right: 5px;
   overflow: auto;
 }
@@ -305,7 +305,7 @@ label:hover {
   /* Smooth corners */
   transition: border-color 0.3s ease;
   /* Smooth border transition */
-  width: 370px;
+  width: calc(100% + 53%);
 }
 
 /* Trigger hover effect for custom dropdowns */
@@ -331,7 +331,7 @@ label:hover {
 .form-group input[type="number"],
 .form-group input[type="text or number"],
 .form-group textarea {
-  width: 95%;
+  width: 100%;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -360,7 +360,8 @@ textarea {
   display: flex;
   justify-content: center;
   gap: 20px;
-  margin-top: 20px;
+  margin-top: 50px;
+  margin-bottom: 40px;
 }
 
 button {
@@ -408,7 +409,7 @@ button:hover {
   z-index: 1;
   background-color: white;
   width: calc(100% - 16%);
-  margin-left: -50px;
+  margin-left: -30px;
   padding-right: 20px;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
 }
