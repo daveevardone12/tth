@@ -53,10 +53,10 @@
                                           <input type="text" id="email" name="email" required>
                                       </div>
                                         <div class="form-group">
-                                            <p id="errorMessage" style="color: red; display: none;">Value cannot be less than 50000.</p>
+                                            <p id="errorMessage" style="color: red; display: none;">Value cannot be greater than 49999.</p>
                                             <label for="cost">Unit Cost/Value *</label>
-                                            <input type="number" id="cost" name="cost" placeholder="must be greater than 49999"
-                                                required min="49000" oninput="validateInput()" >
+                                            <input type="number" id="cost" name="cost" placeholder="must be less than 49999"
+                                                required max="49999" oninput="validateInput()" >
                                         </div>
                                         <div class="form-group">
                                             <label for="dateAcquired">Date Acquired *</label>
@@ -163,7 +163,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="po">PO # *</label>
-                                            <input type="text or number" id="po" name="POnumber"
+                                            <input type="text" id="po" name="POnumber"
                                                 placeholder="Ex. GOODYS-2018-05-A 11/05/18" required>
                                         </div>
                                         <div class="form-group">
@@ -173,7 +173,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="iar">IAR *</label>
-                                            <input type="number" id="iar" name="IAR"
+                                            <input type="text" id="iar" name="IAR"
                                                 placeholder="Ex. 2019-ICO-093 3/15/2019" required>
                                         </div>
                                         <div class="form-group">
@@ -462,7 +462,7 @@
                                 console.log("input")
                                 const input = document.getElementById("cost");
                                 const errorMessage = document.getElementById("errorMessage");
-                                if (parseInt(input.value) < 49000) {
+                                if (parseInt(input.value) > 49999) {
                                 // input.value = 0; // Automatically adjust to max value
                                 errorMessage.style.display = "block";
                                 } else {

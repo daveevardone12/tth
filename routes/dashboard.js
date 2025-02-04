@@ -33,6 +33,11 @@ router.get("/dashboard", ensureAuthenticated, async (req, res) => {
         totalBooks,
         totalSoftware,
         totalMachineryEquipment,
+        totalMarineandMachineryEquipment,
+        totalCommunicationEquipment,
+        totalDisasterResponseandRescueEquipment,
+        totalMilitaryPoliceandSecurityEquipment,
+        totalSportsEquipment,
       } = await fetchInventoryList(page, limit, location);
 
       return res.json({
@@ -53,6 +58,11 @@ router.get("/dashboard", ensureAuthenticated, async (req, res) => {
         totalBooks,
         totalSoftware,
         totalMachineryEquipment,
+        totalMarineandMachineryEquipment,
+        totalCommunicationEquipment,
+        totalDisasterResponseandRescueEquipment,
+        totalMilitaryPoliceandSecurityEquipment,
+        totalSportsEquipment,
       });
     } else if (ajaxType === "locations") {
       // Handle Location-Based Data AJAX Request
@@ -78,6 +88,11 @@ router.get("/dashboard", ensureAuthenticated, async (req, res) => {
         totalBooks,
         totalSoftware,
         totalMachineryEquipment,
+        totalMarineandMachineryEquipment,
+        totalCommunicationEquipment,
+        totalDisasterResponseandRescueEquipment,
+        totalMilitaryPoliceandSecurityEquipment,
+        totalSportsEquipment,
       } = await fetchInventoryList(page, limit, location);
 
       res.render("dashboard", {
@@ -98,6 +113,11 @@ router.get("/dashboard", ensureAuthenticated, async (req, res) => {
         totalBooks,
         totalSoftware,
         totalMachineryEquipment,
+        totalMarineandMachineryEquipment,
+        totalCommunicationEquipment,
+        totalDisasterResponseandRescueEquipment,
+        totalMilitaryPoliceandSecurityEquipment,
+        totalSportsEquipment,
       });
     }
   } catch (err) {
@@ -178,6 +198,26 @@ async function fetchInventoryList(page, limit, location) {
       "%Machinery%",
       location
     );
+    const totalMarineandMachineryEquipment = await getCountByCategory(
+      "%Marine and Machinery Equipment%",
+      location
+    );
+    const totalCommunicationEquipment = await getCountByCategory(
+      "%Communication Equipment%",
+      location
+    );
+    const totalDisasterResponseandRescueEquipment = await getCountByCategory(
+      "%Disaster Response and Rescue Equipment%",
+      location
+    );
+    const totalMilitaryPoliceandSecurityEquipment = await getCountByCategory(
+      "%Military Police and Security Equipment%",
+      location
+    );
+    const totalSportsEquipment = await getCountByCategory(
+      "%Sports Equipment%",
+      location
+    );
 
     return {
       getInventoryList: data,
@@ -194,6 +234,11 @@ async function fetchInventoryList(page, limit, location) {
       totalBooks,
       totalSoftware,
       totalMachineryEquipment,
+      totalMarineandMachineryEquipment,
+      totalCommunicationEquipment,
+      totalDisasterResponseandRescueEquipment,
+      totalMilitaryPoliceandSecurityEquipment,
+      totalSportsEquipment,
     };
   } catch (err) {
     console.error("Error: ", err);

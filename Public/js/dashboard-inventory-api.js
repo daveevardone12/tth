@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", function () {
             data.limit
           )
         );
-        console.log("updateInbentoryTable:", updateInventoryTable(data));
+        console.log("updateInventoryTable:", updateInventoryTable(data));
       })
       .catch((error) => {
         console.error("Error during pagination:", error);

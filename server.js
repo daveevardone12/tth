@@ -574,7 +574,7 @@ const addItemRoutes = require("./routes/add-item");
 const notifRoutes = require("./Routes/notif");
 const prsRoutes = require("./Routes/prs");
 const mrerRoutes = require("./Routes/mrer");
-const wmrfRoutes = require("./routes/wmrf");
+const wmrfRoutes = require("./Routes/wmrf");
 const rfidRoutes = require("./Routes/rfid");
 const { timeStamp } = require("console");
 

@@ -8,7 +8,7 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #fff;
-  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 /* Sidebar */
@@ -29,6 +29,11 @@ body {
   margin-left: 280px;
   padding: 0 20px !important;
   min-height: 100vh;
+  overflow: hidden;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 /* .search-add {
