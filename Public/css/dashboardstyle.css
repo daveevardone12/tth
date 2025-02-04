@@ -50,7 +50,7 @@ h1 {
   font-style: normal;
   line-height: normal;
   color: #000;
-   
+
   padding-top: 15px;
   /* padding-bottom: 10px; */
 }
@@ -86,7 +86,7 @@ h3 {
 
 .right-allign {
   display: flex;
-  justify-content: right; 
+  justify-content: right;
   margin-left: 80.5%;
 }
 /* Table container */
@@ -224,7 +224,6 @@ tbody tr:nth-child(even) {
   background-color: #f9f9f9;
 }
 
-
 .profile {
   width: 35px;
   height: 35px;
@@ -254,7 +253,6 @@ tbody tr:nth-child(even) {
   display: flex;
   align-items: center;
 }
-
 
 .mas-header {
   position: fixed;

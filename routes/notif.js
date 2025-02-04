@@ -32,6 +32,7 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/notif", ensureAuthenticated, async (req, res) => {
+  const role = userData.role;
   // Render only the new data to the frontend
   res.render("notifData");
 });

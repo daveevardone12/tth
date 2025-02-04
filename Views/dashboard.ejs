@@ -17,7 +17,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
     <!-- Load Google Charts Library -->
     <script src="https://www.gstatic.com/charts/loader.js"></script>
     <style>
@@ -160,24 +163,22 @@
     <div class="container">
       <!-- Main content -->
       <div class="main-content">
-
         <div class="mas-header">
-        <div class="header-container">
-        <div class="fix">
-          <h1>Dashboard</h1>
-        </div>
-        <div class="profile"></div>
-      </div>
+          <div class="header-container">
+            <div class="fix">
+              <h1>Dashboard</h1>
+            </div>
+            <div class="profile"></div>
+          </div>
 
-        <div class="right-allign">
-          <p>
-            <span id="current-time"
-              ><%= currentDateTime.toLocaleString() %></span
-            >
-          </p>
+          <div class="right-allign">
+            <p>
+              <span id="current-time"
+                ><%= currentDateTime.toLocaleString() %></span
+              >
+            </p>
+          </div>
         </div>
-
-      </div>
 
         <!-- Cards -->
         <div class="cards-container">
@@ -227,6 +228,34 @@
           </div>
           <div class="card green" data-category="Machinery">
             <br /><span id="MachineryEquipment">0</span> Machinery
+          </div>
+          <div
+            class="card green"
+            data-category="Marine and Machinery Equipment"
+          >
+            <br /><span id="MarineandMachineryEquipment">0</span> Marine and
+            Machinery Equipment
+          </div>
+          <div class="card green" data-category="Communication Equipment">
+            <br /><span id="CommunicationEquipment">0</span> Communication
+            Equipment
+          </div>
+          <div
+            class="card green"
+            data-category="Disaster Response and Rescue Equipment"
+          >
+            <br /><span id="DisasterResponseandRescueEquipment">0</span>
+            Disaster Response and Rescue Equipment
+          </div>
+          <div
+            class="card green"
+            data-category="Military Police and Security Equipment"
+          >
+            <br /><span id="MilitaryPoliceandSecurityEquipment">0</span>
+            Military, Police and Security Equipment
+          </div>
+          <div class="card green" data-category="Sports Equipment">
+            <br /><span id="SportsEquipment">0</span> Sports Equipment
           </div>
         </div>
 

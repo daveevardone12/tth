@@ -19,15 +19,15 @@ html {
 
 .left {
   background: linear-gradient(
-    45deg,
-    #074303 53.7%,
+    72deg,
+    #074303 70.7%,
     #ffffff 46.3%
   ); /* Green covers 60%, white 40% */
   width: 70%;
   display: flex;
   flex-direction: column;
   justify-content: center; /* Center content vertically */
-  align-items: center; /* Center content horizontally */
+  align-items: flex-start; /* Center content horizontally */
   color: black;
   padding: 20px;
   position: relative; /* To allow for absolute positioning of the image */
@@ -76,8 +76,10 @@ html {
 
 .welcome-text {
   color: white;
-  margin-left: 10px; /* Moves "Welcome to the" part slightly to the right */
+  /* margin-left: 10px; Moves "Welcome to the" part slightly to the right */
   font-size: larger;
+  display: flex;
+  justify-content: left;
 }
 
 .website-text {
@@ -164,7 +166,7 @@ button:hover {
 .pms-logo {
   width: 500px; /* Adjust logo size */
   height: 500px;
-  margin-right: 190px;
+  margin-right: 200px;
   object-fit: contain;
   transition: transform 0.5s ease, opacity 0.5s ease; /* Smooth animation for scale */
   animation: logoPop 2s ease-out forwards; /* New fade and pop animation */
@@ -295,6 +297,10 @@ button:hover {
 .signup {
   margin-top: 20px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  margin-left: 32%;
+}
+
+.content {
+  display: flex;
 }
