@@ -30,7 +30,7 @@ body::-webkit-scrollbar {
   background-color: white;
   border-radius: 10px;
   width: -webkit-fill-available;
-  margin-top: 8%; 
+  margin-top: 8%;
   margin-left: 10px;
   margin-right: 20px;
 }
@@ -283,7 +283,7 @@ label:hover {
   cursor: pointer;
   border-radius: 5px; /* Smooth corners */
   transition: border-color 0.3s ease; /* Smooth border transition */
-  width: calc(100% + 57%);
+  width: 370px;
 }
 
 /* Trigger hover effect for custom dropdowns */
@@ -385,7 +385,6 @@ button:hover {
     margin: auto;
   }
 }
-
 
 /* for header */
 .mas-header {

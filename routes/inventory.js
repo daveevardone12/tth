@@ -70,6 +70,7 @@ router.get("/search", ensureAuthenticated, async (req, res) => {
     res.status(500).send("An error occurred during the search.");
   }
 });
+
 router.get("/sort", ensureAuthenticated, async (req, res) => {
   const page = parseInt(req.query.page, 11) || 1;
   const limit = parseInt(req.query.limit, 11) || 11;

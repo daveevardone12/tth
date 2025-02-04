@@ -51,12 +51,31 @@
             
             <li><a href="/rfid"><img src="" alt="" class="rfid">RFID</a></li>
             
-            <li><a href="/notif"><img src="/Public/images/mingcute--notification-line.svg" alt="" class="notif">Logs    </a></li>
+            <li><a href="/notif"><img src="/Public/images/mingcute--notification-line.svg" alt="" class="notif">Logs</a></li>
+            
             <li><a href="/user"><img src="/Public/images/cuida--dashboard-outline.svg" alt="" class="use">User Account</a></li>
+
+            <footer>
+                <button class="logout-btn" onclick="confirmLogout()">
+                    <div class="logout">
+                    Log Out
+                </div>
+                </button>
+              </footer>
         </ul>
     </nav>
 </div>
 </div>
+
+<script>
+    function confirmLogout() {
+        const userConfirmed = confirm("Are you sure you want to log out?");
+        if (userConfirmed) {
+            // Redirect to the backend logout route to clear the session
+            window.location.href = "/logout";  // This will trigger the logout route on the backend
+        }
+    }
+    </script>
 
 <script>
     // Add Item link functionality

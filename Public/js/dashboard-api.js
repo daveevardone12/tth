@@ -95,6 +95,16 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("Software").innerText = data.totalSoftware;
     document.getElementById("MachineryEquipment").innerText =
       data.totalMachineryEquipment;
+    document.getElementById("MarineandMachineryEquipment").innerText =
+      data.totalFurnitureEquipment;
+    document.getElementById("CommunicationEquipment").innerText =
+      data.totalFurnitureEquipment;
+    document.getElementById("DisasterResponseandRescueEquipment").innerText =
+      data.totalFurnitureEquipment;
+    document.getElementById("MilitaryPoliceandSecurityEquipment").innerText =
+      data.totalFurnitureEquipment;
+    document.getElementById("SportsEquipment").innerText =
+      data.totalFurnitureEquipment;
   }
 
   // Function to draw the Inventory Google Bar Chart
@@ -114,6 +124,17 @@ document.addEventListener("DOMContentLoaded", function () {
       ["Books", data.totalBooks],
       ["Software", data.totalSoftware],
       ["Machinery", data.totalMachineryEquipment],
+      ["Marine and Machinery Equipment", data.totalMarineandMachineryEquipment],
+      ["Communication Equipment", data.totalCommunicationEquipment],
+      [
+        "Disaster Response and Rescue Equipment",
+        data.totalDisasterResponseandRescueEquipment,
+      ],
+      [
+        "Military Police and Security Equipment",
+        data.totalMilitaryPoliceandSecurityEquipment,
+      ],
+      ["Sports Equipment", data.totalSportsEquipment],
     ];
 
     const dataTable = google.visualization.arrayToDataTable(chartData);

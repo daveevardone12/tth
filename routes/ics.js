@@ -29,6 +29,25 @@ router.post(
     console.log("req.body:", req.body);
     console.log("req.files:", req.files);
 
+    console.log("itemName length:", data.itemName?.length);
+    console.log("accountable length:", data.accountable?.length);
+    console.log("cost:", data.cost?.length);
+    console.log("dateAcquired:", data.dateAcquired?.length);
+    console.log("location:", data.location?.length);
+    console.log("category:", data.category?.length);
+    console.log("uacs_code:", data.uacs_code?.length);
+    console.log("inventoryNo:", data.inventoryNo?.length);
+    console.log("burs:", data.burs?.length);
+    console.log("estimatedLife:", data.estimatedLife?.length);
+    console.log("POnumber:", data.POnumber?.length);
+    console.log("code:", data.code?.length);
+    console.log("IAR:", data.IAR?.length);
+    console.log("supplier:", data.supplier?.length);
+    console.log("serialNumber:", data.serialNumber?.length);
+    console.log("propertyNumber:", data.propertyNumber?.length);
+    console.log("email:", data.email?.length);
+    console.log("description:", data.description?.length);
+
     const photo1 = req.files?.photo1?.[0]?.buffer || null;
     const photo2 = req.files?.photo2?.[0]?.buffer || null;
     try {
