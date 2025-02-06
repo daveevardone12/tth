@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", function () {
         title: "Category",
       },
       colors: ["#4285F4"], // Example color
-      fontSize: 8,
+      fontSize: 10,
     };
 
     const chart = new google.visualization.BarChart(
@@ -282,14 +282,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const options = {
       title: "Location-Based Counts", // Updated title
+      titleTextStyle: {
+        fontName: "Poppins", // Set font family
+        fontSize: 10, // Set font size
+        bold: true, // Make text bold
+        italic: false, // Italicize text if needed
+        color: "#333", 
+      },
       hAxis: {
         title: "Location",
+        titleTextStyle: {
+          fontName: "Roboto",
+          fontSize: 1,
+        },
       },
       vAxis: {
         title: "Count", // Updated from 'Metric' to 'Count'
       },
-      colors: ["#DB4437"], // Example color, customize as needed
-      fontSize: 8,
+      colors: ["#095c02"], // Example color, customize as needed
+      fontName: "Poppins",
+      bold: true,
+      fontSize: 15,
       chartArea: { width: "70%", height: "85%" },
     };
 
@@ -403,4 +416,8 @@ document.addEventListener("DOMContentLoaded", function () {
       fetchLocationData();
     }, 250) // Adjust the wait time as needed
   );
+});
+
+document.querySelector('.profile').addEventListener('click', function() {
+  window.location.href = "/user"; // Change this to your profile page URL
 });

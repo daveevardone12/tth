@@ -86,6 +86,7 @@ table {
   overflow-x: hidden;
   /* overflow-y: hidden; */
   border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .t-head {
@@ -203,9 +204,9 @@ table tbody tr:nth-of-type(even) {
   background-color: #5140f0;
 }
 
-.dropdown-menu button :hover {
+/* .dropdown-menu button :hover {
   background-color: #40f05d;
-}
+} */
 
 /* Show dropdown when menu-container is active */
 .menu-container.active .dropdown-menu {
@@ -241,6 +242,7 @@ body {
   align-items: center;
   gap: 5px;
   border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .filt {
@@ -498,7 +500,7 @@ option {
   width: 18%;
   cursor: pointer;
   padding: 10px 5px;
-  border: 1px solid #ccc;
+  border: 1px solid #ccc !important;
   border-radius: 4px;
   font-size: 14px;
   background-color: white;

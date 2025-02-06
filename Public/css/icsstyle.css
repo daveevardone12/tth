@@ -31,8 +31,7 @@ body::-webkit-scrollbar {
   border-radius: 10px;
   width: -webkit-fill-available;
   margin-top: 8%;
-  margin-left: 10px;
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 h1 {
@@ -356,7 +355,7 @@ button {
   color: white;
 }
 button:hover {
-  background-color: #b3c04e;
+  background-color: #1d8d01;
 }
 
 /* print csss !!!!!!!! */
