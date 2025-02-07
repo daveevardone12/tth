@@ -8,8 +8,82 @@ document.addEventListener("DOMContentLoaded", function () {
   const applyButton = document.getElementById("apply-sort-by");
   const sortInputs = overlay.querySelectorAll("input[type='radio']");
 
+  document
+    .getElementById("uacs-select")
+    .addEventListener("change", function () {
+      const selectedValue = this.value;
+      if (selectedValue) {
+        // Create the new URL based on the current window location
+        const newUrl = new URL(window.location);
+        newUrl.searchParams.set("uacs", selectedValue); // Add the uacs parameter to the URL
+
+        // Push the new URL to the history (without reloading the page)
+        window.history.pushState({}, "", newUrl);
+
+        // Call the fetch function to get the updated data
+      }
+      fetchInventoryUpdates();
+    });
+
+  function fetchInventoryUpdates() {
+    if (!isSearching) {
+      // Create a new URL with the correct base URL
+      const url = new URL("/Inventory", window.location.origin); // Ensure this is a valid absolute URL
+
+      // Get the 'uacs' value from the current URL or default to '1060501000' if not present
+      const uacsValue =
+        new URLSearchParams(window.location.search).get("uacs") || "";
+
+      // Ensure ajax and uacs parameters are appended correctly
+      url.searchParams.set("ajax", "true");
+      url.searchParams.set("uacs", uacsValue); // Use the uacsValue here
+      const heading = document.getElementById("inventoryHeading");
+      heading.innerText = getHeadingText(uacsValue);
+      console.log("Fetching with URL:", uacsValue); // Log to inspect the full URL being used
+      fetch(url.toString())
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          updateInventoryTable(data); // Update the inventory table with the data
+        })
+        .catch((error) => {
+          console.error("Error fetching inventory updates:", error);
+        });
+    }
+  }
+
+  function getHeadingText(uacsValue) {
+    const uacsMap = {
+      1060501000: "Machinery (1 06 05 140 00)",
+      1060502000: "Office Equipment (1060502000)",
+      1060504000: "Agricultural and Forestry Equipment (1060504000)",
+      1060511000: "Medical Equipment (1060511000)",
+      1060512000: "Printing Equipment (1060512000)",
+      1060514000: "Tech. & Scientific Equipment (1 06 05 140 00)",
+      10605990000: "Other Machinery and Equipment (10605990000)",
+      1060601000: "Motor Vehicles (1060601000)",
+      1060701000: "Furniture and Fixtures (1060701000)",
+      1060702000: "Books (1060702000)",
+      1080102000: "Software (1080102000)",
+      1060503000:
+        "Information and Communications Technology Equipment (1060503000)",
+      1040505000: "Marine and Fishery Equipment (1040505000)",
+      1040507000: "Communication Equipment (1040507000)",
+      1040508000: "Disaster Response and Rescue Equipment (1040508000)",
+      1040509000: "Military, Police and Security Equipment (1040509000)",
+      1040512000: "Sports Equipment (1040512000)",
+    };
+
+    return uacsMap[uacsValue] || "";
+  }
+
   function updateInventoryTable(data) {
     const tableBody = document.getElementById("inventoryTableBody");
+    const tableBodyHidden = document.getElementById("hiddenInventoryTableBody");
     let rows = "";
 
     if (data.getInventoryList.length > 0) {
@@ -42,7 +116,9 @@ document.addEventListener("DOMContentLoaded", function () {
                             <i class="fas fa-ellipsis-v menu-icon"></i>
                             <div class="dropdown-menu">
                                 <button onclick="handleAction('Update')">Update</button>
-                                <button onclick="printDocument('Print')">Print</button>
+                                <button data-row='${JSON.stringify(
+                                  invent
+                                )}' onclick="printDocument(this)">Print</button>
                                 <button onclick="handleAction('Dispose')"><a href="/ptr">Dispose</a></button>
                             </div>
                         </div>
@@ -54,19 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
       rows = '<tr><td colspan="13">No list of Document</td></tr>';
     }
     tableBody.innerHTML = rows; // Batch DOM update
-  }
-
-  function fetchInventoryUpdates() {
-    if (!isSearching) {
-      fetch("/Inventory?ajax=true")
-        .then((response) => response.json())
-        .then((data) => {
-          updateInventoryTable(data);
-        })
-        .catch((error) => {
-          console.error("Error fetching inventory updates:", error);
-        });
-    }
+    tableBodyHidden.innerHTML = rows; // Batch DOM update
   }
 
   fetchInventoryUpdates();
@@ -226,7 +290,39 @@ document.addEventListener("DOMContentLoaded", function () {
   attachPaginationListeners();
 });
 
-function printDocument() {
-  // Trigger the browser's print dialog
-  window.print();
+function printDocument(button) {
+  try {
+    const data1 = button.getAttribute("data-row");
+    const parsedData = JSON.parse(data1); // Convert JSON string back to object
+
+    console.log(parsedData); // Check if data is correctly parsed
+
+    // Update printable content
+
+    // Remove any existing print class
+    document.body.classList.remove("show-ics", "show-par");
+
+    // Add appropriate class for print mode
+    if (parsedData.type === "ICS") {
+      document.body.classList.add("show-ics");
+      document.getElementById("printICSAccountable").innerText =
+        parsedData.accountable;
+    } else if (parsedData.type === "PAR") {
+      document.getElementById("printPARAccountable").innerText =
+        parsedData.accountable;
+      document.body.classList.add("show-par");
+    } else {
+      console.warn("Unknown type:", parsedData.type);
+    }
+
+    // Trigger the print dialog
+    window.print();
+
+    // Reset class after printing
+    setTimeout(() => {
+      document.body.classList.remove("show-ics", "show-par");
+    }, 1000);
+  } catch (error) {
+    console.error("Error parsing data-row attribute:", error);
+  }
 }

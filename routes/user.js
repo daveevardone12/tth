@@ -158,7 +158,7 @@ router.post("/user/changePassword", async (req, res) => {
   }
 
   const { currentpassword, newpassword, confirmpassword } = value;
-
+  const passwordLenght = newpassword.length;
   try {
     // 3. Get the stored (hashed) password from the DB
     const getUserQuery = `SELECT password FROM users WHERE user_id = $1`;
@@ -190,10 +190,14 @@ router.post("/user/changePassword", async (req, res) => {
     // 7. Update the user's password in the database
     const updateQuery = `
       UPDATE users
-      SET password = $1
+      SET password = $1, password_length = $3
       WHERE user_id = $2
     `;
-    await tthPool.query(updateQuery, [newHashedPassword, userData.user_id]);
+    await tthPool.query(updateQuery, [
+      newHashedPassword,
+      userData.user_id,
+      passwordLenght,
+    ]);
 
     // 8. Success handling
     req.flash("success", "Password updated successfully!");
