@@ -806,4 +806,3 @@ app.get("/software", (req, res) => {
 app.get("/sports", (req, res) => {
   res.render("sports"); // Ensure 'machinery.ejs' is in your 'views' folder
 });
-
