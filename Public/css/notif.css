@@ -9,6 +9,10 @@ body {
   height: 100vh;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 .main-content {
   padding: 0 20px;
   /* margin-left: 305px; */
@@ -83,8 +87,8 @@ thead th {
   padding: 12px 15px;
   font-size: 14px;
   color: #333;
-  border-bottom: 1px solid #ddd;
 }
+
 
 tbody tr {
   background-color: white;

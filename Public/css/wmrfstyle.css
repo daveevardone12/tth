@@ -14,7 +14,7 @@ body::-webkit-scrollbar {
 
 .main-content {
   padding: 0 20px !important;
-  margin-left: 305px;
+  margin-left: 260px !important;
   margin-right: 5px;
   overflow: hidden;
 }
@@ -22,7 +22,7 @@ body::-webkit-scrollbar {
 .form-container {
   background-color: white;
   border-radius: 8px;
-  padding: 20px 30px;
+  padding: 0 0 20px 0;
   margin-left: 15px;
 }
 
@@ -55,8 +55,8 @@ h2 {
   border-bottom: 1px solid #ccc;
   padding-bottom: 10px;
   padding-top: 10px;
-  margin-bottom: 15px;
-  margin-left: 30px;
+  margin-bottom: 20px;
+  margin-left: 10px;
 }
 
 .fix {
@@ -104,6 +104,7 @@ textarea {
   font-size: large;
   margin-top: -17px;
   border-radius: 4px;
+  resize: none;
 }
 
 label {
@@ -285,6 +286,7 @@ button:hover {
   display: flex;
   justify-content: center;
   gap: 20px;
+  margin-bottom: 40px;
 }
 
 button {
@@ -299,7 +301,7 @@ button {
 }
 
 button:hover {
-  background-color: #b3c04e;
+  background-color: #1d8d01;
 }
 
 .btn-primary {
@@ -311,7 +313,7 @@ button:hover {
 }
 
 .btn-secondary:hover {
-  background-color: #b3c04e;
+  background-color: #1d8d01;
 }
 
 .row {
@@ -427,7 +429,7 @@ select {
   z-index: 1;
   background-color: white;
   width: calc(100% - 16%);
-  margin-left: -50px;
+  margin-left: -30px;
   padding-right: 20px;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
 }

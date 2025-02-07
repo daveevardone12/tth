@@ -204,6 +204,10 @@ table tbody tr:nth-of-type(even) {
   background-color: #5140f0;
 }
 
+/* .dropdown-menu button :hover {
+  background-color: #40f05d;
+} */
+
 /* Show dropdown when menu-container is active */
 .menu-container.active .dropdown-menu {
   display: block;

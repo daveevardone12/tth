@@ -32,7 +32,7 @@ body::-webkit-scrollbar {
   border-radius: 10px;
   width: -webkit-fill-available;
   margin-top: 8%;
-  margin-left: 15px;
+  margin-right: 10px;
 }
 
 h1 {
@@ -383,7 +383,7 @@ button {
 }
 
 button:hover {
-  background-color: #b3c04e;
+  background-color: #1d8d01;
 }
 
 #par-preview {
@@ -412,4 +412,13 @@ button:hover {
   margin-left: -30px;
   padding-right: 20px;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* upload box css!!!!!! */
+
+.upload-box {
+  background-color: #f7f7f7;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  flex-direction: column;
 }
