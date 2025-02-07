@@ -756,3 +756,53 @@ app.listen(process.env.PORT, () => {
 app.get("/print-inv", (req, res) => {
   res.render("printttt");
 });
+
+app.get("/machinery", (req, res) => {
+  res.render("machinery"); // Ensure 'machinery.ejs' is in your 'views' folder
+});
+
+app.get("/books", (req, res) => {
+  res.render("books"); // Ensure 'machinery.ejs' is in your 'views' folder
+});
+app.get("/Agricultural", (req, res) => {
+  res.render("Agricultural"); // Ensure 'machinery.ejs' is in your 'views' folder
+});
+app.get("/Communication", (req, res) => {
+  res.render("Communication"); // Ensure 'machinery.ejs' is in your 'views' folder
+});
+app.get("/disaster", (req, res) => {
+  res.render("disaster"); // Ensure 'machinery.ejs' is in your 'views' folder
+});
+app.get("/furniture", (req, res) => {
+  res.render("furniture"); // Ensure 'machinery.ejs' is in your 'views' folder
+});
+app.get("/Information", (req, res) => {
+  res.render("Information"); // Ensure 'machinery.ejs' is in your 'views' folder
+});
+app.get("/marine", (req, res) => {
+  res.render("marine"); // Ensure 'machinery.ejs' is in your 'views' folder
+});
+app.get("/medical", (req, res) => {
+  res.render("medical"); // Ensure 'machinery.ejs' is in your 'views' folder
+});
+app.get("/military", (req, res) => {
+  res.render("military"); // Ensure 'machinery.ejs' is in your 'views' folder
+});
+app.get("/motor", (req, res) => {
+  res.render("motor"); // Ensure 'machinery.ejs' is in your 'views' folder
+});
+app.get("/office", (req, res) => {
+  res.render("office"); // Ensure 'machinery.ejs' is in your 'views' folder
+});
+app.get("/OtherMachinery", (req, res) => {
+  res.render("OtherMachinery"); // Ensure 'machinery.ejs' is in your 'views' folder
+});
+app.get("/printing", (req, res) => {
+  res.render("printing"); // Ensure 'machinery.ejs' is in your 'views' folder
+});
+app.get("/software", (req, res) => {
+  res.render("software"); // Ensure 'machinery.ejs' is in your 'views' folder
+});
+app.get("/sports", (req, res) => {
+  res.render("sports"); // Ensure 'machinery.ejs' is in your 'views' folder
+});

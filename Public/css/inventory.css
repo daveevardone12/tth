@@ -124,10 +124,10 @@ table tbody tr {
 
 tbody td {
   padding: 10px 15px;
-  text-align: center;
+  text-align: left;
   color: #000;
   font-family: Poppins;
-  font-size: 13px;
+  font-size: 11px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
@@ -481,9 +481,25 @@ input[type="radio"] {
     display: none;
   }
 
-  #printIcs {
+  #printIcs,
+  #printPar {
+    display: none; /* Default to hidden */
+  }
+
+  /* Show ICS when printing */
+  .show-ics #printIcs {
     display: block !important;
   }
+
+  /* Show PAR when printing */
+  .show-par #printPar {
+    display: block !important;
+  }
+}
+
+#printIcs,
+#printPar {
+  display: none; /* Initially hidden */
 }
 
 option {
@@ -496,7 +512,7 @@ option {
   cursor: pointer;
 }
 
- .uacs {
+.uacs {
   width: 18%;
   cursor: pointer;
   padding: 10px 5px;
