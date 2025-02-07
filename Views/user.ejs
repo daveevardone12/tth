@@ -4,226 +4,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | Property Management System</title>
+    <title>User Account | Property Management System</title>
     <link rel="stylesheet" href="../css/dashboardstyle.css">
     <link rel="stylesheet" href="../css/general.css">
     <link rel="stylesheet" href="../css/userstyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <%- include("./includes/sidebar") %>
     <div class="container">
-        <!-- Sidebar -->
-        
-
-            <!-- Profile Container -->
-            <div class="profile-wrapper">
-                <h1>User Profile</h1>
-                
-                <div class="profile-container">
-                    <div class="profile-content">
-                        <div class="user-info">
-                            <h2>User Information</h2>
-                            <label for="first-name">First Name:</label>
-                            <input type="text" id="first-name" value="<%= data.first_name %>" disabled>
-
-                            <label for="last-name">Last Name:</label>
-                            <input type="text" id="last-name" value="<%= data.last_name %>" disabled>
-
-                            <label for="contact-no">Contact No.:</label>
-                            <input type="text" id="contact-no" value="<%= data.phone %>" disabled>
-
-                            <button id="edit-btn" class="edit-btn">Edit Profile</button>
+        <div class="mas-header">
+            <h1>User Profile</h1>
+        </div>
+        <!-- Profile Section -->
+        <div class="profile-wrapper">
+         
+            <div class="box">
+                <h2>User Information</h2>
+                <form class="profile-form">
+                    <!-- Personal Information -->
+                    <div class="form-grid">
+                        <div>
+                            <label for="first-name">First Name*</label>
+                            <input type="text" id="first-name" value="<%= data.first_name %>" readonly>
                         </div>
-
-                        <div class="email-password">
-                            <h2>Email & Password</h2>
-                            <label for="email">Email:</label>
-                            <input type="email" id="email" value="<%= data.email %>" disabled>
-
-                            <label for="password">Password:</label>
-                            <input type="password" id="password" value="<%= password%>" disabled>
-
-                            <button id="change-email-btn" class="action-btn">Change Email</button>
-                            <button id="change-password-btn" class="action-btn">Change Password</button>
-                            <!-- <button class="logout-btn" onclick="confirmLogout()">Log Out</button> -->
-
-<!-- <script>
-function confirmLogout() {
-    const userConfirmed = confirm("Are you sure you want to log out?");
-    if (userConfirmed) {
-        // Redirect to the backend logout route to clear the session
-        window.location.href = "/logout";  // This will trigger the logout route on the backend
-    }
-}
-</script> -->
+                        <div>
+                            <label for="last-name">Last Name*</label>
+                            <input type="text" id="last-name" value="<%= data.last_name %>" readonly>
+                        </div>
+                        <div>
+                            <label for="contact-no">Contact Number*</label>
+                            <input type="text" id="contact-no" value="<%= data.phone %>" readonly>
                         </div>
                     </div>
-                </div>
+
+                    <div class="form-actions">
+                        <button id="change-user-btn" type="button" class="action-btn">Change User Information</button>
+                    </div>
+
+                    <!-- Email & Password -->
+                    <h2>Email & Password</h2>
+                    <div class="form-grid">
+                        <div>
+                            <label for="email">Email Address*</label>
+                            <input type="email" id="email" value="<%= data.email %>" readonly>
+                        </div>
+                        <div>
+                            <label for="password">Password*</label>
+                            <input type="password" id="password" value="<%= data.password %>" readonly>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="form-actions">
+                        <button id="change-email-btn" type="button" class="action-btn">Change Email</button>
+                        <button id="change-password-btn" type="button" class="action-btn">Change Password</button>
+                    </div>
+                </form>
             </div>
-            
-
-            <!-- Background overlay -->
-            <div id="overlay" class="overlay"></div>
-
-            <!-- The Pop-up Modal for Edit Profile -->
-            <div id="editProfileModal" class="modal">
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <h2>Edit Profile</h2>
-                    <form action="/user/changeProfile" method="POST">
-                        <label for="fname">First name</label>
-                        <input
-                          type="text"
-                          id="fname"
-                          name="newfirstname" <!-- Must match req.body.newfirstname -->
-                          
-                        
-                      
-                        <label for="lname">Last name</label>
-                        <input
-                          type="text"
-                          id="lname"
-                          name="newlastname" <!-- Must match req.body.newlastname -->
-                          
-                        
-                      
-                        <label for="contact">Contact No.</label>
-                        <input
-                          type="text"
-                          id="contact"
-                          name="newcontact" <!-- Must match req.body.newcontact -->
-                          
-                       
-                      
-                        <input type="submit" value="Save" />
-                      </form>
-                    
-                </div>
-            </div>
-
-            <!-- The Pop-up Modal for Change Email -->
-            <div  id="changeEmailModal" class="modal">
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <h2>Change Email</h2>
-                    <form action="/user/changeEmail" method="post">
-                        <label for="new-email">New Email</label>
-                        <input type="email" id="new-email" name="newemail" placeholder="Your new email..">
-
-                        <label for="confirm-email">Confirm Email</label>
-                        <input type="email" id="confirm-email" name="confirmemail" placeholder="Confirm your email..">
-
-                        <input type="submit" value="Save" >
-                    </form>
-                </div>
-            </div>
-
-           <!-- The Pop-up Modal for Change Password -->
-<div id="changePasswordModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Change Password</h2>
-      <form action="/user/changePassword" method="POST">
-        <label for="current-password">Current Password</label>
-        <input
-          type="password"
-          id="current-password"
-          name="currentpassword"
-          placeholder="Your current password.."
-          required
-        />
-  
-        <label for="new-password">New Password</label>
-        <input
-          type="password"
-          id="new-password"
-          name="newpassword"
-          placeholder="Your new password.."
-          required
-        />
-  
-        <label for="confirm-password">Confirm Password</label>
-        <input
-          type="password"
-          id="confirm-password"
-          name="confirmpassword"
-          placeholder="Confirm your new password.."
-          required
-        />
-  
-        <input type="submit" value="Save" />
-      </form>
+        </div>
     </div>
-  </div>
 
-            <script>// Wait until the document is fully loaded
-                document.addEventListener("DOMContentLoaded", function () {
-                    // Get the modals and overlay
-                    const editProfileModal = document.getElementById("editProfileModal");
-                    const changeEmailModal = document.getElementById("changeEmailModal");
-                    const changePasswordModal = document.getElementById("changePasswordModal");
-                    const overlay = document.getElementById("overlay");
+    <!-- Background overlay -->
+    <div id="overlay" class="overlay"></div>
 
-                    // Get the buttons to trigger the modals
-                    const editBtn = document.getElementById("edit-btn");
-                    const changeEmailBtn = document.getElementById("change-email-btn");
-                    const changePasswordBtn = document.getElementById("change-password-btn");
+    <!-- User Information Modal -->
+    <div id="changeUsersModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Change User Information</h2>
+            <form action="/user/changeUser" method="post">
+                <label for="new-firstname">First Name</label>
+                <input type="text" id="new-firstname" placeholder="Enter First Name" required>
 
-                    // Get all close buttons
-                    const closeBtns = document.querySelectorAll(".close");
+                <label for="new-lastname">Last Name</label>
+                <input type="text" id="new-lastname" placeholder="Enter Last Name" required>
 
-                    // Function to open a modal
-                    function openModal(modal) {
-                        modal.classList.add("active");
-                        overlay.classList.add("active");
-                    }
+                <label for="new-contact">Contact Number</label>
+                <input type="text" id="new-contact" placeholder="Enter Number" required>
 
-                    // Function to close all modals and the overlay
-                    function closeAllModals() {
-                        editProfileModal.classList.remove("active");
-                        changeEmailModal.classList.remove("active");
-                        changePasswordModal.classList.remove("active");
-                        overlay.classList.remove("active");
-                    }
+                <button type="submit">Save</button>
+            </form>
+        </div>
+    </div>
 
-                    // Event listeners for opening modals
-                    editBtn.onclick = function () {
-                        openModal(editProfileModal);
-                    };
+    <!-- Email Change Modal -->
+    <div id="changeEmailModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Change Email</h2>
+            <form action="/user/changeEmail" method="post">
+                <label for="current-email">Current Email</label>
+                <input type="email" id="current-email" value="<%= data.email %>" readonly>
 
-                    changeEmailBtn.onclick = function () {
-                        openModal(changeEmailModal);
-                    };
+                <label for="new-email">New Email</label>
+                <input type="email" id="new-email" placeholder="Enter new email" required>
 
-                    changePasswordBtn.onclick = function () {
-                        openModal(changePasswordModal);
-                    };
+                <label for="confirm-email">Confirm Email</label>
+                <input type="email" id="confirm-email" placeholder="Confirm new email" required>
 
-                    // Add event listeners to each close button
-                    closeBtns.forEach(function (closeBtn) {
-                        closeBtn.onclick = function () {
-                            closeAllModals();
-                        };
-                    });
+                <button type="submit">Save</button>
+            </form>
+        </div>
+    </div>
 
-                    // Close the modals if the overlay is clicked
-                    overlay.onclick = closeAllModals;
+    <!-- Password Change Modal -->
+    <div id="changePasswordModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Change Password</h2>
+            <form action="/user/changePassword" method="post">
+                <label for="current-password">Current Password</label>
+                <input type="password" id="current-password" placeholder="Enter current password" required>
 
-                    // Optional: close all modals when the Escape key is pressed
-                    window.addEventListener("keydown", function (event) {
-                        if (event.key === "Escape") {
-                            closeAllModals();
-                        }
-                    });
+                <label for="new-password">New Password</label>
+                <input type="password" id="new-password" placeholder="Enter new password" required>
 
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" placeholder="Confirm new password" required>
 
-                });
-            </script>
+                <button type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const modals = document.querySelectorAll(".modal");
+            const overlay = document.getElementById("overlay");
+            const openButtons = {
+                "change-email-btn": "changeEmailModal",
+                "change-password-btn": "changePasswordModal",
+                "change-user-btn": "changeUsersModal"
+            };
+            
+            Object.keys(openButtons).forEach(id => {
+                document.getElementById(id).onclick = () => {
+                    document.getElementById(openButtons[id]).classList.add("active");
+                    overlay.classList.add("active");
+                };
+            });
+
+            document.querySelectorAll(".close").forEach(btn => {
+                btn.onclick = () => modals.forEach(modal => modal.classList.remove("active"));
+                overlay.classList.remove("active");
+            });
+
+            overlay.onclick = () => modals.forEach(modal => modal.classList.remove("active"));
+        });
+    </script>
 </body>
-
 </html>

@@ -178,11 +178,11 @@ table tbody tr:nth-of-type(even) {
 }
 
 .modal-footer .cancels:hover {
-  background-color: #ccc;
+  background-color: rgb(192, 0, 0);
 }
 
 .modal-footer .confirms:hover {
-  background-color: #ccc;
+  background-color: #1d8d01;
 }
 
 /* Dropdown Menu */

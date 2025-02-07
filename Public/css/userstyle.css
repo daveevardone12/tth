@@ -1,302 +1,243 @@
-/* Profile Section Styles */
-.profile-container {
-  flex-grow: 1;
+/* General Styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  color: #333;
+}
+
+/* Container Layout */
+.container {
+  max-width: calc(100% - 200px); /* Adjust to leave space for the 300px sidebar and 20px padding */
+  margin-left: 260px; /* Sidebar width + spacing */
+  padding: 0 20px;
+  box-sizing: border-box; /* Ensures padding doesn't exceed the container width */
+  background-color: white;
+}
+
+/* Profile Wrapper */
+.profile-wrapper {
+  width: calc(100%); /* Adjust to leave space for the 300px sidebar and padding */
+  margin-left: 10px; /* Ensure it starts after the sidebar */
   padding: 20px;
-  margin-top: 70px;
+  margin-top: 8%;
+  box-sizing: border-box; /* Include padding in the element's total width */
+}
+
+/* Header Bar */
+.header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 h1 {
   font-size: 30px;
-  font-family: Poppins;
+  font-family: Poppins, sans-serif;
   font-weight: 600;
   font-style: normal;
   line-height: normal;
   color: #000;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 10px;
+  padding-top: 15px;
+  padding-left: 20px;
+  margin-bottom: 20px;
+  width: 100%; /* Make the line span the full width of the container */
+  text-align: left; /* Align the text to the left */
+}
+
+/* Logout Button Inside the Box */
+.box .logout-btn {
+  background-color: red;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  position: absolute; /* Use absolute positioning */
+  bottom: 20px; /* Position at the bottom of the box */
+  right: 20px; /* Align to the right side of the box */
+}
+
+.box .logout-btn:hover {
+  background-color: #ef4444;
+  transform: scale(1.05);
+}
+
+/* Card */
+.box {
+  position: relative; /* Ensure the logout button is positioned relative to the box */
+  /* background-color: white; */
+  border-radius: 12px;
+  
+  padding: 0 20px;
+  padding-right: 20px;
   margin-bottom: 20px;
 }
 
-.profile-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* Two equal columns */
-  gap: 20px; /* Space between columns */
-}
-
-.user-info,
-.email-password {
-  padding: 20px;
-  border-radius: 5px;
-  background-color: white; /* White background for sections */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h2 {
+.box h2 {
   color: #0a5d03;
-  font-family: Poppins;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: left; /* Ensure h2 aligns to the left */
+  border-bottom: 1px solid grey;
+}
+
+/* Form Layout */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
 }
 
 label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #000000;
+  margin-bottom: 8px;
   display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
 }
 
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-  width: 100%;
+  width: 95%;
   padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  background-color: #f9f9f9;
+  margin-bottom: 20px; /* Add spacing below email and password inputs */
+  border: 1.5px solid #000000;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: #111827;
+  background-color: white;
 }
 
-.edit-btn,
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background-color: white;
+}
+
+/* Action Buttons Container */
+.action-buttons {
+  display: flex;
+  justify-content: flex-start; /* Align buttons to the left */
+  gap: 20px; /* Spacing between the buttons */
+  margin-top: 20px;
+  margin-left: 250px; /* Margin for the entire container */
+}
+
+/* Individual Button Styles */
 .action-btn {
-  background-color: #006400; /* Green color */
+  min-width: 150px; /* Ensure buttons have the same size */
+  padding: 12px;
+  font-size: 1rem;
+  background-color: #0a5d03;
   color: white;
   border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
-  margin-top: 5px;
-  width: 100%;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
 }
 
-.edit-btn:hover,
-.action-btn:hover {
-  background-color: #004d00;
-}
-
-.profile-wrapper {
-  width: calc(100% + 90px); /* Limit wdth if necessary */
-  height: 725px;
-  margin: 20px auto; /* Centering the profile container */
-  margin-top: 1px;
-  margin-left: 280px;
-  padding: 20px;
-  border-radius: 8px; /* Optional: rounded corners */
-}
-
-.profile-content input {
-  border: none; /* Remove border */
-  background: none; /* Remove background */
-  padding: 0;
-  font-size: 16px;
-  color: #333;
-  width: 100%;
-  box-shadow: none;
-}
-
-.profile-content input:disabled {
-  color: #666;
-}
-
-.profile-content label {
-  font-weight: bold; /* Make labels bold */
-  margin-top: 10px; /* Space above labels */
-}
-
-/* Additional styles for buttons if necessary */
-.edit-btn,
-.action-btn,
-.logout-btn {
-  margin-top: 10px; /* Spacing between buttons */
-}
-.edit-btn {
+#change-user-btn {
   margin-bottom: 20px;
 }
-.logout-btn {
+
+.action-btn:hover {
+  background-color: #1d8d01;
+  
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 400px;
+  height: 100%;
+  background-color: white;
+  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transition: right 0.3s ease;
+}
+
+.modal.active {
+  right: 0;
+}
+
+.modal h2 {
+  font-size: 1.2rem;
+  color: #0a5d03;
+  margin-bottom: 20px;
+}
+
+.modal-content {
+  padding: 20px;
+}
+
+.close {
+  font-size: 1.2rem;
+  color: #6b7280;
+  float: right;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #111827;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  font-size: 0.9rem;
   background-color: #0a5d03;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* General body styles */
-body {
-  font-family: Arial, Helvetica, sans-serif;
+button[type="submit"]:hover {
+  background-color: #004d00;
+  transform: scale(1.03);
 }
 
-/* Modal (hidden by default, sliding in from the right) */
-.modal {
+@media (max-width: 768px) {
+  .profile-wrapper {
+    width: 100%; /* Take full width for smaller screens */
+    margin-left: 0; /* Remove sidebar spacing */
+  }
+
+  .action-buttons {
+    flex-direction: column; /* Stack buttons vertically on smaller screens */
+    margin-left: 0; /* Remove left margin for smaller screens */
+    align-items: center; /* Center align the stacked buttons */
+  }
+
+  .action-btn {
+    min-width: 100%; /* Buttons take full width on smaller screens */
+  }
+}
+
+.mas-header {
   position: fixed;
-  top: 0;
-  right: -100%; /* Hidden off-screen initially */
-  width: 100%;
-  max-width: 400px; /* Width of the sliding panel */
-  height: 100%;
+  z-index: 1;
   background-color: white;
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  transition: right 0.4s ease; /* Smooth slide-in effect */
-}
-
-/* When modal is active, it moves into view */
-.modal.active {
-  right: 0; /* Slide into the screen */
-}
-
-/* Modal content */
-.modal-content {
-  padding: 20px;
-}
-
-/* Close button */
-.close {
-  color: #aaa;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-  float: right;
-}
-
-.close:hover {
-  color: black;
-}
-
-/* Form styles */
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-label {
-  margin-bottom: 8px;
-  font-weight: bold;
-}
-
-input[type="text"] {
-  padding: 8px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-input[type="submit"] {
-  background-color: #006400;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-input[type="submit"]:hover {
-  background-color: #004d00;
-}
-
-/* Trigger button */
-#edit-btn {
-  padding: 10px 20px;
-  background-color: #006400;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-#edit-btn:hover {
-  background-color: #004d00;
-}
-
-/* Background overlay when modal is active */
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  display: none; /* Initially hidden */
-  z-index: 999;
-}
-
-.overlay.active {
-  display: block;
-}
-
-/* Modal (hidden by default, sliding in from the right) */
-.modal {
-  position: fixed;
-  top: 0;
-  right: -100%; /* Hidden off-screen initially */
-  width: 100%;
-  max-width: 400px; /* Width of the sliding panel */
-  height: 100%;
-  background-color: white;
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  transition: right 0.4s ease; /* Smooth slide-in effect */
-}
-
-/* When modal is active, it moves into view */
-.modal.active {
-  right: 0; /* Slide into the screen */
-}
-
-/* Modal content */
-.modal-content {
-  padding: 20px;
-}
-
-/* Close button */
-.close {
-  color: #aaa;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-  float: right;
-}
-
-.close:hover {
-  color: black;
-}
-
-/* Form styles */
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-label {
-  margin-bottom: 8px;
-  font-weight: bold;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-  padding: 8px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-input[type="submit"] {
-  background-color: #006400;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-input[type="submit"]:hover {
-  background-color: #004d00;
-}
-
-/* Overlay background */
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  display: none; /* Initially hidden */
-  z-index: 999;
-}
-
-.overlay.active {
-  display: block;
+  width: calc(100% - 16%);
+  margin-left: -30px;
+  padding-right: 20px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
 }
