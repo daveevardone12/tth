@@ -124,10 +124,10 @@ table tbody tr {
 
 tbody td {
   padding: 10px 15px;
-  text-align: center;
+  text-align: left;
   color: #000;
   font-family: Poppins;
-  font-size: 13px;
+  font-size: 11px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
@@ -496,7 +496,7 @@ option {
   cursor: pointer;
 }
 
- .uacs {
+.uacs {
   width: 18%;
   cursor: pointer;
   padding: 10px 5px;
