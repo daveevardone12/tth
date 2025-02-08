@@ -522,3 +522,15 @@ option {
   background-color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
+
+.lala {
+    width: 18%;
+    cursor: pointer;
+    padding: 10px 5px;
+    border: 1px solid #ccc !important;
+    border-radius: 4px;
+    font-size: 14px;
+    color: white;
+    background-color:#095c02;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
