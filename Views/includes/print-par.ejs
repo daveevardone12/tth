@@ -3,10 +3,12 @@
     <div class="headerss">Property Acknowledge Receipt (PAR)</div>
     <div class="sub-header">
       <div class="haha">
-        <strong>Entity Name:</strong>
-        <strong>Fund Cluster:</strong>
+        <strong>Entity Name: <span id="printEntityName"></span></strong>
+        <strong>Fund Cluster: <span id="printFundCluster"></span></strong>
       </div>
-      <div><strong>PAR No.: </strong></div>
+      <div>
+        <strong>PAR No.: <span></span></strong>
+      </div>
     </div>
     <table class="tabol">
       <thead>
@@ -64,7 +66,9 @@
       <div class="signature-box">
         <div class="bax"><strong>Received by:</strong></div>
         <span>Signature Over Printed Name of End User</span>
-        <span class="gaps"><u>____________________</u></span>
+        <span class="gaps"
+          ><u id="printPARAccountable">____________________</u></span
+        >
         <span>Position / Office</span>
         <span class="gaps"><u>____________________</u></span>
         <span>Date</span>

@@ -1,239 +1,237 @@
+<style>
+  .bodies {
+    font-family: Arial, sans-serif;
+  }
 
-    <style>
-        .bodies {
-            font-family: Arial, sans-serif;
-        }
+  .containerss {
+    width: 210mm;
+    margin: 0 auto;
+    border: 1px solid #000;
+    padding: 10px;
+    box-sizing: border-box;
+  }
 
-        .containerss {
-            width: 210mm;
-            margin: 0 auto;
-            border: 1px solid #000;
-            padding: 10px;
-            box-sizing: border-box;
-        }
+  .headerss {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
 
-        .headerss {
-            text-align: center;
-            font-size: 18px;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
+  .sub-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
 
-        .sub-header {
-            display: flex;
-            justify-content: space-between;
-            font-size: 12px;
-            margin-bottom: 10px;
-        }
+  .sub-header .haha {
+    display: flex;
+    flex-direction: column;
+  }
 
-        .sub-header .haha {
-            display: flex;
-            flex-direction: column;
-        }
+  .tabol {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
 
-        .tabol {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 12px;
-            margin-bottom: 10px;
-        }
+  .tabol,
+  .t-h,
+  .t-d {
+    border: 1px solid black;
+  }
 
-        .tabol, .t-h, .t-d {
-            border: 1px solid black;
-        }
+  .t-h,
+  .t-d {
+    padding: 5px;
+    text-align: center;
+  }
 
-        .t-h, .t-d {
-            padding: 5px;
-            text-align: center;
-        }
+  .remarks-section {
+    font-size: 12px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    padding: 5px;
+  }
 
-        .remarks-section {
-            font-size: 12px;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            border: 1px solid black;
-            padding: 5px;
-        }
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+  }
 
-        .footer {
-            display: flex;
-            justify-content: space-between;
-            font-size: 12px;
-        }
+  .footer .Dating {
+    border: 1px solid #000;
+    width: 250px;
+    padding-left: 1em;
+  }
 
-        .footer .Dating {
-            border: 1px solid #000;
-            width: 250px;
-            padding-left: 1em;
-        }
+  .footer .reminder {
+    border: 1px solid #000;
+    width: 250px;
+    padding: 1em;
+  }
 
-        .footer .reminder {
-            border: 1px solid #000;
-            width: 250px;
-            padding: 1em;
-        }
+  .footer .reminders {
+    border: 1px solid #000;
+    width: 250px;
+    font-size: medium;
+    font-weight: 550;
+    padding: 2em;
+  }
 
-        .footer .reminders {
-            border: 1px solid #000;
-            width: 250px;
-            font-size: medium;
-            font-weight: 550;
-            padding: 2em;
-        }
+  .footer div {
+    width: 48%;
+  }
 
-        .footer div {
-            width: 48%;
-        }
+  .signature-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    font-size: 12px;
+  }
 
-        .signature-section {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-            font-size: 12px;
-        }
+  .signature-box {
+    text-align: center;
+    width: 48%;
+    border: 1px solid #000;
+    height: 200px;
+    padding: 2em;
+  }
+  .signature-box .bax {
+    text-align: start;
+    margin-bottom: 3em;
+  }
 
-        .signature-box {
-            text-align: center;
-            width: 48%;
-            border: 1px solid #000;
-            height: 200px;
-            padding: 2em;
-        }
-        .signature-box  .bax{
-            text-align: start;
-            margin-bottom: 3em;
-        }
+  .signature-box .sig {
+    text-align: start;
+    margin-bottom: 3em;
+  }
 
-        .signature-box  .sig{
-            text-align: start;
-            margin-bottom: 3em;
-        }
+  .signature-box span {
+    display: block;
+    margin-top: 15px;
+  }
 
-        .signature-box span {
-            display: block;
-            margin-top: 15px;
-        }
-      
-        .reminder {
-            font-size: 12px;
-            text-align: justify;
-        }
+  .reminder {
+    font-size: 12px;
+    text-align: justify;
+  }
 
-        .small-note {
-            font-size: 10px;
-            text-align: center;
-            margin-top: 5px;
-        }
+  .small-note {
+    font-size: 10px;
+    text-align: center;
+    margin-top: 5px;
+  }
 
-        .tbady .t-ar .t-d {
-            padding: 3em;
-        }
-
-
-    </style>
+  .tbady .t-ar .t-d {
+    padding: 3em;
+  }
+</style>
 
 <body class="bodies">
-    <div class="containerss" id="printIcs" style="display: none;">
-        <div class="headerss">
-            Inventory Custodian Slip (ICS)
-        </div>
-        <div class="sub-header">
-            <div class="haha">
-                <strong>Entity Name:</strong>
-                <strong>Fund Cluster:</strong>
-            </div>
-            <div><strong>ICS No.: </strong></div>
-        </div>
-        <table class="tabol">
-            <thead>
-                <tr class="t-ar">
-                    <th class="t-h">Qty.</th>
-                    <th class="t-h">Unit</th>
-                    <th colspan="2" class="t-h">Amount</th>
-                    <th class="t-h">Description</th>
-                    <th class="t-h">Inventory Item No.</th>
-                    <th class="t-h">Estimated Useful Life</th>
-                </tr>
-                <tr class="t-ar">
-                    <th class="t-h"></th>
-                    <th class="t-h"></th>
-                    <th class="t-h">Unit Cost</th>
-                    <th class="t-h">Total Cost</th>
-                    <th class="t-h"></th>
-                    <th class="t-h"></th>
-                    <th class="t-h"></th>
-                </tr>
-            </thead>
-            <tbody class="tbady">
-                <tr class="t-ar">
-                    <td class="t-d"></td>
-                    <td class="t-d"></td>
-                    <td class="t-d"></td>
-                    <td class="t-d"></td>
-                    <td class="t-d"></td>
-                    <td class="t-d"></td>
-                    <td class="t-d"></td>
-                </tr>
-                <!-- Additional rows as needed -->
-            </tbody>
-        </table>
-        <div class="remarks-section">
-            <div><strong>Remarks:</strong> New</div>
-            
-        </div>
-        <div class="footer">
-            <div class="Dating">
-                <p><strong>Data Acquired:</strong></p>
-                <p>Bug:</p>
-                <p>PO:</p>
-                <p>Code:</p>
-                <p>Description:</p>
-                <p>Label:</p>
-                <p>Supplier:</p>
-                <p>Location:</p>
-            </div>
-            
-            <div class="reminder">
-                <p><strong>Reminder:</strong></p>
-                <p>If the item/s received is/are not utilized beneficial to work and already unserviceable, you are REQUIRED to RETURN it to OSPU.</p>
-            </div>
-            <div class="reminders">
-                "Bringing government properties to private homes and for personal use is strictly prohibited. Due care and safekeeping should be applied to this stated property."
-            </div>
-        </div>
-        <div class="signature-section">
-            <div class="signature-box">
-                <div class="bax"><strong>Received by:</strong></div>
-                <span>Signature Over Printed Name</span>
-                <span><u>____________________</u></span>
-                <span>Position / Office</span>
-                <span><u>____________________</u></span>
-                <span>Date</span>
-            </div>
-            <div class="signature-box">
-                <div class="sig">
-                <strong>Issued by:</strong>
-            </div>
-                <span><u>JEFFREY M. MENESER, M.A.M.</u></span>
-                <span>Signature Over Printed Name of Supply and/or Property Custodian</span>
-                <span><u>____________________</u></span>
-                <span>Position/Office</span>
-                <span><u>____________________</u></span>
-                <span>Date</span>
-            </div>
-        </div>
-        <div class="small-note">
-            Appendix 59
-        </div>
+  <div class="containerss" id="printIcs" style="display: none">
+    <div class="headerss">Inventory Custodian Slip (ICS)</div>
+    <div class="sub-header">
+      <div class="haha">
+        <strong>Entity Name:</strong>
+        <strong>Fund Cluster:</strong>
+      </div>
+      <div><strong>ICS No.: </strong></div>
     </div>
-    <div id="printPhotos" style="display: none;">
-        <h2 style="text-align: center;"></h2>
-        <div id="photoContainer" style="text-align: center;"></div>
+    <table class="tabol">
+      <thead>
+        <tr class="t-ar">
+          <th class="t-h">Qty.</th>
+          <th class="t-h">Unit</th>
+          <th colspan="2" class="t-h">Amount</th>
+          <th class="t-h">Description</th>
+          <th class="t-h">Inventory Item No.</th>
+          <th class="t-h">Estimated Useful Life</th>
+        </tr>
+        <tr class="t-ar">
+          <th class="t-h"></th>
+          <th class="t-h"></th>
+          <th class="t-h">Unit Cost</th>
+          <th class="t-h">Total Cost</th>
+          <th class="t-h"></th>
+          <th class="t-h"></th>
+          <th class="t-h"></th>
+        </tr>
+      </thead>
+      <tbody class="tbady">
+        <tr class="t-ar">
+          <td class="t-d"></td>
+          <td class="t-d"></td>
+          <td class="t-d"></td>
+          <td class="t-d"></td>
+          <td class="t-d"></td>
+          <td class="t-d"></td>
+          <td class="t-d"></td>
+        </tr>
+        <!-- Additional rows as needed -->
+      </tbody>
+    </table>
+    <div class="remarks-section">
+      <div><strong>Remarks:</strong> New</div>
     </div>
-    
+    <div class="footer">
+      <div class="Dating">
+        <p><strong>Data Acquired:</strong></p>
+        <p>Bug:</p>
+        <p>PO:</p>
+        <p>Code:</p>
+        <p>Description:</p>
+        <p>Label:</p>
+        <p>Supplier:</p>
+        <p>Location:</p>
+      </div>
 
+      <div class="reminder">
+        <p><strong>Reminder:</strong></p>
+        <p>
+          If the item/s received is/are not utilized beneficial to work and
+          already unserviceable, you are REQUIRED to RETURN it to OSPU.
+        </p>
+      </div>
+      <div class="reminders">
+        "Bringing government properties to private homes and for personal use is
+        strictly prohibited. Due care and safekeeping should be applied to this
+        stated property."
+      </div>
+    </div>
+    <div class="signature-section">
+      <div class="signature-box">
+        <div class="bax"><strong>Received by:</strong></div>
+        <span>Signature Over Printed Name</span>
+        <span><u id="printICSAccountable">____________________</u></span>
+        <span>Position / Office</span>
+        <span><u>____________________</u></span>
+        <span>Date</span>
+      </div>
+      <div class="signature-box">
+        <div class="sig">
+          <strong>Issued by:</strong>
+        </div>
+        <span><u>JEFFREY M. MENESER, M.A.M.</u></span>
+        <span
+          >Signature Over Printed Name of Supply and/or Property Custodian</span
+        >
+        <span><u>____________________</u></span>
+        <span>Position/Office</span>
+        <span><u>____________________</u></span>
+        <span>Date</span>
+      </div>
+    </div>
+    <div class="small-note">Appendix 59</div>
+  </div>
+  <div id="printPhotos" style="display: none">
+    <h2 style="text-align: center"></h2>
+    <div id="photoContainer" style="text-align: center"></div>
+  </div>
 </body>
-
-
