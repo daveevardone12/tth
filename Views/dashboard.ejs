@@ -36,9 +36,9 @@
       }
 
       .chart {
-        width: 600px;
-        height: 350px;
-        /* margin-top: 20px; */
+        width: 1085px;
+        height: 500px;
+        margin-top: 30px;
         background-color: rgb(255, 255, 255);
         padding: 10px;
         box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
@@ -47,23 +47,25 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        /* margin-left: -80px; */
+        margin-left: 40px;
         gap: 40px;
       }
 
       /* Set fixed width and height for the charts */
       #chart_div {
-        width: 600px;
-        height: 250px;
+        width: 1060px;
+        height: 450px;
+        padding-left: 50px;
       }
 
       #location_chart_div {
-        width: 600px;
-        height: 300px;
+        width: 1060px;
+        height: 450px;
       }
 
       .c-chart {
         display: flex;
+        flex-direction: column;
         justify-content: space-evenly;
       }
 
@@ -155,6 +157,25 @@
         display: none; /* Hidden by default */
         z-index: 1000; /* Below the spinner */
       }
+
+      #date-time {
+    font-size: 14px;
+    color: #000;
+    font-weight: bold;
+    background: white;
+    padding: 5px 10px;
+    border-radius: 0px 0px 8px 8px;
+    text-align: center;
+    gap: 0;
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    margin-left: 548px;
+    margin-top: -53px;
+    margin-bottom: 13px;
+    position: sticky;
+}
+
     </style>
   </head>
 
@@ -167,15 +188,18 @@
           <div class="header-container">
             <div class="fix">
               <h1>Dashboard</h1>
+              <div id="date-time">
+                <div id="day"></div>
+                <div id="time"></div>
+                <div id="date"></div>
+            </div>
             </div>
             <div class="profile"></div>
           </div>
 
           <div class="right-allign">
             <p>
-              <span id="current-time"
-                ><%= currentDateTime.toLocaleString() %></span
-              >
+              
             </p>
           </div>
         </div>
@@ -329,5 +353,32 @@
         <script src="/js/dashboard-api.js"></script>
       </div>
     </div>
+
+<script>
+  function updateDateTime() {
+    const now = new Date();
+
+    // Get the short day of the week (e.g., "SAT" instead of "Saturday")
+    const dayOfWeek = now.toLocaleDateString("en-US", { weekday: 'short' }).toUpperCase();
+
+    // Format the time (e.g., 12:34:56 PM)
+    const timeOptions = { hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true };
+    const formattedTime = now.toLocaleTimeString("en-US", timeOptions);
+
+    // Format the date (e.g., January 31, 2024)
+    const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+    const formattedDate = now.toLocaleDateString("en-US", dateOptions);
+
+    // Update the HTML elements
+    document.getElementById("day").textContent = dayOfWeek;
+    document.getElementById("time").textContent = formattedTime;
+    document.getElementById("date").textContent = formattedDate;
+}
+
+updateDateTime(); // Call on page load
+setInterval(updateDateTime, 1000); // Update every second
+
+</script>
+
   </body>
 </html>

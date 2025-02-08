@@ -141,17 +141,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const options = {
       title: "Inventory Items by Category",
-      chartArea: { width: "70%", height: "85%" }, // Adjust chart area within the container
+    titleTextStyle: {
+        fontName: "Poppins",
+        fontSize: 16, // Adjust the title font size
+        bold: true,   // Make title bold
+    },
+      chartArea: { width: "48%", height: "85%" }, // Adjust chart area within the container
       hAxis: {
         title: "Total Distinct UACS Codes",
         minValue: 0,
-      },
-      vAxis: {
+        textStyle: {
+            fontSize: 12,
+            bold: true, // Make horizontal axis labels bold
+        },
+        titleTextStyle: {
+            fontSize: 12,
+            bold: true, // Make horizontal axis title bold
+        }
+    },
+    vAxis: {
         title: "Category",
-      },
-      colors: ["#4285F4"], // Example color
-      fontSize: 10,
-    };
+        textStyle: {
+            fontSize: 12,
+            bold: true, // Make vertical axis labels bold
+        },
+        titleTextStyle: {
+            fontSize: 12,
+            bold: true, // Make vertical axis title bold
+        }
+    },
+    colors: ["#4285F4"], // Example color
+    fontSize: 12,
+};
 
     const chart = new google.visualization.BarChart(
       document.getElementById("chart_div")
@@ -284,25 +305,36 @@ document.addEventListener("DOMContentLoaded", function () {
       title: "Location-Based Counts", // Updated title
       titleTextStyle: {
         fontName: "Poppins", // Set font family
-        fontSize: 10, // Set font size
+        fontSize: 16, // Set font size
         bold: true, // Make text bold
         italic: false, // Italicize text if needed
         color: "#333", 
       },
       hAxis: {
-        title: "Location",
-        titleTextStyle: {
-          fontName: "Roboto",
-          fontSize: 1,
+        title: "Total Distinct UACS Codes",
+        minValue: 0,
+        textStyle: {
+            fontSize: 13,
+            bold: true, // Make horizontal axis labels bold
         },
-      },
-      vAxis: {
-        title: "Count", // Updated from 'Metric' to 'Count'
-      },
-      colors: ["#095c02"], // Example color, customize as needed
-      fontName: "Poppins",
-      bold: true,
-      fontSize: 15,
+        titleTextStyle: {
+            fontSize: 14,
+            bold: true, // Make horizontal axis title bold
+        }
+    },
+    vAxis: {
+        title: "Category",
+        textStyle: {
+            fontSize: 13,
+            bold: true, // Make vertical axis labels bold
+        },
+        titleTextStyle: {
+            fontSize: 14,
+            bold: true, // Make vertical axis title bold
+        }
+    },
+    colors: ["#095c02"], // Example color
+    fontSize: 15,
       chartArea: { width: "70%", height: "85%" },
     };
 
