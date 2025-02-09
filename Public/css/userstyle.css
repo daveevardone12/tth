@@ -87,6 +87,8 @@ h1 {
   margin-bottom: 20px;
   text-align: left; /* Ensure h2 aligns to the left */
   border-bottom: 1px solid grey;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
 }
 
 /* Form Layout */
