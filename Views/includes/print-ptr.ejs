@@ -6,23 +6,25 @@
 
     <div class="form-sections">
       <div class="row">
-        <label>Entity Name:</label>
-        <span class="underline"></span>
-        <label>Fund Cluster:</label>
-        <span class="underline"></span>
+        <label>Entity Name: <span id="printEntityName"></span></label>
+
+        <label>Fund Cluster: <span id="printFundCluster"></span></label>
       </div>
       <hr />
       <div class="row">
-        <label>From Accountable Office/Agency/Fund Cluster:</label>
-        <span class="underline"></span>
+        <label
+          >From Accountable Office/Agency/Fund Cluster:
+          <span id="printFrom"></span
+        ></label>
+
         <label>PTR No.:</label>
-        <span class="underline"></span>
       </div>
       <div class="row">
-        <label>To Accountable Office/Agency/Fund Cluster:</label>
-        <span class="underline"></span>
-        <label>Date:</label>
-        <span class="underline"></span>
+        <label
+          >To Accountable Office/Agency/Fund Cluster: <span id="printTo"></span
+        ></label>
+
+        <label>Date: <span id="printDateAcquired"></span></label>
       </div>
     </div>
     <hr />
@@ -30,20 +32,30 @@
       <p>Transfer Type (check only one):</p>
       <div class="checkbox-groups">
         <div class="check-item">
-          <label><span class="checkbox-box"></span> Donation</label>
+          <label>
+            <span class="checkbox-box" id="printDonation"></span> Donation
+          </label>
         </div>
 
         <div class="check-item">
-          <label><span class="checkbox-box"></span> Release</label>
+          <label>
+            <span class="checkbox-box" id="printRelocate"></span> Relocate
+          </label>
         </div>
 
         <div class="check-item">
-          <label><span class="checkbox-box"></span> Reassignment</label>
+          <label>
+            <span class="checkbox-box" id="printReassignment"></span>
+            Reassignment
+          </label>
         </div>
 
         <div class="check-item">
-          <label><span class="checkbox-box"></span> Others (specify):</label>
-          <span class="underline"></span>
+          <label>
+            <span class="checkbox-box" id="printOthers"></span> Others
+            (specify):
+            <span id="printSpecify"></span>
+          </label>
         </div>
       </div>
     </div>
@@ -62,54 +74,50 @@
       <tbody>
         <!-- Add rows as needed -->
         <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td><span id="printDate"></span></td>
+          <td><span id="printPropertyNo"></span></td>
+          <td><span id="printUnit"></span></td>
+          <td><span id="printDescription"></span></td>
+          <td><span id="printAmount"></span></td>
+          <td><span id="printPPE"></span></td>
         </tr>
       </tbody>
     </table>
 
     <div class="form-section">
-      <p>Reason for Transfer:</p>
-      <div class="underline-textarea"></div>
+      <p>Reason for Transfer: <span id="printReasonforTransfer"></span></p>
     </div>
     <hr />
     <div class="signature-section">
       <div class="column">
         <p>Approved by:</p>
         <label>Signature:</label>
-        <span class="underline"></span>
+
         <label>Printed Name:</label>
-        <span class="underline"></span>
+
         <label>Designation:</label>
-        <span class="underline"></span>
-        <label>Date:</label>
-        <span class="underline"></span>
+
+        <label>Date: <span id="dateprint1"></span></label>
       </div>
       <div class="column">
         <p>Released by: (Old Custodian)</p>
         <label>Signature:</label>
-        <span class="underline"></span>
-        <label>Printed Name:</label>
-        <span class="underline"></span>
+
+        <label>Printed Name: <span id="printFromName"></span></label>
+
         <label>Designation:</label>
-        <span class="underline"></span>
-        <label>Date:</label>
-        <span class="underline"></span>
+
+        <label>Date: <span id="dateprint2"></span></label>
       </div>
       <div class="column">
         <p>Received by: (New Custodian)</p>
         <label>Signature:</label>
-        <span class="underline"></span>
-        <label>Printed Name:</label>
-        <span class="underline"></span>
+
+        <label>Printed Name: <span id="printToName"></span></label>
+
         <label>Designation:</label>
-        <span class="underline"></span>
-        <label>Date:</label>
-        <span class="underline"></span>
+
+        <label>Date: <span id="dateprint3"></span></label>
       </div>
     </div>
   </div>

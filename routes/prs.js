@@ -59,7 +59,7 @@ router.post("/save", async (req, res) => {
         data.unit,
         data.purpose,
         data.propertyNumber,
-        data.dateAcquired,
+        data.date_acquired,
         data.endUser,
         data.unitValue,
         data.totalValue,

@@ -82,16 +82,16 @@ router.post(
     try {
       // Insert data into PostgreSQL
       const insertQuery = `
-        INSERT INTO wmrf_reports (
-          entity_name, fund_cluster, wmr_no, storage, office, quantity, unit, purpose, 
-          property_no, disposal_date, end_user, unit_value, total_value, destroyed, 
-          private_sale, public_auction, transfer, agency_name, description, photo1, photo2
-        ) VALUES (
-          $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, 
-          $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21
-        )
-        RETURNING id
-      `;
+  INSERT INTO wmrf_reports (
+    entity_name, fund_cluster, wmr_no, storage, office, quantity, unit, purpose, 
+    property_no, disposal_date, end_user, unit_value, total_value, destroyed, 
+    private_sale, public_auction, transfer, agency_name, description, photo1, photo2
+  ) VALUES (
+    $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, 
+    $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21
+  )
+  RETURNING id
+`;
 
       const values = [
         data.entity_name,
@@ -101,20 +101,20 @@ router.post(
         data.office,
         data.quantity,
         data.unit,
-        data.purpose,
+        data.purpose || "Not Specified", // Ensure it's not NULL
         data.property_no,
         data.disposal_date,
-        data.end_user,
-        data.unit_value,
-        data.total_value,
-        destroyed,
-        private_sale,
-        public_auction,
-        transfer,
+        data.endUser || null,
+        data.unit_value || 0, // Ensure no NULL constraint issues
+        data.total_value || 0, // Ensure no NULL constraint issues
+        destroyed || false,
+        private_sale || false,
+        public_auction || false,
+        transfer || false,
         data.agency_name || null,
         data.description || null,
-        photo1,
-        photo2,
+        photo1 || null,
+        photo2 || null,
       ];
 
       const result = await tthPool.query(insertQuery, values);
