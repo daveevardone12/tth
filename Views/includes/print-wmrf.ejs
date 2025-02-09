@@ -171,20 +171,20 @@ th.Date {
     <div class="six-container" id="printWmrf" style="display: none;">
         <div class="headersss">WASTE MATERIAL REPORT (WMR)</div>
         <div class="left">
-        <p class="paragraph">Entity Name: _______________________</p>
+        <p class="paragraph">Entity Name: <span id="printEntityName"></span></p>
         </p>
         </div>
         <div class="right">
-            <p class="paragraph">Fund Cluster: _______________________</p>
-               <p class="paragraph"> WMR No.: _______________________</p>
+            <p class="paragraph">Fund Cluster: <span id="printFundCluster"></span></p>
+               <p class="paragraph"> WMR No.: <span id="printWmr"></span></p>
          </div>
 
 
         <table>
             <thead>
                 <tr>
-                    <th class="Place" colspan="4">Place of Storage :</th>
-                    <th class="Date" colspan="3">Date :</th>
+                    <th class="Place" colspan="4">Place of Storage : <span id="PrintPlaceofStorage"></span></th>
+                    <th class="Date" colspan="3">Date : <span id="printDate"></span></th>
                 </tr>
                 <tr>
                     <th colspan="8">ITEMS FOR DISPOSAL</th>
@@ -208,16 +208,16 @@ th.Date {
             <tbody>
                 <tr>
                     <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><span id="printQTY"></span></td>
+                    <td><span id="printUnit"></span></td>
+                    <td><span id="printDescription"></span></td>
                     <td></td>
                     <td></td>
                     <td></td>
                 </tr>
         
                 <tr>
-                    <td colspan="4">Purpose :</td>
+                    <td colspan="4">Purpose: <span id="print_purpose"></span></td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -293,5 +293,15 @@ th.Date {
             </tbody>
             </table>
         </div>
+
+        
     </div>
+    <br>
+    <div id="printPhotos" style="display: none;">
+        <div style="margin-top: 500px;"></div>
+        <!-- <h2 style="text-align: center" ></h2> -->
+        <div id="photoContainer" style="text-align: center; "></div>
+      </div>
+
+    
 

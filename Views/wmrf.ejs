@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Waste Material Report Form | Property Management System</title>
+    <link rel="stylesheet" href="../css/wmrfstyle.css" />
+    <link rel="stylesheet" href="../css/general.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Waste Material Report Form | Property Management System</title>
-  <link rel="stylesheet" href="../css/wmrfstyle.css" />
-  <link rel="stylesheet" href="../css/general.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet">
-</head>
-
-<body>
-  <div class="container">
-    <!-- Sidebar -->
-    <%- include("./includes/sidebar") %>
+  <body>
+    <div class="container">
+      <!-- Sidebar -->
+      <%- include("./includes/sidebar") %>
 
       <!-- Main content -->
       <div class="main-content">
@@ -43,20 +46,42 @@
                 </div>
                 <div class="half-width">
                   <label for="entityName">Entity Name *</label>
-                  <input type="text" name="entity_name" id="entity_name"
-                    placeholder="Ex. Eastern Samar State University" required />
+                  <input
+                    type="text"
+                    name="entity_name"
+                    id="entity_name"
+                    placeholder="Ex. Eastern Samar State University"
+                    required
+                  />
                 </div>
                 <div class="half-width">
                   <label for="fundCluster">Fund Cluster *</label>
-                  <input type="text" id="fund_cluster" name="fund_cluster" required />
+                  <input
+                    type="text"
+                    id="fund_cluster"
+                    name="fund_cluster"
+                    required
+                  />
                 </div>
                 <div class="half-width">
                   <label for="wmrNo">WMR No. *</label>
-                  <input type="number" id="wmr_no" name="wmr_no" placeholder="Ex. 123213" required />
+                  <input
+                    type="number"
+                    id="wmr_no"
+                    name="wmr_no"
+                    placeholder="Ex. 123213"
+                    required
+                  />
                 </div>
                 <div class="half-width">
                   <label for="storage">Place of Storage *</label>
-                  <input type="text" id="storage" name="storage" placeholder="Ex. Supply Office" required />
+                  <input
+                    type="text"
+                    id="storage"
+                    name="storage"
+                    placeholder="Ex. Supply Office"
+                    required
+                  />
                 </div>
               </div>
 
@@ -64,107 +89,115 @@
               <div class="form-group2">
                 <div class="half-width">
                   <label for="propertyNo">Property Number *</label>
-                  <input type="text" id="property_no" name="property_no" placeholder="Ex. 15-04-011" required />
+                  <input
+                    type="text"
+                    id="property_no"
+                    name="property_no"
+                    placeholder="Ex. 15-04-011"
+                    required
+                  />
                   <div class="hoverable" id="results"></div>
                 </div>
                 <div class="half-width">
                   <label for="date">Date *</label>
-                  <input type="date" id="disposal_date" name="disposal_date" required />
+                  <input
+                    type="date"
+                    id="disposal_date"
+                    name="disposal_date"
+                    required
+                  />
                 </div>
                 <div class="half-width">
                   <label for="endUser">Name of End User *</label>
-                  <input type="text" id="endUser" name="endUser" placeholder="Ex. John Lloyd Tabuac" required />
+                  <input
+                    type="text"
+                    id="endUser"
+                    name="endUser"
+                    placeholder="Ex. John Lloyd Tabuac"
+                    required
+                  />
                 </div>
                 <div class="half-width">
-                  <label for="unitValue">Unit Value *</label>
-                  <input type="number" id="unitValue" name="unitValue" placeholder="Ex. 1000" required />
+                  <label for="office">Name of Office *</label>
+                  <input
+                    type="text"
+                    id="office"
+                    name="office"
+                    placeholder="Ex. Smart Center"
+                    required
+                  />
                 </div>
                 <div class="half-width">
-                  <label for="totalValue">Total Value *</label>
-                  <input type="number" id="total_value" name="total_value" placeholder="Ex. 100,000" required />
+                  <label for="quantity">Quantity *</label>
+                  <input
+                    type="number"
+                    id="quantity"
+                    name="quantity"
+                    placeholder="Ex. 100"
+                    required
+                  />
                 </div>
               </div>
 
               <!-- Additional Details -->
               <div class="form-group1">
                 <div class="half-width">
-                  <label for="office">Name of Office *</label>
-                  <input type="text" id="office" name="office" placeholder="Ex. Smart Center" required />
-                </div>
-                <div class="half-width">
-                  <label for="quantity">Quantity *</label>
-                  <input type="number" id="quantity" name="quantity" placeholder="Ex. 100" required />
-                </div>
-                <div class="half-width">
                   <label for="unit">Unit *</label>
-                  <input type="text" id="unit" name="unit" placeholder="Ex. Unit" required />
+                  <input
+                    type="text"
+                    id="unit"
+                    name="unit"
+                    placeholder="Ex. Unit"
+                    required
+                  />
                 </div>
                 <div class="half-width">
                   <label for="purpose">Purpose *</label>
-                  <select id="purpose" name="purpose" required>
-                    <option value="" disabled selected>Select Purpose</option>
-                    <option value="donation">Donation</option>
-                    <option value="repair">Repair</option>
-                    <option value="recycling">Recycling</option>
-                  </select>
+                  <input type="text" id="purpose" name="purpose" />
                 </div>
               </div>
-
-
             </div>
 
-        </div>
+            <!-- Disposal Methods -->
+            <div class="form-box">
+              <!-- Description Section -->
 
-        <!-- Disposal Methods -->
-        <div class="form-box">
-          <div class="form-box description-section">
-            <div class="form-group3">
-              <label>I hereby certify that the property enumerated above was
-                disposed of as follows:</label>
-              <div class="checkbox-group">
-                <label><input type="checkbox" id="destroyed" name="destroyed" />
-                  Destroyed</label>
-                <label><input type="checkbox" id="private_sale" name="private_sale" />
-                  Sold at private sale</label>
-                <label><input type="checkbox" id="public_auction" name="public_auction" />
-                  Sold at public auction</label>
-                <label>
-                  <input type="checkbox" id="transfer" name="transfer" />
-                  Transferred without cost to
-                  <input type="text" id="agency_name" name="agency_name" placeholder="Name of the agency" />
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <!-- Description Section -->
-
-          <div class="form-group4">
-            <label for="description">Description:</label>
-            <textarea id="description" name="description"></textarea>
-            <!-- <input class="long" id="description" name="description">
+              <div class="form-group4">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description"></textarea>
+                <!-- <input class="long" id="description" name="description">
                     
                   </input> -->
-          </div>
+              </div>
+            </div>
 
-        </div>
-
-        <!-- Parent container to center both boxes horizontally -->
-        <div style="
+            <!-- Parent container to center both boxes horizontally -->
+            <div
+              style="
                 display: flex;
                 justify-content: space-around;
                 align-items: flex-start;
                 gap: 40px; /* space between the two boxes */
                 margin-top: 50px;
                 margin-bottom: 30px;
-              ">
-          <!-- Box #1 -->
-          <div class="photo-upload-container" style="width: 200px">
-            <!-- Hidden input for Photo #1 -->
-            <input type="file" id="photo1" name="photo1" accept="image/*" style="display: none" />
+              "
+            >
+              <!-- Box #1 -->
+              <div class="photo-upload-container" style="width: 200px">
+                <!-- Hidden input for Photo #1 -->
+                <input
+                  type="file"
+                  id="photo1"
+                  name="photo1"
+                  accept="image/*"
+                  style="display: none"
+                />
 
-            <!-- Dashed box -->
-            <div class="upload-box" id="uploadBox1" style="
+                <!-- Dashed box -->
+                <div
+                  class="upload-box"
+                  id="uploadBox1"
+                  style="
                     width: 500px;
                     height: 300px;
                     border: 2px dashed #ccc;
@@ -175,13 +208,18 @@
                     cursor: pointer;
                     position: relative;
                     overflow: hidden; /* so the image stays within the box */
-                  " onclick="document.getElementById('photo1').click()">
-              <!-- Initially visible icon/text -->
-              <div class="upload-icon" style="font-size: 2em">+</div>
-              <div class="upload-text">Attach Photo #1</div>
+                  "
+                  onclick="document.getElementById('photo1').click()"
+                >
+                  <!-- Initially visible icon/text -->
+                  <div class="upload-icon" style="font-size: 2em">+</div>
+                  <div class="upload-text">Attach Photo #1</div>
 
-              <!-- The image preview (initially hidden) -->
-              <img id="photoPreview1" alt="Preview 1" style="
+                  <!-- The image preview (initially hidden) -->
+                  <img
+                    id="photoPreview1"
+                    alt="Preview 1"
+                    style="
                       position: absolute;
                       top: 0;
                       left: 0;
@@ -191,17 +229,27 @@
                       object-position: center; /* center the subject of the image */
                       border-radius: 8px;
                       display: none;
-                    " />
-            </div>
-          </div>
+                    "
+                  />
+                </div>
+              </div>
 
-          <!-- Box #2 -->
-          <div class="photo-upload-container" style="width: 200px">
-            <!-- Hidden input for Photo #2 -->
-            <input type="file" id="photo2" name="photo2" accept="image/*" style="display: none" />
+              <!-- Box #2 -->
+              <div class="photo-upload-container" style="width: 200px">
+                <!-- Hidden input for Photo #2 -->
+                <input
+                  type="file"
+                  id="photo2"
+                  name="photo2"
+                  accept="image/*"
+                  style="display: none"
+                />
 
-            <!-- Dashed box -->
-            <div class="upload-box" id="uploadBox2" style="
+                <!-- Dashed box -->
+                <div
+                  class="upload-box"
+                  id="uploadBox2"
+                  style="
                     width: 500px;
                     height: 300px;
                     border: 2px dashed #ccc;
@@ -212,13 +260,18 @@
                     cursor: pointer;
                     position: relative;
                     overflow: hidden;
-                  " onclick="document.getElementById('photo2').click()">
-              <!-- Initially visible icon/text -->
-              <div class="upload-icon" style="font-size: 2em">+</div>
-              <div class="upload-text">Attach Photo #2</div>
+                  "
+                  onclick="document.getElementById('photo2').click()"
+                >
+                  <!-- Initially visible icon/text -->
+                  <div class="upload-icon" style="font-size: 2em">+</div>
+                  <div class="upload-text">Attach Photo #2</div>
 
-              <!-- The image preview (initially hidden) -->
-              <img id="photoPreview2" alt="Preview 2" style="
+                  <!-- The image preview (initially hidden) -->
+                  <img
+                    id="photoPreview2"
+                    alt="Preview 2"
+                    style="
                       position: absolute;
                       top: 0;
                       left: 0;
@@ -228,71 +281,148 @@
                       object-position: center;
                       border-radius: 8px;
                       display: none;
-                    " />
+                    "
+                  />
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <script>
-          // ----- Box #1 -----
-          const attachPhoto1 = document.getElementById("photo1");
-          const photoPreview1 = document.getElementById("photoPreview1");
-          const uploadBox1 = document.getElementById("uploadBox1");
-          const uploadIcon1 = uploadBox1.querySelector(".upload-icon");
-          const uploadText1 = uploadBox1.querySelector(".upload-text");
+            <script>
+              // ----- Box #1 -----
+              const attachPhoto1 = document.getElementById("photo1");
+              const photoPreview1 = document.getElementById("photoPreview1");
+              const uploadBox1 = document.getElementById("uploadBox1");
+              const uploadIcon1 = uploadBox1.querySelector(".upload-icon");
+              const uploadText1 = uploadBox1.querySelector(".upload-text");
 
-          attachPhoto1.addEventListener("change", () => {
-            if (attachPhoto1.files && attachPhoto1.files[0]) {
-              const file = attachPhoto1.files[0];
-              const reader = new FileReader();
+              attachPhoto1.addEventListener("change", () => {
+                if (attachPhoto1.files && attachPhoto1.files[0]) {
+                  const file = attachPhoto1.files[0];
+                  const reader = new FileReader();
 
-              reader.onload = (e) => {
-                photoPreview1.src = e.target.result;
-                photoPreview1.style.display = "block";
-                // Hide the plus icon and text
-                uploadIcon1.style.display = "none";
-                uploadText1.style.display = "none";
-              };
-              reader.readAsDataURL(file);
-            }
-          });
+                  reader.onload = (e) => {
+                    photoPreview1.src = e.target.result;
+                    photoPreview1.style.display = "block";
+                    // Hide the plus icon and text
+                    uploadIcon1.style.display = "none";
+                    uploadText1.style.display = "none";
+                  };
+                  reader.readAsDataURL(file);
+                }
+              });
 
-          // ----- Box #2 -----
-          const attachPhoto2 = document.getElementById("photo2");
-          const photoPreview2 = document.getElementById("photoPreview2");
-          const uploadBox2 = document.getElementById("uploadBox2");
-          const uploadIcon2 = uploadBox2.querySelector(".upload-icon");
-          const uploadText2 = uploadBox2.querySelector(".upload-text");
+              // ----- Box #2 -----
+              const attachPhoto2 = document.getElementById("photo2");
+              const photoPreview2 = document.getElementById("photoPreview2");
+              const uploadBox2 = document.getElementById("uploadBox2");
+              const uploadIcon2 = uploadBox2.querySelector(".upload-icon");
+              const uploadText2 = uploadBox2.querySelector(".upload-text");
 
-          attachPhoto2.addEventListener("change", () => {
-            if (attachPhoto2.files && attachPhoto2.files[0]) {
-              const file = attachPhoto2.files[0];
-              const reader = new FileReader();
+              attachPhoto2.addEventListener("change", () => {
+                if (attachPhoto2.files && attachPhoto2.files[0]) {
+                  const file = attachPhoto2.files[0];
+                  const reader = new FileReader();
 
-              reader.onload = (e) => {
-                photoPreview2.src = e.target.result;
-                photoPreview2.style.display = "block";
-                // Hide the plus icon and text
-                uploadIcon2.style.display = "none";
-                uploadText2.style.display = "none";
-              };
-              reader.readAsDataURL(file);
-            }
-          });
-        </script>
+                  reader.onload = (e) => {
+                    photoPreview2.src = e.target.result;
+                    photoPreview2.style.display = "block";
+                    // Hide the plus icon and text
+                    uploadIcon2.style.display = "none";
+                    uploadText2.style.display = "none";
+                  };
+                  reader.readAsDataURL(file);
+                }
+              });
+            </script>
 
             <!-- Form Buttons -->
             <div class="button-container">
-              <button type="button" class="btn-primary" onclick="printDocument('Print')">Print</button>
+              <button
+                type="button"
+                class="btn-primary"
+                onclick="printDocument('Print')"
+              >
+                Print
+              </button>
               <button type="submit" class="btn-secondary">Save</button>
             </div>
 
             <script>
               function printDocument() {
+                document.getElementById("printEntityName").innerText =
+                  document.getElementById("entity_name").value;
+                document.getElementById("printFundCluster").innerText =
+                  document.getElementById("fund_cluster").value;
+                document.getElementById("printWmr").innerText =
+                  document.getElementById("wmr_no").value;
+                document.getElementById("PrintPlaceofStorage").innerText =
+                  document.getElementById("storage").value;
+                document.getElementById("printDate").innerText =
+                  document.getElementById("disposal_date").value;
+                document.getElementById("printQTY").innerText =
+                  document.getElementById("quantity").value;
+                document.getElementById("printUnit").innerText =
+                  document.getElementById("unit").value;
+                document.getElementById("print_purpose").innerText =
+                  document.getElementById("purpose").value;
+                document.getElementById("printDescription").innerText =
+                  document.getElementById("description").value;
+
+                // Validate before printing
+                if (!validateBeforePrint()) return;
+
+                // Show the printPhotos section before printing
+                const printPhotos = document.getElementById("printPhotos");
+                printPhotos.style.display = "block";
+
+                let photoContainer = document.getElementById("photoContainer");
+                photoContainer.innerHTML = ""; // Clear previous images
+
+                // Add images dynamically
+                let photo1Src = document.getElementById("photoPreview1").src;
+                let photo2Src = document.getElementById("photoPreview2").src;
+
+                if (photo1Src.includes("data:image")) {
+                  let img1 = document.createElement("img");
+                  img1.src = photo1Src;
+                  img1.style.width = "600px";
+                  img1.style.height = "400px";
+                  img1.style.marginBottom = "50px";
+                  photoContainer.appendChild(img1);
+                }
+
+                if (photo2Src.includes("data:image")) {
+                  let img2 = document.createElement("img");
+                  img2.src = photo2Src;
+                  img2.style.width = "600px";
+                  img2.style.height = "400px";
+                  img2.style.marginBottom = "50px";
+                  photoContainer.appendChild(img2);
+                }
+
+                // Print
                 window.print();
+
+                // Hide the printPhotos section again after printing
+                setTimeout(() => {
+                  printPhotos.style.display = "none";
+                }, 1000);
+              }
+
+              function validateBeforePrint() {
+                const photo1 = document.getElementById("photoPreview1").src;
+                const photo2 = document.getElementById("photoPreview2").src;
+
+                if (
+                  !photo1.includes("data:image") ||
+                  !photo2.includes("data:image")
+                ) {
+                  alert("Please upload both photos before printing.");
+                  return false;
+                }
+                return true;
               }
             </script>
-
           </form>
         </div>
       </div>

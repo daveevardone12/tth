@@ -16,8 +16,13 @@
     </header>
 
     <div class="status">
-      <label><input type="checkbox" /> Unserviceable/non-functional</label>
-      <label><input type="checkbox" /> Functional</label>
+      <label
+        ><input type="checkbox" id="is_unserviceable_print" />
+        Unserviceable/non-functional</label
+      >
+      <label
+        ><input type="checkbox" id="is_functional_print" /> Functional</label
+      >
     </div>
 
     <table class="evaluation-table">
@@ -36,56 +41,40 @@
       </thead>
       <tbody>
         <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td><span id="printDescription"></span></td>
+          <td><span id="printQty"></span></td>
+          <td><span id="printUnit"></span></td>
+          <td><span id="printDateAcquired"></span></td>
+          <td><span id="printPropertyNo"></span></td>
+          <td><span id="printEndUser"></span></td>
         </tr>
       </tbody>
     </table>
 
     <p class="note">(Use additional sheet if necessary)</p>
 
-    <h3>REASON/S:</h3>
+    <h3>REASON/S: <span id="printReasons"></span></h3>
     <div class="reasons-section">
       <div class="left-reasons">
         <div class="reasons-section">
           <div class="left-reasons">
             <div class="reason-item">
               <label>
-                <input type="checkbox" />
+                <input type="checkbox" id="printRepair" />
                 For repair
               </label>
               <span class="line"></span>
             </div>
             <div class="reason-item">
               <label>
-                <input type="checkbox" />
+                <input type="checkbox" id="printDisposal" />
                 For disposal
               </label>
               <span class="line"></span>
             </div>
             <div class="reason-item">
               <label>
-                <input type="checkbox" />
+                <input type="checkbox" id="printReplacement" />
                 For replacement
               </label>
               <span class="line"></span>
@@ -96,12 +85,11 @@
 
       <div class="right-reasons">
         <label>
-          <input type="checkbox" />
+          <input type="checkbox" id="print_under_warranty" />
           Under warranty
         </label>
-        <span class="line"></span>
         <label>
-          <input type="checkbox" />
+          <input type="checkbox" id="print_others" />
           Other/s
         </label>
         <span class="line"></span>
@@ -112,17 +100,19 @@
       <div class="pok">
         Over-all Findings: Narrative recommendation (handwritten).
       </div>
-      <textarea rows="4" class="teks"></textarea>
+      <textarea rows="1" class="teks" id="printOverall"></textarea>
     </div>
 
     <div class="signatures">
       <div class="signature">
         <p>Prepared by:</p>
+        <br />
         <div class="line"></div>
         <p>Inspector/Evaluator</p>
       </div>
       <div class="signature">
         <p>Noted:</p>
+        <br />
         <div class="line"></div>
         <p>Head, SPMO</p>
       </div>
@@ -246,7 +236,7 @@
   }
 
   .reason-item .line {
-    flex-grow: 1;
+    flex-grow: 0.8;
     border-bottom: 1px solid #000;
     height: 1px;
   }
@@ -254,7 +244,8 @@
   .right-reasons {
     display: flex;
     align-items: center;
-    margin-top: 130px;
+    margin-right: 10px;
+    margin-top: 170px;
     width: 50%;
   }
 
@@ -267,12 +258,13 @@
 
   .right-reasons input[type="checkbox"] {
     margin-right: 10px;
+    background-color: white;
   }
 
   .right-reasons .line {
     display: inline-block;
     border-bottom: 1px solid #000;
-    width: 100%;
+    width: 500px;
     height: 1px;
     margin-left: 10px;
   }
