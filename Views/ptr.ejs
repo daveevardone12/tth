@@ -10,9 +10,12 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
@@ -22,140 +25,131 @@
       <!-- Main content -->
       <div class="main-content">
         <div class="mas-header">
-        <h1>Property Transfer Report</h1>
-      </div>
+          <h1>Property Transfer Report</h1>
+        </div>
         <div class="fix">
           <h2>Item Details</h2>
         </div>
 
         <div class="form-container">
           <form method="POST" action="/ptr/save">
-
             <div class="grid-container">
-            <div class="form-group">
-              <div class="third-width">
-                <label>Document Type*</label>
-                <select name="documentType" id="documentType">
-                  <option value="par">PAR</option>
-                  <option value="ics">ICS</option>
-                </select>
+              <div class="form-group">
+                <div class="third-width">
+                  <label>Document Type*</label>
+                  <select name="documentType" id="documentType">
+                    <option value="par">PAR</option>
+                    <option value="ics">ICS</option>
+                  </select>
+                </div>
+                <div class="third-width">
+                  <label>Property No.*</label>
+                  <input
+                    type="text"
+                    id="property_no"
+                    name="property_no"
+                    required
+                    placeholder="xxxxxxxxx"
+                  />
+                  <div class="hoverable" id="results"></div>
+                </div>
+                <div class="half-width">
+                  <label>Property Name.*</label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Enter your text here..."
+                    id="property_name"
+                    name="property_name"
+                  />
+                </div>
+                <div class="half-width">
+                  <label>From Accountable Officer/Agency/Fund Cluster*</label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Enter your text here..."
+                    id="from_accountable"
+                    name="from_accountable"
+                  />
+                </div>
+                <div class="third-width">
+                  <label>Date Acquired*</label>
+                  <input
+                    type="date"
+                    id="date_acquired"
+                    name="date_acquired"
+                    required
+                  />
+                </div>
+                <div class="third-width">
+                  <label>Amount*</label>
+                  <input
+                    type="number"
+                    id="amount"
+                    name="amount"
+                    required
+                    placeholder="xxxxxxxxx"
+                  />
+                </div>
               </div>
-              <div class="third-width">
-                <label>Property No.*</label>
-                <input
-                  type="text"
-                  id="property_no"
-                  name="property_no"
-                  required
-                  placeholder="xxxxxxxxx"
-                />
-                <div class="hoverable"
-                  
-                  id="results"
-                ></div>
-              </div>
-              <div class="half-width">
-                <label>Property Name.*</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="Enter your text here..."
-                  id="property_name"
-                  name="property_name"
-                />
-              </div>
-              <div class="half-width">
-                <label>From Accountable Officer/Agency/Fund Cluster*</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="Enter your text here..."
-                  id="from_accountable"
-                  name="from_accountable"
-                />
-              </div>
-              <div class="third-width">
-                <label>Date Acquired*</label>
-                <input
-                  type="date"
-                  id="date_acquired"
-                  name="date_acquired"
-                  required
-                />
-              </div>
-              <div class="third-width">
-                <label>Amount*</label>
-                <input
-                  type="number"
-                  id="amount"
-                  name="amount"
-                  required
-                  placeholder="xxxxxxxxx"
-                />
-              </div>
-              
-            </div>
-            <div class="form-group">
-              
-              <div class="half-width">
-                <label>To Accountable Officer/Agency/Fund Cluster*</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="Enter your text here..."
-                  id="to_accountable"
-                  name="to_accountable"
-                />
-              </div>
-              <div class="half-width">
-                <label>Fund Cluster</label>
-                <input
-                  type="text"
-                  id="fund_cluster"
-                  name="fund_cluster"
-                  placeholder="Enter your text here..."
-                />
-              </div>
+              <div class="form-group">
+                <div class="half-width">
+                  <label>To Accountable Officer/Agency/Fund Cluster*</label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Enter your text here..."
+                    id="to_accountable"
+                    name="to_accountable"
+                  />
+                </div>
+                <div class="half-width">
+                  <label>Fund Cluster</label>
+                  <input
+                    type="text"
+                    id="fund_cluster"
+                    name="fund_cluster"
+                    placeholder="Enter your text here..."
+                  />
+                </div>
 
-              <div class="half-width">
-                <label>PTR No.</label>
-                <input
-                  type="text"
-                  id="ptr_no"
-                  name="ptr_no"
-                  placeholder="xxxxxxxxx"
-                />
-              </div>
-              
-              
-              <div class="third-width">
-                <label>Quantity*</label>
-                <input
-                  type="number"
-                  id="quantity"
-                  name="quantity"
-                  required
-                  placeholder="xxxxxxxxx"
-                />
-              </div>
-              
-              
-              <div class="third-width">
-                <label>Condition of PPE*</label>
-                <input
-                  type="text"
-                  name="condition_ppe"
-                  id="condition_ppe"
-                  required
-                />
-              </div>
-              <div class="half-width">
-                <label>Date</label>
-                <input type="date" id="ptr_date" name="ptr_date" />
+                <div class="half-width">
+                  <label>PTR No.</label>
+                  <input
+                    type="text"
+                    id="ptr_no"
+                    name="ptr_no"
+                    placeholder="xxxxxxxxx"
+                  />
+                </div>
+
+                <div class="third-width">
+                  <label>Quantity*</label>
+                  <input
+                    type="number"
+                    id="quantity"
+                    name="quantity"
+                    required
+                    placeholder="xxxxxxxxx"
+                  />
+                </div>
+
+                <div class="third-width">
+                  <label>Condition of PPE*</label>
+                  <input
+                    type="text"
+                    name="condition_ppe"
+                    id="condition_ppe"
+                    required
+                  />
+                </div>
+                <div class="half-width">
+                  <label>Date</label>
+                  <input type="date" id="ptr_date" name="ptr_date" />
+                </div>
               </div>
             </div>
-            
-          </div>
 
             <div class="form-group2">
               <label for="transfer-type" class="trans"
@@ -166,7 +160,7 @@
                   ><input
                     type="radio"
                     name="transfer_type"
-                    id="transfer_type"
+                    id="donation"
                     value="Donation"
                   />
                   Donation</label
@@ -175,7 +169,7 @@
                   ><input
                     type="radio"
                     name="transfer_type"
-                    id="transfer_type"
+                    id="relocate"
                     value="Relocate"
                   />
                   Relocate</label
@@ -185,7 +179,7 @@
                     type="radio"
                     name="transfer_type"
                     value="Reassignment"
-                    id="transfer_type"
+                    id="reassignment"
                   />
                   Reassignment</label
                 >
@@ -208,8 +202,6 @@
               />
             </div>
 
-         
-
             <div class="form-group5">
               <div class="desc1">
                 <label>Description</label>
@@ -223,8 +215,8 @@
                 <label>Reason for Transfer</label>
                 <textarea
                   placeholder="Enter your text here..."
-                  name=" reason_for_transfer"
-                  id=" reason_for_transfer"
+                  name="reason_for_transfer"
+                  id="reason_for_transfer"
                 ></textarea>
               </div>
             </div>
@@ -242,10 +234,82 @@
 
             <script>
               function printDocument() {
+                document.getElementById("printEntityName").innerText =
+                  document.getElementById("property_name").value;
+                document.getElementById("printFundCluster").innerText =
+                  document.getElementById("fund_cluster").value;
+                document.getElementById("printFrom").innerText =
+                  document.getElementById("from_accountable").value;
+                document.getElementById("printTo").innerText =
+                  document.getElementById("to_accountable").value;
+                document.getElementById("printDateAcquired").innerText =
+                  document.getElementById("ptr_date").value;
+
+                document
+                  .querySelectorAll("input[name='transfer_type']")
+                  .forEach((radio) => {
+                    radio.addEventListener("change", function () {
+                      // Clear all checkboxes
+                      document.getElementById("printDonation").innerText = "";
+                      document.getElementById("printRelocate").innerText = "";
+                      document.getElementById("printReassignment").innerText =
+                        "";
+                      document.getElementById("printOthers").innerText = "";
+                      document.getElementById("printSpecify").innerText = "";
+
+                      // Update the selected option
+                      if (this.id === "donation") {
+                        document.getElementById("printDonation").innerText =
+                          "✔";
+                      } else if (this.id === "relocate") {
+                        document.getElementById("printRelocate").innerText =
+                          "✔";
+                      } else if (this.id === "reassignment") {
+                        document.getElementById("printReassignment").innerText =
+                          "✔";
+                      } else if (this.id === "transfer_type") {
+                        document.getElementById("printOthers").innerText = "✔";
+                      }
+                    });
+                  });
+
+                // Handle 'Others' input field separately
+                document
+                  .getElementById("specify_box")
+                  .addEventListener("input", function () {
+                    document.getElementById("printSpecify").innerText =
+                      this.value;
+                  });
+                document.getElementById("printReasonforTransfer").innerText =
+                  document.getElementById("reason_for_transfer").value;
+                document.getElementById("printDate").innerText =
+                  document.getElementById("date_acquired").value;
+                document.getElementById("printPropertyNo").innerText =
+                  document.getElementById("property_no").value;
+                document.getElementById("printUnit").innerText =
+                  document.getElementById("quantity").value;
+                document.getElementById("printDescription").innerText =
+                  document.getElementById("description").value;
+                document.getElementById("printAmount").innerText =
+                  document.getElementById("amount").value;
+                document.getElementById("printPPE").innerText =
+                  document.getElementById("condition_ppe").value;
+
+                document.getElementById("printFromName").innerText =
+                  document.getElementById("from_accountable").value;
+                document.getElementById("printToName").innerText =
+                  document.getElementById("to_accountable").value;
+
+                document.getElementById("dateprint1").innerText =
+                  document.getElementById("ptr_date").value;
+                document.getElementById("dateprint2").innerText =
+                  document.getElementById("ptr_date").value;
+                document.getElementById("dateprint3").innerText =
+                  document.getElementById("ptr_date").value;
+
                 window.print();
               }
             </script>
-           
           </form>
         </div>
       </div>
