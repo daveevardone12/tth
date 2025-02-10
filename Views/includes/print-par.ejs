@@ -7,7 +7,7 @@
         <strong>Fund Cluster: <span id="printFundCluster"></span></strong>
       </div>
       <div>
-        <strong>PAR No.: <span></span></strong>
+        <strong>PAR No: <span id="printParNo"></span></strong>
       </div>
     </div>
     <table class="tabol">
@@ -24,12 +24,13 @@
       </thead>
       <tbody class="tbady">
         <tr class="t-ar">
-          <td class="t-d"></td>
-          <td class="t-d"></td>
-          <td class="t-d"></td>
-          <td class="t-d"></td>
+          <td class="t-d"><span id="printQty"></span></td>
+          <td class="t-d"><span id="printUnit"></span></td>
+          <td class="t-d"><span id="printDescription"></span></td>
+          <td class="t-d"><span id="printPropertyNo"></span></td>
           <td class="t-d"><span id="printDateAcquired"></span></td>
-          <td class="t-d"></td>
+          <td class="t-d"><span id="printUnitValue"></span></td>
+          <td class="t-d"><span id="printUnitValue"></span></td>
         </tr>
         <!-- Additional rows as needed -->
       </tbody>
@@ -42,13 +43,13 @@
         <p>
           <strong>Data Acquired: <span id="printDateAcquired"></span></strong>
         </p>
-        <p>Bug:</p>
-        <p>PO:</p>
-        <p>Code:</p>
-        <p>Description:</p>
-        <p>Label:</p>
-        <p>Supplier:</p>
-        <p>Location:</p>
+        <p>BURs: <span id="printBurs"></span></p>
+        <p>PO: <span id="printPo"></span></p>
+        <p>Code: <span id="printCode"></span></p>
+        <p>Description: <span id="printdescription"></span></p>
+        <p>IAR #: <span id="printIAR"></span></p>
+        <p>Supplier: <span id="printSupplier"></span></p>
+        <p>Location: <span id="printLocation"></span></p>
       </div>
 
       <div class="reminder">
@@ -72,7 +73,7 @@
           ><u id="printPARAccountable">____________________</u></span
         >
         <span>Position / Office</span>
-        <span class="gaps"><u>____________________</u></span>
+        <span class="gaps"><u id="printDate">____________________</u></span>
         <span>Date</span>
       </div>
       <div class="signature-box">
@@ -90,6 +91,11 @@
       </div>
     </div>
     <div class="small-note">Appendix 59</div>
+  </div>
+  <div id="printPhotos" style="display: none">
+    <div style="margin-top: 500px"></div>
+    <!-- <h2 style="text-align: center" ></h2> -->
+    <div id="photoContainer" style="text-align: center"></div>
   </div>
 </body>
 

@@ -11,8 +11,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet" />
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
 </head>
 
 <body>
@@ -26,7 +27,7 @@
                 <div class="table-wrapper">
                     <div id="loadingSpinner" style="display:none;">Loading...</div>
                     <table>
-                        <thead class="t-head">
+                        <thead class="t-head" >
                             <tr>
                                 <th>Article</th>
                                 <th>Description</th>
@@ -38,25 +39,25 @@
 
                                 <th colspan="2">
                                     <div>
-                                        Shortage/Overage
-                                        <div style="display: flex; margin-top: 5px;">
-
-                                            <div style="flex: 1; border-right: 2px solid white;">Qty.</div>
-                                            <div style="flex: 1;">Value</div>
-                                        </div>
+                                      Shortage/Overage
+                                      <div style="display: flex; margin-top: 5px;">
+                      
+                                        <div style="flex: 1; border-right: 2px solid white;">Qty.</div>
+                                        <div style="flex: 1;">Value</div>
+                                      </div>
                                     </div>
-                                </th>
+                                  </th>
 
-                                <th colspan="2">
+                                  <th colspan="2">
                                     <div>
-                                        Remarks
-                                        <div style="display: flex; margin-top: 5px;">
-
-                                            <div style="flex: 1; border-right: 2px solid white;">Receipted by:</div>
-                                            <div style="flex: 1;">Location</div>
-                                        </div>
+                                      Remarks
+                                      <div style="display: flex; margin-top: 5px;">
+                      
+                                        <div style="flex: 1; border-right: 2px solid white;">Receipted by:</div>
+                                        <div style="flex: 1;">Location</div>
+                                      </div>
                                     </div>
-                                </th>
+                                  </th>
 
                                 <th>Date Acquired</th>
                                 <th></th>
@@ -65,45 +66,33 @@
 
                         <div class="controls">
                             <div class="filter-content">
-                                <button type="button" class="lala"
-                                    data-row='{}'
-                                    onclick="printDocument(this)">
-                                    Print
-                                </button>
-                                <!-- <button id="sort-by-btn" class="action-button">
+                                <button id="sort-by-btn" class="action-button">
                                     Sort by <img src="/Public/images/clarity--sort-by-line.svg" alt="" class="srt">
-                                </button> -->
+                                </button>
 
-
+                                
                                 <div class="UACS">
-                                    <select name="UACS" id="uacs-select" class="uacs">
-                                        <option value="" disabled selected>UACS</option>
-                                        <option value="1060501000">Machinery #1060501000</option>
-                                        <option value="1060502000">Office Equipment #1060502000</option>
-                                        <option value="1060504000">Agricultural and Forestry Equipment #1060504000
-                                        </option>
-                                        <option value="1060511000">Medical Equipment #1060511000</option>
-                                        <option value="1060512000">Printing Equipment #1060512000</option>
-                                        <option value="1060514000">Technical and Scientific Equipment #1060514000
-                                        </option>
-                                        <option value="10605990000">Other Machinery and Equipment #10605990000</option>
-                                        <option value="1060601000">Motor Vehicles #1060601000</option>
-                                        <option value="1060701000">Furniture and Fixtures #1060701000</option>
-                                        <option value="1060702000">Books #1060702000</option>
-                                        <option value="1080102000">Software #1080102000</option>
-                                        <option value="1060503000">Information and Communications Technology Equipment
-                                            #1060503000</option>
-                                        <option value="1040505000">Marine and Fishery Equipment #1040505000</option>
-                                        <option value="1040507000">Communication Equipment #1040507000</option>
-                                        <option value="1040508000">Disaster Response and Rescue Equipment #1040508000
-                                        </option>
-                                        <option value="1040509000">Military, Police and Security Equipment #1040509000
-                                        </option>
-                                        <option value="1040512000">Sports Equipment #1040512000</option>
+                                    <select name="UACS" id="uacs-select" class="uacs">  
+                                      <option value="" disabled selected>UACS*</option>
+                                      <option value="1060501000">Machinery #1060501000</option>
+                                      <option value="1060502000">Office Equipment #1060502000</option>
+                                      <option value="1060504000">Agricultural and Forestry Equipment #1060504000</option>
+                                      <option value="1060511000">Medical Equipment #1060511000</option>
+                                      <option value="1060512000">Printing Equipment #1060512000</option>
+                                      <option value="1060514000">Technical and Scientific Equipment #1060514000</option>
+                                      <option value="10605990000">Other Machinery and Equipment #10605990000</option>
+                                      <option value="1060601000">Motor Vehicles #1060601000</option>
+                                      <option value="1060701000">Furniture and Fixtures #1060701000</option>
+                                      <option value="1060702000">Books #1060702000</option>
+                                      <option value="1080102000">Software #1080102000</option>
+                                      <option value="1060503000">Information and Communications Technology Equipment #1060503000</option>
+                                      <option value="1040505000">Marine and Fishery Equipment #1040505000</option>
+                                      <option value="1040507000">Communication Equipment #1040507000</option>
+                                      <option value="1040508000">Disaster Response and Rescue Equipment #1040508000</option>
+                                      <option value="1040509000">Military, Police and Security Equipment #1040509000</option>
+                                      <option value="1040512000">Sports Equipment #1040512000</option>
                                     </select>
-                                </div>
-
-
+                                  </div>
 
 
                             </div>
@@ -187,51 +176,51 @@
 
             <tbody id="inventoryTableBody">
             </tbody>
+            
+        </table>
+        <table style="display: none;">
+            <thead class="t-head" >
+                <tr>
+                    <th>Article</th>
+                    <th>Description</th>
+                    <th>Property Number</th>
+                    <th>Unit</th>
+                    <th>Value Unit</th>
+                    <th>Qty. per P Card</th>
+                    <th>Qty. per P Count</th>
 
-            </table>
-            <table style="display: none;">
-                <thead class="t-head">
-                    <tr>
-                        <th>Article</th>
-                        <th>Description</th>
-                        <th>Property Number</th>
-                        <th>Unit</th>
-                        <th>Value Unit</th>
-                        <th>Qty. per P Card</th>
-                        <th>Qty. per P Count</th>
+                    <th colspan="2">
+                        <div>
+                          Shortage/Overage
+                          <div style="display: flex; margin-top: 5px;">
+          
+                            <div style="flex: 1; border-right: 2px solid white;">Qty.</div>
+                            <div style="flex: 1;">Value</div>
+                          </div>
+                        </div>
+                      </th>
 
-                        <th colspan="2">
-                            <div>
-                                Shortage/Overage
-                                <div style="display: flex; margin-top: 5px;">
+                      <th colspan="2">
+                        <div>
+                          Remarks
+                          <div style="display: flex; margin-top: 5px;">
+          
+                            <div style="flex: 1; border-right: 2px solid white;">Receipted by:</div>
+                            <div style="flex: 1;">Location</div>
+                          </div>
+                        </div>
+                      </th>
 
-                                    <div style="flex: 1; border-right: 2px solid white;">Qty.</div>
-                                    <div style="flex: 1;">Value</div>
-                                </div>
-                            </div>
-                        </th>
-
-                        <th colspan="2">
-                            <div>
-                                Remarks
-                                <div style="display: flex; margin-top: 5px;">
-
-                                    <div style="flex: 1; border-right: 2px solid white;">Receipted by:</div>
-                                    <div style="flex: 1;">Location</div>
-                                </div>
-                            </div>
-                        </th>
-
-                        <th>Date Acquired</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody id="hiddenInventoryTableBody">
-                </tbody>
-            </table>
+                    <th>Date Acquired</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="hiddenInventoryTableBody">
+            </tbody>
+        </table>
 
         </div>
-
+        
         <nav aria-label="Page navigation" id="paginationNav">
             <% if (currentPage> 1) { %>
                 <a href="?page=<%= currentPage - 1 %>&limit=<%= limit %>" aria-label="Previous Page">Previous</a>
@@ -240,7 +229,7 @@
                         <a href="?page=<%= currentPage + 1 %>&limit=<%= limit %>" aria-label="Next Page">Next</a>
                         <% } %>
         </nav>
-        </div>
+    </div>
         </div>
         </div>
         <script src="../js/dashboard-inventory-api.js"></script>
@@ -299,7 +288,7 @@
                     sortTable(); // Reset sorting and reapply sorting logic
                 };
 
-
+         
 
                 // Close Overlays
                 closeOverlay(closeSortBy, sortByOverlay);
@@ -318,7 +307,7 @@
                     filterOverlay.classList.add("hidden");
                 });
 
-
+            
                 // Sorting Logic
                 const sortTable = () => {
                     const rows = Array.from(document.querySelectorAll("tbody tr"));
@@ -389,11 +378,7 @@
             });
         </script>
 
-
-
-
 </body>
 <%- include("./includes/print-ics") %>
-    <%- include("./includes/print-par") %>
-        <%- include("./includes/print-officeequipment") %>
+<%- include("./includes/print-par") %>
 </html>

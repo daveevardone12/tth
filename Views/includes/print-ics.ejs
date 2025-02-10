@@ -1,3 +1,104 @@
+<body class="bodies">
+  <div class="containerss" id="printICS" style="display: none">
+    <div class="headerss">Inventory Custodian Slip (ICS)</div>
+    <div class="sub-header">
+      <div class="haha">
+        <strong>Entity Name: <span id="printEntityName"></span></strong>
+        <strong>Fund Cluster: <span id="printFundCluster"></span></strong>
+      </div>
+      <div>
+        <strong>ICS No: <span id="printICSNo"></span></strong>
+      </div>
+    </div>
+    <table class="tabol">
+      <thead>
+        <tr class="t-ar">
+          <th class="t-h">Qty.</th>
+          <th class="t-h">Unit</th>
+          <th class="t-h">Description</th>
+          <th class="t-h">Property No.</th>
+          <th class="t-h">Date Acquired</th>
+          <th class="t-h">Unit Value</th>
+          <th class="t-h">Total Amount</th>
+        </tr>
+      </thead>
+      <tbody class="tbady">
+        <tr class="t-ar">
+          <td class="t-d"><span id="printQty"></span></td>
+          <td class="t-d"><span id="printUnit"></span></td>
+          <td class="t-d"><span id="printDescription"></span></td>
+          <td class="t-d"><span id="printPropertyNo"></span></td>
+          <td class="t-d"><span id="printDateAcquired"></span></td>
+          <td class="t-d"><span id="printUnitValue"></span></td>
+          <td class="t-d"><span id="printUnitValue"></span></td>
+        </tr>
+        <!-- Additional rows as needed -->
+      </tbody>
+    </table>
+    <div class="remarks-section">
+      <div><strong>Remarks:</strong> New</div>
+    </div>
+    <div class="footer">
+      <div class="Dating">
+        <p>
+          <strong>Data Acquired: <span id="printDateAcquired"></span></strong>
+        </p>
+        <p>BURs: <span id="printBurs"></span></p>
+        <p>PO: <span id="printPo"></span></p>
+        <p>Code: <span id="printCode"></span></p>
+        <p>Description: <span id="printdescription"></span></p>
+        <p>IAR #: <span id="printIAR"></span></p>
+        <p>Supplier: <span id="printSupplier"></span></p>
+        <p>Location: <span id="printLocation"></span></p>
+      </div>
+
+      <div class="reminder">
+        <p><strong>Reminder:</strong></p>
+        <p>
+          If the item/s received is/are not utilized beneficial to work and
+          already unserviceable, you are REQUIRED to RETURN it to OSPU.
+        </p>
+      </div>
+      <div class="reminders">
+        "Bringing government properties to private homes and for personal use is
+        strictly prohibited. Due care and safekeeping should be applied to this
+        stated property."
+      </div>
+    </div>
+    <div class="signature-section">
+      <div class="signature-box">
+        <div class="bax"><strong>Received by:</strong></div>
+        <span>Signature Over Printed Name of End User</span>
+        <span class="gaps"
+          ><u id="printPARAccountable">____________________</u></span
+        >
+        <span>Position / Office</span>
+        <span class="gaps"><u id="printDate">____________________</u></span>
+        <span>Date</span>
+      </div>
+      <div class="signature-box">
+        <div class="sig">
+          <strong>Issued by:</strong>
+        </div>
+        <span><u>JEFFREY M. MENESER, M.A.M.</u></span>
+        <span
+          >Signature Over Printed Name of Supply and/or Property Custodian</span
+        >
+        <span class="gaps"><u>____________________</u></span>
+        <span>Position/Office</span>
+        <span class="gaps"><u>____________________</u></span>
+        <span>Date</span>
+      </div>
+    </div>
+    <div class="small-note">Appendix 59</div>
+  </div>
+  <div id="printPhotos" style="display: none">
+    <div style="margin-top: 30px"></div>
+    <!-- <h2 style="text-align: center" ></h2> -->
+    <div id="photoContainer" style="text-align: center"></div>
+  </div>
+</body>
+
 <style>
   .bodies {
     font-family: Arial, sans-serif;
@@ -133,105 +234,3 @@
     padding: 3em;
   }
 </style>
-
-<body class="bodies">
-  <div class="containerss" id="printIcs" style="display: none">
-    <div class="headerss">Inventory Custodian Slip (ICS)</div>
-    <div class="sub-header">
-      <div class="haha">
-        <strong>Entity Name:</strong>
-        <strong>Fund Cluster:</strong>
-      </div>
-      <div><strong>ICS No.: </strong></div>
-    </div>
-    <table class="tabol">
-      <thead>
-        <tr class="t-ar">
-          <th class="t-h">Qty.</th>
-          <th class="t-h">Unit</th>
-          <th colspan="2" class="t-h">Amount</th>
-          <th class="t-h">Description</th>
-          <th class="t-h">Inventory Item No.</th>
-          <th class="t-h">Estimated Useful Life</th>
-        </tr>
-        <tr class="t-ar">
-          <th class="t-h"></th>
-          <th class="t-h"></th>
-          <th class="t-h">Unit Cost</th>
-          <th class="t-h">Total Cost</th>
-          <th class="t-h"></th>
-          <th class="t-h"></th>
-          <th class="t-h"></th>
-        </tr>
-      </thead>
-      <tbody class="tbady">
-        <tr class="t-ar">
-          <td class="t-d"></td>
-          <td class="t-d"></td>
-          <td class="t-d"></td>
-          <td class="t-d"></td>
-          <td class="t-d"></td>
-          <td class="t-d"></td>
-          <td class="t-d"></td>
-        </tr>
-        <!-- Additional rows as needed -->
-      </tbody>
-    </table>
-    <div class="remarks-section">
-      <div><strong>Remarks:</strong> New</div>
-    </div>
-    <div class="footer">
-      <div class="Dating">
-        <p><strong>Data Acquired:</strong></p>
-        <p>Bug:</p>
-        <p>PO:</p>
-        <p>Code:</p>
-        <p>Description:</p>
-        <p>Label:</p>
-        <p>Supplier:</p>
-        <p>Location:</p>
-      </div>
-
-      <div class="reminder">
-        <p><strong>Reminder:</strong></p>
-        <p>
-          If the item/s received is/are not utilized beneficial to work and
-          already unserviceable, you are REQUIRED to RETURN it to OSPU.
-        </p>
-      </div>
-      <div class="reminders">
-        "Bringing government properties to private homes and for personal use is
-        strictly prohibited. Due care and safekeeping should be applied to this
-        stated property."
-      </div>
-    </div>
-    <div class="signature-section">
-      <div class="signature-box">
-        <div class="bax"><strong>Received by:</strong></div>
-        <span>Signature Over Printed Name</span>
-        <span><u id="printICSAccountable">____________________</u></span>
-        <span>Position / Office</span>
-        <span><u>____________________</u></span>
-        <span>Date</span>
-      </div>
-      <div class="signature-box">
-        <div class="sig">
-          <strong>Issued by:</strong>
-        </div>
-        <span><u>JEFFREY M. MENESER, M.A.M.</u></span>
-        <span
-          >Signature Over Printed Name of Supply and/or Property Custodian</span
-        >
-        <span><u>____________________</u></span>
-        <span>Position/Office</span>
-        <span><u>____________________</u></span>
-        <span>Date</span>
-      </div>
-    </div>
-    <div class="small-note">Appendix 59</div>
-  </div>
-  <div id="printPhotos" style="display: none">
-    <div style="margin-top: 100px;"></div>
-    <div id="photoContainer" style="text-align: center"></div>
-  </div>
-</body>
