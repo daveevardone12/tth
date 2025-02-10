@@ -74,7 +74,7 @@
                                     <input type="text" id="ics_no" name="ics_no" required>
                                 </div>
                                         <div class="form-group">
-                                            <p id="errorMessage" style="color: red; display: none;">Value cannot be less than 50000.</p>
+                                            <p id="errorMessage" style="color: red; display: none;">Value cannot be more than 49999.</p>
                                             <label for="cost">Unit Cost/Value *</label>
                                             <input type="number" id="cost" name="cost" placeholder="must be greater than 49999"
                                                 required max="49999" oninput="validateInput()" >
@@ -401,7 +401,7 @@
                                             document.getElementById('printPropertyNo').innerText = document.getElementById('propertyNo').value;
                                             document.getElementById('printDateAcquired').innerText = document.getElementById('dateAcquired').value;
                                             document.getElementById('printUnitValue').innerText = document.getElementById('cost').value;
-                                            // document.getElementById('printTotalValue').innerText = document.getElementById('cost').value;
+                                            document.getElementById('printunitvalue').innerText = document.getElementById('cost').value;
                                             document.getElementById('printBurs').innerText = document.getElementById('burs').value;
                                             document.getElementById('printPo').innerText = document.getElementById('po').value;
                                             document.getElementById('printdescription').innerText = document.getElementById('description').value;

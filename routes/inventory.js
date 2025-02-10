@@ -8,8 +8,9 @@ router.get("/", ensureAuthenticated, async (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 11;
   const isAjax = req.query.ajax === "true";
-  const uacsCode = req.query.uacs || ""; // Get the uacs parameter
-  console.log("Received uacsCode:", req.query); // Log the uacs parameter value to confirm it's received
+  const uacsCode = req.query.uacs || "";
+
+  console.log("Received uacsCode:", req.query);
 
   try {
     const { getInventoryList, totalPages } = await fetchInventoryList(
@@ -19,7 +20,6 @@ router.get("/", ensureAuthenticated, async (req, res) => {
     );
 
     if (isAjax) {
-      console.log("Returning JSON response with uacs:", uacsCode); // Confirm that the uacsCode is passed correctly
       return res.json({
         getInventoryList,
         currentPage: page,
@@ -35,8 +35,10 @@ router.get("/", ensureAuthenticated, async (req, res) => {
       limit,
     });
   } catch (err) {
-    console.error("Error: ", err);
-    res.sendStatus(500);
+    console.error("Detailed Error in /Inventory:", err.stack);
+    res
+      .status(500)
+      .json({ message: "Internal Server Error", error: err.message });
   }
 });
 
@@ -127,41 +129,62 @@ async function fetchInventoryList(page, limit, uacsCode) {
   const offset = (page - 1) * limit;
 
   try {
-    // Query to fetch data from both tables with an added identifier column
-    const query = `
-      SELECT *, 'ICS' AS type FROM inventory_custodian_slip WHERE uacs_code LIKE $1
-      UNION ALL
-      SELECT *, 'PAR' AS type FROM property_acknowledgement_receipt WHERE uacs_code LIKE $1
-      LIMIT $2 OFFSET $3
-    `;
+    console.log(
+      `Fetching inventory list: page=${page}, limit=${limit}, uacsCode=${uacsCode}`
+    );
 
-    // Execute the query to get the data
+    const query = `
+  SELECT item_name, accountable, unit_cost, date_acquired, location, category, 
+         uacs_code, inventory_item_no, burs_no, estimated_useful_life, po_no, 
+         code, iar, supplier, serial_no, property_no, email, entity_name, 
+         fund_cluster, NULL AS par_no, ics_no AS document_no, quantity, unit, 
+         date, description, photo1, photo2, 'ICS' AS type
+  FROM inventory_custodian_slip 
+  WHERE uacs_code LIKE $1
+
+  UNION ALL
+
+  SELECT item_name, accountable, unit_cost, date_acquired, location, category, 
+         uacs_code, inventory_item_no, burs_no, estimated_useful_life, po_no, 
+         code, iar, supplier, serial_no, property_no, email, entity_name, 
+         fund_cluster, par_no, NULL AS document_no, quantity, unit, 
+         date, description, photo1, photo2, 'PAR' AS type
+  FROM property_acknowledgement_receipt 
+  WHERE uacs_code LIKE $1
+
+  LIMIT $2 OFFSET $3
+`;
+
+    console.log("Executing main inventory query...");
     const { rows } = await tthPool.query(query, [
       `%${uacsCode}%`,
       limit,
       offset,
     ]);
 
-    // Query to count total rows from both tables (before pagination)
+    console.log(`Fetched ${rows.length} rows from inventory tables.`);
+
+    // Query to count total rows
     const countQuery = `
-      SELECT COUNT(*) AS total_count
-      FROM (
-        SELECT 'ICS' AS type FROM inventory_custodian_slip WHERE uacs_code LIKE $1
-        UNION ALL
-        SELECT 'PAR' AS type FROM property_acknowledgement_receipt WHERE uacs_code LIKE $1
-      ) AS merged_tables
-    `;
+  SELECT COUNT(*) AS total_count
+  FROM (
+    SELECT 1 FROM inventory_custodian_slip WHERE uacs_code LIKE $1
+    UNION ALL
+    SELECT 1 FROM property_acknowledgement_receipt WHERE uacs_code LIKE $1
+  ) AS merged_tables
+`;
+
+    console.log("Executing count query...");
     const countResult = await tthPool.query(countQuery, [`%${uacsCode}%`]);
+
     const totalCount = parseInt(countResult.rows[0].total_count);
+    console.log(`Total count: ${totalCount}`);
 
-    // Calculate total pages for pagination
     const totalPages = Math.ceil(totalCount / limit);
-
-    // Return the fetched data and pagination information
     return { getInventoryList: rows, totalPages };
   } catch (err) {
-    console.error("Error: ", err);
-    throw new Error("Error fetching inventory list");
+    console.error("Detailed Error in fetchInventoryList():", err.stack);
+    throw new Error(`Error fetching inventory list: ${err.message}`);
   }
 }
 
