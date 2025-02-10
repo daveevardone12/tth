@@ -74,7 +74,7 @@ router.post(
           data.email,
           data.entity_name,
           data.fund_cluster,
-          data.ics_no,
+          data.Ics_no,
           data.quantity,
           data.unit,
           data.date,

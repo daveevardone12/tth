@@ -166,13 +166,13 @@ async function fetchInventoryList(page, limit, uacsCode) {
 
     // Query to count total rows
     const countQuery = `
-  SELECT COUNT(*) AS total_count
-  FROM (
-    SELECT 1 FROM inventory_custodian_slip WHERE uacs_code LIKE $1
-    UNION ALL
-    SELECT 1 FROM property_acknowledgement_receipt WHERE uacs_code LIKE $1
-  ) AS merged_tables
-`;
+      SELECT COUNT(*) AS total_count
+      FROM (
+        SELECT 'ICS' AS type FROM inventory_custodian_slip WHERE uacs_code LIKE $1
+        UNION ALL
+        SELECT 'PAR' AS type FROM property_acknowledgement_receipt WHERE uacs_code LIKE $1
+      ) AS merged_tables
+    `;
 
     console.log("Executing count query...");
     const countResult = await tthPool.query(countQuery, [`%${uacsCode}%`]);

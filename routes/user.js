@@ -28,9 +28,9 @@ const passwordSchema = Joi.object({
 
 // Get route to render the user page, with session user check
 router.get("/user", ensureAuthenticated, (req, res) => {
-  const userData = req.user;
   const passwordLength = userData.password_length;
   const buwaNaPassoword = "*".repeat(passwordLength);
+  const userData = req.user;
   const role = userData.role;
   res.render("user", { data: userData, password: buwaNaPassoword, role });
 });
