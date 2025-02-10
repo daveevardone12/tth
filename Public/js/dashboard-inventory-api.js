@@ -307,6 +307,27 @@ function printDocument(button) {
       document.body.classList.add("show-ics");
       document.getElementById("printICSAccountable").innerText =
         parsedData.accountable;
+     
+        document.getElementById('printEntityName').innerText = parsedData.entity_name;
+        document.getElementById('printFundCluster').innerText = parsedData.fund_cluster;
+        document.getElementById('printICSNo').innerText = parsedData.ics_no;
+        document.getElementById('printQty').innerText = parsedData.quantity;
+        document.getElementById('printUnit').innerText = parsedData.unit;
+        document.getElementById('printDescription').innerText = parsedData.description;
+        document.getElementById('printPropertyNo').innerText = parsedData.propertyNo;
+        document.getElementById('printDateAcquired').innerText = parsedData.dateAcquired;
+        document.getElementById('printUnitValue').innerText = parsedData.cost;
+        // document.getElementById('printunitvalue').innerText = parsedData.cost;
+        document.getElementById('printBurs').innerText = parsedData.burs;
+        document.getElementById('printPo').innerText = parsedData.po;
+        document.getElementById('printdescription').innerText = parsedData.description;
+        document.getElementById('printCode').innerText = parsedData.code;
+        document.getElementById('printIAR').innerText = parsedData.iar;
+        document.getElementById('printSupplier').innerText = parsedData.supplier;
+        document.getElementById('printLocation').innerText = parsedData.location;
+        document.getElementById('printPhotos').innerText = parsedData.photoPreview1;
+        
+
     } else if (parsedData.type === "PAR") {
       document.getElementById("printPARAccountable").innerText =
         parsedData.accountable;
