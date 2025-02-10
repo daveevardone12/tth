@@ -806,3 +806,13 @@ app.get("/software", (req, res) => {
 app.get("/sports", (req, res) => {
   res.render("sports"); // Ensure 'machinery.ejs' is in your 'views' folder
 });
+
+app.get("/Inventory", async (req, res) => {
+  try {
+    const result = await pool.query("SELECT * FROM inventory"); // Ensure table name is correct
+    res.json(result.rows);
+  } catch (err) {
+    console.error("Database Query Error:", err);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
