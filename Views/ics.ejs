@@ -35,7 +35,7 @@
                           </div>
                           
                           <div class="form-containers">
-                                <form method="POST" action="/par/save" enctype="multipart/form-data">
+                                <form method="POST" action="/ics/save" enctype="multipart/form-data">
                                     <h2>Item Details</h2>
                                     <div class="form-grid">
                                         <div class="form-group">
@@ -71,7 +71,7 @@
 
                                   <div class="form-group">
                                     <label for="accountable">ICS No. *</label>
-                                    <input type="text" id="ics_no" name="ics_no" required>
+                                    <input type="text" id="Ics_no" name="ics_no" required>
                                 </div>
                                         <div class="form-group">
                                             <p id="errorMessage" style="color: red; display: none;">Value cannot be more than 49999.</p>
@@ -394,12 +394,13 @@
                                         function printDocument() {
                                             document.getElementById('printEntityName').innerText = document.getElementById('entity_name').value;
                                             document.getElementById('printFundCluster').innerText = document.getElementById('fund_cluster').value;
-                                            document.getElementById('printICSNo').innerText = document.getElementById('ics_no').value;
+                                            document.getElementById('printicsNo').innerText = document.getElementById('Ics_no').value;
                                             document.getElementById('printQty').innerText = document.getElementById('quantity').value;
                                             document.getElementById('printUnit').innerText = document.getElementById('unit').value;
                                             document.getElementById('printDescription').innerText = document.getElementById('description').value;
                                             document.getElementById('printPropertyNo').innerText = document.getElementById('propertyNo').value;
                                             document.getElementById('printDateAcquired').innerText = document.getElementById('dateAcquired').value;
+                                            document.getElementById('printdateacquired').innerText = document.getElementById('dateAcquired').value;
                                             document.getElementById('printUnitValue').innerText = document.getElementById('cost').value;
                                             document.getElementById('printunitvalue').innerText = document.getElementById('cost').value;
                                             document.getElementById('printBurs').innerText = document.getElementById('burs').value;
