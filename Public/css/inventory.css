@@ -482,13 +482,13 @@ input[type="radio"] {
     display: none;
   }
 
-  #printIcs,
+  #printICS,
   #printPar {
     display: none; /* Default to hidden */
   }
 
   /* Show ICS when printing */
-  .show-ics #printIcs {
+  .show-ics #printICS {
     display: block !important;
   }
 
@@ -499,7 +499,7 @@ input[type="radio"] {
 
 }
 
-#printIcs,
+#printICS,
 #printPar {
   display: none; /* Initially hidden */
 }
