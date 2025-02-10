@@ -20,9 +20,9 @@ h1 {
   font-style: normal;
   line-height: normal;
   color: #000;
-  padding-top: 15px;
+  padding-top: 5px;
   padding-left: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 h2 {
@@ -40,7 +40,7 @@ h2 {
 }
 
 .fix {
-  margin-top: 8%;
+  margin-top: 5%;
 }
 
 /* Main content area */
@@ -87,8 +87,12 @@ h2 {
 .form-group label {
   display: block;
   margin-bottom: 5px;
-  font-size: 0.9em;
+  font-weight: 500;
   color: #000;
+}
+
+label:hover {
+  color: green;
 }
 
 .form-group input[type="text"],
@@ -170,11 +174,13 @@ h2 {
 .button-container button {
   background-color: #0a5d03;
   color: #fff;
+  font-family: Poppins;
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
   font-size: 1rem;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
 .print-button {
@@ -235,6 +241,7 @@ h2 {
 /* print ptr */
 
 @media print {
+
   .container,
   .sidebar {
     size: A4;
@@ -267,18 +274,22 @@ h2 {
 
 .form-group5 {
   display: flex;
-  align-items: flex-start; /* Aligns items to the top */
-  gap: 20px; /* Adds spacing between elements */
+  align-items: flex-start;
+  /* Aligns items to the top */
+  gap: 20px;
+  /* Adds spacing between elements */
 }
 
-.form-group5 > div {
+.form-group5>div {
   display: flex;
-  flex-direction: column; /* Ensures label and textarea stack properly */
+  flex-direction: column;
+  /* Ensures label and textarea stack properly */
   flex: 1;
 }
 
 .form-group5 label {
-  margin-bottom: 5px; /* Adds spacing between label and input field */
+  margin-bottom: 5px;
+  /* Adds spacing between label and input field */
 }
 
 

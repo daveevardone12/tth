@@ -30,7 +30,7 @@ body::-webkit-scrollbar {
   background-color: white;
   border-radius: 10px;
   width: -webkit-fill-available;
-  margin-top: 8%;
+  margin-top: 5%;
   margin-right: 10px;
 }
 
@@ -42,10 +42,10 @@ h1 {
   line-height: normal;
   color: #000;
   padding-left: 20px;
-  padding-top: 15px;
+  padding-top: 5px;
   /* border-bottom: 1px solid #ccc; */
   /* padding-bottom: 10px; */
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 h2 {
@@ -343,16 +343,19 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-family: Poppins;
 }
 
 .save-button {
   background-color: #095c02;
   color: white;
+  transition: all 0.3s ease-in-out;
 }
 
 .print-button {
   background-color: #095c02;
   color: white;
+  transition: all 0.3s ease-in-out;
 }
 button:hover {
   background-color: #1d8d01;

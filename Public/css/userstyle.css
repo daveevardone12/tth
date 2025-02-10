@@ -21,7 +21,7 @@ body {
   width: calc(100%); /* Adjust to leave space for the 300px sidebar and padding */
   margin-left: 10px; /* Ensure it starts after the sidebar */
   padding: 20px;
-  margin-top: 8%;
+  margin-top: 5%;
   box-sizing: border-box; /* Include padding in the element's total width */
 }
 
@@ -40,9 +40,9 @@ h1 {
   font-style: normal;
   line-height: normal;
   color: #000;
-  padding-top: 15px;
+  padding-top: 5px;
   padding-left: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   width: 100%; /* Make the line span the full width of the container */
   text-align: left; /* Align the text to the left */
 }
@@ -74,7 +74,6 @@ h1 {
   position: relative; /* Ensure the logout button is positioned relative to the box */
   /* background-color: white; */
   border-radius: 12px;
-  
   padding: 0 20px;
   padding-right: 20px;
   margin-bottom: 20px;
@@ -82,13 +81,16 @@ h1 {
 
 .box h2 {
   color: #0a5d03;
-  font-size: 1.2rem;
+  font-family: Poppins;
+  font-size: 1.7rem;
   font-weight: 600;
   margin-bottom: 20px;
   text-align: left; /* Ensure h2 aligns to the left */
   border-bottom: 1px solid grey;
   margin-bottom: 20px;
   padding-bottom: 10px;
+  letter-spacing: 0 !important;
+  text-shadow: none !important;
 }
 
 /* Form Layout */

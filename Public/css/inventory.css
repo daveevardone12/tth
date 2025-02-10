@@ -467,6 +467,7 @@ input[type="radio"] {
   margin-left: 10px;
   margin-right: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
 }
 
 .search-icon:hover {
@@ -534,4 +535,9 @@ option {
     color: white;
     background-color:#095c02;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+.lala:hover {
+  background-color: #1d8d01;
 }

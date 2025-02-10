@@ -31,7 +31,7 @@ body::-webkit-scrollbar {
   background-color: white;
   border-radius: 10px;
   width: -webkit-fill-available;
-  margin-top: 8%;
+  margin-top: 5%;
   margin-right: 10px;
 }
 
@@ -42,8 +42,8 @@ h1 {
   font-style: normal;
   line-height: normal;
   color: #000;
-  padding-top: 15px;
-  margin-bottom: 20px;
+  padding-top: 5px;
+  margin-bottom: 5px;
   padding-left: 20px;
 }
 
@@ -124,14 +124,14 @@ h2 {
   line-height: normal;
 }
 
-.form-group label {
+/* .form-group label {
   color: #000;
   font-family: Poppins;
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-}
+} */
 
 .form-group select {
   width: 100%;
@@ -370,16 +370,19 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-family: Poppins;
 }
 
 .save-button {
   background-color: #095c02;
   color: white;
+  transition: all 0.3s ease-in-out;
 }
 
 .print-button {
   background-color: #095c02;
   color: white;
+  transition: all 0.3s ease-in-out;
 }
 
 button:hover {
@@ -422,3 +425,6 @@ button:hover {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   flex-direction: column;
 }
+
+
+
