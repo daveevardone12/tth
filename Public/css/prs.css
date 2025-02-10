@@ -57,9 +57,9 @@ h1 {
   font-style: normal;
   line-height: normal;
   color: #000;
-  padding-top: 15px;
+  padding-top: 5px;
   padding-left: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 h2 {
@@ -79,11 +79,15 @@ h2 {
 label {
   display: block;
   margin-bottom: 5px;
-  font-weight: bold;
+  font-weight: 500;
+}
+
+label:hover {
+  color: green;
 }
 
 .fix {
-  margin-top: 8%;
+  margin-top: 5%;
 }
 
 input,
@@ -153,11 +157,13 @@ textarea {
 button {
   background-color: #095c02;
   color: #fff;
+  font-family: Poppins;
   border: none;
   padding: 10px 20px;
-  font-size: 14px;
+  font-size: 1rem;
   border-radius: 4px;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
 button:hover {

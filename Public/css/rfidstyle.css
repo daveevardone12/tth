@@ -49,9 +49,9 @@ h1 {
   font-style: normal;
   line-height: normal;
   color: #000;
-  padding-top: 15px;
+  padding-top: 5px;
   padding-left: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 .search-bar input {
@@ -72,6 +72,7 @@ h1 {
   font-family: Poppins;
   margin-top: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
 }
 
 .search-add {

@@ -36,7 +36,7 @@
               <th>DATE & TIME</th>
               <th>STATUS</th>
               <th>EMAIL</th>
-              <!-- <th></th> -->
+              <th></th> 
             </tr>
           </thead>
           <tbody id="rfid-table-body"></tbody>
@@ -169,10 +169,19 @@
 
       .popup-content .submits {
         background-color: #095c02;
+        transition: all 0.3s ease-in-out;
       }
 
       .popup-content .cancels {
         background-color: maroon;
+        transition: all 0.3s ease-in-out;
+      }
+      .popup-content .submits:hover {
+        background-color: #1d8d01;
+      }
+
+      .popup-content .cancels:hover {
+        background-color: rgb(192, 0, 0);
       }
 
       .popup-content button {
@@ -183,10 +192,6 @@
         cursor: pointer;
         color: #ccc;
         font-family: Poppins;
-      }
-
-      .popup-content button:hover {
-        background-color: #ddd;
       }
     </style>
     // Assign

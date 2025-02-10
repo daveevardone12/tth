@@ -10,7 +10,8 @@ body {
 }
 
 body::-webkit-scrollbar {
-  display: none; /* Hide scrollbar for Webkit browsers (Chrome, Safari, etc.) */
+  display: none;
+  /* Hide scrollbar for Webkit browsers (Chrome, Safari, etc.) */
 }
 
 .main-content {
@@ -76,8 +77,8 @@ h1 {
   line-height: normal;
   color: #000;
   padding-left: 20px;
-  padding-top: 15px;
-  margin-bottom: 20px;
+  padding-top: 5px;
+  margin-bottom: 5px;
 }
 
 h2 {
@@ -97,11 +98,15 @@ h2 {
 label {
   display: block;
   margin-bottom: 5px;
-  font-weight: bold;
+  font-weight: 500;
+}
+
+label:hover {
+  color: green;
 }
 
 .fix {
-  margin-top: 8%;
+  margin-top: 5%;
 }
 
 input,
@@ -121,7 +126,7 @@ textarea {
   gap: 50px;
 }
 
-.form-group0 > div {
+.form-group0>div {
   flex: 1;
 }
 
@@ -130,7 +135,7 @@ textarea {
   gap: 10px;
 }
 
-.form-group1 > div {
+.form-group1>div {
   flex: 1;
 }
 
@@ -139,7 +144,7 @@ textarea {
   gap: 10px;
 }
 
-.form-group2 > div {
+.form-group2>div {
   flex: 1;
 }
 
@@ -148,7 +153,7 @@ textarea {
   gap: 10px;
 }
 
-.form-group3 > div {
+.form-group3>div {
   flex: 1;
 }
 
@@ -157,7 +162,7 @@ textarea {
   gap: 20px;
 }
 
-.form-group4 > div {
+.form-group4>div {
   flex: 1;
 }
 
@@ -166,7 +171,7 @@ textarea {
   gap: 10px;
 }
 
-.form-group5 > div {
+.form-group5>div {
   flex: 1;
 }
 
@@ -182,7 +187,7 @@ textarea {
   margin-bottom: 15px;
 }
 
-.form-row > div {
+.form-row>div {
   flex: 1;
 }
 
@@ -192,7 +197,8 @@ textarea {
 }
 
 .checkbox-group input[type="checkbox"] {
-  margin-left: 0px; /* Adjust the spacing between the checkbox and text */
+  margin-left: 0px;
+  /* Adjust the spacing between the checkbox and text */
 }
 
 .checkbox-group1 {
@@ -202,7 +208,8 @@ textarea {
 }
 
 .checkbox-group1 input[type="checkbox"] {
-  margin-left: 0px; /* Adjust the spacing between the checkbox and text */
+  margin-left: 0px;
+  /* Adjust the spacing between the checkbox and text */
 }
 
 .checkbox-group2 {
@@ -242,15 +249,17 @@ input[type="checkbox"] {
 button {
   background-color: #0a5d03;
   color: #fff;
+  font-family: Poppins;
   border: none;
   padding: 10px 20px;
   font-size: 1rem;
   border-radius: 4px;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
 button:hover {
-  background-color: #1d8d01 ;
+  background-color: #1d8d01;
 }
 
 .btn-secondary {
@@ -263,6 +272,7 @@ button:hover {
 }
 
 @media print {
+
   .container,
   .main-content,
   .sidebar {
@@ -288,23 +298,22 @@ button:hover {
   margin-top: -15px;
 }
 
-  .grid-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  } 
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
 
-  select {
-    width: 100%;
-  }
+select {
+  width: 100%;
+}
 
-  .mas-header {
-    position: fixed;
-    z-index: 1;
-    background-color: white;
-    width: calc(100% - 16%);
-    margin-left: -30px;
-    padding-right: 20px;
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
-  }
-  
+.mas-header {
+  position: fixed;
+  z-index: 1;
+  background-color: white;
+  width: calc(100% - 16%);
+  margin-left: -30px;
+  padding-right: 20px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
+}
