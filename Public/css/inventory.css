@@ -234,8 +234,9 @@ body {
 }
 
 .action-button {
-  background-color: white;
+  background-color: #095c02;
   border: 1px solid #ccc;
+  color: white;
   padding: 8px 16px;
   cursor: pointer;
   display: flex;
@@ -243,6 +244,11 @@ body {
   gap: 5px;
   border-radius: 4px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+.action-button:hover {
+  background-color: #1d8d01;
 }
 
 .filt {
@@ -483,12 +489,21 @@ input[type="radio"] {
   }
 
   #printICS,
-  #printPar {
+  #printPar,
+  #printPhotos,
+  #printOffice {
     display: none; /* Default to hidden */
+  }
+
+  .show-office #printOffice {
+    display: block !important;
   }
 
   /* Show ICS when printing */
   .show-ics #printICS {
+    display: block !important;
+  }
+  .show-ics #printPhotos {
     display: block !important;
   }
 
@@ -496,11 +511,11 @@ input[type="radio"] {
   .show-par #printPar {
     display: block !important;
   }
-
 }
 
 #printICS,
-#printPar {
+#printPar,
+#printPhotos {
   display: none; /* Initially hidden */
 }
 
@@ -526,18 +541,27 @@ option {
 }
 
 .lala {
-    width: 18%;
-    cursor: pointer;
-    padding: 10px 5px;
-    border: 1px solid #ccc !important;
-    border-radius: 4px;
-    font-size: 14px;
-    color: white;
-    background-color:#095c02;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease-in-out;
+  width: 18%;
+  cursor: pointer;
+  padding: 10px 5px;
+  border: 1px solid #ccc !important;
+  border-radius: 4px;
+  font-size: 14px;
+  color: white;
+  background-color: #095c02;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
 }
 
 .lala:hover {
   background-color: #1d8d01;
 }
+
+/* .print-button {
+  background-color: #095c02;
+  color: white;
+  transition: all 0.3s ease-in-out;
+}
+button:hover {
+  background-color: #1d8d01;
+} */
