@@ -159,24 +159,23 @@
       }
 
       #date-time {
-    font-size: 14px;
-    font-family: Poppins;
-    color: #000;
-    font-weight: bold;
-    background: white;
-    padding: 5px 10px;
-    border-radius: 0px 0px 8px 8px;
-    text-align: center;
-    gap: 0;
-    display: flex;
-    flex-direction: column;
-    width: 150px;
-    margin-left: 548px;
-    margin-top: -53px;
-    margin-bottom: 13px;
-    position: sticky;
-}
-
+        font-size: 14px;
+        font-family: Poppins;
+        color: #000;
+        font-weight: bold;
+        background: white;
+        padding: 5px 10px;
+        border-radius: 0px 0px 8px 8px;
+        text-align: center;
+        gap: 0;
+        display: flex;
+        flex-direction: column;
+        width: 150px;
+        margin-left: 548px;
+        margin-top: -53px;
+        margin-bottom: 13px;
+        position: sticky;
+      }
     </style>
   </head>
 
@@ -193,15 +192,13 @@
                 <div id="day"></div>
                 <div id="time"></div>
                 <div id="date"></div>
-            </div>
+              </div>
             </div>
             <div class="profile"></div>
           </div>
 
           <div class="right-allign">
-            <p>
-              
-            </p>
+            <p></p>
           </div>
         </div>
 
@@ -355,31 +352,34 @@
       </div>
     </div>
 
-<script>
-  function updateDateTime() {
-    const now = new Date();
+    <script>
+      function updateDateTime() {
+        const now = new Date();
 
-    // Get the short day of the week (e.g., "SAT" instead of "Saturday")
-    const dayOfWeek = now.toLocaleDateString("en-US", { weekday: 'short' }).toUpperCase();
+        // Get the short day of the week (e.g., "SAT" instead of "Saturday")
+        const dayOfWeek = now.toLocaleDateString("en-US").toUpperCase();
 
-    // Format the time (e.g., 12:34:56 PM)
-    const timeOptions = { hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true };
-    const formattedTime = now.toLocaleTimeString("en-US", timeOptions);
+        // Format the time (e.g., 12:34:56 PM)
+        const timeOptions = {
+          hour: "numeric",
+          minute: "2-digit",
 
-    // Format the date (e.g., January 31, 2024)
-    const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
-    const formattedDate = now.toLocaleDateString("en-US", dateOptions);
+          hour12: true,
+        };
+        const formattedTime = now.toLocaleTimeString("en-US", timeOptions);
 
-    // Update the HTML elements
-    document.getElementById("day").textContent = dayOfWeek;
-    document.getElementById("time").textContent = formattedTime;
-    document.getElementById("date").textContent = formattedDate;
-}
+        // Format the date (e.g., January 31, 2024)
+        const dateOptions = { year: "numeric", month: "long" };
+        const formattedDate = now.toLocaleDateString("en-US", dateOptions);
 
-updateDateTime(); // Call on page load
-setInterval(updateDateTime, 1000); // Update every second
+        // Update the HTML elements
 
-</script>
+        document.getElementById("time").textContent = formattedTime;
+        document.getElementById("date").textContent = formattedDate;
+      }
 
+      updateDateTime(); // Call on page load
+      setInterval(updateDateTime, 1000); // Update every second
+    </script>
   </body>
 </html>
