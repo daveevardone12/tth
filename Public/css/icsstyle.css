@@ -134,7 +134,7 @@ h2 {
 }
 
 .form-group select {
-  width: 100%;
+  width: 104%;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -282,7 +282,7 @@ label:hover {
   cursor: pointer;
   border-radius: 5px; /* Smooth corners */
   transition: border-color 0.3s ease; /* Smooth border transition */
-  width: 370px;
+  width: 395px;
 }
 
 /* Trigger hover effect for custom dropdowns */

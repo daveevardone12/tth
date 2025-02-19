@@ -369,7 +369,7 @@ async function processRFIDData() {
             try {
               const emailData = {
                 to: row.email,
-                subject: "Tim Item ginawas",
+                subject: "Item has been out in the designated zone",
                 text: `Good Day!, ${row.accountable}`,
                 html: `<p>Good Day! <strong>${row.accountable}</strong>, your item <strong>${row.item_name}</strong> has been marked as OUT at <strong>${formattedTimestamp}</strong> in <strong>${row.location}</strong>.</p>`,
               };

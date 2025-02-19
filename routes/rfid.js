@@ -116,6 +116,8 @@ router.get("/", async (req, res) => {
   const isAjax = req.query.ajax === "true";
 
   try {
+    const userData = req.user;
+    const role = userData.role;
     const { getRFIDList, totalPages } = await fetchRFIDList(page, limit);
 
     if (isAjax) {
@@ -125,6 +127,7 @@ router.get("/", async (req, res) => {
         currentPage: page,
         totalPages,
         limit,
+        role,
       });
     }
 
@@ -133,6 +136,7 @@ router.get("/", async (req, res) => {
       currentPage: page,
       totalPages,
       limit,
+      role,
     });
   } catch (err) {
     console.error("Error: ", err.message, err.stack);

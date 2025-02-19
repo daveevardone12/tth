@@ -12,7 +12,9 @@ const upload = multer({ storage: storage });
 
 router.get("/", ensureAuthenticated, (req, res) => {
   const success = req.query.success === "true";
-  res.render("par", { success });
+  const userData = req.user;
+  const role = userData.role;
+  res.render("par", { success, role });
 });
 
 router.post(

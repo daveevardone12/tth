@@ -77,6 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
       1040508000: "Disaster Response and Rescue Equipment (1040508000)",
       1040509000: "Military, Police and Security Equipment (1040509000)",
       1040512000: "Sports Equipment (1040512000)",
+      " ": "",
     };
 
     return uacsMap[uacsValue] || "";
@@ -105,11 +106,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     <td>${invent.item_name}</td>
                     <td>${invent.description}</td>
                     <td>${invent.property_no}</td>
-                    <td></td>
+                    <td>${invent.unit}</td>
                     <td>${invent.unit_cost}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>${invent.quantity}</td>
+                    <td>${invent.quantity}</td>
+                    <td>${invent.quantity}</td>
                     <td>1</td>
                     <td>${invent.accountable}</td>
                     <td>${invent.location}</td>
@@ -119,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <div class="menu-container">
                             <i class="fas fa-ellipsis-v menu-icon"></i>
                             <div class="dropdown-menu">
-                                <button onclick="handleAction('Update')">Update</button>
+                                
                                 <button data-table=true data-row='${JSON.stringify(
                                   invent
                                 )}' onclick="printDocument(this)">Print</button>

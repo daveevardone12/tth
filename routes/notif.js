@@ -8,7 +8,8 @@ router.get("/", async (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 10;
   const isAjax = req.query.ajax === "true";
-
+  const userData = req.user;
+  const role = userData.role;
   try {
     const { getRFIDList } = await fetchRFIDList();
 
@@ -21,6 +22,7 @@ router.get("/", async (req, res) => {
 
     res.render("notif", {
       getRFIDList,
+      role,
     });
   } catch (err) {
     console.error("Error: ", err.message, err.stack);
