@@ -45,6 +45,14 @@ router.post("/login/submit", async (req, res, next) => {
       return res.redirect("/login");
     }
 
+    // Validate role selection
+    const selectedRole = req.body.role; // Role selected by the user in the form
+    if (!selectedRole || selectedRole !== user.role) {
+      console.log("Role mismatch:", selectedRole, "vs", user.role);
+      req.flash("error", "Incorrect role selected. Please try again.");
+      return res.redirect("/login");
+    }
+
     req.login(user, (err) => {
       if (err) {
         console.error("Login error:", err);

@@ -11,7 +11,8 @@ router.get("/", ensureAuthenticated, async (req, res) => {
   const uacsCode = req.query.uacs || "";
 
   console.log("Received uacsCode:", req.query);
-
+  const userData = req.user;
+  const role = userData.role;
   try {
     const { getInventoryList, totalPages } = await fetchInventoryList(
       page,
@@ -33,6 +34,7 @@ router.get("/", ensureAuthenticated, async (req, res) => {
       currentPage: page,
       totalPages,
       limit,
+      role,
     });
   } catch (err) {
     console.error("Detailed Error in /Inventory:", err.stack);
@@ -42,148 +44,127 @@ router.get("/", ensureAuthenticated, async (req, res) => {
   }
 });
 
-router.get("/search", ensureAuthenticated, async (req, res) => {
-  const page = parseInt(req.query.page) || 1;
-  const limit = parseInt(req.query.limit) || 11;
-  const offset = (page - 1) * limit;
-  const { query } = req.query;
+router.get("/search", async (req, res) => {
+  const { query = "", page = 1, limit = 10 } = req.query;
+
+  console.log("Received search request:", { query, page, limit });
 
   try {
-    let searchResult;
-
-    if (!query) {
-      searchResult = await tthPool.query(
-        `SELECT * FROM property_acknowledgement_receipt ORDER BY date_acquired LIMIT $1 OFFSET $2`,
-        [limit, offset]
-      );
-    } else {
-      searchResult = await tthPool.query(
-        `SELECT * FROM property_acknowledgement_receipt WHERE
-         accountable ILIKE $1
-         OR location ILIKE $1
-         LIMIT 12`,
-        [`%${query}%`]
-      );
-    }
-
-    const data = searchResult.rows.map((row) => ({
-      ...row,
-    }));
-
-    res.json({ getInventoryList: data });
-  } catch (err) {
-    console.error("Error: ", err);
-    res.status(500).send("An error occurred during the search.");
+    const inventory = await fetchInventoryList(page, limit, query);
+    res.json(inventory);
+  } catch (error) {
+    console.error("Error in /Inventory/search route:", error);
+    res.status(500).json({ error: error.message });
   }
 });
 
 router.get("/sort", ensureAuthenticated, async (req, res) => {
-  const page = parseInt(req.query.page, 11) || 1;
-  const limit = parseInt(req.query.limit, 11) || 11;
-  const offset = (page - 1) * limit;
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 11;
+  const uacsCode = req.query.uacs || "";
   const { date, docName } = req.query;
+  const isAjax = req.query.ajax === "true";
 
   try {
-    let searchResult;
+    const { getInventoryList, totalPages } = await fetchInventoryList(
+      page,
+      limit,
+      uacsCode
+    );
 
-    if (!date && !docName) {
-      // Default sorting by date_acquired if no parameters are provided
-      searchResult = await tthPool.query(
-        `SELECT * FROM property_acknowledgement_receipt 
-         ORDER BY id ASC
-         LIMIT $1 OFFSET $2`,
-        [limit, offset]
-      );
-    } else {
-      // Construct dynamic ORDER BY clause based on query parameters
-      let orderBy = [];
-
+    // Sort the retrieved data based on query parameters
+    const sortedData = [...getInventoryList].sort((a, b) => {
+      let result = 0;
       if (date) {
-        orderBy.push(`date_acquired ${date === "ascending" ? "ASC" : "DESC"}`);
+        result =
+          date === "ascending"
+            ? new Date(a.date_acquired) - new Date(b.date_acquired)
+            : new Date(b.date_acquired) - new Date(a.date_acquired);
       }
-      if (docName) {
-        orderBy.push(`item_name ${docName === "a-z" ? "ASC" : "DESC"}`);
+      if (docName && result === 0) {
+        result =
+          docName === "a-z"
+            ? a.item_name.localeCompare(b.item_name)
+            : b.item_name.localeCompare(a.item_name);
       }
+      return result;
+    });
 
-      const orderByClause =
-        orderBy.length > 0 ? `ORDER BY ${orderBy.join(", ")}` : "";
-
-      searchResult = await tthPool.query(
-        `SELECT * FROM property_acknowledgement_receipt 
-         ${orderByClause} 
-         LIMIT $1 OFFSET $2`,
-        [limit, offset]
-      );
+    if (isAjax) {
+      return res.json({
+        getInventoryList: sortedData,
+        currentPage: page,
+        totalPages,
+        limit,
+      });
     }
 
-    // Map and return data
-    const data = searchResult.rows.map((row) => ({ ...row }));
-    res.json({ getInventoryList: data });
+    res.render("inventory", {
+      getInventoryList: sortedData,
+      currentPage: page,
+      totalPages,
+      limit,
+    });
   } catch (err) {
-    console.error("Error: ", err);
-    res.status(500).send("An error occurred during the search.");
+    console.error("Error in /sort:", err);
+    res
+      .status(500)
+      .json({ message: "Internal Server Error", error: err.message });
   }
 });
 
-async function fetchInventoryList(page, limit, uacsCode) {
+async function fetchInventoryList(page, limit, searchQuery = "") {
   const offset = (page - 1) * limit;
+  let params = [limit, offset]; // Default parameters
+  let whereClause = "";
 
   try {
     console.log(
-      `Fetching inventory list: page=${page}, limit=${limit}, uacsCode=${uacsCode}`
+      `Fetching inventory list: page=${page}, limit=${limit}, searchQuery=${searchQuery}`
     );
 
+    // Add filtering condition only if searchQuery is provided
+    if (searchQuery.trim() !== "") {
+      whereClause = `
+        WHERE (
+          accountable ILIKE $3 OR 
+          location ILIKE $3 OR 
+          CAST(uacs_code AS TEXT) ILIKE $3
+        )
+      `;
+      params.push(`%${searchQuery}%`); // Ensure the searchQuery parameter is last
+    }
+
     const query = `
-  SELECT item_name, accountable, unit_cost, date_acquired, location, category, 
-         uacs_code, inventory_item_no, burs_no, estimated_useful_life, po_no, 
-         code, iar, supplier, serial_no, property_no, email, entity_name, 
-         fund_cluster, NULL AS par_no, ics_no AS document_no, quantity, unit, 
-         date, description, photo1, photo2, 'ICS' AS type
-  FROM inventory_custodian_slip 
-  WHERE uacs_code LIKE $1
+      SELECT item_name, accountable, unit_cost, date_acquired, location, category, 
+             uacs_code, inventory_item_no, burs_no, estimated_useful_life, 
+             po_no, code, iar, supplier, serial_no, property_no, email, 
+             entity_name, fund_cluster, ics_no, quantity, unit, date, 
+             description, photo1, photo2, 'ICS' AS type
+      FROM inventory_custodian_slip
+      ${whereClause}
 
-  UNION ALL
+      UNION ALL
 
-  SELECT item_name, accountable, unit_cost, date_acquired, location, category, 
-         uacs_code, inventory_item_no, burs_no, estimated_useful_life, po_no, 
-         code, iar, supplier, serial_no, property_no, email, entity_name, 
-         fund_cluster, par_no, NULL AS document_no, quantity, unit, 
-         date, description, photo1, photo2, 'PAR' AS type
-  FROM property_acknowledgement_receipt 
-  WHERE uacs_code LIKE $1
+      SELECT item_name, accountable, unit_cost, date_acquired, location, category, 
+             uacs_code, inventory_item_no, burs_no, estimated_useful_life, 
+             po_no, code, iar, supplier, serial_no, property_no, email, 
+             entity_name, fund_cluster, par_no, quantity, unit, date, 
+             description, photo1, photo2, 'PAR' AS type
+      FROM property_acknowledgement_receipt
+      ${whereClause}
 
-  LIMIT $2 OFFSET $3
-`;
+      LIMIT $1 OFFSET $2
+    `;
 
-    console.log("Executing main inventory query...");
-    const { rows } = await tthPool.query(query, [
-      `%${uacsCode}%`,
-      limit,
-      offset,
-    ]);
+    console.log("Executing query with:", params);
+    const { rows } = await tthPool.query(query, params);
 
-    console.log(`Fetched ${rows.length} rows from inventory tables.`);
+    console.log(`Fetched ${rows.length} rows from inventory.`);
 
-    // Query to count total rows
-    const countQuery = `
-  SELECT COUNT(*) AS total_count
-  FROM (
-    SELECT 1 FROM inventory_custodian_slip WHERE uacs_code LIKE $1
-    UNION ALL
-    SELECT 1 FROM property_acknowledgement_receipt WHERE uacs_code LIKE $1
-  ) AS merged_tables
-`;
-
-    console.log("Executing count query...");
-    const countResult = await tthPool.query(countQuery, [`%${uacsCode}%`]);
-
-    const totalCount = parseInt(countResult.rows[0].total_count);
-    console.log(`Total count: ${totalCount}`);
-
-    const totalPages = Math.ceil(totalCount / limit);
-    return { getInventoryList: rows, totalPages };
+    return { getInventoryList: rows };
   } catch (err) {
-    console.error("Detailed Error in fetchInventoryList():", err.stack);
+    console.error("Error in fetchInventoryList():", err.stack);
     throw new Error(`Error fetching inventory list: ${err.message}`);
   }
 }

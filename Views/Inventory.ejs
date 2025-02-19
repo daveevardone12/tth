@@ -66,9 +66,7 @@
 
                         <div class="controls">
                             <div class="filter-content">
-                                <button id="sort-by-btn" class="action-button">
-                                    Sort by <img src="/Public/images/clarity--sort-by-line.svg" alt="" class="srt">
-                                </button>
+                                <button type="button" class="action-button" onclick="printDocument(this)" data-office=true>Print</button>
 
                                 
                                 <div class="UACS">
@@ -91,6 +89,7 @@
                                       <option value="1040508000">Disaster Response and Rescue Equipment #1040508000</option>
                                       <option value="1040509000">Military, Police and Security Equipment #1040509000</option>
                                       <option value="1040512000">Sports Equipment #1040512000</option>
+                                      <option value=" ">Cancel</option>
                                     </select>
                                   </div>
 
@@ -178,46 +177,7 @@
             </tbody>
             
         </table>
-        <table style="display: none;">
-            <thead class="t-head" >
-                <tr>
-                    <th>Article</th>
-                    <th>Description</th>
-                    <th>Property Number</th>
-                    <th>Unit</th>
-                    <th>Value Unit</th>
-                    <th>Qty. per P Card</th>
-                    <th>Qty. per P Count</th>
-
-                    <th colspan="2">
-                        <div>
-                          Shortage/Overage
-                          <div style="display: flex; margin-top: 5px;">
-          
-                            <div style="flex: 1; border-right: 2px solid white;">Qty.</div>
-                            <div style="flex: 1;">Value</div>
-                          </div>
-                        </div>
-                      </th>
-
-                      <th colspan="2">
-                        <div>
-                          Remarks
-                          <div style="display: flex; margin-top: 5px;">
-          
-                            <div style="flex: 1; border-right: 2px solid white;">Receipted by:</div>
-                            <div style="flex: 1;">Location</div>
-                          </div>
-                        </div>
-                      </th>
-
-                    <th>Date Acquired</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody id="hiddenInventoryTableBody">
-            </tbody>
-        </table>
+        
 
         </div>
         
@@ -378,7 +338,10 @@
             });
         </script>
 
+
+
 </body>
 <%- include("./includes/print-ics") %>
 <%- include("./includes/print-par") %>
+<%- include("./includes/print-officeequipment") %>
 </html>

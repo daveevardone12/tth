@@ -14,7 +14,8 @@ router.get("/dashboard", ensureAuthenticated, async (req, res) => {
   const location = req.query.location || null; // Optional location filter
 
   const currentDateTime = new Date();
-
+  const userData = req.user;
+  const role = userData.role;
   try {
     if (ajaxType === "true") {
       // Handle Inventory Data AJAX Request
@@ -118,6 +119,7 @@ router.get("/dashboard", ensureAuthenticated, async (req, res) => {
         totalDisasterResponseandRescueEquipment,
         totalMilitaryPoliceandSecurityEquipment,
         totalSportsEquipment,
+        role,
       });
     }
   } catch (err) {

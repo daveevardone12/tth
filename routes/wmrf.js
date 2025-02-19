@@ -14,7 +14,9 @@ const upload = multer({ storage: storage });
 // GET route to render the form
 router.get("/", ensureAuthenticated, (req, res) => {
   const success = req.query.success === "true";
-  res.render("wmrf", { success });
+  const userData = req.user;
+  const role = userData.role;
+  res.render("wmrf", { success, role });
 });
 
 router.get("/office", async (req, res) => {

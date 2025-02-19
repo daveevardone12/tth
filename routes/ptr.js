@@ -7,7 +7,9 @@ const { date } = require("joi");
 
 router.get("/", ensureAuthenticated, (req, res) => {
   const success = req.query.success === "true";
-  res.render("ptr", { success });
+  const userData = req.user;
+  const role = userData.role;
+  res.render("ptr", { success, role });
 });
 
 router.get("/accountable", async (req, res) => {

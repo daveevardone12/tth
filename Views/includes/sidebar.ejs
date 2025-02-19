@@ -42,20 +42,26 @@
                 </a>
                 <ul id="dropdowns" style="display: none;">
                     <li><a href="/prs">Property Return Slip</a></li>
+
                     <li><a href="/mrer">Maintenance Recommendation Evaluation Report Form</a></li>
+                    
                     <li><a href="/wmrf">Waste Material Report Form</a></li>
+                   
                 </ul>
             </li>
             
             <li><a href="/ptr"><img src="/Public/images/bxs--user-account.svg" alt="" class="ptr">Property Transfer Receipt</a></li>
             
-            <li><a href="/rfid"><img src="" alt="" class="rfid">RFID</a></li>
-            
-            <li><a href="/notif"><img src="/Public/images/mingcute--notification-line.svg" alt="" class="notif">Logs</a></li>
-            
+            <% if (role == "admin"){ %>
 
+                <li><a href="/rfid"><img src="" alt="" class="rfid">RFID</a></li>
+                
+                <li><a href="/notif"><img src="/Public/images/mingcute--notification-line.svg" alt="" class="notif">Logs</a></li>
+                
+           <% } %>
+                
                 <li><a href="/user"><img src="/Public/images/cuida--dashboard-outline.svg" alt="" class="use">User Account</a></li>
-          
+                    
             <div class="footers">
             <li>
                 <button class="logout-btn" onclick="confirmLogout()">
