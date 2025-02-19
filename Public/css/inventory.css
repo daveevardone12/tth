@@ -201,7 +201,8 @@ table tbody tr:nth-of-type(even) {
 }
 
 .dropdown-menu button:hover {
-  background-color: #5140f0;
+  background-color: #095c02;
+  color: white;
 }
 
 /* .dropdown-menu button :hover {

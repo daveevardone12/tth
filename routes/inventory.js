@@ -11,7 +11,8 @@ router.get("/", ensureAuthenticated, async (req, res) => {
   const uacsCode = req.query.uacs || "";
 
   console.log("Received uacsCode:", req.query);
-
+  const userData = req.user;
+  const role = userData.role;
   try {
     const { getInventoryList, totalPages } = await fetchInventoryList(
       page,
@@ -33,6 +34,7 @@ router.get("/", ensureAuthenticated, async (req, res) => {
       currentPage: page,
       totalPages,
       limit,
+      role,
     });
   } catch (err) {
     console.error("Detailed Error in /Inventory:", err.stack);
