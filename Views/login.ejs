@@ -13,7 +13,6 @@
   </head>
 
   <body>
-    
     <div class="container" id="container">
       <!-- Sign-Up Section -->
       <div class="success">
@@ -45,8 +44,9 @@
             required
           />
 
-          <label for="role"></label>
-          <select
+          <label for="Role"></label>
+          <input
+            list="roles"
             name="role"
             id="role"
             style="
@@ -60,11 +60,12 @@
               outline: none;
             "
             required
-          >
-            <option value="" disabled selected>Select role</option>
-            <option value="admin">Admin</option>
-            <option value="employee">Employee</option>
-          </select>
+            placeholder="Role"
+          />
+          <datalist id="roles">
+            <option value="Admin"></option>
+            <option value="Employee"></option>
+          </datalist>
 
           <button type="submit">Sign Up</button>
         </form>
@@ -78,11 +79,11 @@
             style="display: flex; align-items: center; justify-content: center"
           >
             <img
-              src="../images/pms.png"
+              src="../images/new_PMS_logo.png"
               alt="PMS Logo"
-              style="width: 110px; display: flex; justify-content: center"
+              style="width: 118px; display: flex; justify-content: center"
             />
-            <p style="margin: 0; color: #fffcc0; font-size: 15px">
+            <p style="margin: 0; color: white; font-size: 17px">
               Property Management System
             </p>
           </div>
@@ -109,9 +110,11 @@
             "
             >Login as:</label
           >
-          <select
-            id="role"
+          <label for="role"></label>
+          <input
+            list="roles"
             name="role"
+            id="role"
             class="form-select"
             style="
               background-color: #eee;
@@ -123,11 +126,13 @@
               width: 100%;
               outline: none;
             "
-          >
-            <option value="" disabled selected>Select role</option>
-            <option value="employee">Employee</option>
-            <option value="admin">Admin</option>
-          </select>
+            required
+            placeholder="Role"
+          />
+          <datalist id="roles">
+            <option value="Employee"></option>
+            <option value="Admin"></option>
+          </datalist>
 
           <label
             for="email"
