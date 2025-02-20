@@ -11,9 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" />
 </head>
 
 <body>
@@ -27,7 +26,7 @@
                 <div class="table-wrapper">
                     <div id="loadingSpinner" style="display:none;">Loading...</div>
                     <table>
-                        <thead class="t-head" >
+                        <thead class="t-head">
                             <tr>
                                 <th>Article</th>
                                 <th>Description</th>
@@ -39,25 +38,25 @@
 
                                 <th colspan="2">
                                     <div>
-                                      Shortage/Overage
-                                      <div style="display: flex; margin-top: 5px;">
-                      
-                                        <div style="flex: 1; border-right: 2px solid white;">Qty.</div>
-                                        <div style="flex: 1;">Value</div>
-                                      </div>
-                                    </div>
-                                  </th>
+                                        Shortage/Overage
+                                        <div style="display: flex; margin-top: 5px;">
 
-                                  <th colspan="2">
-                                    <div>
-                                      Remarks
-                                      <div style="display: flex; margin-top: 5px;">
-                      
-                                        <div style="flex: 1; border-right: 2px solid white;">Receipted by:</div>
-                                        <div style="flex: 1;">Location</div>
-                                      </div>
+                                            <div style="flex: 1; border-right: 2px solid white;">Qty.</div>
+                                            <div style="flex: 1;">Value</div>
+                                        </div>
                                     </div>
-                                  </th>
+                                </th>
+
+                                <th colspan="2">
+                                    <div>
+                                        Remarks
+                                        <div style="display: flex; margin-top: 5px;">
+
+                                            <div style="flex: 1; border-right: 2px solid white;">Receipted by:</div>
+                                            <div style="flex: 1;">Location</div>
+                                        </div>
+                                    </div>
+                                </th>
 
                                 <th>Date Acquired</th>
                                 <th></th>
@@ -66,32 +65,38 @@
 
                         <div class="controls">
                             <div class="filter-content">
-                                <button type="button" class="action-button" onclick="printDocument(this)" data-office=true>Print</button>
+                                <button type="button" class="action-button" onclick="printDocument(this)"
+                                    data-office=true>Print</button>
 
-                                
+
                                 <div class="UACS">
-                                    <select name="UACS" id="uacs-select" class="uacs">  
-                                      <option value="" disabled selected>UACS</option>
-                                      <option value="1060501000">Machinery #1060501000</option>
-                                      <option value="1060502000">Office Equipment #1060502000</option>
-                                      <option value="1060504000">Agricultural and Forestry Equipment #1060504000</option>
-                                      <option value="1060511000">Medical Equipment #1060511000</option>
-                                      <option value="1060512000">Printing Equipment #1060512000</option>
-                                      <option value="1060514000">Technical and Scientific Equipment #1060514000</option>
-                                      <option value="10605990000">Other Machinery and Equipment #10605990000</option>
-                                      <option value="1060601000">Motor Vehicles #1060601000</option>
-                                      <option value="1060701000">Furniture and Fixtures #1060701000</option>
-                                      <option value="1060702000">Books #1060702000</option>
-                                      <option value="1080102000">Software #1080102000</option>
-                                      <option value="1060503000">Information and Communications Technology Equipment #1060503000</option>
-                                      <option value="1040505000">Marine and Fishery Equipment #1040505000</option>
-                                      <option value="1040507000">Communication Equipment #1040507000</option>
-                                      <option value="1040508000">Disaster Response and Rescue Equipment #1040508000</option>
-                                      <option value="1040509000">Military, Police and Security Equipment #1040509000</option>
-                                      <option value="1040512000">Sports Equipment #1040512000</option>
-                                      <option value=" ">Cancel</option>
+                                    <select name="UACS" id="uacs-select" class="uacs">
+                                        <option value="" disabled selected>UACS</option>
+                                        <option value="1060501000">Machinery #1060501000</option>
+                                        <option value="1060502000">Office Equipment #1060502000</option>
+                                        <option value="1060504000">Agricultural and Forestry Equipment #1060504000
+                                        </option>
+                                        <option value="1060511000">Medical Equipment #1060511000</option>
+                                        <option value="1060512000">Printing Equipment #1060512000</option>
+                                        <option value="1060514000">Technical and Scientific Equipment #1060514000
+                                        </option>
+                                        <option value="10605990000">Other Machinery and Equipment #10605990000</option>
+                                        <option value="1060601000">Motor Vehicles #1060601000</option>
+                                        <option value="1060701000">Furniture and Fixtures #1060701000</option>
+                                        <option value="1060702000">Books #1060702000</option>
+                                        <option value="1080102000">Software #1080102000</option>
+                                        <option value="1060503000">Information and Communications Technology Equipment
+                                            #1060503000</option>
+                                        <option value="1040505000">Marine and Fishery Equipment #1040505000</option>
+                                        <option value="1040507000">Communication Equipment #1040507000</option>
+                                        <option value="1040508000">Disaster Response and Rescue Equipment #1040508000
+                                        </option>
+                                        <option value="1040509000">Military, Police and Security Equipment #1040509000
+                                        </option>
+                                        <option value="1040512000">Sports Equipment #1040512000</option>
+                                        <option value=" ">Cancel</option>
                                     </select>
-                                  </div>
+                                </div>
 
 
                             </div>
@@ -170,42 +175,47 @@
                         <button class="close-btn" id="close-filter">Close</button>
                     </div>
                 </div>
-                <div id="updateModal" class="modal" style="display: none;">
+
+                <!-- Modal Overlay -->
+                <div id="updateModal" class="modal-overlay">
                     <div class="modal-content">
-                      <h2>Update Inventory</h2>
-                      <input type="hidden" id="docType">
-                      <label>Item Name: <input type="text" id="updateItemName"></label>
-                      <label>Description: <input type="text" id="updateDescription"></label>
-                      <label>Property No: <input type="text" id="updatePropertyNo"></label>
-                      <label>Unit: <input type="text" id="updateUnit"></label>
-                      <label>Unit Cost: <input type="text" id="updateUnitCost"></label>
-                      <label>Quantity: <input type="number" id="updateQuantity"></label>
-                      <label>Location: <input type="text" id="updateLocation"></label>
-                      <label>Accountable: <input type="text" id="updateAccountable"></label>
-                      <button onclick="submitUpdate()">Save Changes</button>
-                      <button onclick="document.getElementById('updateModal').style.display='none'">Cancel</button>
+                        <h2>Update Inventory</h2>
+                        <input type="hidden" id="docType">
+                        <div class="updatemodal">
+                        <label>Item Name: <input type="text" id="updateItemName"></label>
+                        <label>Description: <input type="text" id="updateDescription"></label>
+                        <label>Property No: <input type="text" id="updatePropertyNo"></label>
+                        <label>Unit: <input type="text" id="updateUnit"></label>
+                        <label>Unit Cost: <input type="text" id="updateUnitCost"></label>
+                        <label>Quantity: <input type="number" id="updateQuantity"></label>
+                        <label>Location: <input type="text" id="updateLocation"></label>
+                        <label>Accountable: <input type="text" id="updateAccountable"></label>
+
+                        <button class="save-btn" onclick="submitUpdate()">Save Changes</button>
+                        <button class="close-btn" onclick="closeUpdateModal()">Cancel</button>
                     </div>
-                  </div>
+                    </div>
+                    
+
+                </div>
+
+                <tbody id="inventoryTableBody">
+                </tbody>
+
+                </table>
+
 
             </div>
 
-            <tbody id="inventoryTableBody">
-            </tbody>
-            
-        </table>
-        
-
+            <nav aria-label="Page navigation" id="paginationNav">
+                <% if (currentPage> 1) { %>
+                    <a href="?page=<%= currentPage - 1 %>&limit=<%= limit %>" aria-label="Previous Page">Previous</a>
+                    <% } %>
+                        <% if (currentPage < totalPages) { %>
+                            <a href="?page=<%= currentPage + 1 %>&limit=<%= limit %>" aria-label="Next Page">Next</a>
+                            <% } %>
+            </nav>
         </div>
-        
-        <nav aria-label="Page navigation" id="paginationNav">
-            <% if (currentPage> 1) { %>
-                <a href="?page=<%= currentPage - 1 %>&limit=<%= limit %>" aria-label="Previous Page">Previous</a>
-                <% } %>
-                    <% if (currentPage < totalPages) { %>
-                        <a href="?page=<%= currentPage + 1 %>&limit=<%= limit %>" aria-label="Next Page">Next</a>
-                        <% } %>
-        </nav>
-    </div>
         </div>
         </div>
         <script src="../js/dashboard-inventory-api.js"></script>
@@ -264,7 +274,7 @@
                     sortTable(); // Reset sorting and reapply sorting logic
                 };
 
-         
+
 
                 // Close Overlays
                 closeOverlay(closeSortBy, sortByOverlay);
@@ -283,7 +293,7 @@
                     filterOverlay.classList.add("hidden");
                 });
 
-            
+
                 // Sorting Logic
                 const sortTable = () => {
                     const rows = Array.from(document.querySelectorAll("tbody tr"));
@@ -355,9 +365,43 @@
         </script>
 
 
+        <script>
+             function openUpdateModal(button) {
+      const data = JSON.parse(button.getAttribute('data-row'));
+
+      document.getElementById('updateItemName').value = data.itemName || '';
+      document.getElementById('updateDescription').value = data.description || '';
+      document.getElementById('updatePropertyNo').value = data.propertyNo || '';
+      document.getElementById('updateUnit').value = data.unit || '';
+      document.getElementById('updateUnitCost').value = data.unitCost || '';
+      document.getElementById('updateQuantity').value = data.quantity || '';
+      document.getElementById('updateLocation').value = data.location || '';
+      document.getElementById('updateAccountable').value = data.accountable || '';
+
+      document.getElementById('updateModal').style.display = 'flex';
+    }
+
+    function closeUpdateModal() {
+      document.getElementById('updateModal').style.display = 'none';
+    }
+
+    function submitUpdate() {
+      alert('Update submitted!'); // Replace this with actual submission logic
+      closeUpdateModal();
+    }
+
+    // Close modal if clicking outside content
+    window.onclick = function(event) {
+      const modal = document.getElementById('updateModal');
+      if (event.target === modal) {
+        closeUpdateModal();
+      }
+    };
+        </script>
 
 </body>
 <%- include("./includes/print-ics") %>
-<%- include("./includes/print-par") %>
-<%- include("./includes/print-officeequipment") %>
+    <%- include("./includes/print-par") %>
+        <%- include("./includes/print-officeequipment") %>
+
 </html>
