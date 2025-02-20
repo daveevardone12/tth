@@ -122,15 +122,15 @@ textarea {
 }
 
 .sidebar .imageSection > div > img {
-  width: 95%;
+  width: 100%;
   object-fit: cover;
   border-radius: 50%;
 }
 
-.sidebar .imageSection > div > .pms {
-  width: 95%;
-  height: 95%;
-}
+/* .sidebar .imageSection > div > .pms {
+  width: 100%;
+  height: 100%;
+} */
 
 .sidebar .dot {
   width: 3px;
