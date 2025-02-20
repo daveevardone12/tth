@@ -238,7 +238,7 @@ body {
   font-weight: 600;
   font-family: Poppins;
   background-color: white;
-  border: 1px solid #ccc;
+  border: 3px solid #095c02;
   color: black;
   padding: 8px 16px;
   cursor: pointer;
@@ -248,10 +248,6 @@ body {
   border-radius: 4px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease-in-out;
-}
-
-.action-button:hover {
-  background-color: #1d8d01;
 }
 
 .filt {
@@ -464,6 +460,7 @@ input[type="radio"] {
 }
 
 .search-icon {
+  border: 3px solid #095c02;
   width: 40px;
   height: 40px;
   background-color: white;
@@ -477,10 +474,6 @@ input[type="radio"] {
   margin-right: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease-in-out;
-}
-
-.search-icon:hover {
-  background-color: #45a049;
 }
 
 /* print csss !!!!!!!! */
@@ -533,10 +526,11 @@ option {
 }
 
 .uacs {
+  font-weight: 600;
   width: 18%;
   cursor: pointer;
   padding: 10px 5px;
-  border: 1px solid #ccc !important;
+  border: 3px solid #095c02 !important;
   border-radius: 4px;
   font-size: 14px;
   background-color: white;
@@ -568,3 +562,67 @@ option {
 button:hover {
   background-color: #1d8d01;
 } */
+
+ /* Modal Overlay */
+ .modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+/* Modal Content */
+.modal-content {
+  align-items: center;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.updatemodal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 30px;
+}
+
+/* Close button */
+.close-btn {
+  background: maroon;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+/* Save button */
+.save-btn {
+  background: green;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  margin-top: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Input Fields */
+input {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}

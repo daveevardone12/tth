@@ -158,26 +158,26 @@
       /* Below the spinner */
     }
 
-    #date-time {
-      font-size: 14px;
-      font-family: Poppins;
-      color: #000;
-      font-weight: bold;
-      background: white;
-      padding: 5px 10px;
-      border-radius: 0px 0px 8px 8px;
-      text-align: center;
-      gap: 0;
-      display: flex;
-      flex-direction: column;
-      width: 150px;
-      margin-left: 548px;
-      margin-top: -53px;
-      margin-bottom: 13px;
-      position: sticky;
-    }
-  </style>
-</head>
+      #date-time {
+        font-size: 14px;
+        font-family: Poppins;
+        color: #000;
+        font-weight: bold;
+        background: white;
+        padding: 5px 10px;
+        border-radius: 0px 0px 8px 8px;
+        text-align: center;
+        gap: 0;
+        display: flex;
+        flex-direction: column;
+        width: 150px;
+        margin-left: 548px;
+        margin-top: -53px;
+        margin-bottom: 13px;
+        position: sticky;
+      }
+    </style>
+  </head>
 
 <body>
   <%- include("./includes/sidebar") %>
@@ -202,9 +202,7 @@
           </div>
 
           <div class="right-allign">
-            <p>
-
-            </p>
+            <p></p>
           </div>
         </div>
 
@@ -319,41 +317,29 @@
         const now = new Date();
 
         // Get the short day of the week (e.g., "SAT" instead of "Saturday")
-        const dayOfWeek = now.toLocaleDateString("en-US", { weekday: 'short' }).toUpperCase();
+        const dayOfWeek = now.toLocaleDateString("en-US").toUpperCase();
 
         // Format the time (e.g., 12:34:56 PM)
-        const timeOptions = { hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true };
+        const timeOptions = {
+          hour: "numeric",
+          minute: "2-digit",
+
+          hour12: true,
+        };
         const formattedTime = now.toLocaleTimeString("en-US", timeOptions);
 
         // Format the date (e.g., January 31, 2024)
-        const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+        const dateOptions = { year: "numeric", month: "long" };
         const formattedDate = now.toLocaleDateString("en-US", dateOptions);
 
         // Update the HTML elements
-        document.getElementById("day").textContent = dayOfWeek;
+
         document.getElementById("time").textContent = formattedTime;
         document.getElementById("date").textContent = formattedDate;
       }
 
       updateDateTime(); // Call on page load
       setInterval(updateDateTime, 1000); // Update every second
-
     </script>
-
-    <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const savedPic = localStorage.getItem('profilePic');
-    if (savedPic) {
-        const dashboardPic = document.getElementById('dashboard-profile-pic');
-        if (dashboardPic) {
-            dashboardPic.src = savedPic;
-        }
-    }
-});
-
-
-    </script>
-
-</body>
-
+  </body>
 </html>

@@ -113,6 +113,58 @@ router.get("/sort", ensureAuthenticated, async (req, res) => {
   }
 });
 
+router.put("/update/:id", async (req, res) => {
+  const { id } = req.params;
+  const updatedData = req.body;
+  console.log("triggered!!");
+  console.log("data:", updatedData);
+  try {
+    if (updatedData.docType === "PAR") {
+      console.log("PAR");
+      const result = await tthPool.query(
+        "UPDATE property_acknowledgement_receipt SET item_name = $1, description = $2, property_no = $3, unit = $4, unit_cost = $5, quantity = $6, location = $7, accountable = $8 WHERE property_no = $9 RETURNING *",
+        [
+          updatedData.item_name,
+          updatedData.description,
+          updatedData.property_no,
+          updatedData.unit,
+          updatedData.unit_cost,
+          updatedData.quantity,
+          updatedData.location,
+          updatedData.accountable,
+          id,
+        ]
+      );
+      res.json({ success: true, updatedItem: result.rows[0] });
+    } else if (updatedData.docType === "ICS") {
+      console.log("ICS");
+      const result = await tthPool.query(
+        "UPDATE inventory_custodian_slip SET item_name = $1, description = $2, property_no = $3, unit = $4, unit_cost = $5, quantity = $6, location = $7, accountable = $8 WHERE property_no = $9 RETURNING *",
+        [
+          updatedData.item_name,
+          updatedData.description,
+          updatedData.property_no,
+          updatedData.unit,
+          updatedData.unit_cost,
+          updatedData.quantity,
+          updatedData.location,
+          updatedData.accountable,
+          id,
+        ]
+      );
+      res.json({ success: true, updatedItem: result.rows[0] });
+    } else {
+      console.error("Error updating inventory:", error);
+      res
+        .status(500)
+        .json({ success: false, message: "Database update failed" });
+    }
+  } catch (error) {
+    console.error("Error updating inventory:", error);
+    res.status(500).json({ success: false, message: "Database update failed" });
+  }
+});
+
 async function fetchInventoryList(page, limit, searchQuery = "") {
   const offset = (page - 1) * limit;
   let params = [limit, offset]; // Default parameters

@@ -61,9 +61,9 @@ router.post("/login/submit", async (req, res, next) => {
 
       console.log("Authenticated user role:", user.role);
       switch (user.role) {
-        case "admin":
+        case "Admin":
           return res.redirect("/dashboard");
-        case "employee":
+        case "Employee":
           return res.redirect("/dashboard");
         default:
           req.flash("error", "Invalid user role");
