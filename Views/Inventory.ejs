@@ -71,7 +71,7 @@
                                 
                                 <div class="UACS">
                                     <select name="UACS" id="uacs-select" class="uacs">  
-                                      <option value="" disabled selected>UACS*</option>
+                                      <option value="" disabled selected>UACS</option>
                                       <option value="1060501000">Machinery #1060501000</option>
                                       <option value="1060502000">Office Equipment #1060502000</option>
                                       <option value="1060504000">Agricultural and Forestry Equipment #1060504000</option>
@@ -170,6 +170,22 @@
                         <button class="close-btn" id="close-filter">Close</button>
                     </div>
                 </div>
+                <div id="updateModal" class="modal" style="display: none;">
+                    <div class="modal-content">
+                      <h2>Update Inventory</h2>
+                      <input type="hidden" id="docType">
+                      <label>Item Name: <input type="text" id="updateItemName"></label>
+                      <label>Description: <input type="text" id="updateDescription"></label>
+                      <label>Property No: <input type="text" id="updatePropertyNo"></label>
+                      <label>Unit: <input type="text" id="updateUnit"></label>
+                      <label>Unit Cost: <input type="text" id="updateUnitCost"></label>
+                      <label>Quantity: <input type="number" id="updateQuantity"></label>
+                      <label>Location: <input type="text" id="updateLocation"></label>
+                      <label>Accountable: <input type="text" id="updateAccountable"></label>
+                      <button onclick="submitUpdate()">Save Changes</button>
+                      <button onclick="document.getElementById('updateModal').style.display='none'">Cancel</button>
+                    </div>
+                  </div>
 
             </div>
 
