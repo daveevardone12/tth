@@ -326,6 +326,8 @@ document.addEventListener("DOMContentLoaded", function () {
 function openUpdateModal(button) {
   const itemData = JSON.parse(button.getAttribute("data-row"));
   // Populate modal fields with existing data
+  console.log("Open popup");
+  console.log(itemData);
   document.getElementById("updateItemName").value = itemData.item_name;
   document.getElementById("updateDescription").value = itemData.description;
   document.getElementById("updatePropertyNo").value = itemData.property_no;
@@ -339,24 +341,22 @@ function openUpdateModal(button) {
   document.getElementById("docType").value = itemData.type;
   // console.log(itemData);
   // Show the modal
-  document.getElementById("updateModal").style.display = "block";
+  document.getElementById("updateModal").style.display = "flex";
 }
 
 function submitUpdate() {
   const updatedData = {
     docType: document.getElementById("docType").value,
-    item_name: document.getElementById("updateItemName").value,
+    itemName: document.getElementById("updateItemName").value,
     description: document.getElementById("updateDescription").value,
-    property_no: document.getElementById("updatePropertyNo").value,
+    propertyNumber: document.getElementById("updatePropertyNo").value,
     unit: document.getElementById("updateUnit").value,
-    unit_cost: document.getElementById("updateUnitCost").value,
+    cost: document.getElementById("updateUnitCost").value,
     quantity: document.getElementById("updateQuantity").value,
     location: document.getElementById("updateLocation").value,
     accountable: document.getElementById("updateAccountable").value,
     // docType:
   };
-
-  // waray pa gad hiya route? nabutang ko ada didi ha may api
 
   fetch(`/Inventory/update/${updatedData.property_no}`, {
     method: "PUT",
