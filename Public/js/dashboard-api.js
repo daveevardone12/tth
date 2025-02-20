@@ -450,6 +450,6 @@ document.addEventListener("DOMContentLoaded", function () {
   );
 });
 
-document.querySelector('.profile').addEventListener('click', function() {
+document.querySelector('.profile-container').addEventListener('click', function() {
   window.location.href = "/user"; // Change this to your profile page URL
 });
