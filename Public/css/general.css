@@ -189,6 +189,36 @@ li {
   transition: all 0.3s ease-in-out;
 }
 
+.sidebar #dropdowns li a {
+  color: white;
+  /* Inherits color from sidebar */
+  font-size: 10px;
+  text-decoration: none;
+  display: block;
+  padding-left: -50px;
+  transition: all 0.3s ease-in-out;
+}
+
+.sidebar #dropdownss li a {
+  color: white;
+  /* Inherits color from sidebar */
+  font-size: 11px;
+  text-decoration: none;
+  display: block;
+  padding-left: 28px;
+  transition: all 0.3s ease-in-out;
+}
+
+.sidebar #dropdownsss li a {
+  color: white;
+  /* Inherits color from sidebar */
+  font-size: 11px;
+  text-decoration: none;
+  display: block;
+  padding-left: 28px;
+  transition: all 0.3s ease-in-out;
+}
+
 .sidebar #dropdown li a:hover {
   color: #ffcc00;
   /* Change color on hover for better visibility */
@@ -202,6 +232,18 @@ li {
 
 /* Smaller text for dropdown items */
 .sidebar #dropdowns {
+  font-size: 10px;
+  /* Smaller, but readable text size */
+  padding-left: 20px;
+}
+
+.sidebar #dropdownss {
+  font-size: 10px;
+  /* Smaller, but readable text size */
+  padding-left: 20px;
+}
+
+.sidebar #dropdownsss {
   font-size: 10px;
   /* Smaller, but readable text size */
   padding-left: 20px;
@@ -355,6 +397,26 @@ li {
   transition: transform 0.3s ease; /* Smooth rotation */
 }
 
+.arrow_downs::after {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  margin-left: 9em;
+  vertical-align: middle;
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' fill-rule='evenodd' d='m6 7l6 6l6-6l2 2l-8 8l-8-8z'/%3E%3C/svg%3E");
+  transition: transform 0.3s ease; /* Smooth rotation */
+}
+
+.arrow_downss::after {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  margin-left: 9em;
+  vertical-align: middle;
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' fill-rule='evenodd' d='m6 7l6 6l6-6l2 2l-8 8l-8-8z'/%3E%3C/svg%3E");
+  transition: transform 0.3s ease; /* Smooth rotation */
+}
+
 /* Arrow for Return Item */
 .arrow_down_return::after {
   display: inline-block;
@@ -368,6 +430,14 @@ li {
 
 /* Rotate arrows */
 .arrow_down.rotate::after {
+  transform: rotate(180deg); /* Rotate the Add Item arrow */
+}
+
+.arrow_downs.rotate::after {
+  transform: rotate(180deg); /* Rotate the Add Item arrow */
+}
+
+.arrow_downss.rotate::after {
   transform: rotate(180deg); /* Rotate the Add Item arrow */
 }
 
