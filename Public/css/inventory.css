@@ -563,8 +563,8 @@ button:hover {
   background-color: #1d8d01;
 } */
 
- /* Modal Overlay */
- .modal-overlay {
+/* Modal Overlay */
+.modal-overlay {
   display: none;
   position: fixed;
   top: 0;
