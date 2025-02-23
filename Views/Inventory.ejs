@@ -367,17 +367,6 @@
 
         <script>
              function openUpdateModal(button) {
-      const data = JSON.parse(button.getAttribute('data-row'));
-
-      document.getElementById('updateItemName').value = data.itemName || '';
-      document.getElementById('updateDescription').value = data.description || '';
-      document.getElementById('updatePropertyNo').value = data.propertyNo || '';
-      document.getElementById('updateUnit').value = data.unit || '';
-      document.getElementById('updateUnitCost').value = data.unitCost || '';
-      document.getElementById('updateQuantity').value = data.quantity || '';
-      document.getElementById('updateLocation').value = data.location || '';
-      document.getElementById('updateAccountable').value = data.accountable || '';
-
       document.getElementById('updateModal').style.display = 'flex';
     }
 
