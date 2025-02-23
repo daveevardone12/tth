@@ -1,55 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login | Property Management System</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    />
-    <link rel="stylesheet" href="../css/loginstyle.css" />
-    <link rel="stylesheet" href="../css/general.css" />
-  </head>
 
-  <body>
-    <div class="container" id="container">
-      <!-- Sign-Up Section -->
-      <div class="success">
-        <% if (messages && messages.success) { %> <%= messages.success %> <% }
-        %>
-      </div>
-      <div class="error">
-        <% if (messages && messages.error) { %> <%= messages.error %> <% } %>
-      </div>
-      <div class="form-container sign-up">
-        <form action="/signup/submit" method="POST">
-          <h1 style="color: white; padding-bottom: 40px">Create Account</h1>
-          <span style="color: white; padding-bottom: 10px"
-            >Register with your personal details to access the system</span
-          >
-          <input
-            type="text"
-            name="firstname"
-            placeholder="First Name"
-            required
-          />
-          <input type="text" name="lastname" placeholder="Last Name" required />
-          <input type="email" name="email" placeholder="Email" required />
-          <input type="text" name="phone" placeholder="Phone no." required />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            required
-          />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | Property Management System</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link rel="stylesheet" href="../css/loginstyle.css" />
+  <link rel="stylesheet" href="../css/general.css" />
+</head>
 
-          <label for="Role"></label>
-          <input
-            list="roles"
-            name="role"
-            id="role"
-            style="
+<body>
+  <div class="container" id="container">
+    <!-- Sign-Up Section -->
+    <div class="success">
+      <% if (messages && messages.success) { %>
+        <%= messages.success %>
+          <% } %>
+    </div>
+    <div class="error">
+      <% if (messages && messages.error) { %>
+        <%= messages.error %>
+          <% } %>
+    </div>
+    <div class="form-container sign-up">
+      <form action="/signup/submit" method="POST">
+        <h1 style="color: white; padding-bottom: 40px">Create Account</h1>
+        <span style="color: white; padding-bottom: 10px">Register with your personal details to access the system</span>
+        <input type="text" name="firstname" placeholder="First Name" required />
+        <input type="text" name="lastname" placeholder="Last Name" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="text" name="phone" placeholder="Phone no." required />
+        <input type="password" name="password" placeholder="Password" required />
+
+        <label for="Role"></label>
+        <input list="roles" name="role" id="role" style="
               background-color: #eee;
               border: none;
               margin: 8px 0;
@@ -58,65 +43,49 @@
               border-radius: 8px;
               width: 100%;
               outline: none;
-            "
-            required
-            placeholder="Role"
-          />
-          <datalist id="roles">
-            <option value="Admin"></option>
-            <option value="Employee"></option>
-          </datalist>
+            " required placeholder="Role" />
+        <datalist id="roles">
+          <option value="Admin"></option>
+          <option value="Employee"></option>
+        </datalist>
 
-          <button type="submit">Sign Up</button>
-        </form>
-      </div>
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
 
-      <!-- Sign-In Section -->
-      <div class="form-container sign-in">
-        <form action="/login/submit" method="POST">
-          <div
-            class="logo"
-            style="display: flex; align-items: center; justify-content: center"
-          >
-            <img
-              src="../images/new_logo.png"
-              alt="PMS Logo"
-              style="width: 118px; display: flex; justify-content: center"
-            />
-            <p style="margin: 0; color: white; font-size: 17px">
-              Property Management System
-            </p>
-          </div>
-          <h1 style="color: white; margin-bottom: 5px">Sign In</h1>
+    <!-- Sign-In Section -->
+    <div class="form-container sign-in">
+      <form action="/login/submit" method="POST">
+        <div class="logo" style="display: flex; align-items: center; justify-content: center">
+          <img src="../images/new_logo.png" alt="PMS Logo"
+            style="width: 118px; display: flex; justify-content: center" />
+          <p style="margin: 0; color: white; font-size: 17px">
+            Property Management System
+          </p>
+        </div>
+        <h1 style="color: white; margin-bottom: 5px">Sign In</h1>
 
-          <div class="success">
-            <% if (messages && messages.success) { %> <%= messages.success %> <%
-            } %>
-          </div>
-          <div class="error">
-            <% if (messages && messages.error) { %> <%= messages.error %> <% }
-            %>
-          </div>
+        <div class="success">
+          <% if (messages && messages.success) { %>
+            <%= messages.success %>
+              <% } %>
+        </div>
+        <div class="error">
+          <% if (messages && messages.error) { %>
+            <%= messages.error %>
+              <% } %>
+        </div>
 
-          <label
-            for="role"
-            style="
+        <label for="role" style="
               display: flex;
               justify-content: right;
               align-self: flex-start;
               color: white;
               margin-top: 3px;
               margin-bottom: 2px;
-            "
-            >Login as:</label
-          >
-          <label for="role"></label>
-          <input
-            list="roles"
-            name="role"
-            id="role"
-            class="form-select"
-            style="
+            ">Login as:</label>
+        <label for="role"></label>
+        <input list="roles" name="role" id="role" class="form-select" style="
               background-color: #eee;
               border: none;
               margin: 8px 0;
@@ -125,94 +94,65 @@
               border-radius: 8px;
               width: 100%;
               outline: none;
-            "
-            required
-            placeholder="Role"
-          />
-          <datalist id="roles">
-            <option value="Employee"></option>
-            <option value="Admin"></option>
-          </datalist>
+            " required placeholder="Role" />
+        <datalist id="roles">
+          <option value="Employee"></option>
+          <option value="Admin"></option>
+        </datalist>
 
-          <label
-            for="email"
-            style="align-self: flex-start; color: white; margin-top: 3px"
-            >Email*</label
-          >
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter email here."
-            required
-          />
+        <label for="email" style="align-self: flex-start; color: white; margin-top: 3px">Email*</label>
+        <input type="email" name="email" placeholder="Enter email here." required />
 
-          <label for="password" style="color: white; align-self: flex-start"
-            >Password*</label
-          >
-          <input
-            type="password"
-            name="password"
-            placeholder="Minimum 8 characters."
-            required
-          />
+        <label for="password" style="color: white; align-self: flex-start">Password*</label>
+        <input type="password" name="password" placeholder="Minimum 8 characters." required />
 
-          <a
-            href="/forgot-password"
-            style="color: white; align-self: flex-end; margin-top: -3px"
-            >Forgot Your Password?</a
-          >
-          <button type="submit">LOGIN</button>
-        </form>
-      </div>
+        <a href="/forgot-password" style="color: white; align-self: flex-end; margin-top: -3px">Forgot Your
+          Password?</a>
+        <button type="submit">LOGIN</button>
+      </form>
+    </div>
 
-      <div class="toggle-container">
-        <div class="toggle">
-          <div class="toggle-panel toggle-left">
-            <img
-              src="../images/ESSU_Logo_New.png"
-              style="height: 300px; width: 300px"
-            />
-            <button
-              class="hidden"
-              id="login"
-              style="background-color: transparent; color: white"
-            >
-              Already have an account? Sign In
-            </button>
-          </div>
-          <div class="toggle-panel toggle-right">
-            <img
-              src="../images/ESSU_Logo_New.png"
-              style="height: 300px; width: 300px"
-            />
-            <button
-              class="hidden"
-              id="register"
-              style="background-color: transparent; color: white"
-            >
-              Don't have an account? Sign Up
-            </button>
-          </div>
+    <div class="toggle-container">
+      <div class="toggle">
+        <div class="toggle-panel toggle-left">
+          <img src="../images/ESSU_Logo_New.png" style="height: 300px; width: 300px" />
+          <button class="hidden" id="login" style="background-color: transparent; color: white">
+            Already have an account? Sign In
+          </button>
+        </div>
+        <div class="toggle-panel toggle-right">
+          <img src="../images/ESSU_Logo_New.png" style="height: 300px; width: 300px" />
+          <button class="hidden" id="register" style="background-color: transparent; color: white">
+            Don't have an account? Sign Up
+          </button>
         </div>
       </div>
     </div>
+  </div>
 
-    <script>
-      const container = document.getElementById("container");
-      const registerBtn = document.getElementById("register");
-      const loginBtn = document.getElementById("login");
+  <script>
+    const container = document.getElementById("container");
+    const registerBtn = document.getElementById("register");
+    const loginBtn = document.getElementById("login");
 
-      registerBtn.addEventListener("click", () => {
-        container.classList.add("active");
-      });
+    registerBtn.addEventListener("click", () => {
+      container.classList.add("active");
+    });
 
-      loginBtn.addEventListener("click", () => {
-        container.classList.remove("active");
-      });
-
-
+    loginBtn.addEventListener("click", () => {
+      container.classList.remove("active");
+    });
 
 
-    </script>
-  </body>
+
+
+  </script>
+
+
+
+</body>
+</html>
+
+</body>
+
 </html>
