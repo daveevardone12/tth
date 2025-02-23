@@ -54,7 +54,7 @@ body::-webkit-scrollbar {
   gap: 10px;
   margin-bottom: 15px;
   margin-top: 20px;
-  margin-left: 100px;
+  margin-left: 240px;
 }
 
 .form-group4 {
@@ -215,7 +215,6 @@ textarea {
 .checkbox-group2 {
   display: flex;
   align-items: center;
-  margin-right: 100px;
 }
 
 /* Status and Options Row */

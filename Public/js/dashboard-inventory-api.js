@@ -124,12 +124,18 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <button data-table=true data-row='${JSON.stringify(
                                   invent
                                 )}' onclick="printDocument(this)">Print</button>
+                                <button data-row='${JSON.stringify(
+                                  invent
+                                )}' onclick="openUpdateModal(this)">Update</button>
                                 <button onclick="handleAction('Dispose')"><a href="/ptr">Dispose</a></button>
                             </div>
                         </div>
                     </td>
                 </tr>
             `;
+
+        // yada na openUpdateModal dda ig butang an function han update
+        // mayda na hit? oo mayad na yadi it
 
         // Table without action buttons (hidden table)
         rowsHidden += `
@@ -314,9 +320,62 @@ document.addEventListener("DOMContentLoaded", function () {
     attachPaginationListeners();
   }
 
-  // Initial setup
   attachPaginationListeners();
 });
+// Initial setup
+function openUpdateModal(button) {
+  const itemData = JSON.parse(button.getAttribute("data-row"));
+  // Populate modal fields with existing data
+  console.log("Open popup");
+  console.log(itemData);
+  document.getElementById("updateItemName").value = itemData.item_name;
+  document.getElementById("updateDescription").value = itemData.description;
+  document.getElementById("updatePropertyNo").value = itemData.property_no;
+  document.getElementById("updateUnit").value = itemData.unit;
+  document.getElementById("updateUnitCost").value = itemData.unit_cost;
+  document.getElementById("updateQuantity").value = itemData.quantity;
+  document.getElementById("updateLocation").value = itemData.location;
+  document.getElementById("updateAccountable").value = itemData.accountable;
+
+  // Store ID in a hidden field
+  document.getElementById("docType").value = itemData.type;
+  // console.log(itemData);
+  // Show the modal
+  document.getElementById("updateModal").style.display = "flex";
+}
+
+function submitUpdate() {
+  const updatedData = {
+    docType: document.getElementById("docType").value,
+    itemName: document.getElementById("updateItemName").value,
+    description: document.getElementById("updateDescription").value,
+    propertyNumber: document.getElementById("updatePropertyNo").value,
+    unit: document.getElementById("updateUnit").value,
+    cost: document.getElementById("updateUnitCost").value,
+    quantity: document.getElementById("updateQuantity").value,
+    location: document.getElementById("updateLocation").value,
+    accountable: document.getElementById("updateAccountable").value,
+    // docType:
+  };
+
+  fetch(`/Inventory/update/${updatedData.property_no}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(updatedData),
+  })
+    .then((response) => {
+      if (!response.ok) throw new Error("Update failed");
+      return response.json();
+    })
+    .then((data) => {
+      alert("Item updated successfully!");
+      document.getElementById("updateModal").style.display = "none";
+      location.reload();
+    })
+    .catch((error) => {
+      console.error("Error updating item:", error);
+    });
+}
 
 function printDocument(button) {
   try {

@@ -5,7 +5,7 @@
                 <img src="../images/ESSU_Logo_New.png" alt="University Logo">
             </div>
             <div class="pms">
-                <img src="../images/new_logo.png" alt="PMS Logo" class="pms">
+                <img src="../images/new_logo.png" alt="PMS Logo" class="pms" style="width: 100%; height: 100%;">
             </div>
         </div>
         <div class="line">
@@ -25,28 +25,31 @@
 
     <nav class="nav-menu">
         <ul>
-            <li><a href="/dashboard"><img src="/Public/images/cuida--dashboard-outline.svg" alt="" class="dash">Dashboard</a></li>
+            <li><a href="/dashboard"><img src="/Public/images/cuida--dashboard-outline.svg" alt=""
+                        class="dash">Dashboard</a></li>
             <li>
-                <a href="#addItemLink" id="addItemLink"><img src="/Public/images/material-symbols--add-ad.svg" alt="" class="add">Add Item <img src="/Public/images/fe--arrow-down.svg" alt="" class="arrow_down"></a>
+                <a href="#addItemLink" id="addItemLink"><img src="/Public/images/material-symbols--add-ad.svg" alt=""
+                        class="add">Add Item <img src="/Public/images/fe--arrow-down.svg" alt="" class="arrow_down"></a>
                 <ul id="dropdown" style="display: none;" class="dropdown-men">
                     <li><a href="/par">Property Acknowledgement Receipt</a></li>
                     <li><a href="/ics">Inventory Custodian Slip</a></li>
                 </ul>
             </li>
-            <li><a href="/Inventory"><img src="/Public/images/material-symbols--inventory.svg" alt="" class="inve">Inventory</a></li>
+            <li><a href="/Inventory"><img src="/Public/images/material-symbols--inventory.svg" alt=""
+                        class="inve">Inventory</a></li>
 
             <li>
                 <a href="#" id="prslink">
-                    <img src="/Public/images/hugeicons--delivery-return-02.svg" alt="" class="return"> Return Item 
+                    <img src="/Public/images/hugeicons--delivery-return-02.svg" alt="" class="return"> Return Item
                     <img src="/Public/images/fe--arrow-down.svg" alt="" class="arrow_down_return">
                 </a>
                 <ul id="dropdowns" style="display: none;">
                     <li><a href="/prs">Property Return Slip</a></li>
 
                     <li><a href="/mrer">Maintenance Recommendation Evaluation Report Form</a></li>
-                    
+
                     <li><a href="/wmrf">Waste Material Report Form</a></li>
-                   
+
                 </ul>
             </li>
             
@@ -102,11 +105,13 @@
             window.location.href = "/logout";  // This will trigger the logout route on the backend
         }
     }
-    </script>
+
+
+</script>
 
 <script>
     // Add Item link functionality
-    document.getElementById("addItemLink").addEventListener("click", function(event) {
+    document.getElementById("addItemLink").addEventListener("click", function (event) {
         event.preventDefault(); // Prevent the default link behavior
         const dropdown = document.getElementById("dropdown");
         const arrow = document.querySelector(".arrow_down");
@@ -123,7 +128,7 @@
     });
 
     // Return Item link functionality
-    document.getElementById("prslink").addEventListener("click", function(event) {
+    document.getElementById("prslink").addEventListener("click", function (event) {
         event.preventDefault(); // Prevent the default link behavior
         const dropdown = document.getElementById("dropdowns");
         const arrowReturn = document.querySelector(".arrow_down_return");
@@ -171,3 +176,4 @@
         arrowReturn.classList.toggle("rotate");
     });
 </script>
+

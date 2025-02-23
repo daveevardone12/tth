@@ -14,13 +14,14 @@ body {
   justify-content: center;
   flex-direction: column;
   height: 100vh;
-  background: url('../images/lala.png') no-repeat center center fixed;
+  /* background: url('../images/bbt.png') no-repeat center center fixed; */
+  background: radial-gradient(circle, #daffce , #067c00);
 }
 
 .container {
   background-image: url("../images/br.png");
   border-radius: 30px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 5px 15px rgba(0, 0, 1, 1);
   position: relative;
   overflow: hidden;
   width: 900px;
@@ -242,3 +243,4 @@ body {
 .container.active .toggle-right {
   transform: translateX(200%);
 }
+
