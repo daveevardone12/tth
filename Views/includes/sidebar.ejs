@@ -57,25 +57,41 @@
             
             <% if (role == "Admin"){ %>
 
-                <li><a href="/rfid"><img src="" alt="" class="rfid">RFID</a></li>
+                <li>
+                    <a href="#rfidlink" id="rfidlink">
+                        <img src="" alt="" class="rfid">RFID<img src="/Public/images/fe--arrow-down.svg" alt="" class="arrow_downss">
+                    </a>
+                    <ul id="dropdownsss" style="display: none;">
+                        <li><a href="/rfid">Registration</a></li>
+        
+                        <li><a href="/notif">Logs</a></li>
+                    
+                       
+                    </ul></li>
+                
+           <% } %>
 
-                <li><a href="/notif"><img src="/Public/images/mingcute--notification-line.svg" alt=""
-                            class="notif">Logs</a></li>
+           <li>
+            <a href="#userlink" id="userlink">
+                <img src="/Public/images/mdi--user-outline.svg" alt="" class="use">User        <img src="/Public/images/fe--arrow-down.svg" alt="" class="arrow_downs">
+            </a>
+            <ul id="dropdownss" style="display: none;">
+                <li><a href="/prs">User Management</a></li>
 
-                <% } %>
-
-                    <li><a href="/user"><img src="/Public/images/cuida--dashboard-outline.svg" alt="" class="use">User
-                            Account</a></li>
-
-                    <div class="footers">
-                        <li>
-                            <button class="logout-btn" onclick="confirmLogout()">
-                                <div class="logout">
-                                    Log Out
-                                </div>
-                            </button>
-                        </li>
-                    </div>
+                <li><a href="/user">User Acount</a></li>
+            
+               
+            </ul></li>
+                    
+            <div class="footers">
+            <li>
+                <button class="logout-btn" onclick="confirmLogout()">
+                    <div class="logout">
+                    Log Out
+                </div>
+                </button>
+            </li>
+            </div>
         </ul>
     </nav>
 </div>
@@ -127,4 +143,37 @@
         // Toggle the rotation of the return arrow
         arrowReturn.classList.toggle("rotate");
     });
+
+    document.getElementById("userlink").addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent the default link behavior
+        const dropdown = document.getElementById("dropdownss");
+        const arrowReturn = document.querySelector(".arrow_downs");
+
+        // Toggle the display of the dropdown
+        if (dropdown.style.display === "none" || dropdown.style.display === "") {
+            dropdown.style.display = "block"; // Show the dropdown
+        } else {
+            dropdown.style.display = "none"; // Hide the dropdown
+        }
+
+        // Toggle the rotation of the return arrow
+        arrowReturn.classList.toggle("rotate");
+    });
+
+    document.getElementById("rfidlink").addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent the default link behavior
+        const dropdown = document.getElementById("dropdownsss");
+        const arrowReturn = document.querySelector(".arrow_downss");
+
+        // Toggle the display of the dropdown
+        if (dropdown.style.display === "none" || dropdown.style.display === "") {
+            dropdown.style.display = "block"; // Show the dropdown
+        } else {
+            dropdown.style.display = "none"; // Hide the dropdown
+        }
+
+        // Toggle the rotation of the return arrow
+        arrowReturn.classList.toggle("rotate");
+    });
 </script>
+

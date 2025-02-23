@@ -168,7 +168,7 @@
         font-size: 14px;
         font-family: Poppins;
         color: #000;
-        font-weight: 500;
+        font-weight: bold;
         background: white;
         padding: 5px 10px;
         border-radius: 0px 0px 8px 8px;
@@ -393,6 +393,18 @@
 
       updateDateTime(); // Call on page load
       setInterval(updateDateTime, 1000); // Update every second
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const savedPic = localStorage.getItem("profilePic");
+        if (savedPic) {
+          const dashboardPic = document.getElementById("dashboard-profile-pic");
+          if (dashboardPic) {
+            dashboardPic.src = savedPic;
+          }
+        }
+      });
     </script>
   </body>
 </html>
