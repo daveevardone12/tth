@@ -8,6 +8,7 @@ const passport = require("passport");
 const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 const rateLimit = require("express-rate-limit");
+const pool = require("../models/tthDB"); // Ensure pool is imported
 
 const userSchema = Joi.object({
   role: Joi.string().required(),
@@ -30,13 +31,7 @@ router.get("/login", checkNotAuthenticated, (req, res) => {
   res.render("login");
 });
 
-router.post("/login/submit", loginLimiter, async (req, res, next) => {
-  const { error, value } = userSchema.validate(req.body);
-
-  if (error) {
-    return res.status(400).json({ error: error.details[0].message });
-  }
-
+router.post("/login/submit", async (req, res, next) => {
   passport.authenticate("local", async (err, user, info) => {
     if (err) {
       console.error("Authentication error:", err);
@@ -49,33 +44,53 @@ router.post("/login/submit", loginLimiter, async (req, res, next) => {
       return res.redirect("/login");
     }
 
-    // Validate role selection
-    const selectedRole = req.body.role;
-    if (!selectedRole || selectedRole !== user.role) {
-      console.log("Role mismatch detected");
-      req.flash("error", "Incorrect role selected. Please try again.");
-      return res.redirect("/login");
-    }
-
-    req.login(user, (err) => {
+    req.login(user, async (err) => {
       if (err) {
         console.error("Login error:", err);
         return next(err);
       }
 
-      console.log(`Login successful for user ID: ${user.id}`);
+      try {
+        // ✅ Update `last_login` & `status`
+        await pool.query(
+          "UPDATE users SET last_login = NOW(), status = 'Online' WHERE email = $1",
+          [user.email]
+        );
+      } catch (updateErr) {
+        console.error("Error updating last_login and status:", updateErr);
+      }
+
+      console.log(`Login successful for user: ${user.email}`);
       req.flash("success", "Login successful!");
 
-      switch (user.role) {
-        case "Admin":
-        case "Employee":
-          return res.redirect("/dashboard");
-        default:
-          req.flash("error", "Invalid user role");
-          return res.redirect("/login");
-      }
+      return res.redirect("/dashboard");
     });
   })(req, res, next);
+});
+
+router.get("/logout", (req, res) => {
+  if (req.user) {
+    pool
+      .query("UPDATE users SET status = 'Offline' WHERE email = $1", [
+        req.user.email,
+      ])
+      .then(() => {
+        req.logout((err) => {
+          if (err) {
+            console.error("Logout error:", err);
+            return res.status(500).send("Logout failed");
+          }
+          req.flash("success", "You have been logged out");
+          res.redirect("/login");
+        });
+      })
+      .catch((error) =>
+        console.error("Error updating status on logout:", error)
+      );
+  } else {
+    req.flash("error", "No active session found");
+    res.redirect("/login");
+  }
 });
 
 // Forgot Password Routes
