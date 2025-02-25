@@ -81,12 +81,11 @@ h3 {
 
 table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0 5px; /* Adds space between rows */
   font-size: 14px;
   overflow-x: hidden;
-  /* overflow-y: hidden; */
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .t-head {
@@ -98,45 +97,48 @@ table .t-head tr {
   color: #fff;
   text-align: center;
   text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
-  font-family: Poppins;
+  font-family: Poppins, sans-serif;
   font-size: 14px;
-  font-style: normal;
   font-weight: 600;
-  line-height: normal;
   letter-spacing: 1.4px;
+  box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.3);
 }
 
 table tbody tr {
-  border-bottom: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease-in-out;
+}
+
+table tbody tr:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .t-head th {
   text-align: center;
-  padding: 10px 7px;
+  padding: 12px;
   color: #fff;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 13px;
-  font-style: normal;
   font-weight: 600;
-  line-height: normal;
   letter-spacing: 1.3px;
 }
 
 tbody td {
-  padding: 10px 15px;
+  padding: 12px 15px;
   text-align: left;
   color: #000;
-  font-family: Poppins;
+  font-family: Poppins, sans-serif;
   font-size: 11px;
-  font-style: normal;
   font-weight: 600;
-  line-height: normal;
   letter-spacing: 1.3px;
 }
 
 table tbody tr:nth-of-type(even) {
   background-color: #bcebb3;
 }
+
 
 /* Responsive Design */
 @media (max-width: 768px) {

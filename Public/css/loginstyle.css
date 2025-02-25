@@ -15,7 +15,8 @@ body {
   flex-direction: column;
   height: 100vh;
   /* background: url('../images/bbt.png') no-repeat center center fixed; */
-  background: radial-gradient(circle, #daffce , #067c00);
+  background: #b5ffad;
+  backdrop-filter: blur(50px);
 }
 
 .container {
