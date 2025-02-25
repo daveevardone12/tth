@@ -563,9 +563,9 @@ const tthPool = require("./models/tthDB");
 
 //-------ROUTES--------//
 const signupRoutes = require("./routes/signup");
-const loginRoutes = require("./routes/login");
+const loginRoutes = require("./Routes/login");
 const dashboardRoutes = require("./routes/dashboard");
-const userRoutes = require("./routes/user");
+const userRoutes = require("./Routes/user");
 const parRoutes = require("./Routes/par");
 const ptrRoutes = require("./routes/ptr");
 const icsRoutes = require("./routes/ics");
@@ -577,6 +577,7 @@ const mrerRoutes = require("./Routes/mrer");
 const wmrfRoutes = require("./Routes/wmrf");
 const rfidRoutes = require("./Routes/rfid");
 const { timeStamp } = require("console");
+const registerCallerID = require("./Routes/registerCallerID");
 
 //-------CONNECTING TO DATABASE-------//
 tthPool
@@ -722,6 +723,7 @@ app.use("/prs", prsRoutes);
 app.use("/mrer", mrerRoutes);
 app.use("/wmrf", wmrfRoutes);
 app.use("/rfid", rfidRoutes);
+app.use("/registerCallerID", registerCallerID);
 
 const usemRoutes = require("./routes/usem");
 app.use("/usem", usemRoutes);
