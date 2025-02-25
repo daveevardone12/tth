@@ -139,6 +139,7 @@ h2 {
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 0.9rem;
+  background: ghostwhite;
 }
 
 /* Custom dropdown container */
@@ -298,7 +299,7 @@ label:hover {
 #category,
 #location {
   padding: 10px;
-  background-color: white;
+  background-color: ghostwhite;
   border: 1px solid #ccc;
   cursor: pointer;
   border-radius: 5px;

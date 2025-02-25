@@ -21,6 +21,7 @@ body::-webkit-scrollbar {
   display: flex; /* Ensures sidebar and main content are side by side */
   width: 100%;
   min-height: 100vh; /* Makes the layout stretch to the full height of the viewport */
+  background: white;
 }
 
 .main-container {
@@ -96,13 +97,16 @@ table .t-head tr {
   background-color: #095c02;
   color: #fff;
   text-align: center;
-  text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.6);
   font-family: Poppins, sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 1.4px;
-  box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.3);
+  font-size: 16px; /* Slightly larger font */
+  font-weight: 700; /* Bolder text */
+  letter-spacing: 1.8px; /* Increased spacing */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4); /* Stronger shadow */
+  padding: 12px 0; /* More vertical padding */
+  border-radius: 6px; /* Smooth rounded corners */
 }
+
 
 table tbody tr {
   border-radius: 8px;

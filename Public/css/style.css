@@ -1,306 +1,161 @@
+/* Reset default styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body,
-html {
-  height: 100%;
-  font-family: Arial, sans-serif;
-  overflow-x: hidden; /* Prevent horizontal overflow */
+body {
+  font-family: sans-serif;
+  background-color: #043f1b;
+  overflow: hidden;
 }
 
-.container {
-  display: flex;
-  height: 100vh;
-  overflow: hidden; /* Prevent overflow */
-}
-
-.left {
-  background: linear-gradient(
-    72deg,
-    #074303 70.7%,
-    #ffffff 46.3%
-  ); /* Green covers 60%, white 40% */
-  width: 70%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Center content vertically */
-  align-items: flex-start; /* Center content horizontally */
-  color: black;
-  padding: 20px;
-  position: relative; /* To allow for absolute positioning of the image */
-}
-
-.right {
-  background: linear-gradient(
-    135deg,
-    #ffffff 80%,
-    #074303 20%
-  ); /* Green is smaller, starts from the right */
-  width: 30%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: #333;
-  padding: 20px;
-}
-
-.image-area {
-  position: absolute; /* Position the image absolutely in the upper left corner */
-  top: 10px; /* Slight top padding */
-  left: 10px; /* Slight left padding */
-  width: 20%; /* Adjust the width to make it more visible */
-  height: auto; /* Maintain aspect ratio */
-  animation: imageFadeIn 2s ease-out forwards; /* Animation for fading in */
-  z-index: 1; /* Ensure the image appears above other content */
-}
-
-.left-logo {
-  width: 100%; /* Make the image span the entire width of its container */
-  height: 100%;
-  object-fit: contain; /* Ensure the image fits without stretching */
-}
-
-.content h1 {
-  font-size: 3em;
-  margin-bottom: 15px;
-  text-align: center;
-  font-weight: bold;
-  opacity: 0;
-  transform: translateY(20px); /* Start with a slight offset */
-  animation: dominoEffect 1s ease-out forwards 0.3s; /* Added delay for domino effect */
-}
-
-.welcome-text {
-  color: white;
-  /* margin-left: 10px; Moves "Welcome to the" part slightly to the right */
-  font-size: larger;
-  display: flex;
-  justify-content: left;
-}
-
-.website-text {
-  color: #095c02;
-  margin-left: 12px; /* Moves "website" slightly to the right */
-  font-size: larger;
-}
-
-.content p {
-  font-size: 1.2em;
-  margin-bottom: 20px;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(20px); /* Start with a slight offset */
-  animation: dominoEffect 1s ease-out forwards 0.6s; /* Added delay for domino effect */
-}
-
-.signup {
-  margin-top: 20px; /* Adds space before the button */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  transform: translateY(20px); /* Start with a slight offset */
-  animation: dominoEffect 1s ease-out forwards 0.9s; /* Added delay for domino effect */
-}
-
-button {
-  padding: 15px 40px;
-  background: linear-gradient(
-    135deg,
-    #a2c68a,
-    #64a52e
-  ); /* Green gradient button */
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 1.2em;
-  border-radius: 50px; /* Rounded button */
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
-  transition: all 0.3s ease; /* Smooth hover transition */
-}
-
-button:hover {
-  background: linear-gradient(
-    135deg,
-    #64a52e,
-    #a2c68a
-  ); /* Reverse gradient on hover */
-  transform: translateY(-5px); /* Slight raise effect on hover */
-}
-
-/* Divider Styling */
-.divider {
-  position: absolute;
-  top: 0;
-  left: 70%;
-  height: 100%;
-  width: 3px;
-  background: white;
-  opacity: 0.8;
-}
-
-/* Logo Section Styling */
-.logo {
+/* Hero Section */
+.hero {
   position: relative;
-  padding: 40px;
-  margin-bottom: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transformation */
-  border-radius: 50%; /* Make the logo section circular */
-  background-color: linear-gradient(
-    45deg,
-    #f7f7f7,
-    #ffffff,
-    #3c5c3c
-  ); /* Same color as the background gradient */
-  padding: 40px; /* Adjust padding for the circular logo */
+  width: 100%;
+  height: 100vh;
+  background: url('../images/bbt.png') center center / cover no-repeat;
+  overflow: hidden;
 }
 
-/* PMS Logo Animation and Sizing */
-.pms-logo {
-  width: 500px; /* Adjust logo size */
-  height: 500px;
-  margin-right: 200px;
-  object-fit: contain;
-  transition: transform 0.5s ease, opacity 0.5s ease; /* Smooth animation for scale */
-  animation: logoPop 2s ease-out forwards; /* New fade and pop animation */
-}
-
-/* Keyframes for the 'pop' animation */
-@keyframes logoPop {
-  0% {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.2);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* Keyframes for image fade-in animation */
-@keyframes imageFadeIn {
-  0% {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* Keyframes for the domino effect */
-@keyframes dominoEffect {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .logo {
-    padding: 30px;
-    margin-bottom: 20px;
-  }
-
-  .pms-logo {
-    width: 80%; /* Resize logo for smaller screens */
-  }
-
-  .image-area {
-    width: 30%; /* Resize image for smaller screens */
-  }
-
-  .content h1 {
-    animation-delay: 0.3s; /* Adjust delay for medium screens */
-  }
-
-  .content h2 {
-    animation-delay: 0.6s; /* Adjust delay for medium screens */
-  }
-
-  .content h3 {
-    animation-delay: 0.9s; /* Adjust delay for medium screens */
-  }
-
-  .content p {
-    animation-delay: 1.2s; /* Adjust delay for medium screens */
-  }
-
-  .signup {
-    animation-delay: 1.5s; /* Adjust delay for medium screens */
-  }
-}
-
-@media (max-width: 480px) {
-  .logo {
-    padding: 20px;
-    margin-bottom: 15px;
-  }
-
-  .pms-logo {
-    width: 70%; /* Resize logo for very small screens */
-  }
-
-  .image-area {
-    width: 20%; /* Resize image for smaller mobile screens */
-  }
-
-  .content h1 {
-    animation-delay: 0.3s; /* Adjust delay for small screens */
-  }
-
-  .content h2 {
-    animation-delay: 0.6s; /* Adjust delay for small screens */
-  }
-
-  .content h3 {
-    animation-delay: 0.9s; /* Adjust delay for small screens */
-  }
-
-  .content p {
-    animation-delay: 1.2s; /* Adjust delay for small screens */
-  }
-
-  .signup {
-    animation-delay: 1.5s; /* Adjust delay for small screens */
-  }
-}
-
-/* Content Animation */
-.content h1,
-.content h2,
-.content h3,
-.content p,
-.signup {
+/* Ellipse Base Style */
+.ellipse {
+  position: absolute;
+  border-radius: 50%;
+  z-index: 1;
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
-.signup {
-  margin-top: 20px;
+/* Left green ellipse */
+.ellipse-left {
+  width: 60vw;
+  height: 120vh;
+  left: -80vw;
+  top: -10vh;
+  background-color: #0b4d1e6e;
+  box-shadow: rgb(0, 0, 1) 0px 5px 15px;
+  animation: slideInLeft 1.5s ease-in-out forwards;
+}
+
+/* Top right peach ellipse */
+.ellipse-top-right {
+  width: 50vw;
+  height: 50vw;
+  top: -40vw;
+  right: -15vw;
+  background-color: #ffd9b383;
+  animation: slideInTopRight 1.8s ease-in-out forwards;
+}
+
+/* Bottom right yellow ellipse */
+.ellipse-bottom-right {
+  width: 70vw;
+  height: 50vw;
+  bottom: -40vw;
+  right: -30vw;
+  background-color: #ffc10779;
+  box-shadow: rgb(0, 0, 1) 0px 5px 15px;
+  animation: slideInBottomRight 2s ease-in-out forwards;
+}
+
+/* Centered Content (Text + Button) */
+.hero-content {
+  position: relative;
+  z-index: 2;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  margin-left: 32%;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  color: #fff;
 }
 
-.content {
-  display: flex;
+/* Typing Animation for Heading (No Blinking Cursor) */
+.hero-content h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  margin-bottom: 20px;
+  animation: typing 2.5s steps(30, end) forwards;
+}
+
+/* Button Animation */
+.hero-content button {
+  background-color: #7fbf7f;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out 2.5s forwards;
+}
+
+.hero-content button a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.hero-content button:hover {
+  background-color: #6aa76a;
+}
+
+/* Animation Keyframes */
+@keyframes slideInLeft {
+  from {
+    left: -80vw;
+    opacity: 0;
+  }
+  to {
+    left: -20vw;
+    opacity: 1;
+  }
+}
+
+@keyframes slideInTopRight {
+  from {
+    top: -40vw;
+    opacity: 0;
+  }
+  to {
+    top: -15vw;
+    opacity: 1;
+  }
+}
+
+@keyframes slideInBottomRight {
+  from {
+    bottom: -40vw;
+    opacity: 0;
+  }
+  to {
+    bottom: -20vw;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Typing Effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }
