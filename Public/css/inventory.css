@@ -10,7 +10,7 @@ body {
   padding: 0;
   font-family: Arial, sans-serif;
   box-sizing: border-box;
-  background-color: white;
+  background-color: #f7f7f7;
 }
 
 body::-webkit-scrollbar {
@@ -21,7 +21,7 @@ body::-webkit-scrollbar {
   display: flex; /* Ensures sidebar and main content are side by side */
   width: 100%;
   min-height: 100vh; /* Makes the layout stretch to the full height of the viewport */
-  background: white;
+  background: #f7f7f7;
 }
 
 .main-container {
@@ -32,7 +32,7 @@ body::-webkit-scrollbar {
     100% - 250px
   ); /* Make sure the main container fills the rest of the width */
   overflow-x: auto; /* Add horizontal scrolling if needed for the table */
-  background-color: white;
+  background-color: #f7f7f7;
   /* border-left: 1px solid #ddd; */
 }
 
