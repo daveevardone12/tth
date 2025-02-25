@@ -309,7 +309,7 @@ label:hover {
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 0.9rem;
-  background-color: white;
+  background-color: ghostwhite;
 }
 
 .form-group input[type="text"],
