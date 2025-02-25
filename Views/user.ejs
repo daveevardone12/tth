@@ -1,27 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>User Account | Property Management System</title>
-    <link rel="stylesheet" href="../css/dashboardstyle.css" />
-    <link rel="stylesheet" href="../css/general.css" />
-    <link rel="stylesheet" href="../css/userstyle.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Account | Property Management System</title>
+  <link rel="stylesheet" href="../css/dashboardstyle.css" />
+  <link rel="stylesheet" href="../css/general.css" />
+  <link rel="stylesheet" href="../css/userstyle.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+</head>
 
 <body>
   <%- include("./includes/sidebar") %>
@@ -31,64 +26,67 @@
       </div>
       <!-- Profile Section -->
       <div class="profile-wrapper">
-        <div class="box">
-          <h2>User Information</h2>
-          <form class="profile-form">
-            <!-- Personal Information -->
-            <div class="profile-pic-container">
+
+        <div class="box1">
+
+            <h2>User Information</h2>
+            <form class="profile-form">
+              <!-- Personal Information -->
+
+              <!-- <div class="profile-pic-container">
               <input type="file" id="file-input" accept="image/*">
               <img id="profile-pic" src="https://via.placeholder.com/150">
-            </div>
-            <div class="form-grid">
-              <div>
-                <label for="first-name">First Name*</label>
-                <input type="text" id="first-name" value="<%= data.first_name %>" readonly />
-              </div>
-              <div>
-                <label for="last-name">Last Name*</label>
-                <input type="text" id="last-name" value="<%= data.last_name %>" readonly />
-              </div>
-              <div>
-                <label for="contact-no">Contact Number*</label>
-                <input type="text" id="contact-no" value="<%= data.phone %>" readonly />
-              </div>
-            </div>
+            </div> -->
 
-            <div class="form-actions">
-              <button id="change-user-btn" type="button" class="action-btn">
-                Change User Information
-              </button>
-            </div>
-
-            <!-- Email & Password -->
-            <h2>Email & Password</h2>
-            <div class="form-grid">
-              <div>
-                <label for="email">Email Address*</label>
-                <input type="email" id="email" value="<%= data.email %>" readonly />
+              <div class="form-grid">
+                <div>
+                  <label for="first-name">First Name*</label>
+                  <input type="text" id="first-name" value="<%= data.first_name %>" readonly />
+                </div>
+                <div>
+                  <label for="last-name">Last Name*</label>
+                  <input type="text" id="last-name" value="<%= data.last_name %>" readonly />
+                </div>
+                <div>
+                  <label for="contact-no">Contact Number*</label>
+                  <input type="text" id="contact-no" value="<%= data.phone %>" readonly />
+                </div>
               </div>
-              <div>
-                <label for="password">Password*</label>
-                <input
-                  type="password"
-                  id="password"
-                  value="<%= password%>"
-                  readonly
-                />
-              </div>
-            </div>
 
-            <!-- Action Buttons -->
-            <div class="form-actions">
-              <button id="change-email-btn" type="button" class="action-btn">
-                Change Email
-              </button>
-              <button id="change-password-btn" type="button" class="action-btn">
-                Change Password
-              </button>
+              <div class="form-actions">
+                <button id="change-user-btn" type="button" class="action-btn">
+                  Change User Information
+                </button>
+              </div>
+          
+        </div>
+
+          <div class="box2">
+          <!-- Email & Password -->
+          <h2>Email & Password</h2>
+          <div class="form-grid">
+            <div>
+              <label for="email">Email Address*</label>
+              <input type="email" id="email" value="<%= data.email %>" readonly />
             </div>
+            <div>
+              <label for="password">Password*</label>
+              <input type="password" id="password" value="<%= password%>" readonly />
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="form-actions">
+            <button id="change-email-btn" type="button" class="action-btn">
+              Change Email
+            </button>
+            <button id="change-password-btn" type="button" class="action-btn">
+              Change Password
+            </button>
+          </div>
           </form>
         </div>
+
       </div>
     </div>
 
@@ -155,7 +153,7 @@
       </div>
     </div>
 
-    <script>
+    <!-- <script>
       document.addEventListener('DOMContentLoaded', function () {
         const savedPic = localStorage.getItem('profilePic');
         if (savedPic) {
@@ -175,7 +173,7 @@
         }
       });
 
-    </script>
+    </script> -->
 
 </body>
 
