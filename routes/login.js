@@ -7,11 +7,18 @@ const { checkNotAuthenticated } = require("../middleware/middleware");
 const passport = require("passport");
 const crypto = require("crypto");
 const nodemailer = require("nodemailer");
+const rateLimit = require("express-rate-limit");
 
 const userSchema = Joi.object({
   role: Joi.string().required(),
   email: Joi.string().required(),
   password: Joi.string().required(),
+});
+
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 5, // Limit each IP to 5 login attempts per 15 minutes
+  message: "Too many login attempts. Please try again later.",
 });
 
 // Login Routes
@@ -23,7 +30,7 @@ router.get("/login", checkNotAuthenticated, (req, res) => {
   res.render("login");
 });
 
-router.post("/login/submit", async (req, res, next) => {
+router.post("/login/submit", loginLimiter, async (req, res, next) => {
   const { error, value } = userSchema.validate(req.body);
 
   if (error) {
@@ -37,18 +44,15 @@ router.post("/login/submit", async (req, res, next) => {
     }
 
     if (!user) {
-      console.log(
-        "Authentication failed:",
-        info?.message || "Invalid credentials"
-      );
-      req.flash("error", info?.message || "Invalid credentials");
+      console.log("Authentication failed: Invalid credentials");
+      req.flash("error", "Invalid credentials");
       return res.redirect("/login");
     }
 
     // Validate role selection
-    const selectedRole = req.body.role; // Role selected by the user in the form
+    const selectedRole = req.body.role;
     if (!selectedRole || selectedRole !== user.role) {
-      console.log("Role mismatch:", selectedRole, "vs", user.role);
+      console.log("Role mismatch detected");
       req.flash("error", "Incorrect role selected. Please try again.");
       return res.redirect("/login");
     }
@@ -59,10 +63,11 @@ router.post("/login/submit", async (req, res, next) => {
         return next(err);
       }
 
-      console.log("Authenticated user role:", user.role);
+      console.log(`Login successful for user ID: ${user.id}`);
+      req.flash("success", "Login successful!");
+
       switch (user.role) {
         case "Admin":
-          return res.redirect("/dashboard");
         case "Employee":
           return res.redirect("/dashboard");
         default:
