@@ -8,4 +8,3 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 500); // Delay the animation for a smooth entrance
     });
   });
-  
