@@ -31,7 +31,13 @@ router.get("/login", checkNotAuthenticated, (req, res) => {
   res.render("login");
 });
 
-router.post("/login/submit", async (req, res, next) => {
+router.post("/login/submit", loginLimiter, async (req, res, next) => {
+  const { error, value } = userSchema.validate(req.body);
+
+  if (error) {
+    return res.status(400).json({ error: error.details[0].message });
+  }
+
   passport.authenticate("local", async (err, user, info) => {
     if (err) {
       console.error("Authentication error:", err);
@@ -41,6 +47,14 @@ router.post("/login/submit", async (req, res, next) => {
     if (!user) {
       console.log("Authentication failed: Invalid credentials");
       req.flash("error", "Invalid credentials");
+      return res.redirect("/login");
+    }
+
+    // Validate role selection
+    const selectedRole = req.body.role;
+    if (!selectedRole || selectedRole !== user.role) {
+      console.log("Role mismatch detected");
+      req.flash("error", "Incorrect role selected. Please try again.");
       return res.redirect("/login");
     }
 
@@ -63,7 +77,14 @@ router.post("/login/submit", async (req, res, next) => {
       console.log(`Login successful for user: ${user.email}`);
       req.flash("success", "Login successful!");
 
-      return res.redirect("/dashboard");
+      switch (user.role) {
+        case "Admin":
+        case "Employee":
+          return res.redirect("/dashboard");
+        default:
+          req.flash("error", "Invalid user role");
+          return res.redirect("/login");
+      }
     });
   })(req, res, next);
 });
@@ -120,8 +141,8 @@ router.post("/forgot-password", async (req, res) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "davemarlon74@gmail.com",
-      pass: "ecqo yjba ayhn nbvr",
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
     },
   });
 

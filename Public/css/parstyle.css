@@ -310,7 +310,7 @@ label:hover {
   /* Smooth corners */
   transition: border-color 0.3s ease;
   /* Smooth border transition */
-  width: calc(100% + 45%);
+  width: calc(100% + 100%);
 }
 
 /* Trigger hover effect for custom dropdowns */
@@ -417,7 +417,7 @@ button:hover {
 
 /* for header */
 .mas-header {
-  position: fixed; 
+  position: fixed;
   z-index: 1;
   background-color: #f7f7f7;
   width: calc(100% - 16%);
