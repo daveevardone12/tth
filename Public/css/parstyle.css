@@ -138,7 +138,7 @@ h2 {
 } */
 
 .form-group select {
-  width: 104%;
+  width: calc(100% + 17px);
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -149,7 +149,7 @@ h2 {
 /* Custom dropdown container */
 .custom-dropdown {
   position: relative;
-  font-family: Arial, sans-serif;
+  font-family: Poppins;
 }
 
 /* The trigger element that shows the selected option */
@@ -246,57 +246,7 @@ h2 {
 
 /*end for UACS*/
 
-/*category and location*/
-/* styles.css */
-
-/* Common hover effect for labels */
-label:hover {
-  color: green;
-}
-
-/* Dropdown options container for category, location, and UACS */
-.custom-dropdown-options,
-#category-dropdown-options,
-#location-dropdown-options {
-  display: none;
-  /* Initially hidden for custom dropdowns */
-  position: absolute;
-  width: 23em;
-  top: 100%;
-  left: 0;
-  background-color: white;
-  border: 1px solid #ccc;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 10;
-  max-height: 200px;
-  /* Max height for scroll */
-  overflow-y: auto;
-  /* Enable vertical scrolling */
-  border-radius: 5px;
-  /* Smooth corners */
-}
-
-/* Individual option styling for custom dropdowns */
-.custom-dropdown-option,
-#category-dropdown-options .custom-dropdown-option,
-#location-dropdown-options .custom-dropdown-option {
-  padding: 10px;
-  cursor: pointer;
-  color: #333;
-  /* Default text color */
-  transition: all 0.3s ease;
-  /* Smooth hover transition */
-}
-
-/* Green background and white text on hover for custom dropdown options */
-.custom-dropdown-option:hover,
-#category-dropdown-options .custom-dropdown-option:hover,
-#location-dropdown-options .custom-dropdown-option:hover {
-  color: #fff;
-  /* White text */
-  background-color: #0a5d03;
-  /* Green background */
-}
+/* FOR CATEGORY AND LOCATION */
 
 /* Dropdown trigger styling for custom dropdowns */
 .custom-dropdown-trigger,
@@ -307,29 +257,11 @@ label:hover {
   border: 1px solid #ccc;
   cursor: pointer;
   border-radius: 5px;
-  /* Smooth corners */
   transition: border-color 0.3s ease;
-  /* Smooth border transition */
-  width: calc(100% + 45%);
+  width: calc(100% + 17px);
 }
 
-/* Trigger hover effect for custom dropdowns */
-.custom-dropdown-trigger:hover,
-#category:hover,
-#location:hover {
-  border-color: #0a5d03;
-  /* Green border when hovering */
-}
-
-/* Optional: Active state styling for trigger */
-.custom-dropdown-trigger.active {
-  background-color: #e8f5e9;
-  /* Light green background */
-  border-color: #0a5d03;
-  /* Green border */
-}
-
-/*end*/
+/* END */
 
 .form-group input[type="text"],
 .form-group input[type="date"],
@@ -417,7 +349,7 @@ button:hover {
 
 /* for header */
 .mas-header {
-  position: fixed; 
+  position: fixed;
   z-index: 1;
   background-color: #f7f7f7;
   width: calc(100% - 16%);
@@ -434,3 +366,72 @@ button:hover {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   flex-direction: column;
 }
+
+/* MGA WARA HIN GAMIT */
+
+/*category and location*/
+/* styles.css */
+
+/* Common hover effect for labels */
+/* yadi daman panusing wara gmait */
+/* label:hover {
+  color: green;
+} */
+
+/* Dropdown options container for category, location, and UACS */
+/* wara hin gamit*/
+/* .custom-dropdown-options,
+#category-dropdown-options,
+#location-dropdown-options {
+  display: none;
+  position: absolute;
+  width: 23em;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  max-height: 200px;
+  overflow-y: auto;
+  border-radius: 5px;
+} */
+
+/* Individual option styling for custom dropdowns */
+/* pati yadi wara gamit */
+/* .custom-dropdown-option,
+#category-dropdown-options .custom-dropdown-option,
+#location-dropdown-options .custom-dropdown-option {
+  padding: 100px;
+  cursor: pointer;
+  color: #333;
+  transition: all 0.3s ease;
+} */
+
+/* Green background and white text on hover for custom dropdown options */
+/* pati it yadi wara gamit  */
+/* .custom-dropdown-option:hover,
+#category-dropdown-options .custom-dropdown-option:hover,
+#location-dropdown-options .custom-dropdown-option:hover {
+  color: #fff;
+  background-color: #0a5d03;
+} */
+
+/* Trigger hover effect for custom dropdowns */
+/* yadi daman wara gamit */
+/* .custom-dropdown-trigger:hover,
+#category:hover,
+#location:hover {
+  border-color: #0a5d03;
+} */
+
+/* Optional: Active state styling for trigger */
+/* wara gamit */
+/* .custom-dropdown-trigger.active {
+  background-color: #18c026;
+  border-color: #0a5d03;
+} */
+
+/*end*/
+
+/* end hit mga wara gamit */

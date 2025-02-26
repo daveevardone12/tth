@@ -173,14 +173,15 @@
         padding: 5px 10px;
         border-radius: 0px 0px 8px 8px;
         text-align: center;
-        gap: 0;
         display: flex;
         flex-direction: column;
         width: 150px;
-        margin-left: 548px;
+        /* margin-left: 548px; */
         margin-top: -53px;
         margin-bottom: 13px;
-        position: sticky;
+        position: absolute;
+        left: 45%;
+        transform: translateX(-50%);
       }
     </style>
   </head>
@@ -194,6 +195,7 @@
           <div class="header-container">
             <div class="fix">
               <h1>Dashboard</h1>
+
               <div id="date-time">
                 <div id="day"></div>
                 <div id="time"></div>
@@ -201,7 +203,6 @@
               </div>
             </div>
 
-         
             <!-- <div class="profile-container">
               <img id="dashboard-profile-pic" src="https://via.placeholder.com/150" alt="Profile Picture">
             </div> -->
@@ -291,68 +292,6 @@
           </div>
         </div>
 
-        <!-- Dropdown for Location Selection -->
-        <div class="custom-dropdown">
-          <button
-            class="custom-dropdown-button"
-            id="dropdownButton"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Select Location
-          </button>
-          <div class="custom-dropdown-options" id="location" role="menu">
-            <div
-              class="custom-dropdown-option"
-              data-value="College of Engineering"
-              id="coe"
-              role="menuitem"
-              tabindex="0"
-            >
-              College of Engineering
-            </div>
-            <div
-              class="custom-dropdown-option"
-              data-value="Smart Center"
-              id="smart_center"
-              role="menuitem"
-              tabindex="0"
-            >
-              Smart Center
-            </div>
-            <div
-              class="custom-dropdown-option"
-              data-value="Library"
-              id="library"
-              role="menuitem"
-              tabindex="0"
-            >
-              Library
-            </div>
-            <div
-              class="custom-dropdown-option"
-              data-cancel="true"
-              role="menuitem"
-              tabindex="0"
-            >
-              Cancel Selection
-            </div>
-          </div>
-        </div>
-
-        <!-- Charts Container -->
-        <div class="c-chart">
-          <!-- Container for the Inventory Google Bar Chart -->
-          <div class="chart" id="inventory_chart_container">
-            <div id="chart_div"></div>
-          </div>
-
-          <!-- Container for the Location-Based Google Column Chart -->
-          <div class="chart" id="location_chart_container">
-            <div id="location_chart_div"></div>
-          </div>
-        </div>
-
         <!-- Loading Spinner and Overlay -->
         <div id="loadingSpinner"></div>
         <div id="sort-by-overlay"></div>
@@ -404,6 +343,5 @@
       });
 
     </script> -->
-</body>
-
+  </body>
 </html>

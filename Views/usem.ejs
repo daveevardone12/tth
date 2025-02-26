@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Management</title>
     <link rel="stylesheet" href="../css/usemstyle.css" />
     <link rel="stylesheet" href="../css/general.css" />
+    <script
+      src="https://kit.fontawesome.com/your-fontawesome-kit.js"
+      crossorigin="anonymous"
+    ></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
@@ -20,138 +24,169 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-</head>
-<body>
+  </head>
+  <style>
+    .icon-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+      margin: 1px;
+      padding: 0;
+    }
+    .remove {
+      color: green;
+    }
+
+    .modify {
+      color: rgb(181, 181, 28);
+    }
+
+    .suspended {
+      color: red;
+    }
+  </style>
+  <body>
     <%- include("./includes/sidebar") %>
     <div class="container">
-        <header>
-            <h1>User Management</h1>
-        </header>
+      <header>
+        <h1>User Management</h1>
+      </header>
 
-        <div class="top-bar">
-            <input type="text" id="searchUser" placeholder="Search User" class="search-bar">
-        </div>
+      <div class="top-bar">
+        <input
+          type="text"
+          id="searchUser"
+          placeholder="Search User"
+          class="search-bar"
+        />
+      </div>
 
-        <table id="userTable">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>User Role</th>
-                    <th>Status</th>
-                    <th>Last Login</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <div class="user-info">
-                            <div>
-                                
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="user-email">
-                                
-                        </div>
-                    </td>
-                    <td>
-                            
-                    </td>
-                    <td>
-                        <div>
-                            
-                        </div>
-                    </td>
-                    <td>
-                        <div>
-                            
-                        </div>
-                    </td>
-                    <td>
-                        
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+      <table id="userTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>User Role</th>
+            <th>Status</th>
+            <th>Last Login</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="userList">
+          <% users.forEach(user => { %>
+          <tr>
+            <td><%= user.full_name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.role %></td>
+            <td><%= user.status %></td>
+            <td><%= user.last_login %></td>
+            <td>
+            
+              <button class="icon-button remove" type="submit" title="Remove">
+                <i class="fas fa-trash"></i>
+            </button>
+        
+            <button class="icon-button modify" type="submit" title="Modify">
+                <i class="fas fa-edit"></i>
+            </button>
+        
+            <button class="icon-button suspended" type="submit" title="Suspended">
+                <i class="fas fa-ban"></i>
+            </button>
+              </button>
+           
+            </td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
     </div>
+    <script src="/js/usem.js"></script>
 
     <!-- Role Modal -->
     <div id="roleModal" class="modal">
-        <div class="modal-content">
-            <h3>Modify Roles</h3>
-            <label><input type="checkbox" class="role-checkbox" value="Admin"> Admin</label>
-            <label><input type="checkbox" class="role-checkbox" value="Employee"> Employee</label>
-            <button class="save" onclick="saveRoles()">Save</button>
-            <button class="close" onclick="closeModal()">Close</button>
-        </div>
+      <div class="modal-content">
+        <h3>Modify Roles</h3>
+        <label
+          ><input type="checkbox" class="role-checkbox" value="Admin" />
+          Admin</label
+        >
+        <label
+          ><input type="checkbox" class="role-checkbox" value="Employee" />
+          Employee</label
+        >
+        <button class="save" onclick="saveRoles()">Save</button>
+        <button class="close" onclick="closeModal()">Close</button>
+      </div>
     </div>
 
     <script>
-        // Remove User Function
-function removeUser(button) {
-    if (confirm("Are you sure you want to remove this user?")) {
-        button.closest("tr").remove();
-    }
-}
-
-// Modify Roles Modal
-let selectedRow;
-function modifyRoles(button) {
-    selectedRow = button.closest("tr").querySelector("td:nth-child(3)");
-    document.getElementById("roleModal").style.display = "block";
-
-    // Ensure only one checkbox can be selected
-    document.querySelectorAll(".role-checkbox").forEach(checkbox => {
-        checkbox.addEventListener("change", function () {
-            if (this.checked) {
-                document.querySelectorAll(".role-checkbox").forEach(cb => {
-                    if (cb !== this) {
-                        cb.checked = false;
-                    }
-                });
-            }
-        });
-    });
-}
-
-// Save Roles
-function saveRoles() {
-    let selectedRole = document.querySelector(".role-checkbox:checked");
-    selectedRow.innerHTML = "";
-
-    if (selectedRole) {
-        let span = document.createElement("span");
-        span.className = `role ${selectedRole.value.toLowerCase()}`;
-        span.textContent = selectedRole.value;
-        selectedRow.appendChild(span);
-    }
-
-    closeModal();
-}
-
-// Close Modal
-function closeModal() {
-    document.getElementById("roleModal").style.display = "none";
-}
-
-// Search Bar Functionality
-document.getElementById("searchUser").addEventListener("keyup", function () {
-    let filter = this.value.toLowerCase();
-    let rows = document.querySelectorAll("#userTable tbody tr");
-
-    rows.forEach(row => {
-        let name = row.querySelector("td:nth-child(2) strong").textContent.toLowerCase();
-        if (name.includes(filter)) {
-            row.style.display = "";
-        } else {
-            row.style.display = "none";
+      // Remove User Function
+      function removeUser(button) {
+        if (confirm("Are you sure you want to remove this user?")) {
+          button.closest("tr").remove();
         }
-    });
-});
+      }
 
-    </script>    
-</body>
+      // Modify Roles Modal
+      let selectedRow;
+      function modifyRoles(button) {
+        selectedRow = button.closest("tr").querySelector("td:nth-child(3)");
+        document.getElementById("roleModal").style.display = "block";
+
+        // Ensure only one checkbox can be selected
+        document.querySelectorAll(".role-checkbox").forEach((checkbox) => {
+          checkbox.addEventListener("change", function () {
+            if (this.checked) {
+              document.querySelectorAll(".role-checkbox").forEach((cb) => {
+                if (cb !== this) {
+                  cb.checked = false;
+                }
+              });
+            }
+          });
+        });
+      }
+
+      // Save Roles
+      function saveRoles() {
+        let selectedRole = document.querySelector(".role-checkbox:checked");
+        selectedRow.innerHTML = "";
+
+        if (selectedRole) {
+          let span = document.createElement("span");
+          span.className = `role ${selectedRole.value.toLowerCase()}`;
+          span.textContent = selectedRole.value;
+          selectedRow.appendChild(span);
+        }
+
+        closeModal();
+      }
+
+      // Close Modal
+      function closeModal() {
+        document.getElementById("roleModal").style.display = "none";
+      }
+
+      // Search Bar Functionality
+      document
+        .getElementById("searchUser")
+        .addEventListener("keyup", function () {
+          let filter = this.value.toLowerCase();
+          let rows = document.querySelectorAll("#userTable tbody tr");
+
+          rows.forEach((row) => {
+            let name = row
+              .querySelector("td:nth-child(2) strong")
+              .textContent.toLowerCase();
+            if (name.includes(filter)) {
+              row.style.display = "";
+            } else {
+              row.style.display = "none";
+            }
+          });
+        });
+    </script>
+  </body>
 </html>
