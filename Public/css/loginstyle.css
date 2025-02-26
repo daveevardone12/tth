@@ -15,7 +15,7 @@ body {
   flex-direction: column;
   height: 100vh;
   /* background: url('../images/bbt.png') no-repeat center center fixed; */
-  background: #b5ffad;
+  background: white;
   backdrop-filter: blur(50px);
 }
 

@@ -1,7 +1,7 @@
 /* Global Styles */
 body {
   font-family: Arial, sans-serif;
-  background-color: white;
+  background-color: #f7f7f7;
   margin: 0;
   padding: 0;
   justify-content: right;
@@ -24,9 +24,12 @@ body::-webkit-scrollbar {
 .form-container {
   background-color: white;
   /* margin-top: 50px; */
+  margin-top: 5%;
+  margin-bottom: 2%;
   border-radius: 8px;
-  padding: 0 0 20px 0;
+  padding: 10px 40px 30px;
   /* margin-left: 15px; */
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
 }
 
 .form-group0 {
@@ -105,9 +108,7 @@ label:hover {
   color: green;
 }
 
-.fix {
-  margin-top: 5%;
-}
+
 
 input,
 select,
@@ -246,8 +247,8 @@ input[type="checkbox"] {
 }
 
 button {
-  background-color: #0a5d03;
-  color: #fff;
+  background-color: white;
+  color: black;
   font-family: Poppins;
   border: none;
   padding: 10px 20px;
@@ -255,19 +256,21 @@ button {
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  border: 1px solid #095c02;
 }
 
 button:hover {
-  background-color: #1d8d01;
+  background-color: rgb(224, 224, 224);
 }
 
 .btn-secondary {
-  background-color: #0a5d03;
-  color: white;
+  background-color: white;
+  color: black;
 }
 
 .btn-secondary:hover {
-  background-color: #1d8d01;
+  background-color: rgb(224, 224, 224);
 }
 
 @media print {
@@ -310,9 +313,8 @@ select {
 .mas-header {
   position: fixed;
   z-index: 1;
-  background-color: white;
+  background-color: #f7f7f7;
   width: calc(100% - 16%);
   margin-left: -30px;
   padding-right: 20px;
-  box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.2);
 }
