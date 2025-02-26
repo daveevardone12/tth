@@ -88,41 +88,29 @@ h1 {
 .table-wrapper {
   /* overflow-x: auto; */
 
-  .rfid-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0 5px; /* Adds spacing between rows */
-    margin-top: 20px;
-  }
-  
-  .rfid-table thead {
-    background-color: #095c02;
-    color: white;
-    font-size: small;
-    font-family: Poppins, sans-serif;
-  }
-  
-  .rfid-table th,
-  .rfid-table td {
-    padding: 15px;
-    text-align: center;
-  }
-  
-  .rfid-table tbody tr {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transition: all 0.2s ease-in-out;
-  }
-  
-  .rfid-table tbody tr:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  }
-  
-  .rfid-table tbody tr:nth-of-type(even) {
-    background-color: #bcebb3;
-  }
-  
+.rfid-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.rfid-table th,
+.rfid-table td {
+  padding: 15px;
+  text-align: center;
+}
+
+.rfid-table thead {
+  background-color: #095c02;
+  color: white;
+  font-size: small;
+  font-family: Poppins;
+}
+
+table tbody tr:nth-of-type(even) {
+  background-color: #bcebb3;
+}
 
 /* Modal Styles */
 .modal {
@@ -277,5 +265,5 @@ h1 {
   width: calc(100% - 16%);
   margin-left: -20px;
   padding-right: 20px;
-  box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
 }
