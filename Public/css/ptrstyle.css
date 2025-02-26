@@ -7,7 +7,7 @@
 
 body {
   min-height: 100vh;
-  background-color: white;
+  background-color: #f7f7f7;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -39,13 +39,11 @@ h2 {
   margin-left: 10px;
 }
 
-.fix {
-  margin-top: 5%;
-}
+
 
 /* Main content area */
 .main-content {
-  background-color: white;
+  background-color: #f7f7f7;
   margin-left: 260px !important;
   /* Leaves space for the sidebar */
   padding: 0 20px !important;
@@ -65,10 +63,11 @@ h2 {
   margin-top: 30px;
   background-color: white;
   font-family: Poppins;
-  padding: 0 0 0 0;
-  width: 100%;
+  padding: 7px 0 5px 45px;
   border-radius: 8px;
-  margin-left: 35px;
+  margin-top: 5%;
+  margin-bottom: 2%;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
 }
 
 .form-container h2 {
@@ -172,8 +171,8 @@ label:hover {
 }
 
 .button-container button {
-  background-color: #0a5d03;
-  color: #fff;
+  background-color: white;
+  color: black;
   font-family: Poppins;
   padding: 10px 20px;
   border: none;
@@ -181,15 +180,17 @@ label:hover {
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  border: 1px solid #095c02;
 }
 
 .print-button {
-  background-color: #0a5d03;
-  color: white;
+  background-color: white;
+  color: black;
 }
 
 .button-container button:hover {
-  background-color: #1d8d01;
+  background-color: rgb(224, 224, 224);
 }
 
 .form-group2 {
@@ -296,9 +297,8 @@ label:hover {
 .mas-header {
   position: fixed;
   z-index: 1;
-  background-color: white;
+  background-color: #f7f7f7;
   width: calc(100% - 16%);
   margin-left: -30px;
   padding-right: 20px;
-  box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.2);
 }
