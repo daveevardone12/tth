@@ -8,6 +8,7 @@ const passport = require("passport");
 const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 const rateLimit = require("express-rate-limit");
+const pool = require("../models/tthDB"); // Ensure pool is imported
 
 const userSchema = Joi.object({
   role: Joi.string().required(),
@@ -57,13 +58,23 @@ router.post("/login/submit", loginLimiter, async (req, res, next) => {
       return res.redirect("/login");
     }
 
-    req.login(user, (err) => {
+    req.login(user, async (err) => {
       if (err) {
         console.error("Login error:", err);
         return next(err);
       }
 
-      console.log(`Login successful for user ID: ${user.id}`);
+      try {
+        // ✅ Update `last_login` & `status`
+        await pool.query(
+          "UPDATE users SET last_login = NOW(), status = 'Online' WHERE email = $1",
+          [user.email]
+        );
+      } catch (updateErr) {
+        console.error("Error updating last_login and status:", updateErr);
+      }
+
+      console.log(`Login successful for user: ${user.email}`);
       req.flash("success", "Login successful!");
 
       switch (user.role) {
@@ -76,6 +87,31 @@ router.post("/login/submit", loginLimiter, async (req, res, next) => {
       }
     });
   })(req, res, next);
+});
+
+router.get("/logout", (req, res) => {
+  if (req.user) {
+    pool
+      .query("UPDATE users SET status = 'Offline' WHERE email = $1", [
+        req.user.email,
+      ])
+      .then(() => {
+        req.logout((err) => {
+          if (err) {
+            console.error("Logout error:", err);
+            return res.status(500).send("Logout failed");
+          }
+          req.flash("success", "You have been logged out");
+          res.redirect("/login");
+        });
+      })
+      .catch((error) =>
+        console.error("Error updating status on logout:", error)
+      );
+  } else {
+    req.flash("error", "No active session found");
+    res.redirect("/login");
+  }
 });
 
 // Forgot Password Routes
@@ -105,8 +141,8 @@ router.post("/forgot-password", async (req, res) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "davemarlon74@gmail.com",
-      pass: "ecqo yjba ayhn nbvr",
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
     },
   });
 

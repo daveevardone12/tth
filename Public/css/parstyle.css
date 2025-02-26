@@ -261,7 +261,6 @@ h2 {
   width: calc(100% + 17px);
 }
 
-
 /* END */
 
 .form-group input[type="text"],
@@ -338,7 +337,6 @@ button:hover {
 /* print csss !!!!!!!! */
 
 @media print {
-
   .main-content,
   .sidebar {
     display: none;
@@ -368,7 +366,6 @@ button:hover {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   flex-direction: column;
 }
-
 
 /* MGA WARA HIN GAMIT */
 
@@ -419,7 +416,6 @@ button:hover {
   color: #fff;
   background-color: #0a5d03;
 } */
-
 
 /* Trigger hover effect for custom dropdowns */
 /* yadi daman wara gamit */

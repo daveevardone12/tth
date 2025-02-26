@@ -200,7 +200,6 @@ input[type="password"]:focus {
   transition: all 0.3s ease-in-out;
 }
 
-
 .action-btn:hover {
   background-color: #1d8d01;
 }

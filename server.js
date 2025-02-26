@@ -21,6 +21,7 @@ const twilio = require("twilio");
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client1 = twilio(accountSid, authToken);
+
 // Initialize Twilio Client
 const twilioClient = twilio(
   process.env.TWILIO_ACCOUNT_SID,
@@ -727,7 +728,6 @@ app.use("/registerCallerID", registerCallerID);
 
 const usemRoutes = require("./routes/usem");
 app.use("/usem", usemRoutes);
-
 
 // Logout route to clear session
 app.get("/logout", (req, res, next) => {

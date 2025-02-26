@@ -1,125 +1,143 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f7f7f7;
-    color: #333;
-  }
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f7f7f7;
+  color: #333;
+}
 
 .container {
-    max-width: calc(100% - 200px); /* Adjust to leave space for the 300px sidebar and 20px padding */
-    margin-left: 250px; /* Sidebar width + spacing */
-    padding: 0 20px;
-    box-sizing: border-box; /* Ensures padding doesn't exceed the container width */
-    background-color: #f7f7f7;
-  }
+  max-width: calc(
+    100% - 200px
+  ); /* Adjust to leave space for the 300px sidebar and 20px padding */
+  margin-left: 250px; /* Sidebar width + spacing */
+  padding: 0 20px;
+  box-sizing: border-box; /* Ensures padding doesn't exceed the container width */
+  background-color: #f7f7f7;
+}
 
 header h1 {
-    margin: 0;
-    margin-left: -20px;
-    margin-bottom: 72px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 20px;
-    width: 100%;
-    background: #f7f7f7;
+  margin: 0;
+  margin-left: -20px;
+  margin-bottom: 72px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  width: 100%;
+  background: #f7f7f7;
 }
 
 .top-bar {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .search-bar {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 30%;
-    margin-bottom: 20px;
-    border: solid 2px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 30%;
+  margin-bottom: 20px;
+  border: solid 2px;
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
-    background: white;
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
 }
 
-thead { 
-    background: linear-gradient(135deg, #0a6b03, #047d00); /* Gradient for depth */
-    color: white;
-    font-size: 13px; /* Slightly larger font */
-    font-family: Poppins, sans-serif;
-    font-weight: 700; /* Bolder text */
-    letter-spacing: 1.5px; /* More spacing for emphasis */
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4); /* Stronger shadow */
-    padding: 12px 0; /* More vertical padding */
-    border-radius: 6px; /* Rounded corners */
-    text-align: center; 
-  }
+thead {
+  background: linear-gradient(
+    135deg,
+    #0a6b03,
+    #047d00
+  ); /* Gradient for depth */
+  color: white;
+  font-size: 13px; /* Slightly larger font */
+  font-family: Poppins, sans-serif;
+  font-weight: 700; /* Bolder text */
+  letter-spacing: 1.5px; /* More spacing for emphasis */
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4); /* Stronger shadow */
+  padding: 12px 0; /* More vertical padding */
+  border-radius: 6px; /* Rounded corners */
+  text-align: center;
+}
 
-th, td {
-    padding: 15px;
-    text-align: center;
+th,
+td {
+  padding: 15px;
+  text-align: center;
 }
 
 th {
-    background-color: #095c02;
-    color: white;
+  background-color: #095c02;
+  color: white;
 }
 
 .user-info {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
-
 
 .role {
-    padding: 5px 10px;
-    border-radius: 15px;
-    font-size: 12px;
-    align-items: center;
-    color: white;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  align-items: center;
+  color: white;
 }
 
-
-.admin { background-color: #0d6efd; }
-.employee { background-color: #198754; }
-
-.modify, .remove {
-    background: none;
-    border: 1px solid gray;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
+.admin {
+  background-color: #0d6efd;
+}
+.employee {
+  background-color: #198754;
 }
 
-.remove { color: red; }
+.modify,
+.remove {
+  background: none;
+  border: 1px solid gray;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.remove {
+  color: red;
+}
 
 /* Modal Styles */
 .modal {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .modal-content {
-    text-align: center;
+  text-align: center;
 }
 
 .modal button {
-    margin-top: 10px;
-    padding: 8px 15px;
-    border: none;
-    cursor: pointer;
+  margin-top: 10px;
+  padding: 8px 15px;
+  border: none;
+  cursor: pointer;
 }
 
-.save { background: green; color: white; }
-.close { background: red; color: white; }
+.save {
+  background: green;
+  color: white;
+}
+.close {
+  background: red;
+  color: white;
+}
