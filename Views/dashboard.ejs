@@ -2,191 +2,185 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard | Property Management System</title>
-    <link rel="stylesheet" href="../css/dashboardstyle.css" />
-    <link rel="stylesheet" href="../css/general.css" />
-    <link rel="stylesheet" href="../css/dashboard.css" />
-    <link
-      href="https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Load Google Charts Library -->
-    <script src="https://www.gstatic.com/charts/loader.js"></script>
-    <style>
-      .container {
-        display: flex;
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | Property Management System</title>
+  <link rel="stylesheet" href="../css/dashboardstyle.css" />
+  <link rel="stylesheet" href="../css/general.css" />
+  <link rel="stylesheet" href="../css/dashboard.css" />
+  <link href="https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+  <!-- Load Google Charts Library -->
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
+  <style>
+    .container {
+      display: flex;
+    }
+
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 0 20px;
+    }
+
+    .chart {
+      width: 1085px;
+      height: 500px;
+      margin-top: 30px;
+      background-color: rgb(255, 255, 255);
+      padding: 10px;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+      /* Center the chart within the container */
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 40px;
+      gap: 40px;
+    }
+
+    /* Set fixed width and height for the charts */
+    #chart_div {
+      width: 1060px;
+      height: 450px;
+      padding-left: 50px;
+    }
+
+    #location_chart_div {
+      width: 1060px;
+      height: 450px;
+    }
+
+    .c-chart {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
+
+    /* Custom Dropdown Styles */
+    .custom-dropdown {
+      margin-top: 15px;
+      position: relative;
+      display: inline-block;
+      margin-bottom: 20px;
+      border: #095c02;
+    }
+
+    .custom-dropdown-button {
+      background-color: white;
+      color: black;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: 2px solid #095c02;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-left: 80%;
+    }
+
+    .custom-dropdown-options {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 200px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-left: 80%;
+    }
+
+    .custom-dropdown-options .custom-dropdown-option {
+      padding: 12px 16px;
+      cursor: pointer;
+    }
+
+    .custom-dropdown-options .custom-dropdown-option:hover {
+      background-color: #f1f1f1;
+    }
+
+    .custom-dropdown-options .custom-dropdown-option[data-cancel="true"] {
+      /* background-color: blue; */
+      color: black;
+    }
+
+    .custom-dropdown-options .custom-dropdown-option[data-cancel="true"]:hover {
+      background-color: white;
+    }
+
+    /* Spinner Animation */
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
       }
 
-      .main-content {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        padding: 0 20px;
+      100% {
+        transform: rotate(360deg);
       }
+    }
 
-      .chart {
-        width: 1085px;
-        height: 500px;
-        margin-top: 30px;
-        background-color: rgb(255, 255, 255);
-        padding: 10px;
-        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-        /* Center the chart within the container */
-        border-radius: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-left: 40px;
-        gap: 40px;
-      }
+    #loadingSpinner {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      /* Spinner styles */
+      border: 8px solid #f3f3f3;
+      /* Light grey */
+      border-top: 8px solid #3498db;
+      /* Blue */
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+      display: none;
+      /* Hidden by default */
+      z-index: 1001;
+      /* Above the overlay */
+    }
 
-      /* Set fixed width and height for the charts */
-      #chart_div {
-        width: 1060px;
-        height: 450px;
-        padding-left: 50px;
-      }
+    #sort-by-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      /* Hidden by default */
+      z-index: 1000;
+      /* Below the spinner */
+    }
 
-      #location_chart_div {
-        width: 1060px;
-        height: 450px;
-      }
+    #date-time {
+      font-size: 14px;
+      font-family: Poppins;
+      color: #000;
+      font-weight: bold;
+      /* background: white; */
+      padding: 5px 10px;
+      border-radius: 0px 0px 8px 8px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      width: 150px;
+      /* margin-left: 548px; */
+      margin-top: -53px;
+      margin-bottom: 13px;
+      position: absolute;
+      left: 45%;
+      transform: translateX(-50%);
+    }
+  </style>
+</head>
 
-      .c-chart {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-      }
-
-      /* Custom Dropdown Styles */
-      .custom-dropdown {
-        margin-top: 15px;
-        position: relative;
-        display: inline-block;
-        margin-bottom: 20px;
-        border: #095c02;
-      }
-
-      .custom-dropdown-button {
-        background-color: white;
-        color: black;
-        padding: 10px 20px;
-        font-size: 16px;
-        border: 2px solid #095c02;
-        cursor: pointer;
-        border-radius: 4px;
-        margin-left: 80%;
-      }
-
-      .custom-dropdown-options {
-        display: none;
-        position: absolute;
-        background-color: white;
-        min-width: 200px;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        z-index: 1;
-        border-radius: 4px;
-        overflow: hidden;
-        margin-left: 80%;
-      }
-
-      .custom-dropdown-options .custom-dropdown-option {
-        padding: 12px 16px;
-        cursor: pointer;
-      }
-
-      .custom-dropdown-options .custom-dropdown-option:hover {
-        background-color: #f1f1f1;
-      }
-
-      .custom-dropdown-options .custom-dropdown-option[data-cancel="true"] {
-        /* background-color: blue; */
-        color: black;
-      }
-
-      .custom-dropdown-options
-        .custom-dropdown-option[data-cancel="true"]:hover {
-        background-color: white;
-      }
-
-      /* Spinner Animation */
-      @keyframes spin {
-        0% {
-          transform: rotate(0deg);
-        }
-
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-
-      #loadingSpinner {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        /* Spinner styles */
-        border: 8px solid #f3f3f3;
-        /* Light grey */
-        border-top: 8px solid #3498db;
-        /* Blue */
-        border-radius: 50%;
-        width: 60px;
-        height: 60px;
-        animation: spin 1s linear infinite;
-        display: none;
-        /* Hidden by default */
-        z-index: 1001;
-        /* Above the overlay */
-      }
-
-      #sort-by-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        display: none;
-        /* Hidden by default */
-        z-index: 1000;
-        /* Below the spinner */
-      }
-
-      #date-time {
-        font-size: 14px;
-        font-family: Poppins;
-        color: #000;
-        font-weight: bold;
-        /* background: white; */
-        padding: 5px 10px;
-        border-radius: 0px 0px 8px 8px;
-        text-align: center;
-        gap: 0;
-        display: flex;
-        flex-direction: column;
-        width: 150px;
-        margin-left: 548px;
-        margin-top: -53px;
-        margin-bottom: 13px;
-        position: sticky;
-      }
-    </style>
-  </head>
-
-  <body>
-    <%- include("./includes/sidebar") %>
+<body>
+  <%- include("./includes/sidebar") %>
     <div class="container">
       <!-- Main content -->
       <div class="main-content">
@@ -194,14 +188,16 @@
           <div class="header-container">
             <div class="fix">
               <h1>Dashboard</h1>
+
               <div id="date-time">
                 <div id="day"></div>
                 <div id="time"></div>
                 <div id="date"></div>
               </div>
+
             </div>
 
-         
+
             <!-- <div class="profile-container">
               <img id="dashboard-profile-pic" src="https://via.placeholder.com/150" alt="Profile Picture">
             </div> -->
@@ -220,10 +216,7 @@
           <div class="card red" data-category="Office Equipment">
             <br /><span id="officeEquipment">0</span> Office Equipment
           </div>
-          <div
-            class="card green"
-            data-category="Agricultural and Forestry Equipment"
-          >
+          <div class="card green" data-category="Agricultural and Forestry Equipment">
             <br /><span id="AgriEquipment">0</span> Agricultural and Forestry
             Equipment
           </div>
@@ -233,17 +226,11 @@
           <div class="card red" data-category="Printing Equipment">
             <br /><span id="PrintEquipment">0</span> Printing Equipment
           </div>
-          <div
-            class="card green"
-            data-category="Technical and Scientific Equipment"
-          >
+          <div class="card green" data-category="Technical and Scientific Equipment">
             <br /><span id="TSEquipment">0</span> Technical and Scientific
             Equipment
           </div>
-          <div
-            class="card purple"
-            data-category="Other Machinery and Equipment"
-          >
+          <div class="card purple" data-category="Other Machinery and Equipment">
             <br /><span id="OMEquipment">0</span> Other Machinery and Equipment
           </div>
           <div class="card red" data-category="Motor Vehicles">
@@ -261,10 +248,7 @@
           <div class="card green" data-category="Machinery">
             <br /><span id="MachineryEquipment">0</span> Machinery
           </div>
-          <div
-            class="card green"
-            data-category="Marine and Machinery Equipment"
-          >
+          <div class="card green" data-category="Marine and Machinery Equipment">
             <br /><span id="MarineandMachineryEquipment">0</span> Marine and
             Machinery Equipment
           </div>
@@ -272,17 +256,11 @@
             <br /><span id="CommunicationEquipment">0</span> Communication
             Equipment
           </div>
-          <div
-            class="card green"
-            data-category="Disaster Response and Rescue Equipment"
-          >
+          <div class="card green" data-category="Disaster Response and Rescue Equipment">
             <br /><span id="DisasterResponseandRescueEquipment">0</span>
             Disaster Response and Rescue Equipment
           </div>
-          <div
-            class="card green"
-            data-category="Military Police and Security Equipment"
-          >
+          <div class="card green" data-category="Military Police and Security Equipment">
             <br /><span id="MilitaryPoliceandSecurityEquipment">0</span>
             Military, Police and Security Equipment
           </div>
@@ -291,67 +269,9 @@
           </div>
         </div>
 
-        <!-- Dropdown for Location Selection -->
-        <div class="custom-dropdown">
-          <button
-            class="custom-dropdown-button"
-            id="dropdownButton"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Select Location
-          </button>
-          <div class="custom-dropdown-options" id="location" role="menu">
-            <div
-              class="custom-dropdown-option"
-              data-value="College of Engineering"
-              id="coe"
-              role="menuitem"
-              tabindex="0"
-            >
-              College of Engineering
-            </div>
-            <div
-              class="custom-dropdown-option"
-              data-value="Smart Center"
-              id="smart_center"
-              role="menuitem"
-              tabindex="0"
-            >
-              Smart Center
-            </div>
-            <div
-              class="custom-dropdown-option"
-              data-value="Library"
-              id="library"
-              role="menuitem"
-              tabindex="0"
-            >
-              Library
-            </div>
-            <div
-              class="custom-dropdown-option"
-              data-cancel="true"
-              role="menuitem"
-              tabindex="0"
-            >
-              Cancel Selection
-            </div>
-          </div>
-        </div>
+       
 
-        <!-- Charts Container -->
-        <div class="c-chart">
-          <!-- Container for the Inventory Google Bar Chart -->
-          <div class="chart" id="inventory_chart_container">
-            <div id="chart_div"></div>
-          </div>
-
-          <!-- Container for the Location-Based Google Column Chart -->
-          <div class="chart" id="location_chart_container">
-            <div id="location_chart_div"></div>
-          </div>
-        </div>
+       
 
         <!-- Loading Spinner and Overlay -->
         <div id="loadingSpinner"></div>

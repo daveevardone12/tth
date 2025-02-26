@@ -153,27 +153,84 @@
       </div>
     </div>
 
-    <!-- <script>
+    <script>
       document.addEventListener('DOMContentLoaded', function () {
-        const savedPic = localStorage.getItem('profilePic');
-        if (savedPic) {
-          document.getElementById('profile-pic').src = savedPic;
-        }
-      });
+        const overlay = document.getElementById('overlay');
 
-      document.getElementById('file-input').addEventListener('change', function (event) {
-        const file = event.target.files[0];
-        if (file) {
-          const reader = new FileReader();
-          reader.onload = function (e) {
-            document.getElementById('profile-pic').src = e.target.result;
-            localStorage.setItem('profilePic', e.target.result); // Save to local storage
-          };
-          reader.readAsDataURL(file);
-        }
-      });
+        const modals = {
+          changeUsersModal: document.getElementById('changeUsersModal'),
+          changeEmailModal: document.getElementById('changeEmailModal'),
+          changePasswordModal: document.getElementById('changePasswordModal')
+        };
 
-    </script> -->
+        const buttons = {
+          changeUserBtn: document.getElementById('change-user-btn'),
+          changeEmailBtn: document.getElementById('change-email-btn'),
+          changePasswordBtn: document.getElementById('change-password-btn')
+        };
+
+        const closeButtons = document.querySelectorAll('.close');
+
+        function closeAllModals() {
+          Object.values(modals).forEach(modal => modal.classList.remove('active'));
+          overlay.classList.remove('active');
+        }
+
+        function openModal(modal) {
+          closeAllModals();
+          modal.classList.add('active');
+          overlay.classList.add('active');
+        }
+
+        buttons.changeUserBtn.addEventListener('click', () => openModal(modals.changeUsersModal));
+        buttons.changeEmailBtn.addEventListener('click', () => openModal(modals.changeEmailModal));
+        buttons.changePasswordBtn.addEventListener('click', () => openModal(modals.changePasswordModal));
+
+        closeButtons.forEach(button => button.addEventListener('click', closeAllModals));
+        overlay.addEventListener('click', closeAllModals);
+      });
+    </script>
+    // Modal functionality
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const changeEmailModal = document.getElementById("changeEmailModal");
+        const changePasswordModal = document.getElementById("changePasswordModal");
+        const overlay = document.getElementById("overlay");
+
+        const changeEmailBtn = document.getElementById("change-email-btn");
+        const changePasswordBtn = document.getElementById("change-password-btn");
+        const closeButtons = document.querySelectorAll(".close");
+
+        function openModal(modal) {
+            modal.classList.add("active");
+            overlay.classList.add("active");
+        }
+
+        function closeAllModals() {
+            changeEmailModal.classList.remove("active");
+            changePasswordModal.classList.remove("active");
+            overlay.classList.remove("active");
+        }
+
+        changeEmailBtn.onclick = function () {
+            openModal(changeEmailModal);
+        };
+
+        changePasswordBtn.onclick = function () {
+            openModal(changePasswordModal);
+        };
+
+        closeButtons.forEach((close) => {
+            close.onclick = closeAllModals;
+        });
+
+        overlay.onclick = closeAllModals;
+
+        window.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") closeAllModals();
+        });
+    });
+</script>
 
 </body>
 
