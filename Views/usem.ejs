@@ -82,20 +82,21 @@
             <td><%= user.status %></td>
             <td><%= user.last_login %></td>
             <td>
-            
               <button class="icon-button remove" type="submit" title="Remove">
                 <i class="fas fa-trash"></i>
-            </button>
-        
-            <button class="icon-button modify" type="submit" title="Modify">
-                <i class="fas fa-edit"></i>
-            </button>
-        
-            <button class="icon-button suspended" type="submit" title="Suspended">
-                <i class="fas fa-ban"></i>
-            </button>
               </button>
-           
+
+              <button class="icon-button modify" type="submit" title="Modify">
+                <i class="fas fa-edit"></i>
+              </button>
+
+              <button
+                class="icon-button suspended"
+                type="submit"
+                title="Suspended"
+              >
+                <i class="fas fa-ban"></i>
+              </button>
             </td>
           </tr>
           <% }); %>
