@@ -116,69 +116,55 @@
 
 <script>
     // Add Item link functionality
-    document.getElementById("addItemLink").addEventListener("click", function (event) {
-        event.preventDefault(); // Prevent the default link behavior
-        const dropdown = document.getElementById("dropdown");
-        const arrow = document.querySelector(".arrow_down");
+    document.addEventListener("DOMContentLoaded", function () {
+    function toggleDropdown(linkId, dropdownId, arrowClass) {
+        const link = document.getElementById(linkId);
+        const dropdown = document.getElementById(dropdownId);
+        const arrow = document.querySelector(arrowClass);
 
-        // Toggle the display of the dropdown
-        if (dropdown.style.display === "none" || dropdown.style.display === "") {
-            dropdown.style.display = "block"; // Show the dropdown
-        } else {
-            dropdown.style.display = "none"; // Hide the dropdown
+        // Check localStorage for the dropdown state
+        const isOpen = localStorage.getItem(dropdownId) === "open";
+
+        if (isOpen) {
+            dropdown.style.display = "block";
+            arrow.classList.add("rotate");
         }
 
-        // Toggle the rotation of the arrow
-        arrow.classList.toggle("rotate");
-    });
+        link.addEventListener("click", function (event) {
+            event.preventDefault(); // Prevent default link behavior
 
-    // Return Item link functionality
-    document.getElementById("prslink").addEventListener("click", function (event) {
-        event.preventDefault(); // Prevent the default link behavior
-        const dropdown = document.getElementById("dropdowns");
-        const arrowReturn = document.querySelector(".arrow_down_return");
+            if (dropdown.style.display === "none" || dropdown.style.display === "") {
+                dropdown.style.display = "block"; // Show dropdown
+                localStorage.setItem(dropdownId, "open"); // Save state
+            } else {
+                dropdown.style.display = "none"; // Hide dropdown
+                localStorage.removeItem(dropdownId); // Remove state
+            }
 
-        // Toggle the display of the dropdown
-        if (dropdown.style.display === "none" || dropdown.style.display === "") {
-            dropdown.style.display = "block"; // Show the dropdown
-        } else {
-            dropdown.style.display = "none"; // Hide the dropdown
-        }
+            arrow.classList.toggle("rotate");
+        });
+    }
 
-        // Toggle the rotation of the return arrow
-        arrowReturn.classList.toggle("rotate");
-    });
+    // Apply the function to each dropdown
+    toggleDropdown("addItemLink", "dropdown", ".arrow_down");
+    toggleDropdown("prslink", "dropdowns", ".arrow_down_return");
+    toggleDropdown("userlink", "dropdownss", ".arrow_downs");
+    toggleDropdown("rfidlink", "dropdownsss", ".arrow_downss");
+});
 
-    document.getElementById("userlink").addEventListener("click", function(event) {
-        event.preventDefault(); // Prevent the default link behavior
-        const dropdown = document.getElementById("dropdownss");
-        const arrowReturn = document.querySelector(".arrow_downs");
+</script>
 
-        // Toggle the display of the dropdown
-        if (dropdown.style.display === "none" || dropdown.style.display === "") {
-            dropdown.style.display = "block"; // Show the dropdown
-        } else {
-            dropdown.style.display = "none"; // Hide the dropdown
-        }
 
-        // Toggle the rotation of the return arrow
-        arrowReturn.classList.toggle("rotate");
-    });
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const currentLocation = window.location.pathname; // Get current page URL
+        const navLinks = document.querySelectorAll(".nav-menu ul li a");
 
-    document.getElementById("rfidlink").addEventListener("click", function(event) {
-        event.preventDefault(); // Prevent the default link behavior
-        const dropdown = document.getElementById("dropdownsss");
-        const arrowReturn = document.querySelector(".arrow_downss");
-
-        // Toggle the display of the dropdown
-        if (dropdown.style.display === "none" || dropdown.style.display === "") {
-            dropdown.style.display = "block"; // Show the dropdown
-        } else {
-            dropdown.style.display = "none"; // Hide the dropdown
-        }
-
-        // Toggle the rotation of the return arrow
-        arrowReturn.classList.toggle("rotate");
+        navLinks.forEach(link => {
+            if (link.getAttribute("href") === currentLocation) {
+                link.classList.add("active"); // Apply the highlight class
+            }
+        });
     });
 </script>
 
