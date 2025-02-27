@@ -15,9 +15,9 @@ router.get("/", ensureAuthenticated, async (req, res) => {
   try {
     const result = await pool.query(
       `SELECT first_name, last_name, email, phone, role, 
-              COALESCE(status, 'Inactive') AS status,
-              TO_CHAR(last_login, 'MM/DD/YYYY HH12:MI AM') AS last_login 
-       FROM users`
+       COALESCE(status, 'Inactive') AS status,
+       TO_CHAR(last_login, 'FMMonth DD, YYYY HH12:MI AM') AS last_login 
+FROM users;`
     );
 
     const users = result.rows.map((user) => ({
@@ -62,6 +62,19 @@ router.get("/search", async (req, res) => {
   } catch (err) {
     console.error("Error searching users:", err);
     res.status(500).json({ error: "Error searching users" });
+  }
+});
+
+// Remove User
+router.post("/remove/:id", ensureAuthenticated, async (req, res) => {
+  const userId = req.params.id;
+
+  try {
+    await pool.query("DELETE FROM users WHERE user_id = $1", [userId]);
+    res.json({ success: true, message: "User removed successfully." });
+  } catch (err) {
+    console.error("Error removing user:", err);
+    res.status(500).json({ success: false, error: "Error removing user" });
   }
 });
 
