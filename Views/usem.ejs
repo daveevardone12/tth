@@ -6,10 +6,11 @@
     <title>User Management</title>
     <link rel="stylesheet" href="../css/usemstyle.css" />
     <link rel="stylesheet" href="../css/general.css" />
-    <script
-      src="https://kit.fontawesome.com/your-fontawesome-kit.js"
-      crossorigin="anonymous"
-    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
@@ -44,6 +45,8 @@
 
     .suspended {
       color: red;
+      border: none;
+      background: none;
     }
   </style>
   <body>
@@ -70,7 +73,7 @@
             <th>User Role</th>
             <th>Status</th>
             <th>Last Login</th>
-            <th>Actions</th>
+            <th></th>
           </tr>
         </thead>
         <tbody id="userList">
@@ -82,28 +85,35 @@
             <td><%= user.status %></td>
             <td><%= user.last_login %></td>
             <td>
-              <button class="icon-button remove" type="submit" title="Remove">
-                <i class="fas fa-trash"></i>
-              </button>
-
-              <button class="icon-button modify" type="submit" title="Modify">
-                <i class="fas fa-edit"></i>
-              </button>
-
-              <button
-                class="icon-button suspended"
-                type="submit"
-                title="Suspended"
-              >
-                <i class="fas fa-ban"></i>
-              </button>
+              <div class="dropdown">
+                <button class="icon-button dropdown-toggle" title="Actions">
+                  <i class="fas fa-ellipsis-v"></i>
+                </button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <button class="dropdown-item remove">
+                      <i class="fas fa-trash"></i> Remove
+                    </button>
+                  </li>
+                  <li>
+                    <button class="dropdown-item modify">
+                      <i class="fas fa-edit"></i> Modify
+                    </button>
+                  </li>
+                  <li>
+                    <button class="dropdown-item suspended">
+                      <i class="fas fa-ban"></i> Suspend
+                    </button>
+                  </li>
+                </ul>
+              </div>
             </td>
           </tr>
           <% }); %>
         </tbody>
       </table>
     </div>
-    <script src="/js/usem.js"></script>
+    <script src="/js/usem-api.js"></script>
 
     <!-- Role Modal -->
     <div id="roleModal" class="modal">
@@ -124,31 +134,6 @@
 
     <script>
       // Remove User Function
-      function removeUser(button) {
-        if (confirm("Are you sure you want to remove this user?")) {
-          button.closest("tr").remove();
-        }
-      }
-
-      // Modify Roles Modal
-      let selectedRow;
-      function modifyRoles(button) {
-        selectedRow = button.closest("tr").querySelector("td:nth-child(3)");
-        document.getElementById("roleModal").style.display = "block";
-
-        // Ensure only one checkbox can be selected
-        document.querySelectorAll(".role-checkbox").forEach((checkbox) => {
-          checkbox.addEventListener("change", function () {
-            if (this.checked) {
-              document.querySelectorAll(".role-checkbox").forEach((cb) => {
-                if (cb !== this) {
-                  cb.checked = false;
-                }
-              });
-            }
-          });
-        });
-      }
 
       // Save Roles
       function saveRoles() {
@@ -188,6 +173,26 @@
             }
           });
         });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".dropdown-toggle").forEach((button) => {
+          button.addEventListener("click", (event) => {
+            let dropdown = event.currentTarget.parentElement;
+            dropdown.classList.toggle("active");
+          });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener("click", (event) => {
+          document.querySelectorAll(".dropdown").forEach((dropdown) => {
+            if (!dropdown.contains(event.target)) {
+              dropdown.classList.remove("active");
+            }
+          });
+        });
+      });
     </script>
   </body>
 </html>
