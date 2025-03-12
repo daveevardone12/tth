@@ -65,17 +65,4 @@ router.get("/search", async (req, res) => {
   }
 });
 
-// Remove User
-router.post("/remove/:id", ensureAuthenticated, async (req, res) => {
-  const userId = req.params.id;
-
-  try {
-    await pool.query("DELETE FROM users WHERE user_id = $1", [userId]);
-    res.json({ success: true, message: "User removed successfully." });
-  } catch (err) {
-    console.error("Error removing user:", err);
-    res.status(500).json({ success: false, error: "Error removing user" });
-  }
-});
-
 module.exports = router;
