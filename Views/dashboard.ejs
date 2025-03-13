@@ -2,210 +2,196 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard | Property Management System</title>
-    <link rel="stylesheet" href="../css/dashboardstyle.css" />
-    <link rel="stylesheet" href="../css/general.css" />
-    <link rel="stylesheet" href="../css/dashboard.css" />
-    <link
-      href="https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Load Google Charts Library -->
-    <script src="https://www.gstatic.com/charts/loader.js"></script>
-    <style>
-      .container {
-        display: flex;
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | Property Management System</title>
+  <link rel="stylesheet" href="../css/dashboardstyle.css" />
+  <link rel="stylesheet" href="../css/general.css" />
+  <link rel="stylesheet" href="../css/dashboard.css" />
+  <link href="https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prata&display=swap" rel="stylesheet">
+  <!-- Load Google Charts Library -->
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
+  <style>
+    .container {
+      display: flex;
+    }
+
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 0 20px;
+    }
+
+    .chart {
+      width: 1085px;
+      height: 500px;
+      margin-top: 30px;
+      background-color: rgb(255, 255, 255);
+      padding: 10px;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+      /* Center the chart within the container */
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 40px;
+      gap: 40px;
+    }
+
+    /* Set fixed width and height for the charts */
+    #chart_div {
+      width: 1060px;
+      height: 450px;
+      padding-left: 50px;
+    }
+
+    #location_chart_div {
+      width: 1060px;
+      height: 450px;
+    }
+
+    .c-chart {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
+
+    /* Custom Dropdown Styles */
+    .custom-dropdown {
+      margin-top: 15px;
+      position: relative;
+      display: inline-block;
+      margin-bottom: 20px;
+      border: #095c02;
+    }
+
+    .custom-dropdown-button {
+      background-color: white;
+      color: black;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: 2px solid #095c02;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-left: 80%;
+    }
+
+    .custom-dropdown-options {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 200px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-left: 80%;
+    }
+
+    .custom-dropdown-options .custom-dropdown-option {
+      padding: 12px 16px;
+      cursor: pointer;
+    }
+
+    .custom-dropdown-options .custom-dropdown-option:hover {
+      background-color: #f1f1f1;
+    }
+
+    .custom-dropdown-options .custom-dropdown-option[data-cancel="true"] {
+      /* background-color: blue; */
+      color: black;
+    }
+
+    .custom-dropdown-options .custom-dropdown-option[data-cancel="true"]:hover {
+      background-color: white;
+    }
+
+    /* Spinner Animation */
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
       }
 
-      .main-content {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        padding: 0 20px;
+      100% {
+        transform: rotate(360deg);
       }
+    }
 
-      .chart {
-        width: 1085px;
-        height: 500px;
-        margin-top: 30px;
-        background-color: rgb(255, 255, 255);
-        padding: 10px;
-        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-        /* Center the chart within the container */
-        border-radius: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-left: 40px;
-        gap: 40px;
-      }
+    #loadingSpinner {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      /* Spinner styles */
+      border: 8px solid #f3f3f3;
+      /* Light grey */
+      border-top: 8px solid #3498db;
+      /* Blue */
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+      display: none;
+      /* Hidden by default */
+      z-index: 1001;
+      /* Above the overlay */
+    }
 
-      /* Set fixed width and height for the charts */
-      #chart_div {
-        width: 1060px;
-        height: 450px;
-        padding-left: 50px;
-      }
+    #sort-by-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      z-index: 1000;
+    }
 
-      #location_chart_div {
-        width: 1060px;
-        height: 450px;
-      }
+    /* #date-time {
+      font-size: 14px;
+      font-family: Poppins;
+      color: #000;
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 0px 0px 8px 8px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      width: 150px;
+      margin-top: -53px;
+      margin-bottom: 13px;
+      position: absolute;
+      left: 45%;
+      transform: translateX(-50%);
+    } */
+  </style>
+</head>
 
-      .c-chart {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-      }
-
-      /* Custom Dropdown Styles */
-      .custom-dropdown {
-        margin-top: 15px;
-        position: relative;
-        display: inline-block;
-        margin-bottom: 20px;
-        border: #095c02;
-      }
-
-      .custom-dropdown-button {
-        background-color: white;
-        color: black;
-        padding: 10px 20px;
-        font-size: 16px;
-        border: 2px solid #095c02;
-        cursor: pointer;
-        border-radius: 4px;
-        margin-left: 80%;
-      }
-
-      .custom-dropdown-options {
-        display: none;
-        position: absolute;
-        background-color: white;
-        min-width: 200px;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        z-index: 1;
-        border-radius: 4px;
-        overflow: hidden;
-        margin-left: 80%;
-      }
-
-      .custom-dropdown-options .custom-dropdown-option {
-        padding: 12px 16px;
-        cursor: pointer;
-      }
-
-      .custom-dropdown-options .custom-dropdown-option:hover {
-        background-color: #f1f1f1;
-      }
-
-      .custom-dropdown-options .custom-dropdown-option[data-cancel="true"] {
-        /* background-color: blue; */
-        color: black;
-      }
-
-      .custom-dropdown-options
-        .custom-dropdown-option[data-cancel="true"]:hover {
-        background-color: white;
-      }
-
-      /* Spinner Animation */
-      @keyframes spin {
-        0% {
-          transform: rotate(0deg);
-        }
-
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-
-      #loadingSpinner {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        /* Spinner styles */
-        border: 8px solid #f3f3f3;
-        /* Light grey */
-        border-top: 8px solid #3498db;
-        /* Blue */
-        border-radius: 50%;
-        width: 60px;
-        height: 60px;
-        animation: spin 1s linear infinite;
-        display: none;
-        /* Hidden by default */
-        z-index: 1001;
-        /* Above the overlay */
-      }
-
-      #sort-by-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        display: none;
-        /* Hidden by default */
-        z-index: 1000;
-        /* Below the spinner */
-      }
-
-      #date-time {
-        font-size: 14px;
-        font-family: Poppins;
-        color: #000;
-        font-weight: bold;
-        /* background: white; */
-        padding: 5px 10px;
-        border-radius: 0px 0px 8px 8px;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        width: 150px;
-        /* margin-left: 548px; */
-        margin-top: -53px;
-        margin-bottom: 13px;
-        position: absolute;
-        left: 45%;
-        transform: translateX(-50%);
-      }
-    </style>
-  </head>
-
-  <body>
-    <%- include("./includes/sidebar") %>
+<body>
+  <%- include("./includes/sidebar") %>
     <div class="container">
       <!-- Main content -->
       <div class="main-content">
         <div class="mas-header">
           <div class="header-container">
             <div class="fix">
-              <h1>Dashboard</h1>
-
+              <h1><span style="color: #095c02; font-weight: 800;">Dash</span>board</h1>
               <div id="date-time">
-                <div id="day"></div>
-                <div id="time"></div>
-                <div id="date"></div>
               </div>
             </div>
 
-            <!-- <div class="profile-container">
-              <img id="dashboard-profile-pic" src="https://via.placeholder.com/150" alt="Profile Picture">
-            </div> -->
+
           </div>
 
           <div class="right-allign">
@@ -214,83 +200,215 @@
         </div>
 
         <!-- Cards -->
-        <div class="cards-container">
+        <div class="cards-container collapsed" id="cardsContainer">
+          <button id="expandButton" class="toggle-button">Click to Expand</button>
+
+
           <div class="card purple" data-category="ICT Equipment">
-            <br /><span id="ICTEquipment">0</span> ICT Equipment
+            <br /><span id="ICTEquipment">0</span> <span class="panloy">ICT Equipment</span>
+            <div class="icon1"></div>
           </div>
           <div class="card red" data-category="Office Equipment">
-            <br /><span id="officeEquipment">0</span> Office Equipment
+            <div class="icon2"></div>
+            <br /><span id="officeEquipment">0</span> <span class="panloy">Office Equipment</span>
           </div>
-          <div
-            class="card green"
-            data-category="Agricultural and Forestry Equipment"
-          >
-            <br /><span id="AgriEquipment">0</span> Agricultural and Forestry
-            Equipment
+          <div class="card green" data-category="Agricultural and Forestry Equipment">
+            <br /><span id="AgriEquipment">0</span> <span class="panloy">Agricultural and Forestry
+              Equipment</span>
+            <div class="icon3"></div>
           </div>
           <div class="card purple" data-category="Medical Equipment">
-            <br /><span id="MedEquipment">0</span> Medical Equipment
+            <br /><span id="MedEquipment">0</span> <span class="panloy">Medical Equipment</span>
+            <div class="icon4"></div>
           </div>
           <div class="card red" data-category="Printing Equipment">
-            <br /><span id="PrintEquipment">0</span> Printing Equipment
+            <br /><span id="PrintEquipment">0</span> <span class="panloy">Printing Equipment</span>
+            <div class="icon5"></div>
           </div>
-          <div
-            class="card green"
-            data-category="Technical and Scientific Equipment"
-          >
-            <br /><span id="TSEquipment">0</span> Technical and Scientific
-            Equipment
+          <div class="card green" data-category="Technical and Scientific Equipment">
+            <br /><span id="TSEquipment">0</span> <span class="panloy">Technical and Scientific
+              Equipment</span>
+            <div class="icon6"></div>
           </div>
-          <div
-            class="card purple"
-            data-category="Other Machinery and Equipment"
-          >
-            <br /><span id="OMEquipment">0</span> Other Machinery and Equipment
+          <div class="card purple" data-category="Other Machinery and Equipment">
+            <br /><span id="OMEquipment">0</span> <span class="panloy">Other Machinery and Equipment</span>
+            <div class="icon7"></div>
           </div>
           <div class="card red" data-category="Motor Vehicles">
-            <br /><span id="MotorVehicles">0</span> Motor Vehicles
+            <br /><span id="MotorVehicles">0</span> <span class="panloy">Motor Vehicles</span>
+            <div class="icon8"></div>
           </div>
           <div class="card green" data-category="Furniture and Fixtures">
-            <br /><span id="FurnitureEquipment">0</span> Furniture and Fixtures
+            <br /><span id="FurnitureEquipment">0</span> <span class="panloy">Furniture and Fixtures</span>
+            <div class="icon9"></div>
           </div>
           <div class="card purple" data-category="Books">
-            <br /><span id="Books">0</span> Books
+            <br /><span id="Books">0</span> <span class="panloy">Books</span>
+            <div class="icon10"></div>
           </div>
           <div class="card red" data-category="Software">
-            <br /><span id="Software">0</span> Software
+            <br /><span id="Software">0</span> <span class="panloy">Software</span>
+            <div class="icon11"></div>
           </div>
           <div class="card green" data-category="Machinery">
-            <br /><span id="MachineryEquipment">0</span> Machinery
+            <br /><span id="MachineryEquipment">0</span> <span class="panloy">Machinery</span>
+            <div class="icon12"></div>
           </div>
-          <div
-            class="card green"
-            data-category="Marine and Machinery Equipment"
-          >
-            <br /><span id="MarineandMachineryEquipment">0</span> Marine and
-            Machinery Equipment
+          <div class="card green" data-category="Marine and Machinery Equipment">
+            <br /><span id="MarineandMachineryEquipment">0</span> <span class="panloy">Marine and
+              Machinery Equipment</span>
+            <div class="icon13"></div>
           </div>
           <div class="card green" data-category="Communication Equipment">
-            <br /><span id="CommunicationEquipment">0</span> Communication
-            Equipment
+            <br /><span id="CommunicationEquipment">0</span> <span class="panloy">Communication
+              Equipment</span>
+            <div class="icon14"></div>
           </div>
-          <div
-            class="card green"
-            data-category="Disaster Response and Rescue Equipment"
-          >
+          <div class="card green" data-category="Disaster Response and Rescue Equipment">
             <br /><span id="DisasterResponseandRescueEquipment">0</span>
-            Disaster Response and Rescue Equipment
+            <span class="panloy"> Disaster Response and Rescue Equipment</span>
+            <div class="icon15"></div>
           </div>
-          <div
-            class="card green"
-            data-category="Military Police and Security Equipment"
-          >
+          <div class="card green" data-category="Military Police and Security Equipment">
             <br /><span id="MilitaryPoliceandSecurityEquipment">0</span>
-            Military, Police and Security Equipment
+            <span class="panloy">Military, Police and Security Equipment</span>
+            <div class="icon16"></div>
           </div>
           <div class="card green" data-category="Sports Equipment">
-            <br /><span id="SportsEquipment">0</span> Sports Equipment
+            <br /><span id="SportsEquipment">0</span> <span class="panloy">Sports Equipment</span>
+            <div class="icon17"></div>
           </div>
         </div>
+
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+            const cardsContainer = document.getElementById("cardsContainer");
+            const expandButton = document.getElementById("expandButton");
+            let isExpanded = false;
+
+            expandButton.addEventListener("click", function () {
+              if (!isExpanded) {
+                cardsContainer.classList.remove("collapsed");
+                cardsContainer.classList.add("expanded");
+                addMinimizeButton();
+                expandButton.style.display = "none"; // Hide expand button
+                isExpanded = true;
+              }
+            });
+
+            function addMinimizeButton() {
+              let minimizeButton = document.createElement("button");
+              minimizeButton.innerText = "Minimize";
+              minimizeButton.classList.add("minimize-button");
+              minimizeButton.addEventListener("click", function () {
+                cardsContainer.classList.add("collapsed");
+                cardsContainer.classList.remove("expanded");
+                expandButton.style.display = "block"; // Show expand button again
+                isExpanded = false;
+                minimizeButton.remove();
+              });
+              cardsContainer.appendChild(minimizeButton);
+            }
+          });
+        </script>
+
+        <!-- <div class="mean-container"> -->
+          <!-- time and date -->
+          <!-- <div class="widget">
+            <div class="time" id="time">--:-- --</div>
+            <div class="divider"></div>
+            <div class="month" id="month">---</div>
+            <div class="year" id="year">----</div>
+          </div>
+
+          <script>
+            function updateTime() {
+              let now = new Date();
+              let hours = now.getHours();
+              let minutes = now.getMinutes();
+              let ampm = hours >= 12 ? 'PM' : 'AM';
+              hours = hours % 12 || 12;
+              minutes = minutes < 10 ? '0' + minutes : minutes;
+              document.getElementById('time').innerText = `${hours}:${minutes} ${ampm}`;
+
+              let monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+              document.getElementById('month').innerText = monthNames[now.getMonth()];
+              document.getElementById('year').innerText = now.getFullYear();
+            }
+
+            document.addEventListener("DOMContentLoaded", function () {
+              updateTime();
+              setInterval(updateTime, 1000);
+            });
+          </script> -->
+
+          <div class="dashboard-container">
+            <div class="dashboard-card dashboard-time-card">
+              <div class="time" id="time">--:-- --</div>
+              <div class="divider"></div>
+              <div class="month" id="month">---</div>
+              <div class="year" id="year">----</div>
+            </div>
+            <div class="dashboard-card dashboard-activities-card">
+              <div class="recent">Recent Activities</div>
+              <div style="width: 100%; height: 20px; background: #e0e0e0; border-radius: 10px;"></div>
+            </div>
+            <div class="dashboard-status-container">
+              <div class="dashboard-card dashboard-status-card">Assigned: <div style="color: green; text-align: right; font-size: 42px; display: flex; margin-top: -30px; justify-content: flex-end;"><br>54</div></div>
+              <div class="dashboard-card dashboard-status-card">Not Assigned: <div style="color: green; text-align: right; font-size: 42px; display: flex; margin-top: -30px; justify-content: flex-end;"><br>63</div></div>
+            </div>
+            <div class="dashboard-card dashboard-logs-card">
+              <div class="logs">Logs</div>
+              <table class="dashboard-table">
+                <tr>
+                  <th>Date & Time</th>
+                  <th>Item Name</th>
+                  <th>RFID Tag</th>
+                  <th>Status</th>
+                </tr>
+                <tr>
+                  <td>January 27, 2025 at 04:08 PM</td>
+                  <td>Desktop 2D Barcode Scanner</td>
+                  <td>E29884012980390470470E</td>
+                  <td class="status-out">Out</td>
+                </tr>
+                <tr>
+                  <td>January 27, 2025 at 04:08 PM</td>
+                  <td>Desktop 2D Barcode Scanner</td>
+                  <td>E29884012980390470470E</td>
+                  <td class="status-in">In</td>
+                </tr>
+                <tr>
+                  <td>January 27, 2025 at 04:07 PM</td>
+                  <td>Not Registered</td>
+                  <td>06309838871467681949E</td>
+                  <td>Not Registered</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          
+
+          <script>
+            function updateTime() {
+              let now = new Date();
+              let hours = now.getHours();
+              let minutes = now.getMinutes();
+              let ampm = hours >= 12 ? 'PM' : 'AM';
+              hours = hours % 12 || 12;
+              minutes = minutes < 10 ? '0' + minutes : minutes;
+              document.getElementById('time').innerText = `${hours}:${minutes} ${ampm}`;
+        
+              let monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+              document.getElementById('month').innerText = monthNames[now.getMonth()];
+              document.getElementById('year').innerText = now.getFullYear();
+            }
+        
+            document.addEventListener("DOMContentLoaded", function () {
+              updateTime();
+              setInterval(updateTime, 1000);
+            });
+          </script>
 
         <!-- Loading Spinner and Overlay -->
         <div id="loadingSpinner"></div>
@@ -301,14 +419,14 @@
       </div>
     </div>
 
-    <script>
+    <!-- <script>
       function updateDateTime() {
         const now = new Date();
 
-        // Get the short day of the week (e.g., "SAT" instead of "Saturday")
+
         const dayOfWeek = now.toLocaleDateString("en-US").toUpperCase();
 
-        // Format the time (e.g., 12:34:56 PM)
+
         const timeOptions = {
           hour: "numeric",
           minute: "2-digit",
@@ -317,19 +435,18 @@
         };
         const formattedTime = now.toLocaleTimeString("en-US", timeOptions);
 
-        // Format the date (e.g., January 31, 2024)
         const dateOptions = { year: "numeric", month: "long" };
         const formattedDate = now.toLocaleDateString("en-US", dateOptions);
 
-        // Update the HTML elements
+
 
         document.getElementById("time").textContent = formattedTime;
         document.getElementById("date").textContent = formattedDate;
       }
 
-      updateDateTime(); // Call on page load
-      setInterval(updateDateTime, 1000); // Update every second
-    </script>
+      updateDateTime(); 
+      setInterval(updateDateTime, 1000); 
+    </script> -->
 
     <!-- <script>
       document.addEventListener('DOMContentLoaded', function () {
@@ -343,5 +460,6 @@
       });
 
     </script> -->
-  </body>
+</body>
+
 </html>
