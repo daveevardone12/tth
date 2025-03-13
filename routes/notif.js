@@ -4,34 +4,35 @@ const tthPool = require("../models/tthDB");
 const { ensureAuthenticated } = require("../middleware/middleware");
 require("dotenv").config();
 
-router.get("/", async (req, res) => {
-  const page = parseInt(req.query.page) || 1;
-  const limit = parseInt(req.query.limit) || 10;
-  const isAjax = req.query.ajax === "true";
-  const userData = req.user;
-  const role = userData.role;
-  try {
-    const { getRFIDList } = await fetchRFIDList();
+// router.get("/", async (req, res) => {
+//   const page = parseInt(req.query.page) || 1;
+//   const limit = parseInt(req.query.limit) || 10;
+//   const isAjax = req.query.ajax === "true";
+//   console.log("req.user:", req.user);
+//   const userData = req.user;
+//   const role = userData.role;
+//   try {
+//     const { getRFIDList } = await fetchRFIDList();
 
-    if (isAjax) {
-      res.setHeader("Content-Type", "application/json");
-      return res.json({
-        getRFIDList,
-      });
-    }
+//     if (isAjax) {
+//       res.setHeader("Content-Type", "application/json");
+//       return res.json({
+//         getRFIDList,
+//       });
+//     }
 
-    res.render("notif", {
-      getRFIDList,
-      role,
-    });
-  } catch (err) {
-    console.error("Error: ", err.message, err.stack);
-    if (isAjax) {
-      return res.status(500).json({ error: "Internal server error" });
-    }
-    res.status(500).send("Internal server error");
-  }
-});
+//     res.render("notif", {
+//       getRFIDList,
+//       role,
+//     });
+//   } catch (err) {
+//     console.error("Error: ", err.message, err.stack);
+//     if (isAjax) {
+//       return res.status(500).json({ error: "Internal server error" });
+//     }
+//     res.status(500).send("Internal server error");
+//   }
+// });
 
 router.get("/notif", ensureAuthenticated, async (req, res) => {
   const role = userData.role;

@@ -15,9 +15,9 @@ router.get("/", ensureAuthenticated, async (req, res) => {
   try {
     const result = await pool.query(
       `SELECT first_name, last_name, email, phone, role, 
-              COALESCE(status, 'Inactive') AS status,
-              TO_CHAR(last_login, 'MM/DD/YYYY HH12:MI AM') AS last_login 
-       FROM users`
+       COALESCE(status, 'Inactive') AS status,
+       TO_CHAR(last_login, 'FMMonth DD, YYYY HH12:MI AM') AS last_login 
+FROM users;`
     );
 
     const users = result.rows.map((user) => ({
