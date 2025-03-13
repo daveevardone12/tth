@@ -1,34 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Waste Material Report Form | Property Management System</title>
-    <link rel="stylesheet" href="../css/wmrfstyle.css" />
-    <link rel="stylesheet" href="../css/general.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
 
-  <body>
-    <div class="container">
-      <!-- Sidebar -->
-      <%- include("./includes/sidebar") %>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Waste Material Report Form | Property Management System</title>
+  <link rel="stylesheet" href="../css/wmrfstyle.css" />
+  <link rel="stylesheet" href="../css/general.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <%- include("./includes/sidebar") %>
 
       <!-- Main content -->
       <div class="main-content">
         <div class="mas-header">
           <h1>Waste Material Report Form</h1>
         </div>
-        
+
         <div class="form-container">
           <div class="fix">
             <h2>Item Details</h2>
@@ -46,21 +43,11 @@
                 </div>
                 <div class="half-width">
                   <label for="entityName">Entity Name *</label>
-                  <input
-                    type="text"
-                    name="entity_name"
-                    id="entity_name"
-                    required
-                  />
+                  <input type="text" name="entity_name" id="entity_name" required />
                 </div>
                 <div class="half-width">
                   <label for="fundCluster">Fund Cluster *</label>
-                  <input
-                    type="text"
-                    id="fund_cluster"
-                    name="fund_cluster"
-                    required
-                  />
+                  <input type="text" id="fund_cluster" name="fund_cluster" required />
                 </div>
                 <div class="half-width">
                   <label for="wmrNo">WMR No. *</label>
@@ -76,22 +63,12 @@
               <div class="form-group2">
                 <div class="half-width">
                   <label for="propertyNo">Property Number *</label>
-                  <input
-                    type="text"
-                    id="property_no"
-                    name="property_no"
-                    required
-                  />
+                  <input type="text" id="property_no" name="property_no" required />
                   <div class="hoverable" id="results"></div>
                 </div>
                 <div class="half-width">
                   <label for="date">Date *</label>
-                  <input
-                    type="date"
-                    id="disposal_date"
-                    name="disposal_date"
-                    required
-                  />
+                  <input type="date" id="disposal_date" name="disposal_date" required />
                 </div>
                 <div class="half-width">
                   <label for="endUser">Name of End User *</label>
@@ -134,119 +111,46 @@
             </div>
 
             <!-- Parent container to center both boxes horizontally -->
-            <div
-              style="
+            <div style="
                 display: flex;
                 justify-content: space-around;
                 align-items: flex-start;
                 gap: 40px; /* space between the two boxes */
                 margin-top: 50px;
                 margin-bottom: 30px;
-              "
-            >
+              ">
               <!-- Box #1 -->
-              <div class="photo-upload-container" style="width: 200px">
+              <div class="photo-upload-container">
                 <!-- Hidden input for Photo #1 -->
-                <input
-                  type="file"
-                  id="photo1"
-                  name="photo1"
-                  accept="image/*"
-                  style="display: none"
-                />
+                <input type="file" id="photo1" name="photo1" accept="image/*" style="display: none" />
 
                 <!-- Dashed box -->
-                <div
-                  class="upload-box"
-                  id="uploadBox1"
-                  style="
-                    width: 500px;
-                    height: 300px;
-                    border: 2px dashed #ccc;
-                    border-radius: 8px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    cursor: pointer;
-                    position: relative;
-                    overflow: hidden; /* so the image stays within the box */
-                  "
-                  onclick="document.getElementById('photo1').click()"
-                >
+                <div class="upload-box" id="uploadBox1" onclick="document.getElementById('photo1').click()">
                   <!-- Initially visible icon/text -->
-                  <div class="upload-icon" style="font-size: 2em">+</div>
+                  <div class="upload-icon">+</div>
                   <div class="upload-text">Attach Photo #1</div>
 
                   <!-- The image preview (initially hidden) -->
-                  <img
-                    id="photoPreview1"
-                    alt="Preview 1"
-                    style="
-                      position: absolute;
-                      top: 0;
-                      left: 0;
-                      width: 100%;
-                      height: 100%;
-                      object-fit: cover; /* fill the box entirely */
-                      object-position: center; /* center the subject of the image */
-                      border-radius: 8px;
-                      display: none;
-                    "
-                  />
+                  <img id="photoPreview1" alt="Preview 1" />
                 </div>
               </div>
 
               <!-- Box #2 -->
-              <div class="photo-upload-container" style="width: 200px">
+              <div class="photo-upload-container">
                 <!-- Hidden input for Photo #2 -->
-                <input
-                  type="file"
-                  id="photo2"
-                  name="photo2"
-                  accept="image/*"
-                  style="display: none"
-                />
+                <input type="file" id="photo2" name="photo2" accept="image/*" style="display: none" />
 
                 <!-- Dashed box -->
-                <div
-                  class="upload-box"
-                  id="uploadBox2"
-                  style="
-                    width: 500px;
-                    height: 300px;
-                    border: 2px dashed #ccc;
-                    border-radius: 8px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    cursor: pointer;
-                    position: relative;
-                    overflow: hidden;
-                  "
-                  onclick="document.getElementById('photo2').click()"
-                >
+                <div class="upload-box" id="uploadBox2" onclick="document.getElementById('photo2').click()">
                   <!-- Initially visible icon/text -->
-                  <div class="upload-icon" style="font-size: 2em">+</div>
+                  <div class="upload-icon">+</div>
                   <div class="upload-text">Attach Photo #2</div>
 
                   <!-- The image preview (initially hidden) -->
-                  <img
-                    id="photoPreview2"
-                    alt="Preview 2"
-                    style="
-                      position: absolute;
-                      top: 0;
-                      left: 0;
-                      width: 100%;
-                      height: 100%;
-                      object-fit: cover;
-                      object-position: center;
-                      border-radius: 8px;
-                      display: none;
-                    "
-                  />
+                  <img id="photoPreview2" alt="Preview 2" />
                 </div>
               </div>
+
             </div>
 
             <script>
@@ -299,11 +203,7 @@
 
             <!-- Form Buttons -->
             <div class="button-container">
-              <button
-                type="button"
-                class="btn-primary"
-                onclick="printDocument('Print')"
-              >
+              <button type="button" class="btn-primary" onclick="printDocument('Print')">
                 Print
               </button>
               <button type="submit" class="btn-secondary">Save</button>
@@ -388,8 +288,9 @@
           </form>
         </div>
       </div>
-    </div>
-  </body>
-  <%- include("./includes/print-wmrf") %>
+  </div>
+</body>
+<%- include("./includes/print-wmrf") %>
   <script src="../js/wmrf-api.js"></script>
+
 </html>
