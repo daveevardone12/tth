@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f7f7f7;
+  background-color: #eaeaea;
   margin: 0;
   padding: 0;
   justify-content: right;
@@ -100,7 +100,7 @@ textarea {
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 14px;
-  background-color: ghostwhite;
+  background-color: #f9f9f9;
 }
 
 option {

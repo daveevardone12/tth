@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f7f7f7;
+  background-color: #eaeaea;
   margin: 0;
   padding: 0;
   justify-content: right;
@@ -125,7 +125,7 @@ input[type="text"],
 input[type="number"],
 input[type="date"],
 select {
-  background-color: ghostwhite;
+  background-color: #f9f9f9;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
