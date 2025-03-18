@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RFID Registration</title>
+    <link rel="stylesheet" href="../css/rfidstyle.css" />
+    <link rel="stylesheet" href="../css/general.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RFID Registration</title>
-  <link rel="stylesheet" href="../css/rfidstyle.css" />
-  <link rel="stylesheet" href="../css/general.css" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet" />
-</head>
-
-<body>
-  <%- include("./includes/sidebar") %>
+  <body>
+    <%- include("./includes/sidebar") %>
     <div class="main-container">
       <div class="mas-header">
         <h1>RFID</h1>
       </div>
-      <div class="fix">
-
-      </div>
+      <div class="fix"></div>
       <div class="search-add">
         <!-- <div class="search-bar">
           <input type="text" id="search" placeholder="Search..." />
@@ -42,14 +40,24 @@
           </thead>
           <tbody id="rfid-table-body"></tbody>
         </table>
-        <nav aria-label="Page navigation" id="paginationNav" style="margin-top: 24px">
+        <nav
+          aria-label="Page navigation"
+          id="paginationNav"
+          style="margin-top: 24px"
+        >
           <% if (totalPages> 1) { %> <% if (currentPage> 1) { %>
-              <a href="?page=<%= currentPage - 1 %>&limit=<%= limit %>" aria-label="Previous Page">Previous</a>
-              <% } %>
-                <% if (currentPage < totalPages) { %>
-                  <a href="?page=<%= currentPage + 1 %>&limit=<%= limit %>" aria-label="Next Page">Next</a>
-                  <% } %>
-                    <% } %>
+          <a
+            href="?page=<%= currentPage - 1 %>&limit=<%= limit %>"
+            aria-label="Previous Page"
+            >Previous</a
+          >
+          <% } %> <% if (currentPage < totalPages) { %>
+          <a
+            href="?page=<%= currentPage + 1 %>&limit=<%= limit %>"
+            aria-label="Next Page"
+            >Next</a
+          >
+          <% } %> <% } %>
         </nav>
       </div>
     </div>
@@ -62,12 +70,22 @@
           </header>
           <div class="modal-body">
             <div class="form-row">
-              <input type="text" id="rfid_tag1" name="rfid_tag" placeholder="Enter RFID Tag" />
+              <input
+                type="text"
+                id="rfid_tag1"
+                name="rfid_tag"
+                placeholder="Enter RFID Tag"
+              />
             </div>
           </div>
           <div class="modal-footer">
             <button type="submit" class="confirms">Confirm</button>
-            <button onclick="closeModal()" type="button" class="cancels" id="cancels">
+            <button
+              onclick="closeModal()"
+              type="button"
+              class="cancels"
+              id="cancels"
+            >
               Cancel
             </button>
           </div>
@@ -182,7 +200,12 @@
       <form method="POST" action="/rfid/save/rfid-update">
         <div class="popup-content">
           <h3>Enter Property Number</h3>
-          <input type="text" id="propertyNo" name="property_no" placeholder="Enter Property Number" />
+          <input
+            type="text"
+            id="propertyNo"
+            name="property_no"
+            placeholder="Enter Property Number"
+          />
           <div class="hoverable" id="results"></div>
           <input type="text" id="itemName" name="item_name" />
           <input type="hidden" id="tag_id_assign" name="tag_id" />
@@ -201,7 +224,12 @@
       <form method="POST" action="/rfid/save/rfid-update_tag">
         <div class="popup-content">
           <h3>Update RFID Tag</h3>
-          <input type="text" id="new_rfid_tag" name="new_rfid_tag" placeholder="Enter RFID Tag" />
+          <input
+            type="text"
+            id="new_rfid_tag"
+            name="new_rfid_tag"
+            placeholder="Enter RFID Tag"
+          />
           <input type="hidden" name="currentTagId" id="currentTagId" />
           <div class="hoverable" id="results"></div>
           <button onclick="assignProperty()" type="submit" class="submits">
@@ -257,6 +285,5 @@
         document.getElementById("popup2").classList.add("hidden2");
       }
     </script>
-</body>
-
+  </body>
 </html>
