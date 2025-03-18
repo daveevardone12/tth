@@ -65,12 +65,12 @@ router.post("/signup/submit", async (req, res) => {
       service: "gmail", // Use Gmail (or another email service)
       auth: {
         user: "davemarlon74@gmail.com", // Replace with your Gmail address
-        pass: "ecqo yjba ayhn nbvr", // Use the generated app password (see below)
+        pass: "wbld qbwe onmw miqp", // Use the generated app password (see below)
       },
     });
 
     const mailOptions = {
-      from: "your-email@gmail.com",
+      from: "davemarlon74@gmail.com",
       to: value.email,
       subject: "Account Signup Confirmation",
       text: `Hello ${value.first_name},\n\nYour email has been changed. Welcome!\n\nRegards,\nThe Team`,

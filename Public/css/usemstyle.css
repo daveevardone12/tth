@@ -25,6 +25,8 @@ header h1 {
   padding-left: 20px;
   width: 100%;
   background: #f7f7f7;
+  color: black;
+  padding-top: 30px;
 }
 
 .top-bar {

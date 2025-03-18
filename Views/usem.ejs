@@ -48,6 +48,49 @@
       border: none;
       background: none;
     }
+    .popup {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      display: none;
+      border-radius: 8px;
+    }
+
+    .popup-content {
+      text-align: center;
+    }
+
+    .buttons {
+      margin-top: 15px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .submits,
+    .cancels {
+      padding: 8px 15px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .submits {
+      background-color: red;
+      color: white;
+    }
+
+    .cancels {
+      background-color: gray;
+      color: white;
+    }
+
+    .hidden {
+      display: none;
+    }
   </style>
   <body>
     <%- include("./includes/sidebar") %>
@@ -91,7 +134,10 @@
                 </button>
                 <ul class="dropdown-menu">
                   <li>
-                    <button class="dropdown-item remove">
+                    <button
+                      class="dropdown-item remove"
+                      onclick="openRemovePopup('<%= user.user_id %>')"
+                    >
                       <i class="fas fa-trash"></i> Remove
                     </button>
                   </li>
@@ -112,25 +158,34 @@
           <% }); %>
         </tbody>
       </table>
+      <div id="removePopup" class="popup hidden">
+        <form action="/usem/remove/user" method="post" class="popup-content">
+          <h3>Confirm Removal</h3>
+          <p>Are you sure you want to remove this item?</p>
+          <input type="hidden" name="user_id" id="item_id_remove" />
+          <div class="buttons">
+            <button type="submit" class="submits">Yes, Remove</button>
+            <button type="button" class="cancels" onclick="closeRemovePopup()">
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
     <script src="/js/usem-api.js"></script>
 
-    <!-- Role Modal -->
-    <div id="roleModal" class="modal">
-      <div class="modal-content">
-        <h3>Modify Roles</h3>
-        <label
-          ><input type="checkbox" class="role-checkbox" value="Admin" />
-          Admin</label
-        >
-        <label
-          ><input type="checkbox" class="role-checkbox" value="Employee" />
-          Employee</label
-        >
-        <button class="save" onclick="saveRoles()">Save</button>
-        <button class="close" onclick="closeModal()">Close</button>
-      </div>
-    </div>
+    <script>
+      // required function nga id para ma butngan data an input
+      function openRemovePopup(userID) {
+        console.log(userID);
+        document.getElementById("item_id_remove").value = userID;
+        document.getElementById("removePopup").style.display = "block";
+      }
+
+      function closeRemovePopup() {
+        document.getElementById("removePopup").style.display = "none";
+      }
+    </script>
 
     <script>
       // Remove User Function
