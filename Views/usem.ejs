@@ -91,6 +91,36 @@
     .hidden {
       display: none;
     }
+    /* .modal {
+  display: none; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  text-align: center;
+  position: relative; 
+}
+
+.close {
+  cursor: pointer;
+  font-size: 20px;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+} */
   </style>
   <body>
     <%- include("./includes/sidebar") %>
@@ -142,13 +172,21 @@
                     </button>
                   </li>
                   <li>
-                    <button class="dropdown-item modify">
+                    <button
+                      class="dropdown-item modify"
+                      onclick="openModal('<%= user.user_id %>')"
+                    >
                       <i class="fas fa-edit"></i> Modify
                     </button>
                   </li>
                   <li>
                     <button class="dropdown-item suspended">
                       <i class="fas fa-ban"></i> Suspend
+                    </button>
+                  </li>
+                  <li>
+                    <button class="dropdown-item reactivate">
+                      <i class="fas fa-undo"></i> Reactivate
                     </button>
                   </li>
                 </ul>
@@ -171,12 +209,95 @@
           </div>
         </form>
       </div>
-    </div>
+
+      <!-- Modify Role Popup -->
+      <div id="modifyRoleModal" class="custom-modal">
+        <div class="custom-modal-content">
+          <span id="customCloseButton" class="custom-close">&times;</span>
+          <h2 class="custom-title">Modify Role</h2>
+          <form id="modifyRoleForm" class="custom-form">
+            <input type="hidden" id="user_id" name="userId" value=""> 
+            <label class="custom-label" for="newRole">Choose Role:</label>
+            <br />
+            <div class="custom-radio-group">
+              <input type="radio" id="adminRole" name="newRole" value="Admin" required />
+              <label for="adminRole">Admin</label>
+      
+              <input type="radio" id="employeeRole" name="newRole" value="Employee" required />
+              <label for="employeeRole">Employee</label>
+            </div>
+            <br />
+            <div class="custom-button-group">
+              <button type="submit" class="custom-button">Update Role</button>
+              <button type="button" class="custom-button cancel">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
     <script src="/js/usem-api.js"></script>
 
     <script>
-      // required function nga id para ma butngan data an input
-      function openRemovePopup(userID) {
+      document.addEventListener("DOMContentLoaded", function () {
+        const modal = document.getElementById("modifyRoleModal");
+        const form = document.getElementById("modifyRoleForm");
+      
+        function openModal(employeeId) {
+          document.getElementById("user_id").value = employeeId;
+          document.querySelectorAll('input[name="newRole"]').forEach(radio => radio.checked = false);
+          modal.style.display = "flex";
+        }
+      
+        function closeModal() {
+          modal.style.display = "none";
+        }
+      
+        document.getElementById("customCloseButton").addEventListener("click", closeModal);
+        document.querySelector(".custom-button.cancel").addEventListener("click", closeModal);
+      
+        window.addEventListener("click", function (event) {
+          if (event.target === modal) {
+            closeModal();
+          }
+        });
+      
+        window.openModal = openModal;
+        window.closeModal = closeModal;
+      
+        form.addEventListener("submit", async function (event) {
+          event.preventDefault(); // Prevent full page reload
+      
+          const formData = new FormData(form);
+          const requestBody = Object.fromEntries(formData.entries());
+      
+          try {
+            const response = await fetch("/usem/modify-role", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(requestBody),
+            });
+      
+            const result = await response.json();
+      
+            if (response.ok) {
+              alert("Role updated successfully!");
+              closeModal();
+              location.reload(); // Refresh to reflect changes
+            } else {
+              alert("Error: " + result.error);
+            }
+          } catch (error) {
+            console.error("Request failed:", error);
+            alert("An unexpected error occurred.");
+          }
+        });
+      });
+      </script>
+
+
+    <script>
+       // required function nga id para ma butngan data an input
+       function openRemovePopup(userID) {
         console.log(userID);
         document.getElementById("item_id_remove").value = userID;
         document.getElementById("removePopup").style.display = "block";
@@ -185,9 +306,6 @@
       function closeRemovePopup() {
         document.getElementById("removePopup").style.display = "none";
       }
-    </script>
-
-    <script>
       // Remove User Function
 
       // Save Roles

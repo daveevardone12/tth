@@ -24,12 +24,34 @@ document.addEventListener("DOMContentLoaded", () => {
                 <td>${user.status}</td>
                 <td>${user.last_login}</td>
                 <td>
-                  <button
+                  <div class="dropdown">
+                <button class="icon-button dropdown-toggle" title="Actions">
+                  <i class="fas fa-ellipsis-v"></i>
+                </button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <button
                       class="dropdown-item remove"
-                      onclick="openRemovePopup(${user.user_id})"
+                      onclick="openRemovePopup('<%= user.user_id %>')"
                     >
                       <i class="fas fa-trash"></i> Remove
                     </button>
+                  </li>
+                  <li>
+                    <button
+                      class="dropdown-item modify"
+                      onclick="openModal('<%= user.user_id %>')"
+                    >
+                      <i class="fas fa-edit"></i> Modify
+                    </button>
+                  </li>
+                  <li>
+                    <button class="dropdown-item suspended">
+                      <i class="fas fa-ban"></i> Suspend
+                    </button>
+                  </li>
+                </ul>
+              </div>
               </tr>`
         )
         .join("");
