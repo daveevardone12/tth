@@ -488,12 +488,92 @@ function printDocument(button) {
           }, 500);
         }
       } else if (parsedData.type === "PAR") {
-        document.getElementById("printPARAccountable").innerText =
+        document.body.classList.add("show-ics");
+
+        document.getElementById("printICSAccountable").innerText =
           parsedData.accountable;
-        document.body.classList.add("show-par");
-        setTimeout(() => {
-          window.print();
-        }, 500);
+        document.getElementById("printEntityName").innerText =
+          parsedData.entity_name;
+        document.getElementById("printFundCluster").innerText =
+          parsedData.fund_cluster;
+        document.getElementById("printicsNo").innerText = parsedData.ics_no;
+        document.getElementById("printQty").innerText = parsedData.quantity;
+        document.getElementById("printUnit").innerText = parsedData.unit;
+        document.getElementById("printDescription").innerText =
+          parsedData.description;
+        document.getElementById("printPropertyNo").innerText =
+          parsedData.property_no;
+        document.getElementById("printDateAcquired").innerText =
+          new Intl.DateTimeFormat("en-US", options).format(date_acquired);
+        document.getElementById("printUnitValue").innerText =
+          parsedData.unit_cost;
+        document.getElementById("printunitvalue").innerText =
+          parsedData.unit_cost;
+        document.getElementById("printBurs").innerText = parsedData.burs_no;
+        document.getElementById("printPo").innerText = parsedData.po_no;
+        document.getElementById("printdescription").innerText =
+          parsedData.description;
+        document.getElementById("printCode").innerText = parsedData.code;
+        document.getElementById("printIAR").innerText = parsedData.iar;
+        document.getElementById("printSupplier").innerText =
+          parsedData.supplier;
+        document.getElementById("printLocation").innerText =
+          parsedData.location;
+        document.getElementById("printdateacquired").innerText =
+          new Intl.DateTimeFormat("en-US", options).format(date_acquired);
+        document.getElementById("printDate").innerText =
+          new Intl.DateTimeFormat("en-US", options).format(date);
+
+        // Clear previous images
+        const photoContainer = document.getElementById("photoContainer");
+        photoContainer.innerHTML = "";
+
+        function createImage(bufferData) {
+          if (!bufferData || !bufferData.data) return null;
+          const byteArray = new Uint8Array(bufferData.data);
+          const blob = new Blob([byteArray], { type: "image/png" });
+          const url = URL.createObjectURL(blob);
+
+          const img = document.createElement("img");
+          img.src = url;
+          img.style.maxWidth = "100%";
+          img.style.margin = "10px";
+
+          return img;
+        }
+
+        const img1 = createImage(parsedData.photo1);
+        const img2 = createImage(parsedData.photo2);
+
+        let imagesLoaded = 0;
+        let imageCount = 0;
+
+        function checkAndPrint() {
+          imagesLoaded++;
+          if (imagesLoaded === imageCount) {
+            setTimeout(() => {
+              window.print();
+            }, 500);
+          }
+        }
+
+        if (img1) {
+          imageCount++;
+          img1.onload = checkAndPrint;
+          photoContainer.appendChild(img1);
+        }
+        if (img2) {
+          imageCount++;
+          img2.onload = checkAndPrint;
+          photoContainer.appendChild(img2);
+        }
+
+        // If no images exist, print immediately
+        if (imageCount === 0) {
+          setTimeout(() => {
+            window.print();
+          }, 500);
+        }
       } else {
         console.warn("Unknown type:", parsedData.type);
       }

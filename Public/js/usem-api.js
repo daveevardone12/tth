@@ -24,10 +24,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 <td>${user.status}</td>
                 <td>${user.last_login}</td>
                 <td>
-                  <form action="/usem/delete/${user.id}" method="POST">
-                    <button type="submit">Delete</button>
-                  </form>
-                </td>
+                  <button
+                      class="dropdown-item remove"
+                      onclick="openRemovePopup(${user.user_id})"
+                    >
+                      <i class="fas fa-trash"></i> Remove
+                    </button>
               </tr>`
         )
         .join("");
