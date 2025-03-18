@@ -1,7 +1,7 @@
 /* General Reset */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f7f7f7;
+  background-color: #eaeaea;
   margin: 0;
   padding: 0;
   justify-content: right;
@@ -21,7 +21,7 @@ body::-webkit-scrollbar {
 }
 
 .table-container {
-  background-color: #f7f7f7;
+  background-color: #eaeaea;
   margin-top: 5%;
   border-radius: 10px;
   padding: 10px 20px 0px 10px;

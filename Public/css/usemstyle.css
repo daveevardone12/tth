@@ -2,7 +2,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f7f7f7;
+  background-color: #eaeaea;
   color: #333;
 }
 
@@ -13,7 +13,7 @@ body {
   margin-left: 250px; /* Sidebar width + spacing */
   padding: 0 20px;
   box-sizing: border-box; /* Ensures padding doesn't exceed the container width */
-  background-color: #f7f7f7;
+  background-color: #eaeaea;
 }
 
 header h1 {
@@ -23,7 +23,7 @@ header h1 {
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 20px;
-  width: 100%;
+  width: calc(100% + 20px);
   background: #f7f7f7;
   color: black;
   padding-top: 30px;
