@@ -22,7 +22,7 @@ body::-webkit-scrollbar {
 .form-container {
   background-color: white;
   border-radius: 8px;
-  margin-top: 5%;
+  margin-top: 7%;
   margin-bottom: 2%;
   padding: 0 0 20px 0;
   margin-left: 15px;
@@ -436,6 +436,7 @@ select {
   width: calc(100% - 16%);
   margin-left: -30px;
   padding-right: 20px;
+  padding-top: 10px;
 }
 
 /* uploadphoto1 */
