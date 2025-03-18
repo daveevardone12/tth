@@ -194,6 +194,35 @@
               />
             </div>
 
+            <!-- script for form-group2 -->
+            <script>
+             document.querySelectorAll('input[name="transfer_type"]').forEach(radio => {
+        radio.addEventListener('click', function () {
+            const specifyBox = document.getElementById('specify_box');
+
+            // If the radio button is already checked, uncheck it
+            if (this.checked && this.dataset.checked === "true") {
+                this.checked = false;
+                this.dataset.checked = "false";
+                specifyBox.style.display = 'none';
+            } else {
+                // Uncheck all other radios and reset dataset
+                document.querySelectorAll('input[name="transfer_type"]').forEach(r => r.dataset.checked = "false");
+
+                this.dataset.checked = "true"; // Mark this as checked
+
+                // Show the "Specify" box only if "Others" is selected
+                if (this.value === "Others") {
+                    specifyBox.style.display = 'block';
+                } else {
+                    specifyBox.style.display = 'none';
+                }
+            }
+        });
+    });
+          </script>
+          <!-- end -->
+
             <div class="form-group5">
               <div class="desc1">
                 <label>Description</label>

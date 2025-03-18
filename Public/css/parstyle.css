@@ -435,3 +435,170 @@ button:hover {
 /*end*/
 
 /* end hit mga wara gamit */
+
+/* uploadphoto1 */
+.photo-upload-container {
+  width: 100%;
+  max-width: 400px; /* Limits width on large screens */
+  margin: 0 auto; /* Centers it */
+}
+
+/* Upload box */
+.upload-box {
+  width: 100%;
+  height: 300px;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden; /* Ensures image stays within bounds */
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Icon & Text */
+.upload-icon {
+  font-size: 2em;
+  color: #666;
+}
+
+.upload-text {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Image Preview */
+#photoPreview1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+  display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .upload-box {
+      height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .photo-upload-container {
+      max-width: 90%;
+  }
+
+  .upload-box {
+      height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .photo-upload-container {
+      max-width: 100%;
+  }
+
+  .upload-box {
+      height: 180px;
+  }
+
+  .upload-icon {
+      font-size: 1.5em;
+  }
+
+  .upload-text {
+      font-size: 0.9rem;
+  }
+}
+
+/* end of uploadphoto1 */
+
+/* uploadpphoto2 */
+.photo-upload-container {
+  width: 100%;
+  max-width: 500px; /* Default to 500px but adjusts responsively */
+  margin: 0 auto; /* Centers it */
+}
+
+/* Upload box */
+.upload-box {
+  width: 100%;
+  height: 300px;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Icon & Text */
+.upload-icon {
+  font-size: 2em;
+  color: #666;
+}
+
+.upload-text {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Image Preview */
+#photoPreview2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+  display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .upload-box {
+      height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .photo-upload-container {
+      max-width: 90%;
+  }
+
+  .upload-box {
+      height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .photo-upload-container {
+      max-width: 100%;
+  }
+
+  .upload-box {
+      height: 180px;
+  }
+
+  .upload-icon {
+      font-size: 1.5em;
+  }
+
+  .upload-text {
+      font-size: 0.9rem;
+  }
+}
+/* end of uploadphoto2 */
