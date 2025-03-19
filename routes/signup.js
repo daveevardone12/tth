@@ -72,8 +72,8 @@ router.post("/signup/submit", async (req, res) => {
     const mailOptions = {
       from: "davemarlon74@gmail.com",
       to: value.email,
-      subject: "Account Signup Confirmation",
-      text: `Hello ${value.first_name},\n\nYour email has been changed. Welcome!\n\nRegards,\nThe Team`,
+      subject: "Account Registered",
+      text: `Hello ${value.firstname},\n\nWelcome to our system! We're excited to have you on board. If you have any questions or need assistance, feel free to reach out.\n\nBest regards,\nThe Team`,
     };
 
     // Send the email and handle the response properly
