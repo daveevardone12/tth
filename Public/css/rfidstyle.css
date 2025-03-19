@@ -7,7 +7,7 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #f7f7f7;
+  background-color: #eaf4f4;
   overflow-y: hidden;
 }
 
@@ -280,7 +280,7 @@ h1 {
 .mas-header {
   position: fixed;
   z-index: 1;
-  background-color: #f7f7f7;
+  background-color: #ffffff;
   width: calc(100% - 16%);
   margin-left: -20px;
   padding-right: 20px;

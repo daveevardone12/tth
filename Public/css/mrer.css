@@ -1,7 +1,7 @@
 /* Global Styles */
 body {
   font-family: Arial, sans-serif;
-  background-color: #eaeaea;
+  background-color: #eaf4f4;
   margin: 0;
   padding: 0;
   justify-content: right;
@@ -313,7 +313,7 @@ select {
 .mas-header {
   position: fixed;
   z-index: 1;
-  background-color: #f7f7f7;
+  background-color: #ffffff;
   width: calc(100% - 16%);
   margin-left: -30px;
   padding-right: 20px;
