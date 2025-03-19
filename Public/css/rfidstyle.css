@@ -7,7 +7,7 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #fff;
+  background-color: #eaeaea;
   overflow-y: hidden;
 }
 
@@ -78,6 +78,7 @@ h1 {
 .search-add {
   display: flex;
   justify-content: right;
+  margin-top: -50px;
 }
 
 .add-btn:hover {
