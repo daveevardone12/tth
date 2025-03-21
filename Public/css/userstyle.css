@@ -3,7 +3,7 @@ body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #eaeaea;
+  background-color: #eaf4f4;
   color: #333;
 }
 
@@ -14,7 +14,7 @@ body {
   padding: 0 20px;
   box-sizing: border-box;
   /* Ensures padding doesn't exceed the container width */
-  background-color: #eaeaea;
+  background-color: #eaf4f4;
 }
 
 /* Profile Wrapper */
@@ -242,5 +242,5 @@ button[type="submit"]:hover {
   padding-right: 20px;
   box-shadow: none;
   padding-top: 10px;
-  background-color: #f7f7f7;
+  background-color: #ffffff;
 }

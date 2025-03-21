@@ -7,7 +7,7 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #eaeaea;
+  background-color: #eaf4f4;
   overflow-y: hidden;
 }
 
@@ -262,7 +262,7 @@ table tbody tr:nth-of-type(even) {
 .mas-header {
   position: fixed;
   z-index: 1;
-  background-color: white;
+  background-color: #ffffff;
   width: calc(100% - 16%);
   margin-left: -20px;
   padding-right: 20px;
