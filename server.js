@@ -197,7 +197,6 @@ const wmrfRoutes = require("./Routes/wmrf");
 const rfidRoutes = require("./Routes/rfid");
 const { timeStamp } = require("console");
 const registerCallerID = require("./Routes/registerCallerID");
-const usemRoutes = require("./Routes/usem");
 
 //-------CONNECTING TO DATABASE-------//
 tthPool
@@ -344,7 +343,6 @@ app.use("/mrer", mrerRoutes);
 app.use("/wmrf", wmrfRoutes);
 app.use("/rfid", rfidRoutes);
 app.use("/registerCallerID", registerCallerID);
-app.use("/usem", usemRoutes);
 
 // Logout route to clear session
 app.get("/logout", (req, res, next) => {

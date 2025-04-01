@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <button data-row='${JSON.stringify(
                                   invent
                                 )}' onclick="openUpdateModal(this)">Update</button>
-                                <button onclick="handleAction('Dispose')"><a href="/ptr">Dispose</a></button>
+                                <button onclick="handleAction('Dispose')"><a href="/wmrf">Dispose</a></button>
                             </div>
                         </div>
                     </td>
@@ -143,11 +143,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     <td>${invent.item_name}</td>
                     <td>${invent.description}</td>
                     <td>${invent.property_no}</td>
-                    <td></td>
+                    <td>${invent.unit}</td>
                     <td>${invent.unit_cost}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>${invent.quantity}</td>
+                    <td>${invent.quantity}</td>
+                    <td>${invent.quantity}</td>
                     <td>1</td>
                     <td>${invent.accountable}</td>
                     <td>${invent.location}</td>
@@ -488,15 +488,15 @@ function printDocument(button) {
           }, 500);
         }
       } else if (parsedData.type === "PAR") {
-        document.body.classList.add("show-ics");
+        document.body.classList.add("show-par");
 
-        document.getElementById("printICSAccountable").innerText =
+        document.getElementById("printPARAccountable").innerText =
           parsedData.accountable;
         document.getElementById("printEntityName").innerText =
           parsedData.entity_name;
         document.getElementById("printFundCluster").innerText =
           parsedData.fund_cluster;
-        document.getElementById("printicsNo").innerText = parsedData.ics_no;
+        document.getElementById("printParNo").innerText = parsedData.par_no;
         document.getElementById("printQty").innerText = parsedData.quantity;
         document.getElementById("printUnit").innerText = parsedData.unit;
         document.getElementById("printDescription").innerText =
@@ -505,12 +505,10 @@ function printDocument(button) {
           parsedData.property_no;
         document.getElementById("printDateAcquired").innerText =
           new Intl.DateTimeFormat("en-US", options).format(date_acquired);
-        document.getElementById("printUnitValue").innerText =
-          parsedData.unit_cost;
-        document.getElementById("printunitvalue").innerText =
-          parsedData.unit_cost;
-        document.getElementById("printBurs").innerText = parsedData.burs_no;
-        document.getElementById("printPo").innerText = parsedData.po_no;
+        document.getElementById("printUnitValue").innerText = parsedData.cost;
+        document.getElementById("printunitvalue").innerText = parsedData.unit;
+        document.getElementById("printBurs").innerText = parsedData.burs;
+        document.getElementById("printPo").innerText = parsedData.po;
         document.getElementById("printdescription").innerText =
           parsedData.description;
         document.getElementById("printCode").innerText = parsedData.code;
@@ -519,8 +517,8 @@ function printDocument(button) {
           parsedData.supplier;
         document.getElementById("printLocation").innerText =
           parsedData.location;
-        document.getElementById("printdateacquired").innerText =
-          new Intl.DateTimeFormat("en-US", options).format(date_acquired);
+        // document.getElementById("printDateAcquired").innerText =
+        //   new Intl.DateTimeFormat("en-US", options).format(dateAcquired);
         document.getElementById("printDate").innerText =
           new Intl.DateTimeFormat("en-US", options).format(date);
 

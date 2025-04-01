@@ -19,7 +19,7 @@ body::-webkit-scrollbar {
 .container {
   display: flex;
   height: 100vh;
-  background-color: #eaeaea;
+  background-color: #eaf4f4;
 }
 
 /* Sidebar styling */
