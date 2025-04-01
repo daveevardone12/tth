@@ -20,13 +20,12 @@ header h1 {
   margin: 0;
   margin-left: -20px;
   margin-bottom: 72px;
-  padding-top: 10px;
+  padding-top: 15px;
   padding-bottom: 10px;
   padding-left: 20px;
   width: calc(100% + 20px);
   background: #ffffff;
   color: black;
-  padding-top: 30px;
 }
 
 .top-bar {

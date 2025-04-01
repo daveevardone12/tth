@@ -71,6 +71,7 @@ h1 {
   cursor: pointer;
   font-family: Poppins;
   margin-top: 10px;
+  margin-right: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease-in-out;
 }
@@ -78,6 +79,7 @@ h1 {
 .search-add {
   display: flex;
   justify-content: right;
+  margin-top: -50px;
 }
 
 .add-btn:hover {
@@ -88,48 +90,30 @@ h1 {
 .table-wrapper {
   /* overflow-x: auto; */
 
-  .rfid-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0 5px; /* Adds spacing between rows */
-    margin-top: 20px;
-  }
-  
- .rfid-table thead {
-    background: linear-gradient(135deg, #0a6b03, #047d00); /* Gradient for depth */
-    color: white;
-    font-size: 13px; /* Slightly larger font */
-    font-family: Poppins, sans-serif;
-    font-weight: 700; /* Bolder text */
-    letter-spacing: 1.5px; /* More spacing for emphasis */
-    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.6); /* Subtle text shadow */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4); /* Stronger shadow */
-    padding: 12px 0; /* More vertical padding */
-    border-radius: 6px; /* Rounded corners */
-    text-align: center;
+.rfid-table {
+  width: 98.3%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  margin-left: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
-  
-  .rfid-table th,
-  .rfid-table td {
-    padding: 15px;
-    text-align: center;
-  }
-  
-  .rfid-table tbody tr {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transition: all 0.2s ease-in-out;
-  }
-  
-  .rfid-table tbody tr:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  }
-  
-  .rfid-table tbody tr:nth-of-type(even) {
-    background-color: #bcebb3;
-  }
-  
+
+.rfid-table th,
+.rfid-table td {
+  padding: 15px;
+  text-align: center;
+}
+
+.rfid-table thead {
+  background-color: #095c02;
+  color: white;
+  font-size: small;
+  font-family: Poppins;
+}
+
+table tbody tr:nth-of-type(even) {
+  background-color: #bcebb3;
+}
 
 /* Modal Styles */
 .modal {
