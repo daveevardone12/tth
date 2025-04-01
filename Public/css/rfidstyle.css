@@ -71,6 +71,7 @@ h1 {
   cursor: pointer;
   font-family: Poppins;
   margin-top: 10px;
+  margin-right: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease-in-out;
 }
@@ -90,9 +91,10 @@ h1 {
   /* overflow-x: auto; */
 
 .rfid-table {
-  width: 100%;
+  width: 98.3%;
   border-collapse: collapse;
   margin-top: 20px;
+  margin-left: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
