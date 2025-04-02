@@ -91,6 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (data.getInventoryList.length > 0) {
       data.getInventoryList.forEach((invent) => {
+        console.log(invent);
         const formattedDate = new Date(invent.date_acquired).toLocaleDateString(
           "en-US",
           {
@@ -380,6 +381,9 @@ function submitUpdate() {
 function printDocument(button) {
   try {
     document.body.classList.remove("show-ics", "show-par", "show-office");
+    document.querySelectorAll(".printPhotos").forEach((el) => {
+      el.classList.add("hiddenPhotos");
+    });
     if (button.getAttribute("data-office")) {
       document.body.classList.add("show-office");
       setTimeout(() => {
@@ -387,10 +391,10 @@ function printDocument(button) {
       }, 500);
     }
     if (button.getAttribute("data-table")) {
+      console.log("triggerd");
       const data1 = button.getAttribute("data-row");
+      console.log("triggerd: ", data1);
       const parsedData = JSON.parse(data1); // Convert JSON string back to object
-
-      console.log(parsedData); // Check if data is correctly parsed
 
       // Update printable content
       const date_acquired = new Date(parsedData.date_acquired);
@@ -402,43 +406,46 @@ function printDocument(button) {
 
       if (parsedData.type === "ICS") {
         document.body.classList.add("show-ics");
-
+        document
+          .getElementById("printICSPhotos")
+          .classList.remove("hiddenPhotos");
         document.getElementById("printICSAccountable").innerText =
           parsedData.accountable;
-        document.getElementById("printEntityName").innerText =
+        document.getElementById("printICSEntityName").innerText =
           parsedData.entity_name;
-        document.getElementById("printFundCluster").innerText =
+        document.getElementById("printICSFundCluster").innerText =
           parsedData.fund_cluster;
-        document.getElementById("printicsNo").innerText = parsedData.ics_no;
-        document.getElementById("printQty").innerText = parsedData.quantity;
-        document.getElementById("printUnit").innerText = parsedData.unit;
-        document.getElementById("printDescription").innerText =
+        document.getElementById("printICSicsNo").innerText = parsedData.ics_no;
+        document.getElementById("printICSQty").innerText = parsedData.quantity;
+        document.getElementById("printICSUnit").innerText = parsedData.unit;
+
+        document.getElementById("printICSDescription").innerText =
           parsedData.description;
-        document.getElementById("printPropertyNo").innerText =
+        document.getElementById("printICSPropertyNo").innerText =
           parsedData.property_no;
-        document.getElementById("printDateAcquired").innerText =
+        document.getElementById("printICSDateAcquired").innerText =
           new Intl.DateTimeFormat("en-US", options).format(date_acquired);
-        document.getElementById("printUnitValue").innerText =
+        document.getElementById("printICSUnitValue").innerText =
           parsedData.unit_cost;
-        document.getElementById("printunitvalue").innerText =
+        document.getElementById("printICSunitvalue").innerText =
           parsedData.unit_cost;
-        document.getElementById("printBurs").innerText = parsedData.burs_no;
-        document.getElementById("printPo").innerText = parsedData.po_no;
-        document.getElementById("printdescription").innerText =
+        document.getElementById("printICSBurs").innerText = parsedData.burs_no;
+        document.getElementById("printICSPo").innerText = parsedData.po_no;
+        document.getElementById("printICSdescription").innerText =
           parsedData.description;
-        document.getElementById("printCode").innerText = parsedData.code;
-        document.getElementById("printIAR").innerText = parsedData.iar;
-        document.getElementById("printSupplier").innerText =
+        document.getElementById("printICSCode").innerText = parsedData.code;
+        document.getElementById("printICSIAR").innerText = parsedData.iar;
+        document.getElementById("printICSSupplier").innerText =
           parsedData.supplier;
-        document.getElementById("printLocation").innerText =
+        document.getElementById("printICSLocation").innerText =
           parsedData.location;
-        document.getElementById("printdateacquired").innerText =
+        document.getElementById("printICSdateacquired").innerText =
           new Intl.DateTimeFormat("en-US", options).format(date_acquired);
-        document.getElementById("printDate").innerText =
+        document.getElementById("printICSDate").innerText =
           new Intl.DateTimeFormat("en-US", options).format(date);
 
         // Clear previous images
-        const photoContainer = document.getElementById("photoContainer");
+        const photoContainer = document.getElementById("photoICSContainer");
         photoContainer.innerHTML = "";
 
         function createImage(bufferData) {
@@ -488,42 +495,52 @@ function printDocument(button) {
           }, 500);
         }
       } else if (parsedData.type === "PAR") {
+        console.log("PAR");
         document.body.classList.add("show-par");
+        console.log(parsedData); // Check if data is correctly parsed
+        console.log(parsedData.entity_name); // Check if data is correctly parsed
 
         document.getElementById("printPARAccountable").innerText =
           parsedData.accountable;
-        document.getElementById("printEntityName").innerText =
+        document.getElementById("printPAREntityName").innerText =
           parsedData.entity_name;
-        document.getElementById("printFundCluster").innerText =
+        document.getElementById("printPARFundCluster").innerText =
           parsedData.fund_cluster;
-        document.getElementById("printParNo").innerText = parsedData.par_no;
-        document.getElementById("printQty").innerText = parsedData.quantity;
-        document.getElementById("printUnit").innerText = parsedData.unit;
-        document.getElementById("printDescription").innerText =
+        document.getElementById("printPARParNo").innerText =
+          parsedData.ics_no || parsedData.par_no;
+        document.getElementById("printPARQty").innerText = parsedData.quantity;
+        document.getElementById("printPARUnit").innerText = parsedData.unit;
+        document.getElementById("printPARDescription1").innerText =
           parsedData.description;
-        document.getElementById("printPropertyNo").innerText =
+        document.getElementById("printPARPropertyNo").innerText =
           parsedData.property_no;
-        document.getElementById("printDateAcquired").innerText =
+        document.getElementById("printPARDateAcquired1").innerText =
           new Intl.DateTimeFormat("en-US", options).format(date_acquired);
-        document.getElementById("printUnitValue").innerText = parsedData.cost;
-        document.getElementById("printunitvalue").innerText = parsedData.unit;
-        document.getElementById("printBurs").innerText = parsedData.burs;
-        document.getElementById("printPo").innerText = parsedData.po;
-        document.getElementById("printdescription").innerText =
+        document.getElementById("printPARDateAcquired").innerText =
+          new Intl.DateTimeFormat("en-US", options).format(date_acquired);
+        document.getElementById("printPARUnitValue").innerText =
+          parsedData.unit_cost;
+        document.getElementById("printPARunitvalue").innerText =
+          parsedData.unit_cost;
+        document.getElementById("printPARBurs").innerText = parsedData.burs_no;
+        document.getElementById("printPARPo").innerText = parsedData.po_no;
+        document.getElementById("printPARdescription").innerText =
           parsedData.description;
-        document.getElementById("printCode").innerText = parsedData.code;
-        document.getElementById("printIAR").innerText = parsedData.iar;
-        document.getElementById("printSupplier").innerText =
+        document.getElementById("printPARCode").innerText = parsedData.code;
+        document.getElementById("printPARIAR").innerText = parsedData.iar;
+        document.getElementById("printPARSupplier").innerText =
           parsedData.supplier;
-        document.getElementById("printLocation").innerText =
+        document.getElementById("printPARLocation").innerText =
           parsedData.location;
         // document.getElementById("printDateAcquired").innerText =
         //   new Intl.DateTimeFormat("en-US", options).format(dateAcquired);
-        document.getElementById("printDate").innerText =
+        document.getElementById("printPARDate").innerText =
           new Intl.DateTimeFormat("en-US", options).format(date);
-
+        document
+          .getElementById("printPARPhotos")
+          .classList.remove("hiddenPhotos");
         // Clear previous images
-        const photoContainer = document.getElementById("photoContainer");
+        const photoContainer = document.getElementById("photoPARContainer");
         photoContainer.innerHTML = "";
 
         function createImage(bufferData) {
