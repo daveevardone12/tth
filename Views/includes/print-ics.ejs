@@ -3,11 +3,11 @@
     <div class="headerss">Inventory Custodian Slip (ICS)</div>
     <div class="sub-header">
       <div class="haha">
-        <strong>Entity Name: <span id="printEntityName"></span></strong>
-        <strong>Fund Cluster: <span id="printFundCluster"></span></strong>
+        <strong>Entity Name: <span id="printICSEntityName"></span></strong>
+        <strong>Fund Cluster: <span id="printICSFundCluster"></span></strong>
       </div>
       <div>
-        <strong>ICS No: <span id="printicsNo"></span></strong>
+        <strong>ICS No: <span id="printICSicsNo"></span></strong>
       </div>
     </div>
     <table class="tabol">
@@ -24,13 +24,13 @@
       </thead>
       <tbody class="tbady">
         <tr class="t-ar">
-          <td class="t-d"><span id="printQty"></span></td>
-          <td class="t-d"><span id="printUnit"></span></td>
-          <td class="t-d"><span id="printDescription"></span></td>
-          <td class="t-d"><span id="printPropertyNo"></span></td>
-          <td class="t-d"><span id="printDateAcquired"></span></td>
-          <td class="t-d"><span id="printUnitValue"></span></td>
-          <td class="t-d"><span id="printunitvalue"></span></td>
+          <td class="t-d"><span id="printICSQty"></span></td>
+          <td class="t-d"><span id="printICSUnit"></span></td>
+          <td class="t-d"><span id="printICSDescription"></span></td>
+          <td class="t-d"><span id="printICSPropertyNo"></span></td>
+          <td class="t-d"><span id="printICSDateAcquired"></span></td>
+          <td class="t-d"><span id="printICSUnitValue"></span></td>
+          <td class="t-d"><span id="printICSunitvalue"></span></td>
         </tr>
         <!-- Additional rows as needed -->
       </tbody>
@@ -41,15 +41,17 @@
     <div class="footer">
       <div class="Dating">
         <p>
-          <strong>Data Acquired: <span id="printdateacquired"></span></strong>
+          <strong
+            >Data Acquired: <span id="printICSdateacquired"></span
+          ></strong>
         </p>
-        <p>BURs: <span id="printBurs"></span></p>
-        <p>PO: <span id="printPo"></span></p>
-        <p>Code: <span id="printCode"></span></p>
-        <p>Description: <span id="printdescription"></span></p>
-        <p>IAR #: <span id="printIAR"></span></p>
-        <p>Supplier: <span id="printSupplier"></span></p>
-        <p>Location: <span id="printLocation"></span></p>
+        <p>BURs: <span id="printICSBurs"></span></p>
+        <p>PO: <span id="printICSPo"></span></p>
+        <p>Code: <span id="printICSCode"></span></p>
+        <p>Description: <span id="printICSdescription"></span></p>
+        <p>IAR #: <span id="printICSIAR"></span></p>
+        <p>Supplier: <span id="printICSSupplier"></span></p>
+        <p>Location: <span id="printICSLocation"></span></p>
       </div>
 
       <div class="reminder">
@@ -73,7 +75,7 @@
           ><u id="printICSAccountable">____________________</u></span
         >
         <span>Position / Office</span>
-        <span class="gaps"><u id="printDate">____________________</u></span>
+        <span class="gaps"><u id="printICSDate">____________________</u></span>
         <span>Date</span>
       </div>
       <div class="signature-box">
@@ -92,10 +94,10 @@
     </div>
     <div class="small-note">Appendix 59</div>
   </div>
-  <div id="printPhotos" style="display: none">
+  <div class="printPhotos hiddenPhotos" id="printICSPhotos">
     <div style="margin-top: 30px"></div>
     <!-- <h2 style="text-align: center" ></h2> -->
-    <div id="photoContainer" style="text-align: center"></div>
+    <div id="photoICSContainer" style="text-align: center"></div>
   </div>
 </body>
 
