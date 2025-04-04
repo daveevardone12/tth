@@ -614,8 +614,8 @@ tbody tr:nth-child(even) {
   grid-row: 2 / 3;
   overflow: hidden; /* Prevents expansion */
   margin-top: 6%;
-  margin-left: -12vw;
-  width: calc(100% + 180px);
+  margin-left: -11.6vw;
+  width: calc(100% + 177px);
   height: 300px; /* Set fixed height */
   display: flex;
   flex-direction: column;

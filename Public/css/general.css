@@ -45,6 +45,7 @@ textarea {
   font-size: 15px;
   cursor: pointer;
   display: flex;
+  box-shadow: none;
 }
 
 .logout-btn:hover {

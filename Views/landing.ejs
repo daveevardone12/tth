@@ -6,160 +6,285 @@
     <title>Modern Landing Page</title>
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/general.css" />
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <div class="hero">
-      <!-- Left Green Ellipse -->
-      <div class="ellipse ellipse-left"></div>
-      <!-- Top Right Peach Ellipse -->
-      <div class="ellipse ellipse-top-right"></div>
-      <!-- Bottom Right Yellow Ellipse -->
-      <div class="ellipse ellipse-bottom-right"></div>
-
-      <!-- Content Container -->
+    <header>
+      <div class="logo">
+          <img src="images/pims.png" alt="Company Logo">
+      </div>
+      
+      <nav>
+          <ul>
+              <li><a href="#home">HOME</a></li>
+              <li><a href="#features">FEATURES</a></li>
+              <li><a href="#equipment-section">EQUIPMENT USED</a></li>
+              <li><a href="#about">ABOUT</a></li>
+          </ul>
+      </nav>
+  
+      <!-- Get Started Button -->
+      <a href="/login" class="get-started-btn">Get Started</a>
+  </header>
+  
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+      <img src="images/3.jpg" alt="Background" class="hero-bg">
+      <div class="hero-overlay"></div>
       <div class="hero-content">
-        <h1>WELCOME TO PROPERTY INVENTORY MANAGEMENT SYSTEM</h1>
-        <button><a href="/login">Login</a></button>
+          <h1><span class="creative">PROPERTY INVENTORY</span> MANAGEMENT SYSTEM</h1>
+          <p>Innovate, grow, and make an impact. Your success starts here.</p>
+          <button class="cta-button"><a href="/login">LEARN MORE</a></button>
       </div>
-    </div>
+  </section>
 
-    <div class="container">
-      <div class="text-section">
-        <h1>PROPERTY INVENTORY MANAGEMENT SYSTEM</h1>
-        <p>
-          Revolutionizing Inventory Management with Real-Time Tracking, Seamless
-          Automation, and Unmatched Accuracy!
-        </p>
-      </div>
-      <div class="image-section"></div>
-    </div>
-
-    <section class="story-section">
-      <h1 class="fade-in">Our Story: Rooted in Integrity</h1>
-      <div class="content">
-        <div class="box fade-in delay-1">
-          <h2>Vision</h2>
-          <p>
-            We envision a world where sustainability is at the core of every
-            decision.
-          </p>
-        </div>
-        <div class="box fade-in delay-2">
-          <h2>Mission</h2>
-          <p>Our mission is to provide eco-friendly products and services.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="solutions-container">
-      <div class="solutions-text">
-        <h1 class="solutions-title">Services: Growing Solutions</h1>
-        <div class="solutions-list">
-          <div class="solution-item">
-            <img
-              src="recycling-icon.png"
-              alt="Recycling Icon"
-              class="solution-icon"
-            />
-            <h2 class="solution-title">Recycling</h2>
-            <p class="solution-description">
-              Efficient recycling programs for businesses and communities.
-            </p>
+  <!-- Features Section -->
+  <section id="features" class="features-section">
+      <h2>Powerful Features to Enhance Your Workflow</h2>
+      <p>Explore the key features designed to streamline your property inventory management.</p>
+      <div class="features-container">
+          <div class="feature-card">
+              <img src="images/10.jpg" alt="Dashboard Icon">
+              <h3>Dashboard</h3>
+              <p>Get real-time insights into your inventory and property management.</p>
           </div>
-          <div class="solution-item">
-            <img
-              src="renewable-icon.png"
-              alt="Renewable Energy Icon"
-              class="solution-icon"
-            />
-            <h2 class="solution-title">Renewable Energy</h2>
-            <p class="solution-description">
-              Harnessing solar power for a sustainable energy future.
-            </p>
+          <div class="feature-card">
+              <img src="images/12.jpg" alt="Inventory Icon">
+              <h3>Inventory</h3>
+              <p>Manage and track all assets efficiently in one place.</p>
           </div>
-          <div class="solution-item">
-            <img
-              src="conservation-icon.png"
-              alt="Conservation Icon"
-              class="solution-icon"
-            />
-            <h2 class="solution-title">Conservation</h2>
-            <p class="solution-description">
-              Protecting natural resources for future generations.
-            </p>
+          <div class="feature-card">
+              <img src="images/5.jpg" alt="RFID Icon">
+              <h3>RFID Integration</h3>
+              <p>Enhance security and efficiency with RFID tracking technology.</p>
           </div>
-        </div>
       </div>
-      <div class="solutions-tree-container">
-        <img src="tree.png" alt="Tree" class="solutions-tree" />
-      </div>
-    </section>
+  </section>
 
-    <section class="portfolio-container">
-      <h1 class="portfolio-title">
-        Portfolio: <span class="portfolio-highlight">Green Achievements</span>
-      </h1>
-      <div class="portfolio-grid">
-        <div class="portfolio-item">
-          <img
-            src="solar-house.png"
-            alt="Solar House"
-            class="portfolio-image"
-          />
-        </div>
-        <div class="portfolio-item">
-          <img
-            src="wind-energy.png"
-            alt="Wind Energy"
-            class="portfolio-image"
-          />
-        </div>
-        <div class="portfolio-item">
-          <img
-            src="community-garden.png"
-            alt="Community Garden"
-            class="portfolio-image"
-          />
-        </div>
-      </div>
-      <p class="portfolio-description">
-        Showcasing our commitment to environmental stewardship through
-        successful projects.
-      </p>
-    </section>
 
-    <section class="team-container">
-      <h1 class="team-title">
-        Team: <span class="team-highlight">Eco-Conscious Expert</span>
-      </h1>
-      <div class="team-grid">
-        <div class="team-member">
-          <img src="../images/gang.jpg" alt="Dr. Green" class="team-image" />
-          <h3 class="team-name">Dr. Green</h3>
-          <p class="team-role">Lead Scientist</p>
-        </div>
-        <div class="team-member">
-          <img src="eco-advisor.png" alt="Eco Advisor" class="team-image" />
-          <h3 class="team-name">Eco Advisor</h3>
-          <p class="team-role">Sustainability Consultant</p>
-        </div>
-        <div class="team-member">
-          <img
-            src="energy-innovator.png"
-            alt="Energy Innovator"
-            class="team-image"
-          />
-          <h3 class="team-name">Energy Innovator</h3>
-          <p class="team-role">Renewable Energy Engineer</p>
-        </div>
-      </div>
-    </section>
+  <section id="equipment-section" class="equipment-section">
 
-    <footer class="fiit">
-      <div class="fiit-container"></div>
-    </footer>
+      <div class="overlay"></div>
+      <h2 class="section-title">Equipment Used</h2>
+      <p>The Property Inventory Management System uses laptops, RFID readers, tags, and connectors for accurate asset tracking.</p>
+      <div class="equipment-container">
+  
+          <div class="equipment-card">
+              <div class="equipment-inner">
+                  <div class="equipment-front">
+                      <img src="images/7.jpg" alt="Equipment 1">
+                  </div>
+                  <div class="equipment-back">
+                      <h3>RFID Tags</h3>
+                      <p>RFID tags store item data for wireless identification and tracking.</p>
+                  </div>
+              </div>
+          </div>
+          
+  
+          <div class="equipment-card resized">
+              <img src="images/6.jpg" alt="Equipment 2">
+              <div class="equipment-info">
+                  <h3>RFID Reader</h3>
+                  <p>An RFID reader scans tags for fast inventory identification.</p>
+              </div>
+          </div>
+  
+          <div class="equipment-card resized">
+              <img src="images/9.jpg" alt="Equipment 3">
+              <div class="equipment-info">
+                  <h3>Power Supply Connector</h3>
+                  <p>A power supply connector provides stable power to devices.</p>
+              </div>
+          </div>
+  
+          <div class="equipment-card">
+              <img src="images/1.jpg" alt="Equipment 4">
+              <div class="equipment-info">
+                  <h3>DB9 Serial Connector</h3>
+                  <p>A DB9 serial connector enables device communication and data transfer.</p>
+              </div>
+          </div>
+  
+          <div class="equipment-card">
+              <img src="images/4.jpg" alt="Equipment 5">
+              <div class="equipment-info">
+                  <h3>USB-to-Serial Adapter Cable</h3>
+                  <p>A USB to serial adapter cable connects serial devices to USB ports.</p>
+              </div>
+          </div>
+  
+          <div class="equipment-card resized">
+              <img src="images/8.jpg" alt="Equipment 6">
+              <div class="equipment-info">
+                  <h3>Power Supply</h3>
+                  <p>A power supply provides electrical power to the system and devices.</p>
+              </div>
+          </div>
+  
+      </div>
+  </section>
+
+
+  <!-- About Us Section -->
+  <section id="about" class="about-us">
+      <div class="about-container">
+          <!-- Left Side: Info -->
+          <div class="about-info">
+              <h2>About Us</h2>
+              <p>Property Inventory Management System, we are dedicated to providing a smart and efficient solution for managing property assets. Our system is designed to help businesses, organizations, and property managers easily track, organize, and maintain inventory with accuracy and convenience.
+
+                  We combine technology like RFID tracking, real-time data updates, and automated reports to simplify inventory management and reduce human error. Whether managing a single location or multiple properties, our platform ensures your inventory is always accurate, accessible, and well-organized.
+                  
+                  At Property Inventory Management System, our mission is to make asset management simple, reliable, and efficient — helping you stay focused on what matters most.</p>
+          </div>
+
+          <!-- Right Side: Team Members -->
+          <div class="team-members">
+              <div class="team-member">
+                  <img src="images/deb.jpg" alt="Team Member">
+                  <h3>Marlon Dave</h3>
+                  <p>Developers</p>
+              </div>
+              <div class="team-member">
+                  <img src="images/antman.jpg" alt="Team Member">
+                  <h3>Anthony</h3>
+                  <p>Developers</p>
+              </div>
+              <div class="team-member">
+                  <img src="images/2.jpg" alt="Team Member">
+                  <h3>Wendell</h3>
+                  <p>Developers</p>
+              </div>
+              <div class="team-member">
+                  <img src="images/gang.jpg" alt="Team Member">
+                  <h3>John Lloyd</h3>
+                  <p>Developers</p>
+              </div>
+              <div class="team-member">
+                  <img src="images/jems.jpg" alt="Team Member">
+                  <h3>James Lester</h3>
+                  <p>Developers</p>
+              </div>
+          </div>
+      </div>
+  </section>
+
+
+  <footer>
+      <div class="footer-container">
+          <div class="footer-logo">
+              <img src="images/pims.png" alt="Property Inventory Management System">
+              <h2>Property Inventory Management System</h2>
+              <p>Connecting innovation with the world.</p>
+          </div>
+          
+          <div class="footer-links">
+              <h3>Quick Links</h3>
+              <ul>
+                  <li><a href="#home">Home</a></li>
+                  <li><a href="#about">About</a></li>
+                  <li><a href="#">Services</a></li>
+                  <li><a href="#">Contact</a></li>
+              </ul>
+          </div>
+     
+          <div class="footer-newsletter">
+              <h3>Newsletter</h3>
+              <p>Subscribe for updates.</p>
+              <form id="newsletter-form">
+                  <input type="email" placeholder="Enter your email" required>
+                  <button type="submit">Subscribe</button>
+              </form>
+          </div>
+      </div>
+      <div class="footer-bottom">
+          <p>&copy; 2025 PIMS. All Rights Reserved.</p>
+      </div>
+      <button id="back-to-top"><i class="fas fa-chevron-up"></i></button>
+  </footer>
+
 
     <!-- Link to JavaScript file -->
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script> -->
+
+  <script>
+    document.querySelector(".cta-button").addEventListener("click", function() {
+    alert("You clicked Learn More!");
+});
+
+// Smooth scrolling effect
+document.querySelectorAll('nav ul li a').forEach(anchor => {
+    anchor.addEventListener('click', function(event) {
+        event.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        target.scrollIntoView({ behavior: 'smooth' });
+    });
+});
+s
+document.addEventListener("DOMContentLoaded", function() {
+    console.log("Landing page loaded successfully!");
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href").substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80, // Adjust for header height
+                    behavior: "smooth"
+                });
+            }
+        });
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const carousel = document.querySelector(".carousel");
+    const items = document.querySelectorAll(".carousel-item");
+
+    // Clone first 3 elements to create infinite loop effect
+    items.forEach(item => {
+        let clone = item.cloneNode(true);
+        carousel.appendChild(clone);
+    });
+});
+
+
+document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        card.style.boxShadow = "0px 4px 15px rgba(255, 255, 255, 0.2)";
+    });
+    card.addEventListener('mouseleave', () => {
+        card.style.boxShadow = "none";
+    });
+});
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const backToTop = document.getElementById("back-to-top");
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+            backToTop.style.display = "block";
+        } else {
+            backToTop.style.display = "none";
+        }
+    });
+
+    backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    document.getElementById("newsletter-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("Thank you for subscribing!");
+    });
+});
+  </script>
+
   </body>
 </html>

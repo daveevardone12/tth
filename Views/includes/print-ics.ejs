@@ -10,16 +10,17 @@
         <strong>ICS No: <span id="printICSicsNo"></span></strong>
       </div>
     </div>
-    <table class="tabol">
+
+    <table class="ics-table">
       <thead>
-        <tr class="t-ar">
-          <th class="t-h">Qty.</th>
-          <th class="t-h">Unit</th>
-          <th class="t-h">Description</th>
-          <th class="t-h">Property No.</th>
-          <th class="t-h">Date Acquired</th>
-          <th class="t-h">Unit Value</th>
-          <th class="t-h">Total Amount</th>
+        <tr class="ics-table-header-row">
+          <th class="ics-table-header">Qty.</th>
+          <th class="ics-table-header">Unit</th>
+          <th class="ics-table-header">Description</th>
+          <th class="ics-table-header">Property No.</th>
+          <th class="ics-table-header">Date Acquired</th>
+          <th class="ics-table-header">Unit Value</th>
+          <th class="ics-table-header">Total Amount</th>
         </tr>
       </thead>
       <tbody class="tbady">
@@ -32,14 +33,13 @@
           <td class="t-d"><span id="printICSUnitValue"></span></td>
           <td class="t-d"><span id="printICSunitvalue"></span></td>
         </tr>
-        <!-- Additional rows as needed -->
       </tbody>
     </table>
-    <div class="remarks-section">
-      <div><strong>Remarks:</strong> New</div>
-    </div>
-    <div class="footer">
-      <div class="Dating">
+
+    <div class="ics-remarks"><strong>Remarks:</strong> New</div>
+
+    <div class="ics-details-row">
+      <div class="ics-box">
         <p>
           <strong
             >Data Acquired: <span id="printICSdateacquired"></span
@@ -54,14 +54,15 @@
         <p>Location: <span id="printICSLocation"></span></p>
       </div>
 
-      <div class="reminder">
+      <div class="ics-box">
         <p><strong>Reminder:</strong></p>
         <p>
-          If the item/s received is/are not utilized beneficial to work and
+          If the item/s received is/are not utilized beneficially for work and
           already unserviceable, you are REQUIRED to RETURN it to OSPU.
         </p>
       </div>
-      <div class="reminders">
+
+      <div class="ics-box ics-policy-box">
         "Bringing government properties to private homes and for personal use is
         strictly prohibited. Due care and safekeeping should be applied to this
         stated property."
@@ -78,21 +79,21 @@
         <span class="gaps"><u id="printICSDate">____________________</u></span>
         <span>Date</span>
       </div>
-      <div class="signature-box">
-        <div class="sig">
-          <strong>Issued by:</strong>
+
+      <div class="ics-signature-box">
+        <strong>Issued by:</strong>
+        <div><u>JEFFREY M. MENESER, M.A.M.</u></div>
+        <div>
+          Signature Over Printed Name of Supply and/or Property Custodian
         </div>
-        <span><u>JEFFREY M. MENESER, M.A.M.</u></span>
-        <span
-          >Signature Over Printed Name of Supply and/or Property Custodian</span
-        >
-        <span class="gaps"><u>____________________</u></span>
-        <span>Position/Office</span>
-        <span class="gaps"><u>____________________</u></span>
-        <span>Date</span>
+        <div class="ics-gap"><u>____________________</u></div>
+        <div>Position / Office</div>
+        <div class="ics-gap"><u>____________________</u></div>
+        <div>Date</div>
       </div>
     </div>
-    <div class="small-note">Appendix 59</div>
+
+    <div class="ics-note">Appendix 59</div>
   </div>
   <div class="printPhotos hiddenPhotos" id="printICSPhotos">
     <div style="margin-top: 30px"></div>
@@ -102,137 +103,132 @@
 </body>
 
 <style>
-  .bodies {
+  .ics-body {
     font-family: Arial, sans-serif;
   }
 
-  .containerss {
-    width: 210mm;
-    margin: 0 auto;
-    border: 1px solid #000;
-    padding: 10px;
+  .ics-wrapper {
+    max-width: 100%;
+    padding: 15px;
+   margin-top: 50px;
     box-sizing: border-box;
   }
 
-  .headerss {
+  .ics-title {
     text-align: center;
     font-size: 18px;
     font-weight: bold;
     text-transform: uppercase;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
   }
 
-  .sub-header {
+  .ics-header {
+    font-size: 12px;
+    margin-bottom: 15px;
+  }
+
+  .ics-header-row {
     display: flex;
     justify-content: space-between;
-    font-size: 12px;
-    margin-bottom: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 5px;
   }
 
-  .sub-header .haha {
-    display: flex;
-    flex-direction: column;
+  .ics-header-col {
+    flex: 1;
+    min-width: 150px;
+    margin-right: 10px;
   }
 
-  .tabol {
+  .ics-table {
     width: 100%;
     border-collapse: collapse;
     font-size: 12px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    table-layout: fixed;
   }
 
-  .tabol,
-  .t-h,
-  .t-d {
-    border: 1px solid black;
-  }
-
-  .t-h,
-  .t-d {
-    padding: 5px;
+  .ics-table-header,
+  .ics-table-data {
+    border: 1px solid #000;
+    padding: 6px;
     text-align: center;
+    word-break: break-word;
   }
 
-  .remarks-section {
+  .ics-remarks {
     font-size: 12px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid black;
-    padding: 5px;
+    border: 1px solid #000;
+    padding: 6px;
+    margin-bottom: 15px;
   }
 
-  .footer {
+  .ics-details-row {
     display: flex;
     justify-content: space-between;
+    gap: 10px;
     font-size: 12px;
+    margin-bottom: 15px;
+    flex-wrap: nowrap;
   }
 
-  .footer .Dating {
+  .ics-box {
+    flex: 1;
     border: 1px solid #000;
-    width: 250px;
-    padding-left: 1em;
+    padding: 10px;
+    box-sizing: border-box;
+    min-width: 0;
   }
 
-  .footer .reminder {
-    border: 1px solid #000;
-    width: 250px;
-    padding: 1em;
+  .ics-box p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
+#printdescription {
+  display: inline-block;
+  max-width: 100%;
+  word-break: break-word;
+}
+
+
+  .ics-policy-box {
+    font-weight: 600;
   }
 
-  .footer .reminders {
-    border: 1px solid #000;
-    width: 250px;
-    font-size: medium;
-    font-weight: 550;
-    padding: 2em;
-  }
-
-  .footer div {
-    width: 48%;
-  }
-
-  .signature-section {
+  .ics-signature-section {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
     margin-top: 20px;
     font-size: 12px;
   }
 
-  .signature-box {
-    text-align: center;
-    width: 48%;
+  .ics-signature-box {
+    flex: 1;
+    min-width: 250px;
     border: 1px solid #000;
-    height: 200px;
-    padding: 2em;
-  }
-  .signature-box .bax {
-    text-align: start;
-    margin-bottom: 3em;
-  }
-
-  .signature-box .sig {
-    text-align: start;
-    margin-bottom: 3em;
-  }
-
-  .signature-box span {
-    display: block;
-    margin-top: 15px;
-  }
-
-  .reminder {
-    font-size: 12px;
-    text-align: justify;
-  }
-
-  .small-note {
-    font-size: 10px;
+    padding: 20px;
     text-align: center;
-    margin-top: 5px;
+    box-sizing: border-box;
   }
 
-  .tbady .t-ar .t-d {
-    padding: 3em;
+  .ics-gap {
+    margin: 10px 0;
+    display: block;
+  }
+
+  .ics-note {
+    text-align: center;
+    font-size: 10px;
+    margin-top: 10px;
+  }
+
+  @media print {
+    .ics-wrapper {
+      page-break-after: always;
+    }
   }
 </style>
