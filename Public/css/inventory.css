@@ -10,7 +10,7 @@ body {
   padding: 0;
   font-family: Arial, sans-serif;
   box-sizing: border-box;
-  background-color: #f7f7f7;
+  background-color: #eaf4f4;
 }
 
 body::-webkit-scrollbar {
@@ -21,7 +21,7 @@ body::-webkit-scrollbar {
   display: flex; /* Ensures sidebar and main content are side by side */
   width: 100%;
   min-height: 100vh; /* Makes the layout stretch to the full height of the viewport */
-  background: #f7f7f7;
+  background: #f0f4f3;
 }
 
 .main-container {
@@ -32,7 +32,7 @@ body::-webkit-scrollbar {
     100% - 250px
   ); /* Make sure the main container fills the rest of the width */
   overflow-x: auto; /* Add horizontal scrolling if needed for the table */
-  background-color: #f7f7f7;
+  background-color: #f0f4f3;
   /* border-left: 1px solid #ddd; */
 }
 
@@ -107,7 +107,6 @@ table .t-head tr {
   border-radius: 6px; /* Smooth rounded corners */
 }
 
-
 table tbody tr {
   border-radius: 8px;
   background-color: #fff;
@@ -142,7 +141,6 @@ tbody td {
 table tbody tr:nth-of-type(even) {
   background-color: #bcebb3;
 }
-
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -492,9 +490,13 @@ input[type="radio"] {
 
   #printICS,
   #printPar,
-  #printPhotos,
+  .printPhotos,
   #printOffice {
     display: none; /* Default to hidden */
+  }
+
+  .hiddenPhotos {
+    display: none !important; /* Hide photos when printing */
   }
 
   .show-office #printOffice {
@@ -505,19 +507,23 @@ input[type="radio"] {
   .show-ics #printICS {
     display: block !important;
   }
-  .show-ics #printPhotos {
-    display: block !important;
+  .show-ics .printPhotos {
+    display: block;
   }
 
   /* Show PAR when printing */
   .show-par #printPar {
     display: block !important;
   }
+
+  .show-par .printPhotos {
+    display: block;
+  }
 }
 
 #printICS,
 #printPar,
-#printPhotos {
+.printPhotos {
   display: none; /* Initially hidden */
 }
 

@@ -317,37 +317,42 @@
             <div class="icon17"></div>
           </div>
         </div>
+        <div id="minimizeContainer"></div>
 
         <script>
           document.addEventListener("DOMContentLoaded", function () {
-            const cardsContainer = document.getElementById("cardsContainer");
-            const expandButton = document.getElementById("expandButton");
-            let isExpanded = false;
+  const cardsContainer = document.getElementById("cardsContainer");
+  const expandButton = document.getElementById("expandButton");
+  const minimizeContainer = document.getElementById("minimizeContainer");
+  let isExpanded = false;
 
-            expandButton.addEventListener("click", function () {
-              if (!isExpanded) {
-                cardsContainer.classList.remove("collapsed");
-                cardsContainer.classList.add("expanded");
-                addMinimizeButton();
-                expandButton.style.display = "none"; // Hide expand button
-                isExpanded = true;
-              }
-            });
+  expandButton.addEventListener("click", function () {
+    if (!isExpanded) {
+      cardsContainer.classList.remove("collapsed");
+      cardsContainer.classList.add("expanded");
+      addMinimizeButton();
+      expandButton.style.display = "none"; // Hide expand button
+      isExpanded = true;
+    }
+  });
 
-            function addMinimizeButton() {
-              let minimizeButton = document.createElement("button");
-              minimizeButton.innerText = "Minimize";
-              minimizeButton.classList.add("minimize-button");
-              minimizeButton.addEventListener("click", function () {
-                cardsContainer.classList.add("collapsed");
-                cardsContainer.classList.remove("expanded");
-                expandButton.style.display = "block"; // Show expand button again
-                isExpanded = false;
-                minimizeButton.remove();
-              });
-              cardsContainer.appendChild(minimizeButton);
-            }
-          });
+  function addMinimizeButton() {
+    minimizeContainer.innerHTML = ""; // Clear previous button if any
+    let minimizeButton = document.createElement("button");
+    minimizeButton.innerText = "Minimize";
+    minimizeButton.classList.add("minimize-button");
+
+    minimizeButton.addEventListener("click", function () {
+      cardsContainer.classList.add("collapsed");
+      cardsContainer.classList.remove("expanded");
+      expandButton.style.display = "block"; // Show expand button again
+      isExpanded = false;
+      minimizeContainer.innerHTML = ""; // Remove button when minimized
+    });
+
+    minimizeContainer.appendChild(minimizeButton);
+  }
+});
         </script>
 
         <!-- <div class="mean-container"> -->
@@ -387,84 +392,62 @@
             <div class="month" id="month">---</div>
             <div class="year" id="year">----</div>
           </div>
+
           <div class="dashboard-card dashboard-activities-card">
             <div class="recent">Recent Activities</div>
-            <div
-              style="
-                width: 100%;
-                height: 20px;
-                background: #e0e0e0;
-                border-radius: 10px;
-              "
-            ></div>
           </div>
+
           <div class="dashboard-status-container">
             <div class="dashboard-card dashboard-status-card">
               Assigned:
               <div
-                id="totalAssignedItem"
-                style="
-                  color: green;
-                  text-align: right;
-                  font-size: 42px;
-                  display: flex;
-                  margin-top: -30px;
-                  justify-content: flex-end;
-                "
-              >
+                id="totalAssignedItem">
                 <br />
               </div>
             </div>
             <div class="dashboard-card dashboard-status-card">
               Not Assigned:
               <div
-                id="totalNotAssignedItem"
-                style="
-                  color: green;
-                  text-align: right;
-                  font-size: 42px;
-                  display: flex;
-                  margin-top: -30px;
-                  justify-content: flex-end;
-                "
-              >
-                <br />63
+                id="totalNotAssignedItem">
               </div>
             </div>
           </div>
+          
           <div class="dashboard-card dashboard-logs-card">
             <div class="logs">Logs</div>
-            <table class="dashboard-table">
-              <thead>
-                <tr>
-                  <th>Date & Time</th>
-                  <th>Item Name</th>
-                  <th>RFID Tag</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody id="dashboard-table">
-                <tr>
-                  <td>January 27, 2025 at 04:08 PM</td>
-                  <td>Desktop 2D Barcode Scanner</td>
-                  <td>E29884012980390470470E</td>
-                  <td class="status-out">Out</td>
-                </tr>
-                <tr>
-                  <td>January 27, 2025 at 04:08 PM</td>
-                  <td>Desktop 2D Barcode Scanner</td>
-                  <td>E29884012980390470470E</td>
-                  <td class="status-in">In</td>
-                </tr>
-                <tr>
-                  <td>January 27, 2025 at 04:07 PM</td>
-                  <td>Not Registered</td>
-                  <td>06309838871467681949E</td>
-                  <td>Not Registered</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+            <div class="dashboard-table-container">
+                <table class="dashboard-table">
+                    <thead>
+                        <tr>
+                            <th>Date & Time</th>
+                            <th>Item Name</th>
+                            <th>RFID Tag</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dashboard-table">
+                        <tr>
+                            <td>January 27, 2025 at 04:08 PM</td>
+                            <td>Desktop 2D Barcode Scanner</td>
+                            <td>E29884012980390470470E</td>
+                            <td class="status-out">Out</td>
+                        </tr>
+                        <tr>
+                            <td>January 27, 2025 at 04:08 PM</td>
+                            <td>Desktop 2D Barcode Scanner</td>
+                            <td>E29884012980390470470E</td>
+                            <td class="status-in">In</td>
+                        </tr>
+                        <tr>
+                            <td>January 27, 2025 at 04:07 PM</td>
+                            <td>Not Registered</td>
+                            <td>06309838871467681949E</td>
+                            <td>Not Registered</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
         </div>
 
         <script>

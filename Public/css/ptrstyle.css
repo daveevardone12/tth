@@ -7,7 +7,7 @@
 
 body {
   min-height: 100vh;
-  background-color: #f7f7f7;
+  background-color: #eaeaea;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -43,7 +43,7 @@ h2 {
 
 /* Main content area */
 .main-content {
-  background-color: #f7f7f7;
+  background-color: #eaeaea;
   margin-left: 260px !important;
   /* Leaves space for the sidebar */
   padding: 0 20px !important;
@@ -63,10 +63,11 @@ h2 {
   margin-top: 30px;
   background-color: white;
   font-family: Poppins;
-  padding: 7px 0 5px 45px;
+  padding: 15px 0 5px 45px;
   border-radius: 8px;
   margin-top: 7%;
   margin-bottom: 2%;
+  margin-right: 6px;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
 }
 
@@ -102,7 +103,7 @@ label:hover {
   padding: 8px;
   border: 2px solid #ccc;
   border-radius: 4px;
-  background-color: ghostwhite;
+  background-color: #f9f9f9;
 }
 
 .form-group input[type="text"],
@@ -154,7 +155,7 @@ label:hover {
   padding: 8px;
   border: 2px solid #ccc;
   border-radius: 4px;
-  background-color: ghostwhite;
+  background-color: #f9f9f9;
 }
 
 .desc {
@@ -362,7 +363,7 @@ label:hover {
 .mas-header {
   position: fixed;
   z-index: 1;
-  background-color: #f7f7f7;
+  background-color: #ffffff;
   width: calc(100% - 16%);
   margin-left: -30px;
   padding-right: 20px;
