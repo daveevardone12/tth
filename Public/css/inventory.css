@@ -107,7 +107,6 @@ table .t-head tr {
   border-radius: 6px; /* Smooth rounded corners */
 }
 
-
 table tbody tr {
   border-radius: 8px;
   background-color: #fff;
@@ -142,7 +141,6 @@ tbody td {
 table tbody tr:nth-of-type(even) {
   background-color: #bcebb3;
 }
-
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -492,9 +490,13 @@ input[type="radio"] {
 
   #printICS,
   #printPar,
-  #printPhotos,
+  .printPhotos,
   #printOffice {
     display: none; /* Default to hidden */
+  }
+
+  .hiddenPhotos {
+    display: none !important; /* Hide photos when printing */
   }
 
   .show-office #printOffice {
@@ -505,19 +507,23 @@ input[type="radio"] {
   .show-ics #printICS {
     display: block !important;
   }
-  .show-ics #printPhotos {
-    display: block !important;
+  .show-ics .printPhotos {
+    display: block;
   }
 
   /* Show PAR when printing */
   .show-par #printPar {
     display: block !important;
   }
+
+  .show-par .printPhotos {
+    display: block;
+  }
 }
 
 #printICS,
 #printPar,
-#printPhotos {
+.printPhotos {
   display: none; /* Initially hidden */
 }
 

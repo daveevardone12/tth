@@ -1,20 +1,13 @@
-<body class="ics-body">
-  <div class="ics-wrapper" id="printICS" style="display: none">
-    <div class="ics-title">Inventory Custodian Slip (ICS)</div>
-
-    <div class="ics-header">
-      <div class="ics-header-row">
-        <div class="ics-header-col">
-          <strong>Entity Name:</strong> <span id="printEntityName"></span>
-        </div>
-        <div class="ics-header-col">
-          <strong>Fund Cluster:</strong> <span id="printFundCluster"></span>
-        </div>
+<body class="bodies">
+  <div class="containerss" id="printICS" style="display: none">
+    <div class="headerss">Inventory Custodian Slip (ICS)</div>
+    <div class="sub-header">
+      <div class="haha">
+        <strong>Entity Name: <span id="printICSEntityName"></span></strong>
+        <strong>Fund Cluster: <span id="printICSFundCluster"></span></strong>
       </div>
-      <div class="ics-header-row">
-        <div class="ics-header-col">
-          <strong>ICS No:</strong> <span id="printicsNo"></span>
-        </div>
+      <div>
+        <strong>ICS No: <span id="printICSicsNo"></span></strong>
       </div>
     </div>
 
@@ -30,15 +23,15 @@
           <th class="ics-table-header">Total Amount</th>
         </tr>
       </thead>
-      <tbody class="ics-table-body">
-        <tr class="ics-table-row">
-          <td class="ics-table-data"><span id="printQty"></span></td>
-          <td class="ics-table-data"><span id="printUnit"></span></td>
-          <td class="ics-table-data"><span id="printDescription"></span></td>
-          <td class="ics-table-data"><span id="printPropertyNo"></span></td>
-          <td class="ics-table-data"><span id="printDateAcquired"></span></td>
-          <td class="ics-table-data"><span id="printUnitValue"></span></td>
-          <td class="ics-table-data"><span id="printunitvalue"></span></td>
+      <tbody class="tbady">
+        <tr class="t-ar">
+          <td class="t-d"><span id="printICSQty"></span></td>
+          <td class="t-d"><span id="printICSUnit"></span></td>
+          <td class="t-d"><span id="printICSDescription"></span></td>
+          <td class="t-d"><span id="printICSPropertyNo"></span></td>
+          <td class="t-d"><span id="printICSDateAcquired"></span></td>
+          <td class="t-d"><span id="printICSUnitValue"></span></td>
+          <td class="t-d"><span id="printICSunitvalue"></span></td>
         </tr>
       </tbody>
     </table>
@@ -48,15 +41,17 @@
     <div class="ics-details-row">
       <div class="ics-box">
         <p>
-          <strong>Date Acquired:</strong> <span id="printdateacquired"></span>
+          <strong
+            >Data Acquired: <span id="printICSdateacquired"></span
+          ></strong>
         </p>
-        <p><strong>BURs:</strong> <span id="printBurs"></span></p>
-        <p><strong>PO:</strong> <span id="printPo"></span></p>
-        <p><strong>Code:</strong> <span id="printCode"></span></p>
-        <p><strong>Description:</strong> <span id="printdescription"></span></p>
-        <p><strong>IAR #:</strong> <span id="printIAR"></span></p>
-        <p><strong>Supplier:</strong> <span id="printSupplier"></span></p>
-        <p><strong>Location:</strong> <span id="printLocation"></span></p>
+        <p>BURs: <span id="printICSBurs"></span></p>
+        <p>PO: <span id="printICSPo"></span></p>
+        <p>Code: <span id="printICSCode"></span></p>
+        <p>Description: <span id="printICSdescription"></span></p>
+        <p>IAR #: <span id="printICSIAR"></span></p>
+        <p>Supplier: <span id="printICSSupplier"></span></p>
+        <p>Location: <span id="printICSLocation"></span></p>
       </div>
 
       <div class="ics-box">
@@ -73,17 +68,16 @@
         stated property."
       </div>
     </div>
-
-    <div class="ics-signature-section">
-      <div class="ics-signature-box">
-        <strong>Received by:</strong>
-        <div>Signature Over Printed Name of End User</div>
-        <div class="ics-gap">
-          <u id="printICSAccountable">____________________</u>
-        </div>
-        <div>Position / Office</div>
-        <div class="ics-gap"><u id="printDate">____________________</u></div>
-        <div>Date</div>
+    <div class="signature-section">
+      <div class="signature-box">
+        <div class="bax"><strong>Received by:</strong></div>
+        <span>Signature Over Printed Name of End User</span>
+        <span class="gaps"
+          ><u id="printICSAccountable">____________________</u></span
+        >
+        <span>Position / Office</span>
+        <span class="gaps"><u id="printICSDate">____________________</u></span>
+        <span>Date</span>
       </div>
 
       <div class="ics-signature-box">
@@ -101,10 +95,10 @@
 
     <div class="ics-note">Appendix 59</div>
   </div>
-
-  <div id="printPhotos" style="display: none">
+  <div class="printPhotos hiddenPhotos" id="printICSPhotos">
     <div style="margin-top: 30px"></div>
-    <div id="photoContainer" style="text-align: center"></div>
+    <!-- <h2 style="text-align: center" ></h2> -->
+    <div id="photoICSContainer" style="text-align: center"></div>
   </div>
 </body>
 
