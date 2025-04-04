@@ -15,6 +15,147 @@ document.addEventListener("DOMContentLoaded", function () {
   const locationChartContainer = document.getElementById(
     "location_chart_container"
   );
+  const logsTableBody = document.getElementById("dashboard-table");
+
+  // logs
+  let fetchIntervalId = null; // To store the interval ID
+
+  // Function to fetch and update RFID data
+  async function fetchAndUpdateRFID() {
+    try {
+      const response = await fetch(`/notif?ajax=true`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+      if (!response.ok) {
+        throw new Error("Failed to fetch request data");
+      }
+
+      const data = await response.json();
+      const requests = data.getRFIDList;
+
+      logsTableBody.innerHTML = "";
+
+      if (requests.length === 0) {
+        logsTableBody.innerHTML =
+          '<tr><td colspan="4" style="text-align:center">No Requests.</td></tr>';
+      } else {
+        requests.forEach((rfid) => {
+          const row = document.createElement("tr");
+          row.classList.add("notification-item");
+
+          // Function to format the date
+          function formatDate(dateString) {
+            if (!dateString) return "not assigned";
+            const date = new Date(dateString);
+
+            // Check if the date is valid
+            if (isNaN(date)) return "invalid date";
+
+            return date.toLocaleString(undefined, {
+              year: "numeric",
+              month: "long", // Full month name
+              day: "numeric",
+              hour: "2-digit",
+              minute: "2-digit",
+              hour12: true, // 12-hour format
+            });
+          }
+
+          // Use the formatDate function to format rfid.time
+          const formattedTime = formatDate(rfid.time);
+
+          row.innerHTML = `
+              <td>${formattedTime}</td>   
+              <td>${rfid.item_status}</td>
+              <td>${rfid.tag_id}</td>
+              <td class="${
+                rfid.item_status === "Not Registered"
+                  ? ""
+                  : rfid.status
+                  ? "status in"
+                  : "status out"
+              }">${
+            rfid.item_status === "Not Registered"
+              ? "Not Registered"
+              : rfid.status
+              ? "In"
+              : "Out"
+          }</td>
+            `;
+
+          logsTableBody.appendChild(row);
+        });
+      }
+    } catch (error) {
+      console.error("Error fetching request data: ", error);
+      logsTableBody.innerHTML =
+        '<tr><td colspan="4" style="text-align:center">Error loading data</td></tr>';
+    }
+  }
+
+  // Initial fetch and set up interval
+  fetchAndUpdateRFID();
+  fetchInventoryUpdates();
+  fetchTotalTagsAssigned();
+  fetchUnregisteredRFIDs();
+  startFetchInterval();
+  fetchLocationData();
+
+  // Function to start the interval
+  function startFetchInterval() {
+    if (!fetchIntervalId) {
+      fetchIntervalId = setInterval(fetchAndUpdateRFID, 1000); // Every second
+      fetchIntervalId = setInterval(fetchTotalTagsAssigned, 1000); // Every second
+      fetchIntervalId = setInterval(fetchUnregisteredRFIDs, 1000); // Every second
+      fetchIntervalId = setInterval(fetchInventoryUpdates, 1000); // Every second
+      console.log("Fetch interval started");
+    }
+  }
+
+  // Fetch total Assigned tags
+  async function fetchTotalTagsAssigned() {
+    try {
+      const response = await fetch(`/rfid?ajax=true`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+      if (!response.ok) {
+        throw new Error("Failed to fetch request data");
+      }
+
+      const data = await response.json();
+      const requests = data.getRFIDList;
+      document.getElementById("totalAssignedItem").innerText = requests.length;
+      console.log("total tags assigned: ", requests.length);
+    } catch (error) {
+      console.error("Error fetching request data: ", error);
+    }
+  }
+
+  // Fetch total Not Assigned tags
+  async function fetchUnregisteredRFIDs() {
+    try {
+      const response = await fetch("/notif/unregistered"); // Ensure this matches your backend route
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      // displayUnregisteredRFIDs(data.unregisteredRFIDs);
+      document.getElementById("totalNotAssignedItem").innerText =
+        data.unregisteredRFIDs.length;
+      console.log("Unregistered", data);
+    } catch (error) {
+      console.error("Error fetching unregistered RFID logs:", error.message);
+    }
+  }
 
   // Toggle dropdown visibility
   dropdownButton.addEventListener("click", function (event) {
@@ -58,21 +199,12 @@ document.addEventListener("DOMContentLoaded", function () {
       dropdownButton.setAttribute("aria-expanded", "false");
       // Fetch and update charts based on selection
       fetchInventoryUpdates();
-      fetchLocationData();
     }
-  });
-
-  // Load the Google Charts library
-  google.charts.load("current", { packages: ["corechart", "bar"] });
-
-  // Set callbacks to run when the Google Visualization API is loaded.
-  google.charts.setOnLoadCallback(function () {
-    fetchInventoryUpdates();
-    fetchLocationData();
   });
 
   // Function to update DOM elements with fetched inventory data
   function updateInventoryCounts(data) {
+    console.log(data);
     document.getElementById("officeEquipment").innerText =
       data.totalItemsOffice;
     document.getElementById("ICTEquipment").innerText =
@@ -95,6 +227,16 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("Software").innerText = data.totalSoftware;
     document.getElementById("MachineryEquipment").innerText =
       data.totalMachineryEquipment;
+    document.getElementById("MarineandMachineryEquipment").innerText =
+      data.totalFurnitureEquipment;
+    document.getElementById("CommunicationEquipment").innerText =
+      data.totalFurnitureEquipment;
+    document.getElementById("DisasterResponseandRescueEquipment").innerText =
+      data.totalFurnitureEquipment;
+    document.getElementById("MilitaryPoliceandSecurityEquipment").innerText =
+      data.totalFurnitureEquipment;
+    document.getElementById("SportsEquipment").innerText =
+      data.totalFurnitureEquipment;
   }
 
   // Function to draw the Inventory Google Bar Chart
@@ -114,22 +256,54 @@ document.addEventListener("DOMContentLoaded", function () {
       ["Books", data.totalBooks],
       ["Software", data.totalSoftware],
       ["Machinery", data.totalMachineryEquipment],
+      ["Marine and Machinery Equipment", data.totalMarineandMachineryEquipment],
+      ["Communication Equipment", data.totalCommunicationEquipment],
+      [
+        "Disaster Response and Rescue Equipment",
+        data.totalDisasterResponseandRescueEquipment,
+      ],
+      [
+        "Military Police and Security Equipment",
+        data.totalMilitaryPoliceandSecurityEquipment,
+      ],
+      ["Sports Equipment", data.totalSportsEquipment],
     ];
 
     const dataTable = google.visualization.arrayToDataTable(chartData);
 
     const options = {
       title: "Inventory Items by Category",
-      chartArea: { width: "70%", height: "85%" }, // Adjust chart area within the container
+      titleTextStyle: {
+        fontName: "Poppins",
+        fontSize: 16, // Adjust the title font size
+        bold: true, // Make title bold
+      },
+      chartArea: { width: "48%", height: "85%" }, // Adjust chart area within the container
       hAxis: {
         title: "Total Distinct UACS Codes",
         minValue: 0,
+        textStyle: {
+          fontSize: 12,
+          bold: true, // Make horizontal axis labels bold
+        },
+        titleTextStyle: {
+          fontSize: 12,
+          bold: true, // Make horizontal axis title bold
+        },
       },
       vAxis: {
         title: "Category",
+        textStyle: {
+          fontSize: 12,
+          bold: true, // Make vertical axis labels bold
+        },
+        titleTextStyle: {
+          fontSize: 12,
+          bold: true, // Make vertical axis title bold
+        },
       },
       colors: ["#4285F4"], // Example color
-      fontSize: 8,
+      fontSize: 12,
     };
 
     const chart = new google.visualization.BarChart(
@@ -146,12 +320,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Function to fetch inventory updates and draw the chart
   function fetchInventoryUpdates() {
     if (!isSearching) {
-      // Show loading spinner and overlay if applicable
-      if (loadingSpinner && overlay) {
-        loadingSpinner.style.display = "block";
-        overlay.style.display = "block";
-      }
-
       // Build the fetch URL with location filter if selected
       let fetchURL = "/dashboard?ajax=true";
       if (selectedLocation) {
@@ -184,10 +352,6 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .finally(() => {
           // Hide loading spinner and overlay
-          if (loadingSpinner && overlay) {
-            loadingSpinner.style.display = "none";
-            overlay.style.display = "none";
-          }
         });
     }
   }
@@ -261,14 +425,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const options = {
       title: "Location-Based Counts", // Updated title
+      titleTextStyle: {
+        fontName: "Poppins", // Set font family
+        fontSize: 16, // Set font size
+        bold: true, // Make text bold
+        italic: false, // Italicize text if needed
+        color: "#333",
+      },
       hAxis: {
-        title: "Location",
+        title: "Total Distinct UACS Codes",
+        minValue: 0,
+        textStyle: {
+          fontSize: 13,
+          bold: true, // Make horizontal axis labels bold
+        },
+        titleTextStyle: {
+          fontSize: 14,
+          bold: true, // Make horizontal axis title bold
+        },
       },
       vAxis: {
-        title: "Count", // Updated from 'Metric' to 'Count'
+        title: "Category",
+        textStyle: {
+          fontSize: 13,
+          bold: true, // Make vertical axis labels bold
+        },
+        titleTextStyle: {
+          fontSize: 14,
+          bold: true, // Make vertical axis title bold
+        },
       },
-      colors: ["#DB4437"], // Example color, customize as needed
-      fontSize: 8,
+      colors: ["#095c02"], // Example color
+      fontSize: 15,
       chartArea: { width: "70%", height: "85%" },
     };
 
@@ -296,14 +484,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Optional: Set up periodic fetching to update data and charts
-  // Fetch inventory and location data every 60 seconds
-  setInterval(fetchInventoryUpdates, 60000); // 60000 milliseconds = 60 seconds
-  setInterval(fetchLocationData, 60000); // Update location data every 60 seconds
-
   // Initial fetch when the page loads
   fetchInventoryUpdates();
-  fetchLocationData();
 
   // Function to update the time in real-time
   function updateTime() {
@@ -360,26 +542,10 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     */
   }
-
-  // Debounce function to limit the rate at which a function can fire.
-  function debounce(func, wait) {
-    let timeout;
-    return function (...args) {
-      const later = () => {
-        clearTimeout(timeout);
-        func.apply(this, args);
-      };
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-    };
-  }
-
-  // Redraw the charts when the window is resized, using debounce to optimize performance
-  window.addEventListener(
-    "resize",
-    debounce(function () {
-      fetchInventoryUpdates();
-      fetchLocationData();
-    }, 250) // Adjust the wait time as needed
-  );
 });
+
+document
+  .querySelector(".profile-container")
+  .addEventListener("click", function () {
+    window.location.href = "/user"; // Change this to your profile page URL
+  });

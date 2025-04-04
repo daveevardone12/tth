@@ -5,7 +5,9 @@ const { ensureAuthenticated } = require("../middleware/middleware");
 
 router.get("/", ensureAuthenticated, (req, res) => {
   const success = req.query.success === "true";
-  res.render("landing", { success });
+  const userData = req.user;
+  const role = userData.role;
+  res.render("landing", { success, role });
 });
 
 module.exports = router;

@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: white;
+  background-color: #f7f7f7;
   margin: 0;
   padding: 0;
   justify-content: right;
@@ -13,17 +13,20 @@ body::-webkit-scrollbar {
 }
 
 .main-content {
-  padding: 0;
-  margin-left: 305px;
+  margin-top: 0 !important;
+  padding: 0 20px !important;
+  margin-left: 260px !important;
   margin-right: 5px;
   overflow: hidden;
 }
 
 .form-container {
-  
   background-color: white;
   border-radius: 10px;
-  padding: 20px 30px;
+  margin-top: 7%;
+  margin-bottom: 2%;
+  padding: 10px 40px 30px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
 }
 
 .form-group {
@@ -57,9 +60,9 @@ h1 {
   font-style: normal;
   line-height: normal;
   color: #000;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
+  padding-top: 5px;
+  padding-left: 20px;
+  margin-bottom: 5px;
 }
 
 h2 {
@@ -72,15 +75,21 @@ h2 {
   border-bottom: 1px solid #ccc;
   padding-bottom: 10px;
   padding-top: 10px;
-  margin-bottom: 15px;
-  margin-left: 30px;
+  /* margin-bottom: 15px; */
+  /* margin-left: 30px; */
 }
 
 label {
   display: block;
   margin-bottom: 5px;
-  font-weight: bold;
+  font-weight: 500;
 }
+
+label:hover {
+  color: green;
+}
+
+
 
 input,
 select,
@@ -91,7 +100,7 @@ textarea {
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 14px;
-  background-color: white;
+  background-color: ghostwhite;
 }
 
 option {
@@ -105,7 +114,7 @@ option {
 
 textarea {
   resize: none;
-  height: 200px;
+  height: 100px;
   font-size: large;
 }
 
@@ -139,30 +148,37 @@ textarea {
 .button-container {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-top: 50px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  gap: 20px;
+  margin-top: 30px;
 }
 
 button {
-  background-color: #095c02;
-  color: #fff;
+  background-color: white;
+  color: black;
+  font-family: Poppins;
   border: none;
   padding: 10px 20px;
-  font-size: 14px;
+  font-size: 1rem;
   border-radius: 4px;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  border: 1px solid #095c02;
 }
 
 button:hover {
-  background-color: #2a8d57;
+  background-color: rgb(224, 224, 224);
 }
 
 .btn-secondary {
-  background-color: #095c02;
+  background-color: white;
 }
 
 .btn-secondary:hover {
-  background-color: #0066cc;
+  background-color: rgb(224, 224, 224);
 }
 
 @media print {
@@ -198,3 +214,15 @@ button:hover {
 select {
   width: 100%;
 }
+
+/* for header */
+.mas-header {
+  position: fixed;
+  z-index: 1;
+  background-color: #f7f7f7;
+  width: calc(100% - 16%);
+  margin-left: -30px;
+  padding-right: 20px;
+  padding-top: 10px;
+}
+

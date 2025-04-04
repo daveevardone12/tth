@@ -15,7 +15,7 @@ const userSchema = Joi.object({
   email: Joi.string().email().required(), // Email format validation
   phone: Joi.string().required(),
   password: Joi.string().min(8).required(), // Password must be at least 8 characters
-  role: Joi.string().valid("admin", "employee").required(), // Validate user role
+  role: Joi.string().valid("Admin", "Employee").required(), // Validate user role
 });
 
 const tthPool = require("../models/tthDB");
@@ -25,7 +25,7 @@ router.post("/signup/submit", async (req, res) => {
 
   if (error) {
     req.flash("error", error.details[0].message);
-    return res.redirect("/signup");
+    return res.redirect("/login");
   }
 
   const passwordLenght = value.password.length;
@@ -42,7 +42,7 @@ router.post("/signup/submit", async (req, res) => {
 
     if (emailCheck.rows.length > 0) {
       req.flash("error", "Email is already taken.");
-      return res.redirect("/signup");
+      return res.redirect("/login");
     }
 
     // Insert new user into the database
@@ -65,12 +65,12 @@ router.post("/signup/submit", async (req, res) => {
       service: "gmail", // Use Gmail (or another email service)
       auth: {
         user: "davemarlon74@gmail.com", // Replace with your Gmail address
-        pass: "ecqo yjba ayhn nbvr", // Use the generated app password (see below)
+        pass: "wbld qbwe onmw miqp", // Use the generated app password (see below)
       },
     });
 
     const mailOptions = {
-      from: "your-email@gmail.com",
+      from: "davemarlon74@gmail.com",
       to: value.email,
       subject: "Account Signup Confirmation",
       text: `Hello ${value.first_name},\n\nYour email has been changed. Welcome!\n\nRegards,\nThe Team`,
@@ -84,7 +84,7 @@ router.post("/signup/submit", async (req, res) => {
           "error",
           "Error sending confirmation email. Please try again."
         );
-        return res.redirect("/signup"); // Ensure to return here to avoid further responses
+        return res.redirect("/login"); // Ensure to return here to avoid further responses
       } else {
         console.log("Email sent: " + info.response);
       }

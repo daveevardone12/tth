@@ -1,129 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Property Return Slip Form | Property Management System</title>
-    <link rel="stylesheet" href="../css/prs.css">
-    <link rel="stylesheet" href="../css/general.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/prs.css" />
+    <link rel="stylesheet" href="../css/general.css" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-</head>
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <!-- Sidebar -->
-        <%- include("./includes/sidebar") %>
+      <!-- Sidebar -->
+      <%- include("./includes/sidebar") %>
 
-            <!-- Main content -->
-            <div class="main-content">
-                <div class="fix">
-                    <h1>Property Return Slip Form</h1>
-                    <h2>Item Details</Details>
-                    </h2>
+      <!-- Main content -->
+      <div class="main-content">
+        <div class="mas-header">
+          <h1>Property Return Slip Form</h1>
+        </div>
+        
+        <div class="form-container">
+          <div class="fix">
+            <h2>Item Details</h2>
+          </div>
+          <form method="POST" action="/prs/save">
+            <div class="grid-container">
+              <div class="form-group">
+                <div class="third-width">
+                  <label>Document Type*</label>
+                  <select name="documentType" id="documentType">
+                    <option value="par">PAR</option>
+                    <option value="ics">ICS</option>
+                  </select>
                 </div>
+                <div class="half-width">
+                  <label>Name of Office*</label>
+                  <input
+                    type="text"
+                    id="office"
+                    name="office"
+                    required
+                  />
+                </div>
+                <div class="half-width">
+                  <label>Quantity*</label>
+                  <input
+                    type="number"
+                    id="quantity"
+                    name="quantity"
+                    required
+                  />
+                </div>
+                <div class="half-width">
+                  <label>Unit*</label>
+                  <input
+                    type="text"
+                    id="unit"
+                    name="unit"
+                    required
+                  />
+                </div>
+                <div class="half-width">
+                  <label>Purpose*</label>
+                  <select id="purpose" name="purpose" required>
+                    <option value="" disabled selected>Select Purpose</option>
+                    <option value="Disposal">Disposal</option>
+                    <option value="Repair">Repair</option>
+                    <option value="Return to stock">Return to stock</option>
+                    <option value="Others">Others</option>
+                  </select>
+                  <input
+                    type="text"
+                    id="otherPurpose"
+                    placeholder="Specify if Others"
+                    style="display: none"
+                  />
+                </div>
+              </div>
 
-                <div class="form-container">
-                    <form method="POST" action="/prs/save">
+              <div class="form-group1">
+                <div class="half-width">
+                  <label>Property No. (if any)</label>
+                  <input
+                    type="text"
+                    id="property_no"
+                    name="property_no"
+                  />
+                  <div class="hoverable" id="results"></div>
+                </div>
+                <div class="half-width">
+                  <label>Date Acquired*</label>
+                  <input
+                    type="date"
+                    id="date_acquired"
+                    name="date_acquired"
+                    required
+                  />
+                </div>
+                <div class="half-width">
+                  <label>Name of End User*</label>
+                  <input
+                    type="text"
+                    id="endUser"
+                    name="endUser"
+                    required
+                  />
+                </div>
+                <div class="half-width">
+                  <label>Unit Value*</label>
+                  <input
+                    type="number"
+                    id="unitValue"
+                    name="unitValue"
+                    required
+                  />
+                </div>
+                <div class="half-width">
+                  <label>Total Value*</label>
+                  <input
+                    type="number"
+                    id="totalValue"
+                    name="totalValue"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
 
-                        <div class="grid-container">
-                        <div class="form-group">
-                            <div class="third-width">
-                                <label>Document Type*</label>
-                                <select name="documentType" id="documentType">
-                                    <option value="par">PAR</option>
-                                    <option value="ics">ICS</option>
-                                </select>
-                            </div>
-                            <div class="half-width">
-                                <label>Name of Office*</label>
-                                <input type="text" id="office" name="office" placeholder="Ex. Smart Center" required>
-                            </div>
-                            <div class="half-width">
-                                <label>Quantity*</label>
-                                <input type="number" id="quantity" name="quantity" placeholder="Ex. 100" required>
-                            </div>
-                            <div class="half-width">
-                                <label>Unit*</label>
-                                <input type="text" id="unit" name="unit" placeholder="Ex. Unit" required>
-                            </div>
-                            <div class="half-width">
-                                <label>Purpose*</label>
-                                <select id="purpose" name="purpose" required>
-                                    <option value="" disabled selected>Purpose *</option>
-                                    <option>Disposal</option>
-                                    <option>Repair</option>
-                                    <option>Return to stock to stock</option>
-                                </select>
-                            </div>
-                        </div>
-                    
-
-
-                        <div class="form-group1">
-                            <div class="half-width">
-                                <label>Property No. (if any)</label>
-                                <input type="text" id="property_no" name="property_no" placeholder="Ex. 15-04-011">
-                                <div class="hoverable" id="results"></div>
-                            </div>
-                            <div class="half-width">
-                                <label>Date Acquired*</label>
-                                <input type="date" id="date_acquired" name="date_acquired" required>
-                            </div>
-                            <div class="half-width">
-                                <label>Name of End User*</label>
-                                <input type="text" id="endUser" name="endUser" placeholder="Ex. John Lloyd Tabuac"
-                                    required>
-                            </div>
-                            <div class="half-width">
-                                <label>Unit Value*</label>
-                                <input type="number" id="unitValue" name="unitValue" placeholder="Ex. 1000" required>
-                            </div>
-                            <div class="half-width">
-                                <label>Total Value*</label>
-                                <input type="number" id="totalValue" name="totalValue" placeholder="Ex. 100,000"
-                                    required>
-                            </div>
-                        </div>
-                    </div>
-                    
-                        <div class="form-group2">
-                            <div class="full-width">
-                                <label>Purpose of Returning the Items</label>
-                                <textarea id="purpose" name="purposeOfReturningItems"
-                                    placeholder="Ex. Destroyed"></textarea>
-                            </div>
-                            <div class="half-width">
-                                <label>Description</label>
-                                <textarea id="description" name="description"></textarea>
-                                <!-- <select id="description" name="description">
+            <div class="form-group2">
+              <div class="full-width">
+                <label>Purpose of Returning the Items</label>
+                <textarea
+                  id="purpose"
+                  name="purposeOfReturningItems"
+                ></textarea>
+              </div>
+              <div class="half-width">
+                <label>Description</label>
+                <textarea id="description" name="description"></textarea>
+                <!-- <select id="description" name="description">
                                     <option value="" disabled selected>Search Serial ID...</option>
                                     <option>SN: 20230715-001-123</option>
                                 </select> -->
-                            </div>
-                        </div>
-
-                        <div class="button-container">
-                            <button type="button" class="btn-secondary" onclick="printDocument('Print')">Print</button>
-                            <button type="submit">Save</button>
-
-                        </div>
-                        <script>
-                            function printDocument() {
-                                window.print();
-                            }
-                        </script>
-                    </form>
-                </div>
+              </div>
             </div>
-    </div>
-</body>
-<%- include("./includes/print-prs") %>
-    <script src="../js/prs-api.js"></script>
 
+            <div class="button-container">
+              <button
+                type="button"
+                class="btn-secondary"
+                onclick="printDocument('Print')"
+              >
+                Print
+              </button>
+              <button type="submit">Save</button>
+            </div>
+            <script>
+              function printDocument() {
+                document.getElementById("printName").innerText =
+                  document.getElementById("office").value;
+
+                document
+                  .getElementById("purpose")
+                  .addEventListener("change", function () {
+                    let selectedPurpose = this.value;
+
+                    // Clear previous selections
+                    document.getElementById("printpurposeDisposal").innerText =
+                      "";
+                    document.getElementById("printpurposeRepair").innerText =
+                      "";
+                    document.getElementById("printpurposeStock").innerText = "";
+                    document.getElementById("printpurposeOthers").innerText =
+                      "";
+
+                    // Show selected purpose
+                    if (selectedPurpose === "Disposal") {
+                      document.getElementById(
+                        "printpurposeDisposal"
+                      ).innerText = "✔";
+                    } else if (selectedPurpose === "Repair") {
+                      document.getElementById("printpurposeRepair").innerText =
+                        "✔";
+                    } else if (selectedPurpose === "Return to stock") {
+                      document.getElementById("printpurposeStock").innerText =
+                        "✔";
+                    } else {
+                      document.getElementById("printpurposeOthers").innerText =
+                        document.getElementById("otherPurpose").value;
+                    }
+                  });
+
+                document.getElementById("printQty").innerText =
+                  document.getElementById("quantity").value;
+                document.getElementById("printUnit").innerText =
+                  document.getElementById("unit").value;
+                document.getElementById("printDescription").innerText =
+                  document.getElementById("description").value;
+                document.getElementById("printPropertyNo").innerText =
+                  document.getElementById("property_no").value;
+                document.getElementById("printUnitValue").innerText =
+                  document.getElementById("unitValue").value;
+                document.getElementById("printTotalValue").innerText =
+                  document.getElementById("totalValue").value;
+
+                document.getElementById("printDate").innerText =
+                  document.getElementById("date_acquired").value;
+                document.getElementById("printDate2").innerText =
+                  document.getElementById("date_acquired").value;
+
+                window.print();
+              }
+            </script>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+  <%- include("./includes/print-prs") %>
+  <script src="../js/prs-api.js"></script>
 </html>

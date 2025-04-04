@@ -1,26 +1,33 @@
 /* General Styles */
 body {
-  font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f3f4f6;
+  background-color: #f7f7f7;
   color: #333;
 }
 
 /* Container Layout */
 .container {
-  max-width: calc(100% - 300px); /* Adjust to leave space for the 300px sidebar and 20px padding */
-  margin-left: 270px; /* Sidebar width + spacing */
-  padding: 20px;
-  box-sizing: border-box; /* Ensures padding doesn't exceed the container width */
+  max-width: calc(100% - 200px);
+  /* Adjust to leave space for the 300px sidebar and 20px padding */
+  margin-left: 260px;
+  /* Sidebar width + spacing */
+  padding: 0 20px;
+  box-sizing: border-box;
+  /* Ensures padding doesn't exceed the container width */
+  background-color: #f7f7f7;
 }
 
 /* Profile Wrapper */
 .profile-wrapper {
-  width: calc(100%); /* Adjust to leave space for the 300px sidebar and padding */
-  margin-left: 100px; /* Ensure it starts after the sidebar */
+  width: calc(100%);
+  /* Adjust to leave space for the 300px sidebar and padding */
+  margin-left: 10px;
+  /* Ensure it starts   the sidebar */
   padding: 20px;
-  box-sizing: border-box; /* Include padding in the element's total width */
+  margin-top: 5%;
+  box-sizing: border-box;
+  /* Include padding in the element's total width */
 }
 
 /* Header Bar */
@@ -38,11 +45,13 @@ h1 {
   font-style: normal;
   line-height: normal;
   color: #000;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
-  width: 100%; /* Make the line span the full width of the container */
-  text-align: left; /* Align the text to the left */
+  padding-top: 5px;
+  padding-left: 20px;
+  margin-bottom: 5px;
+  width: 100%;
+  /* Make the line span the full width of the container */
+  text-align: left;
+  /* Align the text to the left */
 }
 
 /* Logout Button Inside the Box */
@@ -57,9 +66,12 @@ h1 {
   font-size: 0.85rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease, transform 0.2s ease;
-  position: absolute; /* Use absolute positioning */
-  bottom: 20px; /* Position at the bottom of the box */
-  right: 20px; /* Align to the right side of the box */
+  position: absolute;
+  /* Use absolute positioning */
+  bottom: 20px;
+  /* Position at the bottom of the box */
+  right: 20px;
+  /* Align to the right side of the box */
 }
 
 .box .logout-btn:hover {
@@ -68,34 +80,71 @@ h1 {
 }
 
 /* Card */
-.box {
-  position: relative; /* Ensure the logout button is positioned relative to the box */
+.box1 {
+  position: relative;
+  /* Ensure the logout button is positioned relative to the box */
   background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
   padding: 20px;
+  padding-right: 20px;
   margin-bottom: 20px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgb(233, 229, 229);
 }
 
-.box h2 {
+.box1 h2 {
   color: #0a5d03;
-  font-size: 1.2rem;
+  font-family: Poppins;
+  font-size: 1.7rem;
   font-weight: 600;
   margin-bottom: 20px;
-  text-align: left; /* Ensure h2 aligns to the left */
+  text-align: left;
+  /* Ensure h2 aligns to the left */
+  border-bottom: 1px solid grey;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  letter-spacing: 0 !important;
+  text-shadow: none !important;
+}
+
+.box2 {
+  position: relative;
+  /* Ensure the logout button is positioned relative to the box */
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+  padding-right: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgb(233, 229, 229);
+}
+
+.box2 h2 {
+  color: #0a5d03;
+  font-family: Poppins;
+  font-size: 1.7rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: left;
+  /* Ensure h2 aligns to the left */
+  border-bottom: 1px solid grey;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  letter-spacing: 0 !important;
+  text-shadow: none !important;
 }
 
 /* Form Layout */
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 10px;
 }
 
 label {
   font-size: 0.9rem;
   font-weight: 500;
-  color: #6b7280;
+  color: #000000;
   margin-bottom: 8px;
   display: block;
 }
@@ -103,14 +152,15 @@ label {
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-  width: 100%;
+  width: 95%;
   padding: 10px;
-  margin-bottom: 20px; /* Add spacing below email and password inputs */
-  border: 1px solid #d1d5db;
+  margin-bottom: 20px;
+  /* Add spacing below email and password inputs */
+  border: 1.5px solid #000000;
   border-radius: 6px;
   font-size: 0.9rem;
   color: #111827;
-  background-color: #f9fafb;
+  background-color: white;
 }
 
 input[type="text"]:focus,
@@ -124,15 +174,19 @@ input[type="password"]:focus {
 /* Action Buttons Container */
 .action-buttons {
   display: flex;
-  justify-content: flex-start; /* Align buttons to the left */
-  gap: 20px; /* Spacing between the buttons */
+  justify-content: flex-start;
+  /* Align buttons to the left */
+  gap: 20px;
+  /* Spacing between the buttons */
   margin-top: 20px;
-  margin-left: 250px; /* Margin for the entire container */
+  margin-left: 250px;
+  /* Margin for the entire container */
 }
 
 /* Individual Button Styles */
 .action-btn {
-  min-width: 150px; /* Ensure buttons have the same size */
+  min-width: 150px;
+  /* Ensure buttons have the same size */
   padding: 12px;
   font-size: 1rem;
   background-color: #0a5d03;
@@ -147,8 +201,7 @@ input[type="password"]:focus {
 }
 
 .action-btn:hover {
-  background-color: #004d00;
-  transform: scale(1.03);
+  background-color: #1d8d01;
 }
 
 /* Modal Styles */
@@ -209,17 +262,33 @@ button[type="submit"]:hover {
 
 @media (max-width: 768px) {
   .profile-wrapper {
-    width: 100%; /* Take full width for smaller screens */
-    margin-left: 0; /* Remove sidebar spacing */
+    width: 100%;
+    /* Take full width for smaller screens */
+    margin-left: 0;
+    /* Remove sidebar spacing */
   }
 
   .action-buttons {
-    flex-direction: column; /* Stack buttons vertically on smaller screens */
-    margin-left: 0; /* Remove left margin for smaller screens */
-    align-items: center; /* Center align the stacked buttons */
+    flex-direction: column;
+    /* Stack buttons vertically on smaller screens */
+    margin-left: 0;
+    /* Remove left margin for smaller screens */
+    align-items: center;
+    /* Center align the stacked buttons */
   }
 
   .action-btn {
-    min-width: 100%; /* Buttons take full width on smaller screens */
+    min-width: 100%;
+    /* Buttons take full width on smaller screens */
   }
+}
+
+.mas-header {
+  position: fixed;
+  z-index: 1;
+  background: none;
+  margin-left: -30px;
+  padding-right: 20px;
+  box-shadow: none;
+  padding-top: 10px;
 }

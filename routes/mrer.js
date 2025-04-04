@@ -7,7 +7,9 @@ const { date } = require("joi");
 
 router.get("/", ensureAuthenticated, (req, res) => {
   const success = req.query.success === "true";
-  res.render("mrer", { success });
+  const userData = req.user;
+  const role = userData.role;
+  res.render("mrer", { success, role });
 });
 
 router.get("/office", async (req, res) => {
@@ -60,10 +62,10 @@ router.post("/save", async (req, res) => {
         data.quantity,
         data.unit,
         data.purpose,
-        data.property_number,
+        data.property_no,
         data.date_acquired,
-        data.end_user,
-        data.unit_value,
+        data.endUser,
+        data.unitValue,
         data.total_value,
         data.under_warranty,
         data.others,

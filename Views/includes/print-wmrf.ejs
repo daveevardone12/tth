@@ -1,0 +1,307 @@
+<style>
+/* body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} */
+
+.six-container {
+    width: calc(100% - 5px);
+    margin: 0;
+    padding: 0;
+    border: 2px solid black;
+    margin-left: -2px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.headersss {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.paragraph {
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    margin-left: -1px;
+}
+
+.left, .right {
+    display: inline-block;
+    vertical-align: top;
+    width: 40%;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+  }
+
+  .left {
+    font-weight: bold;
+    text-align: left;
+    margin-left: 10px;
+  }
+
+  .right {
+    font-weight: bold;
+    text-align: right;
+    margin-left: 100px;
+  }
+
+  .left .paragraph, .right .paragraph {
+    margin: 5px 0;
+  }
+td {
+    text-align: left;
+    height: 20px;
+    padding-left: 10px;
+    vertical-align: middle;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th {
+    padding: 5px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+th {
+    font-weight: bold;
+}
+
+ h3 {
+    text-align: center;
+ }
+
+.correct, .approve {
+    display: inline-block;
+    margin-top: -20px;
+    margin-bottom: 20px;
+}
+
+.correct {
+    text-align: left;
+    margin-left: 5px;
+}
+
+.approve {
+    text-align: right;
+    margin-left: 450px;
+}
+
+td.wow {
+    font-weight: bold;
+    text-align: center;
+    border-top: 3px solid black;
+}
+.underline {
+text-decoration: underline;
+font-weight: bold;
+}
+
+.signature {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.signatured {
+    width: 100%;
+}
+.signature div {
+    width: 45%;
+    text-align: center;
+}
+
+.row1 {
+    padding-bottom: 50px;
+    text-align: left;
+}
+.row2 {
+    padding-bottom: 50px;
+    text-align: left;
+}
+
+th.Place {
+    text-align: left;
+    padding-left: 10px;
+}
+th.Date {
+    text-align: left;
+    padding-left: 10px;
+}
+
+.certification {
+    margin-top: 20px;
+}
+
+.certification .cert {
+    margin-bottom: 10px;
+    margin-top: 30px;
+    margin-left: 40px;
+}
+
+.name {
+    margin-left: 400px;
+}
+
+.certification ul {
+    list-style: none;
+    padding: 0;
+    margin-left: 100px;
+}
+
+.certification li {
+    margin-bottom: 10px;
+}
+</style>
+
+
+
+    <div class="six-container" id="printWmrf" style="display: none;">
+        <div class="headersss">WASTE MATERIAL REPORT (WMR)</div>
+        <div class="left">
+        <p class="paragraph">Entity Name: <span id="printEntityName"></span></p>
+        </p>
+        </div>
+        <div class="right">
+            <p class="paragraph">Fund Cluster: <span id="printFundCluster"></span></p>
+               <p class="paragraph"> WMR No.: <span id="printWmr"></span></p>
+         </div>
+
+
+        <table>
+            <thead>
+                <tr>
+                    <th class="Place" colspan="4">Place of Storage : <span id="PrintPlaceofStorage"></span></th>
+                    <th class="Date" colspan="3">Date : <span id="printDate"></span></th>
+                </tr>
+                <tr>
+                    <th colspan="8">ITEMS FOR DISPOSAL</th>
+                </tr>
+                <tr>
+                    <th rowspan="3">Item</th>
+                    <th rowspan="3">QTY.</th>
+                    <th rowspan="3">UNIT</th>
+                    <th rowspan="3">Description</th>
+                    <th colspan="3">Record of Sales</th>
+                </tr>
+                <tr>
+                    <th colspan="3">Official Receipt</th>
+                </tr>
+                <tr>
+                    <th>No.</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td><span id="printQTY"></span></td>
+                    <td><span id="printUnit"></span></td>
+                    <td><span id="printDescription"></span></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+        
+                <tr>
+                    <td colspan="4">Purpose: <span id="print_purpose"></span></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                    <td>TOTAL</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <!-- Additional rows as needed -->
+            </tbody>
+        </table>
+
+        <div class="correct">
+            <p class="paragraph">Certified Correct:</p>
+        </div>
+        <div class="approve">
+            <p class="paragraph">Disposal Approved:</p>
+        </div>
+
+        <div class="signature">
+            <div>
+                ____________________________ <br>
+                Signature over Printed Name of Supply and/or Property Custodian
+            </div>
+            <div>
+                <span class="underline">ANDRES C. PAGATPATAN JR., Ph. D. <br></span>
+                Signature over Printed Name of Head of Agency/Entity or his/her Authorized Representative
+            </div>
+        </div>
+
+        <div class="certification">
+            <table>
+                <tr>
+                    <td class="wow">CERTIFICATE OF INSPECTION</td>
+                </tr>
+            </table>
+            <p class="cert">I hereby certify that the property enumerated above was disposed of as follows:</p>
+            <ul>
+                <li>Item ___________ Destroyed</li>
+                <li>Item ___________ Sold at private sale</li>
+                <li>Item ___________ Sold at public auction</li>
+                <li>Item ___________ Transferred without cost to ____________________________</li>
+                <span class="name">(Name of the Agency/Entity)</span>
+            </ul>
+        </div>
+
+        <div class="signatured">
+            <table>
+                <thead>
+            <tr>
+                <th class="row1">Certified Correct:</th>
+                <th class="row2">Witness to Disposal:</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <th>
+                    ____________________________ <br>
+                    Signature over Printed Name of Inspection Officer
+                </th>
+                <th>
+                    ____________________________ <br>
+                    Signature over Printed Name of Witness
+                </th>
+            </tr>
+            </tbody>
+            </table>
+        </div>
+
+        
+    </div>
+    <br>
+    <div id="printPhotos" style="display: none;">
+        <div style="margin-top: 500px;"></div>
+        <!-- <h2 style="text-align: center" ></h2> -->
+        <div id="photoContainer" style="text-align: center; "></div>
+      </div>
+
+    
+

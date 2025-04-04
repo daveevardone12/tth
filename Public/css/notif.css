@@ -1,7 +1,7 @@
 /* General Reset */
 body {
   font-family: Arial, sans-serif;
-  background-color: white;
+  background-color: #f7f7f7;
   margin: 0;
   padding: 0;
   justify-content: right;
@@ -9,18 +9,22 @@ body {
   height: 100vh;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 .main-content {
-  padding: 20px;
+  padding: 0 20px;
   /* margin-left: 305px; */
   margin-right: 5px;
   overflow: hidden;
 }
 
 .table-container {
-  background-color: white;
-  /* margin-top: 10px; */
+  background-color: #f7f7f7;
+  margin-top: 5%;
   border-radius: 10px;
-  padding: 20px 20px 0px 10px;
+  padding: 10px 20px 0px 10px;
   margin-left: 15px;
 }
 
@@ -46,9 +50,9 @@ h1 {
   font-style: normal;
   line-height: normal;
   color: #000;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
+  padding-top: 5px;
+  padding-left: 20px;
+  margin-bottom: 5px;
   letter-spacing: 3px;
 }
 h2 {
@@ -77,14 +81,27 @@ table {
   border-spacing: 0 10px;
 }
 
+thead { 
+  background: linear-gradient(135deg, #0a6b03, #047d00); /* Gradient for depth */
+  color: white;
+  font-size: 13px; /* Slightly larger font */
+  font-family: Poppins, sans-serif;
+  font-weight: 700; /* Bolder text */
+  letter-spacing: 1.5px; /* More spacing for emphasis */
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4); /* Stronger shadow */
+  padding: 12px 0; /* More vertical padding */
+  border-radius: 6px; /* Rounded corners */
+  text-align: center; 
+}
+
 thead th {
   text-align: left;
   background-color: white;
   padding: 12px 15px;
   font-size: 14px;
   color: #333;
-  border-bottom: 1px solid #ddd;
 }
+
 
 tbody tr {
   background-color: white;
@@ -241,4 +258,13 @@ tbody tr td:last-child {
 
 .notification-item:hover {
   background-color: #f0f0f0;
+}
+
+.mas-header {
+  position: fixed;
+  z-index: 1;
+  background-color: #f7f7f7;
+  width: calc(100% - 16%);
+  margin-left: -50px;
+  padding-right: 20px;
 }

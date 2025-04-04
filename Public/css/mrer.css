@@ -1,7 +1,7 @@
 /* Global Styles */
 body {
   font-family: Arial, sans-serif;
-  background-color: white;
+  background-color: #f7f7f7;
   margin: 0;
   padding: 0;
   justify-content: right;
@@ -10,12 +10,13 @@ body {
 }
 
 body::-webkit-scrollbar {
-  display: none; /* Hide scrollbar for Webkit browsers (Chrome, Safari, etc.) */
+  display: none;
+  /* Hide scrollbar for Webkit browsers (Chrome, Safari, etc.) */
 }
 
 .main-content {
-  padding: 20;
-  margin-left: 305px;
+  padding: 0 20px !important;
+  margin-left: 260px !important;
   margin-right: 5px;
   overflow: hidden;
 }
@@ -23,16 +24,19 @@ body::-webkit-scrollbar {
 .form-container {
   background-color: white;
   /* margin-top: 50px; */
+  margin-top: 7%;
+  margin-bottom: 2%;
   border-radius: 8px;
-  padding: 20px 30px;
+  padding: 10px 40px 30px;
   /* margin-left: 15px; */
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
 }
 
 .form-group0 {
   display: flex;
   gap: 10px;
-  margin-bottom: 10px;
-  margin-top: 20px;
+  /* margin-bottom: 10px;
+  margin-top: 20px; */
   margin-left: 240px;
 }
 
@@ -53,7 +57,7 @@ body::-webkit-scrollbar {
   gap: 10px;
   margin-bottom: 15px;
   margin-top: 20px;
-  margin-left: 100px;
+  margin-left: 240px;
 }
 
 .form-group4 {
@@ -75,9 +79,9 @@ h1 {
   font-style: normal;
   line-height: normal;
   color: #000;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
+  padding-left: 20px;
+  padding-top: 5px;
+  margin-bottom: 5px;
 }
 
 h2 {
@@ -90,15 +94,21 @@ h2 {
   border-bottom: 1px solid #ccc;
   padding-bottom: 10px;
   padding-top: 10px;
-  margin-bottom: 15px;
-  margin-left: 30px;
+  margin-left: 5px;
+  margin-bottom: 10px;
 }
 
 label {
   display: block;
   margin-bottom: 5px;
-  font-weight: bold;
+  font-weight: 500;
 }
+
+label:hover {
+  color: green;
+}
+
+
 
 input,
 select,
@@ -109,7 +119,7 @@ textarea {
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 14px;
-  background-color: white;
+  background-color: ghostwhite;
 }
 
 .form-group0 {
@@ -117,7 +127,7 @@ textarea {
   gap: 50px;
 }
 
-.form-group0 > div {
+.form-group0>div {
   flex: 1;
 }
 
@@ -126,7 +136,7 @@ textarea {
   gap: 10px;
 }
 
-.form-group1 > div {
+.form-group1>div {
   flex: 1;
 }
 
@@ -135,7 +145,7 @@ textarea {
   gap: 10px;
 }
 
-.form-group2 > div {
+.form-group2>div {
   flex: 1;
 }
 
@@ -144,7 +154,7 @@ textarea {
   gap: 10px;
 }
 
-.form-group3 > div {
+.form-group3>div {
   flex: 1;
 }
 
@@ -153,7 +163,7 @@ textarea {
   gap: 20px;
 }
 
-.form-group4 > div {
+.form-group4>div {
   flex: 1;
 }
 
@@ -162,13 +172,13 @@ textarea {
   gap: 10px;
 }
 
-.form-group5 > div {
+.form-group5>div {
   flex: 1;
 }
 
 textarea {
   resize: none;
-  height: 200px;
+  height: 100px;
 }
 
 /* Form Rows */
@@ -178,7 +188,7 @@ textarea {
   margin-bottom: 15px;
 }
 
-.form-row > div {
+.form-row>div {
   flex: 1;
 }
 
@@ -188,7 +198,8 @@ textarea {
 }
 
 .checkbox-group input[type="checkbox"] {
-  margin-left: 0px; /* Adjust the spacing between the checkbox and text */
+  margin-left: 0px;
+  /* Adjust the spacing between the checkbox and text */
 }
 
 .checkbox-group1 {
@@ -198,13 +209,13 @@ textarea {
 }
 
 .checkbox-group1 input[type="checkbox"] {
-  margin-left: 0px; /* Adjust the spacing between the checkbox and text */
+  margin-left: 0px;
+  /* Adjust the spacing between the checkbox and text */
 }
 
 .checkbox-group2 {
   display: flex;
   align-items: center;
-  margin-right: 100px;
 }
 
 /* Status and Options Row */
@@ -236,29 +247,34 @@ input[type="checkbox"] {
 }
 
 button {
-  background-color: #0a5d03;
-  color: #fff;
+  background-color: white;
+  color: black;
+  font-family: Poppins;
   border: none;
   padding: 10px 20px;
-  font-size: 14px;
+  font-size: 1rem;
   border-radius: 4px;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  border: 1px solid #095c02;
 }
 
 button:hover {
-  background-color: #2a8d57;
+  background-color: rgb(224, 224, 224);
 }
 
 .btn-secondary {
-  background-color: #0a5d03;
-  color: white;
+  background-color: white;
+  color: black;
 }
 
 .btn-secondary:hover {
-  background-color: #0066cc;
+  background-color: rgb(224, 224, 224);
 }
 
 @media print {
+
   .container,
   .main-content,
   .sidebar {
@@ -284,12 +300,22 @@ button:hover {
   margin-top: -15px;
 }
 
-  .grid-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  } 
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
 
-  select {
-    width: 100%;
-  }
+select {
+  width: 100%;
+}
+
+.mas-header {
+  position: fixed;
+  z-index: 1;
+  background-color: #f7f7f7;
+  width: calc(100% - 16%);
+  margin-left: -30px;
+  padding-right: 20px;
+  padding-top: 10px;
+}

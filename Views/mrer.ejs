@@ -9,8 +9,10 @@
     <link rel="stylesheet" href="../css/general.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -18,133 +20,176 @@
         <!-- Sidebar -->
         <%- include("./includes/sidebar") %>
 
-        <!-- Main content -->
-        <div class="main-content">
-            <div class="fix">
-                <h1>Maintenance Recommendation Evaluation Report Form</h1>
-                <h2>Item Details</Details></h2>
-            </div>
-
-            <div class="form-container">
-                <form method="POST" action="/mrer/save">
-
-                    <!-- Status Section -->
-                    <div class="form-group0">
-                        <div class="checkbox-group">
-                            <label>Unserviceable/Non-functional<input type="checkbox" id="is_unserviceable" name="is_unserviceable"></label>
-                        </div>
-                        <div class="checkbox-group">
-                            <label>Functional<input type="checkbox" id="is_functional" name="is_functional"></label>
-                        </div>
-                    </div>
-
-                    <!-- Form Fields -->
-                     <div class="grid-container">
-                    <div class="form-group1">
-                        <div class="third-width">
-                            <label>Document Type*</label>
-                            <select name="documentType" id="documentType">
-                              <option value="par">PAR</option>
-                              <option value="ics">ICS</option>
-                            </select>
-                          </div>
-                        <div class="half-width">
-                            <label for="office">Name of Office *</label>
-                            <input type="text" id="office" name="office" placeholder="Ex. Smart Center" required>
-                        </div>
-                        <div class="half-width">
-                            <label for="quantity">Quantity *</label>
-                            <input type="number" id="quantity" name="quantity" placeholder="Ex. 100" required>
-                        </div>
-                        <div class="half-width">
-                            <label for="unit">Unit *</label>
-                            <input type="text" id="unit" name="unit" placeholder="Ex. Unit" required>
-                        </div>
-                        <div class="half-width">
-                            <label for="purpose">Purpose *</label>
-                            <select id="purpose" name="purpose" required>
-                                <option value="" disabled selected>Select Purpose</option>
-                                <option>Disposal</option>
-                                <option>Repair</option>
-                                <option>Return to stock to stock</option>
-                                <!-- Add options here -->
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group2">
-                        <div class="half-width">
-                            <label for="propertyNumber">Property No. (if any)</label>
-                            <input type="text" id="property_no" name="property_no" placeholder="Ex. 15-04-011">
-                            <div class="hoverable"
-                            id="results"
-                          ></div>
-                        </div>
-                        <div class="half-width">
-                            <label for="dateAcquired">Date Acquired *</label>
-                            <input type="date" id="date_acquired" name="date_acquired" required>
-                        </div>
-                        <div class="half-width">
-                            <label for="endUser">Name of End User *</label>
-                            <input type="text" id="endUser" name="endUser" placeholder="Ex. John Lloyd Tabuac" required>
-                        </div>
-                        <div class="half-width">
-                            <label for="unitValue">Unit Value *</label>
-                            <input type="number" id="unitValue" name="unitValue" placeholder="Ex. 1000" required>
-                        </div>
-                        <div class="half-width">
-                            <label for="totalValue">Total Value *</label>
-                            <input type="number" id="total_value" name="total_value" placeholder="Ex. 100,000" required>
-                        </div>
-                    </div>
+            <!-- Main content -->
+            <div class="main-content">
+                <div class="mas-header">
+                    <h1>Maintenance Recommendation Evaluation Report Form</h1>
                 </div>
                 
-                    <!-- Additional Options -->
-                    <div class="form-group3">
-                        <div class="checkbox-group1">
-                            <label>Under warranty<input type="checkbox" id="under_warranty" name="under_warranty"></label>
-                        </div>
-                        <div class="checkbox-group2">
-                            <label>Other/s<input type="checkbox" id="others" name="others"></label>
-                            <input type="text" id="other_details" name="other_details" placeholder="Specify here..." class="specify-box">
-                        </div>
+                <div class="form-container">
+                    <div class="fix">
+                        <h2>Item Details</Details>
+                        </h2>
                     </div>
+                    <form method="POST" action="/mrer/save">
 
-                    <!-- Reasons and Description -->
-                    <div class="form-group4">
-                        <div class="half-width">
-                            <label for="reasons">Reasons:</label>
-                            <textarea id="reasons" name="reasons" placeholder="Ex. Irreplaceable Grid"></textarea>
+                        <!-- Status Section -->
+                        <div class="form-group0">
+                            <div class="checkbox-group">
+                                <label>Unserviceable/Non-functional<input type="checkbox" id="is_unserviceable"
+                                        name="is_unserviceable"></label>
+                            </div>
+                            <div class="checkbox-group">
+                                <label>Functional<input type="checkbox" id="is_functional" name="is_functional"></label>
+                            </div>
                         </div>
-                        <div class="half-width">
-                            <label for="description">Description:</label>
-                            <textarea id="description" name="description"></textarea>
-                            <!-- <input type="text" id="description" name="description"> -->
-                        </div>
-                    </div>
 
-                    <div class="form-group5">
-                        <div class="full-width">
-                            <label for="overall">Overall Findings: Narrative recommendation</label>
-                            <textarea id="overall_findings" name="overall_findings" placeholder="Ex. Damaged"></textarea>
-                        </div>
-                    </div>
+                        <!-- Form Fields -->
+                        <div class="grid-container">
+                            <div class="form-group1">
+                                <div class="third-width">
+                                    <label>Document Type*</label>
+                                    <select name="documentType" id="documentType">
+                                        <option value="par">PAR</option>
+                                        <option value="ics">ICS</option>
+                                    </select>
+                                </div>
+                                <div class="half-width">
+                                    <label for="office">Name of Office *</label>
+                                    <input type="text" id="office" name="office" 
+                                        required>
+                                </div>
+                                <div class="half-width">
+                                    <label for="quantity">Quantity *</label>
+                                    <input type="number" id="quantity" name="quantity"  required>
+                                </div>
+                                <div class="half-width">
+                                    <label for="unit">Unit *</label>
+                                    <input type="text" id="unit" name="unit"  required>
+                                </div>
+                                <div class="half-width">
+                                    <label for="purpose">Purpose *</label>
+                                    <select id="purpose" name="purpose" required>
+                                        <option value="" disabled selected>Select Purpose</option>
+                                        <option value="Disposal">Disposal</option>
+                                        <option value="Repair">Repair</option>
+                                        <option value="Replacement">Replacement</option>
+                                        <!-- Add options here -->
+                                    </select>
+                                </div>
+                            </div>
 
-                    <!-- Buttons -->
-                    <div class="button-container">
-                        <button type="submit" class="btn-primary" onclick="printDocument('Print')">Print</button>
-                        <button type="save" class="btn-secondary">Save</button>
-                    </div>
-                    <script>
-                        function printDocument () {
-                            window.print();
-                        }
-                    </script>
-                </form>
+                            <div class="form-group2">
+                                <div class="half-width">
+                                    <label for="propertyNumber">Property No. (if any)</label>
+                                    <input type="text" id="property_no" name="property_no">
+                                    <div class="hoverable" id="results"></div>
+                                </div>
+                                <div class="half-width">
+                                    <label for="dateAcquired">Date Acquired *</label>
+                                    <input type="date" id="date_acquired" name="date_acquired" required>
+                                </div>
+                                <div class="half-width">
+                                    <label for="endUser">Name of End User *</label>
+                                    <input type="text" id="endUser" name="endUser" 
+                                        required>
+                                </div>
+                                <div class="half-width">
+                                    <label for="unitValue">Unit Value *</label>
+                                    <input type="number" id="unitValue" name="unitValue" 
+                                        required>
+                                </div>
+                                <div class="half-width">
+                                    <label for="totalValue">Total Value *</label>
+                                    <input type="number" id="total_value" name="total_value" 
+                                        required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Additional Options -->
+                        <div class="form-group3">
+                            <div class="checkbox-group1">
+                                <label>Under warranty<input type="checkbox" id="under_warranty"
+                                        name="under_warranty"></label>
+                            </div>
+                            <div class="checkbox-group2">
+                                <label>Other/s<input type="checkbox" id="others" name="others"></label>
+                                
+                            </div>
+                        </div>
+
+                        <!-- Reasons and Description -->
+                        <div class="form-group4">
+                            <div class="half-width">
+                                <label for="reasons">Reasons:</label>
+                                <textarea id="reasons" name="reasons" ></textarea>
+                            </div>
+                            <div class="half-width">
+                                <label for="description">Description:</label>
+                                <textarea id="description" name="description"></textarea>
+                                <!-- <input type="text" id="description" name="description"> -->
+                            </div>
+                        </div>
+
+                       
+                        <!-- Buttons -->
+                        <div class="button-container">
+                            <button type="submit" class="btn-primary" onclick="printDocument('Print')">Print</button>
+                            <button type="save" class="btn-secondary">Save</button>
+                        </div>
+                        <script>
+                            function printDocument() {
+                            document.getElementById("is_unserviceable_print").checked = document.getElementById("is_unserviceable").checked;
+                            document.getElementById("is_functional_print").checked = document.getElementById("is_functional").checked;
+
+                            document.getElementById("printDescription").innerText = document.getElementById("description").value;
+                            document.getElementById("printQty").innerText = document.getElementById("quantity").value;
+                            document.getElementById("printUnit").innerText = document.getElementById("unit").value;
+                            document.getElementById("printDateAcquired").innerText = document.getElementById("date_acquired").value;
+                            document.getElementById("printPropertyNo").innerText = document.getElementById("property_no").value;
+                            document.getElementById("printEndUser").innerText = document.getElementById("endUser").value;
+
+                            document.getElementById("purpose").addEventListener("change", function () {
+                                let selectedPurpose = this.value;
+
+                                // Clear previous selections
+                                document.getElementById("printDisposal").checked = false;
+                                document.getElementById("printRepair").checked = false;
+                                document.getElementById("printReplacement").checked = false;
+
+                                // Show selected purpose
+                                if (selectedPurpose === "Disposal") {
+                                    document.getElementById("printDisposal").checked = true;
+                                } else if (selectedPurpose === "Repair") {
+                                    document.getElementById("printRepair").checked = true;
+                                } else if (selectedPurpose === "Replacement") {
+                                    document.getElementById("printReplacement").checked = true;
+                                }
+                                });
+
+                                document.getElementById("print_under_warranty").checked = document.getElementById("under_warranty").checked;
+                                document.getElementById("print_others").checked = document.getElementById("others").checked;
+                                
+                                
+                                
+
+
+
+
+
+                            
+
+
+                                window.print();
+                            }
+                        </script>
+                    </form>
+                </div>
             </div>
-        </div>
     </div>
 </body>
 <%- include("./includes/print-mrer") %>
-<script src="../js/mrer-api.js"></script>
+    <script src="../js/mrer-api.js"></script>
+
 </html>

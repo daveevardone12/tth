@@ -11,7 +11,7 @@ body {
   /* color: #0a5d03; */
   margin: 0;
   padding: 0;
-  background-color: white;
+  background-color: #f7f7f7;
 }
 
 body::-webkit-scrollbar {
@@ -19,9 +19,9 @@ body::-webkit-scrollbar {
 }
 
 .main-content {
-  background-color: white;
-  padding: 20px;
-  margin-left: 305px;
+  background-color: #f7f7f7;
+  padding: 0 20px;
+  margin-left: 260px;
   margin-right: 5px;
   overflow: hidden;
 }
@@ -30,8 +30,12 @@ body::-webkit-scrollbar {
   background-color: white;
   border-radius: 10px;
   width: -webkit-fill-available;
-  /* margin-top: 50px; */
-  margin-left: 15px;
+  margin-top: 7%;
+  margin-bottom: 2%;
+  margin-right: 10px;
+  padding: 40px;
+  padding-bottom: 2px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
 }
 
 h1 {
@@ -41,9 +45,11 @@ h1 {
   font-style: normal;
   line-height: normal;
   color: #000;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
+  padding-left: 20px;
+  padding-top: 5px;
+  /* border-bottom: 1px solid #ccc; */
+  /* padding-bottom: 10px; */
+  margin-bottom: 5px;
 }
 
 h2 {
@@ -57,7 +63,6 @@ h2 {
   padding-bottom: 10px;
   padding-top: 10px;
   margin-bottom: 15px;
-  margin-left: 30px;
 }
 
 .popup {
@@ -133,11 +138,12 @@ h2 {
 }
 
 .form-group select {
-  width: 100%;
+  width: calc(100% + 17px);
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 0.9rem;
+  background: ghostwhite;
 }
 
 /* Custom dropdown container */
@@ -230,85 +236,30 @@ h2 {
 /*category and location*/
 /* styles.css */
 
-/* Common hover effect for labels */
-label:hover {
-  color: green;
-}
-
-/* Dropdown options container for category, location, and UACS */
-.custom-dropdown-options,
-#category-dropdown-options,
-#location-dropdown-options {
-  display: none; /* Initially hidden for custom dropdowns */
-  position: absolute;
-  width: 23em;
-  top: 100%;
-  left: 0;
-  background-color: white;
-  border: 1px solid #ccc;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 10;
-  max-height: 200px; /* Max height for scroll */
-  overflow-y: auto; /* Enable vertical scrolling */
-  border-radius: 5px; /* Smooth corners */
-}
-
-/* Individual option styling for custom dropdowns */
-.custom-dropdown-option,
-#category-dropdown-options .custom-dropdown-option,
-#location-dropdown-options .custom-dropdown-option {
-  padding: 10px;
-  cursor: pointer;
-  color: #333; /* Default text color */
-  transition: all 0.3s ease; /* Smooth hover transition */
-}
-
-/* Green background and white text on hover for custom dropdown options */
-.custom-dropdown-option:hover,
-#category-dropdown-options .custom-dropdown-option:hover,
-#location-dropdown-options .custom-dropdown-option:hover {
-  color: #fff; /* White text */
-  background-color: #0a5d03; /* Green background */
-}
-
 /* Dropdown trigger styling for custom dropdowns */
 .custom-dropdown-trigger,
 #category,
 #location {
   padding: 10px;
-  background-color: white;
+  background-color: ghostwhite;
   border: 1px solid #ccc;
   cursor: pointer;
-  border-radius: 5px; /* Smooth corners */
-  transition: border-color 0.3s ease; /* Smooth border transition */
-  width: 24.5em;
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+  width: calc(100% + 17px);
 }
-
-/* Trigger hover effect for custom dropdowns */
-.custom-dropdown-trigger:hover,
-#category:hover,
-#location:hover {
-  border-color: #0a5d03; /* Green border when hovering */
-}
-
-/* Optional: Active state styling for trigger */
-.custom-dropdown-trigger.active {
-  background-color: #e8f5e9; /* Light green background */
-  border-color: #0a5d03; /* Green border */
-}
-/*end*/
 
 .form-group input[type="text"],
 .form-group input[type="date"],
 .form-group input[type="number"],
 .form-group input[type="text or number"],
 .form-group textarea {
-  width: 95%;
+  width: 100%;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 0.9rem;
-  background-color: white;
+  background-color: ghostwhite;
 }
 
 .form-group input[type="text"],
@@ -332,7 +283,8 @@ textarea {
   display: flex;
   justify-content: center;
   gap: 20px;
-  margin-top: 20px;
+  margin-top: 50px;
+  margin-bottom: 40px;
 }
 
 button {
@@ -341,19 +293,26 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-family: Poppins;
 }
 
 .save-button {
-  background-color: #095c02;
-  color: white;
+  background-color: white;
+  color: black;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  border: 1px solid #095c02;
 }
 
 .print-button {
-  background-color: #095c02;
-  color: white;
+  background-color: white;
+  color: black;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  border: 1px solid #095c02;
 }
 button:hover {
-  background-color: #b3c04e;
+  background-color: rgb(224, 224, 224);
 }
 
 /* print csss !!!!!!!! */
@@ -364,7 +323,267 @@ button:hover {
     display: none;
   }
 
-  #printIcs {
+  #printICS {
     display: block !important;
   }
+
+  #printPhotos {
+    display: block !important;
+    page-break-before: always; /* Ensures images print on a new page */
+    text-align: center;
+  }
+
+  #printPhotos img {
+    display: block !important;
+    width: 600px;
+    height: 400px;
+    border: 1px solid #000;
+    margin: auto;
+  }
 }
+
+/* for header */
+.mas-header {
+  position: fixed;
+  z-index: 1;
+  background-color: #f7f7f7;
+  width: calc(100% - 16%);
+  margin-left: -30px;
+  padding-right: 20px;
+  padding-top: 10px;
+}
+
+/* upload box css!!!!!! */
+
+.upload-box {
+  background-color: #f7f7f7;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  flex-direction: column;
+}
+
+/* MGA WARA HIN GAMIT */
+
+/* Common hover effect for labels */
+/*  
+  color: green;
+} */
+
+/* Dropdown options container for category, location, and UACS */
+/* .custom-dropdown-options,
+#category-dropdown-options,
+#location-dropdown-options {
+  display: none; 
+  position: absolute;
+  width: 23em;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  max-height: 200px; 
+  overflow-y: auto; 
+  border-radius: 5px; 
+} */
+
+/* Individual option styling for custom dropdowns */
+/* .custom-dropdown-option,
+#category-dropdown-options .custom-dropdown-option,
+#location-dropdown-options .custom-dropdown-option {
+  padding: 10px;
+  cursor: pointer;
+  color: #333; 
+  transition: all 0.3s ease; 
+} */
+
+/* Green background and white text on hover for custom dropdown options */
+/* .custom-dropdown-option:hover,
+#category-dropdown-options .custom-dropdown-option:hover,
+#location-dropdown-options .custom-dropdown-option:hover {
+  color: #fff; 
+  background-color: #0a5d03; 
+} */
+
+/* Trigger hover effect for custom dropdowns */
+/* .custom-dropdown-trigger:hover,
+#category:hover,
+#location:hover {
+  border-color: #0a5d03; 
+} */
+
+/* Optional: Active state styling for trigger */
+/* .custom-dropdown-trigger.active {
+  background-color: #e8f5e9; 
+  border-color: #0a5d03; 
+} */
+/*end*/
+
+/* END */ 
+
+/* uploadphoto1 */
+.photo-upload-container {
+  width: 100%;
+  max-width: 400px; /* Limits width on large screens */
+  margin: 0 auto; /* Centers it */
+}
+
+/* Upload box */
+.upload-box {
+  width: 100%;
+  height: 300px;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden; /* Ensures image stays within bounds */
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Icon & Text */
+.upload-icon {
+  font-size: 2em;
+  color: #666;
+}
+
+.upload-text {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Image Preview */
+#photoPreview1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+  display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .upload-box {
+      height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .photo-upload-container {
+      max-width: 90%;
+  }
+
+  .upload-box {
+      height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .photo-upload-container {
+      max-width: 100%;
+  }
+
+  .upload-box {
+      height: 180px;
+  }
+
+  .upload-icon {
+      font-size: 1.5em;
+  }
+
+  .upload-text {
+      font-size: 0.9rem;
+  }
+}
+
+/* end of uploadphoto1 */
+
+/* uploadpphoto2 */
+.photo-upload-container {
+  width: 100%;
+  max-width: 500px; /* Default to 500px but adjusts responsively */
+  margin: 0 auto; /* Centers it */
+}
+
+/* Upload box */
+.upload-box {
+  width: 100%;
+  height: 300px;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Icon & Text */
+.upload-icon {
+  font-size: 2em;
+  color: #666;
+}
+
+.upload-text {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Image Preview */
+#photoPreview2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+  display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .upload-box {
+      height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .photo-upload-container {
+      max-width: 90%;
+  }
+
+  .upload-box {
+      height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .photo-upload-container {
+      max-width: 100%;
+  }
+
+  .upload-box {
+      height: 180px;
+  }
+
+  .upload-icon {
+      font-size: 1.5em;
+  }
+
+  .upload-text {
+      font-size: 0.9rem;
+  }
+}
+/* end of uploadphoto2 */

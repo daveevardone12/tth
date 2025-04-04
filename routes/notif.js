@@ -8,7 +8,8 @@ router.get("/", async (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 10;
   const isAjax = req.query.ajax === "true";
-
+  const userData = req.user;
+  const role = userData.role;
   try {
     const { getRFIDList } = await fetchRFIDList();
 
@@ -21,6 +22,7 @@ router.get("/", async (req, res) => {
 
     res.render("notif", {
       getRFIDList,
+      role,
     });
   } catch (err) {
     console.error("Error: ", err.message, err.stack);
@@ -31,10 +33,39 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/notif", ensureAuthenticated, async (req, res) => {
-  // Render only the new data to the frontend
-  res.render("notifData");
+router.get("/unregistered", async (req, res) => {
+  try {
+    const result = await tthPool.query(
+      `
+      SELECT DISTINCT ON (rfid_logs.tag_id) 
+        rfid_logs.tag_id, 
+        rfid_logs.time, 
+        rfid_logs.status
+      FROM 
+        rfid_logs
+      LEFT JOIN 
+        rfid_tags 
+      ON 
+        rfid_logs.tag_id = rfid_tags.tag_id
+      WHERE 
+        rfid_tags.tag_id IS NULL
+      ORDER BY 
+        rfid_logs.tag_id, rfid_logs.time DESC;
+      `
+    );
+
+    res.json({ unregisteredRFIDs: result.rows });
+  } catch (err) {
+    console.error("Error fetching unregistered RFID logs:", err.message);
+    res.status(500).json({ error: "Internal server error" });
+  }
 });
+
+// router.get("/notif", ensureAuthenticated, async (req, res) => {
+//   const role = userData.role;
+//   // Render only the new data to the frontend
+//   res.render("notif");
+// });
 
 async function fetchRFIDList() {
   try {

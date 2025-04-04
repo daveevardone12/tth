@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Property Management System</title>
+
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/inventory.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+</head>
+
+<body>
+    <%- include("./includes/sidebar") %>
+
+        <div class="container">
+            <div class="main-container">
+                <h2>REPORT ON THE PHYSICAL COUNT OF PROPERTY, PLANT AND EQUIPMENT</h2>
+                <h3>Printing Equipment (1060512000)</h3>
+
+                <div class="table-wrapper">
+                    <div id="loadingSpinner" style="display:none;">Loading...</div>
+                    <table>
+                        <thead class="t-head" >
+                            <tr>
+                                <th>Article</th>
+                                <th>Description</th>
+                                <th>Property Number</th>
+                                <th>Unit</th>
+                                <th>Value Unit</th>
+                                <th>Qty. per P Card</th>
+                                <th>Qty. per P Count</th>
+
+                                <th colspan="2">
+                                    <div>
+                                      Shortage/Overage
+                                      <div style="display: flex; margin-top: 5px;">
+                      
+                                        <div style="flex: 1; border-right: 2px solid white;">Qty.</div>
+                                        <div style="flex: 1;">Value</div>
+                                      </div>
+                                    </div>
+                                  </th>
+
+                                  <th colspan="2">
+                                    <div>
+                                      Remarks
+                                      <div style="display: flex; margin-top: 5px;">
+                      
+                                        <div style="flex: 1; border-right: 2px solid white;">Receipted by:</div>
+                                        <div style="flex: 1;">Location</div>
+                                      </div>
+                                    </div>
+                                  </th>
+
+                                <th>Date Acquired</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <div class="controls">
+                            <div class="filter-content">
+                                <button id="sort-by-btn" class="action-button">
+                                    Sort by <img src="/Public/images/clarity--sort-by-line.svg" alt="" class="srt">
+                                </button>
+
+                                
+                                <div class="UACS">
+                                    <select name="UACS" id="uacs-select" class="uacs">  
+                                      <option value="" disabled selected>UACS*</option>
+                                      <option value="/machinery">Machinery #1060501000</option>
+                                      <option value="/office">Office Equipment #1060502000</option>
+                                      <option value="/Agricultural">Agricultural and Forestry Equipment #1060504000</option>
+                                      <option value="/medical">Medical Equipment #1060511000</option>
+                                      <option value="/printing">Printing Equipment #1060512000</option>
+                                      <option value="/inventory">Technical and Scientific Equipment #1060514000</option>
+                                      <option value="/OtherMachinery">OtherMachinery and Equipment #10605990000</option>
+                                      <option value="/motor">Motor Vehicles #1060601000</option>
+                                      <option value="/furniture">Furniture and Fixtures #1060701000</option>
+                                      <option value="/books">Books #1060702000</option>
+                                      <option value="/software">Software #1080102000</option>
+                                      <option value="/Information">Information and Communications Technology Equipment #1060503000</option>
+                                      <option value="/marine">Marine and Fishery Equipment #1040505000</option>
+                                      <option value="/Communication">Communication Equipment #1040507000</option>
+                                      <option value="/disaster">Disaster Response and Rescue Equipment #1040508000</option>
+                                      <option value="/military">Military, Police and Security Equipment #1040509000</option>
+                                      <option value="/sports">Sports Equipment #1040512000</option>
+                                    </select>
+                                  </div>
+
+                                  <script>
+                                    document.getElementById("uacs-select").addEventListener("change", function () {
+                                        const selectedValue = this.value;
+                                        if (selectedValue) {
+                                            window.location.href = selectedValue; // Redirects to the selected page
+                                        }
+                                    });
+                                </script>
+
+
+                            </div>
+                            <div class="search-wrapper">
+                                <input type="text" class="search-bar" id="searchBar" placeholder="Search...">
+                                <div class="search-icon" id="searchIcon"><img
+                                        src="/Public/images/iconamoon--search-bold.svg" alt="" class="srch"></div>
+                            </div>
+                        </div>
+
+                        <!-- Sort By Overlay -->
+                        <div id="sort-by-overlay" class="overlay hidden">
+                            <div class="sort-by-container">
+                                <div class="sort-by-header">Sort by</div>
+                                <div class="sort-by-section">
+                                    <div class="sort-by-title">Date</div>
+                                    <label>
+                                        <input type="radio" name="date" value="ascending" />
+                                        Ascending
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="date" value="descending" />
+                                        Descending
+                                    </label>
+                                </div>
+                                <div class="sort-by-section">
+                                    <div class="sort-by-title">Name of Item</div>
+                                    <label>
+                                        <input type="radio" name="name" value="a-z" />
+                                        A - Z
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="name" value="z-a" />
+                                        Z - A
+                                    </label>
+                                </div>
+                                <button class="close-btn" id="close-sort-by">Close</button>
+                                <button class="reset-btn" id="reset-sort-by">Reset</button>
+                                <button class="apply-btn" id="apply-sort-by">Apply</button>
+                            </div>
+                        </div>
+                </div>
+
+                <!-- Filter Overlay -->
+                <div id="filter-overlay" class="overlay hidden">
+                    <div class="overlay-content">
+                        <h4>Filter</h4>
+                        <div class="filter-group">
+                            <label>Date range</label>
+                            <div>
+                                <label>From</label>
+                                <input type="date" id="filter-from" placeholder="From" />
+                                <label>TO</label>
+                                <input type="date" id="filter-to" placeholder="To" />
+                            </div>
+                        </div>
+                        <div class="filter-group">
+                            <label>Name of item</label>
+                            <select id="filter-item">
+                                <option value="">Ex. Electronic Power Transmission System</option>
+                                <option value="Another Item">Another Item</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Accountable</label>
+                            <select id="filter-accountable">
+                                <option value="">Ex. Carlota Salas</option>
+                                <option value="Another Accountable">Another Accountable</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Property No.</label>
+                            <input type="text" id="filter-property-no" placeholder="Ex. 15-08-247" />
+                        </div>
+                        <button class="reset-btn" id="reset-filter">Reset</button>
+                        <button class="close-btn" id="close-filter">Close</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <tbody id="inventoryTableBody">
+            </tbody>
+
+            </table>
+
+        </div>
+        
+        
+    </div>
+        </div>
+        </div>
+        <script src="../js/dashboard-inventory-api.js"></script>
+
+        <script>
+            // Toggle the dropdown menu
+            document.addEventListener('click', function (e) {
+                const menus = document.querySelectorAll('.menu-container');
+                menus.forEach(menu => {
+                    if (menu.contains(e.target)) {
+                        // Toggle the active class for the clicked menu
+                        menu.classList.toggle('active');
+                    } else {
+                        // Close other open menus
+                        menu.classList.remove('active');
+                    }
+                });
+            });
+
+        </script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const sortByBtn = document.getElementById("sort-by-btn");
+                const filterBtn = document.getElementById("filter-btn");
+                const sortByOverlay = document.getElementById("sort-by-overlay");
+                const filterOverlay = document.getElementById("filter-overlay");
+                const closeSortBy = document.getElementById("close-sort-by");
+                const closeFilter = document.getElementById("close-filter");
+                const resetSortBy = document.getElementById("reset-sort-by");
+                const resetFilter = document.getElementById("reset-filter");
+
+                // Toggle Overlay Function
+                const toggleOverlay = (button, overlayToToggle, otherOverlay) => {
+                    button.addEventListener("click", (e) => {
+                        e.stopPropagation();
+                        const isHidden = overlayToToggle.classList.contains("hidden");
+                        overlayToToggle.classList.toggle("hidden", !isHidden);
+                        otherOverlay.classList.add("hidden");
+                    });
+                };
+
+                // Close Overlay Function
+                const closeOverlay = (button, overlayToClose) => {
+                    button.addEventListener("click", () => {
+                        overlayToClose.classList.add("hidden");
+                    });
+                };
+
+                // Reset Filter Inputs Function
+                const resetFilters = () => {
+                    document.getElementById("filter-from").value = "";
+                    document.getElementById("filter-to").value = "";
+                    document.getElementById("filter-item").value = "";
+                    document.getElementById("filter-accountable").value = "";
+                    document.getElementById("filter-property-no").value = "";
+                    filterTable(); // Reset and reapply filters
+                };
+
+                // Reset Sort By Function
+                const resetSortByFilters = () => {
+                    const sortRadios = document.getElementsByName("sort");
+                    sortRadios.forEach((radio) => radio.checked = false);
+                    sortTable(); // Reset sorting and reapply sorting logic
+                };
+
+                // Toggle Overlays
+                toggleOverlay(sortByBtn, sortByOverlay, filterOverlay);
+                toggleOverlay(filterBtn, filterOverlay, sortByOverlay);
+
+                // Close Overlays
+                closeOverlay(closeSortBy, sortByOverlay);
+                closeOverlay(closeFilter, filterOverlay);
+
+                // Prevent Closing on Overlay Interaction
+                const preventCloseOnClickInside = (overlay) => {
+                    overlay.addEventListener("click", (e) => e.stopPropagation());
+                };
+                preventCloseOnClickInside(sortByOverlay);
+                preventCloseOnClickInside(filterOverlay);
+
+                // Close Overlays on Outside Click
+                document.addEventListener("click", () => {
+                    sortByOverlay.classList.add("hidden");
+                    filterOverlay.classList.add("hidden");
+                });
+
+                // Filtering Logic
+                const filterTable = () => {
+                    const fromDate = document.getElementById("filter-from").value;
+                    const toDate = document.getElementById("filter-to").value;
+                    const filterItem = document.getElementById("filter-item").value.toLowerCase();
+                    const filterAccountable = document.getElementById("filter-accountable").value.toLowerCase();
+                    const filterPropertyNo = document.getElementById("filter-property-no").value.toLowerCase();
+
+                    const rows = document.querySelectorAll("tbody tr");
+
+                    rows.forEach(row => {
+                        const dateAcquired = row.cells[11].textContent;
+                        const itemName = row.cells[1].textContent.toLowerCase();
+                        const accountable = row.cells[9].textContent.toLowerCase();
+                        const propertyNo = row.cells[2].textContent.toLowerCase();
+
+                        // Check date filter
+                        const dateMatch = (!fromDate || dateAcquired >= fromDate) && (!toDate || dateAcquired <= toDate);
+
+                        // Apply filtering logic
+                        if (
+                            (itemName.includes(filterItem) || !filterItem) &&
+                            (accountable.includes(filterAccountable) || !filterAccountable) &&
+                            (propertyNo.includes(filterPropertyNo) || !filterPropertyNo) &&
+                            dateMatch
+                        ) {
+                            row.style.display = "";
+                        } else {
+                            row.style.display = "none";
+                        }
+                    });
+                };
+
+                // Sorting Logic
+                const sortTable = () => {
+                    const rows = Array.from(document.querySelectorAll("tbody tr"));
+                    const sortOption = document.querySelector("input[name='sort']:checked")?.value;
+
+                    if (sortOption) {
+                        rows.sort((a, b) => {
+                            let aValue, bValue;
+
+                            switch (sortOption) {
+                                case "Article":
+                                    aValue = a.cells[0].textContent;
+                                    bValue = b.cells[0].textContent;
+                                    break;
+                                case "Description":
+                                    aValue = a.cells[1].textContent;
+                                    bValue = b.cells[1].textContent;
+                                    break;
+                                case "Value":
+                                    aValue = parseFloat(a.cells[4].textContent.replace(/,/g, ""));
+                                    bValue = parseFloat(b.cells[4].textContent.replace(/,/g, ""));
+                                    break;
+                                default:
+                                    return 0;
+                            }
+
+                            return aValue > bValue ? 1 : aValue < bValue ? -1 : 0;
+                        });
+
+                        // Reinsert rows after sorting
+                        const tbody = document.querySelector("tbody");
+                        rows.forEach(row => tbody.appendChild(row)); // This ensures the rows are updated in order
+                    }
+                };
+
+                // Event Listeners for Reset Buttons
+                resetFilter.addEventListener("click", resetFilters);
+                resetSortBy.addEventListener("click", resetSortByFilters);
+
+                // Apply Filtering and Sorting on Input Change
+                document.querySelectorAll("#filter-from, #filter-to, #filter-item, #filter-accountable, #filter-property-no").forEach(input => {
+                    input.addEventListener("input", () => {
+                        filterTable(); // Call filterTable on change
+                    });
+                });
+
+                document.querySelectorAll("input[name='sort']").forEach(radio => {
+                    radio.addEventListener("change", () => {
+                        sortTable(); // Call sortTable on sort option change
+                    });
+                });
+
+                // Initial Filter and Sort on Page Load
+                filterTable();
+                sortTable();
+            });
+        </script>
+
+
+        <script>
+            const searchIcon = document.getElementById('searchIcon');
+            const searchBar = document.getElementById('searchBar');
+
+            searchIcon.addEventListener('click', () => {
+                searchBar.classList.toggle('open');
+                if (searchBar.classList.contains('open')) {
+                    searchBar.focus();
+                }
+            });
+        </script>
+
+</body>
+<%- include("./includes/print-ics") %>
+</html>

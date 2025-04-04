@@ -12,7 +12,9 @@ const upload = multer({ storage: storage });
 
 router.get("/", ensureAuthenticated, (req, res) => {
   const success = req.query.success === "true";
-  res.render("ics", { success });
+  const userData = req.user;
+  const role = userData.role;
+  res.render("ics", { success, role });
 });
 
 router.post(
@@ -33,8 +35,8 @@ router.post(
     const photo2 = req.files?.photo2?.[0]?.buffer || null;
     try {
       await tthPool.query(
-        `INSERT INTO inventory_custodian_slip (item_name, accountable, unit_cost, date_acquired, location, category, uacs_code, inventory_item_no, burs_no, estimated_useful_life, po_no, code, iar, supplier, serial_no, property_no, email, description, photo1, photo2)
-         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20)`,
+        `INSERT INTO inventory_custodian_slip (item_name, accountable, unit_cost, date_acquired, location, category, uacs_code, inventory_item_no, burs_no, estimated_useful_life, po_no, code, iar, supplier, serial_no, property_no, email, entity_name, fund_cluster, ics_no, quantity, unit, date, description, photo1, photo2)
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26)`,
         [
           data.itemName,
           data.accountable,
@@ -53,6 +55,12 @@ router.post(
           data.serialNumber,
           data.propertyNumber,
           data.email,
+          data.entity_name,
+          data.fund_cluster,
+          data.Ics_no,
+          data.quantity,
+          data.unit,
+          data.date,
           data.description,
           photo1,
           photo2,

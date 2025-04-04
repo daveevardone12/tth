@@ -11,12 +11,14 @@
       rel="stylesheet"
     />
   </head>
+
   <body>
     <%- include("./includes/sidebar") %>
     <div class="main-container">
-      <div class="fix">
+      <div class="mas-header">
         <h1>RFID</h1>
       </div>
+      <div class="fix"></div>
       <div class="search-add">
         <!-- <div class="search-bar">
           <input type="text" id="search" placeholder="Search..." />
@@ -33,7 +35,7 @@
               <th>DATE & TIME</th>
               <th>STATUS</th>
               <th>EMAIL</th>
-              <th>ACTION</th>
+              <th></th>
             </tr>
           </thead>
           <tbody id="rfid-table-body"></tbody>
@@ -76,7 +78,7 @@
               />
             </div>
           </div>
-          <footer class="modal-footer">
+          <div class="modal-footer">
             <button type="submit" class="confirms">Confirm</button>
             <button
               onclick="closeModal()"
@@ -86,7 +88,7 @@
             >
               Cancel
             </button>
-          </footer>
+          </div>
         </div>
       </div>
     </form>
@@ -111,6 +113,7 @@
       .hidden1 {
         display: none !important;
       }
+
       .hidden2 {
         display: none !important;
       }
@@ -166,10 +169,20 @@
 
       .popup-content .submits {
         background-color: #095c02;
+        transition: all 0.3s ease-in-out;
       }
 
       .popup-content .cancels {
         background-color: maroon;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .popup-content .submits:hover {
+        background-color: #1d8d01;
+      }
+
+      .popup-content .cancels:hover {
+        background-color: rgb(192, 0, 0);
       }
 
       .popup-content button {
@@ -180,10 +193,6 @@
         cursor: pointer;
         color: #ccc;
         font-family: Poppins;
-      }
-
-      .popup-content button:hover {
-        background-color: #ddd;
       }
     </style>
     // Assign
