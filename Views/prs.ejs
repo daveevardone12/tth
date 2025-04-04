@@ -167,61 +167,49 @@
             </div>
             <script>
               function printDocument() {
-                document.getElementById("printName").innerText =
-                  document.getElementById("office").value;
-
-                document
-                  .getElementById("purpose")
-                  .addEventListener("change", function () {
-                    let selectedPurpose = this.value;
-
-                    // Clear previous selections
-                    document.getElementById("printpurposeDisposal").innerText =
-                      "";
-                    document.getElementById("printpurposeRepair").innerText =
-                      "";
-                    document.getElementById("printpurposeStock").innerText = "";
-                    document.getElementById("printpurposeOthers").innerText =
-                      "";
-
-                    // Show selected purpose
-                    if (selectedPurpose === "Disposal") {
-                      document.getElementById(
-                        "printpurposeDisposal"
-                      ).innerText = "✔";
-                    } else if (selectedPurpose === "Repair") {
-                      document.getElementById("printpurposeRepair").innerText =
-                        "✔";
-                    } else if (selectedPurpose === "Return to stock") {
-                      document.getElementById("printpurposeStock").innerText =
-                        "✔";
-                    } else {
-                      document.getElementById("printpurposeOthers").innerText =
-                        document.getElementById("otherPurpose").value;
-                    }
-                  });
-
-                document.getElementById("printQty").innerText =
-                  document.getElementById("quantity").value;
-                document.getElementById("printUnit").innerText =
-                  document.getElementById("unit").value;
-                document.getElementById("printDescription").innerText =
-                  document.getElementById("description").value;
-                document.getElementById("printPropertyNo").innerText =
-                  document.getElementById("property_no").value;
-                document.getElementById("printUnitValue").innerText =
-                  document.getElementById("unitValue").value;
-                document.getElementById("printTotalValue").innerText =
-                  document.getElementById("totalValue").value;
-
-                document.getElementById("printDate").innerText =
-                  document.getElementById("date_acquired").value;
-                document.getElementById("printDate2").innerText =
-                  document.getElementById("date_acquired").value;
-
+                // Get all required fields
+                let requiredFields = document.querySelectorAll("[required]");
+                let isValid = true;
+            
+                // Check if required fields are filled
+                requiredFields.forEach(field => {
+                  if (!field.value.trim()) {
+                    isValid = false;
+                    field.style.border = "2px solid red"; // Highlight empty fields
+                  } else {
+                    field.style.border = ""; // Reset border if filled
+                  }
+                });
+            
+                if (!isValid) {
+                  alert("Please fill out all required fields before printing.");
+                  return;
+                }
+            
+                // Copy values for printing
+                document.getElementById("printName").innerText = document.getElementById("office").value;
+            
+                let selectedPurpose = document.getElementById("purpose").value;
+                document.getElementById("printpurposeDisposal").innerText = selectedPurpose === "Disposal" ? "✔" : "";
+                document.getElementById("printpurposeRepair").innerText = selectedPurpose === "Repair" ? "✔" : "";
+                document.getElementById("printpurposeStock").innerText = selectedPurpose === "Return to stock" ? "✔" : "";
+                document.getElementById("printpurposeOthers").innerText = selectedPurpose === "Others" ? document.getElementById("otherPurpose").value : "";
+            
+                document.getElementById("printQty").innerText = document.getElementById("quantity").value;
+                document.getElementById("printUnit").innerText = document.getElementById("unit").value;
+                document.getElementById("printDescription").innerText = document.getElementById("description").value;
+                document.getElementById("printPropertyNo").innerText = document.getElementById("property_no").value;
+                document.getElementById("printUnitValue").innerText = document.getElementById("unitValue").value;
+                document.getElementById("printTotalValue").innerText = document.getElementById("totalValue").value;
+            
+                document.getElementById("printDate").innerText = document.getElementById("date_acquired").value;
+                document.getElementById("printDate2").innerText = document.getElementById("date_acquired").value;
+            
+                // Proceed to print
                 window.print();
               }
             </script>
+            
           </form>
         </div>
       </div>
