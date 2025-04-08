@@ -491,3 +491,17 @@ li {
   color: black !important; /* Ensure text is readable */
   border-radius: 5px 0 0 5px; 
 }
+
+
+/* Style for the active menu item */
+.nav-menu li a.active {
+  background-color: white;
+}
+
+/* Change icon color to #095c02 when the link has the active class */
+.nav-menu li a.active img {
+  filter: invert(45%) sepia(59%) saturate(324%) hue-rotate(91deg) brightness(90%) contrast(88%);
+}
+
+
+/* Rest of your existing styles here */
