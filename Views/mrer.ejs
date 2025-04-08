@@ -140,50 +140,48 @@
                         </div>
                         <script>
                             function printDocument() {
-                            document.getElementById("is_unserviceable_print").checked = document.getElementById("is_unserviceable").checked;
-                            document.getElementById("is_functional_print").checked = document.getElementById("is_functional").checked;
-
-                            document.getElementById("printDescription").innerText = document.getElementById("description").value;
-                            document.getElementById("printQty").innerText = document.getElementById("quantity").value;
-                            document.getElementById("printUnit").innerText = document.getElementById("unit").value;
-                            document.getElementById("printDateAcquired").innerText = document.getElementById("date_acquired").value;
-                            document.getElementById("printPropertyNo").innerText = document.getElementById("property_no").value;
-                            document.getElementById("printEndUser").innerText = document.getElementById("endUser").value;
-
-                            document.getElementById("purpose").addEventListener("change", function () {
-                                let selectedPurpose = this.value;
-
-                                // Clear previous selections
-                                document.getElementById("printDisposal").checked = false;
-                                document.getElementById("printRepair").checked = false;
-                                document.getElementById("printReplacement").checked = false;
-
-                                // Show selected purpose
-                                if (selectedPurpose === "Disposal") {
-                                    document.getElementById("printDisposal").checked = true;
-                                } else if (selectedPurpose === "Repair") {
-                                    document.getElementById("printRepair").checked = true;
-                                } else if (selectedPurpose === "Replacement") {
-                                    document.getElementById("printReplacement").checked = true;
-                                }
+                                // Get required fields
+                                let requiredFields = document.querySelectorAll("[required]");
+                                let isValid = true;
+                        
+                                // Check if all required fields are filled
+                                requiredFields.forEach(field => {
+                                    if (!field.value.trim()) {
+                                        isValid = false;
+                                        field.style.border = "2px solid red"; // Highlight empty fields
+                                    } else {
+                                        field.style.border = ""; // Reset border if filled
+                                    }
                                 });
-
+                        
+                                if (!isValid) {
+                                    alert("Please fill out all required fields before printing.");
+                                    return;
+                                }
+                        
+                                // Copy values for printing
+                                document.getElementById("is_unserviceable_print").checked = document.getElementById("is_unserviceable").checked;
+                                document.getElementById("is_functional_print").checked = document.getElementById("is_functional").checked;
+                                document.getElementById("printDescription").innerText = document.getElementById("description").value;
+                                document.getElementById("printQty").innerText = document.getElementById("quantity").value;
+                                document.getElementById("printUnit").innerText = document.getElementById("unit").value;
+                                document.getElementById("printDateAcquired").innerText = document.getElementById("date_acquired").value;
+                                document.getElementById("printPropertyNo").innerText = document.getElementById("property_no").value;
+                                document.getElementById("printEndUser").innerText = document.getElementById("endUser").value;
+                        
+                                let selectedPurpose = document.getElementById("purpose").value;
+                                document.getElementById("printDisposal").checked = selectedPurpose === "Disposal";
+                                document.getElementById("printRepair").checked = selectedPurpose === "Repair";
+                                document.getElementById("printReplacement").checked = selectedPurpose === "Replacement";
+                        
                                 document.getElementById("print_under_warranty").checked = document.getElementById("under_warranty").checked;
                                 document.getElementById("print_others").checked = document.getElementById("others").checked;
-                                
-                                
-                                
-
-
-
-
-
-                            
-
-
+                        
+                                // Proceed to print
                                 window.print();
                             }
                         </script>
+                        
                     </form>
                 </div>
             </div>

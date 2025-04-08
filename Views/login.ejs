@@ -8,6 +8,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <link rel="stylesheet" href="../css/loginstyle.css" />
   <link rel="stylesheet" href="../css/general.css" />
+  <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
 </head>
 
 <body>
@@ -15,101 +19,65 @@
   <div class="circle circle2"></div>
   <div class="circle circle3"></div>
   <div class="circle circle4"></div>
-  <div class="container">
-      <div class="tagline">
-          <h1 id="tagline-title">Property Inventory Management System</h1>
-          <p id="tagline-text">Track your assets anytime, anywhere. Stay on top, <br>stay organized!</p>
-      </div>
-      <div class="form-section">
-          <!-- sign up -->
-          <div class="success">
-              <% if (messages && messages.success) { %>
-                  <%= messages.success %>
-                      <% } %>
-          </div>
-          <div class="error">
-              <% if (messages && messages.error) { %>
-                  <%= messages.error %>
-                      <% } %>
-          </div>
-          <div id="signup" class="form-container hidden sign-up">
-            <form action="/signup/submit" method="POST">
-              <h2>Create account</h2>
-              <input type="text" placeholder="First name" name="firstname" required />
-              <input type="text" placeholder="Last name" name="lastname" required />
-              <input type="email" placeholder="Email" name="email" required />
-              <input type="text" placeholder="Phone no." name="phone">
-              <input type="password" id="password" name="password" placeholder="Password (minimum 8 characters)">
-              <input type="text" placeholder="Role"  for="Role" name="role" id="role" required placeholder="Role" />
-              <button class="btn" type="submit">Create account</button>
-              <div class="line"></div>
-              <p class="link">Already have an account? <a id="showSignin">Sign In</a></p>
-            </form>
-          </div>
-          <!-- sign in -->
-          <div id="signin" class="form-container sign-in">
-            <form action="/login/submit" method="POST">
-              <div class="success">
-                  <% if (messages && messages.success) { %>
-                      <%= messages.success %>
-                          <% } %>
-              </div>
-              <div class="error">
-                  <% if (messages && messages.error) { %>
-                      <%= messages.error %>
-                          <% } %>
-              </div>
-              <h2>Sign In</h2>
-              <input type="text" placeholder="Role" for="role" name="role" id="role" required />
-              <input type="email" placeholder="Email" type="email" name="email">
-              <input type="password" placeholder="Password" type="password" name="password" required />
-              <a href="/forgot-password" class="forgot-password"
-                  style="color: black; display: flex; justify-content: flex-end; margin-top: -3px; font-size: 12px; text-decoration: none; margin-bottom: 10px;">Forgot
-                  Your
-                  Password?</a>
-              <button class="btn" type="submit">Log in</button>
-              <div class="line"></div>
-              <p class="link">Don't have an account yet? <a id="showSignup">Sign Up</a></p>
-            </form>
-          </div>
-      </div>
+
+  <!-- Centered Container -->
+  <div class="form-wrapper">
+    <!-- Sign Up Form -->
+    <div id="signup" class="form-container hidden sign-up">
+      <form action="/signup/submit" method="POST">
+        <h2>Create account</h2>
+        <input type="text" placeholder="First name" name="firstname" required />
+        <input type="text" placeholder="Last name" name="lastname" required />
+        <input type="email" placeholder="Email" name="email" required />
+        <input type="text" placeholder="Phone no." name="phone">
+        <input type="password" id="password" name="password" placeholder="Password (minimum 8 characters)">
+        <input type="text" placeholder="Role" for="Role" name="role" id="role" required />
+        <button class="btn" type="submit">Create account</button>
+        <div class="line"></div>
+        <p class="link">Already have an account? <a id="showSignin">Sign In</a></p>
+      </form>
+    </div>
+
+    <!-- Sign In Form -->
+    <div id="signin" class="form-container sign-in">
+      <form action="/login/submit" method="POST">
+        <div class="success">
+          <% if (messages && messages.success) { %>
+            <%= messages.success %>
+          <% } %>
+        </div>
+        <div class="error">
+          <% if (messages && messages.error) { %>
+            <%= messages.error %>
+          <% } %>
+        </div>
+        <h2>Sign In</h2>
+        <input type="text" placeholder="Role" for="role" name="role" id="role" required />
+        <input type="email" placeholder="Email" name="email">
+        <input type="password" placeholder="Password" name="password" required />
+        <a href="/forgot-password" class="forgot-password">Forgot Your Password?</a>
+        <button class="btn" type="submit">Log in</button>
+        <div class="line"></div>
+        <p class="link">Don't have an account yet? <a id="showSignup">Sign Up</a></p>
+      </form>
+    </div>
   </div>
+
   <script>
-      function updateTagline(title, text) {
-          let titleElement = document.getElementById('tagline-title');
-          let textElement = document.getElementById('tagline-text');
+    function updateTagline(title, text) {
+      // No tagline, so skip
+    }
 
-          titleElement.classList.add('fade-out');
-          textElement.classList.add('fade-out');
+    document.getElementById('showSignup').addEventListener('click', function () {
+      document.getElementById('signin').classList.add('hidden');
+      document.getElementById('signup').classList.remove('hidden');
+    });
 
-          setTimeout(() => {
-              titleElement.innerText = title;
-              textElement.innerText = text;
-              titleElement.classList.remove('fade-out');
-              textElement.classList.remove('fade-out');
-              titleElement.classList.add('fade-in');
-              textElement.classList.add('fade-in');
-          }, 300);
-      }
-
-      document.getElementById('showSignup').addEventListener('click', function () {
-          document.getElementById('signin').classList.add('hidden');
-          document.getElementById('signup').classList.remove('hidden');
-          updateTagline("Hello, Make your account now!", "Track more, integrate seamlessly. Sign up now!");
-      });
-
-      document.getElementById('showSignin').addEventListener('click', function () {
-          document.getElementById('signup').classList.add('hidden');
-          document.getElementById('signin').classList.remove('hidden');
-          updateTagline("Property Inventory Management System", "Track your assets anytime, anywhere. Stay on top, stay organized!");
-      });
+    document.getElementById('showSignin').addEventListener('click', function () {
+      document.getElementById('signup').classList.add('hidden');
+      document.getElementById('signin').classList.remove('hidden');
+    });
   </script>
-
-
-
-</body>
-</html>
-
 </body>
 
 </html>
