@@ -3,234 +3,243 @@
     <div class="headerss">Property Acknowledge Receipt (PAR)</div>
     <div class="sub-header">
       <div class="haha">
-        <strong>Entity Name: <span id="printEntityName"></span></strong>
-        <strong>Fund Cluster: <span id="printFundCluster"></span></strong>
+        <strong>Entity Name: <span id="printPAREntityName"></span></strong>
+        <strong>Fund Cluster: <span id="printPARFundCluster"></span></strong>
       </div>
       <div>
-        <strong>PAR No: <span id="printParNo"></span></strong>
+        <strong>PAR No: <span id="printPARParNo"></span></strong>
       </div>
     </div>
-    <table class="tabol">
-      <thead>
-        <tr class="t-ar">
-          <th class="t-h">Qty.</th>
-          <th class="t-h">Unit</th>
-          <th class="t-h">Description</th>
-          <th class="t-h">Property No.</th>
-          <th class="t-h">Date Acquired</th>
-          <th class="t-h">Unit Value</th>
-          <th class="t-h">Total Amount</th>
+
+    <table class="par-table">
+      <thead class="par-table-head">
+        <tr class="par-table-row">
+          <th class="par-table-header">Qty.</th>
+          <th class="par-table-header">Unit</th>
+          <th class="par-table-header">Description</th>
+          <th class="par-table-header">Property No.</th>
+          <th class="par-table-header">Date Acquired</th>
+          <th class="par-table-header">Unit Value</th>
+          <th class="par-table-header">Total Amount</th>
         </tr>
       </thead>
       <tbody class="tbady">
         <tr class="t-ar">
-          <td class="t-d"><span id="printQty"></span></td>
-          <td class="t-d"><span id="printUnit"></span></td>
-          <td class="t-d"><span id="printDescription"></span></td>
-          <td class="t-d"><span id="printPropertyNo"></span></td>
-          <td class="t-d"><span id="printDateAcquired"></span></td>
-          <td class="t-d"><span id="printUnitValue"></span></td>
-          <td class="t-d"><span id="printunitvalue"></span></td>
+          <td class="t-d"><span id="printPARQty"></span></td>
+          <td class="t-d"><span id="printPARUnit"></span></td>
+          <td class="t-d"><span id="printPARDescription1"></span></td>
+          <td class="t-d"><span id="printPARPropertyNo"></span></td>
+          <td class="t-d"><span id="printPARDateAcquired"></span></td>
+          <td class="t-d"><span id="printPARUnitValue"></span></td>
+          <td class="t-d"><span id="printPARunitvalue"></span></td>
         </tr>
-        <!-- Additional rows as needed -->
       </tbody>
     </table>
-    <div class="remarks-section">
-      <div><strong>Remarks:</strong> New</div>
+
+    <div class="par-remarks">
+      <strong>Remarks:</strong> New
     </div>
     <div class="footer">
       <div class="Dating">
         <p>
-          <strong>Data Acquired: <span id="printDateAcquired"></span></strong>
+          <strong
+            >Data Acquired: <span id="printPARDateAcquired1"></span
+          ></strong>
         </p>
-        <p>BURs: <span id="printBurs"></span></p>
-        <p>PO: <span id="printPo"></span></p>
-        <p>Code: <span id="printCode"></span></p>
-        <p>Description: <span id="printdescription"></span></p>
-        <p>IAR #: <span id="printIAR"></span></p>
-        <p>Supplier: <span id="printSupplier"></span></p>
-        <p>Location: <span id="printLocation"></span></p>
+        <p>BURs: <span id="printPARBurs"></span></p>
+        <p>PO: <span id="printPARPo"></span></p>
+        <p>Code: <span id="printPARCode"></span></p>
+        <p>Description: <span id="printPARdescription"></span></p>
+        <p>IAR #: <span id="printPARIAR"></span></p>
+        <p>Supplier: <span id="printPARSupplier"></span></p>
+        <p>Location: <span id="printPARLocation"></span></p>
       </div>
 
-      <div class="reminder">
+      <div class="par-footer-box par-footer-reminder">
         <p><strong>Reminder:</strong></p>
         <p>
-          If the item/s received is/are not utilized beneficial to work and
-          already unserviceable, you are REQUIRED to RETURN it to OSPU.
+          If the item/s received is/are not utilized beneficial to work and already unserviceable, you are REQUIRED to RETURN it to OSPU.
         </p>
       </div>
-      <div class="reminders">
-        "Bringing government properties to private homes and for personal use is
-        strictly prohibited. Due care and safekeeping should be applied to this
-        stated property."
+
+      <div class="par-footer-box par-footer-warning">
+        "Bringing government properties to private homes and for personal use is strictly prohibited. Due care and safekeeping should be applied to this stated property."
       </div>
     </div>
-    <div class="signature-section">
-      <div class="signature-box">
-        <div class="bax"><strong>Received by:</strong></div>
+
+    <div class="par-signatures">
+      <div class="par-sign-box">
+        <div class="par-sign-label"><strong>Received by:</strong></div>
         <span>Signature Over Printed Name of End User</span>
-        <span class="gaps"
-          ><u id="printPARAccountable">____________________</u></span
-        >
+        <span class="par-sign-line"><u id="printPARAccountable">____________________</u></span>
         <span>Position / Office</span>
-        <span class="gaps"><u id="printDate">____________________</u></span>
+        <span class="gaps"><u id="printPARDate">____________________</u></span>
         <span>Date</span>
       </div>
-      <div class="signature-box">
-        <div class="sig">
-          <strong>Issued by:</strong>
-        </div>
-        <span><u>JEFFREY M. MENESER, M.A.M.</u></span>
-        <span
-          >Signature Over Printed Name of Supply and/or Property Custodian</span
-        >
-        <span class="gaps"><u>____________________</u></span>
-        <span>Position/Office</span>
-        <span class="gaps"><u>____________________</u></span>
+
+      <div class="par-sign-box">
+        <div class="par-sign-label"><strong>Issued by:</strong></div>
+        <span><u>JEFFREY M. MENESES, M.A.M.</u></span>
+        <span>Signature Over Printed Name of Supply and/or Property Custodian</span>
+        <span class="par-sign-line"><u>____________________</u></span>
+        <span>Position / Office</span>
+        <span class="par-sign-line"><u>____________________</u></span>
         <span>Date</span>
       </div>
     </div>
-    <div class="small-note">Appendix 59</div>
+
+    <div class="par-note">Appendix 59</div>
   </div>
-  <div id="printPhotos" style="display: none">
+  <div class="printPhotos hiddenPhotos" id="printPARPhotos">
     <div style="margin-top: 500px"></div>
     <!-- <h2 style="text-align: center" ></h2> -->
-    <div id="photoContainer" style="text-align: center"></div>
+    <div id="photoPARContainer" style="text-align: center"></div>
   </div>
 </body>
 
+
 <style>
-  .bodies {
-    font-family: Arial, sans-serif;
+ .par-body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.par-container {
+  width: 210mm;
+  max-width: 100%;
+  margin: 0 auto;
+  /* border: 1px solid #000; */
+  padding: 10px;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  margin-top: 50px;
+}
+
+.par-header {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.par-sub-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.par-sub-header-col {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.par-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin-bottom: 10px;
+  table-layout: fixed;
+}
+
+.par-table-header,
+.par-table-data {
+  border: 1px solid black;
+  padding: 5px;
+  text-align: center;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.par-remarks {
+  font-size: 12px;
+  margin-bottom: 10px;
+  border: 1px solid black;
+  padding: 5px;
+  word-wrap: break-word;
+}
+
+.par-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-size: 12px;
+  gap: 10px;
+}
+
+.par-footer-box {
+  flex: 1;
+  min-width: 250px;
+  border: 1px solid #000;
+  padding: 1em;
+  box-sizing: border-box;
+}
+
+.par-footer-dating {
+  padding-left: 1em;
+}
+
+.par-footer-warning {
+  font-size: 13px;
+  font-weight: 550;
+  padding: 2em;
+}
+
+.par-signatures {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+  font-size: 12px;
+  gap: 10px;
+}
+
+.par-sign-box {
+  text-align: center;
+  flex: 1;
+  min-width: 250px;
+  border: 1px solid #000;
+  padding: 2em;
+  box-sizing: border-box;
+}
+
+.par-sign-label {
+  text-align: left;
+  margin-bottom: 2em;
+}
+
+.par-sign-box span {
+  display: block;
+  margin-top: 15px;
+  word-break: break-word;
+}
+
+.par-sign-line {
+  margin-top: 10px;
+}
+
+.par-note {
+  font-size: 10px;
+  text-align: center;
+  margin-top: 5px;
+}
+
+/* PRINT SUPPORT */
+@media print {
+  .par-container {
+    page-break-after: always;
   }
 
-  .containerss {
-    width: 210mm;
-    margin: 0 auto;
-    border: 1px solid #000;
-    padding: 10px;
-    box-sizing: border-box;
+  .par-table-header,
+  .par-table-data,
+  .par-sign-box span {
+    word-break: break-word;
   }
+}
 
-  .headerss {
-    text-align: center;
-    font-size: 18px;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-
-  .sub-header {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    margin-bottom: 10px;
-  }
-
-  .sub-header .haha {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .tabol {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 12px;
-    margin-bottom: 10px;
-  }
-
-  .tabol,
-  .t-h,
-  .t-d {
-    border: 1px solid black;
-  }
-
-  .t-h,
-  .t-d {
-    padding: 5px;
-    text-align: center;
-  }
-
-  .remarks-section {
-    font-size: 12px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid black;
-    padding: 5px;
-  }
-
-  .footer {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-  }
-
-  .footer .Dating {
-    border: 1px solid #000;
-    width: 250px;
-    padding-left: 1em;
-  }
-
-  .footer .reminder {
-    border: 1px solid #000;
-    width: 250px;
-    padding: 1em;
-  }
-
-  .footer .reminders {
-    border: 1px solid #000;
-    width: 250px;
-    font-size: medium;
-    font-weight: 550;
-    padding: 2em;
-  }
-
-  .footer div {
-    width: 48%;
-  }
-
-  .signature-section {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-    font-size: 12px;
-  }
-
-  .signature-box {
-    text-align: center;
-    width: 48%;
-    border: 1px solid #000;
-    height: 200px;
-    padding: 2em;
-  }
-  .signature-box .bax {
-    text-align: start;
-    margin-bottom: 3em;
-  }
-
-  .signature-box .sig {
-    text-align: start;
-    margin-bottom: 3em;
-  }
-
-  .signature-box span {
-    display: block;
-    margin-top: 15px;
-  }
-
-  .reminder {
-    font-size: 12px;
-    text-align: justify;
-  }
-
-  .small-note {
-    font-size: 10px;
-    text-align: center;
-    margin-top: 5px;
-  }
-
-  .tbady .t-ar .t-d {
-    padding: 3em;
-  }
 </style>

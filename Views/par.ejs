@@ -333,27 +333,28 @@
                                    
                                     <script>
                                         function printDocument() {
-                                            document.getElementById('printEntityName').innerText = document.getElementById('entity_name').value;
-                                            document.getElementById('printFundCluster').innerText = document.getElementById('fund_cluster').value;
-                                            document.getElementById('printParNo').innerText = document.getElementById('par_no').value;
-                                            document.getElementById('printQty').innerText = document.getElementById('quantity').value;
-                                            document.getElementById('printUnit').innerText = document.getElementById('unit').value;
-                                            document.getElementById('printDescription').innerText = document.getElementById('description').value;
-                                            document.getElementById('printPropertyNo').innerText = document.getElementById('propertyNo').value;
-                                            document.getElementById('printDateAcquired').innerText = document.getElementById('dateAcquired').value;
-                                            document.getElementById('printUnitValue').innerText = document.getElementById('cost').value;
-                                            document.getElementById('printunitvalue').innerText = document.getElementById('cost').value;
-                                            document.getElementById('printBurs').innerText = document.getElementById('burs').value;
-                                            document.getElementById('printPo').innerText = document.getElementById('po').value;
-                                            document.getElementById('printdescription').innerText = document.getElementById('description').value;
-                                            document.getElementById('printCode').innerText = document.getElementById('code').value;
-                                            document.getElementById('printIAR').innerText = document.getElementById('iar').value;
-                                            document.getElementById('printSupplier').innerText = document.getElementById('supplier').value;
+                                            document.getElementById('printPAREntityName').innerText = document.getElementById('entity_name').value;
+                                            document.getElementById('printPARFundCluster').innerText = document.getElementById('fund_cluster').value;
+                                            document.getElementById('printPARParNo').innerText = document.getElementById('par_no').value;
+                                            document.getElementById('printPARQty').innerText = document.getElementById('quantity').value;
+                                            document.getElementById('printPARUnit').innerText = document.getElementById('unit').value;
+                                            document.getElementById('printPARDescription1').innerText = document.getElementById('description').value;
+                                            document.getElementById('printPARPropertyNo').innerText = document.getElementById('propertyNo').value;
+                                            document.getElementById('printPARDateAcquired').innerText = document.getElementById('dateAcquired').value;
+                                            document.getElementById('printPARUnitValue').innerText = document.getElementById('cost').value;
+                                            document.getElementById('printPARunitvalue').innerText = document.getElementById('cost').value;
+                                            document.getElementById('printPARBurs').innerText = document.getElementById('burs').value;
+                                            document.getElementById('printPARPo').innerText = document.getElementById('po').value;
+                                            document.getElementById('printPARdescription').innerText = document.getElementById('description').value;
+                                            document.getElementById('printPARCode').innerText = document.getElementById('code').value;
+                                            document.getElementById('printPARIAR').innerText = document.getElementById('iar').value;
+                                            document.getElementById('printPARSupplier').innerText = document.getElementById('supplier').value;
+                                            document.getElementById('printPARDateAcquired1').innerText = document.getElementById('dateAcquired');
                                             
                                             // Update the displayed location when a user selects an option
                                             document.getElementById('location').addEventListener('change', function () {
                                               let selectedValue = this.value;
-                                              document.getElementById('printLocation').innerText = selectedValue === 'cancel' ? '' : selectedValue;
+                                              document.getElementById('printPARLocation').innerText = selectedValue === 'cancel' ? '' : selectedValue;
                                             });
                                             
                                             // Fetch the selected location and print it
@@ -368,7 +369,7 @@
                                             }
                                             
                                             document.getElementById('printPARAccountable').innerText = document.getElementById('accountable').value;
-                                            document.getElementById('printDate').innerText = document.getElementById('date').value;
+                                            document.getElementById('printPARDate').innerText = document.getElementById('date').value;
 
                                             // Validate before printing
                                                             if (!validateBeforePrint()) return;
