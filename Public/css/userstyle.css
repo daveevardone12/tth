@@ -21,7 +21,7 @@ body {
   width: calc(100%); /* Adjust to leave space for the 300px sidebar and padding */
   margin-left: 10px; /* Ensure it starts after the sidebar */
   padding: 20px;
-  margin-top: 5%;
+  margin-top: 8%;
   box-sizing: border-box; /* Include padding in the element's total width */
 }
 
@@ -241,5 +241,32 @@ button[type="submit"]:hover {
   padding-right: 20px;
   box-shadow: none;
   padding-top: 10px;
-  background-color: #ffffff;
+  background-color: #eaf4f4;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.box1 {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+.box2 {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #000;
+  text-align: left;
+  text-shadow: none;;
+  font-family: Poppins;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 2.5px;
 }
