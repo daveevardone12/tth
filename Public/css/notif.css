@@ -82,9 +82,9 @@ table {
 }
 
 thead { 
-  background: linear-gradient(135deg, #0a6b03, #047d00); /* Gradient for depth */
+  background-color: #095c02; /* Gradient for depth */
   color: white;
-  font-size: 13px; /* Slightly larger font */
+  font-size: small; /* Slightly larger font */
   font-family: Poppins, sans-serif;
   font-weight: 700; /* Bolder text */
   letter-spacing: 1.5px; /* More spacing for emphasis */
@@ -98,7 +98,7 @@ thead th {
   text-align: left;
   background-color: #004d00;
   padding: 12px 15px;
-  font-size: 14px;
+  font-size: small;
   color: white;
 }
 
@@ -265,8 +265,9 @@ tbody tr td:last-child {
 .mas-header {
   position: fixed;
   z-index: 1;
-  background-color: #ffffff;
+  background-color: #eaf4f4;
   width: calc(100% - 16%);
   margin-left: -50px;
   padding-right: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }

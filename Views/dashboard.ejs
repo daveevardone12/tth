@@ -321,38 +321,39 @@
 
         <script>
           document.addEventListener("DOMContentLoaded", function () {
-  const cardsContainer = document.getElementById("cardsContainer");
-  const expandButton = document.getElementById("expandButton");
-  const minimizeContainer = document.getElementById("minimizeContainer");
-  let isExpanded = false;
+            const cardsContainer = document.getElementById("cardsContainer");
+            const expandButton = document.getElementById("expandButton");
+            const minimizeContainer =
+              document.getElementById("minimizeContainer");
+            let isExpanded = false;
 
-  expandButton.addEventListener("click", function () {
-    if (!isExpanded) {
-      cardsContainer.classList.remove("collapsed");
-      cardsContainer.classList.add("expanded");
-      addMinimizeButton();
-      expandButton.style.display = "none"; // Hide expand button
-      isExpanded = true;
-    }
-  });
+            expandButton.addEventListener("click", function () {
+              if (!isExpanded) {
+                cardsContainer.classList.remove("collapsed");
+                cardsContainer.classList.add("expanded");
+                addMinimizeButton();
+                expandButton.style.display = "none"; // Hide expand button
+                isExpanded = true;
+              }
+            });
 
-  function addMinimizeButton() {
-    minimizeContainer.innerHTML = ""; // Clear previous button if any
-    let minimizeButton = document.createElement("button");
-    minimizeButton.innerText = "Minimize";
-    minimizeButton.classList.add("minimize-button");
+            function addMinimizeButton() {
+              minimizeContainer.innerHTML = ""; // Clear previous button if any
+              let minimizeButton = document.createElement("button");
+              minimizeButton.innerText = "Minimize";
+              minimizeButton.classList.add("minimize-button");
 
-    minimizeButton.addEventListener("click", function () {
-      cardsContainer.classList.add("collapsed");
-      cardsContainer.classList.remove("expanded");
-      expandButton.style.display = "block"; // Show expand button again
-      isExpanded = false;
-      minimizeContainer.innerHTML = ""; // Remove button when minimized
-    });
+              minimizeButton.addEventListener("click", function () {
+                cardsContainer.classList.add("collapsed");
+                cardsContainer.classList.remove("expanded");
+                expandButton.style.display = "block"; // Show expand button again
+                isExpanded = false;
+                minimizeContainer.innerHTML = ""; // Remove button when minimized
+              });
 
-    minimizeContainer.appendChild(minimizeButton);
-  }
-});
+              minimizeContainer.appendChild(minimizeButton);
+            }
+          });
         </script>
 
         <!-- <div class="mean-container"> -->
@@ -385,70 +386,65 @@
             });
           </script> -->
 
-        <div class="dashboard-container">
-          <div class="dashboard-card dashboard-time-card">
-            <div class="time" id="time">--:-- --</div>
-            <div class="divider"></div>
-            <div class="month" id="month">---</div>
-            <div class="year" id="year">----</div>
-          </div>
-
-          <div class="dashboard-card dashboard-activities-card">
-            <div class="recent">Recent Activities</div>
-          </div>
-
-          <div class="dashboard-status-container">
-            <div class="dashboard-card dashboard-status-card">
-              Assigned:
-              <div
-                id="totalAssignedItem">
-                <br />
+          <div class="dashboard-container">
+            <div class="dashboard-left">
+              <div class="dashboard-card time-date-box">
+                <h1 id="current-time">--:-- --</h1>
+                <h2 id="current-month">---</h2>
+                <p id="current-year">----</p>
+              </div>
+        
+              <div class="dashboard-card status-box">
+                <strong>Assigned:</strong>
+                <div class="status-count" id="totalAssignedItem"></div>
+              </div>
+        
+              <div class="dashboard-card status-box">
+                <strong>Not Assigned:</strong>
+                <div class="status-count" id="totalNotAssignedItem"></div>
               </div>
             </div>
-            <div class="dashboard-card dashboard-status-card">
-              Not Assigned:
-              <div
-                id="totalNotAssignedItem">
-              </div>
-            </div>
-          </div>
-          
-          <div class="dashboard-card dashboard-logs-card">
-            <div class="logs">Logs</div>
-            <div class="dashboard-table-container">
-                <table class="dashboard-table">
-                    <thead>
-                        <tr>
-                            <th>Date & Time</th>
-                            <th>Item Name</th>
-                            <th>RFID Tag</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody id="dashboard-table">
-                        <tr>
-                            <td>January 27, 2025 at 04:08 PM</td>
-                            <td>Desktop 2D Barcode Scanner</td>
-                            <td>E29884012980390470470E</td>
-                            <td class="status-out">Out</td>
-                        </tr>
-                        <tr>
-                            <td>January 27, 2025 at 04:08 PM</td>
-                            <td>Desktop 2D Barcode Scanner</td>
-                            <td>E29884012980390470470E</td>
-                            <td class="status-in">In</td>
-                        </tr>
-                        <tr>
-                            <td>January 27, 2025 at 04:07 PM</td>
-                            <td>Not Registered</td>
-                            <td>06309838871467681949E</td>
-                            <td>Not Registered</td>
-                        </tr>
-                    </tbody>
+        
+            <div class="dashboard-right">
+              <div class="dashboard-card logs-box">
+                <h3>Logs</h3>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Date & Time</th>
+                      <th>Item Name</th>
+                      <th>RFID Tag</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="dashboard-table">
+                  </tbody>
                 </table>
+              </div>
             </div>
-        </div>
-        </div>
+          </div>
+        
+          <script>
+            function updateTimeDate() {
+              const now = new Date();
+              const hours = now.getHours();
+              const minutes = now.getMinutes();
+              const ampm = hours >= 12 ? 'PM' : 'AM';
+              const displayHour = hours % 12 || 12;
+              const displayMinute = minutes.toString().padStart(2, '0');
+        
+              const timeString = `${displayHour}:${displayMinute} ${ampm}`;
+              const monthString = now.toLocaleString('default', { month: 'short' }).toUpperCase();
+              const yearString = now.getFullYear();
+        
+              document.getElementById('current-time').textContent = timeString;
+              document.getElementById('current-month').textContent = monthString;
+              document.getElementById('current-year').textContent = yearString;
+            }
+        
+            updateTimeDate();
+            setInterval(updateTimeDate, 1000);
+          </script>
 
         <script>
           function updateTime() {
