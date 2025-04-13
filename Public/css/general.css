@@ -304,8 +304,8 @@ li {
 
 .sidebar nav a:hover,
 .sidebar nav a.active {
-  background-color: #008000;
-}
+  background-color: #0c8002;
+} 
 
 .main-content {
   margin-left: 280px;
@@ -480,28 +480,34 @@ li {
   content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 26'%3E%3Cpath fill='%23fff' d='M6.813 0a1 1 0 0 0-.532.281l-6 6A1 1 0 0 0 0 7v17c0 1.093.907 2 2 2h22c1.093 0 2-.907 2-2V2c0-1.093-.907-2-2-2H7a1 1 0 0 0-.094 0a1 1 0 0 0-.093 0m.625 2H24v22H2V7.437zm1.375 1a1 1 0 0 0-.532.281l-5 5A1 1 0 0 0 3 9v13a1 1 0 0 0 1 1h18a1 1 0 1 0 0-2H5V9.437L9.438 5H21v13H8v-7.563L10.438 8H18v5h-2v-1.75a.25.25 0 0 0-.25-.25h-5.5a.25.25 0 0 0-.25.25v5.5c0 .138.112.25.25.25h5.5a.25.25 0 0 0 .25-.25V15h3a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1h-9a1 1 0 0 0-.719.281l-3 3A1 1 0 0 0 6 10v9a1 1 0 0 0 1 1h15a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H9a1 1 0 0 0-.094 0a1 1 0 0 0-.094 0z'/%3E%3C/svg%3E");
 }
 
+/* Floating effect for active nav link */
 .nav-menu ul li a.active {
-  background-color: ghostwhite; /* Change to your preferred highlight color */
-  color: black; /* Ensure text is readable */
-  border-radius: 5px 0 0 5px; /* Optional: for a rounded look */
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.651);
+  z-index: 2;
+  font-weight: bold;
+  border-radius: 10px;
 }
 
-.sidebar #dropdown li a.active {
-  background-color: ghostwhite; /* Change to your preferred highlight color */
-  color: black !important; /* Ensure text is readable */
-  border-radius: 5px 0 0 5px; 
+/* Floating effect for active dropdown links */
+.sidebar #dropdown li a.active,
+.sidebar #dropdowns li a.active,
+.sidebar #dropdownsss li a.active {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+  font-weight: bold;
 }
 
-
-/* Style for the active menu item */
-.nav-menu li a.active {
-  background-color: white;
-}
-
-/* Change icon color to #095c02 when the link has the active class */
+/* Optional: icon styling when active */
 .nav-menu li a.active img {
   filter: invert(45%) sepia(59%) saturate(324%) hue-rotate(91deg) brightness(90%) contrast(88%);
 }
 
-
-/* Rest of your existing styles here */
+/* Hover effect (optional: less floaty than active) */
+.nav-menu ul li a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.719);
+  z-index: 1;
+  border-radius: 10px;
+}
