@@ -174,8 +174,7 @@ i#maximize-icon {
 }
 
 .cards-container.collapsed {
-  max-height: 120px;
-  /* Adjust based on the first row's height */
+  max-height: 240px;
 }
 
 .cards-container.expanded {
