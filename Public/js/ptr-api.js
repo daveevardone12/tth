@@ -96,6 +96,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
                   document.getElementById("from_accountable").value =
                     accountable.accountable;
+                  document.getElementById("from_email").value =
+                    accountable.email;
                   document.getElementById("property_name").value =
                     accountable.item_name;
                   resultsContainer.innerHTML = "";
