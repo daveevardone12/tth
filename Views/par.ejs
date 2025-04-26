@@ -332,97 +332,97 @@
                                     
                                    
                                     <script>
-                                        function printDocument() {
-                                            document.getElementById('printPAREntityName').innerText = document.getElementById('entity_name').value;
-                                            document.getElementById('printPARFundCluster').innerText = document.getElementById('fund_cluster').value;
-                                            document.getElementById('printPARParNo').innerText = document.getElementById('par_no').value;
-                                            document.getElementById('printPARQty').innerText = document.getElementById('quantity').value;
-                                            document.getElementById('printPARUnit').innerText = document.getElementById('unit').value;
-                                            document.getElementById('printPARDescription1').innerText = document.getElementById('description').value;
-                                            document.getElementById('printPARPropertyNo').innerText = document.getElementById('propertyNo').value;
-                                            document.getElementById('printPARDateAcquired').innerText = document.getElementById('dateAcquired').value;
-                                            document.getElementById('printPARUnitValue').innerText = document.getElementById('cost').value;
-                                            document.getElementById('printPARunitvalue').innerText = document.getElementById('cost').value;
-                                            document.getElementById('printPARBurs').innerText = document.getElementById('burs').value;
-                                            document.getElementById('printPARPo').innerText = document.getElementById('po').value;
-                                            document.getElementById('printPARdescription').innerText = document.getElementById('description').value;
-                                            document.getElementById('printPARCode').innerText = document.getElementById('code').value;
-                                            document.getElementById('printPARIAR').innerText = document.getElementById('iar').value;
-                                            document.getElementById('printPARSupplier').innerText = document.getElementById('supplier').value;
-                                            document.getElementById('printPARDateAcquired1').innerText = document.getElementById('dateAcquired');
-                                            
-                                            // Update the displayed location when a user selects an option
-                                            document.getElementById('location').addEventListener('change', function () {
-                                              let selectedValue = this.value;
-                                              document.getElementById('printPARLocation').innerText = selectedValue === 'cancel' ? '' : selectedValue;
-                                            });
-                                            
-                                            // Fetch the selected location and print it
-                                            function printDocument() {
-                                              let locationText = document.getElementById('printLocation').innerText;
+                                          function printDocument() {
+                                              document.getElementById('printPAREntityName').innerText = document.getElementById('entity_name').value;
+                                              document.getElementById('printPARFundCluster').innerText = document.getElementById('fund_cluster').value;
+                                              document.getElementById('printPARParNo').innerText = document.getElementById('par_no').value;
+                                              document.getElementById('printPARQty').innerText = document.getElementById('quantity').value;
+                                              document.getElementById('printPARUnit').innerText = document.getElementById('unit').value;
+                                              document.getElementById('printPARDescription1').innerText = document.getElementById('description').value;
+                                              document.getElementById('printPARPropertyNo').innerText = document.getElementById('propertyNo').value;
+                                              document.getElementById('printPARDateAcquired').innerText = document.getElementById('dateAcquired').value;
+                                              document.getElementById('printPARUnitValue').innerText = document.getElementById('cost').value;
+                                              document.getElementById('printPARunitvalue').innerText = document.getElementById('cost').value;
+                                              document.getElementById('printPARBurs').innerText = document.getElementById('burs').value;
+                                              document.getElementById('printPARPo').innerText = document.getElementById('po').value;
+                                              document.getElementById('printPARdescription').innerText = document.getElementById('description').value;
+                                              document.getElementById('printPARCode').innerText = document.getElementById('code').value;
+                                              document.getElementById('printPARIAR').innerText = document.getElementById('iar').value;
+                                              document.getElementById('printPARSupplier').innerText = document.getElementById('supplier').value;
+                                              document.getElementById('printPARDateAcquired1').innerText = document.getElementById('dateAcquired');
                                               
-                                              if (locationText) {
-                                                window.print(); // Opens the browser print dialog
-                                              } else {
-                                                alert("Please select a location before printing.");
-                                              }
-                                            }
-                                            
-                                            document.getElementById('printPARAccountable').innerText = document.getElementById('accountable').value;
-                                            document.getElementById('printPARDate').innerText = document.getElementById('date').value;
-
-                                            // Validate before printing
-                                                            if (!validateBeforePrint()) return;
-
-                                            // Show the printPhotos section before printing
-                                            const printPhotos = document.getElementById("printPhotos");
-                                            printPhotos.style.display = "block";
-
-                                            let photoContainer = document.getElementById("photoContainer");
-                                            photoContainer.innerHTML = ""; // Clear previous images
-
-                                            // Add images dynamically
-                                            let photo1Src = document.getElementById("photoPreview1").src;
-                                            let photo2Src = document.getElementById("photoPreview2").src;
-
-                                            if (photo1Src.includes("data:image")) {
-                                              let img1 = document.createElement("img");
-                                              img1.src = photo1Src;
-                                              img1.style.width = "600px";
-                                              img1.style.height = "400px";
-                                              img1.style.marginBottom = "50px";
-                                              photoContainer.appendChild(img1);
-                                            }
-
-                                            if (photo2Src.includes("data:image")) {
-                                              let img2 = document.createElement("img");
-                                              img2.src = photo2Src;
-                                              img2.style.width = "600px";
-                                              img2.style.height = "400px";
-                                              img2.style.marginBottom = "50px";
-                                              photoContainer.appendChild(img2);
-                                            }
+                                              // Update the displayed location when a user selects an option
+                                              document.getElementById('location').addEventListener('change', function () {
+                                                let selectedValue = this.value;
+                                                document.getElementById('printPARLocation').innerText = selectedValue === 'cancel' ? '' : selectedValue;
+                                              });
+                                              
+                                              // Fetch the selected location and print it
+                                              function printDocument() {
+                                                let locationText = document.getElementById('printPARLocation').innerText;
                                                 
+                                                if (locationText) {
+                                                  window.print(); 
+                                                } else {
+                                                  alert("Please select a location before printing.");
+                                                }
+                                              }
+                                              
+                                              document.getElementById('printPARAccountable').innerText = document.getElementById('accountable').value;
+                                              document.getElementById('printPARDate').innerText = document.getElementById('date').value;
 
-                                            window.print();
-                                            // Hide the printPhotos section again after printing
-                                            setTimeout(() => {
-                                              printPhotos.style.display = "none";
-                                            }, 1000);
-                                        }
-                                        function validateBeforePrint() {
-                                          const photo1 = document.getElementById("photoPreview1").src;
-                                          const photo2 = document.getElementById("photoPreview2").src;
+                                              // Validate before printing
+                                                              if (!validateBeforePrint()) return;
 
-                                          if (
-                                            !photo1.includes("data:image") ||
-                                            !photo2.includes("data:image")
-                                          ) {
-                                            alert("Please upload both photos before printing.");
-                                            return false;
+                                              // Show the printPhotos section before printing
+                                              const printPhotos = document.getElementById("printPARPhotos");
+                                              printPhotos.style.display = "block";
+
+                                              let photoContainer = document.getElementById("photoPARContainer");
+                                              photoContainer.innerHTML = ""; // Clear previous images
+
+                                              // Add images dynamically
+                                              let photo1Src = document.getElementById("photoPreview1").src;
+                                              let photo2Src = document.getElementById("photoPreview2").src;
+
+                                              if (photo1Src.includes("data:image")) {
+                                                let img1 = document.createElement("img");
+                                                img1.src = photo1Src;
+                                                img1.style.width = "600px";
+                                                img1.style.height = "400px";
+                                                img1.style.marginBottom = "50px";
+                                                photoContainer.appendChild(img1);
+                                              }
+
+                                              if (photo2Src.includes("data:image")) {
+                                                let img2 = document.createElement("img");
+                                                img2.src = photo2Src;
+                                                img2.style.width = "600px";
+                                                img2.style.height = "400px";
+                                                img2.style.marginBottom = "50px";
+                                                photoContainer.appendChild(img2);
+                                              }
+                                                  
+
+                                              window.print();
+                                              // Hide the printPhotos section again after printing
+                                              setTimeout(() => {
+                                                printPhotos.style.display = "none";
+                                              }, 1000);
                                           }
-                                          return true;
-                                        }
+                                          function validateBeforePrint() {
+                                            const photo1 = document.getElementById("photoPreview1").src;
+                                            const photo2 = document.getElementById("photoPreview2").src;
+
+                                            if (
+                                              !photo1.includes("data:image") ||
+                                              !photo2.includes("data:image")
+                                            ) {
+                                              alert("Please upload both photos before printing.");
+                                              return false;
+                                            }
+                                            return true;
+                                          }
                                     </script>
 
                                     <script>

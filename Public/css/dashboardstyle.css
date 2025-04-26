@@ -48,9 +48,9 @@ body::-webkit-scrollbar {
 .main-content::-webkit-scrollbar {
   display: none;
 }
-.cards-container::-webkit-scrollbar {
+/* .cards-container::-webkit-scrollbar {
   display: none;
-}
+} */
 
 h1 {
   font-size: 30px;
@@ -177,16 +177,16 @@ i#maximize-icon {
   max-height: 240px;
 }
 
-.cards-container.expanded {
+/* .cards-container.expanded {
   max-height: 150px;
-}
+} */
 
-#minimizeContainer {
+/* #minimizeContainer {
   display: flex;
   justify-content: center;
   margin-top: -10px;
-}
-
+} */
+/* 
 .minimize-button {
   background: none;
   border: none;
@@ -202,9 +202,9 @@ i#maximize-icon {
 .minimize-button:hover {
   color: #ff4d4d;
   text-decoration: underline;
-}
+} */
 
-.toggle-button {
+/* .toggle-button {
   position: absolute;
   top: 1px;
   left: 45.7%;
@@ -223,12 +223,11 @@ i#maximize-icon {
   z-index: 2;
   width: calc(100% - 105px);
   height: calc(100% - 20px);
-}
+} */
 
-.cards-container:hover .toggle-button {
+/* .cards-container:hover .toggle-button {
   opacity: 1;
-  /* Show button when hovering over cards container */
-}
+} */
 
 .icon1 {
   width: 150px;
@@ -831,4 +830,29 @@ tbody tr:nth-child(even) {
   .dashboard-right {
     flex: 1 1 100%;
   }
+}
+
+.para-logs {
+  display: flex;
+  font-size: large;
+  font-weight: 600;
+  font-family: Poppins;
+}
+
+.background-day {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 150px;
+  color: rgba(0, 0, 0, 0.05); /* black with very low opacity */
+  pointer-events: none; /* so it doesn't block clicks */
+  user-select: none;
+  z-index: 0;
+}
+
+.foreground-content {
+  position: relative;
+  z-index: 1;
+  color: black; /* regular content color */
 }
