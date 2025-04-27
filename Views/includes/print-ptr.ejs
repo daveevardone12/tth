@@ -1,66 +1,57 @@
-<body class="blah">
-  <div class="box-container" id="printPtr" style="display: none">
-    <h2 class="heading">PROPERTY TRANSFER REPORT (PTR)</h2>
+<body class="ptr-blah">
+  <div class="ptr-box-container" id="printPtr" style="display: none">
+    <h2 class="ptr-heading">PROPERTY TRANSFER REPORT (PTR)</h2>
     <hr />
-    <p class="appendix">Appendix 76</p>
+    <p class="ptr-appendix">Appendix 76</p>
 
-    <div class="form-sections">
-      <div class="row">
+    <div class="ptr-form-sections">
+      <div class="ptr-row">
         <label>Entity Name: <span id="printEntityName"></span></label>
-
         <label>Fund Cluster: <span id="printFundCluster"></span></label>
       </div>
       <hr />
-      <div class="row">
-        <label
-          >From Accountable Office/Agency/Fund Cluster:
-          <span id="printFrom"></span
-        ></label>
-
+      <div class="ptr-row">
+        <label>From Accountable Office/Agency/Fund Cluster:
+          <span id="printFrom"></span>
+        </label>
         <label>PTR No.:</label>
       </div>
-      <div class="row">
-        <label
-          >To Accountable Office/Agency/Fund Cluster: <span id="printTo"></span
-        ></label>
-
+      <div class="ptr-row">
+        <label>To Accountable Office/Agency/Fund Cluster: 
+          <span id="printTo"></span>
+        </label>
         <label>Date: <span id="printDateAcquired"></span></label>
       </div>
     </div>
     <hr />
-    <div class="form-sections">
+    <div class="ptr-form-sections">
       <p>Transfer Type (check only one):</p>
-      <div class="checkbox-groups">
-        <div class="check-item">
+      <div class="ptr-checkbox-groups">
+        <div class="ptr-check-item">
           <label>
-            <span class="checkbox-box" id="printDonation"></span> Donation
+            <span class="ptr-checkbox-box" id="printDonation"></span> Donation
           </label>
         </div>
-
-        <div class="check-item">
+        <div class="ptr-check-item">
           <label>
-            <span class="checkbox-box" id="printRelocate"></span> Relocate
+            <span class="ptr-checkbox-box" id="printRelocate"></span> Relocate
           </label>
         </div>
-
-        <div class="check-item">
+        <div class="ptr-check-item">
           <label>
-            <span class="checkbox-box" id="printReassignment"></span>
-            Reassignment
+            <span class="ptr-checkbox-box" id="printReassignment"></span> Reassignment
           </label>
         </div>
-
-        <div class="check-item">
+        <div class="ptr-check-item">
           <label>
-            <span class="checkbox-box" id="printOthers"></span> Others
-            (specify):
+            <span class="ptr-checkbox-box" id="printOthers"></span> Others (specify):
             <span id="printSpecify"></span>
           </label>
         </div>
       </div>
     </div>
 
-    <table>
+    <table class="ptr-table">
       <thead>
         <tr>
           <th>Date Acquired</th>
@@ -72,7 +63,6 @@
         </tr>
       </thead>
       <tbody>
-        <!-- Add rows as needed -->
         <tr>
           <td><span id="printDate"></span></td>
           <td><span id="printPropertyNo"></span></td>
@@ -84,39 +74,30 @@
       </tbody>
     </table>
 
-    <div class="form-section">
+    <div class="ptr-form-section">
       <p>Reason for Transfer: <span id="printReasonforTransfer"></span></p>
     </div>
     <hr />
-    <div class="signature-section">
-      <div class="column">
+    <div class="ptr-signature-section">
+      <div class="ptr-column">
         <p>Approved by:</p>
         <label>Signature:</label>
-
         <label>Printed Name:</label>
-
         <label>Designation:</label>
-
         <label>Date: <span id="dateprint1"></span></label>
       </div>
-      <div class="column">
+      <div class="ptr-column">
         <p>Released by: (Old Custodian)</p>
         <label>Signature:</label>
-
         <label>Printed Name: <span id="printFromName"></span></label>
-
         <label>Designation:</label>
-
         <label>Date: <span id="dateprint2"></span></label>
       </div>
-      <div class="column">
+      <div class="ptr-column">
         <p>Received by: (New Custodian)</p>
         <label>Signature:</label>
-
         <label>Printed Name: <span id="printToName"></span></label>
-
         <label>Designation:</label>
-
         <label>Date: <span id="dateprint3"></span></label>
       </div>
     </div>
@@ -124,20 +105,19 @@
 </body>
 
 <style>
-  .blah {
+  .ptr-blah {
     font-family: Arial, sans-serif;
   }
 
-  .box-container {
+  .ptr-box-container {
     max-width: 800px;
     margin: auto;
-    border: 2px solid black;
+    border: 1px solid black;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     position: relative;
   }
 
-  .heading {
+  .ptr-heading {
     text-align: center;
     margin-bottom: 20px;
   }
@@ -151,29 +131,29 @@
     left: -20px;
   }
 
-  .appendix {
+  .ptr-appendix {
     position: absolute;
     top: 10px;
     right: 20px;
     font-size: 0.9em;
   }
 
-  .form-sections {
+  .ptr-form-sections {
     margin-bottom: 20px;
   }
 
-  .row {
+  .ptr-row {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
     font-size: small;
   }
 
-  .row label {
+  .ptr-row label {
     margin-right: 10px;
   }
 
-  .underline {
+  .ptr-underline {
     flex: 1;
     display: inline-block;
     border-bottom: 1px solid black;
@@ -181,19 +161,19 @@
     height: 20px;
   }
 
-  .checkbox-groups {
+  .ptr-checkbox-groups {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px 30px;
     font-size: small;
   }
 
-  .check-item {
+  .ptr-check-item {
     display: flex;
     align-items: center;
   }
 
-  .checkbox-box {
+  .ptr-checkbox-box {
     display: inline-block;
     width: 15px;
     height: 15px;
@@ -201,11 +181,12 @@
     margin-right: 5px;
   }
 
-  table {
+  .ptr-table {
     width: calc(100% + 40px);
     border-collapse: collapse;
     margin-bottom: 20px;
     margin-left: -20px;
+    min-height: 400px;
   }
 
   th {
@@ -213,46 +194,46 @@
     font-size: small;
   }
 
-  table,
-  th,
-  td {
+  .ptr-table,
+  .ptr-table th,
+  .ptr-table td {
     border: 2px solid black;
   }
 
-  th,
-  td {
+  .ptr-table th,
+  .ptr-table td {
     text-align: center;
     padding: 5px;
   }
 
-  .underline-textarea {
+  .ptr-underline-textarea {
     display: block;
     height: 20px;
     border-bottom: 1px solid black;
   }
 
-  .signature-section {
+  .ptr-signature-section {
     display: flex;
     justify-content: space-between;
   }
 
-  .column {
+  .ptr-column {
     flex: 2;
     margin-right: 10px;
     font-size: small;
   }
 
-  .column p {
+  .ptr-column p {
     font-weight: bold;
   }
 
-  .column label {
+  .ptr-column label {
     display: block;
     margin-top: 5px;
     margin-bottom: 2px;
   }
 
-  .column .underline {
+  .ptr-column .ptr-underline {
     margin-bottom: 10px;
     width: 100%;
   }
