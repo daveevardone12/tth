@@ -385,8 +385,8 @@ function printDocument(button) {
       el.classList.add("hiddenPhotos");
     });
     if (button.getAttribute("data-office")) {
-      document.getElementById("office-body").classList.add("show-office");
-      console.log("triggere: ", document.body);
+      document.body.classList.add("show-office");
+      console.log("triggerd office", document.body);
       setTimeout(() => {
         window.print();
       }, 500);
