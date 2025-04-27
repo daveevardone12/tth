@@ -385,10 +385,12 @@ function printDocument(button) {
       el.classList.add("hiddenPhotos");
     });
     if (button.getAttribute("data-office")) {
+      console.log("triggerd office");
       document.body.classList.add("show-office");
+      console.log("triggerd office1");
       setTimeout(() => {
         window.print();
-      }, 500);
+      }, 2000);
     }
     if (button.getAttribute("data-table")) {
       console.log("triggerd");
