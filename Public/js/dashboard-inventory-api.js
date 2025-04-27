@@ -393,6 +393,7 @@ function printDocument(button) {
     }
     if (button.getAttribute("data-table")) {
       console.log("triggerd");
+      console.log(document.body);
       const data1 = button.getAttribute("data-row");
       console.log("triggerd: ", data1);
       const parsedData = JSON.parse(data1); // Convert JSON string back to object
