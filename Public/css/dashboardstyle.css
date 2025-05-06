@@ -756,6 +756,7 @@ tbody tr:nth-child(even) {
 
 .time-date-box {
   text-align: center;
+  position: relative;
 }
 
 .time-date-box h1 {
@@ -844,11 +845,12 @@ tbody tr:nth-child(even) {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 150px;
-  color: rgba(0, 0, 0, 0.05); /* black with very low opacity */
+  font-size: 120px;
+  color: rgba(0, 0, 0, 0.07); /* black with very low opacity */
   pointer-events: none; /* so it doesn't block clicks */
   user-select: none;
   z-index: 0;
+  font-weight: 700;
 }
 
 .foreground-content {

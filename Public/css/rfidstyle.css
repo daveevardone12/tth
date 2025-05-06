@@ -30,6 +30,7 @@ body {
   padding: 0 20px !important;
   min-height: 100vh;
   overflow: hidden;
+  background-color: #eaf4f4;
 }
 
 body::-webkit-scrollbar {
