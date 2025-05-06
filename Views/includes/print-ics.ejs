@@ -1,14 +1,20 @@
 <body class="ics-body">
-  <div class="ics-wrapper" id="printICS" style="display: none;">
+  <div class="ics-wrapper" id="printICS" style="display: none">
     <div class="ics-title">Inventory Custodian Slip (ICS)</div>
 
     <div class="ics-header">
       <div class="ics-header-row">
-        <div class="ics-header-col"><strong>Entity Name:</strong> <span id="printICSEntityName"></span></div>
-        <div class="ics-header-col"><strong>Fund Cluster:</strong> <span id="printICSFundCluster"></span></div>
+        <div class="ics-header-col">
+          <strong>Entity Name:</strong> <span id="printICSEntityName"></span>
+        </div>
+        <div class="ics-header-col">
+          <strong>Fund Cluster:</strong> <span id="printICSFundCluster1"></span>
+        </div>
       </div>
       <div class="ics-header-row">
-        <div class="ics-header-col"><strong>ICS No:</strong> <span id="printICSicsNo"></span></div>
+        <div class="ics-header-col">
+          <strong>ICS No:</strong> <span id="printICSicsNo"></span>
+        </div>
       </div>
     </div>
 
@@ -30,24 +36,29 @@
           <td class="ics-table-data"><span id="printICSUnit"></span></td>
           <td class="ics-table-data"><span id="printICSDescription"></span></td>
           <td class="ics-table-data"><span id="printICSPropertyNo"></span></td>
-          <td class="ics-table-data"><span id="printICSDateAcquired"></span></td>
+          <td class="ics-table-data">
+            <span id="printICSDateAcquired"></span>
+          </td>
           <td class="ics-table-data"><span id="printICSUnitValue"></span></td>
           <td class="ics-table-data"><span id="printICSunitvalue"></span></td>
         </tr>
       </tbody>
     </table>
 
-    <div class="ics-remarks">
-      <strong>Remarks:</strong> New
-    </div>
+    <div class="ics-remarks"><strong>Remarks:</strong> New</div>
 
     <div class="ics-details-grid">
       <div class="ics-box">
-        <p><strong>Date Acquired:</strong> <span id="printICSdateacquired"></span></p>
+        <p>
+          <strong>Date Acquired:</strong>
+          <span id="printICSdateacquired"></span>
+        </p>
         <p><strong>BURs:</strong> <span id="printICSBurs"></span></p>
         <p><strong>PO:</strong> <span id="printICSPo"></span></p>
         <p><strong>Code:</strong> <span id="printICSCode"></span></p>
-        <p><strong>Description:</strong> <span id="printICSdescription"></span></p>
+        <p>
+          <strong>Description:</strong> <span id="printICSdescription"></span>
+        </p>
         <p><strong>IAR #:</strong> <span id="printICSIAR"></span></p>
         <p><strong>Supplier:</strong> <span id="printICSSupplier"></span></p>
         <p><strong>Location:</strong> <span id="printICSLocation"></span></p>
@@ -55,11 +66,16 @@
 
       <div class="ics-box">
         <p><strong>Reminder:</strong></p>
-        <p>If the item/s received is/are not utilized beneficially for work and already unserviceable, you are REQUIRED to RETURN it to OSPU.</p>
+        <p>
+          If the item/s received is/are not utilized beneficially for work and
+          already unserviceable, you are REQUIRED to RETURN it to OSPU.
+        </p>
       </div>
 
       <div class="ics-box ics-policy-box">
-        "Bringing government properties to private homes and for personal use is strictly prohibited. Due care and safekeeping should be applied to this stated property."
+        "Bringing government properties to private homes and for personal use is
+        strictly prohibited. Due care and safekeeping should be applied to this
+        stated property."
       </div>
     </div>
 
@@ -67,7 +83,9 @@
       <div class="ics-signature-box">
         <strong>Received by:</strong>
         <div>Signature Over Printed Name of End User</div>
-        <div class="ics-gap"><u id="printICSAccountable">____________________</u></div>
+        <div class="ics-gap">
+          <u id="printICSAccountable">____________________</u>
+        </div>
         <div>Position / Office</div>
         <div class="ics-gap"><u id="printICSDate">____________________</u></div>
         <div>Date</div>
@@ -76,7 +94,9 @@
       <div class="ics-signature-box">
         <strong>Issued by:</strong>
         <div><u>JEFFREY M. MENESER, M.A.M.</u></div>
-        <div>Signature Over Printed Name of Supply and/or Property Custodian</div>
+        <div>
+          Signature Over Printed Name of Supply and/or Property Custodian
+        </div>
         <div class="ics-gap"><u>____________________</u></div>
         <div>Position / Office</div>
         <div class="ics-gap"><u>____________________</u></div>
@@ -87,130 +107,126 @@
     <div class="ics-note">Appendix 59</div>
   </div>
   <div class="printPhotos hiddenPhotos" id="printICSPhotos">
-      <div style="margin-top: 30px"></div>
-      <!-- <h2 style="text-align: center" ></h2> -->
-      <div id="photoICSContainer" style="text-align: center"></div>
-    </div>
+    <div style="margin-top: 30px"></div>
+    <!-- <h2 style="text-align: center" ></h2> -->
+    <div id="photoICSContainer" style="text-align: center"></div>
+  </div>
 </body>
 
 <style>
-
-.ics-body {
-  font-family: Arial, sans-serif;
-}
-
-.ics-wrapper {
-  max-width: 100%;
-  padding: 15px;
-  border: 1px solid #000;
-  box-sizing: border-box;
-  margin-top: 100px;
-}
-
-.ics-title {
-  text-align: center;
-  font-size: 18px;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-bottom: 15px;
-}
-
-.ics-header {
-  font-size: 12px;
-  margin-bottom: 15px;
-}
-
-.ics-header-row {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-bottom: 5px;
-}
-
-.ics-header-col {
-  flex: 1;
-  min-width: 150px;
-  margin-right: 10px;
-}
-
-.ics-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 12px;
-  margin-bottom: 15px;
-  table-layout: fixed;
-  min-height: 300px;
-}
-
-.ics-table-header,
-.ics-table-data {
-  border: 1px solid #000;
-  padding: 6px;
-  text-align: center;
-  word-break: break-word;
-}
-
-.ics-remarks {
-  font-size: 12px;
-  border: 1px solid #000;
-  padding: 6px;
-  margin-bottom: 15px;
-}
-
-.ics-details-grid {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 10px;
-  justify-content: space-between;
-  font-size: 12px;
-}
-
-.ics-box {
-  flex: 1;
-  min-width: 250px;
-  border: 1px solid #000;
-  padding: 10px;
-  box-sizing: border-box;
-}
-
-.ics-policy-box {
-  font-weight: 600;
-}
-
-.ics-signature-section {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 20px;
-  font-size: 12px;
-}
-
-.ics-signature-box {
-  flex: 1;
-  min-width: 250px;
-  border: 1px solid #000;
-  padding: 20px;
-  text-align: center;
-  box-sizing: border-box;
-}
-
-.ics-gap {
-  margin: 10px 0;
-  display: block;
-}
-
-.ics-note {
-  text-align: center;
-  font-size: 10px;
-  margin-top: 10px;
-}
-
-@media print {
-  .ics-wrapper {
-    page-break-after: always;
+  .ics-body {
+    font-family: Arial, sans-serif;
   }
-}
 
+  .ics-wrapper {
+    max-width: 100%;
+    padding: 15px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+    /* margin-top: 100px; */
+  }
 
+  .ics-title {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+  }
+
+  .ics-header {
+    font-size: 12px;
+    margin-bottom: 15px;
+  }
+
+  .ics-header-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 5px;
+  }
+
+  .ics-header-col {
+    min-width: 150px;
+    margin-left: 10px;
+  }
+
+  .ics-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-bottom: 15px;
+    table-layout: fixed;
+    min-height: 300px;
+  }
+
+  .ics-table-header,
+  .ics-table-data {
+    border: 1px solid #000;
+    padding: 6px;
+    text-align: center;
+    word-break: break-word;
+  }
+
+  .ics-remarks {
+    font-size: 12px;
+    border: 1px solid #000;
+    padding: 6px;
+    margin-bottom: 15px;
+  }
+
+  .ics-details-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    justify-content: space-between;
+    font-size: 12px;
+  }
+
+  .ics-box {
+    flex: 1;
+    min-width: 250px;
+    border: 1px solid #000;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .ics-policy-box {
+    font-weight: 600;
+  }
+
+  .ics-signature-section {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+    font-size: 12px;
+  }
+
+  .ics-signature-box {
+    flex: 1;
+    min-width: 250px;
+    border: 1px solid #000;
+    padding: 20px;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .ics-gap {
+    margin: 10px 0;
+    display: block;
+  }
+
+  .ics-note {
+    text-align: center;
+    font-size: 10px;
+    margin-top: 10px;
+  }
+
+  @media print {
+    .ics-wrapper {
+      page-break-after: always;
+    }
+  }
 </style>

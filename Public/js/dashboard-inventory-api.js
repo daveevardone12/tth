@@ -386,12 +386,14 @@ function printDocument(button) {
     });
     if (button.getAttribute("data-office")) {
       document.body.classList.add("show-office");
+      console.log("triggerd office", document.body);
       setTimeout(() => {
         window.print();
       }, 500);
     }
     if (button.getAttribute("data-table")) {
       console.log("triggerd");
+      console.log(document.body);
       const data1 = button.getAttribute("data-row");
       console.log("triggerd: ", data1);
       const parsedData = JSON.parse(data1); // Convert JSON string back to object
@@ -413,7 +415,7 @@ function printDocument(button) {
           parsedData.accountable;
         document.getElementById("printICSEntityName").innerText =
           parsedData.entity_name;
-        document.getElementById("printICSFundCluster").innerText =
+        document.getElementById("printICSFundCluster1").innerText =
           parsedData.fund_cluster;
         document.getElementById("printICSicsNo").innerText = parsedData.ics_no;
         document.getElementById("printICSQty").innerText = parsedData.quantity;

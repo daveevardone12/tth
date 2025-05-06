@@ -133,10 +133,24 @@ async function fetchInventoryList(page, limit, location) {
   const offset = (page - 1) * limit;
 
   try {
-    // Base query with pagination and optional location filter
+    // Base query with UNION ALL, optional location filter, and pagination
     let baseQuery = `
       SELECT *, COUNT(*) OVER() AS total_count
-      FROM property_acknowledgement_receipt
+      FROM (
+        SELECT id, accountable, unit_cost, date_acquired, location, category, 
+             uacs_code, inventory_item_no, burs_no, estimated_useful_life, 
+             po_no, code, iar, supplier, serial_no, property_no, email, 
+             entity_name, fund_cluster, par_no, quantity, unit, date, 
+             description
+        FROM property_acknowledgement_receipt
+        UNION ALL
+        SELECT id, accountable, unit_cost, date_acquired, location, category, 
+             uacs_code, inventory_item_no, burs_no, estimated_useful_life, 
+             po_no, code, iar, supplier, serial_no, property_no, email, 
+             entity_name, fund_cluster, ics_no, quantity, unit, date, 
+             description
+        FROM inventory_custodian_slip
+      ) AS combined
       ${location ? "WHERE location = $3" : ""}
       ORDER BY id
       LIMIT $1 OFFSET $2
@@ -150,14 +164,14 @@ async function fetchInventoryList(page, limit, location) {
 
     const { rows } = await tthPool.query(baseQuery, params);
 
-    const totalItems = rows.length > 0 ? rows[0].total_count : 0;
+    const totalItems = rows.length > 0 ? parseInt(rows[0].total_count, 10) : 0;
     const totalPages = Math.ceil(totalItems / limit);
 
     const data = rows.map((row) => ({
       ...row,
     }));
 
-    // Fetch counts for each category with optional location filter
+    // Fetch counts for each category (already upgraded getCountByCategory to UNION both tables)
     const totalItemsOffice = await getCountByCategory(
       "%Office Equipment%",
       location
@@ -253,10 +267,15 @@ async function getCountByCategory(categoryPattern, location) {
   try {
     let query = `
       SELECT COUNT(DISTINCT uacs_code) as count
-      FROM property_acknowledgement_receipt
+      FROM (
+        SELECT uacs_code, location FROM property_acknowledgement_receipt
+        UNION ALL
+        SELECT uacs_code, location FROM inventory_custodian_slip
+      ) AS combined
       WHERE uacs_code ILIKE $1
       ${location ? "AND location = $2" : ""}
     `;
+
     let params = [categoryPattern];
     if (location) {
       params.push(location);
@@ -275,10 +294,15 @@ async function fetchLocationData(location) {
   try {
     let query = "";
     let params = [];
+
     if (location) {
       query = `
         SELECT location, COUNT(DISTINCT uacs_code) as metric
-        FROM property_acknowledgement_receipt
+        FROM (
+          SELECT uacs_code, location FROM property_acknowledgement_receipt
+          UNION ALL
+          SELECT uacs_code, location FROM inventory_custodian_slip
+        ) AS combined
         WHERE location = $1
         GROUP BY location
       `;
@@ -286,14 +310,17 @@ async function fetchLocationData(location) {
     } else {
       query = `
         SELECT location, COUNT(DISTINCT uacs_code) as metric
-        FROM property_acknowledgement_receipt
+        FROM (
+          SELECT uacs_code, location FROM property_acknowledgement_receipt
+          UNION ALL
+          SELECT uacs_code, location FROM inventory_custodian_slip
+        ) AS combined
         GROUP BY location
       `;
     }
 
     const { rows } = await tthPool.query(query, params);
 
-    // Format data as needed for the frontend
     const locationData = rows.map((row) => ({
       location: row.location,
       metric: parseInt(row.metric, 10),
@@ -374,25 +401,3 @@ module.exports = router;
 
 // (Optional) keep a reference to the original function if needed:
 // const originalGetCountByCategory = getCountByCategory;
-
-// Overwrite getCountByCategory with a version that uses COUNT(*).
-async function getCountByCategory(categoryPattern, location) {
-  try {
-    let query = `
-      SELECT COUNT(*) AS count
-      FROM property_acknowledgement_receipt
-      WHERE uacs_code ILIKE $1
-      ${location ? "AND location = $2" : ""}
-    `;
-    let params = [categoryPattern];
-    if (location) {
-      params.push(location);
-    }
-
-    const { rows } = await tthPool.query(query, params);
-    return parseInt(rows[0].count, 10);
-  } catch (err) {
-    console.error("Error fetching count by category:", err);
-    return 0;
-  }
-}
