@@ -415,7 +415,7 @@ function printDocument(button) {
           parsedData.accountable;
         document.getElementById("printICSEntityName").innerText =
           parsedData.entity_name;
-        document.getElementById("printICSFundCluster").innerText =
+        document.getElementById("printICSFundCluster1").innerText =
           parsedData.fund_cluster;
         document.getElementById("printICSicsNo").innerText = parsedData.ics_no;
         document.getElementById("printICSQty").innerText = parsedData.quantity;
