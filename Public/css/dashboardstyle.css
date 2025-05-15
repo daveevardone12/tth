@@ -48,9 +48,9 @@ body::-webkit-scrollbar {
 .main-content::-webkit-scrollbar {
   display: none;
 }
-.cards-container::-webkit-scrollbar {
+/* .cards-container::-webkit-scrollbar {
   display: none;
-}
+} */
 
 h1 {
   font-size: 30px;
@@ -177,16 +177,16 @@ i#maximize-icon {
   max-height: 240px;
 }
 
-.cards-container.expanded {
+/* .cards-container.expanded {
   max-height: 150px;
-}
+} */
 
-#minimizeContainer {
+/* #minimizeContainer {
   display: flex;
   justify-content: center;
   margin-top: -10px;
-}
-
+} */
+/* 
 .minimize-button {
   background: none;
   border: none;
@@ -202,9 +202,9 @@ i#maximize-icon {
 .minimize-button:hover {
   color: #ff4d4d;
   text-decoration: underline;
-}
+} */
 
-.toggle-button {
+/* .toggle-button {
   position: absolute;
   top: 1px;
   left: 45.7%;
@@ -223,12 +223,11 @@ i#maximize-icon {
   z-index: 2;
   width: calc(100% - 105px);
   height: calc(100% - 20px);
-}
+} */
 
-.cards-container:hover .toggle-button {
+/* .cards-container:hover .toggle-button {
   opacity: 1;
-  /* Show button when hovering over cards container */
-}
+} */
 
 .icon1 {
   width: 150px;
@@ -500,7 +499,7 @@ tbody tr:nth-child(even) {
   width: calc(100% + 17px);
   margin-left: 0.3px;
   padding-right: 20px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* the new dashboard */
@@ -745,18 +744,18 @@ tbody tr:nth-child(even) {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-
 }
 
 .dashboard-card {
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   padding: 1rem;
 }
 
 .time-date-box {
   text-align: center;
+  position: relative;
 }
 
 .time-date-box h1 {
@@ -806,7 +805,8 @@ tbody tr:nth-child(even) {
   flex-grow: 1;
 }
 
-.logs-box th, .logs-box td {
+.logs-box th,
+.logs-box td {
   border: 1px solid #ccc;
   padding: 0.5rem;
   text-align: center;
@@ -831,4 +831,30 @@ tbody tr:nth-child(even) {
   .dashboard-right {
     flex: 1 1 100%;
   }
+}
+
+.para-logs {
+  display: flex;
+  font-size: large;
+  font-weight: 600;
+  font-family: Poppins;
+}
+
+.background-day {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 120px;
+  color: rgba(0, 0, 0, 0.07); /* black with very low opacity */
+  pointer-events: none; /* so it doesn't block clicks */
+  user-select: none;
+  z-index: 0;
+  font-weight: 700;
+}
+
+.foreground-content {
+  position: relative;
+  z-index: 1;
+  color: black; /* regular content color */
 }

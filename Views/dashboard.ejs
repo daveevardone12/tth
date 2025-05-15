@@ -210,9 +210,9 @@
 
         <!-- Cards -->
         <div class="cards-container collapsed" id="cardsContainer">
-          <button id="expandButton" class="toggle-button">
+          <!-- <button id="expandButton" class="toggle-button">
             Click to Expand
-          </button>
+          </button> -->
 
           <div class="card purple" data-category="ICT Equipment">
             <br /><span id="ICTEquipment">0</span>
@@ -389,10 +389,13 @@
           <div class="dashboard-container">
             <div class="dashboard-left">
               <div class="dashboard-card time-date-box">
-                <h1 id="current-time">--:-- --</h1>
+                <div id="current-day" class="background-day">--</div> <!-- background number -->
+                
+                <h1 id="current-time">--:-- --</h1> 
                 <h2 id="current-month">---</h2>
                 <p id="current-year">----</p>
               </div>
+              
         
               <div class="dashboard-card status-box">
                 <strong>Assigned:</strong>
@@ -407,7 +410,7 @@
         
             <div class="dashboard-right">
               <div class="dashboard-card logs-box">
-                <h3>Logs</h3>
+                <div class="para-logs"> Logs </div>
                 <table>
                   <thead>
                     <tr>
@@ -423,7 +426,8 @@
               </div>
             </div>
           </div>
-        
+     
+          
           <script>
             function updateTimeDate() {
               const now = new Date();
@@ -432,20 +436,23 @@
               const ampm = hours >= 12 ? 'PM' : 'AM';
               const displayHour = hours % 12 || 12;
               const displayMinute = minutes.toString().padStart(2, '0');
-        
+          
               const timeString = `${displayHour}:${displayMinute} ${ampm}`;
               const monthString = now.toLocaleString('default', { month: 'short' }).toUpperCase();
               const yearString = now.getFullYear();
-        
+              const dayString = now.getDate(); // <--- get the day number (1-31)
+          
               document.getElementById('current-time').textContent = timeString;
               document.getElementById('current-month').textContent = monthString;
               document.getElementById('current-year').textContent = yearString;
+              document.getElementById('current-day').textContent = dayString; // <--- update day
             }
-        
+          
             updateTimeDate();
             setInterval(updateTimeDate, 1000);
           </script>
-
+          
+          
         <script>
           function updateTime() {
             let now = new Date();

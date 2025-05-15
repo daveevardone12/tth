@@ -36,7 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const data = await response.json();
       const requests = data.getRFIDList;
-      console.log("RFID Data: ", requests);
       logsTableBody.innerHTML = "";
 
       if (requests.length === 0) {
@@ -459,10 +458,6 @@ document.addEventListener("DOMContentLoaded", function () {
       fontSize: 15,
       chartArea: { width: "70%", height: "85%" },
     };
-
-    const chart = new google.visualization.ColumnChart(
-      document.getElementById("location_chart_div")
-    );
     // chart.draw(chartData, options);
 
     // Show the location chart container
