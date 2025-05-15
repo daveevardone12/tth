@@ -3,6 +3,11 @@ const router = express.Router();
 const tthPool = require("../models/tthDB");
 const passport = require("passport");
 const { ensureAuthenticated } = require("../middleware/middleware");
+const multer = require("multer");
+const XLSX = require("xlsx");
+
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
 router.get("/", ensureAuthenticated, async (req, res) => {
   const page = parseInt(req.query.page) || 1;
