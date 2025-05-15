@@ -538,7 +538,7 @@ const dashboardRoutes = require("./routes/dashboard");
 const userRoutes = require("./Routes/user");
 const parRoutes = require("./Routes/par");
 const ptrRoutes = require("./routes/ptr");
-const icsRoutes = require("./routes/ics");
+const icsRoutes = require("./Routes/ics");
 const inventoryRoutes = require("./Routes/inventory");
 const addItemRoutes = require("./routes/add-item");
 const notifRoutes = require("./Routes/notif");
@@ -694,6 +694,9 @@ app.use("/mrer", mrerRoutes);
 app.use("/wmrf", wmrfRoutes);
 app.use("/rfid", rfidRoutes);
 app.use("/registerCallerID", registerCallerID);
+
+const usemRoutes = require("./routes/usem");
+app.use("/usem", usemRoutes);
 
 // Logout route to clear session
 app.get("/logout", (req, res, next) => {

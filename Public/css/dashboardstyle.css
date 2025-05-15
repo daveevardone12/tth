@@ -48,14 +48,14 @@ body::-webkit-scrollbar {
 .main-content::-webkit-scrollbar {
   display: none;
 }
-/* .cards-container::-webkit-scrollbar {
+.cards-container::-webkit-scrollbar {
   display: none;
-} */
+}
 
 h1 {
   font-size: 30px;
   font-family: Poppins;
-  font-weight: 600;
+  font-weight: 800;
   font-style: normal;
   line-height: normal;
   color: #000;
@@ -174,19 +174,20 @@ i#maximize-icon {
 }
 
 .cards-container.collapsed {
-  max-height: 240px;
+  max-height: 120px;
+  /* Adjust based on the first row's height */
 }
 
-/* .cards-container.expanded {
+.cards-container.expanded {
   max-height: 150px;
-} */
+}
 
-/* #minimizeContainer {
+#minimizeContainer {
   display: flex;
   justify-content: center;
   margin-top: -10px;
-} */
-/* 
+}
+
 .minimize-button {
   background: none;
   border: none;
@@ -202,9 +203,9 @@ i#maximize-icon {
 .minimize-button:hover {
   color: #ff4d4d;
   text-decoration: underline;
-} */
+}
 
-/* .toggle-button {
+.toggle-button {
   position: absolute;
   top: 1px;
   left: 45.7%;
@@ -223,11 +224,12 @@ i#maximize-icon {
   z-index: 2;
   width: calc(100% - 105px);
   height: calc(100% - 20px);
-} */
+}
 
-/* .cards-container:hover .toggle-button {
+.cards-container:hover .toggle-button {
   opacity: 1;
-} */
+  /* Show button when hovering over cards container */
+}
 
 .icon1 {
   width: 150px;
@@ -495,15 +497,15 @@ tbody tr:nth-child(even) {
 .mas-header {
   position: fixed;
   z-index: 1;
-  background-color: #eaf4f4;
+  background-color: #ffffff;
   width: calc(100% + 17px);
   margin-left: 0.3px;
   padding-right: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: none;
 }
 
 /* the new dashboard */
-/* .dashboard-container {
+.dashboard-container {
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-template-rows: auto auto auto;
@@ -575,11 +577,11 @@ tbody tr:nth-child(even) {
 }
 
 .dashboard-status-card {
-  height: 10vw; 
-  width: 15vw; 
-  max-width: 170px; 
+  height: 10vw; /* Responsive height */
+  width: 15vw; /* Responsive width */
+  max-width: 170px; /* Prevents it from growing too large */
   max-height: 100px;
-  font-size: clamp(12px, 1.2vw, 16px);
+  font-size: clamp(12px, 1.2vw, 16px); /* Responsive text size */
   color: #727272;
   font-weight: bold;
   text-align: left;
@@ -588,17 +590,17 @@ tbody tr:nth-child(even) {
   justify-content: space-between;
   padding: 10px;
   position: relative;
-  min-width: 120px; 
+  min-width: 120px; /* Ensures it doesn’t shrink too much */
   min-height: 160px;
 }
 
 .dashboard-status-card span {
-  font-size: clamp(10px, 1vw, 14px);
+  font-size: clamp(10px, 1vw, 14px); /* Keeps "Assigned" and "Not Assigned" readable */
 }
 
 .dashboard-status-card div {
   color: green;
-  font-size: clamp(24px, 2.5vw, 42px); 
+  font-size: clamp(24px, 2.5vw, 42px); /* Responsive number size */
   text-align: right;
   position: absolute;
   bottom: 50px;
@@ -610,18 +612,18 @@ tbody tr:nth-child(even) {
 .dashboard-logs-card {
   grid-column: 2 / 3;
   grid-row: 2 / 3;
-  overflow: hidden; 
+  overflow: hidden; /* Prevents expansion */
   margin-top: 6%;
   margin-left: -11.6vw;
   width: calc(100% + 177px);
-  height: 300px; 
+  height: 300px; /* Set fixed height */
   display: flex;
   flex-direction: column;
 }
 
 .dashboard-table-container::-webkit-scrollbar {
   display: none;
-
+  /* Hide scrollbar for Webkit browsers (Chrome, Safari, etc.) */
 }
 
 
@@ -634,13 +636,13 @@ tbody tr:nth-child(even) {
 
 .dashboard-table-container {
   flex: 1;
-  overflow-y: auto;
+  overflow-y: auto; /* Enables scrolling inside */
 }
 
 .dashboard-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: max-content;
+  min-width: max-content; /* Prevents table from shrinking */
 }
 
 .dashboard-table th,
@@ -648,7 +650,7 @@ tbody tr:nth-child(even) {
   padding: 10px;
   text-align: left;
   border-bottom: 1px solid #ddd;
-} */
+}
 
 .status-out {
   color: red;
@@ -658,7 +660,7 @@ tbody tr:nth-child(even) {
   color: green;
 }
 
-/* @media (max-width: 768px) {
+@media (max-width: 768px) {
   .dashboard-container {
     display: flex;
     flex-direction: column;
@@ -721,140 +723,4 @@ tbody tr:nth-child(even) {
 }
 .dashboard-logs-card::-webkit-scrollbar {
   display: none;
-} */
-
-.dashboard-container {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-left: 100px;
-  margin-right: 100px;
-}
-
-.dashboard-left {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  flex: 1 1 80px;
-}
-
-.dashboard-right {
-  flex: 3 1 600px;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.dashboard-card {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
-}
-
-.time-date-box {
-  text-align: center;
-  position: relative;
-}
-
-.time-date-box h1 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.time-date-box h2 {
-  font-size: 2rem;
-  color: green;
-  margin-bottom: 0.25rem;
-}
-
-.time-date-box p {
-  font-style: italic;
-  color: #333;
-}
-
-.status-box {
-  text-align: center;
-}
-
-.status-box strong {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: #555;
-}
-
-.status-box .status-count {
-  font-size: 2rem;
-  color: green;
-}
-
-.logs-box {
-  height: 100%;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  max-height: 385px;
-  overflow: auto;
-}
-
-.logs-box table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1rem;
-  flex-grow: 1;
-}
-
-.logs-box th,
-.logs-box td {
-  border: 1px solid #ccc;
-  padding: 0.5rem;
-  text-align: center;
-}
-
-.logs-box th {
-  background-color: #f5f5f5;
-  font-weight: bold;
-}
-
-.logs-box td[colspan="4"] {
-  text-align: center;
-  font-style: italic;
-  padding: 1rem;
-}
-
-@media (max-width: 768px) {
-  .dashboard-container {
-    flex-direction: column;
-  }
-
-  .dashboard-right {
-    flex: 1 1 100%;
-  }
-}
-
-.para-logs {
-  display: flex;
-  font-size: large;
-  font-weight: 600;
-  font-family: Poppins;
-}
-
-.background-day {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 120px;
-  color: rgba(0, 0, 0, 0.07); /* black with very low opacity */
-  pointer-events: none; /* so it doesn't block clicks */
-  user-select: none;
-  z-index: 0;
-  font-weight: 700;
-}
-
-.foreground-content {
-  position: relative;
-  z-index: 1;
-  color: black; /* regular content color */
 }
