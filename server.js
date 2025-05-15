@@ -695,6 +695,9 @@ app.use("/wmrf", wmrfRoutes);
 app.use("/rfid", rfidRoutes);
 app.use("/registerCallerID", registerCallerID);
 
+const usemRoutes = require("./routes/usem");
+app.use("/usem", usemRoutes);
+
 // Logout route to clear session
 app.get("/logout", (req, res, next) => {
   req.logOut((err) => {
