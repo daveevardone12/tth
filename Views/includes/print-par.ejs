@@ -1,12 +1,13 @@
-<body class="bodies">
-  <div class="containerss" id="printPar" style="display: none">
-    <div class="headerss">Property Acknowledge Receipt (PAR)</div>
-    <div class="sub-header">
-      <div class="haha">
+<body class="par-body">
+  <div class="par-container" id="printPar" style="display: none;">
+    <div class="par-header">Property Acknowledge Receipt (PAR)</div>
+
+    <div class="par-sub-header">
+      <div class="par-sub-header-col">
         <strong>Entity Name: <span id="printPAREntityName"></span></strong>
         <strong>Fund Cluster: <span id="printPARFundCluster"></span></strong>
       </div>
-      <div>
+      <div class="par-sub-header-col">
         <strong>PAR No: <span id="printPARParNo"></span></strong>
       </div>
     </div>
@@ -23,15 +24,15 @@
           <th class="par-table-header">Total Amount</th>
         </tr>
       </thead>
-      <tbody class="tbady">
-        <tr class="t-ar">
-          <td class="t-d"><span id="printPARQty"></span></td>
-          <td class="t-d"><span id="printPARUnit"></span></td>
-          <td class="t-d"><span id="printPARDescription1"></span></td>
-          <td class="t-d"><span id="printPARPropertyNo"></span></td>
-          <td class="t-d"><span id="printPARDateAcquired"></span></td>
-          <td class="t-d"><span id="printPARUnitValue"></span></td>
-          <td class="t-d"><span id="printPARunitvalue"></span></td>
+      <tbody class="par-table-body">
+        <tr class="par-table-row">
+          <td class="par-table-data"><span id="printPARQty"></span></td>
+          <td class="par-table-data"><span id="printPARUnit"></span></td>
+          <td class="par-table-data"><span id="printPARDescription1"></span></td>
+          <td class="par-table-data"><span id="printPARPropertyNo"></span></td>
+          <td class="par-table-data"><span id="printPARDateAcquired"></span></td>
+          <td class="par-table-data"><span id="printPARUnitValue"></span></td>
+          <td class="par-table-data"><span id="printPARunitvalue"></span></td>
         </tr>
       </tbody>
     </table>
@@ -39,13 +40,10 @@
     <div class="par-remarks">
       <strong>Remarks:</strong> New
     </div>
-    <div class="footer">
-      <div class="Dating">
-        <p>
-          <strong
-            >Data Acquired: <span id="printPARDateAcquired1"></span
-          ></strong>
-        </p>
+
+    <div class="par-footer">
+      <div class="par-footer-box par-footer-dating">
+        <p><strong>Data Acquired: <span id="printPARDateAcquired1"></span></strong></p>
         <p>BURs: <span id="printPARBurs"></span></p>
         <p>PO: <span id="printPARPo"></span></p>
         <p>Code: <span id="printPARCode"></span></p>
@@ -73,13 +71,13 @@
         <span>Signature Over Printed Name of End User</span>
         <span class="par-sign-line"><u id="printPARAccountable">____________________</u></span>
         <span>Position / Office</span>
-        <span class="gaps"><u id="printPARDate">____________________</u></span>
+        <span class="par-sign-line"><u id="printPARDate">____________________</u></span>
         <span>Date</span>
       </div>
 
       <div class="par-sign-box">
         <div class="par-sign-label"><strong>Issued by:</strong></div>
-        <span><u>JEFFREY M. MENESES, M.A.M.</u></span>
+        <span><u>JEFFREY M. MENESER, M.A.M.</u></span>
         <span>Signature Over Printed Name of Supply and/or Property Custodian</span>
         <span class="par-sign-line"><u>____________________</u></span>
         <span>Position / Office</span>
@@ -90,156 +88,157 @@
 
     <div class="par-note">Appendix 59</div>
   </div>
+
   <div class="printPhotos hiddenPhotos" id="printPARPhotos">
-    <div style="margin-top: 500px"></div>
-    <!-- <h2 style="text-align: center" ></h2> -->
-    <div id="photoPARContainer" style="text-align: center"></div>
-  </div>
+      <div style="margin-top: 500px"></div>
+      <!-- <h2 style="text-align: center" ></h2> -->
+      <div id="photoPARContainer" style="text-align: center"></div>
+
 </body>
 
-
 <style>
- .par-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-.par-container {
-  width: 210mm;
-  max-width: 100%;
-  margin: 0 auto;
-  /* border: 1px solid #000; */
-  padding: 10px;
-  box-sizing: border-box;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  margin-top: 50px;
-}
-
-.par-header {
-  text-align: center;
-  font-size: 18px;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-
-.par-sub-header {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  font-size: 12px;
-  margin-bottom: 10px;
-}
-
-.par-sub-header-col {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.par-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 12px;
-  margin-bottom: 10px;
-  table-layout: fixed;
-}
-
-.par-table-header,
-.par-table-data {
-  border: 1px solid black;
-  padding: 5px;
-  text-align: center;
-  word-break: break-word;
-  overflow-wrap: break-word;
-}
-
-.par-remarks {
-  font-size: 12px;
-  margin-bottom: 10px;
-  border: 1px solid black;
-  padding: 5px;
-  word-wrap: break-word;
-}
-
-.par-footer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  font-size: 12px;
-  gap: 10px;
-}
-
-.par-footer-box {
-  flex: 1;
-  min-width: 250px;
-  border: 1px solid #000;
-  padding: 1em;
-  box-sizing: border-box;
-}
-
-.par-footer-dating {
-  padding-left: 1em;
-}
-
-.par-footer-warning {
-  font-size: 13px;
-  font-weight: 550;
-  padding: 2em;
-}
-
-.par-signatures {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-top: 20px;
-  font-size: 12px;
-  gap: 10px;
-}
-
-.par-sign-box {
-  text-align: center;
-  flex: 1;
-  min-width: 250px;
-  border: 1px solid #000;
-  padding: 2em;
-  box-sizing: border-box;
-}
-
-.par-sign-label {
-  text-align: left;
-  margin-bottom: 2em;
-}
-
-.par-sign-box span {
-  display: block;
-  margin-top: 15px;
-  word-break: break-word;
-}
-
-.par-sign-line {
-  margin-top: 10px;
-}
-
-.par-note {
-  font-size: 10px;
-  text-align: center;
-  margin-top: 5px;
-}
-
-/* PRINT SUPPORT */
-@media print {
-  .par-container {
-    page-break-after: always;
+  .par-body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
   }
-
+  
+  .par-container {
+    width: 210mm;
+    max-width: 100%;
+    margin: 0 auto;
+    border: 1px solid #000;
+    padding: 10px;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    margin-top: 50px;
+  }
+  
+  .par-header {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  
+  .par-sub-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  
+  .par-sub-header-col {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .par-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-bottom: 10px;
+    table-layout: fixed;
+    min-height: 300px;
+  }
+  
   .par-table-header,
-  .par-table-data,
+  .par-table-data {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  .par-remarks {
+    font-size: 12px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    padding: 5px;
+    word-wrap: break-word;
+  }
+  
+  .par-footer {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    font-size: 12px;
+    gap: 10px;
+  }
+  
+  .par-footer-box {
+    flex: 1;
+    min-width: 250px;
+    border: 1px solid #000;
+    padding: 1em;
+    box-sizing: border-box;
+  }
+  
+  .par-footer-dating {
+    padding-left: 1em;
+  }
+  
+  .par-footer-warning {
+    font-size: 13px;
+    font-weight: 550;
+    padding: 2em;
+  }
+  
+  .par-signatures {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+    font-size: 12px;
+    gap: 10px;
+  }
+  
+  .par-sign-box {
+    text-align: center;
+    flex: 1;
+    min-width: 250px;
+    border: 1px solid #000;
+    padding: 2em;
+    box-sizing: border-box;
+  }
+  
+  .par-sign-label {
+    text-align: left;
+    margin-bottom: 2em;
+  }
+  
   .par-sign-box span {
+    display: block;
+    margin-top: 15px;
     word-break: break-word;
   }
-}
+  
+  .par-sign-line {
+    margin-top: 10px;
+  }
+  
+  .par-note {
+    font-size: 10px;
+    text-align: center;
+    margin-top: 5px;
+  }
+  
+  /* PRINT SUPPORT */
+  @media print {
+    .par-container {
+      page-break-after: always;
+    }
+  
+    .par-table-header,
+    .par-table-data,
+    .par-sign-box span {
+      word-break: break-word;
+    }
+  }
 
 </style>

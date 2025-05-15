@@ -65,7 +65,7 @@ router.post("/signup/submit", async (req, res) => {
       service: "gmail", // Use Gmail (or another email service)
       auth: {
         user: "davemarlon74@gmail.com", // Replace with your Gmail address
-        pass: "wbld qbwe onmw miqp", // Use the generated app password (see below)
+        pass: "dumq vrzc llvo wlug", // Use the generated app password (see below)
       },
     });
 

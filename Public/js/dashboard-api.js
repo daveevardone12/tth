@@ -36,7 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const data = await response.json();
       const requests = data.getRFIDList;
-
       logsTableBody.innerHTML = "";
 
       if (requests.length === 0) {
@@ -112,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
       fetchIntervalId = setInterval(fetchTotalTagsAssigned, 1000); // Every second
       fetchIntervalId = setInterval(fetchUnregisteredRFIDs, 1000); // Every second
       fetchIntervalId = setInterval(fetchInventoryUpdates, 1000); // Every second
-      console.log("Fetch interval started");
+      // console.log("Fetch interval started");
     }
   }
 
@@ -133,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const data = await response.json();
       const requests = data.getRFIDList;
       document.getElementById("totalAssignedItem").innerText = requests.length;
-      console.log("total tags assigned: ", requests.length);
+      // console.log("total tags assigned: ", requests.length);
     } catch (error) {
       console.error("Error fetching request data: ", error);
     }
@@ -151,23 +150,23 @@ document.addEventListener("DOMContentLoaded", function () {
       // displayUnregisteredRFIDs(data.unregisteredRFIDs);
       document.getElementById("totalNotAssignedItem").innerText =
         data.unregisteredRFIDs.length;
-      console.log("Unregistered", data);
+      // console.log("Unregistered", data);
     } catch (error) {
       console.error("Error fetching unregistered RFID logs:", error.message);
     }
   }
 
   // Toggle dropdown visibility
-  dropdownButton.addEventListener("click", function (event) {
-    event.stopPropagation(); // Prevent event from bubbling up to window
-    dropdownOptions.style.display =
-      dropdownOptions.style.display === "block" ? "none" : "block";
-    // Update ARIA attribute for accessibility
-    dropdownButton.setAttribute(
-      "aria-expanded",
-      dropdownOptions.style.display === "block"
-    );
-  });
+  // dropdownButton.addEventListener("click", function (event) {
+  //   event.stopPropagation(); // Prevent event from bubbling up to window
+  //   dropdownOptions.style.display =
+  //     dropdownOptions.style.display === "block" ? "none" : "block";
+  //   // Update ARIA attribute for accessibility
+  //   dropdownButton.setAttribute(
+  //     "aria-expanded",
+  //     dropdownOptions.style.display === "block"
+  //   );
+  // });
 
   // Hide dropdown when clicking outside
   window.addEventListener("click", function (event) {
@@ -204,7 +203,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Function to update DOM elements with fetched inventory data
   function updateInventoryCounts(data) {
-    console.log(data);
+    // console.log(data);
     document.getElementById("officeEquipment").innerText =
       data.totalItemsOffice;
     document.getElementById("ICTEquipment").innerText =
@@ -240,82 +239,82 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Function to draw the Inventory Google Bar Chart
-  function drawInventoryChart(data) {
-    // Prepare the data for the chart
-    const chartData = [
-      ["Category", "Total Distinct UACS Codes"],
-      ["ICT Equipment", data.totalItemsICTEquipment],
-      ["Office Equipment", data.totalItemsOffice],
-      ["Agricultural and Forestry Equipment", data.totalItemsAgriEquipment],
-      ["Medical Equipment", data.totalItemsMedEquipment],
-      ["Printing Equipment", data.totalItemsPrintEquipment],
-      ["Technical and Scientific Equipment", data.totalItemsTSEquipment],
-      ["Other Machinery and Equipment", data.totalItemsOMEquipment],
-      ["Motor Vehicles", data.totalMotorVehicles],
-      ["Furniture and Fixtures", data.totalFurnitureEquipment],
-      ["Books", data.totalBooks],
-      ["Software", data.totalSoftware],
-      ["Machinery", data.totalMachineryEquipment],
-      ["Marine and Machinery Equipment", data.totalMarineandMachineryEquipment],
-      ["Communication Equipment", data.totalCommunicationEquipment],
-      [
-        "Disaster Response and Rescue Equipment",
-        data.totalDisasterResponseandRescueEquipment,
-      ],
-      [
-        "Military Police and Security Equipment",
-        data.totalMilitaryPoliceandSecurityEquipment,
-      ],
-      ["Sports Equipment", data.totalSportsEquipment],
-    ];
+  // function drawInventoryChart(data) {
+  //   // Prepare the data for the chart
+  //   const chartData = [
+  //     ["Category", "Total Distinct UACS Codes"],
+  //     ["ICT Equipment", data.totalItemsICTEquipment],
+  //     ["Office Equipment", data.totalItemsOffice],
+  //     ["Agricultural and Forestry Equipment", data.totalItemsAgriEquipment],
+  //     ["Medical Equipment", data.totalItemsMedEquipment],
+  //     ["Printing Equipment", data.totalItemsPrintEquipment],
+  //     ["Technical and Scientific Equipment", data.totalItemsTSEquipment],
+  //     ["Other Machinery and Equipment", data.totalItemsOMEquipment],
+  //     ["Motor Vehicles", data.totalMotorVehicles],
+  //     ["Furniture and Fixtures", data.totalFurnitureEquipment],
+  //     ["Books", data.totalBooks],
+  //     ["Software", data.totalSoftware],
+  //     ["Machinery", data.totalMachineryEquipment],
+  //     ["Marine and Machinery Equipment", data.totalMarineandMachineryEquipment],
+  //     ["Communication Equipment", data.totalCommunicationEquipment],
+  //     [
+  //       "Disaster Response and Rescue Equipment",
+  //       data.totalDisasterResponseandRescueEquipment,
+  //     ],
+  //     [
+  //       "Military Police and Security Equipment",
+  //       data.totalMilitaryPoliceandSecurityEquipment,
+  //     ],
+  //     ["Sports Equipment", data.totalSportsEquipment],
+  //   ];
 
-    const dataTable = google.visualization.arrayToDataTable(chartData);
+  //   // const dataTable = google.visualization.arrayToDataTable(chartData);
 
-    const options = {
-      title: "Inventory Items by Category",
-      titleTextStyle: {
-        fontName: "Poppins",
-        fontSize: 16, // Adjust the title font size
-        bold: true, // Make title bold
-      },
-      chartArea: { width: "48%", height: "85%" }, // Adjust chart area within the container
-      hAxis: {
-        title: "Total Distinct UACS Codes",
-        minValue: 0,
-        textStyle: {
-          fontSize: 12,
-          bold: true, // Make horizontal axis labels bold
-        },
-        titleTextStyle: {
-          fontSize: 12,
-          bold: true, // Make horizontal axis title bold
-        },
-      },
-      vAxis: {
-        title: "Category",
-        textStyle: {
-          fontSize: 12,
-          bold: true, // Make vertical axis labels bold
-        },
-        titleTextStyle: {
-          fontSize: 12,
-          bold: true, // Make vertical axis title bold
-        },
-      },
-      colors: ["#4285F4"], // Example color
-      fontSize: 12,
-    };
+  //   const options = {
+  //     title: "Inventory Items by Category",
+  //     titleTextStyle: {
+  //       fontName: "Poppins",
+  //       fontSize: 16, // Adjust the title font size
+  //       bold: true, // Make title bold
+  //     },
+  //     chartArea: { width: "48%", height: "85%" }, // Adjust chart area within the container
+  //     hAxis: {
+  //       title: "Total Distinct UACS Codes",
+  //       minValue: 0,
+  //       textStyle: {
+  //         fontSize: 12,
+  //         bold: true, // Make horizontal axis labels bold
+  //       },
+  //       titleTextStyle: {
+  //         fontSize: 12,
+  //         bold: true, // Make horizontal axis title bold
+  //       },
+  //     },
+  //     vAxis: {
+  //       title: "Category",
+  //       textStyle: {
+  //         fontSize: 12,
+  //         bold: true, // Make vertical axis labels bold
+  //       },
+  //       titleTextStyle: {
+  //         fontSize: 12,
+  //         bold: true, // Make vertical axis title bold
+  //       },
+  //     },
+  //     colors: ["#4285F4"], // Example color
+  //     fontSize: 12,
+  //   };
 
-    const chart = new google.visualization.BarChart(
-      document.getElementById("chart_div")
-    );
-    chart.draw(dataTable, options);
+  //   const chart = new google.visualization.BarChart(
+  //     document.getElementById("chart_div")
+  //   );
+  //   chart.draw(dataTable, options);
 
-    // Show the inventory chart container
-    if (inventoryChartContainer) {
-      inventoryChartContainer.style.display = "flex";
-    }
-  }
+  //   // Show the inventory chart container
+  //   if (inventoryChartContainer) {
+  //     inventoryChartContainer.style.display = "flex";
+  //   }
+  // }
 
   // Function to fetch inventory updates and draw the chart
   function fetchInventoryUpdates() {
@@ -336,10 +335,10 @@ document.addEventListener("DOMContentLoaded", function () {
         .then((data) => {
           // Update DOM elements with fetched data
           updateInventoryCounts(data);
-          console.log("Inventory Data:", data);
+          // console.log("Inventory Data:", data);
 
           // Draw or update the chart with the fetched data
-          drawInventoryChart(data);
+          // drawInventoryChart(data);
         })
         .catch((error) => {
           console.error("Error fetching inventory updates:", error);
@@ -378,7 +377,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return response.json();
       })
       .then((data) => {
-        console.log("Location Data:", data);
+        // console.log("Location Data:", data);
         // Draw or update the chart with the fetched data
         drawLocationChart(data.locationData);
       })
@@ -414,14 +413,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Prepare the data for the chart
-    const chartData = new google.visualization.DataTable();
-    chartData.addColumn("string", "Location");
-    chartData.addColumn("number", "Count"); // Renamed from 'Metric' to 'Count'
+    // const chartData = new google.visualization.DataTable();
+    // chartData.addColumn("string", "Location");
+    // chartData.addColumn("number", "Count"); // Renamed from 'Metric' to 'Count'
 
-    // Assuming 'locationData' is an array of objects with 'location' and 'metric' properties
-    locationData.forEach((item) => {
-      chartData.addRow([item.location, item.metric]);
-    });
+    // // Assuming 'locationData' is an array of objects with 'location' and 'metric' properties
+    // locationData.forEach((item) => {
+    //   chartData.addRow([item.location, item.metric]);
+    // });
 
     const options = {
       title: "Location-Based Counts", // Updated title
@@ -459,11 +458,7 @@ document.addEventListener("DOMContentLoaded", function () {
       fontSize: 15,
       chartArea: { width: "70%", height: "85%" },
     };
-
-    const chart = new google.visualization.ColumnChart(
-      document.getElementById("location_chart_div")
-    );
-    chart.draw(chartData, options);
+    // chart.draw(chartData, options);
 
     // Show the location chart container
     if (locationChartContainer) {
@@ -527,7 +522,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Function to fetch data for a specific category and update the chart
   function fetchDataAndUpdateChart(category) {
-    console.log(`Category clicked: ${category}`);
+    // console.log(`Category clicked: ${category}`);
     // Example: Fetch data for the category and redraw the chart
     // You need to implement the endpoint and data structure accordingly
     /*

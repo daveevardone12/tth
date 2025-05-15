@@ -479,47 +479,6 @@ input[type="radio"] {
   transition: all 0.3s ease-in-out;
 }
 
-/* print csss !!!!!!!! */
-
-@media print {
-  .container,
-  .sidebar {
-    display: none;
-  }
-
-  #printICS,
-  #printPar,
-  .printPhotos,
-  #printOffice {
-    display: none; /* Default to hidden */
-  }
-
-  .hiddenPhotos {
-    display: none !important; /* Hide photos when printing */
-  }
-
-  .show-office #printOffice {
-    display: block !important;
-  }
-
-  /* Show ICS when printing */
-  .show-ics #printICS {
-    display: block !important;
-  }
-  .show-ics .printPhotos {
-    display: block;
-  }
-
-  /* Show PAR when printing */
-  .show-par #printPar {
-    display: block !important;
-  }
-
-  .show-par .printPhotos {
-    display: block;
-  }
-}
-
 #printICS,
 #printPar,
 .printPhotos {
@@ -582,7 +541,8 @@ button:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.681);
+  backdrop-filter: blur(5px);
   justify-content: center;
   align-items: center;
 }
@@ -636,4 +596,45 @@ input {
 label {
   display: block;
   margin-top: 10px;
+}
+
+/* print csss !!!!!!!! */
+
+@media print {
+  .container,
+  .sidebar {
+    display: none;
+  }
+
+  #printICS,
+  #printPar,
+  .printPhotos,
+  #printOffice {
+    display: none; /* Default to hidden */
+  }
+
+  .hiddenPhotos {
+    display: none !important; /* Hide photos when printing */
+  }
+
+  .show-office #printOffice {
+    display: block !important;
+  }
+
+  /* Show ICS when printing */
+  .show-ics #printICS {
+    display: block !important;
+  }
+  .show-ics .printPhotos {
+    display: block;
+  }
+
+  /* Show PAR when printing */
+  .show-par #printPar {
+    display: block !important;
+  }
+
+  .show-par .printPhotos {
+    display: block;
+  }
 }

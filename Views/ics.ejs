@@ -76,7 +76,7 @@
                                         <div class="form-group">
                                             <p id="errorMessage" style="color: red; display: none;">Value cannot be more than 49999.</p>
                                             <label for="cost">Unit Cost/Value *</label>
-                                            <input type="number" id="cost" name="cost" placeholder="must be greater than 49999"
+                                            <input type="number" id="cost" name="cost" placeholder="must be less than 49999"
                                                 required max="49999" oninput="validateInput()" >
                                         </div>
                                         <div class="form-group">
@@ -125,7 +125,7 @@
                                               <!-- Real Options -->
                                               <option value="Machinery #1060501000">Machinery #1060501000</option>
                                               <option value="Office Equipment #1060502000">Office Equipment #1060502000</option>
-                                              <option value="Agricultural Equipment #1060503000">Agricultural Equipment #1060503000</option>
+                                              <option value="Agricultural Equipment #1060504000">Agricultural Equipment #1060504000</option>
                                               <option value="Medical Equipment #1060511000">Medical Equipment #1060511000</option>
                                               <option value="Printing Equipment #1060512000">Printing Equipment #1060512000</option>
                                               <option value="Technical and Scientific Equipment #1060514000">
@@ -334,33 +334,33 @@
                                    
                                     <script>
                                         function printDocument() {
-                                            document.getElementById('printEntityName').innerText = document.getElementById('entity_name').value;
-                                            document.getElementById('printFundCluster').innerText = document.getElementById('fund_cluster').value;
-                                            document.getElementById('printicsNo').innerText = document.getElementById('Ics_no').value;
-                                            document.getElementById('printQty').innerText = document.getElementById('quantity').value;
-                                            document.getElementById('printUnit').innerText = document.getElementById('unit').value;
-                                            document.getElementById('printDescription').innerText = document.getElementById('description').value;
-                                            document.getElementById('printPropertyNo').innerText = document.getElementById('propertyNo').value;
-                                            document.getElementById('printDateAcquired').innerText = document.getElementById('dateAcquired').value;
-                                            document.getElementById('printdateacquired').innerText = document.getElementById('dateAcquired').value;
-                                            document.getElementById('printUnitValue').innerText = document.getElementById('cost').value;
-                                            document.getElementById('printunitvalue').innerText = document.getElementById('cost').value;
-                                            document.getElementById('printBurs').innerText = document.getElementById('burs').value;
-                                            document.getElementById('printPo').innerText = document.getElementById('po').value;
-                                            document.getElementById('printdescription').innerText = document.getElementById('description').value;
-                                            document.getElementById('printCode').innerText = document.getElementById('code').value;
-                                            document.getElementById('printIAR').innerText = document.getElementById('iar').value;
-                                            document.getElementById('printSupplier').innerText = document.getElementById('supplier').value;
+                                            document.getElementById('printICSEntityName').innerText = document.getElementById('entity_name').value;
+                                            document.getElementById('printICSFundCluster1').innerText = document.getElementById('fund_cluster').value;
+                                            document.getElementById('printICSicsNo').innerText = document.getElementById('Ics_no').value;
+                                            document.getElementById('printICSQty').innerText = document.getElementById('quantity').value;
+                                            document.getElementById('printICSUnit').innerText = document.getElementById('unit').value;
+                                            document.getElementById('printICSDescription').innerText = document.getElementById('description').value;
+                                            document.getElementById('printICSPropertyNo').innerText = document.getElementById('propertyNo').value;
+                                            document.getElementById('printICSDateAcquired').innerText = document.getElementById('dateAcquired').value;
+                                            document.getElementById('printICSdateacquired').innerText = document.getElementById('dateAcquired').value;
+                                            document.getElementById('printICSUnitValue').innerText = document.getElementById('cost').value;
+                                            document.getElementById('printICSunitvalue').innerText = document.getElementById('cost').value;
+                                            document.getElementById('printICSBurs').innerText = document.getElementById('burs').value;
+                                            document.getElementById('printICSPo').innerText = document.getElementById('po').value;
+                                            document.getElementById('printICSdescription').innerText = document.getElementById('description').value;
+                                            document.getElementById('printICSCode').innerText = document.getElementById('code').value;
+                                            document.getElementById('printICSIAR').innerText = document.getElementById('iar').value;
+                                            document.getElementById('printICSSupplier').innerText = document.getElementById('supplier').value;
                                             
                                             // Update the displayed location when a user selects an option
                                             document.getElementById('location').addEventListener('change', function () {
                                               let selectedValue = this.value;
-                                              document.getElementById('printLocation').innerText = selectedValue === 'cancel' ? '' : selectedValue;
+                                              document.getElementById('printICSLocation').innerText = selectedValue === 'cancel' ? '' : selectedValue;
                                             });
                                             
                                             // Fetch the selected location and print it
                                             function printDocument() {
-                                              let locationText = document.getElementById('printLocation').innerText;
+                                              let locationText = document.getElementById('printICSLocation').innerText;
                                               
                                               if (locationText) {
                                                 window.print(); // Opens the browser print dialog
@@ -370,16 +370,16 @@
                                             }
                                             
                                             document.getElementById('printICSAccountable').innerText = document.getElementById('accountable').value;
-                                            document.getElementById('printDate').innerText = document.getElementById('date').value;
+                                            document.getElementById('printICSDate').innerText = document.getElementById('date').value;
 
                                             // Validate before printing
                                                             if (!validateBeforePrint()) return;
 
                                             // Show the printPhotos section before printing
-                                            const printPhotos = document.getElementById("printPhotos");
+                                            const printPhotos = document.getElementById("printICSPhotos");
                                             printPhotos.style.display = "block";
 
-                                            let photoContainer = document.getElementById("photoContainer");
+                                            let photoContainer = document.getElementById("photoICSContainer");
                                             photoContainer.innerHTML = ""; // Clear previous images
 
                                             // Add images dynamically
@@ -526,7 +526,7 @@
                                     selectElement.value = ""; // Reset the selection
                                 }
                             }
-                        </script> -->
+                        </script> 
 
                      
 

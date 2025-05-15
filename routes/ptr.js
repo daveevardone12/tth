@@ -55,31 +55,56 @@ router.post("/save", async (req, res) => {
   console.log(data);
 
   try {
+    // Update Inventory Custodian Slip (ICS)
     if (data.documentType === "ics") {
-      await tthPool.query(
-        `UPDATE inventory_custodian_slip SET accountable = $1 WHERE accountable = $2`,
-        [data.to_accountable, data.from_accountable]
+      const result = await tthPool.query(
+        `UPDATE inventory_custodian_slip 
+         SET accountable = $1, email = $2 
+         WHERE accountable = $3 AND email = $4 
+         RETURNING *;`,
+        [
+          data.to_accountable,
+          data.to_email,
+          data.from_accountable,
+          data.from_email,
+        ]
       );
-    } else if (data.documentType === "par") {
-      await tthPool.query(
-        `UPDATE property_acknowledgement_receipt SET accountable = $1 WHERE accountable = $2`,
-        [data.to_accountable, data.from_accountable]
+      console.log("Updated ICS rows:", result.rows);
+    }
+    // Update Property Acknowledgement Receipt (PAR)
+    else if (data.documentType === "par") {
+      const result = await tthPool.query(
+        `UPDATE property_acknowledgement_receipt 
+         SET accountable = $1, email = $2 
+         WHERE accountable = $3 AND email = $4 
+         RETURNING *;`,
+        [
+          data.to_accountable,
+          data.to_email,
+          data.from_accountable,
+          data.from_email,
+        ]
       );
+      console.log("Updated PAR rows:", result.rows);
     }
 
-    await tthPool.query(
+    // Insert into Property Transfer Receipt
+    const insertResult = await tthPool.query(
       `INSERT INTO property_transfer_receipt (
         property_name, fund_cluster, from_accountable, to_accountable, 
-        ptr_no, ptr_date, transfer_type, specify_box, date_acquired, 
-        property_no, quantity, amount, condition_ppe, description, reason_for_transfer
+        from_email, to_email, ptr_no, ptr_date, transfer_type, 
+        specify_box, date_acquired, property_no, quantity, 
+        amount, condition_ppe, description, reason_for_transfer
       ) VALUES (
-        $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15
+        $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17
       )`,
       [
         data.property_name,
         data.fund_cluster,
         data.from_accountable,
         data.to_accountable,
+        data.from_email,
+        data.to_email,
         data.ptr_no,
         data.ptr_date,
         data.transfer_type,
@@ -93,7 +118,9 @@ router.post("/save", async (req, res) => {
         data.reason_for_transfer,
       ]
     );
+    console.log("Inserted rows:", insertResult.rows); // Log the inserted rows
 
+    // Success Response
     req.flash("success", "Success");
     return res.redirect("/ptr");
   } catch (error) {

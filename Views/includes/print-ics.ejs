@@ -1,13 +1,20 @@
-<body class="bodies">
-  <div class="containerss" id="printICS" style="display: none">
-    <div class="headerss">Inventory Custodian Slip (ICS)</div>
-    <div class="sub-header">
-      <div class="haha">
-        <strong>Entity Name: <span id="printICSEntityName"></span></strong>
-        <strong>Fund Cluster: <span id="printICSFundCluster"></span></strong>
+<body class="ics-body">
+  <div class="ics-wrapper" id="printICS" style="display: none">
+    <div class="ics-title">Inventory Custodian Slip (ICS)</div>
+
+    <div class="ics-header">
+      <div class="ics-header-row">
+        <div class="ics-header-col">
+          <strong>Entity Name:</strong> <span id="printICSEntityName"></span>
+        </div>
+        <div class="ics-header-col">
+          <strong>Fund Cluster:</strong> <span id="printICSFundCluster1"></span>
+        </div>
       </div>
-      <div>
-        <strong>ICS No: <span id="printICSicsNo"></span></strong>
+      <div class="ics-header-row">
+        <div class="ics-header-col">
+          <strong>ICS No:</strong> <span id="printICSicsNo"></span>
+        </div>
       </div>
     </div>
 
@@ -23,35 +30,38 @@
           <th class="ics-table-header">Total Amount</th>
         </tr>
       </thead>
-      <tbody class="tbady">
-        <tr class="t-ar">
-          <td class="t-d"><span id="printICSQty"></span></td>
-          <td class="t-d"><span id="printICSUnit"></span></td>
-          <td class="t-d"><span id="printICSDescription"></span></td>
-          <td class="t-d"><span id="printICSPropertyNo"></span></td>
-          <td class="t-d"><span id="printICSDateAcquired"></span></td>
-          <td class="t-d"><span id="printICSUnitValue"></span></td>
-          <td class="t-d"><span id="printICSunitvalue"></span></td>
+      <tbody class="ics-table-body">
+        <tr class="ics-table-row">
+          <td class="ics-table-data"><span id="printICSQty"></span></td>
+          <td class="ics-table-data"><span id="printICSUnit"></span></td>
+          <td class="ics-table-data"><span id="printICSDescription"></span></td>
+          <td class="ics-table-data"><span id="printICSPropertyNo"></span></td>
+          <td class="ics-table-data">
+            <span id="printICSDateAcquired"></span>
+          </td>
+          <td class="ics-table-data"><span id="printICSUnitValue"></span></td>
+          <td class="ics-table-data"><span id="printICSunitvalue"></span></td>
         </tr>
       </tbody>
     </table>
 
     <div class="ics-remarks"><strong>Remarks:</strong> New</div>
 
-    <div class="ics-details-row">
+    <div class="ics-details-grid">
       <div class="ics-box">
         <p>
-          <strong
-            >Data Acquired: <span id="printICSdateacquired"></span
-          ></strong>
+          <strong>Date Acquired:</strong>
+          <span id="printICSdateacquired"></span>
         </p>
-        <p>BURs: <span id="printICSBurs"></span></p>
-        <p>PO: <span id="printICSPo"></span></p>
-        <p>Code: <span id="printICSCode"></span></p>
-        <p>Description: <span id="printICSdescription"></span></p>
-        <p>IAR #: <span id="printICSIAR"></span></p>
-        <p>Supplier: <span id="printICSSupplier"></span></p>
-        <p>Location: <span id="printICSLocation"></span></p>
+        <p><strong>BURs:</strong> <span id="printICSBurs"></span></p>
+        <p><strong>PO:</strong> <span id="printICSPo"></span></p>
+        <p><strong>Code:</strong> <span id="printICSCode"></span></p>
+        <p>
+          <strong>Description:</strong> <span id="printICSdescription"></span>
+        </p>
+        <p><strong>IAR #:</strong> <span id="printICSIAR"></span></p>
+        <p><strong>Supplier:</strong> <span id="printICSSupplier"></span></p>
+        <p><strong>Location:</strong> <span id="printICSLocation"></span></p>
       </div>
 
       <div class="ics-box">
@@ -68,16 +78,17 @@
         stated property."
       </div>
     </div>
-    <div class="signature-section">
-      <div class="signature-box">
-        <div class="bax"><strong>Received by:</strong></div>
-        <span>Signature Over Printed Name of End User</span>
-        <span class="gaps"
-          ><u id="printICSAccountable">____________________</u></span
-        >
-        <span>Position / Office</span>
-        <span class="gaps"><u id="printICSDate">____________________</u></span>
-        <span>Date</span>
+
+    <div class="ics-signature-section">
+      <div class="ics-signature-box">
+        <strong>Received by:</strong>
+        <div>Signature Over Printed Name of End User</div>
+        <div class="ics-gap">
+          <u id="printICSAccountable">____________________</u>
+        </div>
+        <div>Position / Office</div>
+        <div class="ics-gap"><u id="printICSDate">____________________</u></div>
+        <div>Date</div>
       </div>
 
       <div class="ics-signature-box">
@@ -110,8 +121,9 @@
   .ics-wrapper {
     max-width: 100%;
     padding: 15px;
-   margin-top: 50px;
+    border: 1px solid #000;
     box-sizing: border-box;
+    /* margin-top: 100px; */
   }
 
   .ics-title {
@@ -135,9 +147,8 @@
   }
 
   .ics-header-col {
-    flex: 1;
     min-width: 150px;
-    margin-right: 10px;
+    margin-left: 10px;
   }
 
   .ics-table {
@@ -146,6 +157,7 @@
     font-size: 12px;
     margin-bottom: 15px;
     table-layout: fixed;
+    min-height: 300px;
   }
 
   .ics-table-header,
@@ -163,35 +175,21 @@
     margin-bottom: 15px;
   }
 
-  .ics-details-row {
+  .ics-details-grid {
     display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    font-size: 12px;
-    margin-bottom: 15px;
     flex-wrap: nowrap;
+    gap: 10px;
+    justify-content: space-between;
+    font-size: 12px;
   }
 
   .ics-box {
     flex: 1;
+    min-width: 250px;
     border: 1px solid #000;
     padding: 10px;
     box-sizing: border-box;
-    min-width: 0;
   }
-
-  .ics-box p {
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  white-space: normal;
-}
-
-#printdescription {
-  display: inline-block;
-  max-width: 100%;
-  word-break: break-word;
-}
-
 
   .ics-policy-box {
     font-weight: 600;
