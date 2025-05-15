@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Management</title>
+    <link rel="stylesheet" href="../css/usemstyle.css" />
+    <link rel="stylesheet" href="../css/general.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    .icon-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+      margin: 1px;
+      padding: 0;
+    }
+    .remove {
+      color: green;
+    }
+
+    .modify {
+      color: rgb(181, 181, 28);
+    }
+
+    .suspended {
+      color: red;
+      border: none;
+      background: none;
+    }
+  </style>
+  <body>
+    <%- include("./includes/sidebar") %>
+    <div class="container">
+      <header>
+        <h1>User Management</h1>
+      </header>
+
+      <div class="top-bar">
+        <input
+          type="text"
+          id="searchUser"
+          placeholder="Search User"
+          class="search-bar"
+        />
+      </div>
+
+      <table id="userTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>User Role</th>
+            <th>Status</th>
+            <th>Last Login</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="userList">
+          <% users.forEach(user => { %>
+          <tr>
+            <td><%= user.full_name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.role %></td>
+            <td><%= user.status %></td>
+            <td><%= user.last_login %></td>
+            <td>
+              <div class="dropdown">
+                <button class="icon-button dropdown-toggle" title="Actions">
+                  <i class="fas fa-ellipsis-v"></i>
+                </button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <button class="dropdown-item remove">
+                      <i class="fas fa-trash"></i> Remove
+                    </button>
+                  </li>
+                  <li>
+                    <button class="dropdown-item modify">
+                      <i class="fas fa-edit"></i> Modify
+                    </button>
+                  </li>
+                  <li>
+                    <button class="dropdown-item suspended">
+                      <i class="fas fa-ban"></i> Suspend
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+    <script src="/js/usem-api.js"></script>
+
+    <!-- Role Modal -->
+    <div id="roleModal" class="modal">
+      <div class="modal-content">
+        <h3>Modify Roles</h3>
+        <label
+          ><input type="checkbox" class="role-checkbox" value="Admin" />
+          Admin</label
+        >
+        <label
+          ><input type="checkbox" class="role-checkbox" value="Employee" />
+          Employee</label
+        >
+        <button class="save" onclick="saveRoles()">Save</button>
+        <button class="close" onclick="closeModal()">Close</button>
+      </div>
+    </div>
+
+    <script>
+      // Remove User Function
+
+      // Save Roles
+      function saveRoles() {
+        let selectedRole = document.querySelector(".role-checkbox:checked");
+        selectedRow.innerHTML = "";
+
+        if (selectedRole) {
+          let span = document.createElement("span");
+          span.className = `role ${selectedRole.value.toLowerCase()}`;
+          span.textContent = selectedRole.value;
+          selectedRow.appendChild(span);
+        }
+
+        closeModal();
+      }
+
+      // Close Modal
+      function closeModal() {
+        document.getElementById("roleModal").style.display = "none";
+      }
+
+      // Search Bar Functionality
+      document
+        .getElementById("searchUser")
+        .addEventListener("keyup", function () {
+          let filter = this.value.toLowerCase();
+          let rows = document.querySelectorAll("#userTable tbody tr");
+
+          rows.forEach((row) => {
+            let name = row
+              .querySelector("td:nth-child(2) strong")
+              .textContent.toLowerCase();
+            if (name.includes(filter)) {
+              row.style.display = "";
+            } else {
+              row.style.display = "none";
+            }
+          });
+        });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".dropdown-toggle").forEach((button) => {
+          button.addEventListener("click", (event) => {
+            let dropdown = event.currentTarget.parentElement;
+            dropdown.classList.toggle("active");
+          });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener("click", (event) => {
+          document.querySelectorAll(".dropdown").forEach((dropdown) => {
+            if (!dropdown.contains(event.target)) {
+              dropdown.classList.remove("active");
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
