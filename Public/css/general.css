@@ -486,7 +486,7 @@ li {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.651);
   z-index: 2;
   font-weight: bold;
-  border-radius: 10px;
+  border-radius: 10px 0 0 10px;
 }
 
 /* Floating effect for active dropdown links */
@@ -509,5 +509,5 @@ li {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.719);
   z-index: 1;
-  border-radius: 10px;
+  border-radius: 10px 0 0 10px;
 }
