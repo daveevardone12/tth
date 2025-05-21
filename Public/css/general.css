@@ -482,9 +482,14 @@ li {
   /* transform: translateY(-4px); */
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.651);
   z-index: 2;
+<<<<<<< HEAD
+  font-weight: bold;
+  border-radius: 10px 0 0 10px;
+=======
   font-weight: 20px;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
+>>>>>>> 0c3f3dc87fcb299b76d02ea0c28bb0b43a1c4763
 }
 
 /* Floating effect for active dropdown links */
@@ -508,6 +513,11 @@ li {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.719);
   z-index: 1;
+<<<<<<< HEAD
+  border-radius: 10px 0 0 10px;
+}
+=======
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
+>>>>>>> 0c3f3dc87fcb299b76d02ea0c28bb0b43a1c4763
