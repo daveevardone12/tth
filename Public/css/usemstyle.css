@@ -19,13 +19,16 @@ body {
 header h1 {
   margin: 0;
   margin-left: -20px;
-  margin-bottom: 72px;
+  font-family: Poppins;
+  font-weight: 800;
+  font-size: 30px;
+  margin-bottom: 35px;
   padding-top: 15px;
   padding-bottom: 10px;
   padding-left: 20px;
   width: calc(100% + 20px);
-  background: #ffffff;
   color: black;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .top-bar {

@@ -48,12 +48,103 @@
       border: none;
       background: none;
     }
+
+
+.add-user-button {
+ padding: 10px 20px;
+    background-color: #095c02;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: Poppins;
+    margin-top: 10px;
+    margin-right: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+.add-user-button:hover {
+  background-color:#45a049 ;
+}
+
+/* Overlay styles */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90%;
+}
+
+.overlay-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.overlay-title {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.form-group {
+ margin-bottom: 15px;
+}
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+.submit-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
   </style>
   <body>
     <%- include("./includes/sidebar") %>
     <div class="container">
       <header>
-        <h1>User Management</h1>
+        <h1>
+<span style="color: #095c02; font-weight: 800">User</span> Management
+        </h1>
       </header>
 
       <div class="top-bar">
@@ -62,7 +153,8 @@
           id="searchUser"
           placeholder="Search User"
           class="search-bar"
-        />
+          />
+          <button class="add-user-button" id="addUserButton">Add User</button>
       </div>
 
       <table id="userTable">
@@ -131,6 +223,87 @@
         <button class="close" onclick="closeModal()">Close</button>
       </div>
     </div>
+
+
+<!-- Add User Overlay -->
+<div class="overlay" id="addUserOverlay">
+    <div class="overlay-content">
+        <div class="overlay-header">
+            <h2 class="overlay-title">Add New User</h2>
+            <button class="close-button" id="closeOverlay">&times;</button>
+        </div>
+        <form id="addUserForm">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone">
+            </div>
+            <div class="form-group">
+                <label for="role">User Role</label>
+                <select id="role" name="role" required>
+                    <option value="">Select Role</option>
+                    <option value="Admin">Admin</option>
+                    <option value="Employee">Employee</option>
+                </select>
+            </div>
+            <button type="submit" class="submit-button">Add User</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const addUserButton = document.getElementById('addUserButton');
+        const addUserOverlay = document.getElementById('addUserOverlay');
+        const closeOverlay = document.getElementById('closeOverlay');
+        const addUserForm = document.getElementById('addUserForm');
+        
+        // Show overlay when Add User button is clicked
+        addUserButton.addEventListener('click', function() {
+            addUserOverlay.style.display = 'flex';
+        });
+        
+        // Hide overlay when close button is clicked
+        closeOverlay.addEventListener('click', function() {
+            addUserOverlay.style.display = 'none';
+        });
+        
+        // Hide overlay when clicking outside the form
+        addUserOverlay.addEventListener('click', function(e) {
+            if (e.target === addUserOverlay) {
+                addUserOverlay.style.display = 'none';
+            }
+        });
+        
+        // Handle form submission
+        addUserForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Here you would typically send the data to a server
+            // For this example, we'll just log it and close the overlay
+            const formData = new FormData(addUserForm);
+            const userData = Object.fromEntries(formData.entries());
+            console.log('New user data:', userData);
+            
+            // Reset form and close overlay
+            addUserForm.reset();
+            addUserOverlay.style.display = 'none';
+            
+            // In a real application, you would add the new user to the table
+            // after successfully saving to the database
+            alert('User added successfully! (This is a demo)');
+        });
+    });
+</script>
+
+
 
     <script>
       // Remove User Function
