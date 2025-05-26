@@ -48,95 +48,140 @@
       border: none;
       background: none;
     }
+    .popup {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      display: none;
+      border-radius: 8px;
+    }
 
+    .popup-content {
+      text-align: center;
+    }
 
-.add-user-button {
- padding: 10px 20px;
-    background-color: #095c02;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-family: Poppins;
-    margin-top: 10px;
-    margin-right: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease-in-out;
-}
+    .buttons {
+      margin-top: 15px;
+      display: flex;
+      justify-content: space-between;
+    }
 
-.add-user-button:hover {
-  background-color:#45a049 ;
-}
+    .submits,
+    .cancels {
+      padding: 8px 15px;
+      border: none;
+      cursor: pointer;
+    }
 
-/* Overlay styles */
-.overlay {
-  display: none;
+    .submits {
+      background-color: red;
+      color: white;
+    }
+
+    .cancels {
+      background-color: gray;
+      color: white;
+    }
+
+    .hidden {
+      display: none;
+    }
+    /* .modal {
+  display: none; 
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5);
   z-index: 1000;
   justify-content: center;
   align-items: center;
 }
 
-.overlay-content {
-  background-color: white;
+.modal-content {
+  background: white;
   padding: 20px;
   border-radius: 8px;
-  width: 400px;
-  max-width: 90%;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  text-align: center;
+  position: relative; 
 }
 
-.overlay-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.overlay-title {
-  margin: 0;
-  font-size: 1.5rem;
-}
-
-.close-button {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
+.close {
   cursor: pointer;
-}
+  font-size: 20px;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+} */
 
-.form-group {
- margin-bottom: 15px;
-}
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
+.top-bar1 {
+      padding: 10px;
+      background-color: #f0f0f0;
+      text-align: right;
+    }
 
-.submit-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #095c02;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1rem;
-}
+    .top-bar1 button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* Hidden modal container */
+    .modal {
+      display: none; /* Hidden initially */
+      position: fixed;
+      z-index: 999;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      backdrop-filter: blur(5px);
+      background-color: rgba(0, 0, 0, 0.3);
+
+      /* Centering */
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* When modal is shown */
+    .modal.show {
+      display: flex;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 20px;
+      width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      position: relative;
+    }
+
+    .modal-content input,
+    .modal-content button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 20px;
+      cursor: pointer;
+    }
   </style>
   <body>
     <%- include("./includes/sidebar") %>
@@ -153,9 +198,26 @@
           id="searchUser"
           placeholder="Search User"
           class="search-bar"
-          />
-          <button class="add-user-button" id="addUserButton">Add User</button>
+        />
       </div>
+
+      <div class="top-bar1">
+        <button id="addUserBtn">Add User</button>
+      </div>
+
+          <!-- Modal Popup -->
+          <div class="modal" id="userModal">
+            <div class="modal-content">
+              <span class="close" id="closeModal">&times;</span>
+              <h3>Add New User</h3>
+              <input type="text" placeholder="Full Name" id="nameInput">
+              <input type="email" placeholder="Email" id="emailInput">
+              <button id="submitUser">Submit</button>
+            </div>
+          </div>
+
+
+
 
       <table id="userTable">
         <thead>
@@ -183,18 +245,29 @@
                 </button>
                 <ul class="dropdown-menu">
                   <li>
-                    <button class="dropdown-item remove">
+                    <button
+                      class="dropdown-item remove"
+                      onclick="openRemovePopup('<%= user.user_id %>')"
+                    >
                       <i class="fas fa-trash"></i> Remove
                     </button>
                   </li>
                   <li>
-                    <button class="dropdown-item modify">
+                    <button
+                      class="dropdown-item modify"
+                      onclick="openModal('<%= user.user_id %>')"
+                    >
                       <i class="fas fa-edit"></i> Modify
                     </button>
                   </li>
                   <li>
                     <button class="dropdown-item suspended">
                       <i class="fas fa-ban"></i> Suspend
+                    </button>
+                  </li>
+                  <li>
+                    <button class="dropdown-item reactivate">
+                      <i class="fas fa-undo"></i> Reactivate
                     </button>
                   </li>
                 </ul>
@@ -204,108 +277,149 @@
           <% }); %>
         </tbody>
       </table>
-    </div>
-    <script src="/js/usem-api.js"></script>
-
-    <!-- Role Modal -->
-    <div id="roleModal" class="modal">
-      <div class="modal-content">
-        <h3>Modify Roles</h3>
-        <label
-          ><input type="checkbox" class="role-checkbox" value="Admin" />
-          Admin</label
-        >
-        <label
-          ><input type="checkbox" class="role-checkbox" value="Employee" />
-          Employee</label
-        >
-        <button class="save" onclick="saveRoles()">Save</button>
-        <button class="close" onclick="closeModal()">Close</button>
-      </div>
-    </div>
-
-
-<!-- Add User Overlay -->
-<div class="overlay" id="addUserOverlay">
-    <div class="overlay-content">
-        <div class="overlay-header">
-            <h2 class="overlay-title">Add New User</h2>
-            <button class="close-button" id="closeOverlay">&times;</button>
-        </div>
-        <form id="addUserForm">
-            <div class="form-group">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone">
-            </div>
-            <div class="form-group">
-                <label for="role">User Role</label>
-                <select id="role" name="role" required>
-                    <option value="">Select Role</option>
-                    <option value="Admin">Admin</option>
-                    <option value="Employee">Employee</option>
-                </select>
-            </div>
-            <button type="submit" class="submit-button">Add User</button>
+      <div id="removePopup" class="popup hidden">
+        <form action="/usem/remove/user" method="post" class="popup-content">
+          <h3>Confirm Removal</h3>
+          <p>Are you sure you want to remove this item?</p>
+          <input type="hidden" name="user_id" id="item_id_remove" />
+          <div class="buttons">
+            <button type="submit" class="submits">Yes, Remove</button>
+            <button type="button" class="cancels" onclick="closeRemovePopup()">
+              Cancel
+            </button>
+          </div>
         </form>
-    </div>
-</div>
+      </div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const addUserButton = document.getElementById('addUserButton');
-        const addUserOverlay = document.getElementById('addUserOverlay');
-        const closeOverlay = document.getElementById('closeOverlay');
-        const addUserForm = document.getElementById('addUserForm');
-        
-        // Show overlay when Add User button is clicked
-        addUserButton.addEventListener('click', function() {
-            addUserOverlay.style.display = 'flex';
-        });
-        
-        // Hide overlay when close button is clicked
-        closeOverlay.addEventListener('click', function() {
-            addUserOverlay.style.display = 'none';
-        });
-        
-        // Hide overlay when clicking outside the form
-        addUserOverlay.addEventListener('click', function(e) {
-            if (e.target === addUserOverlay) {
-                addUserOverlay.style.display = 'none';
-            }
-        });
-        
-        // Handle form submission
-        addUserForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Here you would typically send the data to a server
-            // For this example, we'll just log it and close the overlay
-            const formData = new FormData(addUserForm);
-            const userData = Object.fromEntries(formData.entries());
-            console.log('New user data:', userData);
-            
-            // Reset form and close overlay
-            addUserForm.reset();
-            addUserOverlay.style.display = 'none';
-            
-            // In a real application, you would add the new user to the table
-            // after successfully saving to the database
-            alert('User added successfully! (This is a demo)');
-        });
-    });
-</script>
+      <!-- Modify Role Popup -->
+      <div id="modifyRoleModal" class="custom-modal">
+        <div class="custom-modal-content">
+          <span id="customCloseButton" class="custom-close">&times;</span>
+          <h2 class="custom-title">Modify Role</h2>
+          <form id="modifyRoleForm" class="custom-form">
+            <input type="hidden" id="user_id" name="userId" value=""> 
+            <label class="custom-label" for="newRole">Choose Role:</label>
+            <br />
+            <div class="custom-radio-group">
+              <input type="radio" id="adminRole" name="newRole" value="Admin" required />
+              <label for="adminRole">Admin</label>
+      
+              <input type="radio" id="employeeRole" name="newRole" value="Employee" required />
+              <label for="employeeRole">Employee</label>
+            </div>
+            <br />
+            <div class="custom-button-group">
+              <button type="submit" class="custom-button">Update Role</button>
+              <button type="button" class="custom-button cancel">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
 
+    <script src="/js/usem-api.js"></script>
 
 
     <script>
+      const modal = document.getElementById("userModal");
+      const addUserBtn = document.getElementById("addUserBtn");
+      const closeModal = document.getElementById("closeModal");
+  
+      addUserBtn.onclick = () => {
+        modal.classList.add("show");
+      };
+  
+      closeModal.onclick = () => {
+        modal.classList.remove("show");
+      };
+  
+      window.onclick = (event) => {
+        if (event.target === modal) {
+          modal.classList.remove("show");
+        }
+      };
+  
+      document.getElementById("submitUser").onclick = function () {
+        const name = document.getElementById("nameInput").value;
+        const email = document.getElementById("emailInput").value;
+  
+        if (name && email) {
+          alert(`User Added:\nName: ${name}\nEmail: ${email}`);
+          modal.classList.remove("show");
+        } else {
+          alert("Please fill in all fields.");
+        }
+      };
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const modal = document.getElementById("modifyRoleModal");
+        const form = document.getElementById("modifyRoleForm");
+      
+        function openModal(employeeId) {
+          document.getElementById("user_id").value = employeeId;
+          document.querySelectorAll('input[name="newRole"]').forEach(radio => radio.checked = false);
+          modal.style.display = "flex";
+        }
+      
+        function closeModal() {
+          modal.style.display = "none";
+        }
+      
+        document.getElementById("customCloseButton").addEventListener("click", closeModal);
+        document.querySelector(".custom-button.cancel").addEventListener("click", closeModal);
+      
+        window.addEventListener("click", function (event) {
+          if (event.target === modal) {
+            closeModal();
+          }
+        });
+      
+        window.openModal = openModal;
+        window.closeModal = closeModal;
+      
+        form.addEventListener("submit", async function (event) {
+          event.preventDefault(); // Prevent full page reload
+      
+          const formData = new FormData(form);
+          const requestBody = Object.fromEntries(formData.entries());
+      
+          try {
+            const response = await fetch("/usem/modify-role", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(requestBody),
+            });
+      
+            const result = await response.json();
+      
+            if (response.ok) {
+              alert("Role updated successfully!");
+              closeModal();
+              location.reload(); // Refresh to reflect changes
+            } else {
+              alert("Error: " + result.error);
+            }
+          } catch (error) {
+            console.error("Request failed:", error);
+            alert("An unexpected error occurred.");
+          }
+        });
+      });
+      </script>
+
+
+    <script>
+       // required function nga id para ma butngan data an input
+       function openRemovePopup(userID) {
+        console.log(userID);
+        document.getElementById("item_id_remove").value = userID;
+        document.getElementById("removePopup").style.display = "block";
+      }
+
+      function closeRemovePopup() {
+        document.getElementById("removePopup").style.display = "none";
+      }
       // Remove User Function
 
       // Save Roles
