@@ -144,6 +144,7 @@ th {
 .close {
   background: red;
   color: white;
+  width: 20px;
 }
 
 /* for the three dots */
@@ -218,7 +219,6 @@ th {
   justify-content: center;
   align-items: center;
   transition: opacity 0.3s ease-in-out;
-  display: flex;
   justify-content: center;
   align-items: center;
   backdrop-filter: blur(5px);
