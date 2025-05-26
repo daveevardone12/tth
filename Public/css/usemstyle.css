@@ -19,13 +19,16 @@ body {
 header h1 {
   margin: 0;
   margin-left: -20px;
-  margin-bottom: 72px;
+  font-family: Poppins;
+  font-weight: 800;
+  font-size: 30px;
+  margin-bottom: 35px;
   padding-top: 15px;
   padding-bottom: 10px;
   padding-left: 20px;
   width: calc(100% + 20px);
-  background: #ffffff;
   color: black;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .top-bar {
@@ -141,6 +144,7 @@ th {
 .close {
   background: red;
   color: white;
+  width: 20px;
 }
 
 /* for the three dots */
@@ -212,13 +216,12 @@ th {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(5px);
   justify-content: center;
   align-items: center;
   transition: opacity 0.3s ease-in-out;
-  display: flex;
   justify-content: center;
   align-items: center;
+  backdrop-filter: blur(5px);
 }
 
 .custom-modal-content {
@@ -290,10 +293,10 @@ th {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(5px);
   justify-content: center;
   align-items: center;
   transition: opacity 0.3s ease-in-out;
+  backdrop-filter: blur(5px);
 }
 
 .unique-modal-content {
