@@ -205,11 +205,19 @@
         <button id="addUserBtn">Add User</button>
       </div>
 
+                  <% if (messages.error) { %>
+                    <div class="alert alert-danger"><%= messages.error %></div>
+                  <% } %>
+                  <% if (messages.success) { %>
+                    <div class="alert alert-success"><%= messages.success %></div>
+                  <% } %>
+                  <br>
+
           <!-- Modal Popup -->
           <div class="modal" id="userModal">
             <div class="modal-content">
               <span class="close" id="closeModal">&times;</span>
-              <form action="/signup/submit" method="POST">
+              <form action="/usem/signup/submit" method="POST">
                 <h3>Add New User</h3>
                 <input type="text" placeholder="First name" name="firstname" required/>
                 <input type="text" placeholder="Last name" name="lastname" required />
@@ -302,7 +310,7 @@
         <div class="custom-modal-content">
           <span id="customCloseButton" class="custom-close">&times;</span>
           <h2 class="custom-title">Modify Role</h2>
-          <form id="modifyRoleForm" class="custom-form">
+          <form id="modifyRoleForm" class="custom-form" action="/usem/modify-role" method="post">
             <input type="hidden" id="user_id" name="userId" value=""> 
             <label class="custom-label" for="newRole">Choose Role:</label>
             <br />

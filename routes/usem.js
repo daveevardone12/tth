@@ -6,6 +6,7 @@ const passport = require("passport");
 const nodemailer = require("nodemailer");
 const { ensureAuthenticated } = require("../middleware/middleware"); // Import middleware
 const pool = require("../models/tthDB"); // Ensure pool is imported
+const tthPool = require("../models/tthDB");
 
 const userSchema = Joi.object({
   firstname: Joi.string().required(),
@@ -42,6 +43,7 @@ FROM users;`
   }
 });
 
+//search account
 router.get("/search", async (req, res) => {
   const query = req.query.query;
   try {
@@ -73,6 +75,7 @@ router.get("/search", async (req, res) => {
   }
 });
 
+//remove account
 router.post("/remove/user", async (req, res) => {
   const { user_id } = req.body;
   console.log("body: ", req.body);
@@ -87,13 +90,40 @@ router.post("/remove/user", async (req, res) => {
   }
 });
 
-// Modify role endpoint
+// modify role
 router.post("/modify-role", async (req, res) => {
   try {
     const { newRole, userId } = req.body;
 
     if (!userId || !newRole) {
       return res.status(400).json({ error: "User ID and role are required." });
+    }
+
+    // If new role is admin, check current admin count
+    if (newRole.toLowerCase() === "admin") {
+      const adminCountResult = await pool.query(
+        `SELECT COUNT(*) FROM users WHERE LOWER(role) = 'admin'`
+      );
+      const adminCount = parseInt(adminCountResult.rows[0].count, 10);
+
+      // Check if the user is already admin
+      const currentUserResult = await pool.query(
+        `SELECT role FROM users WHERE user_id = $1`,
+        [userId]
+      );
+
+      if (currentUserResult.rowCount === 0) {
+        return res.status(404).json({ error: "User not found." });
+      }
+
+      const currentRole = currentUserResult.rows[0].role.toLowerCase();
+
+      // If trying to promote to admin and already 2 admins (and user is not already admin), reject
+      if (adminCount >= 2 && currentRole !== "admin") {
+        return res.status(400).json({
+          error: "Role update denied. Only 2 admins are allowed in the system.",
+        });
+      }
     }
 
     const updateQuery =
@@ -125,6 +155,7 @@ router.post("/modify-role", async (req, res) => {
   }
 });
 
+//add account
 router.post("/signup/submit", async (req, res) => {
   const { error, value } = userSchema.validate(req.body);
 
@@ -150,6 +181,20 @@ router.post("/signup/submit", async (req, res) => {
       return res.redirect("/usem");
     }
 
+    // ✅ Enforce max 2 admins rule
+    if (value.role.toLowerCase() === "admin") {
+      const adminCountResult = await tthPool.query(
+        `SELECT COUNT(*) FROM users WHERE LOWER(role) = 'admin'`
+      );
+      const adminCount = parseInt(adminCountResult.rows[0].count, 10);
+      console.log("Current admin count:", adminCount);
+
+      if (adminCount >= 2) {
+        req.flash("error", "Only 2 admin accounts are allowed.");
+        return res.redirect("/usem");
+      }
+    }
+
     // Insert new user into the database
     await tthPool.query(
       `INSERT INTO users (first_name, last_name, email, phone, password, role, password_length)
@@ -167,10 +212,10 @@ router.post("/signup/submit", async (req, res) => {
 
     // Send confirmation email using Nodemailer
     const transporter = nodemailer.createTransport({
-      service: "gmail", // Use Gmail (or another email service)
+      service: "gmail",
       auth: {
-        user: "davemarlon74@gmail.com", // Replace with your Gmail address
-        pass: "dumq vrzc llvo wlug", // Use the generated app password (see below)
+        user: "davemarlon74@gmail.com",
+        pass: "dumq vrzc llvo wlug",
       },
     });
 
@@ -181,7 +226,6 @@ router.post("/signup/submit", async (req, res) => {
       text: `Hello ${value.firstname},\n\nWelcome to our system! We're excited to have you on board. If you have any questions or need assistance, feel free to reach out.\n\nBest regards,\nThe Team`,
     };
 
-    // Send the email and handle the response properly
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.error("Error sending email: ", error);
@@ -189,15 +233,14 @@ router.post("/signup/submit", async (req, res) => {
           "error",
           "Error sending confirmation email. Please try again."
         );
-        return res.redirect("/usem"); // Ensure to return here to avoid further responses
+        return res.redirect("/usem");
       } else {
         console.log("Email sent: " + info.response);
       }
     });
 
-    // Flash success message and redirect to login page after email is sent
     req.flash("success", "Account created successfully. Please log in.");
-    return res.redirect("/usem"); // Ensure the response is sent only once
+    return res.redirect("/usem");
   } catch (err) {
     console.error("Error: ", err);
     req.flash("error", "Internal Server Error. Please try again.");
