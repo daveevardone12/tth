@@ -209,10 +209,16 @@
           <div class="modal" id="userModal">
             <div class="modal-content">
               <span class="close" id="closeModal">&times;</span>
-              <h3>Add New User</h3>
-              <input type="text" placeholder="Full Name" id="nameInput">
-              <input type="email" placeholder="Email" id="emailInput">
-              <button id="submitUser">Submit</button>
+              <form action="/signup/submit" method="POST">
+                <h3>Add New User</h3>
+                <input type="text" placeholder="First name" name="firstname" required/>
+                <input type="text" placeholder="Last name" name="lastname" required />
+                <input type="email" placeholder="Email" name="email" required />
+                <input type="text" placeholder="Phone no." name="phone" />
+                <input type="password" id="password" name="password" placeholder="Password (minimum 8 characters)" />
+                <input type="text" placeholder="Role" for="Role" name="role" id="role" required />
+                <button type="submit" id="submitUser">Submit</button>
+              </form> 
             </div>
           </div>
 
@@ -323,32 +329,26 @@
       const modal = document.getElementById("userModal");
       const addUserBtn = document.getElementById("addUserBtn");
       const closeModal = document.getElementById("closeModal");
-  
+    
+      // Modal display controls
       addUserBtn.onclick = () => {
         modal.classList.add("show");
       };
-  
+    
       closeModal.onclick = () => {
         modal.classList.remove("show");
       };
-  
+    
       window.onclick = (event) => {
         if (event.target === modal) {
           modal.classList.remove("show");
         }
       };
-  
-      document.getElementById("submitUser").onclick = function () {
-        const name = document.getElementById("nameInput").value;
-        const email = document.getElementById("emailInput").value;
-  
-        if (name && email) {
-          alert(`User Added:\nName: ${name}\nEmail: ${email}`);
-          modal.classList.remove("show");
-        } else {
-          alert("Please fill in all fields.");
-        }
-      };
+    
+      // Close modal when form is submitted
+      document.querySelector('form').addEventListener('submit', function() {
+        modal.classList.remove('show');
+      });
     </script>
 
     <script>

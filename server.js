@@ -535,7 +535,7 @@ const tthPool = require("./models/tthDB");
 const signupRoutes = require("./Routes/signup");
 const loginRoutes = require("./Routes/login");
 const dashboardRoutes = require("./routes/dashboard");
-const userRoutes = require("./Routes/user");
+// const userRoutes = require("./Routes/user");
 const parRoutes = require("./Routes/par");
 const ptrRoutes = require("./routes/ptr");
 const icsRoutes = require("./Routes/ics");
@@ -546,6 +546,7 @@ const prsRoutes = require("./Routes/prs");
 const mrerRoutes = require("./Routes/mrer");
 const wmrfRoutes = require("./Routes/wmrf");
 const rfidRoutes = require("./routes/rfid");
+const usemRoutes = require("./Routes/usem");
 const { timeStamp } = require("console");
 const registerCallerID = require("./Routes/registerCallerID");
 
@@ -679,10 +680,10 @@ app.get("/clear-data", (req, res) => {
 });
 
 //------INITIALIZE ROUTES------//
-app.use("/", signupRoutes);
+// app.use("/", signupRoutes);
 app.use("/", loginRoutes);
 app.use("/", dashboardRoutes);
-app.use("/", userRoutes);
+// app.use("/", userRoutes);
 app.use("/ics", icsRoutes);
 app.use("/par", parRoutes);
 app.use("/ptr", ptrRoutes);
@@ -694,8 +695,6 @@ app.use("/mrer", mrerRoutes);
 app.use("/wmrf", wmrfRoutes);
 app.use("/rfid", rfidRoutes);
 app.use("/registerCallerID", registerCallerID);
-
-const usemRoutes = require("./routes/usem");
 app.use("/usem", usemRoutes);
 
 // Logout route to clear session
