@@ -546,6 +546,7 @@ const prsRoutes = require("./Routes/prs");
 const mrerRoutes = require("./Routes/mrer");
 const wmrfRoutes = require("./Routes/wmrf");
 const rfidRoutes = require("./routes/rfid");
+const inventory_prsRoutes = require("./routes/inventory_prs");
 const { timeStamp } = require("console");
 const registerCallerID = require("./Routes/registerCallerID");
 
@@ -693,6 +694,7 @@ app.use("/prs", prsRoutes);
 app.use("/mrer", mrerRoutes);
 app.use("/wmrf", wmrfRoutes);
 app.use("/rfid", rfidRoutes);
+app.use("/inventory_prs", inventory_prsRoutes);
 app.use("/registerCallerID", registerCallerID);
 
 const usemRoutes = require("./routes/usem");
