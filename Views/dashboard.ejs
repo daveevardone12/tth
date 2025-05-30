@@ -385,73 +385,72 @@
             });
           </script> -->
 
-          <div class="dashboard-container">
-            <div class="dashboard-left">
-              <div class="dashboard-card time-date-box">
-                <div id="current-day" class="background-day">--</div> <!-- background number -->
-                
-                <h1 id="current-time">--:-- --</h1> 
-                <h2 id="current-month">---</h2>
-                <p id="current-year">----</p>
-              </div>
-              
-        
-              <div class="dashboard-card status-box">
-                <strong>Assigned:</strong>
-                <div class="status-count" id="totalAssignedItem"></div>
-              </div>
-        
-              <div class="dashboard-card status-box">
-                <strong>Not Assigned:</strong>
-                <div class="status-count" id="totalNotAssignedItem"></div>
-              </div>
+        <div class="dashboard-container">
+          <div class="dashboard-left">
+            <div class="dashboard-card time-date-box">
+              <div id="current-day" class="background-day">--</div>
+              <!-- background number -->
+
+              <h1 id="current-time">--:-- --</h1>
+              <h2 id="current-month">---</h2>
+              <p id="current-year">----</p>
             </div>
-        
-            <div class="dashboard-right">
-              <div class="dashboard-card logs-box">
-                <div class="para-logs"> Logs </div>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Date & Time</th>
-                      <th>Item Name</th>
-                      <th>RFID Tag</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody id="dashboard-table">
-                  </tbody>
-                </table>
-              </div>
+
+            <div class="dashboard-card status-box">
+              <strong>Assigned:</strong>
+              <div class="status-count" id="totalAssignedItem"></div>
+            </div>
+
+            <div class="dashboard-card status-box">
+              <strong>Not Assigned:</strong>
+              <div class="status-count" id="totalNotAssignedItem"></div>
             </div>
           </div>
-     
-          
-          <script>
-            function updateTimeDate() {
-              const now = new Date();
-              const hours = now.getHours();
-              const minutes = now.getMinutes();
-              const ampm = hours >= 12 ? 'PM' : 'AM';
-              const displayHour = hours % 12 || 12;
-              const displayMinute = minutes.toString().padStart(2, '0');
-          
-              const timeString = `${displayHour}:${displayMinute} ${ampm}`;
-              const monthString = now.toLocaleString('default', { month: 'short' }).toUpperCase();
-              const yearString = now.getFullYear();
-              const dayString = now.getDate(); // <--- get the day number (1-31)
-          
-              document.getElementById('current-time').textContent = timeString;
-              document.getElementById('current-month').textContent = monthString;
-              document.getElementById('current-year').textContent = yearString;
-              document.getElementById('current-day').textContent = dayString; // <--- update day
-            }
-          
-            updateTimeDate();
-            setInterval(updateTimeDate, 1000);
-          </script>
-          
-          
+
+          <div class="dashboard-right">
+            <div class="dashboard-card logs-box">
+              <div class="para-logs">Logs</div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Date & Time</th>
+                    <th>Item Name</th>
+                    <th>RFID Tag</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="dashboard-table"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <script>
+          function updateTimeDate() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const ampm = hours >= 12 ? "PM" : "AM";
+            const displayHour = hours % 12 || 12;
+            const displayMinute = minutes.toString().padStart(2, "0");
+
+            const timeString = `${displayHour}:${displayMinute} ${ampm}`;
+            const monthString = now
+              .toLocaleString("default", { month: "short" })
+              .toUpperCase();
+            const yearString = now.getFullYear();
+            const dayString = now.getDate(); // <--- get the day number (1-31)
+
+            document.getElementById("current-time").textContent = timeString;
+            document.getElementById("current-month").textContent = monthString;
+            document.getElementById("current-year").textContent = yearString;
+            document.getElementById("current-day").textContent = dayString; // <--- update day
+          }
+
+          updateTimeDate();
+          setInterval(updateTimeDate, 1000);
+        </script>
+
         <script>
           function updateTime() {
             let now = new Date();
