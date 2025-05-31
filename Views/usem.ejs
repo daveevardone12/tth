@@ -36,18 +36,20 @@
       padding: 0;
     }
     .remove {
-      color: green;
+      color: red; /* Changed from green to red for remove/delete actions */
     }
 
     .modify {
       color: rgb(181, 181, 28);
     }
 
-    .suspended {
-      color: red;
-      border: none;
-      background: none;
+    .suspended { /* Style for the suspend button text */
+      color: orange;
     }
+    .reactivate { /* Style for the reactivate button text */
+        color: green;
+    }
+
     .popup {
       position: fixed;
       left: 50%;
@@ -59,70 +61,66 @@
       z-index: 1000;
       display: none;
       border-radius: 8px;
+      min-width: 300px; /* Ensure a minimum width */
     }
 
     .popup-content {
       text-align: center;
     }
 
+    .popup-content label {
+        display: block;
+        margin-bottom: 5px;
+        text-align: left;
+        font-weight: 500;
+    }
+
+    .popup-content textarea {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+
     .buttons {
       margin-top: 15px;
       display: flex;
-      justify-content: space-between;
+      gap: 10px;
+      justify-content: space-around; /* Changed for better spacing */
     }
 
     .submits,
     .cancels {
-      padding: 8px 15px;
+      padding: 10px 20px; /* Increased padding */
       border: none;
       cursor: pointer;
+      border-radius: 5px; /* Added border-radius */
+      font-weight: 500;
     }
 
     .submits {
-      background-color: red;
+      background-color: #dc3545; /* Bootstrap danger red */
       color: white;
     }
+    .submits.reactivate-btn {
+        background-color: #28a745; /* Bootstrap success green */
+    }
+
 
     .cancels {
-      background-color: gray;
+      background-color: #6c757d; /* Bootstrap secondary gray */
       color: white;
     }
 
     .hidden {
       display: none;
     }
-    /* .modal {
-  display: none; 
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  justify-content: center;
-  align-items: center;
-}
 
-.modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  width: 300px;
-  text-align: center;
-  position: relative; 
-}
-
-.close {
-  cursor: pointer;
-  font-size: 20px;
-  position: absolute;
-  top: 10px;
-  right: 15px;
-} */
-
-.top-bar1 {
+    .top-bar1 {
       padding: 10px;
       background-color: #f0f0f0;
       text-align: right;
@@ -139,56 +137,139 @@
       cursor: pointer;
     }
 
-    /* Hidden modal container */
+    /* Unified Modal Styles */
     .modal {
       display: none; /* Hidden initially */
       position: fixed;
-      z-index: 999;
+      z-index: 1000; /* Higher than popup to ensure it's on top if used together */
       width: 100vw;
       height: 100vh;
       backdrop-filter: blur(5px);
-      background-color: rgba(0, 0, 0, 0.3);
+      background-color: rgba(0, 0, 0, 0.5); /* Darker overlay */
 
       /* Centering */
       justify-content: center;
       align-items: center;
     }
 
-    /* When modal is shown */
     .modal.show {
       display: flex;
     }
 
     .modal-content {
       background-color: white;
-      padding: 50px;
-      width: 300px;
+      padding: 30px; /* Adjusted padding */
+      width: 90%;
+      max-width: 400px; /* Max width for larger screens */
       border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.25); /* Softer shadow */
       position: relative;
+      text-align: center; /* Center content like form title */
     }
 
-    .modal-content input,
-    .modal-content button {
-      width: 90%;
-      margin-top: 10px;
-      padding: 10px;
+    .modal-content h3 {
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-weight: 600;
     }
+
+    .modal-content input[type="text"],
+    .modal-content input[type="email"],
+    .modal-content input[type="password"],
+    .modal-content textarea, /* Added textarea styling */
+    .modal-content button[type="submit"] {
+      width: calc(100% - 20px); /* Full width with padding considered */
+      margin-top: 10px;
+      padding: 12px; /* Increased padding for inputs */
+      border: 1px solid #ccc; /* Added border to inputs */
+      border-radius: 5px; /* Rounded corners for inputs */
+      box-sizing: border-box; /* Include padding and border in element's total width and height */
+    }
+     .modal-content textarea {
+        min-height: 80px; /* Minimum height for textarea */
+    }
+
+    .modal-content button[type="submit"] {
+        background-color: #0a5d03; /* Match add user button */
+        color: white;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .modal-content button[type="submit"]:hover {
+        background-color: #084a02;
+    }
+
 
     .close {
       position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 20px;
+      top: 15px;
+      right: 20px;
+      font-size: 24px; /* Larger close icon */
+      font-weight: bold; /* Bolder close icon */
+      color: #aaa; /* Lighter color for close icon */
       cursor: pointer;
     }
+    .close:hover,
+    .close:focus {
+        color: #000; /* Darken on hover/focus */
+        text-decoration: none;
+    }
+
+    /* Dropdown specific styles */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        right: 0;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        border-radius: 4px;
+        padding: 5px 0;
+    }
+
+    .dropdown-menu li {
+        list-style: none;
+    }
+
+    .dropdown-menu .dropdown-item {
+        color: black;
+        padding: 8px 12px;
+        text-decoration: none;
+        display: block;
+        background: none;
+        border: none;
+        width: 100%;
+        text-align: left;
+        cursor: pointer;
+        font-size: 14px;
+    }
+    .dropdown-menu .dropdown-item i {
+        margin-right: 8px;
+    }
+
+
+    .dropdown-menu .dropdown-item:hover {
+        background-color: #e9e9e9;
+    }
+
+    .dropdown.active .dropdown-menu {
+        display: block;
+    }
+
   </style>
   <body>
     <%- include("./includes/sidebar") %>
     <div class="container">
       <header>
         <h1>
-<span style="color: #095c02; font-weight: 800">User</span> Management
+          <span style="color: #095c02; font-weight: 800">User</span> Management
         </h1>
       </header>
 
@@ -196,7 +277,7 @@
         <input
           type="text"
           id="searchUser"
-          placeholder="Search User"
+          placeholder="Search User by Name"
           class="search-bar"
         />
       </div>
@@ -205,33 +286,29 @@
         <button id="addUserBtn">Add User</button>
       </div>
 
-                  <% if (messages.error) { %>
-                    <div class="alert alert-danger"><%= messages.error %></div>
-                  <% } %>
-                  <% if (messages.success) { %>
-                    <div class="alert alert-success"><%= messages.success %></div>
-                  <% } %>
-                  <br>
+              <% if (messages.error) { %>
+                <div class="alert alert-danger"><%= messages.error %></div>
+              <% } %>
+              <% if (messages.success) { %>
+                <div class="alert alert-success"><%= messages.success %></div>
+              <% } %>
+              <br>
 
-          <!-- Modal Popup -->
-          <div class="modal" id="userModal">
-            <div class="modal-content">
-              <span class="close" id="closeModal">&times;</span>
-              <form action="/usem/signup/submit" method="POST">
-                <h3>Add New User</h3>
-                <input type="text" placeholder="First name" name="firstname" required/>
-                <input type="text" placeholder="Last name" name="lastname" required />
-                <input type="email" placeholder="Email" name="email" required />
-                <input type="text" placeholder="Phone no." name="phone" />
-                <input type="password" id="password" name="password" placeholder="Password (minimum 8 characters)" />
-                <input type="text" placeholder="Role" for="Role" name="role" id="role" required />
-                <button type="submit" id="submitUser">Submit</button>
-              </form> 
-            </div>
-          </div>
-
-
-
+      <div class="modal" id="userModal">
+        <div class="modal-content">
+          <span class="close" id="closeUserModal">&times;</span>
+          <form action="/usem/signup/submit" method="POST">
+            <h3>Add New User</h3>
+            <input type="text" placeholder="First name" name="firstname" required/>
+            <input type="text" placeholder="Last name" name="lastname" required />
+            <input type="email" placeholder="Email" name="email" required />
+            <input type="text" placeholder="Phone no." name="phone" />
+            <input type="password" id="password" name="password" placeholder="Password (minimum 8 characters)" />
+            <input type="text" placeholder="Role" for="Role" name="role" id="role" required />
+            <button type="submit" id="submitUser">Submit</button>
+          </form>
+        </div>
+      </div>
 
       <table id="userTable">
         <thead>
@@ -269,18 +346,18 @@
                   <li>
                     <button
                       class="dropdown-item modify"
-                      onclick="openModal('<%= user.user_id %>')"
+                      onclick="openModifyRoleModal('<%= user.user_id %>')"
                     >
                       <i class="fas fa-edit"></i> Modify
                     </button>
                   </li>
                   <li>
-                    <button class="dropdown-item suspended">
+                    <button class="dropdown-item suspended" onclick="openSuspendPopup('<%= user.user_id %>')">
                       <i class="fas fa-ban"></i> Suspend
                     </button>
                   </li>
                   <li>
-                    <button class="dropdown-item reactivate">
+                    <button class="dropdown-item reactivate" onclick="openReactivatePopup('<%= user.user_id %>')">
                       <i class="fas fa-undo"></i> Reactivate
                     </button>
                   </li>
@@ -291,10 +368,10 @@
           <% }); %>
         </tbody>
       </table>
+
       <div id="removePopup" class="popup hidden">
-        <form action="/usem/remove/user" method="post" class="popup-content">
-          <h3>Confirm Removal</h3>
-          <p>Are you sure you want to remove this item?</p>
+        <form id="removeUserForm" class="popup-content"> <h3>Confirm Removal</h3>
+          <p>Are you sure you want to remove this user?</p>
           <input type="hidden" name="user_id" id="item_id_remove" />
           <div class="buttons">
             <button type="submit" class="submits">Yes, Remove</button>
@@ -305,26 +382,62 @@
         </form>
       </div>
 
-      <!-- Modify Role Popup -->
-      <div id="modifyRoleModal" class="custom-modal">
-        <div class="custom-modal-content">
-          <span id="customCloseButton" class="custom-close">&times;</span>
-          <h2 class="custom-title">Modify Role</h2>
-          <form id="modifyRoleForm" class="custom-form" action="/usem/modify-role" method="post">
-            <input type="hidden" id="user_id" name="userId" value=""> 
+      <div id="modifyRoleModal" class="modal">
+        <div class="modal-content">
+          <span id="customCloseButton" class="close" onclick="closeModifyRoleModal()">&times;</span>
+          <h3 class="custom-title">Modify Role</h3>
+          <form id="modifyRoleForm" class="custom-form">
+            <input type="hidden" id="user_id_modify" name="userId" value="">
             <label class="custom-label" for="newRole">Choose Role:</label>
             <br />
-            <div class="custom-radio-group">
-              <input type="radio" id="adminRole" name="newRole" value="Admin" required />
-              <label for="adminRole">Admin</label>
-      
-              <input type="radio" id="employeeRole" name="newRole" value="Employee" required />
-              <label for="employeeRole">Employee</label>
+            <div class="custom-radio-group" style="text-align: left; margin-top:10px; margin-bottom: 20px;">
+              <input type="radio" id="adminRole" name="newRole" value="Admin" required style="width:auto; margin-right: 5px;"/>
+              <label for="adminRole" style="display:inline; font-weight:normal;">Admin</label>
+              <br>
+              <input type="radio" id="employeeRole" name="newRole" value="Employee" required style="width:auto; margin-right: 5px; margin-top: 5px;" />
+              <label for="employeeRole" style="display:inline; font-weight:normal;">Employee</label>
             </div>
-            <br />
-            <div class="custom-button-group">
-              <button type="submit" class="custom-button">Update Role</button>
-              <button type="button" class="custom-button cancel">Cancel</button>
+            <div class="custom-button-group" style="display: flex; justify-content: space-around;">
+              <button type="submit" class="custom-button submits" style="background-color: #007bff; color:white; padding: 10px 20px; border:none; border-radius:5px;">Update Role</button>
+              <button type="button" class="custom-button cancels" onclick="closeModifyRoleModal()" style="padding: 10px 20px; border:none; border-radius:5px;">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div id="suspendUserPopup" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeSuspendPopup()">&times;</span>
+          <form id="suspendUserForm">
+            <h3>Confirm Suspension</h3>
+            <p>Are you sure you want to suspend this user?</p>
+            <input type="hidden" name="user_id_suspend" id="user_id_suspend" />
+            <div>
+              <label for="suspensionReason">Reason for Suspension:</label>
+              <textarea id="suspensionReason" name="suspensionReason" rows="3" required></textarea>
+            </div>
+            <div class="buttons">
+              <button type="submit" class="submits">Yes, Suspend</button>
+              <button type="button" class="cancels" onclick="closeSuspendPopup()">
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div id="reactivateUserPopup" class="modal">
+         <div class="modal-content">
+          <span class="close" onclick="closeReactivatePopup()">&times;</span>
+          <form id="reactivateUserForm">
+            <h3>Confirm Reactivation</h3>
+            <p>Are you sure you want to reactivate this account?</p>
+            <input type="hidden" name="user_id_reactivate" id="user_id_reactivate" />
+            <div class="buttons">
+              <button type="submit" class="submits reactivate-btn">Yes, Reactivate</button>
+              <button type="button" class="cancels" onclick="closeReactivatePopup()">
+                Cancel
+              </button>
             </div>
           </form>
         </div>
@@ -334,159 +447,276 @@
 
 
     <script>
-      const modal = document.getElementById("userModal");
+      // Global Modal References
+      const addUserModal = document.getElementById("userModal");
+      const modifyRoleModal = document.getElementById("modifyRoleModal");
+      const removeUserPopup = document.getElementById("removePopup"); // Using popup style
+      const suspendUserModal = document.getElementById("suspendUserPopup");
+      const reactivateUserModal = document.getElementById("reactivateUserPopup");
+
+
+      // Add User Modal
       const addUserBtn = document.getElementById("addUserBtn");
-      const closeModal = document.getElementById("closeModal");
-    
-      // Modal display controls
-      addUserBtn.onclick = () => {
-        modal.classList.add("show");
-      };
-    
-      closeModal.onclick = () => {
-        modal.classList.remove("show");
-      };
-    
-      window.onclick = (event) => {
-        if (event.target === modal) {
-          modal.classList.remove("show");
-        }
-      };
-    
-      // Close modal when form is submitted
-      document.querySelector('form').addEventListener('submit', function() {
-        modal.classList.remove('show');
-      });
-    </script>
+      const closeUserModalBtn = document.getElementById("closeUserModal");
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const modal = document.getElementById("modifyRoleModal");
-        const form = document.getElementById("modifyRoleForm");
-      
-        function openModal(employeeId) {
-          document.getElementById("user_id").value = employeeId;
-          document.querySelectorAll('input[name="newRole"]').forEach(radio => radio.checked = false);
-          modal.style.display = "flex";
-        }
-      
-        function closeModal() {
-          modal.style.display = "none";
-        }
-      
-        document.getElementById("customCloseButton").addEventListener("click", closeModal);
-        document.querySelector(".custom-button.cancel").addEventListener("click", closeModal);
-      
-        window.addEventListener("click", function (event) {
-          if (event.target === modal) {
-            closeModal();
-          }
+      if(addUserBtn) {
+        addUserBtn.onclick = () => addUserModal.classList.add("show");
+      }
+      if(closeUserModalBtn) {
+        closeUserModalBtn.onclick = () => addUserModal.classList.remove("show");
+      }
+      // Close add user modal on form submit
+      const addUserForm = addUserModal ? addUserModal.querySelector('form') : null;
+      if (addUserForm) {
+        addUserForm.addEventListener('submit', function() {
+            // setTimeout(() => addUserModal.classList.remove('show'), 500); // Delay to see submission, then hide
         });
-      
-        window.openModal = openModal;
-        window.closeModal = closeModal;
-      
-        form.addEventListener("submit", async function (event) {
-          event.preventDefault(); // Prevent full page reload
-      
-          const formData = new FormData(form);
-          const requestBody = Object.fromEntries(formData.entries());
-      
-          try {
-            const response = await fetch("/usem/modify-role", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(requestBody),
-            });
-      
-            const result = await response.json();
-      
-            if (response.ok) {
-              alert("Role updated successfully!");
-              closeModal();
-              location.reload(); // Refresh to reflect changes
-            } else {
-              alert("Error: " + result.error);
-            }
-          } catch (error) {
-            console.error("Request failed:", error);
-            alert("An unexpected error occurred.");
-          }
-        });
-      });
-      </script>
-
-
-    <script>
-       // required function nga id para ma butngan data an input
-       function openRemovePopup(userID) {
-        console.log(userID);
-        document.getElementById("item_id_remove").value = userID;
-        document.getElementById("removePopup").style.display = "block";
       }
 
+
+      // Modify Role Modal
+      function openModifyRoleModal(userId) {
+        if(modifyRoleModal) {
+            document.getElementById("user_id_modify").value = userId;
+            // Clear previously selected radio buttons
+            document.querySelectorAll('#modifyRoleForm input[name="newRole"]').forEach(radio => radio.checked = false);
+            modifyRoleModal.classList.add("show");
+        }
+      }
+      function closeModifyRoleModal() {
+        if(modifyRoleModal) modifyRoleModal.classList.remove("show");
+      }
+      // Attach to window for inline onclick
+      window.openModifyRoleModal = openModifyRoleModal;
+
+
+      // Remove User Popup (using original popup style)
+      function openRemovePopup(userId) {
+        if(removeUserPopup) {
+            console.log("Attempting to remove user:", userId);
+            document.getElementById("item_id_remove").value = userId;
+            removeUserPopup.style.display = "block"; // Show as block
+        }
+      }
       function closeRemovePopup() {
-        document.getElementById("removePopup").style.display = "none";
+        if(removeUserPopup) removeUserPopup.style.display = "none"; // Hide
       }
-      // Remove User Function
+       // Attach to window for inline onclick
+      window.openRemovePopup = openRemovePopup;
+      window.closeRemovePopup = closeRemovePopup;
 
-      // Save Roles
-      function saveRoles() {
-        let selectedRole = document.querySelector(".role-checkbox:checked");
-        selectedRow.innerHTML = "";
 
-        if (selectedRole) {
-          let span = document.createElement("span");
-          span.className = `role ${selectedRole.value.toLowerCase()}`;
-          span.textContent = selectedRole.value;
-          selectedRow.appendChild(span);
+      // Suspend User Modal
+      function openSuspendPopup(userId) {
+        if(suspendUserModal) {
+            console.log("Suspending user:", userId);
+            document.getElementById("user_id_suspend").value = userId;
+            document.getElementById("suspensionReason").value = ""; // Clear previous reason
+            suspendUserModal.classList.add("show");
         }
-
-        closeModal();
       }
-
-      // Close Modal
-      function closeModal() {
-        document.getElementById("roleModal").style.display = "none";
+      function closeSuspendPopup() {
+        if(suspendUserModal) suspendUserModal.classList.remove("show");
       }
+       // Attach to window for inline onclick
+      window.openSuspendPopup = openSuspendPopup;
+      window.closeSuspendPopup = closeSuspendPopup;
 
-      // Search Bar Functionality
-      document
-        .getElementById("searchUser")
-        .addEventListener("keyup", function () {
-          let filter = this.value.toLowerCase();
-          let rows = document.querySelectorAll("#userTable tbody tr");
+      // Reactivate User Modal
+      function openReactivatePopup(userId) {
+        if(reactivateUserModal) {
+            console.log("Reactivating user:", userId);
+            document.getElementById("user_id_reactivate").value = userId;
+            reactivateUserModal.classList.add("show");
+        }
+      }
+      function closeReactivatePopup() {
+        if(reactivateUserModal) reactivateUserModal.classList.remove("show");
+      }
+      // Attach to window for inline onclick
+      window.openReactivatePopup = openReactivatePopup;
+      window.closeReactivatePopup = closeReactivatePopup;
 
-          rows.forEach((row) => {
-            let name = row
-              .querySelector("td:nth-child(2) strong")
-              .textContent.toLowerCase();
-            if (name.includes(filter)) {
-              row.style.display = "";
-            } else {
-              row.style.display = "none";
+
+      // General: Close modal when clicking outside of it
+      window.onclick = (event) => {
+        if (event.target === addUserModal) addUserModal.classList.remove("show");
+        if (event.target === modifyRoleModal) modifyRoleModal.classList.remove("show");
+        // Note: removeUserPopup uses display block/none, not covered by this generic modal closer
+        if (event.target === suspendUserModal) suspendUserModal.classList.remove("show");
+        if (event.target === reactivateUserModal) reactivateUserModal.classList.remove("show");
+      };
+
+
+      // Form Submissions with Fetch API
+      document.addEventListener("DOMContentLoaded", function () {
+        // Modify Role Form Submission
+        const modifyRoleForm = document.getElementById("modifyRoleForm");
+        if (modifyRoleForm) {
+          modifyRoleForm.addEventListener("submit", async function (event) {
+            event.preventDefault();
+            const formData = new FormData(modifyRoleForm);
+            const requestBody = Object.fromEntries(formData.entries());
+
+            try {
+              const response = await fetch("/usem/modify-role", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(requestBody),
+              });
+              const result = await response.json();
+              if (response.ok) {
+                alert("Role updated successfully!");
+                closeModifyRoleModal();
+                location.reload();
+              } else {
+                alert("Error: " + (result.error || "Unknown error"));
+              }
+            } catch (error) {
+              console.error("Request failed:", error);
+              alert("An unexpected error occurred while updating role.");
             }
           });
-        });
-    </script>
+        }
 
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
+        // Remove User Form Submission (for removePopup)
+        const removeUserForm = document.getElementById("removeUserForm");
+        if (removeUserForm) {
+            removeUserForm.addEventListener("submit", async function(event) {
+                event.preventDefault();
+                const userId = document.getElementById("item_id_remove").value;
+                console.log("Submitting removal for user ID:", userId);
+                try {
+                    const response = await fetch("/usem/remove/user", { // Ensure this is your correct remove route
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ user_id: userId }),
+                    });
+                    const result = await response.json();
+                    if (response.ok) {
+                        alert(result.success || "User removed successfully!");
+                        closeRemovePopup();
+                        location.reload();
+                    } else {
+                        alert("Error removing user: " + (result.error || "Unknown error"));
+                    }
+                } catch (error) {
+                    console.error("Remove request failed:", error);
+                    alert("An unexpected error occurred during removal.");
+                }
+            });
+        }
+
+
+        // Suspend User Form Submission
+        const suspendUserForm = document.getElementById("suspendUserForm");
+        if (suspendUserForm) {
+            suspendUserForm.addEventListener("submit", async function (event) {
+                event.preventDefault();
+                const userId = document.getElementById("user_id_suspend").value;
+                const reason = document.getElementById("suspensionReason").value;
+
+                if (!reason.trim()) {
+                    alert("Please provide a reason for suspension.");
+                    return;
+                }
+                console.log("Submitting suspension for user:", userId, "Reason:", reason);
+                try {
+                    const response = await fetch("/usem/suspend/user", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ userId: userId, reason: reason }),
+                    });
+                    const result = await response.json();
+                    if (response.ok) {
+                        alert(result.message || "User suspended successfully!");
+                        closeSuspendPopup();
+                        location.reload();
+                    } else {
+                        alert("Error suspending user: " + (result.error || result.message || "Unknown error"));
+                    }
+                } catch (error) {
+                    console.error("Suspend request failed:", error);
+                    alert("An unexpected error occurred during suspension.");
+                }
+            });
+        }
+
+        // Reactivate User Form Submission
+        const reactivateUserForm = document.getElementById("reactivateUserForm");
+        if (reactivateUserForm) {
+            reactivateUserForm.addEventListener("submit", async function (event) {
+                event.preventDefault();
+                const userId = document.getElementById("user_id_reactivate").value;
+                console.log("Submitting reactivation for user:", userId);
+                try {
+                    const response = await fetch("/usem/reactivate/user", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ userId: userId }),
+                    });
+                    const result = await response.json();
+                    if (response.ok) {
+                        alert(result.message || "User reactivated successfully!");
+                        closeReactivatePopup();
+                        location.reload();
+                    } else {
+                        alert("Error reactivating user: " + (result.error || result.message || "Unknown error"));
+                    }
+                } catch (error) {
+                    console.error("Reactivate request failed:", error);
+                    alert("An unexpected error occurred during reactivation.");
+                }
+            });
+        }
+
+        // Dropdown Toggle Logic
         document.querySelectorAll(".dropdown-toggle").forEach((button) => {
           button.addEventListener("click", (event) => {
-            let dropdown = event.currentTarget.parentElement;
+            event.stopPropagation(); // Prevent click from immediately closing dropdown
+            let dropdown = event.currentTarget.closest(".dropdown"); // Use closest to get parent .dropdown
+            // Close other open dropdowns
+            document.querySelectorAll(".dropdown.active").forEach(otherDropdown => {
+                if (otherDropdown !== dropdown) {
+                    otherDropdown.classList.remove("active");
+                }
+            });
             dropdown.classList.toggle("active");
           });
         });
 
         // Close dropdown when clicking outside
         document.addEventListener("click", (event) => {
-          document.querySelectorAll(".dropdown").forEach((dropdown) => {
+          document.querySelectorAll(".dropdown.active").forEach((dropdown) => {
             if (!dropdown.contains(event.target)) {
               dropdown.classList.remove("active");
             }
           });
         });
+
+        // Search Bar Functionality
+        const searchUserInput = document.getElementById("searchUser");
+        if(searchUserInput){
+            searchUserInput.addEventListener("keyup", function () {
+                let filter = this.value.toLowerCase().trim();
+                let rows = document.querySelectorAll("#userTable tbody tr");
+
+                rows.forEach((row) => {
+                    // Ensure querySelector targets the correct cell containing the name.
+                    // Assuming name is in the first <td>. Adjust if it's different.
+                    let nameCell = row.querySelector("td:first-child");
+                    if (nameCell) {
+                        let name = nameCell.textContent.toLowerCase();
+                        if (name.includes(filter)) {
+                            row.style.display = "";
+                        } else {
+                            row.style.display = "none";
+                        }
+                    }
+                });
+            });
+        }
+
       });
     </script>
   </body>
